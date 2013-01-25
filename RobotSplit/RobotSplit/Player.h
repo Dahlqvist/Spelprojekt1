@@ -27,6 +27,7 @@ public:
 	void setAttachFeet(bool);
 	bool getAttachFeet();
 	void sprint();
+	void forceMove(int, sf::Vector2f);
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;
