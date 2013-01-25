@@ -1,6 +1,6 @@
 #include "TextureManager.h"
 //Skapar statiska variablar som alltid kommer att finnas
-
+TextureManager::SpriteMap TextureManager::mSpriteMap;
 //Bakgrund
 sf::Texture TextureManager::textureBackground;
 sf::Sprite TextureManager::spriteBackground;
@@ -99,13 +99,12 @@ void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	//textureBackground.loadFromFile(/*filename.png*/"");
-
 	//Placera texturen i en sprite-variabel
 	//spriteBackground.setTexture(textureBackground);
-
 	//Stix
 	textureStix_lower.loadFromFile("Texture/Stix/stix_lower.png");
 	spriteStix_lower.setTexture(textureStix_lower);
+	mSpriteMap["StixLower"]=spriteStix_lower;
 
 	textureStix_lower_ani.loadFromFile("Texture/Stix/stix_loweranimation_strip8.png");
 	spriteStix_lower_ani.setTexture(textureStix_lower_ani);
@@ -256,13 +255,15 @@ const sf::Texture TextureManager::getTexture(std::string texture)
 
 const sf::Sprite TextureManager::getSprite(std::string sprite)
 {
+	return mSpriteMap[sprite];
+	
 	//Påkalla funktionen med namnet till rätt animation
 	if(sprite == "Background")
 		return spriteBackground;
 
 	//Stix
-	else if(sprite == "StixLower")
-		return spriteStix_lower;
+	//else if(sprite == "StixLower")
+	//	return spriteStix_lower;
 	else if(sprite == "StixLowerAni")
 		return spriteStix_lower_ani;
 	else if(sprite == "StixUpper")

@@ -19,7 +19,8 @@ public:
 private:
 
 	typedef std::map<std::string, sf::Sprite> SpriteMap;
-	SpriteMap spriteMap;
+	static SpriteMap mSpriteMap;
+
 	//Bakgrund
 	static sf::Texture textureBackground;
 	static sf::Sprite spriteBackground;
