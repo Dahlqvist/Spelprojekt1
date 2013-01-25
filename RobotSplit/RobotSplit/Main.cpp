@@ -1,15 +1,18 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include <vector>
 #include "PlayerPart.h"
 #include "Player.h"
 #include "TextureManager.h"
 #include "Animation.h"
+#include "Unit.h"
+#include "Platform.h"
 
 int main(){
 	TextureManager mTextures;
 	mTextures.loadTexture();
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Robot split");
 	window.setFramerateLimit(60);
 	sf::Texture* Text=new sf::Texture;
 	Text->loadFromFile("hej.JPG");
@@ -20,6 +23,12 @@ int main(){
 
 	Player* mPlayer= new Player;
 	bool Collision=true;
+
+
+	Platform* platform=new Platform(sf::Vector2f(300, 300), "Tile1");
+
+	std::vector<Unit*> objects;
+	objects.push_back(platform);
 
 	while (window.isOpen())
 	{
@@ -90,12 +99,16 @@ int main(){
 			std::cout << "Touch me" << std::endl;
 		}*/
 		//mPlatt.getSprite().getGlobalBounds().intersects(
+
 		window.clear(sf::Color::Black);
 		//window.draw(mPlatt.getSprite());
 		//window.draw(mPlatt2.getSprite());
 		mPlayer->update();
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
+
+		window.draw(platform->getSprite());
+
 		window.display();
 	}
 
