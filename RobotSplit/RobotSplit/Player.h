@@ -9,7 +9,7 @@ class Player
 {
 public:
 	typedef std::vector<PlayerPart*> PlayerParts;
-	Player();
+	Player(sf::Vector2f);
 	void move(sf::Vector2f);
 	void draw(sf::RenderWindow&);
 	void update();
