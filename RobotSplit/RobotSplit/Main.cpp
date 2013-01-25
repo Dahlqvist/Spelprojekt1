@@ -21,7 +21,7 @@ int main(){
 	//Platt mPlatt(sf::Vector2f(100, 500));
 	//Platt mPlatt2(sf::Vector2f(300, 400));
 
-	Player* mPlayer= new Player;
+	Player* mPlayer= new Player(sf::Vector2f(100, 100));
 	bool Collision=true;
 
 
