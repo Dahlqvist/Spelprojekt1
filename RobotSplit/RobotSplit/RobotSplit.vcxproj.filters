@@ -1,32 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{5ce2b481-35df-43c0-9c9c-e00341e82874}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{5353167c-64c9-4b58-affd-555ade4b69e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Units">
-      <UniqueIdentifier>{efdf85f8-7904-4012-bb0a-f1f1ac660abd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Units">
-      <UniqueIdentifier>{de323ee2-0cef-45bd-8e68-9b1923638968}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerPartBody.cpp" />
+    <ClCompile Include="PlayerPartFeet.cpp" />
+    <ClCompile Include="PlayerPartHead.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="XmlLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -116,5 +106,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
 >>>>>>> 2077fb39c0d0f15e1af41af6fa7d17c605e6178d
+=======
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerPart.h" />
+    <ClInclude Include="PlayerPartBody.h" />
+    <ClInclude Include="PlayerPartFeet.h" />
+    <ClInclude Include="PlayerPartHead.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Unit.h" />
+    <ClInclude Include="levelloader.h" />
+    <ClInclude Include="xmlloader.h" />
+    <ClInclude Include="level.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.xml" />
+>>>>>>> 17:44
   </ItemGroup>
 </Project>
