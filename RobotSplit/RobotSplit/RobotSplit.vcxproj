@@ -95,15 +95,9 @@ sfml-main.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 17:44
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
->>>>>>> 2077fb39c0d0f15e1af41af6fa7d17c605e6178d
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -117,11 +111,8 @@ sfml-main.lib
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
-<<<<<<< HEAD
-=======
     <ClInclude Include="level.h" />
     <ClInclude Include="levelloader.h" />
->>>>>>> 17:44
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerPart.h" />
@@ -130,13 +121,10 @@ sfml-main.lib
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
-<<<<<<< HEAD
-=======
     <ClInclude Include="xmlloader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.xml" />
->>>>>>> 17:44
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
