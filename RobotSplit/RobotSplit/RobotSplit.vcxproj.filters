@@ -54,6 +54,21 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files\Units</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> 2077fb39c0d0f15e1af41af6fa7d17c605e6178d
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -86,5 +101,20 @@
     <ClInclude Include="Platform.h">
       <Filter>Header Files\Units</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> 2077fb39c0d0f15e1af41af6fa7d17c605e6178d
   </ItemGroup>
 </Project>

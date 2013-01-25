@@ -95,6 +95,12 @@ sfml-main.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
+>>>>>>> 2077fb39c0d0f15e1af41af6fa7d17c605e6178d
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -106,6 +112,7 @@ sfml-main.lib
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />

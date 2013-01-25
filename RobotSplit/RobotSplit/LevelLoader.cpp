@@ -11,6 +11,7 @@
 #include "Platform.h"
 #include "Player.h"
 #include "PlayerPart.h"
+#include "Unit.h"
 /*#include "Lava.h"*/
 
 
@@ -69,19 +70,19 @@ Level	LevelLoader::getLevel()
 		{
 			addPlayer(RetLevel,Gameobject);
 		}
-		else if(type=="Door")
+/*		else if(type=="Door")
 		{
 			addDoor(RetLevel,Gameobject);
 		}
 		else if(type=="Button")
 		{
 			addButton(RetLevel,Gameobject);
-		}
+		}*/
 		else if(type=="Platform")
 		{
 			addPlatform(RetLevel,Gameobject);
 		}
-		else if(type=="Laser")
+/*		else if(type=="Laser")
 		{
 			addLaser(RetLevel,Gameobject);
 		}
@@ -92,7 +93,7 @@ Level	LevelLoader::getLevel()
 		else if(type=="Lava")
 		{
 			addLava(RetLevel,Gameobject);
-		}
+		}*/
 		else
 		{
 		}
@@ -297,12 +298,12 @@ void	LevelLoader::addAntiMagnet(Level	&level,xml_node<>* Node)
 	level.mObjects.push_back(TempObject);
 }
 */
-/*
+
 void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	Lava					*TempObject;
+	string					CurrentValue,Id,Sprite ;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
 
 	//Gets the Position childnode from the GameObject node
@@ -323,8 +324,11 @@ void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	Size.y=((float)atof(CurrentValue.c_str()));
 
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
 	//Creates an AntiMagnet object
-	TempObject=		new Lava(Position,Size);
+	TempObject=		new Unit(Position,Id,Sprite);
 	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
-}*/
+}
