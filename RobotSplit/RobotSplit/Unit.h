@@ -9,7 +9,7 @@
 class Unit: public GameObject
 {
 public:
-	Unit(sf::Vector2f position, std::string id, bool solid=true);
+	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true);
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position){mPosition=position;};

@@ -25,7 +25,7 @@ int main(){
 	bool Collision=true;
 
 
-	Platform* platform=new Platform(sf::Vector2f(300, 300));
+	Platform* platform=new Platform(sf::Vector2f(300, 300), "Tile1");
 
 	std::vector<Unit*> objects;
 	objects.push_back(platform);

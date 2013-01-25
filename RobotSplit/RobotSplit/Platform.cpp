@@ -2,27 +2,21 @@
 #include <sstream>
 #include <cassert>
 
-Platform::Platform(sf::Vector2f position)
-	:Unit(position, "Platform")
+Platform::Platform(sf::Vector2f position, std::string spriteName)
+	:Unit(position, "Platform", spriteName)
 	,mLives(0)
 	,mDestructible(false)
 {
-	mSprite=TextureManager::getSprite("Tile1");
 	mSprite.setPosition(position);
 }
 
-Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size)
-	:Unit(position, "Platform")
+Platform::Platform(int lives, sf::Vector2f position, std::string spriteName)
+	:Unit(position, "Platform", spriteName)
 	,mLives(lives)
 	,mDestructible(true)
 {
 	assert(lives>=1);
 	assert(lives<=3);
-	
-	std::stringstream spriteName;
-	spriteName<<"Platform"<<lives;
-	mSprite.setPosition(mPosition);
-	//mSprite=TextureManager::getSprite(spriteName.str());
 }
 
 void Platform::update()
