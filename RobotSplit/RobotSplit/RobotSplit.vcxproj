@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
-    <LibraryPath>\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
