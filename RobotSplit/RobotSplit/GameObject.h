@@ -12,7 +12,7 @@ public:
 	virtual sf::Sprite getSprite()=0; 
 	virtual std::string getId()=0;
 	virtual void setPosition(sf::Vector2f)=0;
-private: 
+protected: 
 	sf::Vector2f mPosition; 
 	std::string mId;
 };
