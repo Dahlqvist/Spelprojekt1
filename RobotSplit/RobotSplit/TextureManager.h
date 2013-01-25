@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <string>
+#include <map>
 
 class TextureManager
 {
@@ -16,6 +17,9 @@ public:
 	const static sf::Texture getTexture(std::string texture);
 
 private:
+
+	typedef std::map<std::string, sf::Sprite> SpriteMap;
+	SpriteMap spriteMap;
 	//Bakgrund
 	static sf::Texture textureBackground;
 	static sf::Sprite spriteBackground;

@@ -88,6 +88,7 @@ sf::Sprite TextureManager::spriteTile8;
 
 sf::Texture TextureManager::textureTile9;
 sf::Sprite TextureManager::spriteTile9;
+
 TextureManager::TextureManager()
 {}
 
