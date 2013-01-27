@@ -123,6 +123,6 @@ int main(){
 
 		window.display();
 	}
-
+	level.deletePointers();
 	return 0;
 }

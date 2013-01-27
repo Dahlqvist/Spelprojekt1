@@ -9,7 +9,7 @@ class LevelLoader :public XmlLoader
 public:
 	//Uninitiated Constructor								(Done)
 	LevelLoader(void);
-	//Initiated Constructor
+	//Initiated Constructor									(Done)
 	LevelLoader(std::string);
 	//Deconstructor											(Done)
 	~LevelLoader(void);
