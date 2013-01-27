@@ -3,16 +3,11 @@
 //Includefiles for objects
 //#include "TestObject.h"
 
-/*Inactive during development
-#include "AntiMagnet.h"
-#include "Button.h"
-#include "Door.h"
-#include "Laser.h"*/
+/*Inactive during development*/
 #include "Platform.h"
 #include "Player.h"
 #include "PlayerPart.h"
 #include "Unit.h"
-/*#include "Lava.h"*/
 
 
 LevelLoader::LevelLoader(void)
@@ -89,11 +84,11 @@ Level	LevelLoader::getLevel()
 		else if(type=="AntiMagnet")
 		{
 			addAntiMagnet(RetLevel,Gameobject);
-		}
+		}*/
 		else if(type=="Lava")
 		{
 			addLava(RetLevel,Gameobject);
-		}*/
+		}
 		else
 		{
 		}
