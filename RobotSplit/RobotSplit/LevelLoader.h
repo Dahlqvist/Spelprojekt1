@@ -7,13 +7,13 @@
 class LevelLoader :public XmlLoader
 {
 public:
-	//Uninitiated Constructor
+	//Uninitiated Constructor								(Done)
 	LevelLoader(void);
 	//Initiated Constructor
 	LevelLoader(std::string);
 	//Deconstructor											(Done)
 	~LevelLoader(void);
-	//Creates a Level from the XML-File and returns it		(Done)
+	//Creates a Level from the XML-File and returns it		
 	Level	getLevel();
 private:
 	//Functions adding objects to the parameter				(Done)

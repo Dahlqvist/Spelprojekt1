@@ -20,6 +20,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>480</y>
@@ -31,6 +32,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>512</y>
@@ -42,6 +44,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>416</y>
@@ -53,6 +56,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>480</y>
@@ -64,6 +68,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>480</y>
@@ -75,6 +80,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -86,6 +92,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>480</y>
@@ -97,6 +104,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>416</y>
@@ -108,6 +116,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>416</y>
@@ -119,6 +128,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
@@ -130,6 +140,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
@@ -141,6 +152,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>480</y>
@@ -152,6 +164,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>480</y>
@@ -163,6 +176,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>480</y>
@@ -174,6 +188,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>512</y>
@@ -185,6 +200,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Door"</Type>
+			<SpriteName>"Exit"</SpriteName>
 			<Position>
 				<x>1158</x>
 				<y>416</y>
@@ -195,7 +211,8 @@
 			</Size>
 		</GameObject>
 		<GameObject>
-			<Type>"Lava"</Type>
+				<Type>"Lava"</Type>
+				<SpriteName>"Lava"</SpriteName><SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>704</y>
@@ -207,6 +224,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>128</x>
 				<y>704</y>
@@ -218,6 +236,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>704</y>
@@ -229,6 +248,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>256</x>
 				<y>704</y>
@@ -240,6 +260,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>704</y>
@@ -251,6 +272,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>704</y>
@@ -262,6 +284,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>704</y>
@@ -273,6 +296,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>704</y>
@@ -284,6 +308,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>704</y>
@@ -295,6 +320,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>640</x>
 				<y>704</y>
@@ -306,6 +332,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>704</x>
 				<y>704</y>
@@ -317,6 +344,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>704</y>
@@ -328,6 +356,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>704</y>
@@ -339,6 +368,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>704</y>
@@ -350,6 +380,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>704</y>
@@ -361,6 +392,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>704</y>
@@ -372,6 +404,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>704</y>
@@ -383,6 +416,7 @@
 		</GameObject>
 		<GameObject>
 			<Type>"Lava"</Type>
+			<SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>704</y>
