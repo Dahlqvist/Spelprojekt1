@@ -83,6 +83,7 @@ void PlayerPartFeet::setAttached(bool b)
 }
 void PlayerPartFeet::jump()
 {
+	std::cout << "Jumping Feets" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }

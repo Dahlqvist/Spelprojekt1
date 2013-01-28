@@ -22,6 +22,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mSprite.setTexture(mTexture);
 	mDash=0;
 	mFacingRight=true;
+	mJumpTemp.restart();
 }
 void Player::draw(sf::RenderWindow& Window)
 {
@@ -134,19 +135,23 @@ void Player::setTogether(bool b)
 }
 void Player::jump()
 {
-	if(mTogether==true)
+	if(mJumpTemp.getElapsedTime().asSeconds()>0.5)
 	{
-		mFeet.jump();
-		mBody.jump();
-	}
-	else if(mBodyActive)
-	{
-		mBody.jump();
-	}
-	else
-	{
-		mFeet.jump();
-	}
+		if(mTogether==true)
+		{
+			mFeet.jump();
+			mBody.jump();
+		}
+		else if(mBodyActive)
+		{
+			mBody.jump();
+		}
+		else
+		{
+			mFeet.jump();
+		}
+		mJumpTemp.restart();
+	}	
 }
 
 void Player::setBodyActive(bool b)
@@ -283,6 +288,9 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 	}
 	else
 	{
+		/*std::cout << "Collision" << std::endl;
+		mBody.jump();
+		mFeet.jump();*/
 		if(Vec.y>0)
 		{
 			mBody.jumpReset();
