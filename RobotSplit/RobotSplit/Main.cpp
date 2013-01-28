@@ -8,6 +8,22 @@
 #include "Unit.h"
 #include "Platform.h"
 #include "LevelLoader.h"
+#include "Collision.h"
+
+void runCollisions(Level level, Player& player)
+{
+	std::vector<Collision> col;
+	for (int i=0; i<player.getCollisionSprite().size(); i++)
+	{
+		/*int part=i;
+		if (player.getTogether())
+		{
+			part=-1;
+		}*/
+		col.push_back(Collision());
+		col[i].collide(i, player, level.getObjects());
+	}
+}
 
 int main(){
 	TextureManager mTextures;
@@ -55,7 +71,7 @@ int main(){
 			mPlayer->reFuel(100);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->sprint();
+			mPlayer->dash();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			mPlayer->move(sf::Vector2f(1,0));
@@ -79,15 +95,19 @@ int main(){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
 
-		window.clear(sf::Color::Black);
 		mPlayer->update();
+
+		runCollisions(level, *mPlayer);
+
+		window.clear(sf::Color::Black);
+		
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-	for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
-	{
-		window.draw(level.getObjects()[i]->getSprite());
-	}
+		for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
+		{
+			window.draw(level.getObjects()[i]->getSprite());
+		}
 
 		window.display();
 	}

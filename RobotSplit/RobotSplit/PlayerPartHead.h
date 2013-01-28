@@ -17,9 +17,9 @@ public:
 	virtual bool getAttached();
 	virtual void setAttached(bool);
 	virtual void jump();
-	void setShootVector(sf::Vector2f);
 	virtual void resetAnimation();
 	virtual GameObject* getObject();
+	void setShootVector(sf::Vector2f);
 private: 
 	bool mAttached;
 	GameObject* mObject;

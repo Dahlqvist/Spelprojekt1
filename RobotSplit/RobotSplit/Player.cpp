@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "TextureManager.h"
 #include <iostream>
 #include <math.h>
 
@@ -17,19 +18,30 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeetAttached=false;
 	mSprintTimer.restart();
 	mFeet.setPosition(Position);
+	mTexture.loadFromFile("Texture/Stix/stix.png");
+	mSprite.setTexture(mTexture);
+	mDash=0;
 }
 void Player::draw(sf::RenderWindow& Window)
 {
-	for(unsigned int i=0; i<mParts.size(); i++)
+	/*if(mTogether==true)
 	{
-		if(mParts[i]->getObject()!=0)
-		{
-			Window.draw(mParts[i]->getObject()->getSprite());
-		}
+		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
+		Window.draw(mSprite);
 	}
-	Window.draw(mFeet.getSprite());
-	Window.draw(mHead.getSprite());
-	Window.draw(mBody.getSprite());
+	else
+	{*/
+		for(unsigned int i=0; i<mParts.size(); i++)
+		{
+			if(mParts[i]->getObject()!=0)
+			{
+				Window.draw(mParts[i]->getObject()->getSprite());
+			}
+		}
+		Window.draw(mFeet.getSprite());
+		Window.draw(mHead.getSprite());
+		Window.draw(mBody.getSprite());
+	//}
 	//Window.draw(mBody.getObject()->getSprite());
 }
 void Player::update()
@@ -38,39 +50,49 @@ void Player::update()
 	{
 		if(mParts[i]->getPosition().y+mParts[i]->getSprite().getGlobalBounds().height<600)
 		{
-			if(i!=2)
+			if(i!=2 && mParts[i]->getAttached()==false)
 			{
 				mParts[i]->setPosition(sf::Vector2f(0, 3));
 			}
 		}
 		mParts[i]->update();
 	}
+	if(mDash>0){
+		mFeet.setPosition(sf::Vector2f(mSpeed*2, 0));
+		mDash--;
+	}
+	else{
+		mDashing=false;
+	}
 }
 void Player::move(sf::Vector2f Vec)
 {
-	Vec.x*=mSpeed;
-	Vec.y*=mSpeed;
-	if(mTogether==true)
+	if(mDashing==false)
 	{
-		for(unsigned int i=0; i < mParts.size(); i++)
+		Vec.x*=mSpeed;
+		Vec.y*=mSpeed;
+		if(mTogether==true)
 		{
-			if(mParts[i]!=&mHead || mHeadless!=true)
+			for(unsigned int i=0; i < mParts.size(); i++)
 			{
-				mParts[i]->setPosition(Vec);
+				if(mParts[i]!=&mHead || mHeadless!=true)
+				{
+					mParts[i]->setPosition(Vec);
+				}
 			}
 		}
-	}
-	else if(mBodyActive)
-	{
-		mBody.setPosition(Vec);
-		if(mHeadless==false)
+		else if(mBodyActive)
 		{
-			mHead.setPosition(Vec);
+			mBody.setPosition(Vec);
+			if(mHeadless==false)
+			{
+				mHead.setPosition(Vec);
+			}
 		}
-	}
-	else
-	{
-		mFeet.setPosition(Vec);
+		else
+		{
+			mFeet.setPosition(Vec);
+		}
 	}
 }
 bool Player::getTogether()
@@ -122,7 +144,6 @@ bool Player::getBodyActive()
 }
 void Player::resetAnimations()
 {
-	mSpeed=2;
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
 		mParts[i]->resetAnimation();
@@ -171,10 +192,17 @@ bool Player::getHeadless()
 std::vector<sf::Sprite*> Player::getCollisionSprite()
 {
 	std::vector<sf::Sprite*> Parts;
-	for(unsigned int i=0; i < mParts.size(); i++)
-	{
-		sf::Sprite* Temp=new sf::Sprite(mParts[i]->getSprite());
-		Parts.push_back(Temp);
+	if(mTogether==true){
+		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
+		Parts.push_back(&mSprite);
+		//return Sprite på hela stix
+	}
+	else{
+		for(unsigned int i=0; i < mParts.size(); i++)
+		{
+			sf::Sprite* Temp=new sf::Sprite(mParts[i]->getSprite());
+			Parts.push_back(Temp);
+		}
 	}
 	return Parts;
 }
@@ -197,11 +225,12 @@ bool Player::getAttachFeet()
 {
 	return mFeetAttached;
 }
-void Player::sprint()
+void Player::dash()
 {
 	if(mTogether==true)
 	{
-		mSpeed=4;
+		mDashing=true;
+		mDash=20;
 	}
 }
 void Player::activateFeetRockets(){
@@ -223,13 +252,15 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 	else if(part==2)
 	{
 		mHead.setPosition(Vec);
+		mHead.setShootVector(sf::Vector2f(0, 0));
 	}
 	else
 	{
-		for(unsigned int i=0; i < mParts.size(); i++)
+		mBody.setPosition(Vec);
+		mFeet.setPosition(Vec);
+		/*for(unsigned int i=0; i < mParts.size(); i++)
 		{
 			mParts[i]->setPosition(Vec);
-		}
-
+		}*/
 	}
 }
