@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <IncludePath>rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,6 +95,9 @@ sfml-main.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -103,10 +106,14 @@ sfml-main.lib
     <ClCompile Include="PlayerPartHead.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="XmlLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="levelloader.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerPart.h" />
@@ -115,6 +122,10 @@ sfml-main.lib
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="xmlloader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

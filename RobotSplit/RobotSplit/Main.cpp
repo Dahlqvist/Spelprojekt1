@@ -7,6 +7,7 @@
 #include "Animation.h"
 #include "Unit.h"
 #include "Platform.h"
+#include "LevelLoader.h"
 
 int main(){
 	TextureManager mTextures;
@@ -20,9 +21,15 @@ int main(){
 
 	//Platt mPlatt(sf::Vector2f(100, 500));
 	//Platt mPlatt2(sf::Vector2f(300, 400));
+	Level	level("Test.xml");
+	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
+	{
+		cout<<level.getObjects()[i]->getId();
+	}
 
-	Player* mPlayer= new Player;
+	Player* mPlayer= level.getPlayer();
 	bool Collision=true;
+
 
 
 	Platform* platform=new Platform(sf::Vector2f(300, 300), "Tile1");
@@ -107,10 +114,15 @@ int main(){
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-		window.draw(platform->getSprite());
+	//	window.draw(platform->getSprite());
+
+	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
+	{
+		window.draw(level.getObjects()[i]->getSprite());
+	}
 
 		window.display();
 	}
-
+	level.deletePointers();
 	return 0;
 }

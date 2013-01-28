@@ -8,7 +8,7 @@ mLeftAnimation("StixLowerAni", 200, 8),
 	mRight("StixLower", 200, 1)
 {
 	mActiveAnimation=&mRight;
-	mPosition=sf::Vector2f(100, 164);
+	mPosition=sf::Vector2f(0, 0);
 	mAttached=false;
 	mAniTime=0;
 	mAnimationTimer.restart();

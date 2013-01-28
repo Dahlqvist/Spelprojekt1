@@ -1,18 +1,14 @@
 #include "LevelLoader.h"
 
 //Includefiles for objects
-#include "TestObject.h"
+//#include "TestObject.h"
 
-/*Inactive during development
-#include "AntiMagnet.h"
-#include "Button.h"
-#include "Door.h"
-#include "Laser.h"
+/*Inactive during development*/
 #include "Platform.h"
 #include "Player.h"
-#include "PlayerParts.h"
-#include "Lava.h"
-*/
+#include "PlayerPart.h"
+#include "Unit.h"
+
 
 LevelLoader::LevelLoader(void)
 {
@@ -45,8 +41,8 @@ Level	LevelLoader::getLevel()
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	Background*BACK=new Background(Filename,Frames,Speed);
-	RetLevel.setBackground(BACK);
+/*	Background*BACK=new Background(Filename,Frames,Speed);
+	RetLevel.setBackground(BACK);*/
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
 	RetLevel.getBackgroundWrap().setName(Filename);
@@ -113,11 +109,11 @@ void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 
 	//Initializes Y's value
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Adds the Player pointer to the Level object
 	TempObject=	new Player(Position);
@@ -127,118 +123,123 @@ void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)
 void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	Laser					*TempObject;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
-	bool					Active;
-	int						Color;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
+	Size.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
 	
-	//Initializes the Tigger bool
-	CurrentChild=	Node->first_node("Trigger");
-	CurrentValue=	getValue(CurrentChild);
-	Active=(bool)atoi(CurrentValue.c_str());
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
 
-	//Initializes the Color int
-	CurrentChild=	Node->first_node("Color");
-	CurrentValue=	getValue(CurrentChild);
-	Color=			atoi(CurrentValue.c_str());
-
-	//Creates a Platform object
-	TempObject=		new Laser(Position,Size,Active,Color);
-	//Puts the Platform object into the level's ObjectVector
+	//Creates an AntiMagnet object
+	TempObject=		new Unit(Position,Id,Sprite);
+	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }
 
 void	LevelLoader::addButton	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	Button					*TempObject;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
-	bool					Trigger;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
-	
-	//Initializes the Tigger Bool
-	CurrentChild=	Node->first_node("Trigger");
-	CurrentValue=	getValue(CurrentChild);
-	Trigger=(bool)atoi(CurrentValue.c_str());
+	Size.y=((float)atof(CurrentValue.c_str()));
 
-	//Creates a Platform object
-	TempObject=		new Button(Position,Size,Trigger);
-	//Puts the Platform object into the level's ObjectVector
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
+
+	//Creates an AntiMagnet object
+	TempObject=		new Unit(Position,Id,Sprite);
+	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }
 
 void	LevelLoader::addDoor		(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	Door					*TempObject;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
-	
+
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
+	Size.y=((float)atof(CurrentValue.c_str()));
 
-	//Creates a Door object
-	TempObject=		new Door(Position,Size);
-	//Puts the Door object into the level's ObjectVector
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
+
+	//Creates an AntiMagnet object
+	TempObject=		new Unit(Position,Id,Sprite);
+	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }
-
 void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
+	string					CurrentValue,Sprite;
 	Platform				*TempObject;
 	sf::Vector2f			Position, Size;
 
@@ -247,21 +248,25 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
+	Size.y=((float)atof(CurrentValue.c_str()));
+	
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
 
 	//Creates a Platform object
-	TempObject=		new Platform(Position,Size);
+	TempObject=		new Platform(Position,Sprite);
 	//Puts the Platform object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }
@@ -269,8 +274,8 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 void	LevelLoader::addAntiMagnet(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	AntiMagnet				*TempObject;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
 
 	//Gets the Position childnode from the GameObject node
@@ -278,30 +283,39 @@ void	LevelLoader::addAntiMagnet(Level	&level,xml_node<>* Node)
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
+	Size.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
 
 	//Creates an AntiMagnet object
-	TempObject=		new AntiMagnet(Position,Size);
+	TempObject=		new Unit(Position,Id,Sprite);
 	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }
 
+
 void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
-	Lava					*TempObject;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
 
 	//Gets the Position childnode from the GameObject node
@@ -309,21 +323,29 @@ void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 	//Gets the x Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
 	//Sets X to CurentValue's value
-	Position.setX((float)atof(CurrentValue.c_str()));
+	Position.x=((float)atof(CurrentValue.c_str()));
 	//Gets the y Value from CurrentChild
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
-	Position.setY((float)atof(CurrentValue.c_str()));
+	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
 	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.setX((float)atof(CurrentValue.c_str()));
+	Size.x=((float)atof(CurrentValue.c_str()));
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.setY((float)atof(CurrentValue.c_str()));
+	Size.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
 
 	//Creates an AntiMagnet object
-	TempObject=		new Lava(Position,Size);
+	TempObject=		new Unit(Position,Id,Sprite);
 	//Puts the AntiMagnet object into the level's ObjectVector
 	level.mObjects.push_back(TempObject);
 }

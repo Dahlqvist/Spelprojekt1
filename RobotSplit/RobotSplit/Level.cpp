@@ -50,6 +50,13 @@ void			BackgroundWrap::operator=		(const BackgroundWrap& Source)
 	setFrames(Source.getFrames());
 	setSpeed(Source.getSpeed());
 }
+void		BackgroundWrap::deletePointer()
+{
+	if(mBackground==NULL)
+	{
+		delete mBackground;
+	}
+}
 
 //Level Functions
 Level::Level(void)
@@ -65,6 +72,22 @@ Level::~Level(void)
 {
 }
 
+void	Level::deletePointers()
+{
+	for(ObjectVector::size_type i=0;i<mObjects.size();i++)
+	{
+		if(mPlayer==NULL)
+		{
+			delete mObjects[i];
+		}
+	}
+	if(mPlayer==NULL)
+	{
+		delete mPlayer;
+	}
+	mObjects.clear();
+	mBackground.deletePointer();
+}
 
 void	Level::loadNewLevel(string FileName)
 {

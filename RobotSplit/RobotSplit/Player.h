@@ -9,7 +9,7 @@ class Player
 {
 public:
 	typedef std::vector<PlayerPart*> PlayerParts;
-	Player();
+	Player(sf::Vector2f);
 	void move(sf::Vector2f);
 	void draw(sf::RenderWindow&);
 	void update();
@@ -27,6 +27,7 @@ public:
 	void setAttachFeet(bool);
 	bool getAttachFeet();
 	void sprint();
+	void forceMove(int, sf::Vector2f);
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;

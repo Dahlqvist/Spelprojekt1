@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 
-Player::Player():
+Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
 {
 	mParts.push_back(&mFeet);
@@ -16,6 +16,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mHeadless=false;
 	mTogether=true;
 	mSprintTimer.restart();
+	mFeet.setPosition(Position);
 }
 void Player::draw(sf::RenderWindow& Window)
 {
@@ -333,4 +334,23 @@ bool Player::getAttachFeet()
 void Player::sprint()
 {
 	
+}
+void Player::forceMove(int part, sf::Vector2f Vec){
+	if(part==0){
+		mFeet.setPosition(Vec);
+	}
+	else if(part==1){
+		mBody.setPosition(Vec);
+	}
+	else if(part==2){
+		mHead.setPosition(Vec);
+	}
+	else
+	{
+		for(unsigned int i=0; i < mParts.size(); i++)
+		{
+			mParts[i]->setPosition(Vec);
+		}
+
+	}
 }

@@ -23,13 +23,14 @@ public:
 	void		setFrames		(const int&);
 	void		setSpeed		(const int&);
 	void		operator=		(const BackgroundWrap&);
+	void		deletePointer	();
 private:
 	Background*	mBackground;
 	string		mName;
 	int			mFrames,mSpeed;
 };
 
-//Class is Done	(01-23-2013)
+//Class is Done	(01-27-2013)
 class Level
 {
 public:
@@ -51,6 +52,9 @@ public:
 	Player*			getPlayer()const;
 	//Returns the Backgroundwrap				(Done)
 	BackgroundWrap&	getBackgroundWrap();
+	//Frees up all the pointers if using the
+	//class to manage the different game parts	(Done)
+	void			deletePointers	();
 protected:
 	//Operator for copying Levels				(Done)
 	void			operator=(const Level&);
