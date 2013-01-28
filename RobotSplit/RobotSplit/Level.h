@@ -43,7 +43,7 @@ public:
 	//Reads a Level from a XML-file				(Done)
 	void			loadNewLevel(string FileName);
 	//Returns the Level's objects				(Done)
-	UnitVector	getObjects()const;
+	UnitVector		getObjects()const;
 	//Returns the Level's name					(Done)
 	string			getName()const;
 	//Returns the Level's background			(Done)

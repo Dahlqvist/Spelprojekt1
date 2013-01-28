@@ -40,7 +40,7 @@ private:
 	sf::Texture mTexture;
 	float mSpeed, mJump, mDash;
 	sf::Clock mSprintTimer;
-	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing;
+	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 };
 
 #endif

@@ -114,3 +114,6 @@ void PlayerPartFeet::reFuel(float fuel){
 		mFuel=fuel;
 	}
 }
+void PlayerPartFeet::jumpReset(){
+	mJump=3;
+}

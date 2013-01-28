@@ -9,19 +9,15 @@
 #include "Platform.h"
 #include "LevelLoader.h"
 #include "Collision.h"
+#include "XmlSaver.h"
 
-void runCollisions(Level level, Player& player)
+void runCollisions(UnitVector Objects, Player& player)
 {
 	std::vector<Collision> col;
 	for (int i=0; i<player.getCollisionSprite().size(); i++)
 	{
-		/*int part=i;
-		if (player.getTogether())
-		{
-			part=-1;
-		}*/
 		col.push_back(Collision());
-		col[i].collide(i, player, level.getObjects());
+		col[i].collide(i, player, Objects);
 	}
 }
 
@@ -31,11 +27,12 @@ int main(){
 
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
-
+	UnitVector Objects;
 	Level	level("Test.xml");
-	for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
+	Objects	= level.getObjects();
+	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
-		cout<<level.getObjects()[i]->getId();
+		cout<<Objects[i]->getId();
 	}
 
 	Player* mPlayer= level.getPlayer();
@@ -97,20 +94,23 @@ int main(){
 
 		mPlayer->update();
 
-		runCollisions(level, *mPlayer);
+		runCollisions(Objects, *mPlayer);
 
 		window.clear(sf::Color::Black);
 		
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-		for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
+		for(UnitVector::size_type i=0;i<Objects.size();i++)
 		{
-			window.draw(level.getObjects()[i]->getSprite());
+			window.draw(Objects[i]->getSprite());
 		}
 
 		window.display();
 	}
+	XmlSaver saver("TestSave");
+	saver.saveLevel(level);
+	saver.createFile();
 	level.deletePointers();
 	return 0;
 }

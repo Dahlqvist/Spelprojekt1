@@ -20,6 +20,7 @@ public:
 	virtual void jump();
 	virtual void resetAnimation();
 	virtual GameObject* getObject();
+	void jumpReset();
 private: 
 	bool mAttached;
 	GameObject* mObject;
