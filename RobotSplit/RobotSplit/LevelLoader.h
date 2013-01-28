@@ -24,6 +24,7 @@ private:
 	void	addPlatform		(Level	&level,xml_node<>* Node);
 	void	addAntiMagnet	(Level	&level,xml_node<>* Node);
 	void	addLava			(Level	&level,xml_node<>* Node);
+	void	addUnit			(Level	&level,xml_node<>* Node);
 };
 
 #endif
