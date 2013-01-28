@@ -16,11 +16,6 @@ void runCollisions(UnitVector Objects, Player& player)
 	std::vector<Collision> col;
 	for (int i=0; i<player.getCollisionSprite().size(); i++)
 	{
-		int part=i;
-		if (player.getTogether())
-		{
-			part=-1;
-		}
 		col.push_back(Collision());
 		col[i].collide(i, player, Objects);
 	}

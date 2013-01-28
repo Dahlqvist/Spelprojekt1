@@ -21,6 +21,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mTexture.loadFromFile("Texture/Stix/stix.png");
 	mSprite.setTexture(mTexture);
 	mDash=0;
+	mFacingRight=true;
 }
 void Player::draw(sf::RenderWindow& Window)
 {
@@ -58,8 +59,16 @@ void Player::update()
 		mParts[i]->update();
 	}
 	if(mDash>0){
-		mFeet.setPosition(sf::Vector2f(mSpeed*2, 0));
-		mDash--;
+		if(mFacingRight==true)
+		{
+			mFeet.setPosition(sf::Vector2f(mSpeed*2, 0));
+			mDash--;
+		}
+		else
+		{
+			mFeet.setPosition(sf::Vector2f(-mSpeed*2, 0));
+			mDash--;
+		}
 	}
 	else{
 		mDashing=false;
@@ -69,6 +78,12 @@ void Player::move(sf::Vector2f Vec)
 {
 	if(mDashing==false)
 	{
+		if(Vec.x>0){
+			mFacingRight=true;
+		}
+		if(Vec.x<0){
+			mFacingRight=false;
+		}
 		Vec.x*=mSpeed;
 		Vec.y*=mSpeed;
 		if(mTogether==true)
@@ -194,8 +209,12 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 	std::vector<sf::Sprite*> Parts;
 	if(mTogether==true){
 		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
-		Parts.push_back(&mSprite);
-		//return Sprite på hela stix
+		sf::Sprite* Temp1=new sf::Sprite(mSprite);
+		Parts.push_back(Temp1);
+		if(mHeadless==true){
+			sf::Sprite* Temp2=new sf::Sprite(mHead.getSprite());
+			Parts.push_back(Temp2);
+		}
 	}
 	else{
 		for(unsigned int i=0; i < mParts.size(); i++)
