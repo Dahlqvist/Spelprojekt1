@@ -33,11 +33,14 @@ void	XmlSaver::setFilename(const string& NewName)
 
 void	XmlSaver::createFile()
 {
-	std::cout<<mDocument;
-	system("PAUSE");
+	//Writes the Document for quick checking of it before the program closes
+//	std::cout<<mDocument;
+//	system("PAUSE");
+	//Creates the file to write to
 	std::ofstream	file(mFilename);
 	//Sets the standard of xml on the file
 	file<<"<?xml version=\"1.0\"?>"<<endl;
+	//Writes the document to the file
 	file<<mDocument;
 	file.close();
 }
