@@ -1,4 +1,5 @@
 #include "Collision.h"
+#include <iostream>
 
 void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objects)
 {
@@ -126,7 +127,15 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			}
 		}
 	}
-	player.forceMove(mPlayerPart, moveDistance);
+	//std::cout << player.getCollisionSprite().size() << std::endl;
+	if(player.getCollisionSprite().size()==2 && mPlayerPart==1)
+	{
+		player.forceMove(2, moveDistance);
+	}
+	else
+	{
+		player.forceMove(mPlayerPart, moveDistance);
+	}
 	//playerSprite->setPosition(moveDistance);
 }
 
