@@ -19,15 +19,18 @@ public:
 	void setBodyActive(bool);
 	bool getHeadless();
 	void setHeadless(bool);
-	void jump();
-	sf::FloatRect getRect();
-	std::vector<sf::Sprite*> getCollisionSprite();
 	void resetAnimations();
+
+	std::vector<sf::Sprite*> getCollisionSprite();
+	void forceMove(int, sf::Vector2f);
+
+	void jump();
 	void shootHead(sf::Vector2f);
 	void setAttachFeet(bool);
 	bool getAttachFeet();
 	void sprint();
-	void forceMove(int, sf::Vector2f);
+	void activateFeetRockets();
+	void reFuel(float);
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;
@@ -36,7 +39,6 @@ private:
 	float mSpeed, mJump;
 	sf::Clock mSprintTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached;
-	int mState;
 };
 
 #endif

@@ -19,6 +19,8 @@ public:
 	virtual void jump();
 	virtual void resetAnimation();
 	virtual GameObject* getObject();
+	void activateRocketBoots();
+	void reFuel(float);
 private: 
 	bool mAttached;
 	GameObject* mObject;
@@ -29,7 +31,7 @@ private:
 	Animation mRight;
 	sf::Vector2f mPosition; 
 	std::string mId;
-	float mJump, mAniTime;
+	float mJump, mAniTime, mFuel;
 	sf::Clock mJumpClock, mAnimationTimer;
 };
 

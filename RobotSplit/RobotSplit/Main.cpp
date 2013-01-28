@@ -13,7 +13,7 @@ int main(){
 	TextureManager mTextures;
 	mTextures.loadTexture();
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Robot split");
+	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 
 	Level	level("Test.xml");
@@ -51,6 +51,12 @@ int main(){
 				}
 			}
 		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+			mPlayer->reFuel(100);
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+			mPlayer->sprint();
+		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			mPlayer->move(sf::Vector2f(1,0));
 		}
@@ -59,6 +65,9 @@ int main(){
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
 			mPlayer->jump();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
+			mPlayer->activateFeetRockets();
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 			sf::Vector2f Temp;
