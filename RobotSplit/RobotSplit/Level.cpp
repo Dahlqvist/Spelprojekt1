@@ -74,7 +74,7 @@ Level::~Level(void)
 
 void	Level::deletePointers()
 {
-	for(ObjectVector::size_type i=0;i<mObjects.size();i++)
+	for(UnitVector::size_type i=0;i<mObjects.size();i++)
 	{
 		if(mPlayer==NULL)
 		{
@@ -97,7 +97,7 @@ void	Level::loadNewLevel(string FileName)
 }
 
 
-void	Level::setObjects(const ObjectVector& Source)
+void	Level::setObjects(const UnitVector& Source)
 {
 	mObjects=Source;
 }
@@ -131,7 +131,7 @@ std::string		Level::getName		()const
 	return	mName;
 }
 
-ObjectVector	Level::getObjects	()const
+UnitVector	Level::getObjects	()const
 {
 	return	mObjects;
 }

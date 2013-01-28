@@ -4,11 +4,11 @@
 #include<string>
 
 //Inuslated classes
-class GameObject;
+class Unit;
 class Background;
 class Player;
 using namespace std;
-typedef vector<GameObject*> ObjectVector;
+typedef vector<Unit*> UnitVector;
 
 //Class is Working 24-01-2013
 class	BackgroundWrap
@@ -43,7 +43,7 @@ public:
 	//Reads a Level from a XML-file				(Done)
 	void			loadNewLevel(string FileName);
 	//Returns the Level's objects				(Done)
-	ObjectVector	getObjects()const;
+	UnitVector	getObjects()const;
 	//Returns the Level's name					(Done)
 	string			getName()const;
 	//Returns the Level's background			(Done)
@@ -59,7 +59,7 @@ protected:
 	//Operator for copying Levels				(Done)
 	void			operator=(const Level&);
 	//Replaces the Levels current object vector	(Done)
-	void			setObjects(const ObjectVector&);
+	void			setObjects(const UnitVector&);
 	//Gives the level a new name				(Done)
 	void			setName(const string&);
 	//Sets the player pointer					(Done)
@@ -69,7 +69,7 @@ protected:
 private:
 	//Member Variables							(Done)
 	string			mName;
-	ObjectVector	mObjects;
+	UnitVector	mObjects;
 	BackgroundWrap	mBackground;
 	Player*			mPlayer;
 	/*Defines the XmlLoader class as
