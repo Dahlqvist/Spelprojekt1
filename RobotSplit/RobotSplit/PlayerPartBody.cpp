@@ -100,3 +100,6 @@ GameObject* PlayerPartBody::getObject()
 {
 	return mObject;
 }
+void PlayerPartBody::jumpReset(){
+	mJump=3;
+}

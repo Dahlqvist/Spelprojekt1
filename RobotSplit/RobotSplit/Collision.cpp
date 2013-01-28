@@ -132,6 +132,10 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	{
 		player.forceMove(2, moveDistance);
 	}
+	else if(player.getCollisionSprite().size()==1)
+	{
+		player.forceMove(3, moveDistance);
+	}
 	else
 	{
 		player.forceMove(mPlayerPart, moveDistance);

@@ -262,10 +262,18 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 {
 	if(part==0)
 	{
+		if(Vec.y>0)
+		{
+			mFeet.jumpReset();
+		}
 		mFeet.setPosition(Vec);
 	}
 	else if(part==1)
 	{
+		if(Vec.y>0)
+		{
+			mBody.jumpReset();
+		}
 		mBody.setPosition(Vec);
 	}
 	else if(part==2)
@@ -275,6 +283,11 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 	}
 	else
 	{
+		if(Vec.y>0)
+		{
+			mBody.jumpReset();
+			mFeet.jumpReset();
+		}
 		mBody.setPosition(Vec);
 		mFeet.setPosition(Vec);
 		/*for(unsigned int i=0; i < mParts.size(); i++)
