@@ -95,10 +95,12 @@ int main(){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
 
+		mPlayer->update();
+
 		runCollisions(level, *mPlayer);
 
 		window.clear(sf::Color::Black);
-		mPlayer->update();
+		
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
