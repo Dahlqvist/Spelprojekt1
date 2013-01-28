@@ -17,7 +17,7 @@ int main(){
 	window.setFramerateLimit(60);
 
 	Level	level("Test.xml");
-	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
+	for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
 	{
 		cout<<level.getObjects()[i]->getId();
 	}
@@ -84,7 +84,7 @@ int main(){
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
+	for(UnitVector::size_type i=0;i<level.getObjects().size();i++)
 	{
 		window.draw(level.getObjects()[i]->getSprite());
 	}
