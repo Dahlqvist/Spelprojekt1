@@ -55,7 +55,7 @@ int main(){
 			mPlayer->reFuel(100);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->sprint();
+			mPlayer->dash();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			mPlayer->move(sf::Vector2f(1,0));

@@ -28,7 +28,7 @@ public:
 	void shootHead(sf::Vector2f);
 	void setAttachFeet(bool);
 	bool getAttachFeet();
-	void sprint();
+	void dash();
 	void activateFeetRockets();
 	void reFuel(float);
 private:
@@ -36,9 +36,11 @@ private:
 	PlayerPartBody mBody;
 	PlayerPartHead mHead;
 	PlayerParts mParts;
-	float mSpeed, mJump;
+	sf::Sprite mSprite;
+	sf::Texture mTexture;
+	float mSpeed, mJump, mDash;
 	sf::Clock mSprintTimer;
-	bool mHeadless, mTogether, mBodyActive, mFeetAttached;
+	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing;
 };
 
 #endif
