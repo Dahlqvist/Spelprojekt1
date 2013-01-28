@@ -105,41 +105,32 @@ void	XmlSaver::saveLevel(Level &Source)
 	mDocument.append_node(Level);
 }
 
-string	XmlSaver::modifyString(const string &Source)
+char*	XmlSaver::modifyString(const string &Source)
 {
 	string temp;
 	temp="\""+Source+"\"";
-	return temp;
+	char *ret = new char[temp.size()+1];
+	strcpy(ret,temp.c_str());
+	return ret;
 }
 
-string	XmlSaver::modifyInt(const int &Source)
+char*	XmlSaver::modifyInt(const int &Source)
 {
-	string	output;
 	char	*tempValue=	new char[256];
 	itoa(Source,tempValue,10);
-	output=tempValue;
-	return	output;
+	return	tempValue;
 }
 
 void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 {
-	char	*temp;
-	//Starts converting the vector to strings
-	string	pY,pX;
-	pX=	modifyInt((int)Source->getCollisionSprite()[0]->getPosition().x);
-	pY=	modifyInt((int)Source->getCollisionSprite()[0]->getPosition().y);
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Player\"");
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 	//Adds the x element into the Position element
-		temp	=new char[pX.length()+1];
-		strcpy	(temp,pX.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"x",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().x)));
 	//Adds the y element into the Position element
-		temp	=new char[pY.length()+1];
-		strcpy	(temp,pY.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"y",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().y)));
 	//Adds the Position element to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
@@ -152,37 +143,19 @@ void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 }
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
-	char	*temp;
-	//Starts converting the vector to strings
-	string	pY,pX,sX,sY,sType,sSprite;
-	pX=	modifyInt((int)Source->getPosition().x);
-	pY=	modifyInt((int)Source->getPosition().y);
-	sX=	modifyInt((int)Source->getSize().x);
-	sY=	modifyInt((int)Source->getSize().y);
-	sType=modifyString(Source->getId());
-	temp=new char[sType.size()+1];
-	strcpy(temp,sType.c_str());
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",temp);
+		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
-		temp	=new char[pX.length()+1];
-		strcpy	(temp,pX.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"x",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getPosition().x)));
 	//Adds the y element into the Position element
-		temp	=new char[pY.length()+1];
-		strcpy	(temp,pY.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the x element into the Position element
-		temp	=new char[sX.length()+1];
-		strcpy	(temp,sX.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"x",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getPosition().y)));
+	//Adds the x element into the Size element
+		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getSize().x)));
 	//Adds the y element into the Size element
-		temp	=new char[sY.length()+1];
-		strcpy	(temp,sY.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"y",temp));
+		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
@@ -192,38 +165,20 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 }
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
-	char	*temp;
-	//Starts converting the vector to strings
-	string	pY,pX,sX,sY,sSprite,sType;
-	pX=	modifyInt((int)Source->getPosition().x);
-	pY=	modifyInt((int)Source->getPosition().y);
-	sX=	modifyInt((int)Source->getSize().x);
-	sY=	modifyInt((int)Source->getSize().y);
-	sType=modifyString(Source->getId());
-	temp=new char[sType.size()+1];
-	strcpy(temp,sType.c_str());
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"GameObject");
-		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",temp);
+		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName");
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
-		temp	=new char[pX.length()+1];
-		strcpy	(temp,pX.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"x",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getPosition().x)));
 	//Adds the y element into the Position element
-		temp	=new char[pY.length()+1];
-		strcpy	(temp,pY.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the x element into the Position element
-		temp	=new char[sX.length()+1];
-		strcpy	(temp,sX.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"x",temp));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getPosition().y)));
+	//Adds the x element into the Size element
+		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getSize().x)));
 	//Adds the y element into the Size element
-		temp	=new char[sY.length()+1];
-		strcpy	(temp,sY.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"y",temp));
+		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
@@ -231,89 +186,3 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 	Parent->	append_node(Gameobject);
 	std::cout<<"Adds Unit"<<endl;
 }
-/*
-void	XmlSaver::addButton			(Button *Source,xml_node<>* Parent)
-{
-	std::cout<<"Adds Button"<<endl;
-}
-
-void	XmlSaver::addDoor			(Door *Source,xml_node<>* Parent)
-{
-		char	*temp;
-	//Starts converting the vector to strings
-	string	pY,pX,sX,sY;
-	pX=	modifyInt((int)Source->getPosition().x);
-	pY=	modifyInt((int)Source->getPosition().y);
-	sX=	modifyInt((int)Source->getSize().x);
-	sY=	modifyInt((int)Source->getSize().y);
-	//Allocates the Unit and Position elements in the Xml document
-		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Door\"");
-		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
-	//Adds the x element into the Position element
-		temp	=new char[pX.length()+1];
-		strcpy	(temp,pX.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"x",temp));
-	//Adds the y element into the Position element
-		temp	=new char[pY.length()+1];
-		strcpy	(temp,pY.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the x element into the Position element
-		temp	=new char[sX.length()+1];
-		strcpy	(temp,sX.c_str());
-		Size->	append_node(mDocument.allocate_node(node_element,"x",temp));
-	//Adds the y element into the Size element
-		temp	=new char[sY.length()+1];
-		strcpy	(temp,sY.c_str());
-		Size->	append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the Position and Size elements to the Gameobject element
-	Gameobject->append_node(Type);
-	Gameobject->append_node(Position);
-	Gameobject->append_node(Size);
-	Parent->	append_node(Gameobject);
-	std::cout<<"Adds Door"<<endl;
-}
-
-void	XmlSaver::addAntiMagnet		(AntiMagnet *Source,xml_node<>* Parent)
-{
-	std::cout<<"Adds AntiMagnet"<<endl;
-}
-
-void	XmlSaver::addLava			(Lava *Source,xml_node<>* Parent)
-{	
-	char	*temp;
-	//Starts converting the vector to strings
-	string	pY,pX,sX,sY;
-	pX=	modifyInt((int)Source->getPosition().x);
-	pY=	modifyInt((int)Source->getPosition().y);
-	sX=	modifyInt((int)Source->getSize().x);
-	sY=	modifyInt((int)Source->getSize().y);
-	//Allocates the Unit and Position elements in the Xml document
-		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Lava\"");
-		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
-	//Adds the x element into the Position element
-		temp	=new char[pX.length()+1];
-		strcpy	(temp,pX.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"x",temp));
-	//Adds the y element into the Position element
-		temp	=new char[pY.length()+1];
-		strcpy	(temp,pY.c_str());
-		Position->append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the x element into the Position element
-		temp	=new char[sX.length()+1];
-		strcpy	(temp,sX.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"x",temp));
-	//Adds the y element into the Size element
-		temp	=new char[sY.length()+1];
-		strcpy	(temp,sY.c_str());
-		Size->append_node(mDocument.allocate_node(node_element,"y",temp));
-	//Adds the Position and Size elements to the Gameobject element
-	Gameobject->append_node(Type);
-	Gameobject->append_node(Position);
-	Gameobject->append_node(Size);
-	Parent->	append_node(Gameobject);
-	std::cout<<"Adds Lava"<<endl;
-}*/

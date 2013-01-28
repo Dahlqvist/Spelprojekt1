@@ -113,6 +113,9 @@ int main(){
 
 		window.display();
 	}
+	XmlSaver saver("TestSave");
+	saver.saveLevel(level);
+	saver.createFile();
 	level.deletePointers();
 	return 0;
 }
