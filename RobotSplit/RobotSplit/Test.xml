@@ -199,6 +199,126 @@
 			</Size>
 		</GameObject>
 		<GameObject>
+			<Type>"Platform"</Type>
+			<SpriteName>"BolconyCornerL"</SpriteName>
+			<Position>
+				<x>512</x>
+				<y>224</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Platform"</Type>
+			<SpriteName>"BolconyMiddle"</SpriteName>
+			<Position>
+				<x>576</x>
+				<y>224</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Platform"</Type>
+			<SpriteName>"BolconyMiddle"</SpriteName>
+			<Position>
+				<x>640</x>
+				<y>224</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Platform"</Type>
+			<SpriteName>"BolconyMiddle"</SpriteName>
+			<Position>
+				<x>704</x>
+				<y>224</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Platform"</Type>
+			<SpriteName>"BolconyCornerR"</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>224</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Rail"</Type>
+			<SpriteName>"RailEndL"</SpriteName>
+			<Position>
+				<x>512</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+		</GameObject>		
+		<GameObject>
+			<Type>"Rail"</Type>
+			<SpriteName>"RailMiddle"</SpriteName>
+			<Position>
+				<x>576</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Rail"</Type>
+			<SpriteName>"RailMiddle"</SpriteName>
+			<Position>
+				<x>640</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Rail"</Type>
+			<SpriteName>"RailMiddle"</SpriteName>
+			<Position>
+				<x>704</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+		</GameObject>
+		<GameObject>
+			<Type>"Rail"</Type>
+			<SpriteName>"RailEndR"</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+		</GameObject>
+		<GameObject>
 			<Type>"Door"</Type>
 			<SpriteName>"Exit"</SpriteName>
 			<Position>
@@ -211,8 +331,8 @@
 			</Size>
 		</GameObject>
 		<GameObject>
+				<SpriteName>"Lava"</SpriteName>
 				<Type>"Lava"</Type>
-				<SpriteName>"Lava"</SpriteName><SpriteName>"Lava"</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>704</y>

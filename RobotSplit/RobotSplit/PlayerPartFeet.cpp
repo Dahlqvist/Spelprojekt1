@@ -13,6 +13,7 @@ mLeftAnimation("StixLowerAni", 200, 8),
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mObject=0;
+	mFuel=100;
 }
 void PlayerPartFeet::update()
 {
@@ -94,8 +95,22 @@ void PlayerPartFeet::resetAnimation()
 }
 GameObject* PlayerPartFeet::getObject()
 {
-	if(mObject!=0){
+	if(mObject!=0)
+	{
 		mObject->setPosition(mPosition+sf::Vector2f(10, -10));
 	}
 	return mObject;
+}
+void PlayerPartFeet::activateRocketBoots(){
+	if(mFuel>0 && mAttached==false)
+	{
+		mJump=0;
+		PlayerPartFeet::setPosition(sf::Vector2f(0, -5));
+		mFuel--;
+	}
+}
+void PlayerPartFeet::reFuel(float fuel){
+	if(mFuel<=0 && fuel<=100){
+		mFuel=fuel;
+	}
 }

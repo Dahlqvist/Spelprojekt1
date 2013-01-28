@@ -11,10 +11,10 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeet.restartTimer();
 	mBody.restartTimer();
 	mHead.restartTimer();
-	mState=0;
 	mSpeed=2;
 	mHeadless=false;
 	mTogether=true;
+	mFeetAttached=false;
 	mSprintTimer.restart();
 	mFeet.setPosition(Position);
 }
@@ -45,21 +45,11 @@ void Player::update()
 		}
 		mParts[i]->update();
 	}
-	//if(mJump>0){
-	//	if(mJumpClock.getElapsedTime().asSeconds()>0.15){
-	//		mJump-=1;
-	//		mJumpClock.restart();
-	//	}
-	//	else{
-	//		Player::move(sf::Vector2f(0, -mJump));
-	//		/*for(unsigned int i=0; i < mParts.size(); i++){
-	//			mParts[i]->setPosition(sf::Vector2f(0, -mJump));
-	//		}*/
-	//	}
-	//}
 }
 void Player::move(sf::Vector2f Vec)
 {
+	Vec.x*=mSpeed;
+	Vec.y*=mSpeed;
 	if(mTogether==true)
 	{
 		for(unsigned int i=0; i < mParts.size(); i++)
@@ -83,84 +73,6 @@ void Player::move(sf::Vector2f Vec)
 		mFeet.setPosition(Vec);
 	}
 }
-//void Player::changeState(){
-//	/*if(mTogether==false)
-//	{
-//		mState++;
-//		switch(mState%2)
-//		{
-//		case 0:
-//			mPartVector[0]->setActive(true);
-//			mPartVector[1]->setActive(false);
-//		break;
-//		case 1:
-//			mPartVector[0]->setActive(false);
-//			mPartVector[1]->setActive(true);
-//		break;
-//		}
-//	}
-//	else if(mTogether==true){
-//		Player::move(sf::Vector2f(0, 0));
-//	}
-//	if(mHeadless==false){
-//		mPartVector[2]->setActive(mPartVector[1]->getActive());
-//	}*/
-//	//if(f==0){
-//	//	mState++;
-//	//	switch(mState%2){
-//	//	case 0:
-//	//		mPartVector[1]->setActive(true);
-//	//		mPartVector[2]->setActive(false);
-//	//	break;
-//	//	case 1:
-//	//		mPartVector[1]->setActive(false);
-//	//		mPartVector[2]->setActive(true);
-//	//	break;
-//	//	}
-//	//	/*switch(mState%5){
-//	//	case 0:
-//	//		mPartVector[0]->setActive(true);
-//	//		mPartVector[1]->setActive(true);
-//	//		mPartVector[2]->setActive(false);
-//	//	break;
-//	//	case 1:
-//	//		mPartVector[0]->setActive(false);
-//	//		mPartVector[1]->setActive(false);
-//	//		mPartVector[2]->setActive(true);
-//	//	break;
-//	//	case 2:
-//	//		mPartVector[0]->setActive(true);
-//	//		mPartVector[1]->setActive(true);
-//	//		mPartVector[2]->setActive(true);
-//	//	break;
-//	//	case 3:
-//	//		mPartVector[0]->setActive(false);
-//	//		mPartVector[1]->setActive(true);
-//	//		mPartVector[2]->setActive(true);
-//	//	break;
-//	//	case 4:
-//	//		mPartVector[0]->setActive(false);
-//	//		mPartVector[1]->setActive(true);
-//	//		mPartVector[2]->setActive(false);
-//	//	break;
-//	//	case 5:
-//	//		mPartVector[0]->setActive(true);
-//	//		mPartVector[1]->setActive(false);
-//	//		mPartVector[2]->setActive(false);
-//	//	break;
-//	//	}*/
-//	//}
-//	//else if(f==1){
-//	//	mPartVector[1]->setActive(true);
-//	//	mPartVector[2]->setActive(true);
-//	//}
-//	//if(mHeadless==false){
-//	//	mPartVector[0]->setActive(mPartVector[1]->getActive());
-//	//}
-//}
-//int Player::getState(){
-//	return mState;
-//}
 bool Player::getTogether()
 {
 	return mTogether;
@@ -182,21 +94,6 @@ void Player::setTogether(bool b)
 		mTogether=b;
 		Player::move(sf::Vector2f(0, 0));
 	}
-	/*if(b==false)
-	{
-	mState=1;
-	mTogether=b;
-	mPartVector[1]->setAttached(false);
-	Player::changeState();
-	}
-	if((mPartVector[0]->getPosition().x-mPartVector[1]->getPosition().x)*(mPartVector[0]->getPosition().x-mPartVector[1]->getPosition().x)+
-	(mPartVector[0]->getPosition().y-mPartVector[1]->getPosition().y)*(mPartVector[0]->getPosition().y-mPartVector[1]->getPosition().y)< 70*70
-	&& b==true && mPartVector[0]->getMovable()==true)
-	{
-	mTogether=b;
-	mPartVector[1]->setAttached(true);
-	Player::changeState();
-	}	*/
 }
 void Player::jump()
 {
@@ -213,45 +110,8 @@ void Player::jump()
 	{
 		mFeet.jump();
 	}
-	/*if(mJumpTimer.getElapsedTime().asSeconds() > 2){
-	if(mTogether==true){
-	for(unsigned int i=0; i < mPartVector.size(); i++){
-	mPartVector[i]->jump();
-	}
-	}
-	else{
-	for(unsigned int i=0; i < mPartVector.size(); i++){
-	if(mPartVector[i]->getActive()==true){
-	mPartVector[i]->jump();
-	}
-	}
-	}
-	mJumpTimer.restart();
-	}*/
 }
-//void Player::resetJump(){
-//	if(mTogether==true){
-//		for(unsigned int i=0; i < mPartVector.size(); i++){
-//			mPartVector[i]->resetJump();
-//		}
-//	}
-//	else{
-//		for(unsigned int i=0; i < mPartVector.size(); i++){
-//			if(mPartVector[i]->getActive()==true){
-//				mPartVector[i]->resetJump();
-//			}
-//		}
-//	}
-//}
-//int Player::getHeight(){
-//	return 0;
-//}
 
-sf::FloatRect Player::getRect()
-{
-	sf::FloatRect Rect(mFeet.getSprite().getGlobalBounds());
-	return Rect;
-}
 void Player::setBodyActive(bool b)
 {
 	mBodyActive=b;
@@ -262,6 +122,7 @@ bool Player::getBodyActive()
 }
 void Player::resetAnimations()
 {
+	mSpeed=2;
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
 		mParts[i]->resetAnimation();
@@ -319,12 +180,17 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 }
 void Player::setAttachFeet(bool b)
 {
-	mFeetAttached=b;
-	if(b==true){
-		mFeet.setAttached(true);
-	}
-	if(b==false){
-		mFeet.setAttached(false);
+	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
+	{
+		mFeetAttached=b;
+		if(b==true)
+		{
+			mFeet.setAttached(true);
+		}
+		if(b==false)
+		{
+			mFeet.setAttached(false);
+		}
 	}
 }
 bool Player::getAttachFeet()
@@ -333,16 +199,29 @@ bool Player::getAttachFeet()
 }
 void Player::sprint()
 {
-	
+	if(mTogether==true)
+	{
+		mSpeed=4;
+	}
 }
-void Player::forceMove(int part, sf::Vector2f Vec){
-	if(part==0){
+void Player::activateFeetRockets(){
+	mFeet.activateRocketBoots();
+}
+void Player::reFuel(float fuel){
+	mFeet.reFuel(fuel);
+}
+void Player::forceMove(int part, sf::Vector2f Vec)
+{
+	if(part==0)
+	{
 		mFeet.setPosition(Vec);
 	}
-	else if(part==1){
+	else if(part==1)
+	{
 		mBody.setPosition(Vec);
 	}
-	else if(part==2){
+	else if(part==2)
+	{
 		mHead.setPosition(Vec);
 	}
 	else

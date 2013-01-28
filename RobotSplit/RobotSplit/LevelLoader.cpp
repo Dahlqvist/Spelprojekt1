@@ -65,14 +65,6 @@ Level	LevelLoader::getLevel()
 		{
 			addPlayer(RetLevel,Gameobject);
 		}
-		else if(type=="Door")
-		{
-			addDoor(RetLevel,Gameobject);
-		}
-		else if(type=="Button")
-		{
-			addButton(RetLevel,Gameobject);
-		}
 		else if(type=="Platform")
 		{
 			addPlatform(RetLevel,Gameobject);
@@ -80,6 +72,15 @@ Level	LevelLoader::getLevel()
 		else if(type=="Laser")
 		{
 			addLaser(RetLevel,Gameobject);
+		}
+		/*
+		else if(type=="Door")
+		{
+			addDoor(RetLevel,Gameobject);
+		}
+		else if(type=="Button")
+		{
+			addButton(RetLevel,Gameobject);
 		}
 		else if(type=="AntiMagnet")
 		{
@@ -89,8 +90,10 @@ Level	LevelLoader::getLevel()
 		{
 			addLava(RetLevel,Gameobject);
 		}
+		*/
 		else
 		{
+			addUnit(RetLevel,Gameobject);
 		}
 	}
 	while(Gameobject!=LevelNode->first_node("Objects")->last_node("GameObject"));
@@ -155,7 +158,7 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -194,7 +197,7 @@ void	LevelLoader::addButton	(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -233,7 +236,7 @@ void	LevelLoader::addDoor		(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
@@ -267,7 +270,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 
 	//Creates a Platform object
 	TempObject=		new Platform(Position,Sprite);
-	//Puts the Platform object into the level's ObjectVector
+	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -306,7 +309,7 @@ void	LevelLoader::addAntiMagnet(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -344,8 +347,47 @@ void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
 
-	//Creates an AntiMagnet object
+	//Creates an Lava object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the Lava object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+
+void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
+	sf::Vector2f			Position, Size;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size vector
+	CurrentChild=	Node->first_node("Size");
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	Size.x=((float)atof(CurrentValue.c_str()));
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	Size.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
+
+	//Creates an Unit object
+	TempObject=		new Unit(Position,Id,Sprite);
+	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
