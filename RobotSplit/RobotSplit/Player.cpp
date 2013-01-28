@@ -15,6 +15,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mSpeed=2;
 	mHeadless=false;
 	mTogether=true;
+	mFeetAttached=false;
 	mSprintTimer.restart();
 	mFeet.setPosition(Position);
 }
@@ -60,6 +61,8 @@ void Player::update()
 }
 void Player::move(sf::Vector2f Vec)
 {
+	Vec.x*=mSpeed;
+	Vec.y*=mSpeed;
 	if(mTogether==true)
 	{
 		for(unsigned int i=0; i < mParts.size(); i++)
@@ -319,12 +322,17 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 }
 void Player::setAttachFeet(bool b)
 {
-	mFeetAttached=b;
-	if(b==true){
-		mFeet.setAttached(true);
-	}
-	if(b==false){
-		mFeet.setAttached(false);
+	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
+	{
+		mFeetAttached=b;
+		if(b==true)
+		{
+			mFeet.setAttached(true);
+		}
+		if(b==false)
+		{
+			mFeet.setAttached(false);
+		}
 	}
 }
 bool Player::getAttachFeet()
@@ -335,14 +343,18 @@ void Player::sprint()
 {
 	
 }
-void Player::forceMove(int part, sf::Vector2f Vec){
-	if(part==0){
+void Player::forceMove(int part, sf::Vector2f Vec)
+{
+	if(part==0)
+	{
 		mFeet.setPosition(Vec);
 	}
-	else if(part==1){
+	else if(part==1)
+	{
 		mBody.setPosition(Vec);
 	}
-	else if(part==2){
+	else if(part==2)
+	{
 		mHead.setPosition(Vec);
 	}
 	else

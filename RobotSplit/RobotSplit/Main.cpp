@@ -15,12 +15,7 @@ int main(){
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Robot split");
 	window.setFramerateLimit(60);
-	sf::Texture* Text=new sf::Texture;
-	Text->loadFromFile("hej.JPG");
-	std::vector <PlayerPart*> Wiie;
 
-	//Platt mPlatt(sf::Vector2f(100, 500));
-	//Platt mPlatt2(sf::Vector2f(300, 400));
 	Level	level("Test.xml");
 	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
 	{
@@ -28,14 +23,7 @@ int main(){
 	}
 
 	Player* mPlayer= level.getPlayer();
-	bool Collision=true;
 
-
-
-	Platform* platform=new Platform(sf::Vector2f(300, 300), "Tile1");
-
-	std::vector<Unit*> objects;
-	objects.push_back(platform);
 
 	while (window.isOpen())
 	{
@@ -57,7 +45,7 @@ int main(){
 					break;
 				case sf::Keyboard::E:
 					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-						//mPlayer->yesffs(!mPlayer->getYes());
+						mPlayer->setAttachFeet(!mPlayer->getAttachFeet());
 					}
 					break;
 				}
@@ -81,40 +69,11 @@ int main(){
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
-		if(Collision==true){
-			//for(int i=0; i<mPlayer->getVector().size(); i++){
-			//	//if(mPlayer->getVector()[i]->getPosition().y<400 && mPlayer->getVector()[i]->getMovable()){
-			//		mPlayer->getVector()[i]->setPosition(sf::Vector2f(0, 3));
-			//	//}
-			//	if(mPlayer->getVector()[i]->getPosition().x<0){
-			//		mPlayer->getVector()[i]->setPosition(sf::Vector2f(0-mPlayer->getVector()[i]->getPosition().x, 0));
-			//	}
-			//	if(mPlayer->getVector()[i]->getPosition().x+mPlayer->getVector()[i]->getSprite().getTexture()->getSize().x>800){
-			//		mPlayer->getVector()[i]->setPosition(sf::Vector2f(800-(mPlayer->getVector()[i]->getPosition().x+mPlayer->getVector()[i]->getSprite().getTexture()->getSize().x), 0));
-			//	}
-			//	if(mPlayer->getVector()[i]->getPosition().y+mPlayer->getVector()[i]->getSprite().getTexture()->getSize().y>600){
-			//		mPlayer->getVector()[i]->setPosition(sf::Vector2f(0, 600-(mPlayer->getVector()[i]->getPosition().y+mPlayer->getVector()[i]->getSprite().getTexture()->getSize().y)));
-			//	}
-			//	if(mPlayer->getVector()[i]->getPosition().y<0){
-			//		mPlayer->getVector()[i]->setPosition(sf::Vector2f(0, 0-(mPlayer->getVector()[i]->getPosition().y)));
-			//		mPlayer->resetJump();
-			//	}
-			//}
-		}
-
-		/*if((mPlatt.getSprite().getGlobalBounds().intersects(mPlayer->getVector()[0]->getSprite().getGlobalBounds()))){
-			std::cout << "Touch me" << std::endl;
-		}*/
-		//mPlatt.getSprite().getGlobalBounds().intersects(
 
 		window.clear(sf::Color::Black);
-		//window.draw(mPlatt.getSprite());
-		//window.draw(mPlatt2.getSprite());
 		mPlayer->update();
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
-
-	//	window.draw(platform->getSprite());
 
 	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
 	{
