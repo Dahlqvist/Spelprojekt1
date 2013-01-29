@@ -1,6 +1,13 @@
 #include "Collision.h"
 #include <iostream>
 
+Collision::Collision()
+	:mMovedX(false)
+	,mMovedY(false)
+{
+
+}
+
 void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objects)
 {
 	mPlayerPart=playerPart;
@@ -13,23 +20,36 @@ void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objec
 			sf::FloatRect obj2=objects[j]->getSprite().getGlobalBounds();
 			obj1.width+=1;
 			obj2.width+=1;
-			if (obj1.intersects(obj2) && objects[i]->isSolid() && objects[j]->isSolid())
+			if (objects[i]->isSolid() && objects[j]->isSolid() && obj1.intersects(obj2))
 			{
-				obj1.width-=1;
-				obj2.width-=1;
-
 				//If the top sides are equal
 				if (obj1.top==obj2.top)
 				{
-					mUnitsOnTop.insert(objects[i]);
-					mUnitsOnTop.insert(objects[j]);
+					if (obj1.left<obj2.left)
+					{
+						mUnitsOnTopLeft.insert(objects[i]);
+						mUnitsOnTopRight.insert(objects[j]);
+					}
+					else
+					{
+						mUnitsOnTopLeft.insert(objects[j]);
+						mUnitsOnTopRight.insert(objects[i]);
+					}
 				}
 				//If the bottom sides are equal
-				if (obj1.top+obj1.height==obj2.top+obj2.height)
+				if (obj1.top+obj1.height==obj2.top+obj2.height && obj1.left<obj2.left)
 				{
-					mUnitsOnBottom.insert(objects[i]);
-					mUnitsOnBottom.insert(objects[j]);
+					mUnitsOnBottomLeft.insert(objects[i]);
+					mUnitsOnBottomRight.insert(objects[j]);
 				}
+				else
+				{
+					mUnitsOnBottomLeft.insert(objects[j]);
+					mUnitsOnBottomRight.insert(objects[i]);
+				}
+
+				obj1.width-=1;
+				obj2.width-=1;
 			}
 		}
 	}
@@ -74,43 +94,45 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	if (obj2->isSolid())
 	{
 		//Collision from above/below
-		if (collisionRect.width>collisionRect.height)
+		if (collisionRect.width>collisionRect.height && !mMovedY)
 		{
+			mMovedY=true;
 			//If player is above object
 			if (playerSprite->getPosition().y<obj2->getPosition().y)
 			{
-				moveDistance=-sf::Vector2f(0, collisionRect.height-1);
+				moveDistance.y=-(collisionRect.height-1);
 				mCollidedSides.insert(BOTTOM);
 			}
 			//If player is below object
 			else
 			{
-				moveDistance=sf::Vector2f(0, collisionRect.height-1);
+				moveDistance.y=collisionRect.height-1;
 				mCollidedSides.insert(TOP);
 			}
 		}
 		//Collision from the side
-		else
+		else if (!mMovedX)
 		{
+			mMovedX=true;
 			//If player is left of object
 			if (playerSprite->getPosition().x<obj2->getPosition().x)
 			{
 				bool foo=!isCollidedSide(BOTTOM);
 				bool foo2=!isCollidedSide(TOP);
-				int foo3=mUnitsOnTop.count(obj2);
-				int foo4=mUnitsOnBottom.count(obj2);
-				if (mUnitsOnTop.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottom.count(obj2)==0 && !isCollidedSide(TOP))
+				int foo3=mUnitsOnTopRight.count(obj2);
+				int foo4=mUnitsOnBottomRight.count(obj2);
+				if (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))
 				{
-					moveDistance=-sf::Vector2f(collisionRect.width-1, 0);
+					moveDistance.x=-(collisionRect.width-1);
 					mCollidedSides.insert(LEFT);
 				}
 			}
 			//If player is right of object
 			else
 			{
-				if (mUnitsOnTop.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottom.count(obj2)==0 && !isCollidedSide(TOP))
+				if (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))
 				{
-					moveDistance=sf::Vector2f(collisionRect.width-1, 0);
+					moveDistance.x=collisionRect.width-1;
 				}
 			}
 		}

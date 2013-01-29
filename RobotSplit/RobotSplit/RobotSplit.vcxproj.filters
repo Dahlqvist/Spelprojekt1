@@ -43,11 +43,16 @@
     <ClCompile Include="XmlSaver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="FeetExtensions.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="FeetWall.cpp">
       <Filter>Source Files\Player</Filter>
+=======
+    <ClCompile Include="Background.cpp">
+      <Filter>Source Files</Filter>
+>>>>>>> e4913b9ac05d3003e1bbc3059abda59636142671
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,19 +106,10 @@
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="levelloader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="xmlloader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
@@ -179,11 +175,25 @@
     <ClInclude Include="XmlSaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="FeetExtensions.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="FeetWall.h">
       <Filter>Header Files\Player</Filter>
+=======
+    <ClInclude Include="Background.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Header Files</Filter>
+>>>>>>> e4913b9ac05d3003e1bbc3059abda59636142671
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

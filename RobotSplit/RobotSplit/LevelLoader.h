@@ -18,12 +18,8 @@ public:
 private:
 	//Functions adding objects to the parameter				(Done)
 	void	addPlayer		(Level	&level,xml_node<>* Node);
-	void	addLaser		(Level	&level,xml_node<>* Node);
-	void	addButton		(Level	&level,xml_node<>* Node);
-	void	addDoor			(Level	&level,xml_node<>* Node);
 	void	addPlatform		(Level	&level,xml_node<>* Node);
-	void	addAntiMagnet	(Level	&level,xml_node<>* Node);
-	void	addLava			(Level	&level,xml_node<>* Node);
+	void	addLaser		(Level	&level,xml_node<>* Node);
 	void	addUnit			(Level	&level,xml_node<>* Node);
 };
 
