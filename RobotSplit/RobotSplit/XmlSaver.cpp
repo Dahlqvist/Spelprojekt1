@@ -34,7 +34,7 @@ void	XmlSaver::setFilename(const string& NewName)
 void	XmlSaver::createFile()
 {
 	//Writes the Document for quick checking of it before the program closes
-//	std::cout<<mDocument;
+//	//std::cout<<mDocument;
 //	system("PAUSE");
 	//Creates the file to write to
 	std::ofstream	file(mFilename);
@@ -138,11 +138,11 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
 	Parent->	append_node(Gameobject);
-	std::cout<<"Adds Player"<<endl;
+	//std::cout<<"Adds Player"<<endl;
 }
 void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 {
-	std::cout<<"Adds Laser"<<endl;
+	//std::cout<<"Adds Laser"<<endl;
 }
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
@@ -164,7 +164,7 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
 	Parent->	append_node(Gameobject);
-	std::cout<<"Adds Platform"<<endl;
+	//std::cout<<"Adds Platform"<<endl;
 }
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
@@ -187,5 +187,5 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
 	Parent->	append_node(Gameobject);
-	std::cout<<"Adds Unit"<<endl;
+	//std::cout<<"Adds Unit"<<endl;
 }
