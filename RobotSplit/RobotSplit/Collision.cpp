@@ -5,7 +5,7 @@ void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objec
 {
 	mPlayerPart=playerPart;
 	//Check if two objects are on top of eachother (bugfix)
-	for (int i=0; i<objects.size(); i++)
+	/*for (int i=0; i<objects.size(); i++)
 	{
 		for (int j=i+1; j<objects.size(); j++)
 		{
@@ -48,7 +48,7 @@ void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objec
 				}
 			}
 		}
-	}
+	}*/
 
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	for (int j=0; j<objects.size(); j++)
@@ -89,22 +89,8 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	const sf::Sprite* playerSprite=player.getCollisionSprite()[mPlayerPart];
 	if (obj2->isSolid())
 	{
-		//Collision from the side
-		if (collisionRect.width<collisionRect.height)
-		{
-			//If player is left of object
-			if (playerSprite->getPosition().x<obj2->getPosition().x)
-			{
-				moveDistance=-sf::Vector2f(collisionRect.width-1, 0);
-			}
-			//If player is right of object
-			else
-			{
-				moveDistance=sf::Vector2f(collisionRect.width-1, 0);
-			}
-		}
 		//Collision from above/below
-		else
+		if (collisionRect.width>collisionRect.height)
 		{
 			//If player is above object
 			if (playerSprite->getPosition().y<obj2->getPosition().y)
@@ -126,12 +112,27 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				mCollidedSides.insert(TOP);
 			}
 		}
+		//Collision from the side
+		else
+		{
+			//If player is left of object
+			if (playerSprite->getPosition().x<obj2->getPosition().x)
+			{
+				moveDistance=-sf::Vector2f(collisionRect.width-1, 0);
+			}
+			//If player is right of object
+			else
+			{
+				moveDistance=sf::Vector2f(collisionRect.width-1, 0);
+			}
+		}
 	}
-	//std::cout << player.getCollisionSprite().size() << std::endl;
+	//If the feet and body is connected, but head is away
 	if(player.getCollisionSprite().size()==2 && mPlayerPart==1)
 	{
 		player.forceMove(2, moveDistance);
 	}
+	//If the feet, body and head is connected
 	else if(player.getCollisionSprite().size()==1)
 	{
 		player.forceMove(3, moveDistance);
