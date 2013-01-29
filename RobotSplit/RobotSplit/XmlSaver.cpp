@@ -50,13 +50,8 @@ void	XmlSaver::saveLevel(Level &Source)
 {
 	xml_node<> *Level=mDocument.allocate_node(node_element,"Level");
 	xml_node<> *Objects=mDocument.allocate_node(node_element,"Objects");
-	char*	temp;
-	string	tempValueS;
 	//Sets the Name element
-		tempValueS=modifyString(Source.getName());
-		temp=new char[tempValueS.length()+1];
-		strcpy(temp,tempValueS.c_str());
-		xml_node<> *Name=mDocument.allocate_node(node_element,"Name",temp);
+		xml_node<> *Name=mDocument.allocate_node(node_element,"Name",modifyString(Source.getName()));
 		Level->append_node(Name);
 
 	//Sets the Background element's child elements and values
@@ -123,9 +118,9 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Player\"");
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 	//Adds the x element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().x)));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getCollisionSprite()[0]->getPosition().x))));
 	//Adds the y element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().y)));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(64+Source->getCollisionSprite()[0]->getPosition().y))));
 	//Adds the Position element to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
