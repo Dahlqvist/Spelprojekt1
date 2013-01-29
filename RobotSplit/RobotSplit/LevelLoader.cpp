@@ -4,6 +4,7 @@
 //#include "TestObject.h"
 
 /*Inactive during development*/
+#include "Background.h"
 #include "Platform.h"
 #include "Player.h"
 #include "PlayerPart.h"
@@ -41,8 +42,8 @@ Level	LevelLoader::getLevel()
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-/*	Background*BACK=new Background(Filename,Frames,Speed);
-	RetLevel.setBackground(BACK);*/
+	Background*BACK=new Background(Filename,Frames,Speed);
+	RetLevel.setBackground(BACK);
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
 	RetLevel.getBackgroundWrap().setName(Filename);
