@@ -32,7 +32,7 @@ int main(){
 	Objects	= level.getObjects();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
-		cout<<Objects[i]->getId();
+		cout<<Objects[i]->getId()<<endl;
 	}
 
 	Player* mPlayer= level.getPlayer();
@@ -106,6 +106,14 @@ int main(){
 
 		window.display();
 	}
+	/*
+	//Test for finding Textures' names
+	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	{
+		cout<<TextureManager::getSpriteName(Objects[i]->getSprite())<<endl;
+	}
+	system("PAUSE");
+	*/
 	XmlSaver saver("TestSave");
 	saver.saveLevel(level);
 	saver.createFile();
