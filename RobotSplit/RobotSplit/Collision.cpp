@@ -5,50 +5,34 @@ void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objec
 {
 	mPlayerPart=playerPart;
 	//Check if two objects are on top of eachother (bugfix)
-	/*for (int i=0; i<objects.size(); i++)
+	for (int i=0; i<objects.size(); i++)
 	{
 		for (int j=i+1; j<objects.size(); j++)
 		{
 			sf::FloatRect obj1=objects[i]->getSprite().getGlobalBounds();
 			sf::FloatRect obj2=objects[j]->getSprite().getGlobalBounds();
-			obj1.height+=1;
-			obj2.height+=1;
+			obj1.width+=1;
+			obj2.width+=1;
 			if (obj1.intersects(obj2) && objects[i]->isSolid() && objects[j]->isSolid())
 			{
-				obj1.height-=1;
-				obj2.height-=1;
+				obj1.width-=1;
+				obj2.width-=1;
 
-				//If the left sides are equal
-				if (obj1.left==obj2.left)
+				//If the top sides are equal
+				if (obj1.top==obj2.top)
 				{
-					//If obj1 is below obj2
-					if (obj1.top>obj2.top)
-					{
-						mUnitsOnTopLeft.insert(objects[j]);
-					}
-					//If obj2 is above obj1
-					else
-					{
-						mUnitsOnTopLeft.insert(objects[i]);
-					}
+					mUnitsOnTop.insert(objects[i]);
+					mUnitsOnTop.insert(objects[j]);
 				}
-				//If the right sides are equal
-				if (obj1.left+obj1.width==obj2.left+obj2.width)
+				//If the bottom sides are equal
+				if (obj1.top+obj1.height==obj2.top+obj2.height)
 				{
-					//If obj1 is above obj2
-					if (obj1.top>obj2.top)
-					{
-						mUnitsOnTopRight.insert(objects[j]);
-					}
-					//If obj2 is above obj1
-					else
-					{
-						mUnitsOnTopRight.insert(objects[i]);
-					}
+					mUnitsOnBottom.insert(objects[i]);
+					mUnitsOnBottom.insert(objects[j]);
 				}
 			}
 		}
-	}*/
+	}
 
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	for (int j=0; j<objects.size(); j++)
@@ -95,15 +79,8 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			//If player is above object
 			if (playerSprite->getPosition().y<obj2->getPosition().y)
 			{
-				int foo=mUnitsOnTopLeft.count(obj2);
-				int foo2=mUnitsOnTopRight.count(obj2);
-				bool foo3=isCollidedSide(RIGHT);
-				bool foo4=isCollidedSide(LEFT);
-				//if (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(LEFT))
-				{
-					moveDistance=-sf::Vector2f(0, collisionRect.height-1);
-					mCollidedSides.insert(BOTTOM);
-				}
+				moveDistance=-sf::Vector2f(0, collisionRect.height-1);
+				mCollidedSides.insert(BOTTOM);
 			}
 			//If player is below object
 			else
@@ -118,12 +95,23 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			//If player is left of object
 			if (playerSprite->getPosition().x<obj2->getPosition().x)
 			{
-				moveDistance=-sf::Vector2f(collisionRect.width-1, 0);
+				bool foo=!isCollidedSide(BOTTOM);
+				bool foo2=!isCollidedSide(TOP);
+				int foo3=mUnitsOnTop.count(obj2);
+				int foo4=mUnitsOnBottom.count(obj2);
+				if (mUnitsOnTop.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottom.count(obj2)==0 && !isCollidedSide(TOP))
+				{
+					moveDistance=-sf::Vector2f(collisionRect.width-1, 0);
+					mCollidedSides.insert(LEFT);
+				}
 			}
 			//If player is right of object
 			else
 			{
-				moveDistance=sf::Vector2f(collisionRect.width-1, 0);
+				if (mUnitsOnTop.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottom.count(obj2)==0 && !isCollidedSide(TOP))
+				{
+					moveDistance=sf::Vector2f(collisionRect.width-1, 0);
+				}
 			}
 		}
 	}
@@ -148,18 +136,18 @@ void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::Floa
 {
 	if (obj2->isSolid())
 	{
-		//Collision from the side
-		if (collisionRect.width<collisionRect.height)
+		//Collision from above/below
+		if (collisionRect.width>collisionRect.height)
 		{
-			//If player is left of object
-			if (playerSprite->getPosition().x<obj2->getPosition().x)
+			//If player is above object
+			if (playerSprite->getPosition().y<obj2->getPosition().y)
 			{
-				mCollidedSides.insert(RIGHT);
+				mCollidedSides.insert(BOTTOM);
 			}
-			//If player is right of object
+			//If player is below object
 			else
 			{
-				mCollidedSides.insert(LEFT);
+				mCollidedSides.insert(TOP);
 			}
 		}
 	}

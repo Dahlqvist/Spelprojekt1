@@ -26,8 +26,8 @@ private:
 	void testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);
 
 	std::set<int> mCollidedSides;
-	std::set<Unit*> mUnitsOnTopLeft;
-	std::set<Unit*> mUnitsOnTopRight;
+	std::set<Unit*> mUnitsOnTop;
+	std::set<Unit*> mUnitsOnBottom;
 
 	int mPlayerPart;
 };

@@ -30,7 +30,7 @@ Level	LevelLoader::getLevel()
 	//Gets the Level Node
 	LevelNode=		mDocument.first_node("Level");
 	//Gets the first GameObject child node to level
-	Gameobject=		LevelNode->first_node("Objects")->first_node("GameObject");
+	Gameobject=		LevelNode->first_node("Objects")->first_node("Unit");
 	//Initiation of level begins
 	//Sets the level's name
 	RetLevel.setName(getValue(LevelNode->first_node("Name")));
@@ -96,7 +96,7 @@ Level	LevelLoader::getLevel()
 			addUnit(RetLevel,Gameobject);
 		}
 	}
-	while(Gameobject!=LevelNode->first_node("Objects")->last_node("GameObject"));
+	while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
 	return	RetLevel;
 }
 
