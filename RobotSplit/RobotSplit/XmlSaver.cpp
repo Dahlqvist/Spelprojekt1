@@ -7,6 +7,7 @@
 #include	"Unit.h"
 #include	"Player.h"
 #include	"Platform.h"
+#include	"TextureManager.h"
 
 using namespace rapidxml;
 
@@ -149,6 +150,7 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
+		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
@@ -161,6 +163,7 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
+	Gameobject->append_node(Sprite);
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
 	Parent->	append_node(Gameobject);
@@ -169,9 +172,9 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document
-		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"GameObject");
+		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
-		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName");
+		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
@@ -184,6 +187,7 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
+	Gameobject->append_node(Sprite);
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
 	Parent->	append_node(Gameobject);

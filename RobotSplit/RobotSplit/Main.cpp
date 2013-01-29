@@ -28,7 +28,7 @@ int main(){
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 	UnitVector Objects;
-	Level	level("Test.xml");
+	Level	level("TestSave.xml");
 	Objects	= level.getObjects();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
