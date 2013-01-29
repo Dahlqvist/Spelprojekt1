@@ -2,6 +2,7 @@
 #define INC_PLAYERPARTHEAD
 #include "PlayerPart.h"
 #include "Animation.h"
+#include "FeetExtensions.h"
 
 class PlayerPartHead:public PlayerPart
 {
@@ -23,6 +24,7 @@ public:
 private: 
 	bool mAttached;
 	Unit* mUnit;
+	FeetExtensions mFeetExt;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;

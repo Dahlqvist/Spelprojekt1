@@ -2,6 +2,8 @@
 #define INC_PLAYERPARTFEET
 #include "PlayerPart.h"
 #include "Animation.h"
+#include "FeetExtensions.h"
+#include "FeetWall.h"
 
 class PlayerPartFeet:public PlayerPart
 {
@@ -22,9 +24,12 @@ public:
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
+	void pointTo(int);
 private: 
 	bool mAttached;
 	Unit* mUnit;
+	FeetExtensions mFeetExt;
+	FeetWall mRightWall;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;

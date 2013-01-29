@@ -43,6 +43,12 @@
     <ClCompile Include="XmlSaver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FeetExtensions.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="FeetWall.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -172,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="XmlSaver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FeetExtensions.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="FeetWall.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

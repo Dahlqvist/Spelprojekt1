@@ -15,11 +15,15 @@ public:
 	virtual void setPosition(sf::Vector2f position){mPosition=position;};
 
 	virtual sf::Sprite getSprite(){return mSprite;};
+
+
+
 	virtual sf::Vector2f getSize(){return mSize;};
 
 	virtual std::string getId(){return mId;};
 
 	virtual bool isSolid(){return mSolid;};
+	virtual void rotate(float r){mSprite.rotate(r);}
 
 	virtual void update(){};
 	virtual void draw(){};

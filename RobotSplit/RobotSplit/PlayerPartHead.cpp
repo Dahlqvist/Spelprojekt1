@@ -5,7 +5,8 @@ mBody(Body),
 	mLeftAnimation("StixShootAni", 200, 8),
 	mRightAnimation("StixShootAni", 200, 8),
 	mLeft("StixUpper", 200, 1),
-	mRight("Tile6", 200, 1)
+	mRight("Tile6", 200, 1),
+	mFeetExt("StixUpper")
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
@@ -24,6 +25,8 @@ void PlayerPartHead::update()
 	if(mShootVector!=sf::Vector2f(0, 0))
 	{
 		PlayerPartHead::setPosition(mShootVector);
+		mFeetExt.rotate(5);
+		mFeetExt.setPosition(mPosition);
 	}
 } 
 void PlayerPartHead::draw()
@@ -65,6 +68,12 @@ bool PlayerPartHead::getAttached()
 }
 void PlayerPartHead::setAttached(bool b)
 {
+	if (b==false){
+		//mUnit=&mFeetExt;
+	}
+	else{
+		mUnit=0;
+	}
 	mAttached=b;
 }
 void PlayerPartHead::jump()

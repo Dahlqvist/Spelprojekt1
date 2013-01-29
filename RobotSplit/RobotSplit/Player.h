@@ -26,8 +26,8 @@ public:
 
 	void jump();
 	void shootHead(sf::Vector2f);
-	void setAttachFeet(bool);
-	bool getAttachFeet();
+	void setAttachFeetExtension(bool, int);
+	bool getAttachFeetExtension();
 	void dash();
 	void activateFeetRockets();
 	void reFuel(float);

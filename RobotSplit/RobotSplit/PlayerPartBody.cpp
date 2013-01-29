@@ -87,7 +87,6 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
-	std::cout << "Jumping Body" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }

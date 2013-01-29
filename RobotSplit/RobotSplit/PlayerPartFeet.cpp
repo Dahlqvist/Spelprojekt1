@@ -5,7 +5,8 @@ PlayerPartFeet::PlayerPartFeet():
 mLeftAnimation("StixLowerAni", 200, 8),
 	mRightAnimation("StixLowerAni", 200, 8),
 	mLeft("StixLower", 200, 1),
-	mRight("StixLower", 200, 1)
+	mRight("StixLower", 200, 1),
+	mFeetExt("StixUpper")
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);
@@ -47,6 +48,10 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 	}
 	else
 	{
+		if(mUnit==&mRightWall){
+			mPosition+=Vec;
+			mActiveAnimation=&mRightAnimation;
+		}
 		//En massa kod för när den går på väggar och liknande =)
 	}
 }
@@ -57,6 +62,20 @@ sf::Vector2f PlayerPartFeet::getPosition()
 sf::Sprite PlayerPartFeet::getSprite()
 {
 	mActiveAnimation->setPosition(mPosition);
+	if(mUnit==&mRightWall)
+	{
+		sf::Sprite Temp=mActiveAnimation->getSprite();
+		Temp.setOrigin(Temp.getTextureRect().width/2, Temp.getTextureRect().width/2);
+		Temp.setRotation(90);
+		return Temp;
+	}
+	if(mUnit==&mFeetExt)
+	{
+		/*mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
+		mUnit=&mFeetExt;
+		mUnit->getSprite().setPosition(mPosition);*/
+		//return mUnit->getSprite();
+	}
 	return mActiveAnimation->getSprite();
 }
 std::string PlayerPartFeet::getId()
@@ -74,16 +93,17 @@ bool PlayerPartFeet::getAttached()
 void PlayerPartFeet::setAttached(bool b)
 {
 	mAttached=b;
-	if(!mAttached){
-		mUnit=0;
-	}
-	if(mAttached){
-		//mObject=&mPlatt;
-	}
+	//if(!mAttached){
+	//	mUnit=0;
+	//}
+	//if(mAttached){
+	//	/*mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
+	//	mUnit=&mFeetExt;
+	//	mUnit->getSprite().setPosition(mPosition);*/
+	//}
 }
 void PlayerPartFeet::jump()
 {
-	std::cout << "Jumping Feets" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }
@@ -96,13 +116,14 @@ void PlayerPartFeet::resetAnimation()
 }
 Unit* PlayerPartFeet::getUnit()
 {
-	if(mUnit!=0)
-	{
-		mUnit->setPosition(mPosition+sf::Vector2f(10, -10));
-	}
+	//if(mUnit!=0)
+	//{
+	//	//mUnit->getSprite().setPosition(mPosition+sf::Vector2f(10, -10));
+	//}
 	return mUnit;
 }
-void PlayerPartFeet::activateRocketBoots(){
+void PlayerPartFeet::activateRocketBoots()
+{
 	if(mFuel>0 && mAttached==false)
 	{
 		mJump=0;
@@ -110,11 +131,29 @@ void PlayerPartFeet::activateRocketBoots(){
 		mFuel--;
 	}
 }
-void PlayerPartFeet::reFuel(float fuel){
+void PlayerPartFeet::reFuel(float fuel)
+{
 	if(mFuel<=0 && fuel<=100){
 		mFuel=fuel;
 	}
 }
-void PlayerPartFeet::jumpReset(){
+void PlayerPartFeet::jumpReset()
+{
 	mJump=3;
+}
+void PlayerPartFeet::pointTo(int i)
+{
+	if(i==0 && mUnit!=&mFeetExt)
+	{
+		mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
+		mUnit=&mFeetExt;
+	}
+	else if(i==1 && mUnit!=&mRightWall)
+	{
+		mUnit=&mRightWall;
+	}
+	else
+	{
+		mUnit=0;
+	}
 }

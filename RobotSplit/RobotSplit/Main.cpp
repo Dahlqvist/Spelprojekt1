@@ -58,7 +58,12 @@ int main(){
 					break;
 				case sf::Keyboard::E:
 					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-						mPlayer->setAttachFeet(!mPlayer->getAttachFeet());
+						mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension(), 0);
+					}
+					break;
+				case sf::Keyboard::T:
+					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
+						mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension(), 1);
 					}
 					break;
 				}
@@ -84,8 +89,8 @@ int main(){
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(window).x;
-			Temp.y=(float)sf::Mouse::getPosition(window).y;
+			Temp.x=(float)sf::Mouse::getPosition(window).x-16;
+			Temp.y=(float)sf::Mouse::getPosition(window).y-16;
 			mPlayer->shootHead(sf::Vector2f(Temp));
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){

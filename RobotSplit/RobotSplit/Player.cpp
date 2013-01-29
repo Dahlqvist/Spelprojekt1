@@ -36,16 +36,16 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	else
 	{*/
-		for(unsigned int i=0; i<mParts.size(); i++)
+		Window.draw(mFeet.getSprite());
+		Window.draw(mHead.getSprite());
+		Window.draw(mBody.getSprite());
+	for(unsigned int i=0; i<mParts.size(); i++)
 		{
 			if(mParts[i]->getUnit()!=0)
 			{
 				Window.draw(mParts[i]->getUnit()->getSprite());
-			}
+			}	
 		}
-		Window.draw(mFeet.getSprite());
-		Window.draw(mHead.getSprite());
-		Window.draw(mBody.getSprite());
 	//}
 	//Window.draw(mBody.getObject()->getSprite());
 }
@@ -113,6 +113,17 @@ void Player::move(sf::Vector2f Vec)
 			mFeet.setPosition(Vec);
 		}
 	}
+	else
+	{
+		if(Vec.x>0 && mFacingRight==false){
+			mDashing=false;
+			mDash=0;
+		}
+		if(Vec.x<0 && mFacingRight==true){
+			mDashing=false;
+			mDash=0;
+		}
+	}
 }
 bool Player::getTogether()
 {
@@ -151,7 +162,10 @@ void Player::jump()
 		}
 		else
 		{
-			mFeet.jump();
+			if(mFeet.getAttached() == true)
+				mFeet.setPosition(sf::Vector2f(0, -20));
+			else
+				mFeet.jump();
 		}
 		mJumpTemp.restart();
 	}	
@@ -185,7 +199,8 @@ void Player::shootHead(sf::Vector2f Vec)
 	{
 		mHeadless=true;
 		float k=(mHead.getPosition().y-Vec.y)/(mHead.getPosition().x-Vec.x);
-		float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
+		//float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
+		//float Ys=mHead.getPosition().y-Vec.y;
 		float q=sqrt(1+k*k);
 		int xValue;
 		if(Vec.x-mHead.getPosition().x < 0)
@@ -200,8 +215,11 @@ void Player::shootHead(sf::Vector2f Vec)
 		sf::Vector2f MathVec(xValue/q, k/q);
 		mHead.setAttached(false);
 		mHead.setShootVector(MathVec);
-		float w=sqrt((xValue/q)*(xValue/q)+(k/q)*(k/q));
-		std::cout << sin((k/q)/w) << std::endl;
+		/*float Derivata=sqrt((xValue/q)*(xValue/q)+(k/q)*(k/q));
+		std::cout << k/q << " " << Derivata << " " << sin((k/q)/Derivata) << std::endl; 
+		float s=sin((k/q)/Derivata);
+		float degrees = (asin(s)*180/3.1416)*1.5;
+		std::cout << degrees << std::endl << std::endl;*/
 	}
 }
 void Player::setHeadless(bool b)
@@ -234,22 +252,39 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 	}
 	return Parts;
 }
-void Player::setAttachFeet(bool b)
+void Player::setAttachFeetExtension(bool b, int u)
 {
-	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
+	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()) && u==0)
 	{
 		mFeetAttached=b;
 		if(b==true)
 		{
+			mFeet.pointTo(u);
+			mFeet.setAttached(true);
+			std::cout << "Anropar true" << std::endl;
+		}
+		if(b==false)
+		{
+			mFeet.pointTo(u);
+			mFeet.setAttached(false);
+			std::cout << "Anropar false" << std::endl;
+		}
+	}
+	else if(u==1){
+		mFeetAttached=b;
+		if(b==true)
+		{
+			mFeet.pointTo(u);
 			mFeet.setAttached(true);
 		}
 		if(b==false)
 		{
+			mFeet.pointTo(u);
 			mFeet.setAttached(false);
 		}
 	}
 }
-bool Player::getAttachFeet()
+bool Player::getAttachFeetExtension()
 {
 	return mFeetAttached;
 }
@@ -292,9 +327,6 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 	}
 	else
 	{
-		/*std::cout << "Collision" << std::endl;
-		mBody.jump();
-		mFeet.jump();*/
 		if(Vec.y>0)
 		{
 			mBody.jumpReset();
@@ -302,9 +334,5 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		}
 		mBody.setPosition(Vec);
 		mFeet.setPosition(Vec);
-		/*for(unsigned int i=0; i < mParts.size(); i++)
-		{
-			mParts[i]->setPosition(Vec);
-		}*/
 	}
 }
