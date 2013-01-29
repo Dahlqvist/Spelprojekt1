@@ -22,8 +22,6 @@ void runCollisions(UnitVector Objects, Player& player)
 }
 
 int main(){
-	TextureManager mTextures;
-	mTextures.loadTexture();
 
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);

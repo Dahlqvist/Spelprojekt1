@@ -43,7 +43,9 @@
     <ClCompile Include="XmlSaver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Background.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -174,7 +176,9 @@
     <ClInclude Include="XmlSaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h" />
+    <ClInclude Include="Background.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
