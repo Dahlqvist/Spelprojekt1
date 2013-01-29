@@ -1,7 +1,9 @@
 #include "Collision.h"
+#include <iostream>
 
-void Collision::collide(sf::Sprite* playerSprite, std::vector<Unit*> objects)
+void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objects)
 {
+	mPlayerPart=playerPart;
 	//Check if two objects are on top of eachother (bugfix)
 	for (int i=0; i<objects.size(); i++)
 	{
@@ -48,6 +50,7 @@ void Collision::collide(sf::Sprite* playerSprite, std::vector<Unit*> objects)
 		}
 	}
 
+	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	for (int j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart")
@@ -56,7 +59,7 @@ void Collision::collide(sf::Sprite* playerSprite, std::vector<Unit*> objects)
 			if (testCollisions(playerSprite, objects[j], collisionRect))
 			{
 				testCollidedSides(playerSprite, objects[j], collisionRect);
-				handleCollisions(playerSprite, objects[j], collisionRect);
+				handleCollisions(player, objects[j], collisionRect);
 			}
 		}
 	}
@@ -80,9 +83,10 @@ bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRe
 	return playerRect.intersects(objRect, collisionRect);
 }
 
-void Collision::handleCollisions(sf::Sprite* playerSprite, Unit* obj2, const sf::FloatRect& collisionRect)
+void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect& collisionRect)
 {
 	sf::Vector2f moveDistance;
+	const sf::Sprite* playerSprite=player.getCollisionSprite()[mPlayerPart];
 	if (obj2->isSolid())
 	{
 		//Collision from the side
@@ -109,7 +113,7 @@ void Collision::handleCollisions(sf::Sprite* playerSprite, Unit* obj2, const sf:
 				int foo2=mUnitsOnTopRight.count(obj2);
 				bool foo3=isCollidedSide(RIGHT);
 				bool foo4=isCollidedSide(LEFT);
-				if (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(LEFT))
+				//if (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(LEFT))
 				{
 					moveDistance=-sf::Vector2f(0, collisionRect.height-1);
 					mCollidedSides.insert(BOTTOM);
@@ -123,7 +127,19 @@ void Collision::handleCollisions(sf::Sprite* playerSprite, Unit* obj2, const sf:
 			}
 		}
 	}
-
+	//std::cout << player.getCollisionSprite().size() << std::endl;
+	if(player.getCollisionSprite().size()==2 && mPlayerPart==1)
+	{
+		player.forceMove(2, moveDistance);
+	}
+	else if(player.getCollisionSprite().size()==1)
+	{
+		player.forceMove(3, moveDistance);
+	}
+	else
+	{
+		player.forceMove(mPlayerPart, moveDistance);
+	}
 	//playerSprite->setPosition(moveDistance);
 }
 

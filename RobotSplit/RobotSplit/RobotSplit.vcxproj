@@ -44,8 +44,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>\..\SFML-2.0-rc\include;rapidxml-1.13;$(IncludePath)</IncludePath>
-    <LibraryPath>\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -107,6 +107,7 @@ sfml-main.lib
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
+    <ClCompile Include="XmlSaver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -123,6 +124,7 @@ sfml-main.lib
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="xmlloader.h" />
+    <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.xml" />

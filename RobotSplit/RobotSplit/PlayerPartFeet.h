@@ -21,6 +21,7 @@ public:
 	virtual GameObject* getObject();
 	void activateRocketBoots();
 	void reFuel(float);
+	void jumpReset();
 private: 
 	bool mAttached;
 	GameObject* mObject;

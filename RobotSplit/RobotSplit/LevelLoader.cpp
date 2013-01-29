@@ -158,7 +158,7 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -197,7 +197,7 @@ void	LevelLoader::addButton	(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -236,7 +236,7 @@ void	LevelLoader::addDoor		(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
@@ -270,7 +270,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 
 	//Creates a Platform object
 	TempObject=		new Platform(Position,Sprite);
-	//Puts the Platform object into the level's ObjectVector
+	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -309,7 +309,7 @@ void	LevelLoader::addAntiMagnet(Level	&level,xml_node<>* Node)
 
 	//Creates an AntiMagnet object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the AntiMagnet object into the level's ObjectVector
+	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -349,7 +349,7 @@ void	LevelLoader::addLava		(Level	&level,xml_node<>* Node)
 
 	//Creates an Lava object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the Lava object into the level's ObjectVector
+	//Puts the Lava object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
 
@@ -388,6 +388,6 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 
 	//Creates an Unit object
 	TempObject=		new Unit(Position,Id,Sprite);
-	//Puts the Unit object into the level's ObjectVector
+	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

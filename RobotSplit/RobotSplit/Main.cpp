@@ -8,6 +8,18 @@
 #include "Unit.h"
 #include "Platform.h"
 #include "LevelLoader.h"
+#include "Collision.h"
+#include "XmlSaver.h"
+
+void runCollisions(UnitVector Objects, Player& player)
+{
+	std::vector<Collision> col;
+	for (int i=0; i<player.getCollisionSprite().size(); i++)
+	{
+		col.push_back(Collision());
+		col[i].collide(i, player, Objects);
+	}
+}
 
 int main(){
 	TextureManager mTextures;
@@ -15,11 +27,12 @@ int main(){
 
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
-
+	UnitVector Objects;
 	Level	level("Test.xml");
-	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
+	Objects	= level.getObjects();
+	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
-		cout<<level.getObjects()[i]->getId();
+		cout<<Objects[i]->getId();
 	}
 
 	Player* mPlayer= level.getPlayer();
@@ -55,7 +68,7 @@ int main(){
 			mPlayer->reFuel(100);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->sprint();
+			mPlayer->dash();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			mPlayer->move(sf::Vector2f(1,0));
@@ -71,26 +84,31 @@ int main(){
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 			sf::Vector2f Temp;
-			Temp.x=sf::Mouse::getPosition(window).x;
-			Temp.y=sf::Mouse::getPosition(window).y;
+			Temp.x=(float)sf::Mouse::getPosition(window).x;
+			Temp.y=(float)sf::Mouse::getPosition(window).y;
 			mPlayer->shootHead(sf::Vector2f(Temp));
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
-
 		window.clear(sf::Color::Black);
+		
 		mPlayer->update();
+		runCollisions(Objects, *mPlayer);
+
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-	for(ObjectVector::size_type i=0;i<level.getObjects().size();i++)
-	{
-		window.draw(level.getObjects()[i]->getSprite());
-	}
+		for(UnitVector::size_type i=0;i<Objects.size();i++)
+		{
+			window.draw(Objects[i]->getSprite());
+		}
 
 		window.display();
 	}
+	XmlSaver saver("TestSave");
+	saver.saveLevel(level);
+	saver.createFile();
 	level.deletePointers();
 	return 0;
 }

@@ -83,6 +83,7 @@ void PlayerPartFeet::setAttached(bool b)
 }
 void PlayerPartFeet::jump()
 {
+	std::cout << "Jumping Feets" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }
@@ -113,4 +114,7 @@ void PlayerPartFeet::reFuel(float fuel){
 	if(mFuel<=0 && fuel<=100){
 		mFuel=fuel;
 	}
+}
+void PlayerPartFeet::jumpReset(){
+	mJump=3;
 }

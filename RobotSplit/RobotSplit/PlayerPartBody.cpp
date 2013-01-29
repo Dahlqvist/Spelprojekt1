@@ -1,4 +1,5 @@
 #include "PlayerPartBody.h"
+#include <iostream>
 
 PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 mFeet(Feet),
@@ -54,7 +55,7 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 	{
 		mPosition=sf::Vector2f(mFeet->getPosition().x, mFeet->getPosition().y-64);
 	}
-	else
+	else if(mAttached==false)
 	{
 		mPosition+=Vec;
 	}
@@ -86,6 +87,7 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
+	std::cout << "Jumping Body" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }
@@ -99,4 +101,7 @@ void PlayerPartBody::resetAnimation()
 GameObject* PlayerPartBody::getObject()
 {
 	return mObject;
+}
+void PlayerPartBody::jumpReset(){
+	mJump=3;
 }
