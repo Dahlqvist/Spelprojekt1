@@ -17,10 +17,16 @@ public:
 	//(Meant for XmlSaver use)
 	const static std::string	getSpriteName(sf::Sprite);
 private:
-	static	TextureManager& getManager();
-	TextureManager(); //Göra om till singelton
+	//Function for loading all the Textures. Used in the default constructor
 	static void loadTexture();
-
+	//Function returning a static TextureManager object. Used in other get functions.
+	static	TextureManager& getManager();
+	//Constructor used in getManager
+	TextureManager();
+	//Standard constructor and operator that is not supposed to be use
+	TextureManager(const TextureManager&){}
+	void	operator=(const TextureManager&){}
+	//Member Variables and Variabletypes
 	typedef std::map<std::string, sf::Sprite> SpriteMap;
 	static SpriteMap mSpriteMap;
 
