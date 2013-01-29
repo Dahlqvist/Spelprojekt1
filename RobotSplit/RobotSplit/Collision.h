@@ -11,6 +11,7 @@
 class Collision
 {
 public:
+	Collision();
 	void collide(int playerPart, Player& player, std::vector<Unit*> objects);
 	bool isCollidedSide(int side);
 
@@ -30,6 +31,8 @@ private:
 	std::set<Unit*> mUnitsOnTopRight;
 	std::set<Unit*> mUnitsOnBottomLeft;
 	std::set<Unit*> mUnitsOnBottomRight;
+
+	bool mMovedX, mMovedY;
 
 	int mPlayerPart;
 };

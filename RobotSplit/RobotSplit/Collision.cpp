@@ -1,6 +1,13 @@
 #include "Collision.h"
 #include <iostream>
 
+Collision::Collision()
+	:mMovedX(false)
+	,mMovedY(false)
+{
+
+}
+
 void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objects)
 {
 	mPlayerPart=playerPart;
@@ -87,8 +94,9 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	if (obj2->isSolid())
 	{
 		//Collision from above/below
-		if (collisionRect.width>collisionRect.height)
+		if (collisionRect.width>collisionRect.height && !mMovedY)
 		{
+			mMovedY=true;
 			//If player is above object
 			if (playerSprite->getPosition().y<obj2->getPosition().y)
 			{
@@ -103,8 +111,9 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			}
 		}
 		//Collision from the side
-		else
+		else if (!mMovedX)
 		{
+			mMovedX=true;
 			//If player is left of object
 			if (playerSprite->getPosition().x<obj2->getPosition().x)
 			{
