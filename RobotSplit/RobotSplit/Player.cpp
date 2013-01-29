@@ -23,6 +23,9 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mDash=0;
 	mFacingRight=true;
 	mJumpTemp.restart();
+	Temp1=new sf::Sprite;
+	Temp2=new sf::Sprite;
+	Temp3=new sf::Sprite;
 }
 void Player::draw(sf::RenderWindow& Window)
 {
@@ -35,9 +38,9 @@ void Player::draw(sf::RenderWindow& Window)
 	{*/
 		for(unsigned int i=0; i<mParts.size(); i++)
 		{
-			if(mParts[i]->getObject()!=0)
+			if(mParts[i]->getUnit()!=0)
 			{
-				Window.draw(mParts[i]->getObject()->getSprite());
+				Window.draw(mParts[i]->getUnit()->getSprite());
 			}
 		}
 		Window.draw(mFeet.getSprite());
@@ -214,19 +217,20 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 	std::vector<sf::Sprite*> Parts;
 	if(mTogether==true){
 		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
-		sf::Sprite* Temp1=new sf::Sprite(mSprite);
+		*Temp1=mSprite;
 		Parts.push_back(Temp1);
 		if(mHeadless==true){
-			sf::Sprite* Temp2=new sf::Sprite(mHead.getSprite());
+			*Temp2=mHead.getSprite();
 			Parts.push_back(Temp2);
 		}
 	}
 	else{
-		for(unsigned int i=0; i < mParts.size(); i++)
-		{
-			sf::Sprite* Temp=new sf::Sprite(mParts[i]->getSprite());
-			Parts.push_back(Temp);
-		}
+		*Temp1=mFeet.getSprite();
+		Parts.push_back(Temp1);
+		*Temp2=mBody.getSprite();
+		Parts.push_back(Temp2);
+		*Temp3=mHead.getSprite();
+		Parts.push_back(Temp3);
 	}
 	return Parts;
 }

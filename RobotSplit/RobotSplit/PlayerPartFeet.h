@@ -18,13 +18,13 @@ public:
 	virtual void setAttached(bool);
 	virtual void jump();
 	virtual void resetAnimation();
-	virtual GameObject* getObject();
+	virtual Unit* getUnit();
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
 private: 
 	bool mAttached;
-	GameObject* mObject;
+	Unit* mUnit;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;

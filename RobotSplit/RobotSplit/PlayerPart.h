@@ -2,6 +2,7 @@
 #define INC_PLAYERPART
 #include "GameObject.h"
 #include "Animation.h"
+#include "Unit.h"
 
 
 class PlayerPart:public GameObject
@@ -18,14 +19,14 @@ public:
 	virtual void setAttached(bool)=0;
 	virtual void jump()=0;
 	virtual void resetAnimation()=0;
-	virtual GameObject* getObject()=0;
+	virtual Unit* getUnit()=0;
 private: 
 	bool mAttached;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float Jump;
 	sf::Clock mJumpClock, mAnimationTimer;
-	GameObject* mObject;
+	Unit* mUnit;
 	/*
 	GameObject* mObject;
 	draw object;

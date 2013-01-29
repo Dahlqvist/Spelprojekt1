@@ -14,7 +14,7 @@ mFeet(Feet),
 	mAttached=true;
 	mAniTime=0;
 	mAnimationTimer.restart();
-	mObject=0;
+	mUnit=0;
 	Test.setPosition(sf::Vector2f(400, 300));
 }
 void PlayerPartBody::update()
@@ -98,9 +98,9 @@ void PlayerPartBody::resetAnimation()
 		mActiveAnimation=&mRight;
 	}
 }
-GameObject* PlayerPartBody::getObject()
+Unit* PlayerPartBody::getUnit()
 {
-	return mObject;
+	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
 	mJump=3;

@@ -12,7 +12,7 @@ mBody(Body),
 	mAttached=true;
 	mAniTime=0;
 	mAnimationTimer.restart();
-	mObject=0;
+	mUnit=0;
 }
 void PlayerPartHead::update()
 {
@@ -83,7 +83,7 @@ void PlayerPartHead::resetAnimation()
 		mActiveAnimation=&mRight;
 	}
 }
-GameObject* PlayerPartHead::getObject()
+Unit* PlayerPartHead::getUnit()
 {
-	return mObject;
+	return mUnit;
 }
