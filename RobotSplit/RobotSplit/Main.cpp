@@ -32,7 +32,7 @@ int main(){
 	Objects	= level.getObjects();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
-		cout<<Objects[i]->getId();
+		cout<<Objects[i]->getId()<<endl;
 	}
 
 	Player* mPlayer= level.getPlayer();
@@ -84,20 +84,18 @@ int main(){
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 			sf::Vector2f Temp;
-			Temp.x=sf::Mouse::getPosition(window).x;
-			Temp.y=sf::Mouse::getPosition(window).y;
+			Temp.x=(float)sf::Mouse::getPosition(window).x;
+			Temp.y=(float)sf::Mouse::getPosition(window).y;
 			mPlayer->shootHead(sf::Vector2f(Temp));
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
-
-		mPlayer->update();
-
-		runCollisions(Objects, *mPlayer);
-
 		window.clear(sf::Color::Black);
 		
+		mPlayer->update();
+		runCollisions(Objects, *mPlayer);
+
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
@@ -108,6 +106,14 @@ int main(){
 
 		window.display();
 	}
+	/*
+	//Test for finding Textures' names
+	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	{
+		cout<<TextureManager::getSpriteName(Objects[i]->getSprite())<<endl;
+	}
+	system("PAUSE");
+	*/
 	XmlSaver saver("TestSave");
 	saver.saveLevel(level);
 	saver.createFile();

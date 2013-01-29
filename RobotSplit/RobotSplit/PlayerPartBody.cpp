@@ -1,4 +1,5 @@
 #include "PlayerPartBody.h"
+#include <iostream>
 
 PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 mFeet(Feet),
@@ -13,7 +14,7 @@ mFeet(Feet),
 	mAttached=true;
 	mAniTime=0;
 	mAnimationTimer.restart();
-	mObject=0;
+	mUnit=0;
 	Test.setPosition(sf::Vector2f(400, 300));
 }
 void PlayerPartBody::update()
@@ -54,7 +55,7 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 	{
 		mPosition=sf::Vector2f(mFeet->getPosition().x, mFeet->getPosition().y-64);
 	}
-	else
+	else if(mAttached==false)
 	{
 		mPosition+=Vec;
 	}
@@ -86,6 +87,7 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
+	std::cout << "Jumping Body" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }
@@ -96,9 +98,9 @@ void PlayerPartBody::resetAnimation()
 		mActiveAnimation=&mRight;
 	}
 }
-GameObject* PlayerPartBody::getObject()
+Unit* PlayerPartBody::getUnit()
 {
-	return mObject;
+	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
 	mJump=3;

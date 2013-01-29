@@ -18,11 +18,11 @@ public:
 	virtual void setAttached(bool);
 	virtual void jump();
 	virtual void resetAnimation();
-	virtual GameObject* getObject();
+	virtual Unit* getUnit();
 	void setShootVector(sf::Vector2f);
 private: 
 	bool mAttached;
-	GameObject* mObject;
+	Unit* mUnit;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;

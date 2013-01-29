@@ -37,9 +37,12 @@ private:
 	PlayerPartHead mHead;
 	PlayerParts mParts;
 	sf::Sprite mSprite;
+	sf::Sprite* Temp1;
+	sf::Sprite* Temp2;
+	sf::Sprite* Temp3;
 	sf::Texture mTexture;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer;
+	sf::Clock mSprintTimer, mJumpTemp;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 };
 

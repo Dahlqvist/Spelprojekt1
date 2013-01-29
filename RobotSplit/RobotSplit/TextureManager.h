@@ -13,9 +13,11 @@ public:
 	~TextureManager();
 
 	static void loadTexture();
-	const static sf::Sprite getSprite(std::string sprite);
-	const static sf::Texture getTexture(std::string texture);
-
+	const static sf::Sprite		getSprite(std::string sprite);
+	const static sf::Texture	getTexture(std::string texture);
+	//Used to find the String part of the map for a Sprite
+	//(Meant for XmlSaver use)
+	const static std::string	getSpriteName(sf::Sprite);
 private:
 
 	typedef std::map<std::string, sf::Sprite> SpriteMap;

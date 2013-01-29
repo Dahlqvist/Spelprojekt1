@@ -12,7 +12,7 @@ mLeftAnimation("StixLowerAni", 200, 8),
 	mAttached=false;
 	mAniTime=0;
 	mAnimationTimer.restart();
-	mObject=0;
+	mUnit=0;
 	mFuel=100;
 }
 void PlayerPartFeet::update()
@@ -75,7 +75,7 @@ void PlayerPartFeet::setAttached(bool b)
 {
 	mAttached=b;
 	if(!mAttached){
-		mObject=0;
+		mUnit=0;
 	}
 	if(mAttached){
 		//mObject=&mPlatt;
@@ -83,6 +83,7 @@ void PlayerPartFeet::setAttached(bool b)
 }
 void PlayerPartFeet::jump()
 {
+	std::cout << "Jumping Feets" << std::endl;
 	mJump=8;
 	mJumpClock.restart();
 }
@@ -93,13 +94,13 @@ void PlayerPartFeet::resetAnimation()
 		mActiveAnimation=&mRight;
 	}
 }
-GameObject* PlayerPartFeet::getObject()
+Unit* PlayerPartFeet::getUnit()
 {
-	if(mObject!=0)
+	if(mUnit!=0)
 	{
-		mObject->setPosition(mPosition+sf::Vector2f(10, -10));
+		mUnit->setPosition(mPosition+sf::Vector2f(10, -10));
 	}
-	return mObject;
+	return mUnit;
 }
 void PlayerPartFeet::activateRocketBoots(){
 	if(mFuel>0 && mAttached==false)

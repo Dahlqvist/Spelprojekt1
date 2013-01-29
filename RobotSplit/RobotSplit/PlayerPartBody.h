@@ -19,11 +19,11 @@ public:
 	virtual void setAttached(bool);
 	virtual void jump();
 	virtual void resetAnimation();
-	virtual GameObject* getObject();
+	virtual Unit* getUnit();
 	void jumpReset();
 private: 
 	bool mAttached;
-	GameObject* mObject;
+	Unit* mUnit;
 	PlayerPartFeet Test;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
