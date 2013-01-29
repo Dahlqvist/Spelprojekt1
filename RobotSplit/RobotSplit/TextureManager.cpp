@@ -92,10 +92,19 @@ sf::Texture TextureManager::textureTile9;
 sf::Sprite TextureManager::spriteTile9;
 
 TextureManager::TextureManager()
-{}
+{
+	loadTexture();
+}
 
 TextureManager::~TextureManager()
-{}
+{
+}
+
+TextureManager&	TextureManager::getManager()
+{
+	static TextureManager Manager;
+	return Manager;
+}
 
 void TextureManager::loadTexture()
 {
@@ -246,23 +255,23 @@ const sf::Texture TextureManager::getTexture(std::string texture)
 {
 	//Påkalla funktionen med namnet till rätt animationen
 	if(texture == "Background")
-		return textureBackground;
+		return getManager().textureBackground;
 	else
-		return mTextureMap[texture];
+		return getManager().mTextureMap[texture];
 };
 
 const sf::Sprite TextureManager::getSprite(std::string sprite)
 {	
 	//Påkalla funktionen med namnet till rätt animation
 	if(sprite == "Background")
-		return spriteBackground;	
+		return getManager().spriteBackground;	
 	else
-		return mSpriteMap[sprite];
+		return getManager().mSpriteMap[sprite];
 }
 
 const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
 {
-	for(SpriteMap::iterator it=mSpriteMap.begin();it!=mSpriteMap.end();it++)
+	for(SpriteMap::iterator it=getManager().mSpriteMap.begin();it!=getManager().mSpriteMap.end();it++)
 	{
 		if(it->second.getTexture()==sprite.getTexture())
 		{

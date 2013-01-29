@@ -1,6 +1,6 @@
 #include	<rapidxml_print.hpp>
 #include	<fstream>
-#include	<iostream>
+//#include	<iostream>
 #include	<stdlib.h>
 #include	"XmlSaver.h"
 #include	"Level.h"
@@ -50,34 +50,20 @@ void	XmlSaver::saveLevel(Level &Source)
 {
 	xml_node<> *Level=mDocument.allocate_node(node_element,"Level");
 	xml_node<> *Objects=mDocument.allocate_node(node_element,"Objects");
-	char*	temp;
-	string	tempValueS;
 	//Sets the Name element
-		tempValueS=modifyString(Source.getName());
-		temp=new char[tempValueS.length()+1];
-		strcpy(temp,tempValueS.c_str());
-		xml_node<> *Name=mDocument.allocate_node(node_element,"Name",temp);
+		xml_node<> *Name=mDocument.allocate_node(node_element,"Name",modifyString(Source.getName()));
 		Level->append_node(Name);
 
 	//Sets the Background element's child elements and values
 		xml_node<> *Background=mDocument.allocate_node(node_element,"Background");
 	//Converts the amount of frames in the background to a c-string for the Elements value
-		tempValueS=modifyInt(Source.getBackgroundWrap().getFrames());
-		temp=new char[tempValueS.length()+1];
-		strcpy(temp,tempValueS.c_str());
-		xml_node<> *Frames=mDocument.allocate_node(node_element,"Frames",temp);
+		xml_node<> *Frames=mDocument.allocate_node(node_element,"Frames",modifyInt(Source.getBackgroundWrap().getFrames()));
 		Background->append_node(Frames);
 	//Converts the speed of the background to c-string for the Element value
-		tempValueS=modifyInt(Source.getBackgroundWrap().getSpeed());
-		temp=new char[tempValueS.length()+1];
-		strcpy(temp,tempValueS.c_str());
-		xml_node<> *Speed=mDocument.allocate_node(node_element,"Speed",temp);
+		xml_node<> *Speed=mDocument.allocate_node(node_element,"Speed",modifyInt(Source.getBackgroundWrap().getSpeed()));
 		Background->append_node(Speed);
 	//Converts the Name into the Elements value
-		tempValueS=modifyString(Source.getBackgroundWrap().getName());
-		temp=new char[tempValueS.length()+1];
-		strcpy(temp,tempValueS.c_str());
-		xml_node<> *SpriteName=mDocument.allocate_node(node_element,"SpriteName",temp);
+		xml_node<> *SpriteName=mDocument.allocate_node(node_element,"SpriteName",modifyString(Source.getBackgroundWrap().getName()));
 		Background->append_node(SpriteName);
 	//Inserts the Background element into Level element
 		Level->append_node(Background);
@@ -132,19 +118,21 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Player\"");
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 	//Adds the x element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().x)));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getCollisionSprite()[0]->getPosition().x))));
 	//Adds the y element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt((int)Source->getCollisionSprite()[0]->getPosition().y)));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(64+Source->getCollisionSprite()[0]->getPosition().y))));
 	//Adds the Position element to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Position);
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Player"<<endl;
 }
+
 void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 {
 	//std::cout<<"Adds Laser"<<endl;
 }
+
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document
@@ -154,13 +142,13 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getPosition().x)));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getPosition().y)));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
 	//Adds the x element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getSize().x)));
+		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
 	//Adds the y element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
+		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Sprite);
@@ -169,6 +157,7 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Platform"<<endl;
 }
+
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document
@@ -178,13 +167,13 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 	//Adds the x element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getPosition().x)));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getPosition().y)));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
 	//Adds the x element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(Source->getSize().x)));
+		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
 	//Adds the y element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(Source->getSize().y)));
+		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Sprite);
