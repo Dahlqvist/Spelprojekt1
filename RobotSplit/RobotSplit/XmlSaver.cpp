@@ -132,10 +132,12 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Player"<<endl;
 }
+
 void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 {
 	//std::cout<<"Adds Laser"<<endl;
 }
+
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document
@@ -160,6 +162,7 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Platform"<<endl;
 }
+
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document

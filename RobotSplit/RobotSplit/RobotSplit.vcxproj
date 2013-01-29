@@ -115,8 +115,8 @@ sfml-main.lib
     <ClInclude Include="Background.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="level.h" />
-    <ClInclude Include="levelloader.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerPart.h" />
@@ -125,7 +125,7 @@ sfml-main.lib
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
-    <ClInclude Include="xmlloader.h" />
+    <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>

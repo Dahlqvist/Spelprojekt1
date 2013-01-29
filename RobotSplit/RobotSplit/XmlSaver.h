@@ -5,6 +5,7 @@
 
 using namespace rapidxml;
 
+//Class is Done 2013-01-29
 class XmlSaver
 {
 public:
@@ -16,7 +17,7 @@ public:
 	~XmlSaver(void);
 	//Sets the name of the file	(don't include filetype)	(Done)
 	void	setFilename(const string& NewName);
-	//Converts the level to XML
+	//Converts the level to XML								(Done)
 	void	saveLevel(Level &Source);
 	//Creates the xml-file in the format (Name).xml			(Done)
 	void	createFile();
