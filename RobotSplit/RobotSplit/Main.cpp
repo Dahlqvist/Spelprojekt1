@@ -26,14 +26,14 @@ int main(){
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 	UnitVector Objects;
-	Level	level("Test.xml");
+	Level	level("Test.xml");	
 	Objects	= level.getObjects();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<Objects[i]->getId()<<endl;
 	}
 
-	Player* mPlayer= level.getPlayer();
+	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 
 
 	while (window.isOpen())
@@ -113,6 +113,7 @@ int main(){
 	system("PAUSE");
 	*/
 	XmlSaver saver("TestSave");
+	delete mPlayer;
 	saver.saveLevel(level);
 	saver.createFile();
 	level.deletePointers();
