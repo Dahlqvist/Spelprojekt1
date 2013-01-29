@@ -84,20 +84,18 @@ int main(){
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 			sf::Vector2f Temp;
-			Temp.x=sf::Mouse::getPosition(window).x;
-			Temp.y=sf::Mouse::getPosition(window).y;
+			Temp.x=(float)sf::Mouse::getPosition(window).x;
+			Temp.y=(float)sf::Mouse::getPosition(window).y;
 			mPlayer->shootHead(sf::Vector2f(Temp));
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
 		}
-
-		mPlayer->update();
-
-		runCollisions(Objects, *mPlayer);
-
 		window.clear(sf::Color::Black);
 		
+		mPlayer->update();
+		runCollisions(Objects, *mPlayer);
+
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
