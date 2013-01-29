@@ -200,6 +200,18 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
+			<SpriteName>"Tile1"</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Platform"</Type>
 			<SpriteName>"BolconyCornerL"</SpriteName>
 			<Position>
 				<x>512</x>
@@ -322,7 +334,7 @@
 			<Type>"Door"</Type>
 			<SpriteName>"Exit"</SpriteName>
 			<Position>
-				<x>1158</x>
+				<x>1152</x>
 				<y>416</y>
 			</Position>
 			<Size>
