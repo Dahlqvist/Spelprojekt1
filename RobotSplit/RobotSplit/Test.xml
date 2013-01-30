@@ -343,8 +343,8 @@
 			</Size>
 		</Unit>
 		<Unit>
-				<SpriteName>"Lava"</SpriteName>
 				<Type>"Lava"</Type>
+				<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>704</y>
@@ -356,7 +356,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>128</x>
 				<y>704</y>
@@ -368,7 +368,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>704</y>
@@ -380,7 +380,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>256</x>
 				<y>704</y>
@@ -392,7 +392,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>704</y>
@@ -404,7 +404,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>704</y>
@@ -416,7 +416,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>704</y>
@@ -428,7 +428,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>704</y>
@@ -440,7 +440,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>704</y>
@@ -452,7 +452,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>640</x>
 				<y>704</y>
@@ -464,7 +464,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>704</x>
 				<y>704</y>
@@ -476,7 +476,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>704</y>
@@ -488,7 +488,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>704</y>
@@ -500,7 +500,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>704</y>
@@ -512,7 +512,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>704</y>
@@ -524,7 +524,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>704</y>
@@ -536,7 +536,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>704</y>
@@ -548,7 +548,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
-			<SpriteName>"Lava"</SpriteName>
+			<SpriteName>"LavaMiddle"</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>704</y>
