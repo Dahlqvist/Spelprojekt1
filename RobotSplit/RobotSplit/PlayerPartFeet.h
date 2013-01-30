@@ -24,7 +24,6 @@ public:
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
-	void pointTo(int);
 private: 
 	bool mAttached;
 	Unit* mUnit;

@@ -27,6 +27,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	Temp2=new sf::Sprite;
 	Temp3=new sf::Sprite;
 }
+//Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
 	/*if(mTogether==true)
@@ -133,7 +134,7 @@ void Player::setTogether(bool b)
 {
 	if(b==false)
 	{
-		mBodyActive=true;
+		mBodyActive=false;
 		mBody.setAttached(false);
 		mTogether=b;
 	}
@@ -141,15 +142,39 @@ void Player::setTogether(bool b)
 		(mFeet.getPosition().y-mBody.getPosition().y)*(mFeet.getPosition().y-mBody.getPosition().y) < 70*70 
 		&& mFeet.getAttached()==false)
 	{
-		mBodyActive=false;
+		//mBodyActive=false;
 		mBody.setAttached(true);
 		mTogether=b;
 		Player::move(sf::Vector2f(0, 0));
 	}
 }
+void Player::setBodyActive(bool b)
+{
+	mBodyActive=b;
+}
+bool Player::getBodyActive()
+{
+	return mBodyActive;
+}
+void Player::resetAnimations()
+{
+	for(unsigned int i=0; i < mParts.size(); i++)
+	{
+		mParts[i]->resetAnimation();
+	}
+}
+void Player::setHeadless(bool b)
+{
+	mHeadless=b;
+}
+bool Player::getHeadless()
+{
+	return mHeadless;
+}
+//Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mJumpTemp.getElapsedTime().asSeconds()>0.5)
+	if(mJumpTemp.getElapsedTime().asSeconds()>1.0)
 	{
 		if(mTogether==true)
 		{
@@ -170,29 +195,12 @@ void Player::jump()
 		mJumpTemp.restart();
 	}	
 }
-
-void Player::setBodyActive(bool b)
-{
-	mBodyActive=b;
-}
-bool Player::getBodyActive()
-{
-	return mBodyActive;
-}
-void Player::resetAnimations()
-{
-	for(unsigned int i=0; i < mParts.size(); i++)
-	{
-		mParts[i]->resetAnimation();
-	}
-}
-
 void Player::shootHead(sf::Vector2f Vec)
 {
-	if(Vec==sf::Vector2f(0, 0))
+	if(mHead.getAttached()==false)
 	{
 		mHead.setAttached(true);
-		mHead.setShootVector(Vec);
+		mHead.setShootVector(sf::Vector2f(0, 0));
 		mHeadless=false;
 	}
 	else if(mHead.getAttached()==true)
@@ -222,14 +230,97 @@ void Player::shootHead(sf::Vector2f Vec)
 		std::cout << degrees << std::endl << std::endl;*/
 	}
 }
-void Player::setHeadless(bool b)
+void Player::setAttachFeetExtension(bool b)
 {
-	mHeadless=b;
+	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
+	{
+		mFeetAttached=b;
+		mFeet.setAttached(b);
+	}
+	//else if(u==1){
+	//	mFeetAttached=b;
+	//	if(b==true)
+	//	{
+	//		mFeet.pointTo(u);
+	//		mFeet.setAttached(true);
+	//	}
+	//	if(b==false)
+	//	{
+	//		mFeet.pointTo(u);
+	//		mFeet.setAttached(false);
+	//	}
+	//}
 }
-bool Player::getHeadless()
+bool Player::getAttachFeetExtension()
 {
-	return mHeadless;
+	return mFeetAttached;
 }
+void Player::dash()
+{
+	if(mTogether==true)
+	{
+		mDashing=true;
+		mDash=20;
+	}
+}
+void Player::activateFeetRockets(){
+	mFeet.activateRocketBoots();
+}
+void Player::reFuel(float fuel){
+	mFeet.reFuel(fuel);
+}
+//Göra om till string sen när alla kontroller är satta
+void Player::interact(int action){
+	if(action==0)
+	{
+		//Upp
+		Player::jump();
+	}
+	if(action==1)
+	{
+		//Höger
+		Player::move(sf::Vector2f(1, 0));
+	}
+	if(action==2)
+	{
+		//Vänster
+		Player::move(sf::Vector2f(-1, 0));
+	}
+	if(action==3)
+	{
+		//Dash
+		Player::dash();
+	}
+	if(action==4)
+	{
+		//RocketBoost
+		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
+			mFeet.activateRocketBoots();
+		}
+	}
+	if(action==5)
+	{
+		//Ihop/Isär
+		Player::setTogether(!mTogether);
+	}
+	if(action==6)
+	{
+		//Skifta
+		if(mTogether==false)
+		{
+			Player::setBodyActive(!mBodyActive);
+		}
+	}
+	if(action==7)
+	{
+		//FeetExt
+		if(mTogether==false && mBodyActive==false)
+		{
+			Player::setAttachFeetExtension(!mFeetAttached);
+		}
+	}
+}
+//Kollisioner
 std::vector<sf::Sprite*> Player::getCollisionSprite()
 {
 	std::vector<sf::Sprite*> Parts;
@@ -251,56 +342,6 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		Parts.push_back(Temp3);
 	}
 	return Parts;
-}
-void Player::setAttachFeetExtension(bool b, int u)
-{
-	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()) && u==0)
-	{
-		mFeetAttached=b;
-		if(b==true)
-		{
-			mFeet.pointTo(u);
-			mFeet.setAttached(true);
-			std::cout << "Anropar true" << std::endl;
-		}
-		if(b==false)
-		{
-			mFeet.pointTo(u);
-			mFeet.setAttached(false);
-			std::cout << "Anropar false" << std::endl;
-		}
-	}
-	else if(u==1){
-		mFeetAttached=b;
-		if(b==true)
-		{
-			mFeet.pointTo(u);
-			mFeet.setAttached(true);
-		}
-		if(b==false)
-		{
-			mFeet.pointTo(u);
-			mFeet.setAttached(false);
-		}
-	}
-}
-bool Player::getAttachFeetExtension()
-{
-	return mFeetAttached;
-}
-void Player::dash()
-{
-	if(mTogether==true)
-	{
-		mDashing=true;
-		mDash=20;
-	}
-}
-void Player::activateFeetRockets(){
-	mFeet.activateRocketBoots();
-}
-void Player::reFuel(float fuel){
-	mFeet.reFuel(fuel);
 }
 void Player::forceMove(int part, sf::Vector2f Vec)
 {
