@@ -253,6 +253,10 @@ void TextureManager::loadTexture()
 	//Initialzing TEMPORARYLava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle_Temp.png");
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
+
+	//INTIIALIZING TEMPORARYBANA
+	mTextureMap["Bana1"].loadFromFile("Texture/Background/TestBackground1.png");
+	mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

@@ -3,12 +3,12 @@
 //mBackground behöver filnamnet på spritesheet, tid för varje frame,
 //samt hur många frames
 Background::Background(const std::string& filnamn, int timePerFrame, int numFrames):
-	mBackground(new Animation(filnamn, timePerFrame, numFrames)),
-	mCurrentAnimation(mBackground)
-{/*
+	mBackground(new Animation(filnamn, timePerFrame, numFrames))
+{
+	mCurrentAnimation=mBackground;
 	mPos.x = 0;
 	mPos.y = 0;
-	mCurrentAnimation->setPosition(mPos);*/
+	mCurrentAnimation->setPosition(mPos);
 }
 
 Background::~Background()

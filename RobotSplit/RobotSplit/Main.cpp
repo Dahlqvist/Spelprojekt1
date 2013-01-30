@@ -10,6 +10,7 @@
 #include "LevelLoader.h"
 #include "Collision.h"
 #include "XmlSaver.h"
+#include "Background.h"
 
 void runCollisions(UnitVector& Objects, Player& player)
 {
@@ -25,9 +26,11 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 	UnitVector Objects;
+	Background *BG;
 	Level	level("Test.xml");	
 	Objects	= level.getObjects();
 	Collision::unitAtSides(Objects);
+	BG=level.getBackground();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<Objects[i]->getId()<<endl;
@@ -93,6 +96,8 @@ int main()
 		}*/
 		window.clear(sf::Color::Black);
 		
+		window.draw(BG->draw());
+		BG->update();
 		mPlayer->update();
 		runCollisions(Objects, *mPlayer);
 
