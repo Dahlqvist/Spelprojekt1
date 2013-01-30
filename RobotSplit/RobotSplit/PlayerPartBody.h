@@ -34,7 +34,7 @@ private:
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime;
-	sf::Clock mJumpClock, mAnimationTimer;
+ 	sf::Clock mJumpClock, mAnimationTimer;
 };
 
 
