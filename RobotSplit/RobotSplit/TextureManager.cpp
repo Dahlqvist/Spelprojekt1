@@ -115,7 +115,7 @@ void TextureManager::loadTexture()
 	//Stix
 	textureStix_lower.loadFromFile("Texture/Stix/stix_lower.png");
 	spriteStix_lower.setTexture(textureStix_lower);
-	mTextureMap["StixLower"] = textureStix_lower;
+	TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lower;
 	mSpriteMap["StixLower"] = spriteStix_lower;
 
 	textureStix_lower_ani.loadFromFile("Texture/Stix/stix_loweranimation_strip8.png");
@@ -249,6 +249,14 @@ void TextureManager::loadTexture()
 	spriteTile9.setTexture(textureTile9);
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
+	
+	//Initiating Lava
+	sf::Texture tempT;
+	sf::Sprite	tempS;
+	tempT.loadFromFile("Texture/Enviroment/LavaMiddle.png");
+	tempS.setTexture(tempT);
+	mTextureMap["LavaMiddle"] = tempT;
+	mSpriteMap["LavaMiddle"] = tempS;
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
