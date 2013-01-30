@@ -12,8 +12,9 @@ class Collision
 {
 public:
 	Collision();
-	void collide(int playerPart, Player& player, std::vector<Unit*> objects);
+	void collide(int playerPart, Player& player, const std::vector<Unit*> &objects);
 	bool isCollidedSide(int side);
+	static void unitAtSides(const std::vector<Unit*> &objects);
 
 	enum sides{
 		TOP,
@@ -27,10 +28,10 @@ private:
 	void testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);
 
 	std::set<int> mCollidedSides;
-	std::set<Unit*> mUnitsOnTopLeft;
-	std::set<Unit*> mUnitsOnTopRight;
-	std::set<Unit*> mUnitsOnBottomLeft;
-	std::set<Unit*> mUnitsOnBottomRight;
+	static std::set<Unit*> mUnitsOnTopLeft;
+	static std::set<Unit*> mUnitsOnTopRight;
+	static std::set<Unit*> mUnitsOnBottomLeft;
+	static std::set<Unit*> mUnitsOnBottomRight;
 
 	bool mMovedX, mMovedY;
 
