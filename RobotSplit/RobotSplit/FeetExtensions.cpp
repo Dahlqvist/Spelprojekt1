@@ -5,3 +5,7 @@ FeetExtensions::FeetExtensions(std::string spriteName):
 {
 	mSprite=TextureManager::getSprite(spriteName);
 }
+
+void FeetExtensions::setOrigin(sf::Vector2f Vector){
+	mSprite.setOrigin(Vector);
+}

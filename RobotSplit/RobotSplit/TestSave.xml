@@ -554,18 +554,6 @@
 				<y>0</y>
 			</Size>
 		</Unit>
-		<Unit>
-			<Type>&quot;Lava&quot;</Type>
-			<SpriteName>&quot;LavaMiddle&quot;</SpriteName>
-			<Position>
-				<x>1152</x>
-				<y>60</y>
-			</Position>
-			<Size>
-				<x>0</x>
-				<y>0</y>
-			</Size>
-		</Unit>
 	</Objects>
 </Level>
 

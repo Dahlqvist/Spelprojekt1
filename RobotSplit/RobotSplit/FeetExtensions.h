@@ -14,7 +14,8 @@ public:
 	virtual std::string getId(){return mId;};
 
 	virtual bool isSolid(){return mSolid;};
-	virtual void rotate(float r){mSprite.setOrigin(sf::Vector2f(32, 32)); mSprite.rotate(r);}
+	virtual void rotate(float r){mSprite.setRotation(r);}
+	void setOrigin(sf::Vector2f);
 
 	virtual void update(){};
 	virtual void draw(){};
