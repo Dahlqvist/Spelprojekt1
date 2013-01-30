@@ -10,6 +10,7 @@
 #include "LevelLoader.h"
 #include "Collision.h"
 #include "XmlSaver.h"
+#include "Background.h"
 
 void runCollisions(UnitVector& Objects, Player& player)
 {
@@ -25,9 +26,11 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 	UnitVector Objects;
+	Background *BG;
 	Level	level("Test.xml");	
 	Objects	= level.getObjects();
 	Collision::unitAtSides(Objects);
+	BG=level.getBackground();
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<Objects[i]->getId()<<endl;
@@ -47,22 +50,18 @@ int main()
 				switch(event.key.code)
 				{
 				case sf::Keyboard::LShift:
-					if(mPlayer->getTogether()==false){
-						mPlayer->setBodyActive(!mPlayer->getBodyActive());
-					}
+					mPlayer->interact(6);
+					//mPlayer->setBodyActive(!mPlayer->getBodyActive());
 					break;
 				case sf::Keyboard::Space:
-					mPlayer->setTogether(!mPlayer->getTogether());
+					mPlayer->interact(5);
+					//mPlayer->setTogether(!mPlayer->getTogether());
 					break;
 				case sf::Keyboard::E:
-					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-						mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension(), 0);
-					}
-					break;
-				case sf::Keyboard::T:
-					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-						mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension(), 1);
-					}
+					mPlayer->interact(7);
+					/*if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
+						mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension());
+					}*/
 					break;
 				}
 			}
@@ -71,31 +70,34 @@ int main()
 			mPlayer->reFuel(100);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->dash();
+			mPlayer->interact(3);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-			mPlayer->move(sf::Vector2f(1,0));
+			mPlayer->interact(1);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-			mPlayer->move(sf::Vector2f(-1,0));
+			mPlayer->interact(2);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-			mPlayer->jump();
+			mPlayer->interact(0);
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-			mPlayer->activateFeetRockets();
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+			mPlayer->interact(4);
 		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 			sf::Vector2f Temp;
 			Temp.x=(float)sf::Mouse::getPosition(window).x-16;
 			Temp.y=(float)sf::Mouse::getPosition(window).y-16;
 			mPlayer->shootHead(sf::Vector2f(Temp));
+			std::cout << "Anropar";
 		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
+		/*if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));
-		}
+		}*/
 		window.clear(sf::Color::Black);
 		
+		window.draw(BG->draw());
+		BG->update();
 		mPlayer->update();
 		runCollisions(Objects, *mPlayer);
 

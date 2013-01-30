@@ -20,13 +20,14 @@ public:
 	bool getHeadless();
 	void setHeadless(bool);
 	void resetAnimations();
+	void interact(int);
 
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
 
 	void jump();
 	void shootHead(sf::Vector2f);
-	void setAttachFeetExtension(bool, int);
+	void setAttachFeetExtension(bool);
 	bool getAttachFeetExtension();
 	void dash();
 	void activateFeetRockets();

@@ -87,7 +87,7 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
-	mJump=8;
+	mJump=7;
 	mJumpClock.restart();
 }
 void PlayerPartBody::resetAnimation()
