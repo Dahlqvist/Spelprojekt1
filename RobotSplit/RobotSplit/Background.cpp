@@ -5,12 +5,10 @@
 Background::Background(const std::string& filnamn, int timePerFrame, int numFrames):
 	mBackground(new Animation(filnamn, timePerFrame, numFrames)),
 	mCurrentAnimation(mBackground)
-{
-	/*
+{/*
 	mPos.x = 0;
 	mPos.y = 0;
-	mCurrentAnimation->setPosition(mPos);
-	*/
+	mCurrentAnimation->setPosition(mPos);*/
 }
 
 Background::~Background()
