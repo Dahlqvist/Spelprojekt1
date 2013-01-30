@@ -16,7 +16,6 @@ void runCollisions(UnitVector& Objects, Player& player)
 	Collision col[3];
 	for (int i=0; i<player.getCollisionSprite().size() && i<3; i++)
 	{
-		col[i].unitAtSides(Objects);
 		col[i].collide(i, player, Objects);
 	}
 }
@@ -28,6 +27,7 @@ int main()
 	UnitVector Objects;
 	Level	level("Test.xml");	
 	Objects	= level.getObjects();
+	Collision::unitAtSides(Objects);
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<Objects[i]->getId()<<endl;
