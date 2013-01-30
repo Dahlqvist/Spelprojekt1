@@ -42,7 +42,7 @@ Level	LevelLoader::getLevel()
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	Background*BACK=new Background(Filename,Frames,Speed);
+	Background*BACK=new Background(Filename,Speed,Frames);
 	RetLevel.setBackground(BACK);
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
