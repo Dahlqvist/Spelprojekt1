@@ -11,23 +11,23 @@
 #include "Collision.h"
 #include "XmlSaver.h"
 
-void runCollisions(UnitVector Objects, Player& player)
+void runCollisions(UnitVector& Objects, Player& player)
 {
-	std::vector<Collision> col;
-	for (int i=0; i<player.getCollisionSprite().size(); i++)
+	Collision col[3];
+	for (int i=0; i<player.getCollisionSprite().size() && i<3; i++)
 	{
-		col.push_back(Collision());
 		col[i].collide(i, player, Objects);
 	}
 }
 
-int main(){
-
+int main()
+{
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
 	UnitVector Objects;
 	Level	level("Test.xml");	
 	Objects	= level.getObjects();
+	Collision::unitAtSides(Objects);
 	for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<Objects[i]->getId()<<endl;
@@ -98,6 +98,7 @@ int main(){
 		
 		mPlayer->update();
 		runCollisions(Objects, *mPlayer);
+
 
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();

@@ -1,6 +1,11 @@
 #include "Collision.h"
 #include <iostream>
 
+std::set<Unit*> Collision::mUnitsOnTopLeft;
+std::set<Unit*> Collision::mUnitsOnTopRight;
+std::set<Unit*> Collision::mUnitsOnBottomLeft;
+std::set<Unit*> Collision::mUnitsOnBottomRight;
+
 Collision::Collision()
 	:mMovedX(false)
 	,mMovedY(false)
@@ -8,10 +13,32 @@ Collision::Collision()
 
 }
 
-void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objects)
+void Collision::collide(int playerPart, Player& player, const std::vector<Unit*> &objects)
 {
 	mPlayerPart=playerPart;
-	//Check if two objects are on top of eachother (bugfix)
+	//Check if two objects are next to eachother (bugfix)
+	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
+	for (int j=0; j<objects.size(); j++)
+	{
+		if (objects[j]->getId()!="PlayerPart")
+		{
+			sf::FloatRect collisionRect;
+			if (testCollisions(playerSprite, objects[j], collisionRect))
+			{
+				testCollidedSides(playerSprite, objects[j], collisionRect);
+				handleCollisions(player, objects[j], collisionRect);
+			}
+		}
+	}
+}
+
+bool Collision::isCollidedSide(int side)
+{
+	return (mCollidedSides.count(side)!=0);
+}
+
+void Collision::unitAtSides(const std::vector<Unit*> &objects)
+{
 	for (int i=0; i<objects.size(); i++)
 	{
 		for (int j=i+1; j<objects.size(); j++)
@@ -53,25 +80,6 @@ void Collision::collide(int playerPart, Player& player, std::vector<Unit*> objec
 			}
 		}
 	}
-
-	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
-	for (int j=0; j<objects.size(); j++)
-	{
-		if (objects[j]->getId()!="PlayerPart")
-		{
-			sf::FloatRect collisionRect;
-			if (testCollisions(playerSprite, objects[j], collisionRect))
-			{
-				testCollidedSides(playerSprite, objects[j], collisionRect);
-				handleCollisions(player, objects[j], collisionRect);
-			}
-		}
-	}
-}
-
-bool Collision::isCollidedSide(int side)
-{
-	return (mCollidedSides.count(side)!=0);
 }
 
 bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)
@@ -117,10 +125,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			//If player is left of object
 			if (playerSprite->getPosition().x<obj2->getPosition().x)
 			{
-				bool foo=!isCollidedSide(BOTTOM);
-				bool foo2=!isCollidedSide(TOP);
-				int foo3=mUnitsOnTopRight.count(obj2);
-				int foo4=mUnitsOnBottomRight.count(obj2);
 				if (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))
 				{
 					moveDistance.x=-(collisionRect.width-1);

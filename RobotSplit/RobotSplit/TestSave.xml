@@ -10,13 +10,8 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-<<<<<<< HEAD
-				<x>66</x>
-				<y>448</y>
-=======
 				<x>64</x>
 				<y>352</y>
->>>>>>> e4913b9ac05d3003e1bbc3059abda59636142671
 			</Position>
 		</Unit>
 		<Unit>
