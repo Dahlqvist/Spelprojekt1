@@ -15,6 +15,7 @@ Collision::Collision()
 
 void Collision::collide(int playerPart, Player& player, const std::vector<Unit*> &objects)
 {
+	//sf::Clock timer;
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	for (int j=0; j<objects.size(); j++)
@@ -29,6 +30,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			}
 		}
 	}
+	//std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
 }
 
 bool Collision::isCollidedSide(int side)
