@@ -109,9 +109,9 @@ TextureManager&	TextureManager::getManager()
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	//textureBackground.loadFromFile(/*filename.png*/"");
+	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground1.png");
 	//Placera texturen i en sprite-variabel
-	//spriteBackground.setTexture(textureBackground);
+	spriteBackground.setTexture(textureBackground);
 	//Stix
 	textureStix_lower.loadFromFile("Texture/Stix/stix_lower.png");
 	spriteStix_lower.setTexture(textureStix_lower);
@@ -250,13 +250,9 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
 	
-	//Initiating Lava
-	sf::Texture tempT;
-	sf::Sprite	tempS;
-	tempT.loadFromFile("Texture/Enviroment/LavaMiddle.png");
-	tempS.setTexture(tempT);
-	mTextureMap["LavaMiddle"] = tempT;
-	mSpriteMap["LavaMiddle"] = tempS;
+	//Initialzing TEMPORARYLava
+	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle_Temp.png");
+	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
@@ -274,7 +270,9 @@ const sf::Sprite TextureManager::getSprite(std::string sprite)
 	if(sprite == "Background")
 		return getManager().spriteBackground;	
 	else
+	{
 		return getManager().mSpriteMap[sprite];
+	}
 }
 
 const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
