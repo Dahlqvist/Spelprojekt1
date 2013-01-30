@@ -4,7 +4,7 @@
 	<Background>
 		<Frames>2</Frames>
 		<Speed>4</Speed>
-		<SpriteName>&quot;Background&quot;</SpriteName>
+		<SpriteName>&quot;Bana1&quot;</SpriteName>
 	</Background>
 	<Objects>
 		<Unit>
@@ -548,18 +548,6 @@
 			<Position>
 				<x>1152</x>
 				<y>704</y>
-			</Position>
-			<Size>
-				<x>0</x>
-				<y>0</y>
-			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Lava&quot;</Type>
-			<SpriteName>&quot;LavaMiddle&quot;</SpriteName>
-			<Position>
-				<x>1152</x>
-				<y>60</y>
 			</Position>
 			<Size>
 				<x>0</x>

@@ -4,7 +4,7 @@
 	<Background>
 		<Frames>2</Frames>
 		<Speed>4</Speed>
-		<SpriteName>"Background"</SpriteName>
+		<SpriteName>"Bana1"</SpriteName>
 	</Background>
 	<Objects>
 		<Unit>
