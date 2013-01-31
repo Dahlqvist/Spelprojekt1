@@ -343,8 +343,10 @@
 			</Size>
 		</Unit>
 		<Unit>
-				<Type>"Lava"</Type>
-				<SpriteName>"LavaMiddle"</SpriteName>
+			<Type>"Lava"</Type>
+			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>64</x>
 				<y>704</y>
@@ -357,6 +359,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>128</x>
 				<y>704</y>
@@ -369,6 +373,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>192</x>
 				<y>704</y>
@@ -381,6 +387,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>256</x>
 				<y>704</y>
@@ -393,6 +401,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>320</x>
 				<y>704</y>
@@ -405,6 +415,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>384</x>
 				<y>704</y>
@@ -417,6 +429,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>448</x>
 				<y>704</y>
@@ -429,6 +443,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>512</x>
 				<y>704</y>
@@ -441,6 +457,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>576</x>
 				<y>704</y>
@@ -453,6 +471,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>640</x>
 				<y>704</y>
@@ -465,6 +485,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>704</x>
 				<y>704</y>
@@ -477,6 +499,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>768</x>
 				<y>704</y>
@@ -489,6 +513,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>832</x>
 				<y>704</y>
@@ -501,6 +527,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>896</x>
 				<y>704</y>
@@ -513,6 +541,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>960</x>
 				<y>704</y>
@@ -525,6 +555,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>1024</x>
 				<y>704</y>
@@ -537,6 +569,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>1088</x>
 				<y>704</y>
@@ -549,6 +583,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>8</Frames>
+			<Speed>	60</Speed>
 			<Position>
 				<x>1152</x>
 				<y>704</y>

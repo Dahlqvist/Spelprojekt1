@@ -37,21 +37,50 @@ private:
 	static sf::Texture textureBackground;
 	static sf::Sprite spriteBackground;
 
-	//Stix
-	static sf::Texture textureStix_lower;
-	static sf::Sprite spriteStix_lower;
+	//Stix Right
+	static sf::Texture textureStix_lowerRight;
+	static sf::Sprite spriteStix_lowerRight;
 
-	static sf::Texture textureStix_lower_ani;
-	static sf::Sprite spriteStix_lower_ani;
+	static sf::Texture textureStix_lower_aniRight;
+	static sf::Sprite spriteStix_lower_aniRight;
 
-	static sf::Texture textureStix_upper;
-	static sf::Sprite spriteStix_upper;
+	static sf::Texture textureStix_upperRight;
+	static sf::Sprite spriteStix_upperRight;
 
-	static sf::Texture textureStix_shoot_ani;
-	static sf::Sprite spriteStix_shoot_ani;
+	static sf::Texture textureStix_upper_aniRight;
+	static sf::Sprite spriteStix_upper_aniRight;
 
-	static sf::Texture textureStix_upper_split_ani;
-	static sf::Sprite spriteStix_upper_split_ani;
+	static sf::Texture textureStix_shoot_aniRight;
+	static sf::Sprite spriteStix_shoot_aniRight;
+
+	static sf::Texture textureStix_upper_split_aniRight;
+	static sf::Sprite spriteStix_upper_split_aniRight;
+
+	static sf::Texture textureStix_FeetExtented;
+	static sf::Sprite spriteStix_FeetExtented;
+
+	//Stix Left
+	static sf::Texture textureStix_lowerLeft;
+	static sf::Sprite spriteStix_lowerLeft;
+
+	static sf::Texture textureStix_lower_aniLeft;
+	static sf::Sprite spriteStix_lower_aniLeft;
+
+	static sf::Texture textureStix_upperLeft;
+	static sf::Sprite spriteStix_upperLeft;
+
+	static sf::Texture textureStix_upper_aniLeft;
+	static sf::Sprite spriteStix_upper_aniLeft;
+
+	static sf::Texture textureStix_shoot_aniLeft;
+	static sf::Sprite spriteStix_shoot_aniLeft;
+
+	static sf::Texture textureStix_upper_split_aniLeft;
+	static sf::Sprite spriteStix_upper_split_aniLeft;
+
+	//Stix Other
+	static sf::Texture texture_stix_brain_flight;
+	static sf::Sprite sprite_stix_brain_flight;
 
 	static sf::Texture textureStix_smoke_ani;
 	static sf::Sprite spriteStix_smoke_ani;

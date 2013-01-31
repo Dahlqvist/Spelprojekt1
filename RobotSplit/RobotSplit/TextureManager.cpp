@@ -7,21 +7,51 @@ TextureManager::TextureMap TextureManager::mTextureMap;
 sf::Texture TextureManager::textureBackground;
 sf::Sprite TextureManager::spriteBackground;
 
-//Stix
-sf::Texture TextureManager::textureStix_lower;
-sf::Sprite TextureManager::spriteStix_lower;
+//Stix Right
+sf::Texture TextureManager::textureStix_lowerRight;
+sf::Sprite TextureManager::spriteStix_lowerRight;
 
-sf::Texture TextureManager::textureStix_lower_ani;
-sf::Sprite TextureManager::spriteStix_lower_ani;
+sf::Texture TextureManager::textureStix_lower_aniRight;
+sf::Sprite TextureManager::spriteStix_lower_aniRight;
 
-sf::Texture TextureManager::textureStix_upper;
-sf::Sprite TextureManager::spriteStix_upper;
+sf::Texture TextureManager::textureStix_upperRight;
+sf::Sprite TextureManager::spriteStix_upperRight;
 
-sf::Texture TextureManager::textureStix_shoot_ani;
-sf::Sprite TextureManager::spriteStix_shoot_ani;
+sf::Texture TextureManager::textureStix_upper_aniRight;
+sf::Sprite TextureManager::spriteStix_upper_aniRight;
 
-sf::Texture TextureManager::textureStix_upper_split_ani;
-sf::Sprite TextureManager::spriteStix_upper_split_ani;
+sf::Texture TextureManager::textureStix_shoot_aniRight;
+sf::Sprite TextureManager::spriteStix_shoot_aniRight;
+
+sf::Texture TextureManager::textureStix_upper_split_aniRight;
+sf::Sprite TextureManager::spriteStix_upper_split_aniRight;
+
+sf::Texture TextureManager::textureStix_FeetExtented;
+sf::Sprite TextureManager::spriteStix_FeetExtented;
+
+//Stix Left
+sf::Texture TextureManager::textureStix_lowerLeft;
+sf::Sprite TextureManager::spriteStix_lowerLeft;
+
+sf::Texture TextureManager::textureStix_lower_aniLeft;
+sf::Sprite TextureManager::spriteStix_lower_aniLeft;
+
+sf::Texture TextureManager::textureStix_upperLeft;
+sf::Sprite TextureManager::spriteStix_upperLeft;
+
+sf::Texture TextureManager::textureStix_upper_aniLeft;
+sf::Sprite TextureManager::spriteStix_upper_aniLeft;
+
+sf::Texture TextureManager::textureStix_shoot_aniLeft;
+sf::Sprite TextureManager::spriteStix_shoot_aniLeft;
+
+sf::Texture TextureManager::textureStix_upper_split_aniLeft;
+sf::Sprite TextureManager::spriteStix_upper_split_aniLeft;
+
+//Stix Other
+
+sf::Texture TextureManager::texture_stix_brain_flight;
+sf::Sprite TextureManager::sprite_stix_brain_flight;
 
 sf::Texture TextureManager::textureStix_smoke_ani;
 sf::Sprite TextureManager::spriteStix_smoke_ani;
@@ -109,36 +139,82 @@ TextureManager&	TextureManager::getManager()
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground1.png");
+	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/background.png");
 	//Placera texturen i en sprite-variabel
 	spriteBackground.setTexture(textureBackground);
-	//Stix
-	textureStix_lower.loadFromFile("Texture/Stix/stix_lower.png");
-	spriteStix_lower.setTexture(textureStix_lower);
-	TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lower;
-	mSpriteMap["StixLower"] = spriteStix_lower;
+	//Stix Right
+	textureStix_lowerRight.loadFromFile("Texture/Stix/stix_lower_dark.png");
+	spriteStix_lowerRight.setTexture(textureStix_lowerRight);
+	TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lowerRight;
+	mSpriteMap["StixLower"] = spriteStix_lowerRight;
 
-	textureStix_lower_ani.loadFromFile("Texture/Stix/stix_loweranimation_strip8.png");
-	spriteStix_lower_ani.setTexture(textureStix_lower_ani);
-	mTextureMap["StixLowerAni"] = textureStix_lower_ani;
-	mSpriteMap["StixLowerAni"] = spriteStix_lower_ani;	
+	textureStix_lower_aniRight.loadFromFile("Texture/Stix/stix_loweranimation_strip8_dark.png");
+	spriteStix_lower_aniRight.setTexture(textureStix_lower_aniRight);
+	mTextureMap["StixLowerAni"] = textureStix_lower_aniRight;
+	mSpriteMap["StixLowerAni"] = spriteStix_lower_aniRight;
 
-	textureStix_upper.loadFromFile("Texture/Stix/stix_upper.png");
-	spriteStix_upper.setTexture(textureStix_upper);
-	mTextureMap["StixUpper"] = textureStix_upper;
-	mSpriteMap["StixUpper"] = spriteStix_upper;
+	textureStix_upper_aniRight.loadFromFile("Texture/Stix/stix_head_match_loweranimation_strip8_H66px_dark.png");
+	spriteStix_upper_aniRight.setTexture(textureStix_upper_aniRight);
+	mTextureMap["StixUpperAni"] = textureStix_upper_aniRight;
+	mSpriteMap["StixUpperAni"] = spriteStix_upper_aniRight;
 
-	textureStix_shoot_ani.loadFromFile("Texture/Stix/stix_upper_shootanimation_strip8.png");
-	spriteStix_shoot_ani.setTexture(textureStix_shoot_ani);
-	mTextureMap["StixShootAni"] = textureStix_shoot_ani;
-	mSpriteMap["StixShootAni"] = spriteStix_shoot_ani;
+	textureStix_upperRight.loadFromFile("Texture/Stix/stix_upper_dark.png");
+	spriteStix_upperRight.setTexture(textureStix_upperRight);
+	mTextureMap["StixUpper"] = textureStix_upperRight;
+	mSpriteMap["StixUpper"] = spriteStix_upperRight;
 
-	textureStix_upper_split_ani.loadFromFile("Texture/Stix/stix_upper_splitanimation_strip8.png");
-	spriteStix_upper_split_ani.setTexture(textureStix_upper_split_ani);
-	mTextureMap["StixUpperSplit"] = textureStix_upper_split_ani;
-	mSpriteMap["StixUpperSplit"] = spriteStix_upper_split_ani;
+	textureStix_shoot_aniRight.loadFromFile("Texture/Stix/stix_upper_shootanimation_strip8_dark.png");
+	spriteStix_shoot_aniRight.setTexture(textureStix_shoot_aniRight);
+	mTextureMap["StixShootAni"] = textureStix_shoot_aniRight;
+	mSpriteMap["StixShootAni"] = spriteStix_shoot_aniRight;
 
-	textureStix_smoke_ani.loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
+	textureStix_upper_split_aniRight.loadFromFile("Texture/Stix/stix_upper_splitanimation_strip8_dark.png");
+	spriteStix_upper_split_aniRight.setTexture(textureStix_upper_split_aniRight);
+	mTextureMap["StixUpperSplit"] = textureStix_upper_split_aniRight;
+	mSpriteMap["StixUpperSplit"] = spriteStix_upper_split_aniRight;
+
+	textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
+	spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
+	mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
+	mSpriteMap["StixFeetExtend"] = spriteStix_FeetExtented;
+	//Stix Left
+	textureStix_lowerLeft.loadFromFile("Texture/Stix/Mirror_stix_lower_dark.png");
+	spriteStix_lowerLeft.setTexture(textureStix_lowerLeft);
+	mTextureMap["StixLowerL"] = textureStix_lowerLeft;
+	mSpriteMap["StixLowerL"] = spriteStix_lowerLeft;
+
+	textureStix_lower_aniLeft.loadFromFile("Texture/Stix/Mirror_stix_loweranimation_strip8_dark.png");
+	spriteStix_lower_aniLeft.setTexture(textureStix_lower_aniLeft);
+	mTextureMap["StixLowerAniL"] = textureStix_lower_aniLeft;
+	mSpriteMap["StixLowerAniL"] = spriteStix_lower_aniLeft;	
+
+	textureStix_upperLeft.loadFromFile("Texture/Stix/Mirror_stix_upper_dark.png");
+	spriteStix_upperLeft.setTexture(textureStix_upperLeft);
+	mTextureMap["StixUpperL"] = textureStix_upperLeft;
+	mSpriteMap["StixUpperL"] = spriteStix_upperLeft;
+
+	textureStix_upper_aniLeft.loadFromFile("Texture/Stix/stix_head_match_loweranimation_strip8_H66px_dark_l.png");
+	spriteStix_upper_aniLeft.setTexture(textureStix_upper_aniLeft);
+	mTextureMap["StixUpperAniL"] = textureStix_upper_aniLeft;
+	mSpriteMap["StixUpperAniL"] = spriteStix_upper_aniLeft;
+
+	textureStix_shoot_aniLeft.loadFromFile("Texture/Stix/Mirror_stix_upper_shootanimation_strip8_dark.png");
+	spriteStix_shoot_aniLeft.setTexture(textureStix_shoot_aniLeft);
+	mTextureMap["StixShootAniL"] = textureStix_shoot_aniLeft;
+	mSpriteMap["StixShootAniL"] = spriteStix_shoot_aniLeft;
+
+	textureStix_upper_split_aniLeft.loadFromFile("Texture/Stix/Mirror_stix_upper_splitanimation_strip8_dark.png");
+	spriteStix_upper_split_aniLeft.setTexture(textureStix_upper_split_aniLeft);
+	mTextureMap["StixUpperSplitL"] = textureStix_upper_split_aniLeft;
+	mSpriteMap["StixUpperSplitL"] = spriteStix_upper_split_aniLeft;
+
+	//Stix Other
+	texture_stix_brain_flight.loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
+	sprite_stix_brain_flight.setTexture(texture_stix_brain_flight);
+	mTextureMap["StixBrain"] = texture_stix_brain_flight;
+	mSpriteMap["StixBrain"] = sprite_stix_brain_flight;
+
+	textureStix_smoke_ani.loadFromFile("Texture/Stix/stix_smokeanimation_strip4_dark.png");
 	spriteStix_smoke_ani.setTexture(textureStix_smoke_ani);
 	mTextureMap["StixSmokeAni"] = textureStix_smoke_ani;
 	mSpriteMap["StixSmokeAni"] = spriteStix_smoke_ani;
@@ -250,8 +326,8 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
 	
-	//Initialzing TEMPORARYLava
-	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle_Temp.png");
+	//Initialzing Lava
+	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 
 	//INTIIALIZING TEMPORARYBANA

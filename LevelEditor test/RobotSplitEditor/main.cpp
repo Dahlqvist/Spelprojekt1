@@ -13,15 +13,10 @@ int main(int argc, char *argv[])
 		Event CurrentEvent;
 		while(window.pollEvent(CurrentEvent))
 		{
-			switch(CurrentEvent.type)
+
+			if(CurrentEvent.type==Event::EventType::Closed)
 			{
-			case Event::EventType::Closed:
 				window.close();
-				break;
-			case Event::EventType::TextEntered:
-				  if (CurrentEvent.text.unicode < 128)
-					   std::cout << "ASCII character typed: " << static_cast<char>(CurrentEvent.text.unicode) << std::endl;
-				  break;
 			}
 		}
 	}

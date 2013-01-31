@@ -9,17 +9,14 @@ Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool s
 	mPosition=position;
 	mId=id;
 	mSprite.setPosition(mPosition);
-	if(id=="Lava")
-	{
-	}
 }
 
 Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid)
 	:GameObject()
 	,mSolid(solid)
-	,mAnimation(animation)
 	,mSprite(animation->getSprite())
 {
+	mAnimation =animation;
 	mPosition=position;
 	mId=id;
 	mSprite.setPosition(mPosition);
