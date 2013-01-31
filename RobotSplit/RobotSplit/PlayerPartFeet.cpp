@@ -6,7 +6,7 @@ PlayerPartFeet::PlayerPartFeet():
 	mRightAnimation("StixLowerAni", 200, 8),
 	mLeft("StixLowerL", 200, 1),
 	mRight("StixLower", 200, 1),
-	mFeetExt("StixUpper")
+	mFeetExt("StixFeetExtend")
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);

@@ -56,6 +56,9 @@ private:
 	static sf::Texture textureStix_upper_split_aniRight;
 	static sf::Sprite spriteStix_upper_split_aniRight;
 
+	static sf::Texture textureStix_FeetExtented;
+	static sf::Sprite spriteStix_FeetExtented;
+
 	//Stix Left
 	static sf::Texture textureStix_lowerLeft;
 	static sf::Sprite spriteStix_lowerLeft;

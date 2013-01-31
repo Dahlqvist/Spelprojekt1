@@ -111,6 +111,7 @@ int main()
 		for(UnitVector::size_type i=0;i<Objects.size();i++)
 		{
 			window.draw(Objects[i]->getSprite());
+			Objects[i]->draw();
 		}
 		window.display();
 	}

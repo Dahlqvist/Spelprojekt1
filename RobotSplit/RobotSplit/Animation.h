@@ -26,6 +26,7 @@ private:
 	int mTimePerFrame;
 	int mNumFrames;
 	int mCurrentFrame;
+	friend class XmlSaver;
 };
 
 #endif
