@@ -29,10 +29,7 @@ void runCollisions(UnitVector& Objects, Player& player)
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	//window.setFramerateLimit(60);
-	sf::Clock timer;
-	sf::Time limit=sf::milliseconds(16);
-	sf::Time currentTime=sf::milliseconds(0);
+	window.setFramerateLimit(60);
 	UnitVector Objects;
 	Background *BG;
 	Level	level("Test.xml");	
@@ -50,14 +47,8 @@ int main()
 	double lastUpdate=0;
 	while (window.isOpen())
 	{
-<<<<<<< HEAD
-		timer.restart();
-		sf::Event event;
-		while (window.pollEvent(event))
-=======
 		lastUpdateClock.restart();
-		while (lastUpdate>1/60.0)
->>>>>>> 36a68a5e6961cff75e93f62c69a248df38cefec4
+		//while (lastUpdate>1/60.0)
 		{
 			lastUpdate-=1/60.0;
 			sf::Event event;
@@ -132,13 +123,8 @@ int main()
 			Objects[i]->draw();
 		}
 		window.display();
-<<<<<<< HEAD
-		currentTime=sf::milliseconds(timer.getElapsedTime().asMilliseconds());
-		sf::sleep(limit - currentTime);
-=======
 
 		lastUpdate+=lastUpdateClock.getElapsedTime().asSeconds();
->>>>>>> 36a68a5e6961cff75e93f62c69a248df38cefec4
 	}
 	/*
 	//Test for finding Textures' names
