@@ -85,22 +85,22 @@ void Player::update()
 	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-		if(mTogether==true || mBodyActive==true || mFeet.getAttached()==false){
+		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
 			mFeet.setAttachedWall(true, 0);
 		}
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-		if(mTogether==true || mBodyActive==true || mFeet.getAttached()==false){
+		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
 			mFeet.setAttachedWall(true, 1);
 		}
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-		if(mTogether==true || mBodyActive==true || mFeet.getAttached()==false){
+		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
 			mFeet.setAttachedWall(true, 2);
 		}
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-		if(mTogether==true || mBodyActive==true || mFeet.getAttached()==false){
+		if(mFeet.getAttached()==false){
 			mFeet.setAttachedWall(false);
 		}
 	}
@@ -171,7 +171,8 @@ void Player::setTogether(bool b)
 		//mBodyActive=false;
 		mBody.setAttached(true);
 		mTogether=b;
-		Player::move(sf::Vector2f(0, 0));
+		Player::move(sf::Vector2f(-0.1, 0));
+		Player::move(sf::Vector2f(0.1, 0));
 	}
 }
 void Player::setBodyActive(bool b)
@@ -433,7 +434,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 {
 	if(part==0)
 	{
-		if(Vec.y>0)
+		if(Vec.y>0 && mFeet.getAttachedWall()==false)
 		{
 			mFeet.jumpReset();
 		}

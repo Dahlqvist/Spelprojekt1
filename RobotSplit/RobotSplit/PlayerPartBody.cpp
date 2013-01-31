@@ -3,9 +3,9 @@
 
 PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 	mFeet(Feet),
-	mLeftAnimation("StixUpperSplit", 200, 8),
-	mRightAnimation("StixShootAni", 200, 8),
-	mLeft("StixUpper", 200, 1),
+	mLeftAnimation("StixUpperAniL", 200, 8),
+	mRightAnimation("StixUpperAni", 200, 8),
+	mLeft("StixUpperL", 200, 1),
 	mRight("StixUpper", 200, 1)
 {
 	mActiveAnimation=&mRight;
@@ -92,7 +92,14 @@ void PlayerPartBody::resetAnimation()
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
 	{
-		mActiveAnimation=&mRight;
+		if(mActiveAnimation==&mRightAnimation)
+		{
+			mActiveAnimation=&mRight;
+		}
+		else if(mActiveAnimation==&mLeftAnimation)
+		{
+			mActiveAnimation=&mLeft;
+		}
 	}
 }
 Unit* PlayerPartBody::getUnit()
