@@ -1,6 +1,6 @@
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
-#include <dirent.h>
+//#include <dirent.h>
 #include <iostream>
 #include <string>
 
