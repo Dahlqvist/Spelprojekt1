@@ -381,6 +381,8 @@
 		<Unit>
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
+			<Frames>2</Frames>
+			<Speed>	4</Speed>
 			<Position>
 				<x>256</x>
 				<y>704</y>

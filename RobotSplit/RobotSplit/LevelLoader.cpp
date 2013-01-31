@@ -9,7 +9,7 @@
 #include "Player.h"
 #include "PlayerPart.h"
 #include "Unit.h"
-
+#include "Animation.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -212,9 +212,24 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
-
-	//Creates an Unit object
-	TempObject=		new Unit(Position,Id,Sprite);
+	
+	//Checks if the Unit Uses animation
+	if(Node->first_node("Frames")!=0)
+	{
+		int Frames,Speed;
+		Animation* ani;
+		CurrentValue=	getValue(Node->first_node("Frames"));
+		Speed=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(Node->first_node("Speed"));
+		Frames=((float)atof(CurrentValue.c_str()));
+		ani= new Animation(Sprite,Speed,Frames);
+		TempObject=		new Unit(Position,Id,ani);
+	}
+	else
+	{
+		//Creates an Unit object
+		TempObject=		new Unit(Position,Id,Sprite);
+	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
