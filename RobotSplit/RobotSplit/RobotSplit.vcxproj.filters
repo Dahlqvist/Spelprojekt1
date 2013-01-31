@@ -55,7 +55,6 @@
     <ClCompile Include="UnitWrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationWrap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -115,7 +114,6 @@
     <ClInclude Include="UnitWrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationWrap.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
