@@ -139,7 +139,7 @@ TextureManager&	TextureManager::getManager()
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground1.png");
+	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/background.png");
 	//Placera texturen i en sprite-variabel
 	spriteBackground.setTexture(textureBackground);
 	//Stix Right
@@ -193,7 +193,7 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperL"] = textureStix_upperLeft;
 	mSpriteMap["StixUpperL"] = spriteStix_upperLeft;
 
-	textureStix_upper_aniLeft.loadFromFile("Texture/Stix/stix_head_match_loweranimation_strip8_H66px_dark.png");
+	textureStix_upper_aniLeft.loadFromFile("Texture/Stix/stix_head_match_loweranimation_strip8_H66px_dark_l.png");
 	spriteStix_upper_aniLeft.setTexture(textureStix_upper_aniLeft);
 	mTextureMap["StixUpperAniL"] = textureStix_upper_aniLeft;
 	mSpriteMap["StixUpperAniL"] = spriteStix_upper_aniLeft;

@@ -38,6 +38,11 @@ private:
 	PlayerPartHead mHead;
 	PlayerParts mParts;
 	sf::Sprite mSprite;
+	sf::Sprite mLjus;
+	sf::Texture mLjus1;
+	sf::Texture mLjus2;
+	sf::Texture mLjus3;
+	sf::Texture mLjus4;
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;

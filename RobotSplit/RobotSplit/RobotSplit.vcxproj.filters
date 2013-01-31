@@ -52,6 +52,9 @@
     <ClCompile Include="FeetWall.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="UnitWrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -107,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="FeetWall.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitWrap.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
