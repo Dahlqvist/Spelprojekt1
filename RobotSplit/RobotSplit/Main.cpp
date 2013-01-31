@@ -14,11 +14,15 @@
 
 void runCollisions(UnitVector& Objects, Player& player)
 {
+	
 	Collision col[3];
+	int foo=player.getCollisionSprite().size();
+	//sf::Clock timer;
 	for (int i=0; i<player.getCollisionSprite().size() && i<3; i++)
 	{
 		col[i].collide(i, player, Objects);
 	}
+	//std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
 }
 
 int main()
@@ -37,7 +41,6 @@ int main()
 	}
 
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
-
 
 	while (window.isOpen())
 	{
@@ -99,9 +102,9 @@ int main()
 		window.draw(BG->draw());
 		BG->update();
 		mPlayer->update();
+
 		runCollisions(Objects, *mPlayer);
-
-
+		
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
@@ -109,7 +112,6 @@ int main()
 		{
 			window.draw(Objects[i]->getSprite());
 		}
-
 		window.display();
 	}
 	/*
