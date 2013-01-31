@@ -24,11 +24,17 @@ public:
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
+	int getWall();
+	bool getAttachedWall();
+	void setAttachedWall(bool, int i=0);
 private: 
-	bool mAttached;
+	bool mAttached, mAttachedWall;
 	Unit* mUnit;
+	Unit* mAUnit;
 	FeetExtensions mFeetExt;
 	FeetWall mRightWall;
+	FeetWall mLeftWall;
+	FeetWall mRoof;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;
@@ -36,8 +42,9 @@ private:
 	Animation mRight;
 	sf::Vector2f mPosition; 
 	std::string mId;
-	float mJump, mAniTime, mFuel;
+	float mJump, mAniTime, mFuel, mRotation;
 	sf::Clock mJumpClock, mAnimationTimer;
+	int mAO;
 };
 
 

@@ -24,7 +24,6 @@ public:
 private: 
 	bool mAttached;
 	Unit* mUnit;
-	PlayerPartFeet Test;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;

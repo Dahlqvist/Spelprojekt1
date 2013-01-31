@@ -2,8 +2,7 @@
 #include <iostream>
 
 PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
-mFeet(Feet),
-	Test(),
+	mFeet(Feet),
 	mLeftAnimation("StixUpperSplit", 200, 8),
 	mRightAnimation("StixShootAni", 200, 8),
 	mLeft("StixUpper", 200, 1),
@@ -15,7 +14,6 @@ mFeet(Feet),
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
-	Test.setPosition(sf::Vector2f(400, 300));
 }
 void PlayerPartBody::update()
 {

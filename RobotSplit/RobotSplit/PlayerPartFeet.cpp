@@ -11,10 +11,13 @@ mLeftAnimation("StixLowerAni", 200, 8),
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);
 	mAttached=false;
+	mAttachedWall=false;
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
+	mAUnit=0;
 	mFuel=100;
+	mAO=0;
 }
 void PlayerPartFeet::update()
 {
@@ -52,6 +55,14 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 			mPosition+=Vec;
 			mActiveAnimation=&mRightAnimation;
 		}
+		else if(mAUnit!=0){
+			if(mAUnit==&mRightWall || mAUnit==&mLeftWall){
+				mPosition.y+=Vec.y;
+			}
+			else{
+				mPosition.x+=Vec.x;
+			}
+		}
 		//En massa kod för när den går på väggar och liknande =)
 	}
 }
@@ -69,11 +80,43 @@ sf::Sprite PlayerPartFeet::getSprite()
 		Temp.setRotation(90);
 		return Temp;
 	}*/
+	sf::Vector2f TempOrigin(0, 0);
+	if(mAUnit!=0){
+		if(mAO==0)
+		{
+			mRotation=90;
+			TempOrigin=sf::Vector2f(32, 32);
+		}
+		if(mAO==1)
+		{
+			mRotation=180;
+			TempOrigin=sf::Vector2f(64, 16);
+		}
+		if(mAO==2)
+		{
+			mRotation=-90;
+			TempOrigin=sf::Vector2f(32, -32);
+		}
+	}
+	else{
+		mRotation=0;
+	}
+
 	if(mUnit==&mFeetExt)
 	{
-		mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
+		
 		mUnit=&mFeetExt;
+		mFeetExt.setPosition(mPosition);
+		mFeetExt.setOrigin(sf::Vector2f(mFeetExt.getSprite().getGlobalBounds().width/2, mFeetExt.getSprite().getGlobalBounds().width/2));
+		mFeetExt.rotate(mRotation);
+		mFeetExt.setPosition(mPosition+sf::Vector2f(32, 0));
 		return mUnit->getSprite();
+	}
+	if(mRotation!=0){
+		sf::Sprite Temp=mActiveAnimation->getSprite();
+		Temp.setOrigin(TempOrigin);
+		Temp.rotate(mRotation);
+		return Temp;
 	}
 	return mActiveAnimation->getSprite();
 }
@@ -92,10 +135,12 @@ bool PlayerPartFeet::getAttached()
 void PlayerPartFeet::setAttached(bool b)
 {
 	mAttached=b;
-	if(!mAttached){
+	if(!mAttached)
+	{
 		mUnit=0;
 	}
-	if(mAttached){
+	if(mAttached)
+	{
 		mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
 		mUnit=&mFeetExt;
 	}
@@ -116,6 +161,7 @@ Unit* PlayerPartFeet::getUnit()
 {
 	return mUnit;
 }
+
 void PlayerPartFeet::activateRocketBoots()
 {
 	if(mFuel>0 && mAttached==false)
@@ -134,4 +180,36 @@ void PlayerPartFeet::reFuel(float fuel)
 void PlayerPartFeet::jumpReset()
 {
 	mJump=3;
+}
+
+void PlayerPartFeet::setAttachedWall(bool b, int w){
+	if(b==true)
+	{
+		mAttachedWall=b;
+		mAO=w;
+		if(mAO==0)
+		{
+			mAUnit=&mRightWall;
+		}
+		if(mAO==1)
+		{
+			mAUnit=&mLeftWall;
+		}
+		if(mAO==2)
+		{
+			mAUnit=&mRoof;
+		}
+	}
+	else
+	{
+		mAO=w;
+		mAttachedWall=false;
+		mAUnit=0;
+	}
+}
+bool PlayerPartFeet::getAttachedWall(){
+	return mAttachedWall;
+}
+int PlayerPartFeet::getWall(){
+	return mAO;
 }
