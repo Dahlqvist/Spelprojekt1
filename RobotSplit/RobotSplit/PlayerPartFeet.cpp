@@ -2,9 +2,9 @@
 #include <iostream>
 
 PlayerPartFeet::PlayerPartFeet():
-mLeftAnimation("StixLowerAni", 200, 8),
+	mLeftAnimation("StixLowerAniL", 200, 8),
 	mRightAnimation("StixLowerAni", 200, 8),
-	mLeft("StixLower", 200, 1),
+	mLeft("StixLowerL", 200, 1),
 	mRight("StixLower", 200, 1),
 	mFeetExt("StixUpper")
 {
@@ -41,10 +41,7 @@ void PlayerPartFeet::draw()
 }
 void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 {
-	if(Vec.x!=0)
-	{
-		mActiveAnimation=&mRightAnimation;
-	}
+	PlayerPartFeet::decideAnimation(Vec);
 	if(mAttached==false)
 	{
 		mPosition+=Vec;
@@ -64,6 +61,47 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 			}
 		}
 		//En massa kod för när den går på väggar och liknande =)
+	}
+}
+void PlayerPartFeet::decideAnimation(sf::Vector2f Vec){
+	if(mAttachedWall==false){
+		if(Vec.x>0)
+		{
+			mActiveAnimation=&mRightAnimation;
+		}
+		if(Vec.x<0)
+		{
+			mActiveAnimation=&mLeftAnimation;
+		}
+	}
+	else if(mAO==0)
+	{
+		if(Vec.y>0){
+			mActiveAnimation=&mRightAnimation;
+		}
+		if(Vec.y<0){
+			mActiveAnimation=&mLeftAnimation;
+		}
+	}
+	else if(mAO==2)
+	{
+		if(Vec.y<0){
+			mActiveAnimation=&mRightAnimation;
+		}
+		if(Vec.y>0){
+			mActiveAnimation=&mLeftAnimation;
+		}
+	}
+	else
+	{
+		if(Vec.x<0)
+		{
+			mActiveAnimation=&mRightAnimation;
+		}
+		if(Vec.x>0)
+		{
+			mActiveAnimation=&mLeftAnimation;
+		}
 	}
 }
 sf::Vector2f PlayerPartFeet::getPosition()
@@ -154,7 +192,14 @@ void PlayerPartFeet::resetAnimation()
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
 	{
-		mActiveAnimation=&mRight;
+		if(mActiveAnimation==&mRightAnimation)
+		{
+			mActiveAnimation=&mRight;
+		}
+		else if(mActiveAnimation==&mLeftAnimation)
+		{
+			mActiveAnimation=&mLeft;
+		}
 	}
 }
 Unit* PlayerPartFeet::getUnit()
@@ -193,11 +238,12 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		}
 		if(mAO==1)
 		{
-			mAUnit=&mLeftWall;
+			mAUnit=&mRoof;
+			//Får lägga in -16 i y-led för att få rätt position mot "taket"
 		}
 		if(mAO==2)
 		{
-			mAUnit=&mRoof;
+			mAUnit=&mLeftWall;
 		}
 	}
 	else

@@ -89,7 +89,7 @@ int main()
 			Temp.x=(float)sf::Mouse::getPosition(window).x-16;
 			Temp.y=(float)sf::Mouse::getPosition(window).y-16;
 			mPlayer->shootHead(sf::Vector2f(Temp));
-			std::cout << "Anropar";
+			//std::cout << "Anropar";
 		}
 		/*if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 			mPlayer->shootHead(sf::Vector2f(0, 0));

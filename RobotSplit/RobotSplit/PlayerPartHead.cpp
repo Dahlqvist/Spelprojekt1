@@ -5,7 +5,7 @@ mBody(Body),
 	mLeftAnimation("StixShootAni", 200, 8),
 	mRightAnimation("StixShootAni", 200, 8),
 	mLeft("StixUpper", 200, 1),
-	mRight("Tile6", 200, 1),
+	mRight("StixBrain", 200, 1),
 	mFeetExt("StixUpper")
 {
 	mActiveAnimation=&mRight;
@@ -52,7 +52,7 @@ sf::Sprite PlayerPartHead::getSprite()
 	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x+16, mPosition.y+16));
 	sf::Sprite test(mActiveAnimation->getSprite());
 	test.scale(0.5, 0.5);
-	return test;
+	return mActiveAnimation->getSprite();
 }
 std::string PlayerPartHead::getId()
 {
