@@ -259,3 +259,6 @@ bool PlayerPartFeet::getAttachedWall(){
 int PlayerPartFeet::getWall(){
 	return mAO;
 }
+void PlayerPartFeet::forceMove(sf::Vector2f force){
+	mPosition+=force;
+}

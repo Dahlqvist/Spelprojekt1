@@ -24,6 +24,7 @@ public:
 
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
+	void checkCollisionExt();
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -42,7 +43,6 @@ private:
 	sf::Texture mLjus1;
 	sf::Texture mLjus2;
 	sf::Texture mLjus3;
-	sf::Texture mLjus4;
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;

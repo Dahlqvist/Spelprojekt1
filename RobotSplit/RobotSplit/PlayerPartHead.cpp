@@ -49,7 +49,7 @@ sf::Vector2f PlayerPartHead::getPosition()
 } 
 sf::Sprite PlayerPartHead::getSprite()
 {
-	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x+16, mPosition.y+16));
+	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x+26, mPosition.y+26));
 	sf::Sprite test(mActiveAnimation->getSprite());
 	test.scale(0.5, 0.5);
 	return mActiveAnimation->getSprite();
@@ -82,7 +82,7 @@ void PlayerPartHead::jump()
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
-	float mSpeed=2;
+	float mSpeed=3;
 	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
 }
 void PlayerPartHead::resetAnimation()
@@ -95,4 +95,8 @@ void PlayerPartHead::resetAnimation()
 Unit* PlayerPartHead::getUnit()
 {
 	return mUnit;
+}
+void PlayerPartHead::forceMove(sf::Vector2f force){
+	mPosition+=force;
+	mShootVector=sf::Vector2f(0, 0);
 }

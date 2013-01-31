@@ -109,3 +109,6 @@ Unit* PlayerPartBody::getUnit()
 void PlayerPartBody::jumpReset(){
 	mJump=3;
 }
+void PlayerPartBody::forceMove(sf::Vector2f force){
+	mPosition+=force;
+}

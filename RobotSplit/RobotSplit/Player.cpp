@@ -20,6 +20,10 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeet.setPosition(Position);
 	mTexture.loadFromFile("Texture/Stix/stix.png");
 	mSprite.setTexture(mTexture);
+	mLjus1.loadFromFile("Texture/Stix/stix_sil_full.png");
+	mLjus2.loadFromFile("Texture/Stix/stix_sil_lower.png");
+	mLjus3.loadFromFile("Texture/Stix/stix_sil_upper.png");
+	mLjus.setTexture(mLjus1);
 	mDash=0;
 	mFacingRight=true;
 	mJumpTemp.restart();
@@ -37,9 +41,33 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	else
 	{*/
-		Window.draw(mFeet.getSprite());
-		Window.draw(mHead.getSprite());
-		Window.draw(mBody.getSprite());
+	if(mTogether==true)
+	{
+		mLjus.setTexture(mLjus1);
+		mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mSprite.getGlobalBounds().width/2, -mSprite.getGlobalBounds().height/2));
+	}
+	else if(mBodyActive==true)
+	{
+		mLjus.setTexture(mLjus3);
+		mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mBody.getSprite().getGlobalBounds().width/2, -mBody.getSprite().getGlobalBounds().height/2));
+	}
+	else
+	{
+		if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
+		{
+			mLjus.setTexture(mLjus2);
+		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
+		}
+		else
+		{
+		mLjus.setTexture(mLjus2);
+		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
+		}
+	}
+	Window.draw(mLjus);
+	Window.draw(mFeet.getSprite());
+	Window.draw(mHead.getSprite());
+	Window.draw(mBody.getSprite());
 	for(unsigned int i=0; i<mParts.size(); i++)
 		{
 			if(mParts[i]->getUnit()!=0)
@@ -54,6 +82,7 @@ void Player::update()
 {
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
+		mParts[i]->update();
 		if(mParts[i]->getPosition().y+mParts[i]->getSprite().getGlobalBounds().height<700)
 		{
 			if(i==1)
@@ -65,7 +94,6 @@ void Player::update()
 				mParts[i]->setPosition(sf::Vector2f(0, 3));
 			}
 		}
-		mParts[i]->update();
 	}
 
 	if(mDash>0){
@@ -82,6 +110,10 @@ void Player::update()
 	}
 	else{
 		mDashing=false;
+	}
+
+	if(mTogether==false && mFeet.getAttached()==true){
+		Player::checkCollisionExt();
 	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
@@ -438,7 +470,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		{
 			mFeet.jumpReset();
 		}
-		mFeet.setPosition(Vec);
+		mFeet.forceMove(Vec);
 	}
 	else if(part==1)
 	{
@@ -446,11 +478,11 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		{
 			mBody.jumpReset();
 		}
-		mBody.setPosition(Vec);
+		mBody.forceMove(Vec);
 	}
 	else if(part==2)
 	{
-		mHead.setPosition(Vec);
+		mHead.forceMove(Vec);
 		mHead.setShootVector(sf::Vector2f(0, 0));
 	}
 	else
@@ -460,7 +492,74 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 			mBody.jumpReset();
 			mFeet.jumpReset();
 		}
-		mFeet.setPosition(Vec);
-		mBody.setPosition(Vec);
+		mFeet.forceMove(Vec);
+		mBody.forceMove(Vec);
+	}
+}
+void Player::checkCollisionExt(){
+
+	sf::FloatRect ColRect;
+	sf::FloatRect TempFeet=mFeet.getSprite().getGlobalBounds();
+	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
+	{
+		TempFeet.width-=50;
+		TempFeet.left+=25;
+	}
+	else{
+		TempFeet.height-=50;
+		TempFeet.top+=25;
+	}
+	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
+		
+		if(ColRect.width<ColRect.height)
+		{
+			if(mBody.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
+			{
+				mBody.forceMove(sf::Vector2f(ColRect.width, 0));
+			}
+			else
+			{
+				mBody.forceMove(sf::Vector2f(-ColRect.width, 0));
+			}
+		}
+		else
+		{
+			if(mBody.getSprite().getPosition().y > mFeet.getSprite().getPosition().y)
+			{
+				mBody.forceMove(sf::Vector2f(0, ColRect.height));
+			}
+			else
+			{
+				mBody.forceMove(sf::Vector2f(0, -ColRect.height));
+			}
+		}
+	}
+	if(mHeadless==true){
+		sf::FloatRect ColRect2;
+		if(mHead.getSprite().getGlobalBounds().intersects(TempFeet, ColRect2)){
+		
+			if(ColRect2.width<ColRect2.height)
+			{
+				if(mHead.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
+				{
+					mHead.forceMove(sf::Vector2f(ColRect2.width, 0));
+				}
+				else
+				{
+					mHead.forceMove(sf::Vector2f(-ColRect2.width, 0));
+				}
+			}
+			else
+			{
+				if(mHead.getSprite().getPosition().y > mFeet.getSprite().getPosition().y)
+				{
+					mHead.forceMove(sf::Vector2f(0, ColRect2.height));
+				}
+				else
+				{
+					mHead.forceMove(sf::Vector2f(0, -ColRect2.height));
+				}
+			}
+		}
 	}
 }

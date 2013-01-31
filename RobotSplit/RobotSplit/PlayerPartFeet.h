@@ -21,6 +21,7 @@ public:
 	virtual void jump();
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
+	virtual void forceMove(sf::Vector2f);
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();

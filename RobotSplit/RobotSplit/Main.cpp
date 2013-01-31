@@ -11,6 +11,7 @@
 #include "Collision.h"
 #include "XmlSaver.h"
 #include "Background.h"
+#include <SFML\System\Clock.hpp>
 
 void runCollisions(UnitVector& Objects, Player& player)
 {
@@ -28,7 +29,10 @@ void runCollisions(UnitVector& Objects, Player& player)
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	window.setFramerateLimit(60);
+	//window.setFramerateLimit(60);
+	sf::Clock timer;
+	sf::Time limit=sf::milliseconds(16);
+	sf::Time currentTime=sf::milliseconds(0);
 	UnitVector Objects;
 	Background *BG;
 	Level	level("Test.xml");	
@@ -44,6 +48,7 @@ int main()
 
 	while (window.isOpen())
 	{
+		timer.restart();
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -114,6 +119,8 @@ int main()
 			Objects[i]->draw();
 		}
 		window.display();
+		currentTime=sf::milliseconds(timer.getElapsedTime().asMilliseconds());
+		sf::sleep(limit - currentTime);
 	}
 	/*
 	//Test for finding Textures' names
