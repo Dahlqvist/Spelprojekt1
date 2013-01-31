@@ -95,6 +95,7 @@ sfml-main.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationWrap.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
@@ -109,11 +110,13 @@ sfml-main.lib
     <ClCompile Include="PlayerPartHead.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="UnitWrap.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlSaver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationWrap.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="FeetExtensions.h" />
@@ -129,6 +132,7 @@ sfml-main.lib
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="UnitWrap.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
