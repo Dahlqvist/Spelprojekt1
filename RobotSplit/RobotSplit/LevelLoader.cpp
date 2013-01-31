@@ -219,9 +219,9 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		int Frames,Speed;
 		Animation* ani;
 		CurrentValue=	getValue(Node->first_node("Frames"));
-		Speed=((float)atof(CurrentValue.c_str()));
-		CurrentValue=	getValue(Node->first_node("Speed"));
 		Frames=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(Node->first_node("Speed"));
+		Speed=((float)atof(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
 		TempObject=		new Unit(Position,Id,ani);
 	}

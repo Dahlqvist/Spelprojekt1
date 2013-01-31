@@ -326,8 +326,8 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
 	
-	//Initialzing TEMPORARYLava
-	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle_Temp.png");
+	//Initialzing Lava
+	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 
 	//INTIIALIZING TEMPORARYBANA
