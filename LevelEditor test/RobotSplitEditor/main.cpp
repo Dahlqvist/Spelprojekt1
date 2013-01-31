@@ -3,7 +3,6 @@
 //#include <dirent.h>
 #include <iostream>
 #include <string>
-
 using namespace sf;
 int main(int argc, char *argv[])
 {
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 			if(CurrentEvent.type==Event::EventType::Closed)
 			{
 				window.close();
-			}
+			} 
 		}
 	}
 }

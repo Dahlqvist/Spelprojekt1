@@ -4,7 +4,7 @@
 #include	<stdlib.h>
 #include	"XmlSaver.h"
 #include	"Level.h"
-#include	"Unit.h"
+#include	"UnitWrap.h"
 #include	"Player.h"
 #include	"Platform.h"
 #include	"TextureManager.h"
@@ -67,7 +67,6 @@ void	XmlSaver::saveLevel(Level &Source)
 		Background->append_node(SpriteName);
 	//Inserts the Background element into Level element
 		Level->append_node(Background);
-		
 	//Enters the Units to Xml documents
 		//Adds the Player to the Xml
 		addPlayer(Source.getPlayer(),Objects);
@@ -161,6 +160,13 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 {
 	//Allocates the Unit and Position elements in the Xml document
+		xml_node<> *Frames;
+		xml_node<> *Speed;
+		if(UnitWrap(*Source).getAnimation()!=nullptr)
+		{
+			Speed				=mDocument.allocate_node(node_element,"Speed",modifyInt(UnitWrap(*Source).getAnimation()->mTimePerFrame));
+			Frames				=mDocument.allocate_node(node_element,"Frames",modifyInt(UnitWrap(*Source).getAnimation()->mNumFrames));
+		}
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
@@ -174,9 +180,16 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
 	//Adds the y element into the Size element
 		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
-	//Adds the Position and Size elements to the Gameobject element
+	//Adds the Type and Sprite elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Sprite);
+	//Adds the Speed and Frames elements incase of the unit using Animation
+	if(UnitWrap(*Source).getAnimation()!=nullptr)
+	{
+		Gameobject->append_node(Speed);
+		Gameobject->append_node(Frames);
+	}
+	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
 	Parent->	append_node(Gameobject);
