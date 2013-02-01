@@ -1,6 +1,8 @@
 #include "UnitManager.h"
 #include "Collision.h"
 
+std::vector<SidePair> UnitManager::mSidePairs;
+
 UnitManager::UnitManager(Player* player)
 	:mPlayer(player)
 {
