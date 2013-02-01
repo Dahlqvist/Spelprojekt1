@@ -200,7 +200,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile9"</SpriteName>
+			<SpriteName>"Tile2"</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>544</y>
@@ -1019,6 +1019,15 @@
 			<Position>
 				<x>1152</x>
 				<y>576</y>
+			</Position>
+			<Size>0.5</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1152</x>
+				<y>608</y>
 			</Position>
 			<Size>1</Size>
 			<Rotation>0</Rotation>
