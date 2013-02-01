@@ -317,11 +317,11 @@ void Player::setAttachFeetExtension(bool b)
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}
-			if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1)){
+			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1)){
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}
-			if(mFeet.getWall()==2 && UnitManager::isCollidedSide(0, 3)){
+			else if(mFeet.getWall()==2 && UnitManager::isCollidedSide(0, 3)){
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}
