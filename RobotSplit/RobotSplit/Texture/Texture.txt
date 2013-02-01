@@ -2,16 +2,18 @@ Texture/Sprite	||	Beskrivning
 -----------------------------------
 Stix
 -----
-StixLower	=	Stix underdel
+StixLower		=	Stix underdel
 StixLowerAni	=	Stix underdels-animation (8 delar)
-StixUpper	=	Stix överdel
+StixUpper		=	Stix överdel
 StixShootAni	=	Stix skjut-animation (8 delar)
 StixUpperSplit	=	Stix överdel kopplar loss från underdel-animation (8 delar)
 StixSmokeAni	=	Stix avfyrningsrök-animation (4 delar)
+StixBrainAni	=	Stix animation för nedsänkning av hjärnans magnet(8 delar)
+StixBrainLowered=	Stix hjärnas magnet nedsänkt
 --------------------------------
 Enviroment
 -----------
-AntiMagnet	=	Antimagnet
+AntiMagnet		=	Antimagnet
 BolconyCornerR	=	Höger kant av bolcony
 BolconyCornerL	=	Vänster kant av bolcony
 BolconyMiddle	=	Mittdelen av bolcony
@@ -19,8 +21,10 @@ PlatformBreakAni=	Platformen som kan gå sönder (3 delar)
 BlueButtonAni	=	Blå knapp, av och på animation (2 delar)
 RedButtonAni	=	Röd knapp, av och på animation (2 delar)
 YellowButtonAni	=	Gul knapp, av och på animation (2 delar)
-Exit		=	Exit dörren
-RailEndL	=	Vänster kant av rail
-RailEndR	=	Höger kant av rail
-RailMiddle	=	Mittendel av rail
-Tile1-9		=	Tile1 till tile9, ändra siffran för annan tile
+Exit			=	Exit dörren
+RailEndL		=	Vänster kant av rail
+RailEndR		=	Höger kant av rail
+RailMiddle		=	Mittendel av rail
+Tile1-9			=	Tile1 till tile9, ändra siffran för annan tile
+LavaMiddle		= 	Vanlig lava
+Bana1			=	Nuvarande bakgrund för den första banan
