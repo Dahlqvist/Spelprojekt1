@@ -1138,6 +1138,18 @@
 				<y>576</y>
 			</Position>
 			<Size>
+				<x>90</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<SpriteName>&quot;Line&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>608</y>
+			</Position>
+			<Size>
 				<x>0</x>
 				<y>1</y>
 			</Size>
