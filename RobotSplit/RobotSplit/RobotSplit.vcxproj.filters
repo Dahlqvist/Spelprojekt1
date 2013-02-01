@@ -58,6 +58,7 @@
     <ClCompile Include="BrainMagnet.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="UnitManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -120,6 +121,7 @@
     <ClInclude Include="BrainMagnet.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
+    <ClInclude Include="UnitManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

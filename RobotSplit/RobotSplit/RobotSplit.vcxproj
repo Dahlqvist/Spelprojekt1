@@ -110,6 +110,7 @@ sfml-main.lib
     <ClCompile Include="PlayerPartHead.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="UnitManager.cpp" />
     <ClCompile Include="UnitWrap.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlSaver.cpp" />
@@ -132,6 +133,7 @@ sfml-main.lib
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="UnitManager.h" />
     <ClInclude Include="UnitWrap.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />

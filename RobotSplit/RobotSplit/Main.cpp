@@ -12,6 +12,7 @@
 #include "XmlSaver.h"
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
+#include "UnitManager.h"
 
 void runCollisions(UnitVector& Objects, Player& player)
 {
@@ -30,25 +31,24 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	window.setFramerateLimit(60);
-	UnitVector Objects;
 	Background *BG;
 	Level	level("Test.xml");	
-	Objects	= level.getObjects();
-	Collision::unitAtSides(Objects);
+	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
+	UnitManager Objects(mPlayer, level.getObjects());
+	Collision::unitAtSides(Objects.getUnits());
 	BG=level.getBackground();
-	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	for(UnitVector::size_type i=0;i<Objects.getUnits().size();i++)
 	{
-		cout<<Objects[i]->getId()<<endl;
+		cout<<Objects.getUnits()[i]->getId()<<endl;
 	}
 
-	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	while (window.isOpen())
 	{
 		lastUpdateClock.restart();
-		//while (lastUpdate>1/60.0)
+		while (lastUpdate>1/60.0)
 		{
 			lastUpdate-=1/60.0;
 			sf::Event event;
@@ -107,8 +107,9 @@ int main()
 			window.clear(sf::Color::Black);
 			
 			mPlayer->update();
+			Objects.update();
 
-			runCollisions(Objects, *mPlayer);
+			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
 
 		window.draw(BG->draw());
@@ -117,11 +118,12 @@ int main()
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 
-		for(UnitVector::size_type i=0;i<Objects.size();i++)
+		/*for(UnitVector::size_type i=0;i<Objects.getUnits().size();i++)
 		{
-			window.draw(Objects[i]->getSprite());
-			Objects[i]->draw();
-		}
+			window.draw(Objects.getUnits()[i]->getSprite());
+			Objects.getUnits()[i]->draw();
+		}*/
+		Objects.draw(window);
 		window.display();
 
 		lastUpdate+=lastUpdateClock.getElapsedTime().asSeconds();
