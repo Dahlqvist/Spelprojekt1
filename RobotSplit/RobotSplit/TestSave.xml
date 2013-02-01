@@ -1106,6 +1106,42 @@
 				<y>1</y>
 			</Size>
 		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<SpriteName>&quot;Line&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>
+				<x>270</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<SpriteName>&quot;Line&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>1</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<SpriteName>&quot;Line&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>576</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>1</y>
+			</Size>
+		</Unit>
 	</Objects>
 </Level>
 

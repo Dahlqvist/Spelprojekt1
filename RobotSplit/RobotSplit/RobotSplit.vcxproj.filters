@@ -58,9 +58,17 @@
     <ClCompile Include="BrainMagnet.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+<<<<<<< HEAD
+    <ClCompile Include="UnitManager.cpp" />
+=======
+    <ClCompile Include="Line.cpp" />
+>>>>>>> e23a7f46d6c63168302df0646afe72590aa22844
+>>>>>>> 7f928b11b8ce47f97e358f2b0aa6ec8fd6722a19
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -123,9 +131,17 @@
     <ClInclude Include="BrainMagnet.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+<<<<<<< HEAD
+    <ClInclude Include="UnitManager.h" />
+=======
+    <ClInclude Include="Line.h" />
+>>>>>>> e23a7f46d6c63168302df0646afe72590aa22844
+>>>>>>> 7f928b11b8ce47f97e358f2b0aa6ec8fd6722a19
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

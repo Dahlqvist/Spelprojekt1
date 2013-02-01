@@ -49,8 +49,10 @@ private:
 	sf::Sprite* Temp3;
 	sf::Texture mTexture;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet;
+	int magnetSlot;
 };
 
 #endif
