@@ -4,7 +4,13 @@
 #include <vector>
 #include "Unit.h"
 #include "Player.h"
-#include <map>
+
+struct SidePair
+{
+	SidePair(int playerPart, int side):mPlayerPart(playerPart), mSide(side){};
+	int mPlayerPart, mSide;
+	bool isPair(int playerPart, int side){return playerPart==mPlayerPart && side==mSide;};
+};
 
 class UnitManager
 {
@@ -17,6 +23,8 @@ public:
 	std::vector<Unit*> &getUnits(){return mUnits;};
 	Player* getPlayer(){return mPlayer;};
 
+	bool isCollidedSide(int playerPart, int side);
+
 	void update();
 	void draw(sf::RenderWindow& window);
 
@@ -24,7 +32,7 @@ private:
 	typedef std::vector<Unit*> unitVector;
 	unitVector mUnits;
 	Player* mPlayer;
-	std::map<int, int> mCollidedSides;
+	std::vector<SidePair> mSidePairs;
 };
 
 #endif

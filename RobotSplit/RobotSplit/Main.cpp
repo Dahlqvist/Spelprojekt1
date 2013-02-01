@@ -14,19 +14,6 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 
-void runCollisions(UnitVector& Objects, Player& player)
-{
-	
-	Collision col[3];
-	int foo=player.getCollisionSprite().size();
-	//sf::Clock timer;
-	for (int i=0; i<player.getCollisionSprite().size() && i<3; i++)
-	{
-		col[i].collide(i, player, Objects);
-	}
-	//std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
-}
-
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
