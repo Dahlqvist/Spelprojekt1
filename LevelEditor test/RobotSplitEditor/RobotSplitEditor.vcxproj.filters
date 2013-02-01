@@ -18,12 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnitWrap.cpp">
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnitWrap.h">
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
