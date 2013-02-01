@@ -25,6 +25,7 @@ public:
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
 	void checkCollisionExt();
+	void checkCollisionMagnet();
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -48,8 +49,10 @@ private:
 	sf::Sprite* Temp3;
 	sf::Texture mTexture;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet;
+	int magnetSlot;
 };
 
 #endif

@@ -112,3 +112,7 @@ void PlayerPartBody::jumpReset(){
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;
 }
+void PlayerPartBody::restartAnimation(){
+	mRightAnimation.restart();
+	mLeftAnimation.restart();
+}

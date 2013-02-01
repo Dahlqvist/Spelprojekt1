@@ -29,6 +29,7 @@ public:
 	bool getAttachedWall();
 	void setAttachedWall(bool, int i=0);
 	void decideAnimation(sf::Vector2f);
+	void restartAnimation();
 private: 
 	bool mAttached, mAttachedWall;
 	Unit* mUnit;

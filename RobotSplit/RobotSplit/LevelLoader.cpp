@@ -10,7 +10,7 @@
 #include "PlayerPart.h"
 #include "Unit.h"
 #include "Animation.h"
-
+#include "Line.h"
 LevelLoader::LevelLoader(void)
 {
 }
@@ -73,6 +73,10 @@ Level	LevelLoader::getLevel()
 		else if(type=="Laser")
 		{
 			addLaser(RetLevel,Gameobject);
+		}
+		else if(type=="Line")
+		{
+			addLine(RetLevel,Gameobject);
 		}
 		else
 		{
@@ -230,6 +234,40 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		//Creates an Unit object
 		TempObject=		new Unit(Position,Id,Sprite);
 	}
+	//Puts the Unit object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+
+void	LevelLoader::addLine(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
+	sf::Vector2f			Position;
+	int						Rotation=0;
+	float					Size=0;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size
+	CurrentValue=	getValue(Node->first_node("Size"));
+	Size=			atof(CurrentValue.c_str());
+
+	//Initiates the Rotation variable
+	CurrentValue=	getValue(Node->first_node("Rotation"));
+	Rotation=		atoi(CurrentValue.c_str());
+
+	//Creates an Unit object
+	TempObject=		new Line(Position,Rotation,Size);
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

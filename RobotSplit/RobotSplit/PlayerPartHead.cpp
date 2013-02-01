@@ -1,4 +1,5 @@
 #include "PlayerPartHead.h"
+#include <iostream>
 
 PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
@@ -6,7 +7,7 @@ mBody(Body),
 	mRightAnimation("StixShootAni", 200, 8),
 	mLeft("StixUpper", 200, 1),
 	mRight("StixBrain", 200, 1),
-	mFeetExt("StixUpper")
+	mMagnet("StixBrainLowered")
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
@@ -20,13 +21,11 @@ void PlayerPartHead::update()
 	mActiveAnimation->update();
 	if(mAttached==true)
 	{
-		mPosition=mBody->getPosition();
+		mPosition=mBody->getPosition()+sf::Vector2f(26, 26);
 	}
 	if(mShootVector!=sf::Vector2f(0, 0))
 	{
 		PlayerPartHead::setPosition(mShootVector);
-		mFeetExt.rotate(5);
-		mFeetExt.setPosition(mPosition);
 	}
 } 
 void PlayerPartHead::draw()
@@ -49,9 +48,9 @@ sf::Vector2f PlayerPartHead::getPosition()
 } 
 sf::Sprite PlayerPartHead::getSprite()
 {
-	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x+26, mPosition.y+26));
-	sf::Sprite test(mActiveAnimation->getSprite());
-	test.scale(0.5, 0.5);
+	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x, mPosition.y));
+	//sf::Sprite test(mActiveAnimation->getSprite());
+	//test.scale(0.5, 0.5);
 	return mActiveAnimation->getSprite();
 }
 std::string PlayerPartHead::getId()
@@ -99,4 +98,12 @@ Unit* PlayerPartHead::getUnit()
 void PlayerPartHead::forceMove(sf::Vector2f force){
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
+	if(mAttached==false){
+		mUnit=&mMagnet;
+		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
+		mMagnet.setSolid(true);
+	}
+}
+void PlayerPartHead::setMagnetSolid(bool b){
+	mMagnet.setSolid(b);
 }
