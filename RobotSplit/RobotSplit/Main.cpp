@@ -17,7 +17,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	window.setFramerateLimit(60);
+	//window.setFramerateLimit(60);
 	Background *BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
@@ -32,12 +32,14 @@ int main()
 
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
+	int loops;
 	while (window.isOpen())
 	{
-		lastUpdateClock.restart();
-		while (lastUpdate>1/60.0)
+		loops=0;
+		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
-			lastUpdate-=1/60.0;
+			loops++;
+			lastUpdate+=1/60.0;
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
@@ -112,8 +114,6 @@ int main()
 		}*/
 		Objects.draw(window);
 		window.display();
-
-		lastUpdate+=lastUpdateClock.getElapsedTime().asSeconds();
 	}
 	/*
 	//Test for finding Textures' names
