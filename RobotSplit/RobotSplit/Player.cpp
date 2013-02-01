@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include <iostream>
 #include <math.h>
+#include "UnitManager.h"
 
 Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
@@ -30,6 +31,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mMagnetTimer.restart();
 	magnetSlot=2;
 	mHeadAttachedFeet=false;
+	mBodyStandningFeet=false;
 	Temp1=new sf::Sprite;
 	Temp2=new sf::Sprite;
 	Temp3=new sf::Sprite;
@@ -115,7 +117,7 @@ void Player::update()
 	else{
 		mDashing=false;
 	}
-
+	mBodyStandningFeet=false;
 	if(mTogether==false && mFeet.getAttached()==true){
 		Player::checkCollisionExt();
 	}
@@ -242,18 +244,18 @@ bool Player::getHeadless()
 //Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mJumpTemp.getElapsedTime().asSeconds()>1.0)
+	if(mJumpTemp.getElapsedTime().asSeconds()>0)
 	{
-		if(mTogether==true)
+		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
 			mFeet.jump();
 			mBody.jump();
 		}
-		else if(mBodyActive)
+		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyStandningFeet==true || (mAttachedMagnet==true && mBodyAttached==true))
 		{
 			mBody.jump();
 		}
-		else
+		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || (mAttachedMagnet==true && mBodyAttached==false))
 		{
 			mFeet.jump();
 		}
@@ -414,7 +416,7 @@ void Player::interact(int action){
 	if(action==3)
 	{
 		//Ner "S"
-		if(mTogether==true)
+		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
 			Player::dash();
 		}
@@ -538,7 +540,7 @@ void Player::checkCollisionExt(){
 		TempFeet.top+=25;
 	}
 	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-
+		mBodyStandningFeet=true;
 		if(ColRect.width<ColRect.height)
 		{
 			if(mBody.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
@@ -617,3 +619,28 @@ void Player::checkCollisionMagnet()
 		mFeet.forceMove(TempHead-TempFeet);
 	}
 }
+//bool Player::bodyStandningFeet()
+//{
+//	sf::FloatRect ColRect;
+//	sf::FloatRect TempFeet=mFeet.getSprite().getGlobalBounds();
+//	TempFeet.top-=5;
+//	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
+//	{
+//		TempFeet.width-=50;
+//		TempFeet.left+=25;
+//	}
+//	else{
+//		TempFeet.height-=50;
+//		TempFeet.top+=25;
+//	}
+//	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
+//		if(ColRect.height>0){
+//			std::cout << "Står på  ";
+//		}
+//		return true;
+//	}
+//	else
+//	{
+//		return false;
+//	}
+//}
