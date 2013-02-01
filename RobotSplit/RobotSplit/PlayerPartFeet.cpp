@@ -262,3 +262,7 @@ int PlayerPartFeet::getWall(){
 void PlayerPartFeet::forceMove(sf::Vector2f force){
 	mPosition+=force;
 }
+void PlayerPartFeet::restartAnimation(){
+	mRightAnimation.restart();
+	mLeftAnimation.restart();
+}

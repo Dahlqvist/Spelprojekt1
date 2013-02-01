@@ -96,6 +96,7 @@ sfml-main.lib
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
     <ClCompile Include="FeetWall.cpp" />
@@ -116,6 +117,7 @@ sfml-main.lib
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="FeetExtensions.h" />
     <ClInclude Include="FeetWall.h" />
