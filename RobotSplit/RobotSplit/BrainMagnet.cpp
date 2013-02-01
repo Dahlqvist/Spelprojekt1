@@ -5,3 +5,7 @@ BrainMagnet::BrainMagnet(std::string spriteName):
 {
 	mSprite=TextureManager::getSprite(spriteName);
 }
+
+	void BrainMagnet::setSolid(bool b){
+		mSolid=b;
+	}

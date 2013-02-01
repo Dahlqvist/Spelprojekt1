@@ -25,6 +25,7 @@ public:
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
 	void checkCollisionExt();
+	void checkCollisionMagnet();
 
 	void jump();
 	void shootHead(sf::Vector2f);

@@ -97,6 +97,9 @@ Unit* PlayerPartHead::getUnit()
 void PlayerPartHead::forceMove(sf::Vector2f force){
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
-	mUnit=&mMagnet;
-	mUnit->setPosition(mPosition);
+	if(mAttached==false){
+		mUnit=&mMagnet;
+		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
+		mMagnet.setSolid(true);
+	}
 }

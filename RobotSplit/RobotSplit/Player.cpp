@@ -65,16 +65,20 @@ void Player::draw(sf::RenderWindow& Window)
 		}
 	}
 	Window.draw(mLjus);
+	if(mHead.getUnit()!=0)
+	{
+		Window.draw(mHead.getUnit()->getSprite());
+	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
-	for(unsigned int i=0; i<mParts.size(); i++)
+	/*for(unsigned int i=0; i<mParts.size(); i++)
 		{
 			if(mParts[i]->getUnit()!=0)
 			{
 				Window.draw(mParts[i]->getUnit()->getSprite());
 			}	
-		}
+		}*/
 	//}
 	//Window.draw(mBody.getObject()->getSprite());
 }
@@ -114,6 +118,9 @@ void Player::update()
 
 	if(mTogether==false && mFeet.getAttached()==true){
 		Player::checkCollisionExt();
+	}
+	if(mHeadless==true && mHead.getUnit()!=0 && mTogether==false){
+		Player::checkCollisionMagnet();
 	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
@@ -563,5 +570,18 @@ void Player::checkCollisionExt(){
 				}
 			}
 		}
+	}
+}
+void Player::checkCollisionMagnet(){
+	sf::Vector2f TempBody=mBody.getSprite().getPosition()+sf::Vector2f(mBody.getSprite().getGlobalBounds().width/2, mBody.getSprite().getGlobalBounds().height/2);
+	sf::Vector2f TempFeet=mFeet.getSprite().getPosition()+sf::Vector2f(mFeet.getSprite().getGlobalBounds().width/2, mFeet.getSprite().getGlobalBounds().height/2);
+	sf::Vector2f TempHead=mHead.getUnit()->getSprite().getPosition()+sf::Vector2f(mHead.getUnit()->getSprite().getGlobalBounds().width/2, mHead.getUnit()->getSprite().getGlobalBounds().height);
+	if((TempBody.x-TempHead.x)*(TempBody.x-TempHead.x)+(TempBody.y-TempHead.y)*(TempBody.y-TempHead.y)<48*16)
+	{
+		mBody.forceMove(TempHead-TempBody);
+	}
+	else if((TempFeet.x-TempHead.x)*(TempFeet.x-TempHead.x)+(TempFeet.y-TempHead.y)*(TempFeet.y-TempHead.y)<48*16)
+	{
+		mFeet.forceMove(TempHead-TempFeet);
 	}
 }
