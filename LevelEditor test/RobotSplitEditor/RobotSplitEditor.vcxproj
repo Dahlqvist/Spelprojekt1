@@ -80,8 +80,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="UnitWrap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -91,7 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnitWrap.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

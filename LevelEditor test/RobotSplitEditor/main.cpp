@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 using namespace sf;
+
 int main(int argc, char *argv[])
 {
 	RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor");

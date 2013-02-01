@@ -590,6 +590,66 @@
 				<y>0</y>
 			</Size>
 		</Unit>
+		<Unit>
+			<Type>&quot;Ram&quot;</Type>
+			<SpriteName>&quot;RamTop1&quot;</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>0</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Ram&quot;</Type>
+			<SpriteName>&quot;RamLeft1&quot;</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>64</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Ram&quot;</Type>
+			<SpriteName>&quot;RamRight1&quot;</SpriteName>
+			<Position>
+				<x>1216</x>
+				<y>64</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Ram&quot;</Type>
+			<SpriteName>&quot;RamPipeLeft1&quot;</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>696</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>0</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Ram&quot;</Type>
+			<SpriteName>&quot;RamPipeRight1&quot;</SpriteName>
+			<Position>
+				<x>1202</x>
+				<y>696</y>
+			</Position>
+			<Size>
+				<x>0</x>
+				<y>0</y>
+			</Size>
+		</Unit>
 	</Objects>
 </Level>
 

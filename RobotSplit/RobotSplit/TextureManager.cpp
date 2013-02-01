@@ -214,6 +214,12 @@ void TextureManager::loadTexture()
 	mTextureMap["StixBrain"] = texture_stix_brain_flight;
 	mSpriteMap["StixBrain"] = sprite_stix_brain_flight;
 
+	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
+	mSpriteMap["StixBrainAni"].setTexture(mTextureMap["StixBrainAni"]);
+
+	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
+	mSpriteMap["StixBrainLowered"].setTexture(mTextureMap["StixBrainLowered"]);
+
 	textureStix_smoke_ani.loadFromFile("Texture/Stix/stix_smokeanimation_strip4_dark.png");
 	spriteStix_smoke_ani.setTexture(textureStix_smoke_ani);
 	mTextureMap["StixSmokeAni"] = textureStix_smoke_ani;
@@ -286,53 +292,73 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile1"] = textureTile1;
 	mSpriteMap["Tile1"] = spriteTile1;
 
-	textureTile2.loadFromFile("Texture/Enviroment/tile2.png");
+	textureTile2.loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
 	spriteTile2.setTexture(textureTile2);
 	mTextureMap["Tile2"] = textureTile2;
 	mSpriteMap["Tile2"] = spriteTile2;
 
-	textureTile3.loadFromFile("Texture/Enviroment/tile3.png");
+	textureTile3.loadFromFile("Texture/Enviroment/tiles/tile3_dark.png");
 	spriteTile3.setTexture(textureTile3);
 	mTextureMap["Tile3"] = textureTile3;
 	mSpriteMap["Tile3"] = spriteTile3;
 
-	textureTile4.loadFromFile("Texture/Enviroment/tile4.png");
+	textureTile4.loadFromFile("Texture/Enviroment/tiles/tile4_dark.png");
 	spriteTile4.setTexture(textureTile4);
 	mTextureMap["Tile4"] = textureTile4;
 	mSpriteMap["Tile4"] = spriteTile4;
 
-	textureTile5.loadFromFile("Texture/Enviroment/tile5.png");
+	textureTile5.loadFromFile("Texture/Enviroment/tiles/tile5_dark.png");
 	spriteTile5.setTexture(textureTile5);
 	mTextureMap["Tile5"] = textureTile5;
 	mSpriteMap["Tile5"] = spriteTile5;
 
-	textureTile6.loadFromFile("Texture/Enviroment/tile6.png");
+	textureTile6.loadFromFile("Texture/Enviroment/tiles/tile6_dark.png");
 	spriteTile6.setTexture(textureTile6);
 	mTextureMap["Tile6"] = textureTile6;
 	mSpriteMap["Tile6"] = spriteTile6;
 
-	textureTile7.loadFromFile("Texture/Enviroment/tile7.png");
+	textureTile7.loadFromFile("Texture/Enviroment/tiles/tile7_dark.png");
 	spriteTile7.setTexture(textureTile7);
 	mTextureMap["Tile7"] = textureTile7;
 	mSpriteMap["Tile7"] = spriteTile7;
 
-	textureTile8.loadFromFile("Texture/Enviroment/tile8.png");
+	textureTile8.loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	spriteTile8.setTexture(textureTile8);
 	mTextureMap["Tile8"] = textureTile8;
 	mSpriteMap["Tile8"] = spriteTile8;
 
-	textureTile9.loadFromFile("Texture/Enviroment/tile9.png");
+	textureTile9.loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
 	spriteTile9.setTexture(textureTile9);
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
 	
-	//Initialzing Lava
+	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1"].loadFromFile("Texture/Background/TestBackground1.png");
 	mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
+
+	mTextureMap["Bana1"].loadFromFile("Texture/Background/TestBackground1.png");
+	mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
+
+	//Initializing the frame parts.
+
+	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp.png");
+	mSpriteMap["RamTop1"].setTexture(mTextureMap["RamTop1"]);
+	
+	mTextureMap["RamLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Left.png");
+	mSpriteMap["RamLeft1"].setTexture(mTextureMap["RamLeft1"]);
+	
+	mTextureMap["RamRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Right.png");
+	mSpriteMap["RamRight1"].setTexture(mTextureMap["RamRight1"]);
+
+	mTextureMap["RamPipeLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_L_Pipe.png");
+	mSpriteMap["RamPipeLeft1"].setTexture(mTextureMap["RamPipeLeft1"]);
+
+	mTextureMap["RamPipeRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_R_Pipe.png");
+	mSpriteMap["RamPipeRight1"].setTexture(mTextureMap["RamPipeRight1"]);
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
