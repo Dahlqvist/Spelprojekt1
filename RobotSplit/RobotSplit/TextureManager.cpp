@@ -332,7 +332,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
 	
-	//Initialzing Lava
+	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 
@@ -342,6 +342,19 @@ void TextureManager::loadTexture()
 
 	mTextureMap["Bana1"].loadFromFile("Texture/Background/TestBackground1.png");
 	mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
+
+	//Initializing the frame parts.
+
+	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark.png");
+	mSpriteMap["RamTop1"].setTexture(mTextureMap["Ram"]);
+	
+	mTextureMap["RamLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark.png");
+	mSpriteMap["RamLeft1"].setTexture(mTextureMap["Ram"]);
+	
+	mTextureMap["RamRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark.png");
+	mSpriteMap["RamRight1"].setTexture(mTextureMap["Ram"]);
+
+
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
