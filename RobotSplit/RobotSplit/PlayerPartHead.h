@@ -22,6 +22,7 @@ public:
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
 	void setShootVector(sf::Vector2f);
+	void setMagnetSolid(bool);
 private: 
 	bool mAttached;
 	Unit* mUnit;

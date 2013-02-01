@@ -20,7 +20,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile2"</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>480</y>
@@ -32,7 +32,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile3"</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>512</y>
@@ -44,7 +44,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile4"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>416</y>
@@ -56,7 +56,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile6"</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>480</y>
@@ -68,7 +68,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile3"</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>480</y>
@@ -80,7 +80,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile3"</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -92,7 +92,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile6"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>480</y>
@@ -104,7 +104,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile3"</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>416</y>
@@ -116,7 +116,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile6"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>416</y>
@@ -128,7 +128,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile2"</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
@@ -140,7 +140,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile4"</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
@@ -152,7 +152,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile6"</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>480</y>
@@ -164,7 +164,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile4"</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>480</y>
@@ -176,7 +176,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile8"</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>480</y>
@@ -188,7 +188,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile3"</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>512</y>
@@ -200,7 +200,7 @@
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
-			<SpriteName>"Tile1"</SpriteName>
+			<SpriteName>"Tile2"</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>544</y>
@@ -593,6 +593,444 @@
 				<x>64</x>
 				<y>64</y>
 			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Ram"</Type>
+			<SpriteName>"RamTop1"</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>0</y>
+			</Position>
+			<Size>
+				<x>1280</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Ram"</Type>
+			<SpriteName>"RamLeft1"</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>64</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>636</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Ram"</Type>
+			<SpriteName>"RamRight1"</SpriteName>
+			<Position>
+				<x>1216</x>
+				<y>64</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>636</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Ram"</Type>
+			<SpriteName>"RamPipeLeft1"</SpriteName>
+			<Position>
+				<x>0</x>
+				<y>696</y>
+			</Position>
+			<Size>
+				<x>78</x>
+				<y>72</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Ram"</Type>
+			<SpriteName>"RamPipeRight1"</SpriteName>
+			<Position>
+				<x>1202</x>
+				<y>696</y>
+			</Position>
+			<Size>
+				<x>78</x>
+				<y>72</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>64</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>64</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>128</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>192</x>
+				<y>512</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>192</x>
+				<y>512</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>192</x>
+				<y>576</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>256</x>
+				<y>512</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>320</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>320</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>320</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>320</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>384</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>384</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>384</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>448</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>448</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>	
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>512</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>512</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>576</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>576</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>512</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>768</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>768</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>768</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>768</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>832</x>
+				<y>416</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>832</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>832</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>896</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>896</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>960</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>960</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1024</x>
+				<y>480</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1024</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1088</x>
+				<y>480</y>
+			</Position>
+			<Size>0.5</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1088</x>
+				<y>544</y>
+			</Position>
+			<Size>0.5</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1088</x>
+				<y>512</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1088</x>
+				<y>576</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>0.5</Size>
+			<Rotation>270</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1152</x>
+				<y>576</y>
+			</Position>
+			<Size>0.5</Size>
+			<Rotation>90</Rotation>
+		</Unit>
+		<Unit>
+			<Type>"Line"</Type>
+			<Position>
+				<x>1152</x>
+				<y>608</y>
+			</Position>
+			<Size>1</Size>
+			<Rotation>0</Rotation>
 		</Unit>
 	</Objects>
 </Level>

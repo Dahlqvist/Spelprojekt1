@@ -12,45 +12,37 @@
 #include "XmlSaver.h"
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
-
-void runCollisions(UnitVector& Objects, Player& player)
-{
-	
-	Collision col[3];
-	int foo=player.getCollisionSprite().size();
-	//sf::Clock timer;
-	for (int i=0; i<player.getCollisionSprite().size() && i<3; i++)
-	{
-		col[i].collide(i, player, Objects);
-	}
-	//std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
-}
+#include "UnitManager.h"
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	window.setFramerateLimit(60);
-	UnitVector Objects;
+	//window.setFramerateLimit(60);
 	Background *BG;
 	Level	level("Test.xml");	
-	Objects	= level.getObjects();
-	Collision::unitAtSides(Objects);
+	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
+	UnitManager Objects(mPlayer, level.getObjects());
+	Collision::unitAtSides(Objects.getUnits());
 	BG=level.getBackground();
-	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	for(UnitVector::size_type i=0;i<Objects.getUnits().size();i++)
 	{
-		cout<<Objects[i]->getId()<<endl;
+		cout<<Objects.getUnits()[i]->getId()<<endl;
 	}
 
-	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
+	int loops;
+	bool renderGame;
 	while (window.isOpen())
 	{
-		lastUpdateClock.restart();
-		//while (lastUpdate>1/60.0)
+		renderGame=false;
+		loops=0;
+		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
-			lastUpdate-=1/60.0;
+			renderGame=true;
+			loops++;
+			lastUpdate+=1/60.0;
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
@@ -107,24 +99,22 @@ int main()
 			window.clear(sf::Color::Black);
 			
 			mPlayer->update();
+			Objects.update();
 
-			runCollisions(Objects, *mPlayer);
+			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
 
-		window.draw(BG->draw());
-		BG->update();
-
-		mPlayer->draw(window);
-		mPlayer->resetAnimations();
-
-		for(UnitVector::size_type i=0;i<Objects.size();i++)
+		if(renderGame)
 		{
-			window.draw(Objects[i]->getSprite());
-			Objects[i]->draw();
-		}
-		window.display();
+			window.draw(BG->draw());
+			BG->update();
 
-		lastUpdate+=lastUpdateClock.getElapsedTime().asSeconds();
+			mPlayer->draw(window);
+			mPlayer->resetAnimations();
+
+			Objects.draw(window);
+			window.display();
+		}
 	}
 	/*
 	//Test for finding Textures' names

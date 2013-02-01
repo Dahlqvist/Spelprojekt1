@@ -27,6 +27,9 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mDash=0;
 	mFacingRight=true;
 	mJumpTemp.restart();
+	mMagnetTimer.restart();
+	magnetSlot=2;
+	mHeadAttachedFeet=false;
 	Temp1=new sf::Sprite;
 	Temp2=new sf::Sprite;
 	Temp3=new sf::Sprite;
@@ -36,8 +39,8 @@ void Player::draw(sf::RenderWindow& Window)
 {
 	/*if(mTogether==true)
 	{
-		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
-		Window.draw(mSprite);
+	mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
+	Window.draw(mSprite);
 	}
 	else
 	{*/
@@ -56,25 +59,29 @@ void Player::draw(sf::RenderWindow& Window)
 		if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
 		{
 			mLjus.setTexture(mLjus2);
-		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
+			mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
 		}
 		else
 		{
-		mLjus.setTexture(mLjus2);
-		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
+			mLjus.setTexture(mLjus2);
+			mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
 		}
 	}
 	Window.draw(mLjus);
+	if(mHead.getUnit()!=0)
+	{
+		Window.draw(mHead.getUnit()->getSprite());
+	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
-	for(unsigned int i=0; i<mParts.size(); i++)
-		{
-			if(mParts[i]->getUnit()!=0)
-			{
-				Window.draw(mParts[i]->getUnit()->getSprite());
-			}	
-		}
+	/*for(unsigned int i=0; i<mParts.size(); i++)
+	{
+	if(mParts[i]->getUnit()!=0)
+	{
+	Window.draw(mParts[i]->getUnit()->getSprite());
+	}	
+	}*/
 	//}
 	//Window.draw(mBody.getObject()->getSprite());
 }
@@ -83,16 +90,13 @@ void Player::update()
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
 		mParts[i]->update();
-		if(mParts[i]->getPosition().y+mParts[i]->getSprite().getGlobalBounds().height<700)
+		if(i==1)
 		{
-			if(i==1)
-			{
-				mParts[i]->setPosition(sf::Vector2f(0, 3));
-			}
-			else if(i==0 && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
-			{
-				mParts[i]->setPosition(sf::Vector2f(0, 3));
-			}
+			mParts[i]->setPosition(sf::Vector2f(0, 3));
+		}
+		else if(i==0 && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
+		{
+			mParts[i]->setPosition(sf::Vector2f(0, 3));
 		}
 	}
 
@@ -114,6 +118,9 @@ void Player::update()
 
 	if(mTogether==false && mFeet.getAttached()==true){
 		Player::checkCollisionExt();
+	}
+	if(mHeadless==true && mHead.getUnit()!=0 && mTogether==false){
+		Player::checkCollisionMagnet();
 	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
@@ -260,6 +267,8 @@ void Player::shootHead(sf::Vector2f Vec)
 		mHead.setAttached(true);
 		mHead.setShootVector(sf::Vector2f(0, 0));
 		mHeadless=false;
+		magnetSlot=2;
+		mHeadAttachedFeet=false;
 	}
 	else if(mHead.getAttached()==true)
 	{
@@ -294,6 +303,10 @@ void Player::setAttachFeetExtension(bool b)
 	{
 		mFeetAttached=b;
 		mFeet.setAttached(b);
+		if(mHeadAttachedFeet==true){
+			mHead.setAttached(true);
+			mHeadAttachedFeet=false;
+		}
 	}
 	//else if(u==1){
 	//	mFeetAttached=b;
@@ -336,13 +349,18 @@ void Player::interact(int action){
 			Player::jump();
 		}
 		else if(mFeet.getAttached()==false && mFeet.getAttachedWall()==false){
-				Player::jump();
-			}
+			Player::jump();
+		}
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==0 || mFeet.getWall()==2)
 			{
 				mFeet.setPosition(sf::Vector2f(0, -1));
 			}
+		}
+		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
+			mHead.setMagnetSolid(false);
+			mAttachedMagnet=false;
+			mMagnetTimer.restart();
 		}
 	}
 	if(action==1)
@@ -352,8 +370,8 @@ void Player::interact(int action){
 			Player::move(sf::Vector2f(1, 0));
 		}
 		else if(mFeet.getAttached()==false && mFeet.getAttachedWall()==false){
-				Player::move(sf::Vector2f(1, 0));
-			}
+			Player::move(sf::Vector2f(1, 0));
+		}
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==1)
 			{
@@ -371,8 +389,8 @@ void Player::interact(int action){
 			Player::move(sf::Vector2f(-1, 0));
 		}
 		else if(mFeet.getAttached()==false && mFeet.getAttachedWall()==false){
-				Player::move(sf::Vector2f(-1, 0));
-			}
+			Player::move(sf::Vector2f(-1, 0));
+		}
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==1)
 			{
@@ -410,6 +428,11 @@ void Player::interact(int action){
 			{
 				mFeet.setPosition(sf::Vector2f(0, 1));
 			}
+		}
+		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
+			mHead.setMagnetSolid(false);
+			mAttachedMagnet=false;
+			mMagnetTimer.restart();
 		}
 	}
 	if(action==4)
@@ -466,36 +489,39 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 }
 void Player::forceMove(int part, sf::Vector2f Vec)
 {
-	if(part==0)
+	if(Vec!=sf::Vector2f(0, 0))
 	{
-		if(Vec.y>0 && mFeet.getAttachedWall()==false)
+		if(part==0)
 		{
-			mFeet.jumpReset();
+			if(Vec.y>0 && mFeet.getAttachedWall()==false)
+			{
+				mFeet.jumpReset();
+			}
+			mFeet.forceMove(Vec);
 		}
-		mFeet.forceMove(Vec);
-	}
-	else if(part==1)
-	{
-		if(Vec.y>0)
+		else if(part==1)
 		{
-			mBody.jumpReset();
+			if(Vec.y>0)
+			{
+				mBody.jumpReset();
+			}
+			mBody.forceMove(Vec);
 		}
-		mBody.forceMove(Vec);
-	}
-	else if(part==2)
-	{
-		mHead.forceMove(Vec);
-		mHead.setShootVector(sf::Vector2f(0, 0));
-	}
-	else
-	{
-		if(Vec.y>0)
+		else if(part==2)
 		{
-			mBody.jumpReset();
-			mFeet.jumpReset();
+			mHead.forceMove(Vec);
+			mHead.setShootVector(sf::Vector2f(0, 0));
 		}
-		mFeet.forceMove(Vec);
-		mBody.forceMove(Vec);
+		else
+		{
+			if(Vec.y>0)
+			{
+				mBody.jumpReset();
+				mFeet.jumpReset();
+			}
+			mFeet.forceMove(Vec);
+			mBody.forceMove(Vec);
+		}
 	}
 }
 void Player::checkCollisionExt(){
@@ -512,7 +538,7 @@ void Player::checkCollisionExt(){
 		TempFeet.top+=25;
 	}
 	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-		
+
 		if(ColRect.width<ColRect.height)
 		{
 			if(mBody.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
@@ -539,7 +565,7 @@ void Player::checkCollisionExt(){
 	if(mHeadless==true){
 		sf::FloatRect ColRect2;
 		if(mHead.getSprite().getGlobalBounds().intersects(TempFeet, ColRect2)){
-		
+			mHeadAttachedFeet=true;
 			if(ColRect2.width<ColRect2.height)
 			{
 				if(mHead.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
@@ -563,5 +589,31 @@ void Player::checkCollisionExt(){
 				}
 			}
 		}
+	}
+}
+void Player::checkCollisionMagnet()
+{
+	if(mHead.getUnit()->isSolid()==false){
+		if(mMagnetTimer.getElapsedTime().asSeconds()>0.4){
+			mHead.setMagnetSolid(true);
+			magnetSlot=2;
+		}
+	}
+	sf::Vector2f TempBody=mBody.getSprite().getPosition()+sf::Vector2f(mBody.getSprite().getGlobalBounds().width/2, mBody.getSprite().getGlobalBounds().height/2);
+	sf::Vector2f TempFeet=mFeet.getSprite().getPosition()+sf::Vector2f(mFeet.getSprite().getGlobalBounds().width/2, mFeet.getSprite().getGlobalBounds().height/2);
+	sf::Vector2f TempHead=mHead.getUnit()->getSprite().getPosition()+sf::Vector2f(mHead.getUnit()->getSprite().getGlobalBounds().width/2, mHead.getUnit()->getSprite().getGlobalBounds().height);
+	if((TempBody.x-TempHead.x)*(TempBody.x-TempHead.x)+(TempBody.y-TempHead.y)*(TempBody.y-TempHead.y)<48*16 && mHead.getUnit()->isSolid()==true && magnetSlot!=0)
+	{
+		mAttachedMagnet=true;
+		mBodyAttached=true;
+		magnetSlot=1;
+		mBody.forceMove(TempHead-TempBody);
+	}
+	else if((TempFeet.x-TempHead.x)*(TempFeet.x-TempHead.x)+(TempFeet.y-TempHead.y)*(TempFeet.y-TempHead.y)<48*16 && mHead.getUnit()->isSolid()==true && magnetSlot!=1)
+	{
+		mAttachedMagnet=true;
+		mBodyAttached=false;
+		magnetSlot=0;
+		mFeet.forceMove(TempHead-TempFeet);
 	}
 }

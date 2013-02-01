@@ -14,11 +14,13 @@ public:
 	virtual std::string getId(){return mId;};
 
 	virtual bool isSolid(){return mSolid;};
+	void setSolid(bool);
 	virtual void rotate(float r){mSprite.setRotation(r);}
 	void setOrigin(sf::Vector2f);
 
 	virtual void update(){};
 	virtual void draw(){};
+
 private:
 	sf::Vector2f mSize;
 	

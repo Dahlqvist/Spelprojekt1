@@ -17,10 +17,12 @@ public:
 	static void unitAtSides(const std::vector<Unit*> &objects);
 
 	enum sides{
+		MIN_VALUE_SIDES,
 		TOP,
 		BOTTOM,
 		LEFT,
-		RIGHT};
+		RIGHT,
+		MAX_VALUE_SIDES};
 
 private:
 	bool testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);

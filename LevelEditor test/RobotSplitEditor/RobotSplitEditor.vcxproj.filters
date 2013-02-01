@@ -18,12 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnitWrap.cpp">
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnitWrap.h">
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

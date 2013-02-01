@@ -28,3 +28,6 @@ RailMiddle		=	Mittendel av rail
 Tile1-9			=	Tile1 till tile9, ändra siffran för annan tile
 LavaMiddle		= 	Vanlig lava
 Bana1			=	Nuvarande bakgrund för den första banan
+RamTop#			=	Toppen av ramen för bana nummer #
+RamLeft#		=	Vänstersidan av ramen för bana #
+RamRight#		=	Högersidan av ramen för bana #
