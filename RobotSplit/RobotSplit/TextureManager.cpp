@@ -359,6 +359,9 @@ void TextureManager::loadTexture()
 
 	mTextureMap["RamPipeRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_R_Pipe.png");
 	mSpriteMap["RamPipeRight1"].setTexture(mTextureMap["RamPipeRight1"]);
+
+	mTextureMap["Line"].loadFromFile("Texture/Line.png");
+	mSpriteMap["Line"].setTexture(mTextureMap["Line"]);
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
