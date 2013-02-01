@@ -124,24 +124,14 @@ void Player::update()
 	if(mHeadless==true && mHead.getUnit()!=0 && mTogether==false){
 		Player::checkCollisionMagnet();
 	}
-
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
-			mFeet.setAttachedWall(true, 0);
+	if(mFeet.getAttachedWall()==true){
+		if(mFeet.getWall()==0 && !UnitManager::isCollidedSide(0, 4)){
+			mFeet.setAttachedWall(false);
 		}
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
-			mFeet.setAttachedWall(true, 1);
+		if(mFeet.getWall()==1 && !UnitManager::isCollidedSide(0, 1)){
+			mFeet.setAttachedWall(false);
 		}
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false){
-			mFeet.setAttachedWall(true, 2);
-		}
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-		if(mFeet.getAttached()==false){
+		if(mFeet.getWall()==2 && !UnitManager::isCollidedSide(0, 3)){
 			mFeet.setAttachedWall(false);
 		}
 	}
@@ -178,7 +168,26 @@ void Player::move(sf::Vector2f Vec)
 		}
 		else
 		{
-			mFeet.setPosition(Vec);
+			if(UnitManager::isCollidedSide(0, 4) && Vec.x<0)
+			{
+				mFeet.setAttachedWall(true, 0);
+			}
+			else if(UnitManager::isCollidedSide(0, 3) && Vec.x>0)
+			{
+				mFeet.setAttachedWall(true, 2);
+			}
+			else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
+			{
+				mFeet.setAttachedWall(true, 1);
+			}
+	/*		else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
+			{
+				mFeet.setAttachedWall(true, 1);
+			}*/
+			else
+			{
+				mFeet.setPosition(Vec);
+			}
 		}
 	}
 	else
@@ -244,7 +253,7 @@ bool Player::getHeadless()
 //Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mJumpTemp.getElapsedTime().asSeconds()>0)
+	if(mDashing==false)
 	{
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
@@ -303,11 +312,27 @@ void Player::setAttachFeetExtension(bool b)
 {
 	if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
 	{
-		mFeetAttached=b;
-		mFeet.setAttached(b);
-		if(mHeadAttachedFeet==true){
-			mHead.setAttached(true);
-			mHeadAttachedFeet=false;
+		if(mFeet.getAttachedWall()==true){
+			if(mFeet.getWall()==0 && UnitManager::isCollidedSide(0, 4)){
+				mFeetAttached=b;
+				mFeet.setAttached(b);
+			}
+			if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1)){
+				mFeetAttached=b;
+				mFeet.setAttached(b);
+			}
+			if(mFeet.getWall()==2 && UnitManager::isCollidedSide(0, 3)){
+				mFeetAttached=b;
+				mFeet.setAttached(b);
+			}
+		}
+		else if(UnitManager::isCollidedSide(0, 2)){
+			mFeetAttached=b;
+			mFeet.setAttached(b);
+			if(mHeadAttachedFeet==true){
+				mHead.setAttached(true);
+				mHeadAttachedFeet=false;
+			}
 		}
 	}
 	//else if(u==1){
@@ -356,7 +381,8 @@ void Player::interact(int action){
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==0 || mFeet.getWall()==2)
 			{
-				mFeet.setPosition(sf::Vector2f(0, -1));
+				//mFeet.setPosition(sf::Vector2f(0, -1));
+				Player::move(sf::Vector2f(0, -1));
 			}
 		}
 		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
@@ -377,7 +403,7 @@ void Player::interact(int action){
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==1)
 			{
-				mFeet.setPosition(sf::Vector2f(1, 0));
+				Player::move(sf::Vector2f(1, 0));
 			}
 			else if(mFeet.getWall()==0){
 				mFeet.setAttachedWall(false);
@@ -396,7 +422,9 @@ void Player::interact(int action){
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==1)
 			{
-				mFeet.setPosition(sf::Vector2f(-1, 0));
+				Player::move(sf::Vector2f(-1, 0));
+				//std::cout << "anrop";
+				//mFeet.setPosition(sf::Vector2f(-1, 0));
 			}
 			else if(mFeet.getWall()==2){
 				mFeet.setAttachedWall(false);
@@ -428,7 +456,7 @@ void Player::interact(int action){
 			}
 			else
 			{
-				mFeet.setPosition(sf::Vector2f(0, 1));
+				Player::move(sf::Vector2f(0, 1));
 			}
 		}
 		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
@@ -442,6 +470,9 @@ void Player::interact(int action){
 		//RocketBoost
 		if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==false){
 			mFeet.activateRocketBoots();
+		}
+		if(UnitManager::isCollidedSide(0, 1)){
+			mFeet.setAttachedWall(true, 1);
 		}
 	}
 	if(action==5)
@@ -557,6 +588,7 @@ void Player::checkCollisionExt(){
 			if(mBody.getSprite().getPosition().y > mFeet.getSprite().getPosition().y)
 			{
 				mBody.forceMove(sf::Vector2f(0, ColRect.height));
+				mBody.jumpReset();
 			}
 			else
 			{
