@@ -1,11 +1,12 @@
 #include "Line.h"
 
 
-Line::Line(Vector2f pos,Vector2f size):
-	Unit(pos,"Line","",false)
+Line::Line(Vector2f pos,int rotation,float size):
+	Unit(pos,"Line","Line",false)
 {
-//	sf::Shape	temp= sf::RectangleShape();
-	mSize=size;
+	mSprite.scale(size,1.0);
+	mSprite.rotate(rotation);
+	mSize=Vector2f(rotation,size);
 }
 
 

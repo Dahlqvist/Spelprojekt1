@@ -20,6 +20,7 @@ private:
 	void	addPlayer		(Level	&level,xml_node<>* Node);
 	void	addPlatform		(Level	&level,xml_node<>* Node);
 	void	addLaser		(Level	&level,xml_node<>* Node);
+	void	addLine			(Level	&level,xml_node<>* Node);
 	void	addUnit			(Level	&level,xml_node<>* Node);
 };
 

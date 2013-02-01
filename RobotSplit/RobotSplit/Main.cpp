@@ -33,11 +33,14 @@ int main()
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	int loops;
+	bool renderGame;
 	while (window.isOpen())
 	{
+		renderGame=false;
 		loops=0;
 		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
+			renderGame=true;
 			loops++;
 			lastUpdate+=1/60.0;
 			sf::Event event;
@@ -101,9 +104,12 @@ int main()
 			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
 
-		window.draw(BG->draw());
-		BG->update();
+		if(renderGame)
+		{
+			window.draw(BG->draw());
+			BG->update();
 
+<<<<<<< HEAD
 		mPlayer->draw(window);
 		mPlayer->resetAnimations();
 		/*for(UnitVector::size_type i=0;i<Objects.getUnits().size();i++)
@@ -113,6 +119,14 @@ int main()
 		}*/
 		Objects.draw(window);
 		window.display();
+=======
+			mPlayer->draw(window);
+			mPlayer->resetAnimations();
+
+			Objects.draw(window);
+			window.display();
+		}
+>>>>>>> 1496e6f702d30f37a038becf80f572db8a29d751
 	}
 	/*
 	//Test for finding Textures' names
