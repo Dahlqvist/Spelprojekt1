@@ -205,6 +205,8 @@ void Player::setTogether(bool b)
 		mTogether=b;
 		Player::move(sf::Vector2f(-0.1, 0));
 		Player::move(sf::Vector2f(0.1, 0));
+		mFeet.restartAnimation();
+		mBody.restartAnimation();
 	}
 }
 void Player::setBodyActive(bool b)

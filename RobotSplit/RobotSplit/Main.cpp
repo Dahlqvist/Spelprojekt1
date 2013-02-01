@@ -96,8 +96,8 @@ int main()
 			}
 			if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 				sf::Vector2f Temp;
-				Temp.x=(float)sf::Mouse::getPosition(window).x-16;
-				Temp.y=(float)sf::Mouse::getPosition(window).y-16;
+				Temp.x=(float)sf::Mouse::getPosition(window).x;
+				Temp.y=(float)sf::Mouse::getPosition(window).y;
 				mPlayer->shootHead(sf::Vector2f(Temp));
 				//std::cout << "Anropar";
 			}

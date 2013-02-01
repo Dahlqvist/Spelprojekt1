@@ -22,6 +22,7 @@ public:
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
 	void jumpReset();
+	void restartAnimation();
 private: 
 	bool mAttached;
 	Unit* mUnit;

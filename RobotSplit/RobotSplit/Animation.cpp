@@ -20,6 +20,7 @@ Animation::~Animation()
 //vid varje frameupdatering.
 void Animation::restart(){
 	mFrameTimer.restart();
+	mCurrentFrame=0;
 }
 void Animation::update()
 {
