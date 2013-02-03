@@ -34,6 +34,7 @@ public:
 	void dash();
 	void activateFeetRockets();
 	void reFuel(float);
+	//bool bodyStandningFeet();
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;
@@ -51,7 +52,7 @@ private:
 	float mSpeed, mJump, mDash;
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
-	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
 	int magnetSlot;
 };
 

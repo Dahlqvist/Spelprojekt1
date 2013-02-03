@@ -176,6 +176,9 @@ void PlayerPartFeet::setAttached(bool b)
 	if(!mAttached)
 	{
 		mUnit=0;
+		if(mAO==1){
+			mPosition+=sf::Vector2f(0, -16);
+		}
 	}
 	if(mAttached)
 	{
@@ -235,14 +238,18 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		if(mAO==0)
 		{
 			mAUnit=&mRightWall;
+			mJump=0;
 		}
 		if(mAO==1)
 		{
 			mAUnit=&mRoof;
+			mJump=0;
+			mPosition+=sf::Vector2f(0, -16);
 			//Får lägga in -16 i y-led för att få rätt position mot "taket"
 		}
 		if(mAO==2)
 		{
+			mJump=0;
 			mAUnit=&mLeftWall;
 		}
 	}
