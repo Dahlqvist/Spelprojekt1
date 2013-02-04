@@ -1,0 +1,2 @@
+fadea in dialogboxarna
+kunna starta ljud/animationer efter att dialogboxen visas helt

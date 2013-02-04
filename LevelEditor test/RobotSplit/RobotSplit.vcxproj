@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlLoader.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlSaver.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="TextField.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlLoader.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlSaver.h" />
+    <ClInclude Include="TextField.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E859E788-8F4C-4343-B695-6E5B289E230A}</ProjectGuid>
