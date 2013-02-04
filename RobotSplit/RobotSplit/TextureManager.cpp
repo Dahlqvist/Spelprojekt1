@@ -345,8 +345,11 @@ void TextureManager::loadTexture()
 
 	//Initializing the frame parts.
 
-	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp.png");
+	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part01.png");
 	mSpriteMap["RamTop1"].setTexture(mTextureMap["RamTop1"]);
+
+	mTextureMap["RamTop2"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part02.png");
+	mSpriteMap["RamTop2"].setTexture(mTextureMap["RamTop2"]);
 	
 	mTextureMap["RamLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Left.png");
 	mSpriteMap["RamLeft1"].setTexture(mTextureMap["RamLeft1"]);
@@ -380,6 +383,9 @@ const sf::Sprite TextureManager::getSprite(std::string sprite)
 		return getManager().spriteBackground;	
 	else
 	{
+		/*sf::Sprite temp;
+		temp.setTexture(getManager().mTextureMap[sprite]);
+		return temp;*/
 		return getManager().mSpriteMap[sprite];
 	}
 }
