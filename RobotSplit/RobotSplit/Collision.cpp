@@ -182,7 +182,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is above object
 				if (playerSprite->getPosition().y<obj2->getPosition().y)
 				{
-					if (collisionRect.width>10 || (mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT)))
+					if (collisionRect.width>5 || (mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT)))
 					{
 						moveDistance.y=-(collisionRect.height-1);
 						mCollidedSides.insert(BOTTOM);
