@@ -190,6 +190,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	string					CurrentValue,Id,Sprite;
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
+	bool					Solid;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -216,6 +217,17 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
+
+	//Sets if solid
+	CurrentChild=	Node->first_node("Solid");
+	//If solid is given
+	if (CurrentChild!=0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Solid=true;
+		else if (getValue(CurrentChild)=="false")
+			Solid=false;
+	}
 	
 	//Checks if the Unit Uses animation
 	if(Node->first_node("Frames")!=0)
@@ -227,12 +239,12 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(Node->first_node("Speed"));
 		Speed=((float)atof(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
-		TempObject=		new Unit(Position,Id,ani);
+		TempObject=		new Unit(Position,Id,ani, Solid);
 	}
 	else
 	{
 		//Creates an Unit object
-		TempObject=		new Unit(Position,Id,Sprite);
+		TempObject=		new Unit(Position,Id,Sprite, Solid);
 	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);

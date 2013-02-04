@@ -341,6 +341,7 @@
 				<x>64</x>
 				<y>96</y>
 			</Size>
+      <Solid>"false"</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
