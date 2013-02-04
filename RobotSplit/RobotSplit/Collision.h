@@ -30,10 +30,17 @@ private:
 	void testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);
 
 	std::set<int> mCollidedSides;
+	//Objects at the sides
 	static std::set<Unit*> mUnitsOnTopLeft;
 	static std::set<Unit*> mUnitsOnTopRight;
 	static std::set<Unit*> mUnitsOnBottomLeft;
 	static std::set<Unit*> mUnitsOnBottomRight;
+
+	//Objects on top/bottom
+	static std::set<Unit*> mUnitsOnLeftTop;
+	static std::set<Unit*> mUnitsOnLeftBottom;
+	static std::set<Unit*> mUnitsOnRightTop;
+	static std::set<Unit*> mUnitsOnRightBottom;
 
 	bool mMovedX, mMovedY;
 
