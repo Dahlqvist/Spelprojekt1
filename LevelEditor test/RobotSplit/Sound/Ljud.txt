@@ -1,0 +1,9 @@
+För att spela ljud:
+Sound::playSound(ljud);
+
+Ljud	|| 	Beskrivning
+------------------------
+
+Dela	=	Ljudet när roboten delar på sig.
+Hoppa	=	Robotens hoppljud.
+Skjuta	=	Ljudet när huvudet skjuts ur kroppen.
