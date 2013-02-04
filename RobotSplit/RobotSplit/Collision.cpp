@@ -110,13 +110,13 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 				{
 					if (obj1.top<obj2.top)
 					{
-						mUnitsOnRightTop.insert(objects[i]);
-						mUnitsOnRightBottom.insert(objects[j]);
+						mUnitsOnRightBottom.insert(objects[i]);
+						mUnitsOnRightTop.insert(objects[j]);
 					}
 					else
 					{
-						mUnitsOnRightTop.insert(objects[j]);
-						mUnitsOnRightBottom.insert(objects[i]);
+						mUnitsOnRightBottom.insert(objects[j]);
+						mUnitsOnRightTop.insert(objects[i]);
 					}
 				}
 
