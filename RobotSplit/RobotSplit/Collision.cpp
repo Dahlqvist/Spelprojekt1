@@ -15,7 +15,6 @@ Collision::Collision()
 
 void Collision::collide(int playerPart, Player& player, const std::vector<Unit*> &objects)
 {
-	sf::Clock timer;
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	for (int j=0; j<objects.size(); j++)
@@ -30,7 +29,6 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			}
 		}
 	}
-	//std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
 }
 
 bool Collision::isCollidedSide(int side)
@@ -102,45 +100,51 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	const sf::Sprite* playerSprite=player.getCollisionSprite()[mPlayerPart];
 	if (obj2->isSolid())
 	{
-		//Collision from above/below
-		if (collisionRect.width>collisionRect.height && !mMovedY)
+		//Collision from the sides
+		if (collisionRect.width<collisionRect.height)
 		{
-			mMovedY=true;
-			//If player is above object
-			if (playerSprite->getPosition().y<obj2->getPosition().y)
+			if (!mMovedX)
 			{
-				moveDistance.y=-(collisionRect.height-1);
-				mCollidedSides.insert(BOTTOM);
-			}
-			//If player is below object
-			else
-			{
-				moveDistance.y=collisionRect.height-1;
-				mCollidedSides.insert(TOP);
-			}
-		}
-		//Collision from the side
-		else if (!mMovedX)
-		{
-			//If player is left of object
-			if (playerSprite->getPosition().x<obj2->getPosition().x)
-			{
-				double foo=collisionRect.width;
-				if (collisionRect.height>10 || (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP)))
+				//If player is left of object
+				if (playerSprite->getPosition().x<obj2->getPosition().x)
 				{
-					moveDistance.x=-(collisionRect.width-1);
-					mCollidedSides.insert(LEFT);
-					mMovedX=true;
+					double foo=collisionRect.width;
+					if (collisionRect.height>10 || (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP)))
+					{
+						moveDistance.x=-(collisionRect.width-1);
+						mCollidedSides.insert(LEFT);
+						mMovedX=true;
+					}
+				}
+				//If player is right of object
+				else
+				{
+					if (collisionRect.height>10 || (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP)))
+					{
+						moveDistance.x=collisionRect.width-1;
+						mCollidedSides.insert(RIGHT);
+						mMovedX=true;
+					}
 				}
 			}
-			//If player is right of object
-			else
+		}
+		//Collision from the above/below
+		else
+		{
+			if (!mMovedY)
 			{
-				if (collisionRect.height>10 || (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP)))
+				mMovedY=true;
+				//If player is above object
+				if (playerSprite->getPosition().y<obj2->getPosition().y)
 				{
-					moveDistance.x=collisionRect.width-1;
-					mCollidedSides.insert(RIGHT);
-					mMovedX=true;
+					moveDistance.y=-(collisionRect.height-1);
+					mCollidedSides.insert(BOTTOM);
+				}
+				//If player is below object
+				else
+				{
+					moveDistance.y=collisionRect.height-1;
+					mCollidedSides.insert(TOP);
 				}
 			}
 		}

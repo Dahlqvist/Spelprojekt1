@@ -17,7 +17,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	window.setFramerateLimit(60);
+	//window.setFramerateLimit(60);
 	Background *BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
