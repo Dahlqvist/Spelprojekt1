@@ -29,7 +29,6 @@ int main()
 		cout<<Objects.getUnits()[i]->getId()<<endl;
 	}
 
-
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	int loops;

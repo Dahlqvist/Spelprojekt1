@@ -3,3 +3,4 @@
 3. repet från hjärnan åker alltid ut
 4. kan ta ut extensions om kroppen är precis ovanför
 5. överdelen kan hoppa om den ligger mot sidan av underdelens förlängning
+6. faller igenom lavan ibland (risk för samma problem på plattformar)
