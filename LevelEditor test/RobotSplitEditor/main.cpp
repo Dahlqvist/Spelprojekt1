@@ -3,11 +3,14 @@
 //#include <dirent.h>
 #include <iostream>
 #include <string>
+#include <Level.h>
 using namespace sf;
 
 int main(int argc, char *argv[])
 {
 	RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor");
+	Level LEVEL;
+	LEVEL.loadNewLevel("Test.xml");
 	while(window.isOpen())
 	{
 		Event CurrentEvent;
@@ -17,7 +20,9 @@ int main(int argc, char *argv[])
 			if(CurrentEvent.type==Event::EventType::Closed)
 			{
 				window.close();
-			} 
+			}
+			window.clear();
+			window.display();
 		}
 	}
 }

@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\SFML-2.0-rc\include;..\..\Dirent-1.13\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\SFML-2.0-rc\include;..\..\Dirent-1.13\include;../../RobotSplit/RobotSplit/rapidxml-1.13</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -68,7 +68,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\SFML-2.0-rc\include;..\..\Dirent-1.13\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\SFML-2.0-rc\include;..\..\Dirent-1.13\include;../../RobotSplit/RobotSplit/rapidxml-1.13</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -80,8 +80,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Animation.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Background.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\BrainMagnet.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Collision.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetExtensions.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetWall.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Level.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Main.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlLoader.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlSaver.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -92,8 +110,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Background.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\BrainMagnet.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Collision.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetExtensions.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetWall.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\GameObject.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Level.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPart.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlLoader.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlSaver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
