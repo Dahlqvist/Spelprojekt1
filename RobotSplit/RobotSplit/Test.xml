@@ -294,7 +294,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-      <Solid>"false"</Solid>
+      <Solid>false</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -307,7 +307,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-      <Solid>"false"</Solid>
+      <Solid>false</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -320,7 +320,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-      <Solid>"false"</Solid>
+      <Solid>false</Solid>
     </Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -333,7 +333,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-      <Solid>"false"</Solid>
+      <Solid>false</Solid>
     </Unit>
 		<Unit>
 			<Type>"Door"</Type>
@@ -346,7 +346,7 @@
 				<x>64</x>
 				<y>96</y>
 			</Size>
-      <Solid>"false"</Solid>
+      <Solid>false</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Lava"</Type>
@@ -612,6 +612,18 @@
 				<y>64</y>
 			</Size>
 		</Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamTop2"</SpriteName>
+      <Position>
+        <x>640</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+    </Unit>
 		<Unit>
 			<Type>"Ram"</Type>
 			<SpriteName>"RamLeft1"</SpriteName>

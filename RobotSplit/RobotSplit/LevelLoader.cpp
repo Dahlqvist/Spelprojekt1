@@ -221,7 +221,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	//Sets if solid
 	CurrentChild=	Node->first_node("Solid");
 	//If solid is given
-	if (CurrentChild!=0)
+	if (CurrentChild!=0x0)
 	{
 		if (getValue(CurrentChild)=="true")
 			Solid=true;

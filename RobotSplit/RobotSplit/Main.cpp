@@ -38,7 +38,7 @@ int main()
 	{
 		renderGame=false;
 		loops=0;
-		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<5)
+		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
 			renderGame=true;
 			loops++;
