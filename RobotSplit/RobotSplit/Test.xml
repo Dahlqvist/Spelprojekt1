@@ -281,6 +281,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
+      <Solid>"false"</Solid>
 		</Unit>		
 		<Unit>
 			<Type>"Rail"</Type>
@@ -293,6 +294,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
+      <Solid>"false"</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -305,6 +307,7 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
+      <Solid>"false"</Solid>
 		</Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -317,7 +320,8 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-		</Unit>
+      <Solid>"false"</Solid>
+    </Unit>
 		<Unit>
 			<Type>"Rail"</Type>
 			<SpriteName>"RailEndR"</SpriteName>
@@ -329,7 +333,8 @@
 				<x>64</x>
 				<y>32</y>
 			</Size>
-		</Unit>
+      <Solid>"false"</Solid>
+    </Unit>
 		<Unit>
 			<Type>"Door"</Type>
 			<SpriteName>"Exit"</SpriteName>
