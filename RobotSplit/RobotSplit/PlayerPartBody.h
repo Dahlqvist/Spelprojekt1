@@ -20,11 +20,12 @@ public:
 	virtual void jump();
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
+	virtual void forceMove(sf::Vector2f);
 	void jumpReset();
+	void restartAnimation();
 private: 
 	bool mAttached;
 	Unit* mUnit;
-	PlayerPartFeet Test;
 	Animation* mActiveAnimation;
 	Animation mLeftAnimation;
 	Animation mRightAnimation;
@@ -34,7 +35,7 @@ private:
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime;
-	sf::Clock mJumpClock, mAnimationTimer;
+ 	sf::Clock mJumpClock, mAnimationTimer;
 };
 
 

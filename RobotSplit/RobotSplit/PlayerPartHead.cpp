@@ -1,11 +1,13 @@
 #include "PlayerPartHead.h"
+#include <iostream>
 
 PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
 	mLeftAnimation("StixShootAni", 200, 8),
 	mRightAnimation("StixShootAni", 200, 8),
 	mLeft("StixUpper", 200, 1),
-	mRight("Tile6", 200, 1)
+	mRight("StixBrain", 200, 1),
+	mMagnet("StixBrainLowered")
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
@@ -19,7 +21,7 @@ void PlayerPartHead::update()
 	mActiveAnimation->update();
 	if(mAttached==true)
 	{
-		mPosition=mBody->getPosition();
+		mPosition=mBody->getPosition()+sf::Vector2f(26, 26);
 	}
 	if(mShootVector!=sf::Vector2f(0, 0))
 	{
@@ -46,10 +48,10 @@ sf::Vector2f PlayerPartHead::getPosition()
 } 
 sf::Sprite PlayerPartHead::getSprite()
 {
-	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x+16, mPosition.y+16));
-	sf::Sprite test(mActiveAnimation->getSprite());
-	test.scale(0.5, 0.5);
-	return test;
+	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x, mPosition.y));
+	//sf::Sprite test(mActiveAnimation->getSprite());
+	//test.scale(0.5, 0.5);
+	return mActiveAnimation->getSprite();
 }
 std::string PlayerPartHead::getId()
 {
@@ -65,6 +67,12 @@ bool PlayerPartHead::getAttached()
 }
 void PlayerPartHead::setAttached(bool b)
 {
+	if (b==false){
+		//mUnit=&mFeetExt;
+	}
+	else{
+		mUnit=0;
+	}
 	mAttached=b;
 }
 void PlayerPartHead::jump()
@@ -73,7 +81,7 @@ void PlayerPartHead::jump()
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
-	float mSpeed=2;
+	float mSpeed=3;
 	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
 }
 void PlayerPartHead::resetAnimation()
@@ -86,4 +94,16 @@ void PlayerPartHead::resetAnimation()
 Unit* PlayerPartHead::getUnit()
 {
 	return mUnit;
+}
+void PlayerPartHead::forceMove(sf::Vector2f force){
+	mPosition+=force;
+	mShootVector=sf::Vector2f(0, 0);
+	if(mAttached==false){
+		mUnit=&mMagnet;
+		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
+		mMagnet.setSolid(true);
+	}
+}
+void PlayerPartHead::setMagnetSolid(bool b){
+	mMagnet.setSolid(b);
 }

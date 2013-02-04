@@ -20,30 +20,40 @@ public:
 	bool getHeadless();
 	void setHeadless(bool);
 	void resetAnimations();
+	void interact(int);
 
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
+	void checkCollisionExt();
+	void checkCollisionMagnet();
 
 	void jump();
 	void shootHead(sf::Vector2f);
-	void setAttachFeet(bool);
-	bool getAttachFeet();
+	void setAttachFeetExtension(bool);
+	bool getAttachFeetExtension();
 	void dash();
 	void activateFeetRockets();
 	void reFuel(float);
+	//bool bodyStandningFeet();
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;
 	PlayerPartHead mHead;
 	PlayerParts mParts;
 	sf::Sprite mSprite;
+	sf::Sprite mLjus;
+	sf::Texture mLjus1;
+	sf::Texture mLjus2;
+	sf::Texture mLjus3;
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;
 	sf::Texture mTexture;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
+	int magnetSlot;
 };
 
 #endif

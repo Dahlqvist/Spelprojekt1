@@ -9,8 +9,8 @@
 #include "Player.h"
 #include "PlayerPart.h"
 #include "Unit.h"
-
-
+#include "Animation.h"
+#include "Line.h"
 LevelLoader::LevelLoader(void)
 {
 }
@@ -42,7 +42,7 @@ Level	LevelLoader::getLevel()
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	Background*BACK=new Background(Filename,Frames,Speed);
+	Background*BACK=new Background(Filename,Speed,Frames);
 	RetLevel.setBackground(BACK);
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
@@ -73,6 +73,10 @@ Level	LevelLoader::getLevel()
 		else if(type=="Laser")
 		{
 			addLaser(RetLevel,Gameobject);
+		}
+		else if(type=="Line")
+		{
+			addLine(RetLevel,Gameobject);
 		}
 		else
 		{
@@ -212,9 +216,58 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
+	
+	//Checks if the Unit Uses animation
+	if(Node->first_node("Frames")!=0)
+	{
+		int Frames,Speed;
+		Animation* ani;
+		CurrentValue=	getValue(Node->first_node("Frames"));
+		Frames=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(Node->first_node("Speed"));
+		Speed=((float)atof(CurrentValue.c_str()));
+		ani= new Animation(Sprite,Speed,Frames);
+		TempObject=		new Unit(Position,Id,ani);
+	}
+	else
+	{
+		//Creates an Unit object
+		TempObject=		new Unit(Position,Id,Sprite);
+	}
+	//Puts the Unit object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+
+void	LevelLoader::addLine(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Id,Sprite;
+	Unit					*TempObject;
+	sf::Vector2f			Position;
+	int						Rotation=0;
+	float					Size=0;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size
+	CurrentValue=	getValue(Node->first_node("Size"));
+	Size=			atof(CurrentValue.c_str());
+
+	//Initiates the Rotation variable
+	CurrentValue=	getValue(Node->first_node("Rotation"));
+	Rotation=		atoi(CurrentValue.c_str());
 
 	//Creates an Unit object
-	TempObject=		new Unit(Position,Id,Sprite);
+	TempObject=		new Line(Position,Rotation,Size);
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

@@ -10,99 +10,110 @@
 #include "LevelLoader.h"
 #include "Collision.h"
 #include "XmlSaver.h"
+#include "Background.h"
+#include <SFML\System\Clock.hpp>
+#include "UnitManager.h"
 
-void runCollisions(UnitVector Objects, Player& player)
+int main()
 {
-	std::vector<Collision> col;
-	for (int i=0; i<player.getCollisionSprite().size(); i++)
-	{
-		col.push_back(Collision());
-		col[i].collide(i, player, Objects);
-	}
-}
-
-int main(){
-
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-	window.setFramerateLimit(60);
-	UnitVector Objects;
+	//window.setFramerateLimit(60);
+	Background *BG;
 	Level	level("Test.xml");	
-	Objects	= level.getObjects();
-	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
+	UnitManager Objects(mPlayer, level.getObjects());
+	Collision::unitAtSides(Objects.getUnits());
+	BG=level.getBackground();
+	for(UnitVector::size_type i=0;i<Objects.getUnits().size();i++)
 	{
-		cout<<Objects[i]->getId()<<endl;
+		cout<<Objects.getUnits()[i]->getId()<<endl;
 	}
 
-	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 
-
+	sf::Clock lastUpdateClock;
+	double lastUpdate=0;
+	int loops;
+	bool renderGame;
 	while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		renderGame=false;
+		loops=0;
+		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<5)
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-			if(event.type == sf::Event::KeyPressed){
-				switch(event.key.code)
-				{
-				case sf::Keyboard::LShift:
-					if(mPlayer->getTogether()==false){
-						mPlayer->setBodyActive(!mPlayer->getBodyActive());
+			renderGame=true;
+			loops++;
+			lastUpdate+=1/60.0;
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+				if(event.type == sf::Event::KeyPressed){
+					switch(event.key.code)
+					{
+					case sf::Keyboard::LShift:
+						mPlayer->interact(6);
+						//mPlayer->setBodyActive(!mPlayer->getBodyActive());
+						break;
+					case sf::Keyboard::Space:
+						mPlayer->interact(5);
+						//mPlayer->setTogether(!mPlayer->getTogether());
+						break;
+					case sf::Keyboard::E:
+						mPlayer->interact(7);
+						/*if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
+							mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension());
+						}*/
+						break;
 					}
-					break;
-				case sf::Keyboard::Space:
-					mPlayer->setTogether(!mPlayer->getTogether());
-					break;
-				case sf::Keyboard::E:
-					if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-						mPlayer->setAttachFeet(!mPlayer->getAttachFeet());
-					}
-					break;
 				}
 			}
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-			mPlayer->reFuel(100);
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->dash();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-			mPlayer->move(sf::Vector2f(1,0));
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-			mPlayer->move(sf::Vector2f(-1,0));
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-			mPlayer->jump();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-			mPlayer->activateFeetRockets();
-		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(window).x;
-			Temp.y=(float)sf::Mouse::getPosition(window).y;
-			mPlayer->shootHead(sf::Vector2f(Temp));
-		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
-			mPlayer->shootHead(sf::Vector2f(0, 0));
-		}
-		window.clear(sf::Color::Black);
-		
-		mPlayer->update();
-		runCollisions(Objects, *mPlayer);
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+				mPlayer->reFuel(100);
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+				mPlayer->interact(3);
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+				mPlayer->interact(1);
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+				mPlayer->interact(2);
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+				mPlayer->interact(0);
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+				mPlayer->interact(4);
+			}
+			if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
+				sf::Vector2f Temp;
+				Temp.x=(float)sf::Mouse::getPosition(window).x;
+				Temp.y=(float)sf::Mouse::getPosition(window).y;
+				mPlayer->shootHead(sf::Vector2f(Temp));
+				//std::cout << "Anropar";
+			}
+			/*if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
+				mPlayer->shootHead(sf::Vector2f(0, 0));
+			}*/
+			window.clear(sf::Color::Black);
+			
+			mPlayer->update();
+			Objects.update();
 
-		mPlayer->draw(window);
-		mPlayer->resetAnimations();
+			//runCollisions(Objects.getUnits(), *mPlayer);
+		}
 
-		for(UnitVector::size_type i=0;i<Objects.size();i++)
+		if(renderGame)
 		{
-			window.draw(Objects[i]->getSprite());
-		}
+			window.draw(BG->draw());
+			BG->update();
+			Objects.draw(window);
+			mPlayer->draw(window);
+			mPlayer->resetAnimations();
 
-		window.display();
+			window.display();
+		}
 	}
 	/*
 	//Test for finding Textures' names

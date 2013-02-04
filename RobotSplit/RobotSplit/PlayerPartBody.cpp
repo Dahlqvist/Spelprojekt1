@@ -2,11 +2,10 @@
 #include <iostream>
 
 PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
-mFeet(Feet),
-	Test(),
-	mLeftAnimation("StixUpperSplit", 200, 8),
-	mRightAnimation("StixShootAni", 200, 8),
-	mLeft("StixUpper", 200, 1),
+	mFeet(Feet),
+	mLeftAnimation("StixUpperAniL", 200, 8),
+	mRightAnimation("StixUpperAni", 200, 8),
+	mLeft("StixUpperL", 200, 1),
 	mRight("StixUpper", 200, 1)
 {
 	mActiveAnimation=&mRight;
@@ -15,7 +14,6 @@ mFeet(Feet),
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
-	Test.setPosition(sf::Vector2f(400, 300));
 }
 void PlayerPartBody::update()
 {
@@ -87,15 +85,21 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
-	std::cout << "Jumping Body" << std::endl;
-	mJump=8;
+	mJump=7;
 	mJumpClock.restart();
 }
 void PlayerPartBody::resetAnimation()
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
 	{
-		mActiveAnimation=&mRight;
+		if(mActiveAnimation==&mRightAnimation)
+		{
+			mActiveAnimation=&mRight;
+		}
+		else if(mActiveAnimation==&mLeftAnimation)
+		{
+			mActiveAnimation=&mLeft;
+		}
 	}
 }
 Unit* PlayerPartBody::getUnit()
@@ -104,4 +108,11 @@ Unit* PlayerPartBody::getUnit()
 }
 void PlayerPartBody::jumpReset(){
 	mJump=3;
+}
+void PlayerPartBody::forceMove(sf::Vector2f force){
+	mPosition+=force;
+}
+void PlayerPartBody::restartAnimation(){
+	mRightAnimation.restart();
+	mLeftAnimation.restart();
 }

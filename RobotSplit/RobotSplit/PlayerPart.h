@@ -20,6 +20,7 @@ public:
 	virtual void jump()=0;
 	virtual void resetAnimation()=0;
 	virtual Unit* getUnit()=0;
+	virtual void forceMove(sf::Vector2f)=0;
 private: 
 	bool mAttached;
 	sf::Vector2f mPosition; 
