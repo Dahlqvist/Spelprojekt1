@@ -380,6 +380,9 @@ const sf::Sprite TextureManager::getSprite(std::string sprite)
 		return getManager().spriteBackground;	
 	else
 	{
+		/*sf::Sprite temp;
+		temp.setTexture(getManager().mTextureMap[sprite]);
+		return temp;*/
 		return getManager().mSpriteMap[sprite];
 	}
 }
