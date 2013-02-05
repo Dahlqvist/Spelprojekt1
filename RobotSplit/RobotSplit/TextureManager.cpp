@@ -140,7 +140,7 @@ void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	//Test
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/background03.png");
+	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 	//Placera texturen i en sprite-variabel
 	spriteBackground.setTexture(textureBackground);
 	//Stix Right

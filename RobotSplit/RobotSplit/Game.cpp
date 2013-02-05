@@ -17,7 +17,7 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 
-#include "Window.h"
+//#include "Window.h"
 
 Game::Game(): 
 		mStateInput(StateInput::getInstance()),
@@ -25,26 +25,25 @@ Game::Game():
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
-		loops(0),
-		renderGame(true)
+		loops(0)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
-	for(UnitVector::size_type i=0;i<Objects->getUnits().size();i++)
+	/*for(UnitVector::size_type i=0;i<Objects->getUnits().size();i++)
 	{
 		cout << Objects->getUnits()[i]->getId() << endl;
-	}
+	}*/
 }
 
 Game::~Game()
 {
 	std::cout << "Game DELETE" << std::endl;
 
-	system("PAUSE");
+	/*system("PAUSE");
 	XmlSaver saver("TestSave");
 	saver.saveLevel(mlevel);
 	saver.createFile();
-	mlevel.deletePointers();
+	mlevel.deletePointers();*/
 }
 
 void Game::update()
@@ -53,10 +52,8 @@ void Game::update()
 		loops = 0;
 		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
-			renderGame=true;
 			loops++;
 			lastUpdate+=1/60.0;
-			sf::Event event;
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 				mPlayer->interact(3);
 			}
@@ -101,7 +98,7 @@ void Game::update()
 					mPlayer->shootHead(sf::Vector2f(Temp));
 					TestTimer.restart();
 				}
-			BG->update();
+		//	BG->update();
 			mPlayer->update();
 			Objects->update();
 
@@ -113,8 +110,7 @@ void Game::update()
 void Game::render()
 {
 	
-	std::cout << "Game" << std::endl;
-
+	//std::cout << "Game" << std::endl;
 	Window::getWindow().clear(sf::Color::Black);
 	//Window::getWindow().draw(BG->draw());
 

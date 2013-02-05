@@ -121,7 +121,6 @@ sfml-main.lib
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UnitManager.cpp" />
     <ClCompile Include="UnitWrap.cpp" />
-    <ClCompile Include="Window.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlSaver.cpp" />
   </ItemGroup>
@@ -154,7 +153,6 @@ sfml-main.lib
     <ClInclude Include="Unit.h" />
     <ClInclude Include="UnitManager.h" />
     <ClInclude Include="UnitWrap.h" />
-    <ClInclude Include="Window.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>

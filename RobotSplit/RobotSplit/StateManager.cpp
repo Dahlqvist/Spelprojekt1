@@ -9,7 +9,7 @@
 StateManager::StateManager(): mGame(new Game), mOption(new Option), mSplash(new Splash),
 								mMenu(new Menu), mInGameMenu(new InGameMenu)
 {
-	pushState(mSplash);
+	pushState(mGame);
 }
 
 StateManager::~StateManager()

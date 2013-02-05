@@ -10,6 +10,7 @@ class Level;
 class Player;
 class UnitManager;
 
+
 class Game: public State
 {
 public:
@@ -26,7 +27,7 @@ private:
 	sf::Clock lastUpdateClock;
 	double lastUpdate;
 	int loops;
-	bool renderGame;
+	
 };
 
 #endif

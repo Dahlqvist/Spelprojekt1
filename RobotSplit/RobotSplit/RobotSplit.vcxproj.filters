@@ -89,9 +89,6 @@
     <ClCompile Include="Option.cpp">
       <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -184,9 +181,6 @@
     </ClInclude>
     <ClInclude Include="Option.h">
       <Filter>Header Files\Menu\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
