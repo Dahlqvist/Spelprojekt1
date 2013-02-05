@@ -12,6 +12,7 @@ int main()
 	StateManager& statemanager = StateManager::getInstance();
 
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
+			
 
 	statemanager.updateState();
 	statemanager.renderState(sf::RenderWindow& window);
