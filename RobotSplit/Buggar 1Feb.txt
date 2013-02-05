@@ -2,5 +2,5 @@
 2. ben extensions kan bugga fast om du fäller ut imellan 2 väggar
 3. repet från hjärnan åker alltid ut
 4. kan ta ut extensions om kroppen är precis ovanför
-5. överdelen kan hoppa om den ligger mot sidan av underdelens förlängning
+5. överdelen kan hoppa om den ligger mot sidan av underdelens förlängning -Fixed 05/02 Rasmus
 6. faller igenom lavan ibland (risk för samma problem på plattformar)
