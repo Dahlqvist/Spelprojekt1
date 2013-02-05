@@ -39,9 +39,10 @@ void UnitManager::update()
 	}
 
 	mSidePairs.clear();
-	Collision col[3];
+	Collision col[4];
 	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)
 	{
+		int foo=mPlayer->getCollisionSprite().size();
 		col[i].collide(i, *mPlayer, mUnits);
 		for (int j=Collision::MIN_VALUE_SIDES+1; j<4+Collision::MIN_VALUE_SIDES+1; j++)
 		{

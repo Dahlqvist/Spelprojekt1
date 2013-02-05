@@ -210,7 +210,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	//If the feet, body and head is connected
 	else if(player.getCollisionSprite().size()==1)
 	{
-		player.forceMove(3, moveDistance);
+		player.forceMove(-1, moveDistance);
 	}
 	else
 	{

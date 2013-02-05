@@ -35,6 +35,9 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	Temp1=new sf::Sprite;
 	Temp2=new sf::Sprite;
 	Temp3=new sf::Sprite;
+	TempPart= new PlayerPartBody(&mFeet);
+	TempPart->setAttached(false);
+	mParts.push_back(TempPart);
 }
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
@@ -77,6 +80,7 @@ void Player::draw(sf::RenderWindow& Window)
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
+	Window.draw(TempPart->getSprite());
 	/*for(unsigned int i=0; i<mParts.size(); i++)
 	{
 	if(mParts[i]->getUnit()!=0)
@@ -120,8 +124,13 @@ void Player::update()
 	mBodyStandningFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
 	{
-		TempPart->setPosition(mHead.getPosition());
-		//mParts.push_back(TempPart);
+		TempPart->setPosition((mHead.getPosition()-TempPart->getPosition())+sf::Vector2f(-24, 32));
+		std::cout << "Runing!" << mParts.size() << std::endl;
+		if(UnitManager::isCollidedSide(3, 2) || UnitManager::isCollidedSide(3, 3) || UnitManager::isCollidedSide(3, 4))
+		{
+			mHead.setMagnetCollided(false);
+			std::cout << "Testing " << TempPart->getPosition().x << " " << TempPart->getPosition().y << std::endl;
+		}
 	}
 	if(mTogether==false && mFeet.getAttached()==true)
 	{
@@ -528,6 +537,7 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		Parts.push_back(Temp2);
 		*Temp3=mHead.getSprite();
 		Parts.push_back(Temp3);
+		Parts.push_back(&TempPart->getSprite());
 	}
 	return Parts;
 }
