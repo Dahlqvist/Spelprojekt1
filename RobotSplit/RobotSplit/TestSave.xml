@@ -2,9 +2,9 @@
 <Level>
 	<Name>&quot;Test Bana&quot;</Name>
 	<Background>
-		<Frames>1</Frames>
-		<Speed>120</Speed>
-		<SpriteName>&quot;Bana1&quot;</SpriteName>
+		<Frames>-858993460</Frames>
+		<Speed>-858993460</Speed>
+		<SpriteName>&quot;&quot;</SpriteName>
 	</Background>
 	<Objects>
 		<Unit>
@@ -16,7 +16,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile2&quot;</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>480</y>
@@ -25,10 +25,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile3&quot;</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>512</y>
@@ -37,10 +38,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile4&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>416</y>
@@ -49,10 +51,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile6&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>480</y>
@@ -61,10 +64,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile3&quot;</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>480</y>
@@ -73,10 +77,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile3&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -85,10 +90,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile6&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>480</y>
@@ -97,10 +103,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile3&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>416</y>
@@ -109,10 +116,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile6&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>416</y>
@@ -121,10 +129,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile2&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
@@ -133,10 +142,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile4&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
@@ -145,10 +155,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile6&quot;</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>480</y>
@@ -157,10 +168,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile4&quot;</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>480</y>
@@ -169,10 +181,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile8&quot;</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>480</y>
@@ -181,10 +194,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile3&quot;</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>512</y>
@@ -193,10 +207,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Tile2&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>544</y>
@@ -205,10 +220,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;BolconyCornerL&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>224</y>
@@ -217,10 +233,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>224</y>
@@ -229,10 +246,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
 				<x>640</x>
 				<y>224</y>
@@ -241,10 +259,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
 				<x>704</x>
 				<y>224</y>
@@ -253,10 +272,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;BolconyCornerR&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>224</y>
@@ -265,10 +285,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;RailEndL&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>192</y>
@@ -277,10 +298,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>192</y>
@@ -289,10 +311,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
 				<x>640</x>
 				<y>192</y>
@@ -301,10 +324,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
 				<x>704</x>
 				<y>192</y>
@@ -313,10 +337,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;RailEndR&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>192</y>
@@ -325,10 +350,11 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Door&quot;</Type>
-			<SpriteName>&quot;ERROR!&quot;</SpriteName>
+			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>416</y>
@@ -337,6 +363,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -351,6 +378,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -365,6 +393,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -379,6 +408,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -393,6 +423,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -407,6 +438,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -421,6 +453,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -435,6 +468,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -449,6 +483,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -463,6 +498,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -477,6 +513,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -491,6 +528,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -505,6 +543,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -519,6 +558,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -533,6 +573,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -547,6 +588,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -561,6 +603,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -575,6 +618,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
@@ -589,6 +633,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -601,6 +646,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -613,6 +659,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -625,6 +672,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -637,6 +685,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -649,6 +698,7 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Ram&quot;</Type>
@@ -661,510 +711,385 @@
 				<x>0</x>
 				<y>0</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
-				<x>64</x>
+				<x>63</x>
+				<y>481</y>
+			</Position>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
+		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<Position>
+				<x>63</x>
+				<y>543</y>
+			</Position>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
+		</Unit>
+		<Unit>
+			<Type>&quot;Line&quot;</Type>
+			<Position>
+				<x>127</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>544</y>
-			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
-			<Position>
-				<x>128</x>
-				<y>480</y>
-			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>512</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>512</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>576</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>256</x>
 				<y>512</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>384</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>512</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>416</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>896</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>480</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>0</y>
-			</Size>
+			<Size>0.50</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>0</y>
-			</Size>
+			<Size>0.50</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>512</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1088</x>
 				<y>576</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>270</x>
-				<y>0</y>
-			</Size>
+			<Size>0.50</Size>
+			<Roatation>270</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>544</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>576</y>
 			</Position>
-			<Size>
-				<x>90</x>
-				<y>0</y>
-			</Size>
+			<Size>0.50</Size>
+			<Roatation>90</Roatation>
 		</Unit>
 		<Unit>
 			<Type>&quot;Line&quot;</Type>
-			<SpriteName>&quot;Line&quot;</SpriteName>
 			<Position>
 				<x>1152</x>
 				<y>608</y>
 			</Position>
-			<Size>
-				<x>0</x>
-				<y>1</y>
-			</Size>
+			<Size>1.00</Size>
+			<Roatation>0</Roatation>
 		</Unit>
 	</Objects>
 </Level>
