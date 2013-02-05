@@ -17,7 +17,7 @@ void StateManager::loadState()
 {
 	 mGame = new Game(mWindow);
 	 mOption = new Option;
-	 mSplash = new Splash;
+	 mSplash = new Splash(mWindow);
 	 mMenu = new Menu;
 	 mInGameMenu = new InGameMenu;
 }

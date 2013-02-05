@@ -8,12 +8,13 @@ class StateInput;
 class Splash: public State
 {
 public:
-	Splash();
+	Splash(sf::RenderWindow& window);
 	virtual ~Splash();
 	virtual void update();
 	virtual void render();
 private:
 	StateInput& mStateInput;
+	sf::RenderWindow& mWindow;
 };
 
 #endif
