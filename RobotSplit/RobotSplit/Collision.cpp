@@ -203,17 +203,25 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		}
 	}
 	//If the feet and body is connected, but head is away
-	if(player.getCollisionSprite().size()==2 && mPlayerPart==1)
+	//std::cout << player.getCollisionSprite().size() << std::endl;
+	if(player.getCollisionSprite().size()==3)
 	{
-		player.forceMove(2, moveDistance);
+		if(mPlayerPart==1)
+		{
+			player.forceMove(2, moveDistance);
+		}
+		else if(mPlayerPart==0){
+			player.forceMove(mPlayerPart, moveDistance);
+		}
 	}
 	//If the feet, body and head is connected
 	else if(player.getCollisionSprite().size()==1)
 	{
-		player.forceMove(3, moveDistance);
+		player.forceMove(-1, moveDistance);
 	}
 	else
 	{
+		if(mPlayerPart!=3)
 		player.forceMove(mPlayerPart, moveDistance);
 	}
 	//playerSprite->setPosition(moveDistance);

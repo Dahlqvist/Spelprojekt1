@@ -1,5 +1,6 @@
 #include "UnitManager.h"
 #include "Collision.h"
+#include <iostream>
 
 std::vector<SidePair> UnitManager::mSidePairs;
 

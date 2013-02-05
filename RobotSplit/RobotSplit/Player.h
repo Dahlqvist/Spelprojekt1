@@ -51,6 +51,7 @@ private:
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;
+	sf::Sprite* Temp4;
 	float mSpeed, mJump, mDash;
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
