@@ -65,12 +65,9 @@ protected:
 	//Sets the player pointer					(Done)
 	void			setPlayer(Player*);
 	//Sets the level's Background
-<<<<<<< HEAD
 	void			setBackground(vector<Background*>);
 private:
-=======
 	void			setBackground(Background*);
->>>>>>> 78ed2239b1f81c3109d50ba9d793d3a4f326c399
 	//Member Variables							(Done)
 	string			mName;
 	UnitVector	mObjects;
