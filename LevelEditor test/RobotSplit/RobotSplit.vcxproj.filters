@@ -70,6 +70,9 @@
     <ClInclude Include="TextField.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelConstructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -153,6 +156,9 @@
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
     <ClCompile Include="TextField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelConstructor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
