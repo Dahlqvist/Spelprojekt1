@@ -116,17 +116,14 @@ void Game::render()
 	std::cout << "Game" << std::endl;
 
 	Window::getWindow().clear(sf::Color::Black);
-	Window::getWindow().draw(BG->draw());
+	//Window::getWindow().draw(BG->draw());
 
 	Objects->draw(Window::getWindow());
 	mPlayer->draw(Window::getWindow());
-	//window.clear(sf::Color::Black);
-	//window.draw(BG->draw());
-	
-	//Objects->draw(window);
-	//mPlayer->draw(window);
 	mPlayer->resetAnimations();
 	//window.display();
+
+	Window::getWindow().display();
 }
 
 
