@@ -28,6 +28,7 @@ void PlayerPartHead::update()
 	if(mShootVector!=sf::Vector2f(0, 0))
 	{
 		PlayerPartHead::setPosition(mShootVector);
+		//mMagnetCollided=true;
 	}
 } 
 void PlayerPartHead::draw()
@@ -105,7 +106,12 @@ void PlayerPartHead::forceMove(sf::Vector2f force){
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 		mMagnet.setSolid(true);
 	}
+	mMagnetCollided=true;
 }
 void PlayerPartHead::setMagnetSolid(bool b){
 	mMagnet.setSolid(b);
+}
+void PlayerPartHead::setMagnetCollided(bool b)
+{
+	mMagnetCollided=b;
 }
