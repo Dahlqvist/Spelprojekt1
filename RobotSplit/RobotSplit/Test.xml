@@ -675,8 +675,8 @@
 		<Unit>
 			<Type>"Line"</Type>
 			<Position>
-				<x>64</x>
-				<y>480</y>
+				<x>63</x>
+				<y>481</y>
 			</Position>
 			<Size>1</Size>
 			<Rotation>0</Rotation>
@@ -684,8 +684,8 @@
 		<Unit>
 			<Type>"Line"</Type>
 			<Position>
-				<x>64</x>
-				<y>544</y>
+				<x>63</x>
+				<y>543</y>
 			</Position>
 			<Size>1</Size>
 			<Rotation>0</Rotation>
@@ -693,7 +693,7 @@
 		<Unit>
 			<Type>"Line"</Type>
 			<Position>
-				<x>128</x>
+				<x>127</x>
 				<y>480</y>
 			</Position>
 			<Size>1</Size>

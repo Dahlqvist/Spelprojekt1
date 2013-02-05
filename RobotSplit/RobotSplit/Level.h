@@ -66,12 +66,12 @@ protected:
 	void			setPlayer(Player*);
 	//Sets the level's Background
 	void			setBackground(Background*);
-private:
 	//Member Variables							(Done)
 	string			mName;
 	UnitVector	mObjects;
 	BackgroundWrap	mBackground;
 	Player*			mPlayer;
+private:
 	/*Defines the XmlLoader class as
 	a friend allowing XmlLoader to use
 	Level's private and protected functions*/
