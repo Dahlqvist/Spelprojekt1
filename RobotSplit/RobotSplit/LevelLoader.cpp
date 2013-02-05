@@ -190,7 +190,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	string					CurrentValue,Id,Sprite;
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
-	bool					Solid;
+	bool					Solid=true;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
