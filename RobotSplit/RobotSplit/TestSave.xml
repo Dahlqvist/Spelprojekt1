@@ -2,9 +2,9 @@
 <Level>
 	<Name>&quot;Test Bana&quot;</Name>
 	<Background>
-		<Frames>1</Frames>
-		<Speed>120</Speed>
-		<SpriteName>&quot;Bana1&quot;</SpriteName>
+		<Frames>-858993460</Frames>
+		<Speed>-858993460</Speed>
+		<SpriteName>&quot;&quot;</SpriteName>
 	</Background>
 	<Objects>
 		<Unit>

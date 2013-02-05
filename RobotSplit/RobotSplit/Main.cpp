@@ -18,7 +18,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	//window.setFramerateLimit(60);
-	Background *BG;
+	std::vector<Background*> BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 	UnitManager Objects(mPlayer, level.getObjects());
@@ -105,8 +105,11 @@ int main()
 
 		if(renderGame)
 		{
-			window.draw(BG->draw());
-			BG->update();
+			for (vector<Background*>::size_type i=0; i<BG.size(); i++)
+			{
+				window.draw(BG[i]->draw());
+				BG[i]->update();
+			}
 			Objects.draw(window);
 			mPlayer->draw(window);
 			mPlayer->resetAnimations();

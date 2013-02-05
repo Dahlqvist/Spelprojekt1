@@ -9,7 +9,7 @@ class Animation;
 class Background
 {
 public:
-	Background(const std::string& filnamn, int timePerFrame, int numFrames);
+	Background(const std::string& filnamn, int timePerFrame, int numFrames, sf::Vector2f position);
 	~Background();
 
 	void update();

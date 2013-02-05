@@ -1,5 +1,7 @@
 #include "LevelLoader.h"
 
+#include <vector>
+
 //Includefiles for objects
 //#include "TestObject.h"
 
@@ -27,6 +29,7 @@ LevelLoader::~LevelLoader(void)
 Level	LevelLoader::getLevel()
 {
 	Level					RetLevel;
+	std::vector<Background*> backgrounds;
 	rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
 	//Gets the Level Node
 	LevelNode=		mDocument.first_node("Level");
@@ -35,18 +38,22 @@ Level	LevelLoader::getLevel()
 	//Initiation of level begins
 	//Sets the level's name
 	RetLevel.setName(getValue(LevelNode->first_node("Name")));
+	RetLevel.setBackground(getBackground());
 	//Sets the level's background
-	int	Frames,Speed;
+	/*int	Frames,Speed;
+	float PosX, PosY;
 	string Filename;
 	BackgroundNode=	LevelNode->first_node("Background");
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	Background*BACK=new Background(Filename,Speed,Frames);
+	PosX=			atof(getValue(BackgroundNode->first_node("Position")->first_node("X")).c_str());
+	PosY=			atof(getValue(BackgroundNode->first_node("Position")->first_node("Y")).c_str());
+	Background*BACK=new Background(Filename,Speed,Frames, sf::Vector2f(PosX, PosY));
 	RetLevel.setBackground(BACK);
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
-	RetLevel.getBackgroundWrap().setName(Filename);
+	RetLevel.getBackgroundWrap().setName(Filename);*/
 	//Used to check when the loop looped once
 	bool oneLoop=false;
 	//Loop that adds GameObjects to the Level
@@ -60,8 +67,13 @@ Level	LevelLoader::getLevel()
 		{
 			oneLoop=true;
 		}
+		/*if (type=="Background")
+		{
+			addBackground(RetLevel, Gameobject);
+		}*/
 		string type;
 		type=	getValue(Gameobject->first_node("Type"));
+		
 		if(type=="Player")
 		{
 			addPlayer(RetLevel,Gameobject);
@@ -85,6 +97,65 @@ Level	LevelLoader::getLevel()
 	}
 	while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
 	return	RetLevel;
+}
+
+vector<Background*>	LevelLoader::getBackground()
+{
+	rapidxml::xml_node<>	*CurrentChild, *Node;
+	string					CurrentValue;
+	Background				*TempObject;
+	sf::Vector2f			Position;
+	int						Frames,Speed;
+	string					SpriteName;
+	vector<Background*>		retBackground;
+	bool oneLoop=			false;
+
+	Node=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background");
+	string foo=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background")->name();
+
+	do
+	{
+		if(oneLoop)
+		{
+			Node=Node->next_sibling();
+		}
+		else
+		{
+			oneLoop=true;
+		}
+		string foo=Node->name();
+		//Gets the Position childnode from the GameObject node
+		CurrentChild=	Node->first_node("Position");
+		//Gets the x Value from CurrentChild
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		//Sets X to CurentValue's value
+		Position.x=((float)atof(CurrentValue.c_str()));
+
+		//Initializes Y's value
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Position.y=((float)atof(CurrentValue.c_str()));
+
+		//Initializes the number of frames
+		CurrentChild=	Node->first_node("Frames");
+		CurrentValue=	getValue(CurrentChild);
+		Frames=			atoi(CurrentValue.c_str());
+
+		//Initializes the time per frame
+		CurrentChild=	Node->first_node("Speed");
+		CurrentValue=	getValue(CurrentChild);
+		Speed=			atoi(CurrentValue.c_str());
+
+		//Initializes the sprite name
+		CurrentChild=	Node->first_node("SpriteName");
+		CurrentValue=	getValue(CurrentChild);
+		SpriteName=		CurrentValue.c_str();
+
+		retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
+	}
+	while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
+
+	//Adds the Player pointer to the Level object
+	return retBackground;
 }
 
 void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)

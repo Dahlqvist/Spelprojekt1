@@ -14,20 +14,20 @@ typedef vector<Unit*> UnitVector;
 class	BackgroundWrap
 {
 public:
-	Background*	getBackground	()const;
-	string		getName			()const;
-	int			getFrames		()const;
-	int			getSpeed		()const;
-	void		setBackground	(Background*);
-	void		setName			(const string&);
-	void		setFrames		(const int&);
-	void		setSpeed		(const int&);
-	void		operator=		(const BackgroundWrap&);
-	void		deletePointer	();
+	vector<Background*>	getBackground	()const;
+	string				getName			()const;
+	int					getFrames		()const;
+	int					getSpeed		()const;
+	void				setBackground	(vector<Background*>);
+	void				setName			(const string&);
+	void				setFrames		(const int&);
+	void				setSpeed		(const int&);
+	void				operator=		(const BackgroundWrap&);
+	void				deletePointer	();
 private:
-	Background*	mBackground;
-	string		mName;
-	int			mFrames,mSpeed;
+	vector<Background*>	mBackground;
+	string				mName;
+	int					mFrames,mSpeed;
 };
 
 //Class is Done	(01-27-2013)
@@ -47,7 +47,7 @@ public:
 	//Returns the Level's name					(Done)
 	string			getName()const;
 	//Returns the Level's background			(Done)
-	Background*		getBackground()const;
+	vector<Background*>		getBackground()const;
 	//Returns the Player pointer				(Done)
 	Player*			getPlayer()const;
 	//Returns the Backgroundwrap				(Done)
@@ -65,7 +65,7 @@ protected:
 	//Sets the player pointer					(Done)
 	void			setPlayer(Player*);
 	//Sets the level's Background
-	void			setBackground(Background*);
+	void			setBackground(vector<Background*>);
 private:
 	//Member Variables							(Done)
 	string			mName;
