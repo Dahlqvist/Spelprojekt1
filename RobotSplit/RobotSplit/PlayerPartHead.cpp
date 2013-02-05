@@ -1,5 +1,6 @@
 #include "PlayerPartHead.h"
 #include <iostream>
+#include "UnitManager.h"
 
 PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
@@ -12,6 +13,7 @@ mBody(Body),
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
+	mMagnetCollided=true;
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
@@ -98,7 +100,7 @@ Unit* PlayerPartHead::getUnit()
 void PlayerPartHead::forceMove(sf::Vector2f force){
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
-	if(mAttached==false){
+	if(mAttached==false && mMagnetCollided==false){
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 		mMagnet.setSolid(true);
