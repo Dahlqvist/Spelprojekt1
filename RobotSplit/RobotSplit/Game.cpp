@@ -16,7 +16,7 @@
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
-#include "Level.h"
+
 #include "Window.h"
 
 Game::Game(): 
@@ -26,10 +26,9 @@ Game::Game():
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
-		renderGame(true),
-		window(Window::getWindow())
+		renderGame(true)
 {
-	Objects= new UnitManager(mPlayer, mlevel.getObject());
+	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
 	for(UnitVector::size_type i=0;i<Objects->getUnits().size();i++)
 	{
@@ -97,12 +96,12 @@ void Game::update()
 				}
 				if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 					sf::Vector2f Temp;
-					Temp.x=(float)sf::Mouse::getPosition(window).x;
-					Temp.y=(float)sf::Mouse::getPosition(window).y;
+					Temp.x=(float)sf::Mouse::getPosition(Window::getWindow()).x;
+					Temp.y=(float)sf::Mouse::getPosition(Window::getWindow()).y;
 					mPlayer->shootHead(sf::Vector2f(Temp));
 					TestTimer.restart();
 				}
-			
+			BG->update();
 			mPlayer->update();
 			Objects->update();
 
@@ -115,14 +114,19 @@ void Game::render()
 {
 	
 	std::cout << "Game" << std::endl;
-	window.clear(sf::Color::Black);
-	window.draw(BG->draw());
-	BG->update();
-	Objects->draw(window);
-	mPlayer->draw(window);
-	mPlayer->resetAnimations();
 
-	window.display();
+	Window::getWindow().clear(sf::Color::Black);
+	Window::getWindow().draw(BG->draw());
+
+	Objects->draw(Window::getWindow());
+	mPlayer->draw(Window::getWindow());
+	//window.clear(sf::Color::Black);
+	//window.draw(BG->draw());
+	
+	//Objects->draw(window);
+	//mPlayer->draw(window);
+	mPlayer->resetAnimations();
+	//window.display();
 }
 
 
@@ -133,5 +137,3 @@ void Game::render()
 	{
 		cout<<TextureManager::getSpriteName(Objects[i]->getSprite())<<endl;
 	}*/
-	
-}

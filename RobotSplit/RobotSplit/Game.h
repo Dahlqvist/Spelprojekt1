@@ -2,6 +2,7 @@
 #define INC_GAME
 
 #include "State.h"
+#include "Level.h"
 
 class StateInput;
 class Background;
@@ -26,8 +27,6 @@ private:
 	double lastUpdate;
 	int loops;
 	bool renderGame;
-	
-	sf::RenderWindow window;
 };
 
 #endif

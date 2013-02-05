@@ -17,7 +17,7 @@ public:
 	void popState();
 
 	void updateState();
-	void renderState(sf::RenderWindow& window);
+	void renderState();
 
 	void restart();
 

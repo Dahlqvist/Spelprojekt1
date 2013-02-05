@@ -4,7 +4,7 @@ sf::RenderWindow Window::mWindow;
 
 Window::Window()
 {
-	loadWindow;
+	loadWindow();
 }
 
 Window::~Window()
@@ -15,7 +15,7 @@ void Window::loadWindow()
 	mWindow.create(sf::VideoMode(1280, 768), "Robot split");
 }
 
-const sf::RenderWindow Window::getWindow()
+sf::RenderWindow& Window::getWindow()
 {
 	return mWindow;
 }

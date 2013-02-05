@@ -3,11 +3,13 @@
 
 #include "StateInput.h"
 #include "StateManager.h"
+#include "Window.h"
 
 using namespace std;
 
 int main()
 {
+	Window window;
 	StateInput& stateinput = StateInput::getInstance();
 	StateManager& statemanager = StateManager::getInstance();			
 

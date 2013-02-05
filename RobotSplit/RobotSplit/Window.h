@@ -9,9 +9,10 @@ public:
 	Window();
 	~Window();
 
-	static const sf::RenderWindow getWindow();
+	static sf::RenderWindow& getWindow();
+
 private:
-	static void loadWindow();
+	void loadWindow();
 	static sf::RenderWindow mWindow;
 };
 
