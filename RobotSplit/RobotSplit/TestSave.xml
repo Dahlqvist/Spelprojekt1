@@ -2,8 +2,13 @@
 <Level>
 	<Name>&quot;Test Bana&quot;</Name>
 	<Background>
+<<<<<<< HEAD
 		<Frames>-858993460</Frames>
 		<Speed>-858993460</Speed>
+=======
+		<Frames>3273468</Frames>
+		<Speed>16585650</Speed>
+>>>>>>> 438a2b2d693ca1619117289ed39d5dd1fd609784
 		<SpriteName>&quot;&quot;</SpriteName>
 	</Background>
 	<Objects>
