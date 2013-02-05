@@ -33,6 +33,7 @@ private:
 	void	addPlayer		(Player		*Source,xml_node<>* Parent);
 	void	addPlatform		(Unit		*Source,xml_node<>* Parent);
 	void	addLaser		(Unit		*Source,xml_node<>* Parent);
+	void	addLine			(Unit		*Source,xml_node<>* Parent);
 	void	addUnit			(Unit		*Source,xml_node<>* Parent);
 };
 #endif

@@ -338,11 +338,11 @@ void TextureManager::loadTexture()
 	mSpriteMap["LavaMiddle"].setTexture(mTextureMap["LavaMiddle"]);
 
 	//INTIIALIZING TEMPORARYBANA
-	mTextureMap["Bana1"].loadFromFile("Texture/Background/Background_Part01.png");
-	mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
+	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
+	mSpriteMap["Bana1_bg1"].setTexture(mTextureMap["Bana1_bg1"]);
 
-	//mTextureMap["Bana1"].loadFromFile("Texture/Background/TestBackground1.png");
-	//mSpriteMap["Bana1"].setTexture(mTextureMap["Bana1"]);
+	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+	mSpriteMap["Bana1_bg2"].setTexture(mTextureMap["Bana1_bg2"]);
 
 	//Initializing the frame parts.
 
