@@ -146,35 +146,8 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	const sf::Sprite* playerSprite=player.getCollisionSprite()[mPlayerPart];
 	if (obj2->isSolid())
 	{
-		//Collision from the sides
-		if (collisionRect.width<collisionRect.height)
-		{
-			if (!mMovedX)
-			{
-				//If player is left of object
-				if (playerSprite->getPosition().x<obj2->getPosition().x)
-				{
-					if (collisionRect.height>5 || (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP)))
-					{
-						moveDistance.x=-(collisionRect.width-1);
-						mCollidedSides.insert(LEFT);
-						mMovedX=true;
-					}
-				}
-				//If player is right of object
-				else
-				{
-					if (collisionRect.height>5 || (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP)))
-					{
-						moveDistance.x=collisionRect.width-1;
-						mCollidedSides.insert(RIGHT);
-						mMovedX=true;
-					}
-				}
-			}
-		}
 		//Collision from the above/below
-		else
+		if (collisionRect.width>collisionRect.height)
 		{
 			if (!mMovedY)
 			{
@@ -201,19 +174,54 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				}
 			}
 		}
+		//Collision from the sides
+		else
+		{
+			if (!mMovedX)
+			{
+				//If player is left of object
+				if (playerSprite->getPosition().x<obj2->getPosition().x)
+				{
+					if (collisionRect.height>5 || (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP)))
+					{
+						moveDistance.x=-(collisionRect.width-1);
+						mCollidedSides.insert(LEFT);
+						mMovedX=true;
+					}
+				}
+				//If player is right of object
+				else
+				{
+					if (collisionRect.height>5 || (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP)))
+					{
+						moveDistance.x=collisionRect.width-1;
+						mCollidedSides.insert(RIGHT);
+						mMovedX=true;
+					}
+				}
+			}
+		}
 	}
 	//If the feet and body is connected, but head is away
-	if(player.getCollisionSprite().size()==2 && mPlayerPart==1)
+	//std::cout << player.getCollisionSprite().size() << std::endl;
+	if(player.getCollisionSprite().size()==3)
 	{
-		player.forceMove(2, moveDistance);
+		if(mPlayerPart==1)
+		{
+			player.forceMove(2, moveDistance);
+		}
+		else if(mPlayerPart==0){
+			player.forceMove(mPlayerPart, moveDistance);
+		}
 	}
 	//If the feet, body and head is connected
 	else if(player.getCollisionSprite().size()==1)
 	{
-		player.forceMove(3, moveDistance);
+		player.forceMove(-1, moveDistance);
 	}
 	else
 	{
+		if(mPlayerPart!=3)
 		player.forceMove(mPlayerPart, moveDistance);
 	}
 	//playerSprite->setPosition(moveDistance);
