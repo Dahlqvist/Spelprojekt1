@@ -18,7 +18,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	//window.setFramerateLimit(60);
-	Background *BG;
+	std::vector<Background*> BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
 	UnitManager Objects(mPlayer, level.getObjects());
@@ -28,7 +28,9 @@ int main()
 	{
 		cout<<Objects.getUnits()[i]->getId()<<endl;
 	}
-
+	window.setKeyRepeatEnabled(false);
+	sf::Clock TestTimer;
+	TestTimer.restart();
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	int loops;
@@ -47,29 +49,27 @@ int main()
 			{
 				if (event.type == sf::Event::Closed)
 					window.close();
-				if(event.type == sf::Event::KeyPressed){
-					switch(event.key.code)
-					{
-					case sf::Keyboard::LShift:
-						mPlayer->interact(6);
-						//mPlayer->setBodyActive(!mPlayer->getBodyActive());
-						break;
-					case sf::Keyboard::Space:
-						mPlayer->interact(5);
-						//mPlayer->setTogether(!mPlayer->getTogether());
-						break;
-					case sf::Keyboard::E:
-						mPlayer->interact(7);
-						/*if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
-							mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension());
-						}*/
-						break;
-					}
-				}
+				//if(event.type == sf::Event::KeyPressed){
+				//	switch(event.key.code)
+				//	{
+				//	case sf::Keyboard::LShift:
+				//		mPlayer->interact(6);
+				//		//mPlayer->setBodyActive(!mPlayer->getBodyActive());
+				//		break;
+				//	case sf::Keyboard::Space:
+				//		mPlayer->interact(5);
+				//		//mPlayer->setTogether(!mPlayer->getTogether());
+				//		break;
+				//	case sf::Keyboard::E:
+				//		mPlayer->interact(7);
+				//		/*if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false){
+				//			mPlayer->setAttachFeetExtension(!mPlayer->getAttachFeetExtension());
+				//		}*/
+				//		break;
+				//	}
+				//}
 			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-				mPlayer->reFuel(100);
-			}
+
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 				mPlayer->interact(3);
 			}
@@ -85,16 +85,39 @@ int main()
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
 				mPlayer->interact(4);
 			}
-			if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
-				sf::Vector2f Temp;
-				Temp.x=(float)sf::Mouse::getPosition(window).x;
-				Temp.y=(float)sf::Mouse::getPosition(window).y;
-				mPlayer->shootHead(sf::Vector2f(Temp));
-				//std::cout << "Anropar";
+
+			if(TestTimer.getElapsedTime().asSeconds()>0.3){
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+					mPlayer->reFuel(100);
+					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
+					mPlayer->interact(6);
+					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+					mPlayer->interact(5);
+					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
+					mPlayer->interact(7);
+					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
+					mPlayer->restartPlayer(sf::Vector2f(100, 100));
+					TestTimer.restart();
+				}
+				if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
+					sf::Vector2f Temp;
+					Temp.x=(float)sf::Mouse::getPosition(window).x;
+					Temp.y=(float)sf::Mouse::getPosition(window).y;
+					mPlayer->shootHead(sf::Vector2f(Temp));
+					TestTimer.restart();
+					//std::cout << "Anropar";
+				}
 			}
-			/*if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
-				mPlayer->shootHead(sf::Vector2f(0, 0));
-			}*/
+			//window.setKeyRepeatEnabled(true);
+
 			window.clear(sf::Color::Black);
 			
 			mPlayer->update();
@@ -105,8 +128,11 @@ int main()
 
 		if(renderGame)
 		{
-			window.draw(BG->draw());
-			BG->update();
+			for (vector<Background*>::size_type i=0; i<BG.size(); i++)
+			{
+				window.draw(BG[i]->draw());
+				BG[i]->update();
+			}
 			Objects.draw(window);
 			mPlayer->draw(window);
 			mPlayer->resetAnimations();

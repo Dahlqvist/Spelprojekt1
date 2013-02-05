@@ -17,6 +17,7 @@ public:
 	Level	getLevel();
 private:
 	//Functions adding objects to the parameter				(Done)
+	vector<Background*>	getBackground();
 	void	addPlayer		(Level	&level,xml_node<>* Node);
 	void	addPlatform		(Level	&level,xml_node<>* Node);
 	void	addLaser		(Level	&level,xml_node<>* Node);

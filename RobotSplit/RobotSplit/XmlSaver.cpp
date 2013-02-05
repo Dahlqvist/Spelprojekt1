@@ -4,6 +4,7 @@
 #include	<stdlib.h>
 #include	"XmlSaver.h"
 #include	"Level.h"
+#include	"Line.h"
 #include	"UnitWrap.h"
 #include	"Player.h"
 #include	"Platform.h"
@@ -84,6 +85,10 @@ void	XmlSaver::saveLevel(Level &Source)
 			{
 				addLaser(VectorCopy[i],Objects);
 			}
+			else if(VectorCopy[i]->getId()=="Line")
+			{
+				addLine(VectorCopy[i],Objects);
+			}
 			else
 			{
 				addUnit(VectorCopy[i],Objects);
@@ -132,14 +137,62 @@ void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 	//std::cout<<"Adds Laser"<<endl;
 }
 
+void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)
+{
+	//Size needs seperate conversion due to float
+	Line*	tSource	=dynamic_cast<Line*>(Source);
+	string	sTemp;
+	char*	cTemp= new char[5];
+	itoa(tSource->getSize()*100,cTemp,10);
+	sTemp+=cTemp;
+	if(tSource->getSize()<1.0)
+	{
+		sTemp.insert(sTemp.begin(),'0');
+	}
+	sTemp.insert(sTemp.begin()+1,'.');
+	delete cTemp;
+	cTemp=	new	char[sTemp.size()+1];
+	strcpy(cTemp,sTemp.c_str());
+	//Allocates the Unit,Type,Position,Size and Rotation elements in the Xml document
+		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
+		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
+		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
+		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size",cTemp);
+		xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Roatation",modifyInt(tSource->getRotation()));
+	//Adds the x element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
+	//Adds the y element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+	//Adds the Type element to the Gameobject element
+	Gameobject->append_node(Type);
+	//Adds the Position, Size and Rotation elements to the Gameobject element
+	Gameobject->append_node(Position);
+	Gameobject->append_node(Size);
+	Gameobject->append_node(Rotation);
+	Parent->	append_node(Gameobject);
+	//std::cout<<"Adds Unit"<<endl;
+}
+
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
+	bool	bSolid;
+	string	sSolid;
+	bSolid=Source->isSolid();
+	if(bSolid)
+	{
+		sSolid="true";
+	}
+	else
+	{
+		sSolid="false";
+	}
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
+		xml_node<> *Solid		=mDocument.allocate_node(node_element,"Solid",modifyString(sSolid));
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
@@ -153,12 +206,22 @@ void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 	Gameobject->append_node(Sprite);
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
+	Gameobject->append_node(Solid);
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Platform"<<endl;
 }
 
-void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
+void	XmlSaver::addUnit			(Unit *Source,xml_node<>* Parent)
 {
+	string sSolid;
+	if(Source->isSolid())
+	{
+		sSolid="true";
+	}
+	else
+	{
+		sSolid="false";
+	}
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Frames;
 		xml_node<> *Speed;
@@ -172,6 +235,7 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
+		xml_node<> *Solid		=mDocument.allocate_node(node_element,"Solid",modifyString(sSolid));
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
@@ -192,6 +256,7 @@ void	XmlSaver::addUnit		(Unit *Source,xml_node<>* Parent)
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Position);
 	Gameobject->append_node(Size);
+	Gameobject->append_node(Solid);
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Unit"<<endl;
 }
