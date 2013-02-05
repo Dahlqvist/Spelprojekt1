@@ -19,13 +19,14 @@
 
 //#include "Window.h"
 
-Game::Game(): 
+Game::Game(sf::RenderWindow& window): 
 		mStateInput(StateInput::getInstance()),
 		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
-		loops(0)
+		loops(0),
+		mWindow(window)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -50,7 +51,7 @@ void Game::update()
 {
 	sf::Clock TestTimer;
 		loops = 0;
-		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
+		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<2)
 		{
 			loops++;
 			lastUpdate+=1/60.0;
@@ -93,8 +94,8 @@ void Game::update()
 				}
 				if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 					sf::Vector2f Temp;
-					Temp.x=(float)sf::Mouse::getPosition(Window::getWindow()).x;
-					Temp.y=(float)sf::Mouse::getPosition(Window::getWindow()).y;
+					Temp.x=(float)sf::Mouse::getPosition(mWindow).x;
+					Temp.y=(float)sf::Mouse::getPosition(mWindow).y;
 					mPlayer->shootHead(sf::Vector2f(Temp));
 					TestTimer.restart();
 				}
@@ -111,15 +112,14 @@ void Game::render()
 {
 	
 	//std::cout << "Game" << std::endl;
-	Window::getWindow().clear(sf::Color::Black);
+	mWindow.clear(sf::Color::Black);
 	//Window::getWindow().draw(BG->draw());
 
-	Objects->draw(Window::getWindow());
-	mPlayer->draw(Window::getWindow());
+	Objects->draw(mWindow);
+	mPlayer->draw(mWindow);
 	mPlayer->resetAnimations();
-	//window.display();
 
-	Window::getWindow().display();
+	mWindow.display();
 }
 
 

@@ -6,12 +6,21 @@
 #include "InGameMenu.h"
 #include "Menu.h"
 
-StateManager::StateManager(): mGame(new Game), mOption(new Option), mSplash(new Splash),
-								mMenu(new Menu), mInGameMenu(new InGameMenu)
+StateManager::StateManager(): mWindow(sf::VideoMode(1280, 768), "Robot split")
 {
+	loadState();
 	pushState(mGame);
+	
 }
 
+void StateManager::loadState()
+{
+	 mGame = new Game(mWindow);
+	 mOption = new Option;
+	 mSplash = new Splash;
+	 mMenu = new Menu;
+	 mInGameMenu = new InGameMenu;
+}
 StateManager::~StateManager()
 {
 	void internalClear();

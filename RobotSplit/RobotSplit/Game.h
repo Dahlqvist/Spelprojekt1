@@ -14,7 +14,7 @@ class UnitManager;
 class Game: public State
 {
 public:
-	Game();
+	Game(sf::RenderWindow& window);
 	virtual ~Game();
 	virtual void update();
 	virtual void render();
@@ -27,6 +27,7 @@ private:
 	sf::Clock lastUpdateClock;
 	double lastUpdate;
 	int loops;
+	sf::RenderWindow& mWindow;
 	
 };
 

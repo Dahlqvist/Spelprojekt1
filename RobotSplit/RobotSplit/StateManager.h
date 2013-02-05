@@ -28,6 +28,8 @@ public:
 	void pushInGameMenu();
 	void pushMenu();
 
+	void loadState();
+
 private:
 	StateManager();
 	StateManager(const StateManager& statemanager);
@@ -43,5 +45,7 @@ private:
 	State* mSplash;
 	State* mMenu;
 	State* mInGameMenu;
+
+	sf::RenderWindow mWindow;
 };
 #endif

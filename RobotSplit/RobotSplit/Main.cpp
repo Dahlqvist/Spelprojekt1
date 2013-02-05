@@ -10,13 +10,13 @@ using namespace std;
 int main()
 {
 	//Window window;
-	StateInput& stateinput = StateInput::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
+	StateInput& stateinput = StateInput::getInstance();
+	
 	//Window::getWindow().setFramerateLimit(60);
 
-	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split")
-
-	while(
+	
+	while(true)
 	{
 		statemanager.updateState();
 		statemanager.renderState();
