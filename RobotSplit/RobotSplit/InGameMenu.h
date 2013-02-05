@@ -11,7 +11,7 @@ public:
 	InGameMenu();
 	virtual ~InGameMenu();
 	virtual void update();
-	virtual void render();
+	virtual void render(sf::RenderWindow& window);
 private:
 	void choice();
 	StateInput& mStateInput;

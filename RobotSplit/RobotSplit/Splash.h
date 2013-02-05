@@ -11,7 +11,7 @@ public:
 	Splash();
 	virtual ~Splash();
 	virtual void update();
-	virtual void render();
+	virtual void render(sf::RenderWindow& window);
 private:
 	StateInput& mStateInput;
 };

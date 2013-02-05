@@ -14,7 +14,7 @@ void Menu::update()
 	choice();
 }
 
-void Menu::render()
+void Menu::render(sf::RenderWindow& window)
 {
 	std::cout << "Menu" << std::endl;
 }

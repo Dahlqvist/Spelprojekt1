@@ -1,6 +1,8 @@
 #ifndef INC_STATEMANAGER
 #define INC_STATEMANAGER
 
+#include <SFML/Graphics.hpp>
+
 #include "State.h"
 
 #include <stack>
@@ -15,7 +17,7 @@ public:
 	void popState();
 
 	void updateState();
-	void renderState();
+	void renderState(sf::RenderWindow& window);
 
 	void restart();
 

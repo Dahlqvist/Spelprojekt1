@@ -4,6 +4,10 @@
 #include "State.h"
 
 class StateInput;
+class Background;
+class Level;
+class Player;
+class UnitManager;
 
 class Game: public State
 {
@@ -11,11 +15,17 @@ public:
 	Game();
 	virtual ~Game();
 	virtual void update();
-	virtual void render();
+	virtual void render(sf::RenderWindow& window);
 private:
-	void choice();
-	int q;
 	StateInput& mStateInput;
+	Background *BG;
+	Level mlevel;
+	Player* mPlayer;
+	UnitManager* Objects;
+	sf::Clock lastUpdateClock;
+	double lastUpdate;
+	int loops;
+	bool renderGame;
 };
 
 #endif

@@ -11,7 +11,7 @@ public:
 	Option();
 	virtual ~Option();
 	virtual void update();
-	virtual void render();
+	virtual void render(sf::RenderWindow& window);
 private:
 	int p;
 	void choice();

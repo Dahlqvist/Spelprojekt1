@@ -43,9 +43,9 @@ void StateManager::updateState()
 	mStateStack.top()->update();
 }
 
-void StateManager::renderState()
+void StateManager::renderState(sf::RenderWindow& window)
 {
-	mStateStack.top()->render();
+	mStateStack.top()->render(window);
 }
 
 void StateManager::internalClear()
