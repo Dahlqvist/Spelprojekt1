@@ -14,7 +14,7 @@ void InGameMenu::update()
 	choice();
 }
 
-void InGameMenu::render(sf::RenderWindow& window)
+void InGameMenu::render()
 {
 	std::cout << "InGameMenu" << std::endl;
 }

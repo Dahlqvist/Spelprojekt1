@@ -15,7 +15,7 @@ public:
 	Game();
 	virtual ~Game();
 	virtual void update();
-	virtual void render(sf::RenderWindow& window);
+	virtual void render();
 private:
 	StateInput& mStateInput;
 	Background *BG;
@@ -26,6 +26,8 @@ private:
 	double lastUpdate;
 	int loops;
 	bool renderGame;
+	
+	sf::RenderWindow window;
 };
 
 #endif

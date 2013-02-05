@@ -17,6 +17,7 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 #include "Level.h"
+#include "Window.h"
 
 Game::Game(): 
 		mStateInput(StateInput::getInstance()),
@@ -25,7 +26,8 @@ Game::Game():
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
-		renderGame(true)
+		renderGame(true),
+		window(Window::getWindow())
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObject());
 	Collision::unitAtSides(Objects->getUnits());
@@ -38,11 +40,17 @@ Game::Game():
 Game::~Game()
 {
 	std::cout << "Game DELETE" << std::endl;
+
+	system("PAUSE");
+	XmlSaver saver("TestSave");
+	saver.saveLevel(mlevel);
+	saver.createFile();
+	mlevel.deletePointers();
 }
 
 void Game::update()
 {
-	renderGame = false;
+	sf::Clock TestTimer;
 		loops = 0;
 		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 		{
@@ -93,24 +101,24 @@ void Game::update()
 					Temp.y=(float)sf::Mouse::getPosition(window).y;
 					mPlayer->shootHead(sf::Vector2f(Temp));
 					TestTimer.restart();
-					//std::cout << "Anropar";
 				}
 			
 			mPlayer->update();
-			Objects.update();
+			Objects->update();
 
 			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
+	}
 }
 
-void Game::render(sf::RenderWindow& window)
+void Game::render()
 {
+	
 	std::cout << "Game" << std::endl;
 	window.clear(sf::Color::Black);
-
 	window.draw(BG->draw());
 	BG->update();
-	Objects.draw(window);
+	Objects->draw(window);
 	mPlayer->draw(window);
 	mPlayer->resetAnimations();
 
@@ -119,34 +127,11 @@ void Game::render(sf::RenderWindow& window)
 
 
 
-int main()
-{
-	//window.setFramerateLimit(60);
 
-	
-
-	
-
-	
-
-	
-	
-	while (window.isOpen())
-	{
-		
-	}
-	/*
 	//Test for finding Textures' names
-	for(UnitVector::size_type i=0;i<Objects.size();i++)
+	/*for(UnitVector::size_type i=0;i<Objects.size();i++)
 	{
 		cout<<TextureManager::getSpriteName(Objects[i]->getSprite())<<endl;
-	}
-	system("PAUSE");
-	*/
-	XmlSaver saver("TestSave");
-	delete mPlayer;
-	saver.saveLevel(level);
-	saver.createFile();
-	level.deletePointers();
-	return 0;
+	}*/
+	
 }

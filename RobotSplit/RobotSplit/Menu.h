@@ -11,7 +11,7 @@ public:
 	Menu();
 	virtual ~Menu();
 	virtual void update();
-	virtual void render(sf::RenderWindow& window);
+	virtual void render();
 
 	void choice();
 private:

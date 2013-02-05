@@ -15,7 +15,7 @@ void Option::update()
 	choice();
 }
 
-void Option::render(sf::RenderWindow& window)
+void Option::render()
 {
 	std::cout << "Option" << std::endl;
 }

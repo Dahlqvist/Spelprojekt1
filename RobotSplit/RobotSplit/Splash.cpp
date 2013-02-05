@@ -15,7 +15,7 @@ void Splash::update()
 	mStateInput.changeState("Menu");	
 }
 
-void Splash::render(sf::RenderWindow& window)
+void Splash::render()
 {
 	std::cout << "Splash" << std::endl;
 }

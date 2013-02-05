@@ -9,14 +9,11 @@ using namespace std;
 int main()
 {
 	StateInput& stateinput = StateInput::getInstance();
-	StateManager& statemanager = StateManager::getInstance();
-
-	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
-			
+	StateManager& statemanager = StateManager::getInstance();			
 
 	statemanager.updateState();
-	statemanager.renderState(sf::RenderWindow& window);
+	statemanager.renderState();
 	
-
+	
 	return 0;
 }
