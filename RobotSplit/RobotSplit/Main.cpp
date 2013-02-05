@@ -12,10 +12,11 @@ int main()
 	Window window;
 	StateInput& stateinput = StateInput::getInstance();
 	StateManager& statemanager = StateManager::getInstance();			
-
-	statemanager.updateState();
-	statemanager.renderState();
-	
+	while(Window::getWindow().isOpen())
+	{
+		statemanager.updateState();
+		statemanager.renderState();
+	}
 	
 	return 0;
 }
