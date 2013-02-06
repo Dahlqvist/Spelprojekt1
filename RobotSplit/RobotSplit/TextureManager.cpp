@@ -370,7 +370,7 @@ void TextureManager::loadTexture()
 	mSpriteMap["Tile9"] = spriteTile9;
 
 	//Initializing DialogueBox
-	mTextureMap["DialogueBox1"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
+	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 	mSpriteMap["DialogueBox1"].setTexture(mTextureMap["DialogueBox1"]);
 	
 	//Initializing Lava
