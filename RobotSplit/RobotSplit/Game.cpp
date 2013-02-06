@@ -23,17 +23,14 @@ Game::Game(sf::RenderWindow& window):
 		mStateInput(StateInput::getInstance()),
 		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
-		//BG(mlevel.getBackground()),
+		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
 		mWindow(window)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
-	/*for(UnitVector::size_type i=0;i<Objects->getUnits().size();i++)
-	{
-		cout << Objects->getUnits()[i]->getId() << endl;
-	}*/
+	lastUpdateClock.restart();
 }
 
 Game::~Game()
@@ -49,8 +46,10 @@ Game::~Game()
 
 void Game::update()
 {
+	mWindow.setKeyRepeatEnabled(false);
 	sf::Clock TestTimer;
-		loops = 0;
+	TestTimer.restart();
+	loops = 0;
 		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<2)
 		{
 			loops++;
@@ -99,7 +98,6 @@ void Game::update()
 					mPlayer->shootHead(sf::Vector2f(Temp));
 					TestTimer.restart();
 				}
-		//	BG->update();
 			mPlayer->update();
 			Objects->update();
 
@@ -113,7 +111,11 @@ void Game::render()
 	
 	//std::cout << "Game" << std::endl;
 	mWindow.clear(sf::Color::Black);
-	//Window::getWindow().draw(BG->draw());
+	for(vector<Background*>::size_type i =0; i < BG.size(); i++)
+	{
+		mWindow.draw(BG[i]->draw());
+		BG[i]->update();
+	}
 
 	Objects->draw(mWindow);
 	mPlayer->draw(mWindow);
@@ -121,12 +123,3 @@ void Game::render()
 
 	mWindow.display();
 }
-
-
-
-
-	//Test for finding Textures' names
-	/*for(UnitVector::size_type i=0;i<Objects.size();i++)
-	{
-		cout<<TextureManager::getSpriteName(Objects[i]->getSprite())<<endl;
-	}*/

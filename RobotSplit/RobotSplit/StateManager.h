@@ -29,7 +29,7 @@ public:
 	void pushMenu();
 
 	void loadState();
-
+	sf::RenderWindow& getWindow();
 private:
 	StateManager();
 	StateManager(const StateManager& statemanager);
@@ -47,5 +47,6 @@ private:
 	State* mInGameMenu;
 
 	sf::RenderWindow mWindow;
+	sf::RenderWindow mTempWin;
 };
 #endif

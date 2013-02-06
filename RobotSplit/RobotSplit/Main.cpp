@@ -12,25 +12,15 @@ int main()
 	//Window window;
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
-	
-	//Window::getWindow().setFramerateLimit(60);
-
-	//window.setFramerateLimit(60);
-	/*std::vector<Background*> BG;
-	BG=level.getBackground();
-	window.setKeyRepeatEnabled(false);
-
-		if(renderGame)
-		{
-			for (vector<Background*>::size_type i=0; i<BG.size(); i++)
-			{
-				window.draw(BG[i]->draw());
-				BG[i]->update();
-			}*/
-
-	
-	while(true)
+	sf::RenderWindow& mWindow = statemanager.getWindow();
+	while(mWindow.isOpen())
 	{
+		sf::Event event;
+		while(mWindow.pollEvent(event))
+		{
+			if(event.type == sf::Event::Closed)
+				mWindow.close();
+		}
 		statemanager.updateState();
 		statemanager.renderState();
 	}

@@ -7,17 +7,18 @@
 #include "Menu.h"
 
 StateManager::StateManager(): mWindow(sf::VideoMode(1280, 768), "Robot split")
+	
 {
+	mTempWin = mWindow;
 	loadState();
 	pushState(mGame);
-	
 }
 
 void StateManager::loadState()
 {
-	 mGame = new Game(mWindow);
+	 mGame = new Game(mTempWin);
 	 mOption = new Option;
-	 mSplash = new Splash(mWindow);
+	 mSplash = new Splash(mTempWin);
 	 mMenu = new Menu;
 	 mInGameMenu = new InGameMenu;
 }
@@ -101,4 +102,10 @@ void StateManager::restart()
 	while(!mStateStack.empty())
 		mStateStack.pop();
 	pushState(mSplash);
+}
+
+sf::RenderWindow& StateManager::getWindow()
+{
+	sf::RenderWindow& temp = mWindow;
+	return temp;
 }

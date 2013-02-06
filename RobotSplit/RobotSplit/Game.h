@@ -20,7 +20,6 @@ public:
 	virtual void render();
 private:
 	StateInput& mStateInput;
-	Background *BG;
 	Level mlevel;
 	Player* mPlayer;
 	UnitManager* Objects;
@@ -28,6 +27,8 @@ private:
 	double lastUpdate;
 	int loops;
 	sf::RenderWindow& mWindow;
+
+	std::vector<Background*> BG;
 	
 };
 
