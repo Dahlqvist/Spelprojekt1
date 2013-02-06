@@ -14,11 +14,9 @@ int main()
 	StateInput& stateinput = StateInput::getInstance();
 	
 	//Window::getWindow().setFramerateLimit(60);
-int main()
-{
 
 	//window.setFramerateLimit(60);
-	std::vector<Background*> BG;
+	/*std::vector<Background*> BG;
 	BG=level.getBackground();
 	window.setKeyRepeatEnabled(false);
 
@@ -28,7 +26,7 @@ int main()
 			{
 				window.draw(BG[i]->draw());
 				BG[i]->update();
-			}
+			}*/
 
 	
 	while(true)

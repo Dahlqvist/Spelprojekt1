@@ -23,7 +23,7 @@ Game::Game(sf::RenderWindow& window):
 		mStateInput(StateInput::getInstance()),
 		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
-		BG(mlevel.getBackground()),
+		//BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
 		mWindow(window)
