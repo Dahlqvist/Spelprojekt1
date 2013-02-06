@@ -43,6 +43,10 @@ private:
 	Animation mRightAnimation;
 	Animation mLeft;
 	Animation mRight;
+	Animation mLeftMagnet;
+	Animation mRightMagnet;
+	Animation mLeftAnimationMagnet;
+	Animation mRightAnimationMagnet;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime, mFuel, mRotation;

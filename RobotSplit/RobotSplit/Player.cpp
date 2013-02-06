@@ -416,7 +416,7 @@ void Player::setAttachFeetExtension(bool b)
 				}
 			}
 		}
-		else if(UnitManager::isCollidedSide(0, 2)){
+		else if(UnitManager::isCollidedSide(0, 2) || b==false){
 			mFeetAttached=b;
 			mFeet.setAttached(b);
 			if(mHeadAttachedFeet==true){
