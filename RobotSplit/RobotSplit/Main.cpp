@@ -103,6 +103,10 @@ int main()
 					mPlayer->interact(7);
 					TestTimer.restart();
 				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+					mPlayer->interact(8);
+					TestTimer.restart();
+				}
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
 					mPlayer->restartPlayer(sf::Vector2f(100, 100));
 					TestTimer.restart();
