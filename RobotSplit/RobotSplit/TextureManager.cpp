@@ -101,6 +101,10 @@ sf::Texture TextureManager::textureStix_Magnet;
 
 sf::Texture TextureManager::textureStix_Platform;
 
+sf::Texture TextureManager::textureStix_Split;
+
+sf::Texture TextureManager::textureWatermelon;
+
 TextureManager::TextureManager()
 {
 	loadTexture();
@@ -261,6 +265,9 @@ void TextureManager::loadTexture()
 	
 	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform");
 	
+	mTextureMap["StixSplashSplit"].loadFromFile("stix_splashscreen_split.png");
+
+	mTextureMap["Watermelon"].loadFromFile("watermelon games.png");
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

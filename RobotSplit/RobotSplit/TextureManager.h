@@ -129,6 +129,7 @@ private:
 
 	static sf::Texture textureStix_Split;
 
+	static sf::Texture textureWatermelon;
 };
 
 #endif
