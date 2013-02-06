@@ -27,6 +27,7 @@ private:
 	double lastUpdate;
 	int loops;
 	sf::RenderWindow& mWindow;
+	sf::Clock TestTimer;
 
 	std::vector<Background*> BG;
 	

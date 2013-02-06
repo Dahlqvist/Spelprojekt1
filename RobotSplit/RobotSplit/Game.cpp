@@ -31,6 +31,7 @@ Game::Game():
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
+	mWindow.setKeyRepeatEnabled(false);
 }
 
 Game::~Game()
@@ -46,9 +47,7 @@ Game::~Game()
 
 void Game::update()
 {
-	mWindow.setKeyRepeatEnabled(false);
-	sf::Clock TestTimer;
-	TestTimer.restart();
+	//mWindow.setKeyRepeatEnabled(false);
 	loops = 0;
 		while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<2)
 		{
