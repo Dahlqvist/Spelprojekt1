@@ -66,11 +66,10 @@ protected:
 	void			setPlayer(Player*);
 	//Sets the level's Background
 	void			setBackground(vector<Background*>);
-private:
 	void			setBackground(Background*);
 	//Member Variables							(Done)
 	string			mName;
-	UnitVector	mObjects;
+	UnitVector		mObjects;
 	BackgroundWrap	mBackground;
 	Player*			mPlayer;
 private:

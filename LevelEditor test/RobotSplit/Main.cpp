@@ -1,16 +1,19 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <vector>
-#include "Level.h"
+#include "LevelConstructor.h"
 #include "Unit.h"
+#include "Player.h"
 #include "TextField.h"
 
 using namespace sf;
+
 int main(int numArgs, char Args)
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor");
-//	Level level("Test.xml");
+	LevelConstructor level("Test.xml");
 	TextField	MTEXT(Color(1,1,1,255));
+		bool once=false;
 	while(window.isOpen())
 	{
 		sf::Event CurrentEvent;
@@ -20,12 +23,30 @@ int main(int numArgs, char Args)
 			{
 				window.close();
 			}
-			if(CurrentEvent.type ==	sf::Event::EventType::TextEntered)
+			else if(CurrentEvent.type == sf::Event::EventType::MouseButtonPressed)
+			{
+				Vector2f point(CurrentEvent.mouseButton.x,CurrentEvent.mouseButton.y);
+				std::cout<<"MousePosition: "<<point.y<<","<<point.y<<std::endl;
+				UnitVector Units = level.getObjects();
+				for(UnitVector::size_type i=0;i < Units.size();i++)
+				{
+					sf::FloatRect hitbox(Units[i]->getSprite().getGlobalBounds());
+					if(hitbox.contains(point))
+					{
+						if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Right)
+						{
+							level.deleteItem(i);
+						}
+					}
+				}
+				cout<<"Hitscan end!"<<endl;
+			}
+			else if(CurrentEvent.type ==	sf::Event::EventType::TextEntered)
 			{
 				std::cout<<int(CurrentEvent.text.unicode)<<std::endl;
 				MTEXT.insertCharacter(CurrentEvent.text.unicode);
 			}
-			if(CurrentEvent.type ==	sf::Event::EventType::KeyReleased)
+			else if(CurrentEvent.type ==	sf::Event::EventType::KeyReleased)
 			{
 				if(CurrentEvent.key.code==sf::Keyboard::Left)
 				{
@@ -33,21 +54,27 @@ int main(int numArgs, char Args)
 					temp--;
 					MTEXT.setCurrentPosition(temp);
 				}
-				if(CurrentEvent.key.code==sf::Keyboard::Right)
+				else if(CurrentEvent.key.code==sf::Keyboard::Right)
 				{
 					MTEXT.setCurrentPosition(MTEXT.getCurrentPosition()+1);
 				}
 			}
 		}
 		window.clear(Color(100,100,100,255));
-		window.draw(sf::Text(MTEXT.getString()));
 //		std::cout<<MTEXT.getCurrentPosition()<<std::endl;
-/*		UnitVector Units = level.getObjects();
+		UnitVector Units = level.getObjects();
+		level.getPlayer()->draw(window);
+		if(!once)
+		{
+			level.getPlayer()->update();
+			once=true;
+		}
 		for(UnitVector::size_type i=0;i < Units.size();i++)
 		{
-			window.draw(Units[i]->getSprite());
+				window.draw(Units[i]->getSprite());
 		}
-*/		window.display();
+		window.draw(sf::Text(MTEXT.getString()));
+		window.display();
 	}
 	return EXIT_SUCCESS;
 }
