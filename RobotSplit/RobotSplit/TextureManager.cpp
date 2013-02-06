@@ -11,8 +11,14 @@ sf::Sprite TextureManager::spriteBackground;
 sf::Texture TextureManager::textureStix_lowerRight;
 sf::Sprite TextureManager::spriteStix_lowerRight;
 
+sf::Texture TextureManager::textureStix_lowerRight_Magnet;
+sf::Sprite TextureManager::spriteStix_lowerRight_Magnet;
+
 sf::Texture TextureManager::textureStix_lower_aniRight;
 sf::Sprite TextureManager::spriteStix_lower_aniRight;
+
+sf::Texture TextureManager::textureStix_lower_aniRight_Magnet;
+sf::Sprite TextureManager::spriteStix_lower_aniRight_Magnet;
 
 sf::Texture TextureManager::textureStix_upperRight;
 sf::Sprite TextureManager::spriteStix_upperRight;
@@ -26,15 +32,19 @@ sf::Sprite TextureManager::spriteStix_shoot_aniRight;
 sf::Texture TextureManager::textureStix_upper_split_aniRight;
 sf::Sprite TextureManager::spriteStix_upper_split_aniRight;
 
-sf::Texture TextureManager::textureStix_FeetExtented;
-sf::Sprite TextureManager::spriteStix_FeetExtented;
 
 //Stix Left
 sf::Texture TextureManager::textureStix_lowerLeft;
 sf::Sprite TextureManager::spriteStix_lowerLeft;
 
+sf::Texture TextureManager::textureStix_lowerLeft_Magnet;
+sf::Sprite TextureManager::spriteStix_lowerLeft_Magnet;
+
 sf::Texture TextureManager::textureStix_lower_aniLeft;
 sf::Sprite TextureManager::spriteStix_lower_aniLeft;
+
+sf::Texture TextureManager::textureStix_lower_aniLeft_Magnet;
+sf::Sprite TextureManager::spriteStix_lower_aniLeft_Magnet;
 
 sf::Texture TextureManager::textureStix_upperLeft;
 sf::Sprite TextureManager::spriteStix_upperLeft;
@@ -149,10 +159,20 @@ void TextureManager::loadTexture()
 	TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lowerRight;
 	mSpriteMap["StixLower"] = spriteStix_lowerRight;
 
+	textureStix_lowerRight_Magnet.loadFromFile("Texture/Stix/stix_lower_magnet_dark.png");
+	spriteStix_lowerRight_Magnet.setTexture(textureStix_lowerRight_Magnet);
+	mTextureMap["StixLowerMagnet"] = textureStix_lowerRight_Magnet;
+	mSpriteMap["StixLowerMagnet"] = spriteStix_lowerRight_Magnet;
+
 	textureStix_lower_aniRight.loadFromFile("Texture/Stix/stix_loweranimation_strip8_dark.png");
 	spriteStix_lower_aniRight.setTexture(textureStix_lower_aniRight);
 	mTextureMap["StixLowerAni"] = textureStix_lower_aniRight;
 	mSpriteMap["StixLowerAni"] = spriteStix_lower_aniRight;
+
+	textureStix_lower_aniRight_Magnet.loadFromFile("Texture/Stix/stix_lower_magnetanimation_strip8_dark.png");
+	spriteStix_lower_aniRight_Magnet.setTexture(textureStix_lower_aniRight_Magnet);
+	mTextureMap["StixLowerAniMagnet"] = textureStix_lower_aniRight_Magnet;
+	mSpriteMap["StixLowerAniMagnet"] = spriteStix_lower_aniRight_Magnet;
 
 	textureStix_upper_aniRight.loadFromFile("Texture/Stix/stix_head_match_loweranimation_strip8_H66px_dark.png");
 	spriteStix_upper_aniRight.setTexture(textureStix_upper_aniRight);
@@ -174,20 +194,36 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperSplit"] = textureStix_upper_split_aniRight;
 	mSpriteMap["StixUpperSplit"] = spriteStix_upper_split_aniRight;
 
-	textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
-	spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
-	mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
-	mSpriteMap["StixFeetExtend"] = spriteStix_FeetExtented;
+	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
+	mSpriteMap["StixFeetExtend"].setTexture(mTextureMap["StixFeetExtend"]);
+
+	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark.png");
+	mSpriteMap["StixFeetExtendAni"].setTexture(mTextureMap["StixFeetExtendAni"]);
+
+	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
+	//spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
+	//mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
+	//mSpriteMap["StixFeetExtend"] = spriteStix_FeetExtented;
 	//Stix Left
 	textureStix_lowerLeft.loadFromFile("Texture/Stix/Mirror_stix_lower_dark.png");
 	spriteStix_lowerLeft.setTexture(textureStix_lowerLeft);
 	mTextureMap["StixLowerL"] = textureStix_lowerLeft;
 	mSpriteMap["StixLowerL"] = spriteStix_lowerLeft;
 
+	textureStix_lowerLeft_Magnet.loadFromFile("Texture/Stix/Mirror_stix_lower_magnet_dark.png");
+	spriteStix_lowerLeft_Magnet.setTexture(textureStix_lowerLeft_Magnet);
+	mTextureMap["StixLowerLMagnet"] = textureStix_lowerLeft_Magnet;
+	mSpriteMap["StixLowerLMagnet"] = spriteStix_lowerLeft_Magnet;	
+
 	textureStix_lower_aniLeft.loadFromFile("Texture/Stix/Mirror_stix_loweranimation_strip8_dark.png");
 	spriteStix_lower_aniLeft.setTexture(textureStix_lower_aniLeft);
 	mTextureMap["StixLowerAniL"] = textureStix_lower_aniLeft;
 	mSpriteMap["StixLowerAniL"] = spriteStix_lower_aniLeft;	
+
+	textureStix_lower_aniLeft_Magnet.loadFromFile("Texture/Stix/Mirror_stix_lower_magnetanimation_strip8_dark.png");
+	spriteStix_lower_aniLeft_Magnet.setTexture(textureStix_lower_aniLeft_Magnet);
+	mTextureMap["StixLowerAniLMagnet"] = textureStix_lower_aniLeft_Magnet;
+	mSpriteMap["StixLowerAniLMagnet"] = spriteStix_lower_aniLeft_Magnet;	
 
 	textureStix_upperLeft.loadFromFile("Texture/Stix/Mirror_stix_upper_dark.png");
 	spriteStix_upperLeft.setTexture(textureStix_upperLeft);
@@ -332,6 +368,10 @@ void TextureManager::loadTexture()
 	spriteTile9.setTexture(textureTile9);
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
+
+	//Initializing DialogueBox
+	mTextureMap["DialogueBox1"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
+	mSpriteMap["DialogueBox1"].setTexture(mTextureMap["DialogueBox1"]);
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");

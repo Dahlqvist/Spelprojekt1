@@ -41,8 +41,14 @@ private:
 	static sf::Texture textureStix_lowerRight;
 	static sf::Sprite spriteStix_lowerRight;
 
+	static sf::Texture textureStix_lowerRight_Magnet;
+	static sf::Sprite spriteStix_lowerRight_Magnet;
+
 	static sf::Texture textureStix_lower_aniRight;
 	static sf::Sprite spriteStix_lower_aniRight;
+
+	static sf::Texture textureStix_lower_aniRight_Magnet;
+	static sf::Sprite spriteStix_lower_aniRight_Magnet;
 
 	static sf::Texture textureStix_upperRight;
 	static sf::Sprite spriteStix_upperRight;
@@ -56,15 +62,18 @@ private:
 	static sf::Texture textureStix_upper_split_aniRight;
 	static sf::Sprite spriteStix_upper_split_aniRight;
 
-	static sf::Texture textureStix_FeetExtented;
-	static sf::Sprite spriteStix_FeetExtented;
-
 	//Stix Left
 	static sf::Texture textureStix_lowerLeft;
 	static sf::Sprite spriteStix_lowerLeft;
 
+	static sf::Texture textureStix_lowerLeft_Magnet;
+	static sf::Sprite spriteStix_lowerLeft_Magnet;
+
 	static sf::Texture textureStix_lower_aniLeft;
 	static sf::Sprite spriteStix_lower_aniLeft;
+
+	static sf::Texture textureStix_lower_aniLeft_Magnet;
+	static sf::Sprite spriteStix_lower_aniLeft_Magnet;
 
 	static sf::Texture textureStix_upperLeft;
 	static sf::Sprite spriteStix_upperLeft;

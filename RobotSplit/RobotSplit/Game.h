@@ -3,12 +3,14 @@
 
 #include "State.h"
 #include "Level.h"
+//#include "DialogueBox.h"
 
 class StateInput;
 class Background;
-class Level;
+//class Level;
 class Player;
 class UnitManager;
+//class DialogueBox;
 
 
 class Game: public State
@@ -28,7 +30,8 @@ private:
 	int loops;
 	sf::RenderWindow& mWindow;
 	sf::Clock TestTimer;
-
+	float mTime;
+	//DialogueBox *diaBox;
 	std::vector<Background*> BG;
 	
 };

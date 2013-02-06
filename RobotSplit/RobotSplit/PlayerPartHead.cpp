@@ -84,7 +84,7 @@ void PlayerPartHead::jump()
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
-	float mSpeed=3;
+	float mSpeed=5;
 	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
 }
 void PlayerPartHead::resetAnimation()
