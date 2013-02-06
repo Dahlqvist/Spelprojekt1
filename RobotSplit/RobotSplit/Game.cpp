@@ -34,24 +34,24 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
-	//diaBox = new DialogueBox(sf::Vector2f(200, 200), "Hej hej!", true);
+	diaBox = new DialogueBox(sf::Vector2f(200, 200), "Hej hej!", true);
 }
 
 Game::~Game()
 {
-	//delete diaBox;
+	delete diaBox;
 	delete Objects;
 	/*system("PAUSE");
 	XmlSaver saver("TestSave");
 	saver.saveLevel(mlevel);
-	saver.createFile();
-	mlevel.deletePointers();*/
+	saver.createFile();*/
+	mlevel.deletePointers();
 }
 
 void Game::update()
 {
 	loops = 0;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<2)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 	{
 		loops++;
 		lastUpdate+=1/60.0;
@@ -108,7 +108,7 @@ void Game::update()
 		}
 		mPlayer->update();
 		Objects->update();
-		//diaBox->update();
+		diaBox->update();
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}

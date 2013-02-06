@@ -12,12 +12,15 @@ int main()
 	Window window;
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
-
 	sf::RenderWindow& mWindow = Window::getWindow();
-	sf::Event event;
-
 	while(mWindow.isOpen())
 	{
+		sf::Event event;
+		while(mWindow.pollEvent(event))
+		{
+			if(event.type == sf::Event::Closed)
+				mWindow.close();
+		}
 		statemanager.updateState();
 		statemanager.renderState();
 	}
