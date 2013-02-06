@@ -89,6 +89,7 @@
     <ClCompile Include="Option.cpp">
       <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -182,6 +183,7 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Level</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -17,16 +17,16 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 
-//#include "Window.h"
+#include "Window.h"
 
-Game::Game(sf::RenderWindow& window): 
+Game::Game():
 		mStateInput(StateInput::getInstance()),
 		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
-		mWindow(window)
+		mWindow(Window::getWindow())
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());

@@ -3,16 +3,16 @@
 
 #include "StateInput.h"
 #include "StateManager.h"
-//#include "Window.h"
+#include "Window.h"
 
 using namespace std;
 
 int main()
 {
-	//Window window;
+	Window window;
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
-	sf::RenderWindow& mWindow = statemanager.getWindow();
+	sf::RenderWindow& mWindow = Window::getWindow();
 	while(mWindow.isOpen())
 	{
 		sf::Event event;

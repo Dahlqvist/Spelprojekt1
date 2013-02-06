@@ -8,7 +8,6 @@ class Window
 public:
 	Window();
 	~Window();
-
 	static sf::RenderWindow& getWindow();
 
 private:

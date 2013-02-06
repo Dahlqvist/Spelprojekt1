@@ -14,7 +14,7 @@ class UnitManager;
 class Game: public State
 {
 public:
-	Game(sf::RenderWindow& window);
+	Game();
 	virtual ~Game();
 	virtual void update();
 	virtual void render();

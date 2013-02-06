@@ -1,8 +1,8 @@
 #include "Splash.h"
 #include "StateInput.h"
+#include "Window.h"
 
-Splash::Splash(sf::RenderWindow& window): mStateInput(StateInput::getInstance()),
-	mWindow(window)
+Splash::Splash(): mStateInput(StateInput::getInstance())
 {}
 
 Splash::~Splash()
