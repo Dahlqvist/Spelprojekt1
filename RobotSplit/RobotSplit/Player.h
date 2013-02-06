@@ -53,10 +53,11 @@ private:
 	sf::Sprite* Temp3;
 	sf::Sprite* Temp4;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mTest;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
-	int magnetSlot;
+	bool mKeys;
+	int magnetSlot, lastKey, thisKey;
 };
 
 #endif

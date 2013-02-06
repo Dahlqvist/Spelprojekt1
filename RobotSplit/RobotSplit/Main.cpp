@@ -88,7 +88,7 @@ int main()
 				mPlayer->interact(4);
 			}
 
-			if(TestTimer.getElapsedTime().asSeconds()>0.3){
+			if(TestTimer.getElapsedTime().asSeconds()>0.2){
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 					mPlayer->reFuel(100);
 					TestTimer.restart();
