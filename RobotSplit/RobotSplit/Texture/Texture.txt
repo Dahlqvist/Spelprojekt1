@@ -31,3 +31,11 @@ Bana1			=	Nuvarande bakgrund för den första banan
 RamTop#			=	Toppen av ramen för bana nummer #
 RamLeft#		=	Vänstersidan av ramen för bana #
 RamRight#		=	Högersidan av ramen för bana #
+---------------------------------
+Splash screens
+--------------
+RobotSplitConcept1	= Första conceptbilden
+StixSplashDash		= Stix Dash
+StixSplashJump		= Stix Jump
+StixSplashMagnet	= Stix Magnet
+StixSplashPlatform	= Stix Platform

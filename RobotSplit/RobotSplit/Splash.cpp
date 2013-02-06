@@ -6,9 +6,7 @@ Splash::Splash(): mStateInput(StateInput::getInstance())
 {}
 
 Splash::~Splash()
-{
-	//std::cout << "Splash DELETE" << std::endl;
-}
+{}
 
 void Splash::update()
 {
