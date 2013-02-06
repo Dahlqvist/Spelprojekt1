@@ -91,6 +91,7 @@ sfml-main.lib
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="DialogueBox.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -114,6 +115,7 @@ sfml-main.lib
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UnitManager.cpp" />
     <ClCompile Include="UnitWrap.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlSaver.cpp" />
   </ItemGroup>
@@ -122,6 +124,7 @@ sfml-main.lib
     <ClInclude Include="Background.h" />
     <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="DialogueBox.h" />
     <ClInclude Include="FeetExtensions.h" />
     <ClInclude Include="FeetWall.h" />
     <ClInclude Include="Game.h" />
@@ -146,6 +149,7 @@ sfml-main.lib
     <ClInclude Include="Unit.h" />
     <ClInclude Include="UnitManager.h" />
     <ClInclude Include="UnitWrap.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>

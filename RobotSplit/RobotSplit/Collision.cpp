@@ -151,7 +151,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		{
 			if (!mMovedY)
 			{
-				
 				//If player is above object
 				if (playerSprite->getPosition().y<obj2->getPosition().y)
 				{

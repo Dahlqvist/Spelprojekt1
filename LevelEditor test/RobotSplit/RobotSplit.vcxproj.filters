@@ -73,6 +73,12 @@
     <ClInclude Include="LevelConstructor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EditorBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -122,9 +128,6 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp">
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>RobotSplit files\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp">
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
@@ -159,6 +162,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LevelConstructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

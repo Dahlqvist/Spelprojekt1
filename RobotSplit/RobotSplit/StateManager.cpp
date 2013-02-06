@@ -6,12 +6,21 @@
 #include "InGameMenu.h"
 #include "Menu.h"
 
-StateManager::StateManager(): mGame(new Game), mOption(new Option), mSplash(new Splash),
-								mMenu(new Menu), mInGameMenu(new InGameMenu)
+StateManager::StateManager()
+	
 {
-	pushState(mSplash);
+	loadState();
+	pushState(mGame);
 }
 
+void StateManager::loadState()
+{
+	 mGame = new Game();
+	 mOption = new Option;
+	 mSplash = new Splash();
+	 mMenu = new Menu;
+	 mInGameMenu = new InGameMenu;
+}
 StateManager::~StateManager()
 {
 	void internalClear();
