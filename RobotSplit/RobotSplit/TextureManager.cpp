@@ -145,6 +145,10 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark.png");
 
+	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_R.png");
+
+	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze.png");
+
 	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
 	//spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
 	//mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
@@ -167,6 +171,9 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixUpperSplitL"].loadFromFile("Texture/Stix/Mirror_stix_upper_splitanimation_strip8_dark.png");
 
+	mTextureMap["StixFeetExtendL"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_L.png");
+
+	mTextureMap["StixFeetExtendAniL"].loadFromFile("Texture/Stix/stix_lower_Freeze_Flip.png");
 	//Stix Other
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
@@ -216,6 +223,8 @@ void TextureManager::loadTexture()
 
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
+
+	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
