@@ -122,9 +122,6 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp">
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>RobotSplit files\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp">
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
@@ -159,6 +156,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LevelConstructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
