@@ -10,10 +10,12 @@ public:
 
 	void update();
 
+	sf::Text getText();
 	sf::Sprite getSprite();
 
 private:
 	int mAlpha;
+	sf::Text mText;
 };
 
 #endif
