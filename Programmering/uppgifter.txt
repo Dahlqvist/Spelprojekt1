@@ -14,6 +14,7 @@ GameObject
 Units
 Tidsplanering
 Kollision
+Dialoger
 
 Mats:
 Bana
@@ -23,4 +24,3 @@ Xml
 
 Senare:
 Kamera
-Dialoger
