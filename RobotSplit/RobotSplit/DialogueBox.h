@@ -9,7 +9,7 @@ public:
 	DialogueBox(sf::Vector2f position, std::string text, bool fadeIn);
 
 	void update();
-
+	
 	sf::Text getText();
 	sf::Sprite getSprite();
 

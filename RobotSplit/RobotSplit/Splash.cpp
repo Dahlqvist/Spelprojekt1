@@ -1,12 +1,13 @@
 #include "Splash.h"
 #include "StateInput.h"
+#include "Window.h"
 
 Splash::Splash(): mStateInput(StateInput::getInstance())
 {}
 
 Splash::~Splash()
 {
-	std::cout << "Splash DELETE" << std::endl;
+	//std::cout << "Splash DELETE" << std::endl;
 }
 
 void Splash::update()
@@ -17,5 +18,5 @@ void Splash::update()
 
 void Splash::render()
 {
-	std::cout << "Splash" << std::endl;
+	//std::cout << "Splash" << std::endl;
 }

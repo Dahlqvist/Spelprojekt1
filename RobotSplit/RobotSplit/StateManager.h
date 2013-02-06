@@ -1,6 +1,8 @@
 #ifndef INC_STATEMANAGER
 #define INC_STATEMANAGER
 
+#include <SFML/Graphics.hpp>
+
 #include "State.h"
 
 #include <stack>
@@ -26,6 +28,7 @@ public:
 	void pushInGameMenu();
 	void pushMenu();
 
+	void loadState();
 private:
 	StateManager();
 	StateManager(const StateManager& statemanager);
@@ -41,5 +44,6 @@ private:
 	State* mSplash;
 	State* mMenu;
 	State* mInGameMenu;
+
 };
 #endif

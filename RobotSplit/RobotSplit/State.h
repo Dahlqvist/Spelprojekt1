@@ -2,6 +2,7 @@
 #define INC_STATE
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 class State
 {
