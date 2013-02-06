@@ -149,7 +149,8 @@ TextureManager&	TextureManager::getManager()
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/background.png");
+	//Test
+	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 	//Placera texturen i en sprite-variabel
 	spriteBackground.setTexture(textureBackground);
 	//Stix Right
@@ -260,8 +261,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
 	mSpriteMap["StixBrainLowered"].setTexture(mTextureMap["StixBrainLowered"]);
-
-	textureStix_smoke_ani.loadFromFile("Texture/Stix/stix_smokeanimation_strip4_dark.png");
+	//Test
+	textureStix_smoke_ani.loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 	spriteStix_smoke_ani.setTexture(textureStix_smoke_ani);
 	mTextureMap["StixSmokeAni"] = textureStix_smoke_ani;
 	mSpriteMap["StixSmokeAni"] = spriteStix_smoke_ani;
@@ -374,8 +375,11 @@ void TextureManager::loadTexture()
 	mSpriteMap["Tile9"] = spriteTile9;
 
 	//Initializing DialogueBox
-	mTextureMap["DialogueBox1"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
+	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 	mSpriteMap["DialogueBox1"].setTexture(mTextureMap["DialogueBox1"]);
+
+	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
+	mSpriteMap["HelpBox1"].setTexture(mTextureMap["HelpBox1"]);
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
