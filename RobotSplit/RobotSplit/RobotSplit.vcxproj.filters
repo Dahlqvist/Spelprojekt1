@@ -89,6 +89,9 @@
     <ClCompile Include="Option.cpp">
       <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
+    <ClCompile Include="DialogueBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogueBox.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

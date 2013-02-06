@@ -13,11 +13,13 @@
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
+#include "DialogueBox.h"
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	//window.setFramerateLimit(60);
+	DialogueBox diaBox(sf::Vector2f(200, 200), "Hej hej!", true);
 	std::vector<Background*> BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
@@ -31,6 +33,7 @@ int main()
 	window.setKeyRepeatEnabled(false);
 	sf::Clock TestTimer;
 	TestTimer.restart();
+	float mTime=(float)0.2;
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	int loops;
@@ -86,7 +89,8 @@ int main()
 				mPlayer->interact(4);
 			}
 
-			if(TestTimer.getElapsedTime().asSeconds()>0.3){
+			if(TestTimer.getElapsedTime().asSeconds()>mTime){
+				mTime=(float)0.2;
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 					mPlayer->reFuel(100);
 					TestTimer.restart();
@@ -103,13 +107,14 @@ int main()
 					mPlayer->interact(7);
 					TestTimer.restart();
 				}
-				if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
-					mPlayer->interact(8);
-					TestTimer.restart();
-				}
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
 					mPlayer->restartPlayer(sf::Vector2f(100, 100));
 					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+					mPlayer->interact(8);
+					TestTimer.restart();
+					mTime=(float)0.7;
 				}
 				if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 					sf::Vector2f Temp;
@@ -126,6 +131,7 @@ int main()
 			
 			mPlayer->update();
 			Objects.update();
+			diaBox.update();
 
 			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
@@ -140,6 +146,7 @@ int main()
 			Objects.draw(window);
 			mPlayer->draw(window);
 			mPlayer->resetAnimations();
+			//window.draw(diaBox.getSprite());
 
 			window.display();
 		}
