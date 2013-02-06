@@ -13,11 +13,13 @@
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
+#include "DialogueBox.h"
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split");
 	//window.setFramerateLimit(60);
+	DialogueBox diaBox(sf::Vector2f(200, 200), "Hej hej!", true);
 	std::vector<Background*> BG;
 	Level	level("Test.xml");	
 	Player* mPlayer= new Player(level.getPlayer()->getCollisionSprite()[0]->getPosition());
@@ -126,6 +128,7 @@ int main()
 			
 			mPlayer->update();
 			Objects.update();
+			diaBox.update();
 
 			//runCollisions(Objects.getUnits(), *mPlayer);
 		}
@@ -140,6 +143,7 @@ int main()
 			Objects.draw(window);
 			mPlayer->draw(window);
 			mPlayer->resetAnimations();
+			window.draw(diaBox.getSprite());
 
 			window.display();
 		}

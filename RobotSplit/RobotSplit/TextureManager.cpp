@@ -331,6 +331,10 @@ void TextureManager::loadTexture()
 	spriteTile9.setTexture(textureTile9);
 	mTextureMap["Tile9"] = textureTile9;
 	mSpriteMap["Tile9"] = spriteTile9;
+
+	//Initializing DialogueBox
+	mTextureMap["DialogueBox1"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
+	mSpriteMap["DialogueBox1"].setTexture(mTextureMap["DialogueBox1"]);
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
