@@ -5,7 +5,7 @@
 using namespace sf;
 
 LevelConstructor::LevelConstructor(void)
-	:mPlayerExist(false)
+	:Level(),mPlayerExist(false)
 {
 }
 
