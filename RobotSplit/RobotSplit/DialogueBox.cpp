@@ -1,11 +1,12 @@
 #include "DialogueBox.h"
 
-DialogueBox::DialogueBox(sf::Vector2f position, std::string text, bool fadeIn)
-	:Unit(position, "DialogueBox", "DialogueBox1", false)
+DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn)
+	:Unit(position, "DialogueBox", spriteName, false)
 	,mText(text)
 {
 	const int TEXT_OFFSET_X=10;
 	const int TEXT_OFFSET_Y=10;
+	const int TEXT_SIZE=14;
 
 	if (fadeIn)
 	{
@@ -17,7 +18,7 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string text, bool fadeIn)
 	}
 	
 	mText.setPosition(mPosition.x+TEXT_OFFSET_X, mPosition.y+TEXT_OFFSET_Y);
-	mText.setCharacterSize(14);
+	mText.setCharacterSize(TEXT_SIZE);
 
 }
 

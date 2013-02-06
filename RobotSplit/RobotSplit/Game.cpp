@@ -34,7 +34,7 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
-	diaBox = new DialogueBox(sf::Vector2f(200, 200), "Hello, World!", true);
+	diaBox = new DialogueBox(sf::Vector2f(200, 200), "DialogueBox1", "Hello, World!", true);
 }
 
 Game::~Game()
@@ -126,8 +126,8 @@ void Game::render()
 	Objects->draw(mWindow);
 	mPlayer->draw(mWindow);
 	mPlayer->resetAnimations();
-	//mWindow.draw(diaBox->getSprite());
-	//mWindow.draw(diaBox->getText());
+	mWindow.draw(diaBox->getSprite());
+	mWindow.draw(diaBox->getText());
 
 	mWindow.display();
 }

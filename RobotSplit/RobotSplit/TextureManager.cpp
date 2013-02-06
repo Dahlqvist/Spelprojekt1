@@ -372,6 +372,9 @@ void TextureManager::loadTexture()
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 	mSpriteMap["DialogueBox1"].setTexture(mTextureMap["DialogueBox1"]);
+
+	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
+	mSpriteMap["HelpBox1"].setTexture(mTextureMap["HelpBox1"]);
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
