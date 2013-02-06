@@ -117,13 +117,17 @@ void Player::update()
 		if(mFacingRight==true)
 		{
 			mFeet.setPosition(sf::Vector2f(mSpeed*2, 0));
+			mBody.setPosition(sf::Vector2f(mSpeed*2, 0));
 			mFeet.update();
+			mBody.update();
 			mDash--;
 		}
 		else
 		{
 			mFeet.setPosition(sf::Vector2f(-mSpeed*2, 0));
+			mBody.setPosition(sf::Vector2f(-mSpeed*2, 0));
 			mFeet.update();
+			mBody.update();
 			mDash--;
 		}
 	}
@@ -267,8 +271,8 @@ void Player::setTogether(bool b)
 		//mBodyActive=false;
 		mBody.setAttached(true);
 		mTogether=b;
-		Player::move(sf::Vector2f(-0.1, 0));
-		Player::move(sf::Vector2f(0.1, 0));
+		Player::move(sf::Vector2f((float)-0.1, 0));
+		Player::move(sf::Vector2f((float)0.1, 0));
 		mFeet.restartAnimation();
 		mBody.restartAnimation();
 	}
@@ -770,7 +774,7 @@ void Player::restartPlayer(sf::Vector2f Vec){
 	mFeet.setAttached(false);
 	mFeet.setAttachedWall(false);
 	mTogether=true;
-	Player::move(sf::Vector2f(0.1, 0));
+	Player::move(sf::Vector2f((float)0.1, 0));
 	mFeet.forceMove(Vec-mFeet.getPosition());
 }
 //bool Player::bodyStandningFeet()
