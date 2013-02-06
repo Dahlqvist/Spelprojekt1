@@ -17,7 +17,7 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){}
 
-	void setFacingRight(bool b){mFacingRight=b; mTimer.restart();};
+	void setFacingRight(bool, bool);
 
 	virtual void update();
 	virtual void draw(){};
@@ -27,7 +27,7 @@ private:
 	Animation mLeft;
 	Animation mRightAni;
 	Animation mLeftAni;
-	bool mFacingRight;
+	bool mFacingRight, mMagnet;
 	sf::Vector2f mSize;
 	
 	sf::Sprite mSprite;

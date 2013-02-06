@@ -193,10 +193,10 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperSplit"] = textureStix_upper_split_aniRight;
 	mSpriteMap["StixUpperSplit"] = spriteStix_upper_split_aniRight;
 
-	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
+	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_R.png");
 	mSpriteMap["StixFeetExtend"].setTexture(mTextureMap["StixFeetExtend"]);
 
-	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark.png");
+	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze.png");
 	mSpriteMap["StixFeetExtendAni"].setTexture(mTextureMap["StixFeetExtendAni"]);
 
 	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
@@ -244,6 +244,11 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperSplitL"] = textureStix_upper_split_aniLeft;
 	mSpriteMap["StixUpperSplitL"] = spriteStix_upper_split_aniLeft;
 
+	mTextureMap["StixFeetExtendL"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_L.png");
+	mSpriteMap["StixFeetExtendL"].setTexture(mTextureMap["StixFeetExtendL"]);
+
+	mTextureMap["StixFeetExtendAniL"].loadFromFile("Texture/Stix/stix_lower_Freeze_Flip.png");
+	mSpriteMap["StixFeetExtendAniL"].setTexture(mTextureMap["StixFeetExtendAniL"]);
 	//Stix Other
 	texture_stix_brain_flight.loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
 	sprite_stix_brain_flight.setTexture(texture_stix_brain_flight);
