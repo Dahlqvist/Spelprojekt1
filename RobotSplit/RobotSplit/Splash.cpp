@@ -31,8 +31,8 @@ void Splash::update()
 		currentAnimation = &mConcept1;
 	}
 
-	//if(mTime.getElapsedTime().asSeconds() > 6 )
-		//mStateInput.changeState("Menu");
+	if(mTime.getElapsedTime().asSeconds() > 6 )
+		mStateInput.changeState("Menu");
 	//När Splash-screen är klar skall menu visas
 	//mStateInput.changeState("Menu");	
 }

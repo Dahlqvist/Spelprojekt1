@@ -17,6 +17,7 @@ public:
 	//(Meant for XmlSaver use)
 	const static std::string	getSpriteName(sf::Sprite);
 private:
+	void internalClear();
 	//Function for loading all the Textures. Used in the default constructor
 	static void loadTexture();
 	//Function returning a static TextureManager object. Used in other get functions.

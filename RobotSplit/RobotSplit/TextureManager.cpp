@@ -120,6 +120,14 @@ TextureManager&	TextureManager::getManager()
 	return Manager;
 }
 
+void TextureManager::internalClear()
+{
+	while(!mTextureMap.empty())
+	{
+		delete mTextureMap.en;
+	}
+}
+
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
