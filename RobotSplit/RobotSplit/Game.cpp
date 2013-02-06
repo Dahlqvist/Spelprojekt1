@@ -55,8 +55,8 @@ void Game::update()
 	{
 		loops++;
 		lastUpdate+=1/60.0;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-			mPlayer->interact(3);
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+			mPlayer->interact(0);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			mPlayer->interact(1);
@@ -64,35 +64,27 @@ void Game::update()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
 			mPlayer->interact(2);
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-			mPlayer->interact(0);
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+			mPlayer->interact(3);
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 			mPlayer->interact(4);
 		}
 		if(TestTimer.getElapsedTime().asSeconds()>mTime){
 			mTime=(float)0.2;
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-				mPlayer->reFuel(100);
-				TestTimer.restart();
-			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
-				mPlayer->interact(6);
-				TestTimer.restart();
-			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+			if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
 				mPlayer->interact(5);
+				TestTimer.restart();
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)){
+				mPlayer->interact(6);
 				TestTimer.restart();
 			}
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
 				mPlayer->interact(7);
 				TestTimer.restart();
 			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
-				mPlayer->restartPlayer(sf::Vector2f(100, 100));
-				TestTimer.restart();
-			}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
 				mPlayer->interact(8);
 				TestTimer.restart();
 				mTime=(float)0.7;
@@ -102,6 +94,15 @@ void Game::update()
 				Temp.x=(float)sf::Mouse::getPosition(mWindow).x;
 				Temp.y=(float)sf::Mouse::getPosition(mWindow).y;
 				mPlayer->shootHead(sf::Vector2f(Temp));
+				TestTimer.restart();
+			}
+
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
+				mPlayer->restartPlayer(sf::Vector2f(100, 100));
+				TestTimer.restart();
+			}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+				mPlayer->reFuel(100);
 				TestTimer.restart();
 			}
 		//window.setKeyRepeatEnabled(true);
