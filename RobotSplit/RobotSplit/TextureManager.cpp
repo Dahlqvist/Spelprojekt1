@@ -263,11 +263,11 @@ void TextureManager::loadTexture()
 	
 	mTextureMap["StixSplashMagnet"].loadFromFile("Texture/Splash/stix_splashscreen_magnet.png");
 	
-	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform");
+	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform.png");
 	
-	mTextureMap["StixSplashSplit"].loadFromFile("stix_splashscreen_split.png");
+	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
 
-	mTextureMap["Watermelon"].loadFromFile("watermelon games.png");
+	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

@@ -13,6 +13,7 @@ int main()
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
+	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
 		sf::Event event;

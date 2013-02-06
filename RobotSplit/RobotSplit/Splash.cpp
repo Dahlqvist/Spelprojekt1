@@ -2,39 +2,44 @@
 #include "StateInput.h"
 #include "Window.h"
 #include "TextureManager.h"
-#include "Animation.h"
+
 
 Splash::Splash():
 	mStateInput(StateInput::getInstance()),
 	mWindow(Window::getWindow()),
-	mWatermelon("Watermelon"
-
+	mWatermelon("Watermelon", 1, 1),
+	mConcept1("RobotSplitConcept1", 1, 1),
+	currentAnimation(&mWatermelon)
+	
 {
 	mTime.restart();
 }
 
 Splash::~Splash()
-{}
+{
+	delete currentAnimation;
+}
 
 void Splash::update()
 {
-	if(mTime.getElapsedTime().asSeconds() < 10)
+	if(mTime.getElapsedTime().asSeconds() < 3)
 	{
-		currentSprite = &mWatermelon;
+		currentAnimation = &mWatermelon;
 	}
-	else if(mTime.getElapsedTime().asSeconds() > 10 )
+	else if(mTime.getElapsedTime().asSeconds() > 3 )
 	{
-		currentSprite = &mConcept1;
+		currentAnimation = &mConcept1;
 	}
+
+	//if(mTime.getElapsedTime().asSeconds() > 6 )
+		//mStateInput.changeState("Menu");
 	//När Splash-screen är klar skall menu visas
 	//mStateInput.changeState("Menu");	
 }
 
-sf::Sprite& Splash::returnSprite()
-{
-	return 
-
 void Splash::render()
 {
-
+	mWindow.clear(sf::Color::Black);
+	mWindow.draw(currentAnimation->getSprite());
+	mWindow.display();
 }

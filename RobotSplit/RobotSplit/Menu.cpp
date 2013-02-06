@@ -5,9 +5,7 @@ Menu::Menu(): mStateInput(StateInput::getInstance())
 {}
 
 Menu::~Menu()
-{
-	std::cout << "Menu DELETE" << std::endl;
-}
+{}
 
 void Menu::update()
 {
@@ -15,9 +13,7 @@ void Menu::update()
 }
 
 void Menu::render()
-{
-	std::cout << "Menu" << std::endl;
-}
+{}
 
 void Menu::choice()
 {

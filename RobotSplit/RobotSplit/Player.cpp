@@ -43,6 +43,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	thisKey=0;
 	mTest.restart();
 }
+
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {

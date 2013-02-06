@@ -2,10 +2,10 @@
 #define INC_SPLASH
 
 #include "State.h"
-
+#include "Animation.h"
 class StateInput;
 class TextureManager;
-class Animation;
+//class Animation;
 
 class Splash: public State
 {
@@ -18,7 +18,7 @@ private:
 	sf::Sprite& returnSprite();
 	StateInput& mStateInput;
 	sf::Clock mTime;
-	Animation *currentSprite;
+	Animation *currentAnimation;
 	Animation mWatermelon;
 	Animation mConcept1;
 

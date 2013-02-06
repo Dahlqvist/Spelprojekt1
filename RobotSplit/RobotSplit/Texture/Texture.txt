@@ -40,4 +40,4 @@ StixSplashJump		= Stix Jump
 StixSplashMagnet	= Stix Magnet
 StixSplashPlatform	= Stix Platform
 StixSplashSplit		= Stix Split
-Watermelon		= Watermelon games
+Watermelon		= Watermelon games	

@@ -10,7 +10,7 @@ StateManager::StateManager()
 	
 {
 	loadState();
-	pushState(mGame);
+	pushState(mSplash);
 }
 
 void StateManager::loadState()
