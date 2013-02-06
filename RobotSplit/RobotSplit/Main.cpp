@@ -143,7 +143,7 @@ int main()
 			Objects.draw(window);
 			mPlayer->draw(window);
 			mPlayer->resetAnimations();
-			window.draw(diaBox.getSprite());
+			//window.draw(diaBox.getSprite());
 
 			window.display();
 		}
