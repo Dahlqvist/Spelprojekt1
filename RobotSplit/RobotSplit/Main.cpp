@@ -33,6 +33,7 @@ int main()
 	window.setKeyRepeatEnabled(false);
 	sf::Clock TestTimer;
 	TestTimer.restart();
+	float mTime=(float)0.2;
 	sf::Clock lastUpdateClock;
 	double lastUpdate=0;
 	int loops;
@@ -88,7 +89,8 @@ int main()
 				mPlayer->interact(4);
 			}
 
-			if(TestTimer.getElapsedTime().asSeconds()>0.2){
+			if(TestTimer.getElapsedTime().asSeconds()>mTime){
+				mTime=(float)0.2;
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 					mPlayer->reFuel(100);
 					TestTimer.restart();
@@ -105,13 +107,14 @@ int main()
 					mPlayer->interact(7);
 					TestTimer.restart();
 				}
-				if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
-					mPlayer->interact(8);
-					TestTimer.restart();
-				}
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
 					mPlayer->restartPlayer(sf::Vector2f(100, 100));
 					TestTimer.restart();
+				}
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::O)){
+					mPlayer->interact(8);
+					TestTimer.restart();
+					mTime=(float)0.7;
 				}
 				if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && sf::Event::MouseButtonPressed){
 					sf::Vector2f Temp;
