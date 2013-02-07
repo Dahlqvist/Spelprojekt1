@@ -149,10 +149,27 @@ sf::Sprite PlayerPartFeet::getSprite()
 
 	if(mUnit==&mFeetExt)
 	{
-		
-		mUnit=&mFeetExt;
+		mUnit->update();
+		//mUnit=&mFeetExt;
 		sf::Sprite Temp2=mUnit->getSprite();
 		Temp2.setPosition(mFeetExt.getPosition());
+		if(mRotation==90)
+		{
+			Temp2.setRotation(90);
+			Temp2.setOrigin(0, 64);
+		}
+		if(mRotation==-90)
+		{
+			Temp2.setRotation(-90);
+			Temp2.setOrigin(64, 0);
+		}
+		if(mRotation==180)
+		{
+			Temp2.setRotation(180);
+			Temp2.setOrigin(64, 80);
+		}
+		//Temp2.setOrigin(TempOrigin);
+		//Temp2.rotate(mRotation);
 		//mFeetExt.setPosition(mPosition);
 		//mFeetExt.setOrigin(sf::Vector2f(mFeetExt.getSprite().getGlobalBounds().width/2, mFeetExt.getSprite().getGlobalBounds().width/2));
 		//mFeetExt.rotate(mRotation);
@@ -185,6 +202,7 @@ void PlayerPartFeet::setAttached(bool b)
 	if(!mAttached)
 	{
 		mUnit=0;
+		mFeetExt.setFacingRight(true, true);
 		if(mAO==1){
 			mPosition+=sf::Vector2f(0, -16);
 		}
@@ -192,7 +210,23 @@ void PlayerPartFeet::setAttached(bool b)
 	if(mAttached)
 	{
 		mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
-		mFeetExt.setFacingRight(true);
+		if(mAttachedWall==false && (mActiveAnimation==&mRight || mActiveAnimation==&mRightAnimation))
+		{
+			mFeetExt.setFacingRight(true, false);
+		}
+		else if(mAttachedWall==false && (mActiveAnimation==&mLeft || mActiveAnimation==&mLeftAnimation))
+		{
+			mFeetExt.setFacingRight(false, false);
+		}
+		else if(mActiveAnimation==&mRightMagnet || mActiveAnimation==&mRightAnimationMagnet)
+		{
+			mFeetExt.setFacingRight(true, true);
+		}
+		else if(mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mLeftAnimationMagnet)
+		{
+			mFeetExt.setFacingRight(false, true);
+		}
+		mFeetExt.update();
 		mUnit=&mFeetExt;
 	}
 }

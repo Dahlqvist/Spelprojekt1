@@ -5,15 +5,20 @@
 #include "Unit.h"
 #include "Player.h"
 #include "TextField.h"
-
+#include <SFML/Window/WindowHandle.hpp>
 using namespace sf;
+
 
 int main(int numArgs, char Args)
 {
-	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor");
+	sf::WindowHandle	s;
+	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default);
+	s=window.getSystemHandle();
+	Vector2f	AR(5,3);
 	LevelConstructor level("Test.xml");
 	TextField	MTEXT(Color(1,1,1,255));
-		bool once=false;
+	bool once=false;
+	sf::View	CurrView(window.getDefaultView());
 	while(window.isOpen())
 	{
 		sf::Event CurrentEvent;
@@ -22,6 +27,22 @@ int main(int numArgs, char Args)
 			if(CurrentEvent.type == sf::Event::EventType::Closed)
 			{
 				window.close();
+			}
+			else if(CurrentEvent.type==sf::Event::EventType::Resized)
+			{
+				float	xDif,yDif;
+				xDif=CurrView.getSize().x/window.getSize().x;
+				yDif=CurrView.getSize().y/window.getSize().y;
+				CurrView.setSize(window.getSize().x,window.getSize().y);
+				if(xDif<yDif)
+				{
+					CurrView.zoom(yDif);
+				}
+				else
+				{
+					CurrView.zoom(xDif);
+				}
+				window.setView(CurrView);
 			}
 			else if(CurrentEvent.type == sf::Event::EventType::MouseButtonPressed)
 			{

@@ -387,7 +387,6 @@ void Player::setAttachFeetExtension(bool b)
 			Test.left+=25;
 		}
 	}
-	//if(!mFeet.getSprite().getGlobalBounds().intersects(mBody.getSprite().getGlobalBounds()))
 	if(!mBody.getSprite().getGlobalBounds().intersects(Test))
 	{
 		if(mFeet.getAttachedWall()==true){
@@ -425,19 +424,6 @@ void Player::setAttachFeetExtension(bool b)
 			}
 		}
 	}
-	//else if(u==1){
-	//	mFeetAttached=b;
-	//	if(b==true)
-	//	{
-	//		mFeet.pointTo(u);
-	//		mFeet.setAttached(true);
-	//	}
-	//	if(b==false)
-	//	{
-	//		mFeet.pointTo(u);
-	//		mFeet.setAttached(false);
-	//	}
-	//}
 }
 bool Player::getAttachFeetExtension()
 {
@@ -680,6 +666,7 @@ void Player::checkCollisionExt(){
 	{
 		TempFeet.width-=50;
 		TempFeet.left+=25;
+		TempFeet.top+=2;
 	}
 	else{
 		TempFeet.height-=50;
