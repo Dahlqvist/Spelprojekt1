@@ -116,3 +116,6 @@ void PlayerPartBody::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
 }
+void PlayerPartBody::setId(std::string Text){
+	mId=Text;
+}

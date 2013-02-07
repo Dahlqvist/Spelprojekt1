@@ -40,6 +40,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	Temp4=new sf::Sprite;
 	TempPart= new PlayerPartBody(&mFeet);
 	TempPart->setAttached(false);
+	TempPart->setId("InteKollision");
 	mParts.push_back(TempPart);
 	lastKey=0;
 	thisKey=0;
