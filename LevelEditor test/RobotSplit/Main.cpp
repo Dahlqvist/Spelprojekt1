@@ -67,16 +67,21 @@ private:
 typedef	Container<Unit>		UnitContainer;
 typedef	Container<Player>	PlayerContainer;
 
+
 int main(int numArgs, char Args)
 {
 	sf::RenderWindow window(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default);
 	LevelConstructor level("Test.xml");
 	TextField	MTEXT(Color(1,1,1,255));
 	bool once=false, PLAYER=false;
-	sf::View	CurrView(window.getDefaultView());
+	sf::View	CurrView(window.getDefaultView()),miniView(window.getDefaultView());
+	CurrView.setViewport(FloatRect(Vector2f(0,0.1),Vector2f(0.9,0.9)));
+	miniView.setViewport(FloatRect(Vector2f(0.9,0),Vector2f(0.1,0.1)));
+//	miniView.zoom(2.56);
 	UnitContainer	selected;
 	while(window.isOpen())
 	{
+		window.setView(CurrView);
 		sf::Event CurrentEvent;
 		while(window.pollEvent(CurrentEvent))
 		{
@@ -104,19 +109,56 @@ int main(int numArgs, char Args)
 			{
 				if(selected.isActive())
 				{
-					Vector2f temp(CurrentEvent.mouseMove.x,CurrentEvent.mouseMove.y);
+					Vector2f temp=window.convertCoords(Vector2i(CurrentEvent.mouseMove.x,CurrentEvent.mouseMove.y));
 					selected.getObject()->setPosition(temp);
 				}
 			}
 			else if(CurrentEvent.type == sf::Event::EventType::MouseButtonPressed)
 			{
+				UnitVector Units = level.getObjects();
 				Vector2f point=window.convertCoords(Vector2i(CurrentEvent.mouseButton.x,CurrentEvent.mouseButton.y));
 				std::cout<<"MousePosition: "<<point.y<<","<<point.y<<std::endl;
 				if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Middle)
 				{
 					if(!selected.isActive())
 					{
-						selected.setPtr(new Unit(Vector2f(CurrentEvent.mouseButton.x,CurrentEvent.mouseButton.y),"Door","Exit"));
+						selected.setPtr(new Unit(point,"Door","Exit"));
+					}
+				}
+				else if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Right)
+				{
+					if(!selected.isActive())
+					{
+						for(UnitVector::size_type i=0;i < Units.size();i++)
+						{
+							sf::FloatRect hitbox(Units[i]->getSprite().getGlobalBounds());
+							if(hitbox.contains(point))
+							{
+								level.deleteItem(Units[i]);
+								break;
+							}
+						}
+					}
+					else
+					{
+						level.deleteItem(selected.getObject());
+						selected.unInitiate();
+					}
+				}
+	
+				else	if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Left)
+				{
+					if(!selected.isActive())
+					{
+						for(UnitVector::size_type i=0;i < Units.size();i++)
+						{
+							sf::FloatRect hitbox(Units[i]->getSprite().getGlobalBounds());
+							if(hitbox.contains(point))
+							{
+								selected.setPtr(level.accessObjects()[i],true);
+								break;
+							}
+						}
 					}
 					else
 					{
@@ -124,34 +166,6 @@ int main(int numArgs, char Args)
 						{
 							level.addUnit(selected.getObject());
 						}
-						selected.unInitiate();
-					}
-				}
-				else
-				{
-					UnitVector Units = level.getObjects();
-					for(UnitVector::size_type i=0;i < Units.size();i++)
-					{
-						sf::FloatRect hitbox(Units[i]->getSprite().getGlobalBounds());
-						if(hitbox.contains(point))
-						{
-							if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Right)
-							{
-								level.deleteItem(Units[i]);
-								selected.unInitiate();
-								break;
-							}
-	
-							else	if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Left && !selected.isActive())
-							{
-								selected.setPtr(level.accessObjects()[i],true);
-								break;
-							}
-						}
-					}
-					if(CurrentEvent.mouseButton.button==sf::Mouse::Button::Left && selected.isActive())
-					{
-						level.deleteItem(selected.getObject());
 						selected.unInitiate();
 					}
 				}
@@ -179,12 +193,13 @@ int main(int numArgs, char Args)
 		window.clear(Color(100,100,100,255));
 //		std::cout<<MTEXT.getCurrentPosition()<<std::endl;
 		UnitVector Units = level.getObjects();
-		level.getPlayer()->draw(window);
+		window.setView(CurrView);
 		if(!once)
 		{
 			level.getPlayer()->update();
 			once=true;
 		}
+		level.getPlayer()->draw(window);
 		for(UnitVector::size_type i=0;i < Units.size();i++)
 		{
 				window.draw(Units[i]->getSprite());
@@ -194,6 +209,16 @@ int main(int numArgs, char Args)
 			window.draw(selected.getObject()->getSprite());
 		}
 		window.draw(sf::Text(MTEXT.getString()));
+		window.setView(miniView);
+		level.getPlayer()->draw(window);
+		for(UnitVector::size_type i=0;i < Units.size();i++)
+		{
+				window.draw(Units[i]->getSprite());
+		}
+		if(selected.isActive()&&!selected.fromLevel())
+		{
+			window.draw(selected.getObject()->getSprite());
+		}
 		window.display();
 	}
 	return EXIT_SUCCESS;

@@ -137,7 +137,7 @@ void Game::moveCamera()
 {
 	sf::View view=mWindow.getDefaultView();
 	sf::FloatRect partRect;
-//	if (view.getCenter()<view.getSize()/2.0f)
+	
 	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
 	{
 		partRect=mPlayer->getCollisionSprite()[0]->getGlobalBounds();
@@ -149,8 +149,26 @@ void Game::moveCamera()
 	float posX=partRect.left+(partRect.width/2.0f);
 	float posY=partRect.top+(partRect.height/2.0f);
 
+	if (posX<view.getSize().x/2.0)
+	{
+		posX=view.getSize().x/2.0;
+	}
+	else if (posX>view.getSize().x/2.0)
+	{
+		posX=mWindow.getSize().x-view.getSize().x/2.0;
+	}
+
+	if (posY<view.getSize().y/2.0)
+	{
+		posY=view.getSize().y/2.0;
+	}
+	else if (posY>view.getSize().y/2.0)
+	{
+		posY=mWindow.getSize().y-view.getSize().y/2.0;
+	}
+
 	view.setCenter(posX, posY);
-	//mWindow.setView(view);
+	mWindow.setView(view);
 }
 
 void Game::render()
