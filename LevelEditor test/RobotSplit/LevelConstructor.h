@@ -11,12 +11,11 @@ public:
 	LevelConstructor(const string&);
 	~LevelConstructor(void);
 	Level		getLevel();
-	void		addUnit(sf::Vector2f Position,std::string id,std::string sprite,bool solid=true);
+	void		addUnit(Unit*);
 //	void		addLaser(sf::Vector2f Position,std::string id,std::string Sprite);
-	void		addPlayer(sf::Vector2f Position);
-	void		addPlatform(sf::Vector2f Position,std::string Sprite,int life=0);
+	void		addPlayer(Player*);
 	UnitVector&	accessObjects();
-	void		deleteItem(int placement);
+	void		deleteItem(Unit*);
 	void		deletePlayer();
 private:
 	bool		mPlayerExist;
