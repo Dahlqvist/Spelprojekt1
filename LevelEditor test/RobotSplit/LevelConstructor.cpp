@@ -5,7 +5,7 @@
 using namespace sf;
 
 LevelConstructor::LevelConstructor(void)
-	:mPlayerExist(false)
+	:Level(),mPlayerExist(false)
 {
 }
 
@@ -27,35 +27,36 @@ LevelConstructor::~LevelConstructor(void)
 {
 }
 
-void	LevelConstructor::deleteItem(int place)
+void	LevelConstructor::deleteItem(Unit*	Source)
 {
-	UnitVector::iterator	it=mObjects.begin()+place;
-	delete	(*it);
-	mObjects.erase(it);
+	UnitVector::iterator it=mObjects.begin();
+	int i=0;
+	while((*it)!=Source&&it+1!=mObjects.end())
+	{
+		i++;
+		it++;
+	}
+	if(*it==Source)
+	{
+		mObjects.erase(it);
+	}
+	delete	Source;
 }
 
-void	LevelConstructor::addPlayer(Vector2f	Pos)
+void	LevelConstructor::addPlayer(Player*	Source)
 {
-	delete mPlayer;
-	mPlayer =new Player(Pos);
+	if(mPlayerExist)
+	{
+		delete mPlayer;
+	}
+	mPlayer		=Source;
 	mPlayerExist=true;
 }
 
-void	LevelConstructor::addPlatform(Vector2f	Pos,std::string sprite,int life)
-{
-	if(life!=0)
-	{
-		mObjects.push_back(new Platform(life,Pos,sprite));
-	}
-	else
-	{
-		mObjects.push_back(new Platform(Pos,sprite));
-	}
-}
 
-void	LevelConstructor::addUnit(Vector2f	Pos,std::string	Id,std::string Sprite,bool Solid)
+void	LevelConstructor::addUnit(Unit*		Source)
 {
-	mObjects.push_back(new Unit(Pos,Id,Sprite,Solid));
+	mObjects.push_back(Source);
 }
 
 UnitVector&	LevelConstructor::accessObjects()

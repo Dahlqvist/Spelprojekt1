@@ -4,8 +4,10 @@ FeetExtensions::FeetExtensions():
 	Unit(sf::Vector2f(100, 100), "FeetExt", "FeetExt"),
 	mLeft("StixFeetExtendL", 200, 1),
 	mRight("StixFeetExtend", 200, 1),
-	mLeftAni("StixFeetExtendAniL", 100, 5),
-	mRightAni("StixFeetExtendAni", 100, 5)
+	mLeftAni("StixFeetExtendAniL", 60, 5),
+	mRightAni("StixFeetExtendAni", 60, 5),
+	mLeftAniMagnet("StixFeetExtendAniLMagnet", 60, 5),
+	mRightAniMagnet("StixFeetExtendAniMagnet", 60, 5)
 {
 	mSprite=TextureManager::getSprite("FeetExt");
 	mActiveAnimation=&mRight;
@@ -14,37 +16,28 @@ FeetExtensions::FeetExtensions():
 
 void FeetExtensions::update(){
 	mActiveAnimation->update();
-	if(mFacingRight==true && mTimer.getElapsedTime().asSeconds() < 0.43)
+	if(mFacingRight==true && mRightAni.getCurrentFrame()!=4 && mLeftAni.getCurrentFrame()!=4 && mRightAniMagnet.getCurrentFrame()!=4 && mLeftAniMagnet.getCurrentFrame()!=4)
 	{
 		if(mMagnet==true)
-			mActiveAnimation=&mRightAni;
+			mActiveAnimation=&mRightAniMagnet;
 		else
 			mActiveAnimation=&mRightAni;
 	}
-	else if(mFacingRight==false && mTimer.getElapsedTime().asSeconds() < 0.43)
+	else if(mFacingRight==false && mRightAni.getCurrentFrame()!=4 && mLeftAni.getCurrentFrame()!=4 && mRightAniMagnet.getCurrentFrame()!=4 && mLeftAniMagnet.getCurrentFrame()!=4)
 	{
 		if(mMagnet==true)
-			mActiveAnimation=&mLeftAni;
+			mActiveAnimation=&mLeftAniMagnet;
 		else
 			mActiveAnimation=&mLeftAni;
 	}
 	else if(mFacingRight==true)
 	{
-		//if(mMagnet==true)
-		//	mActiveAnimation=&mRight;
-		//else
 		mActiveAnimation=&mRight;
-
-		mLeftAni.restart();
-		mRightAni.restart();
 		mSolid=true;
 	}
 	else
 	{
-		if(mMagnet==true)
-			mActiveAnimation=&mLeft;
-		else
-			mActiveAnimation=&mLeft;
+		mActiveAnimation=&mLeft;
 		mSolid=true;
 	}
 }
@@ -60,5 +53,8 @@ void FeetExtensions::setFacingRight(bool b, bool m){
 	mFacingRight=b;
 	mMagnet=m;
 	mTimer.restart();
-
+	mLeftAni.restart();
+	mRightAni.restart();
+	mLeftAniMagnet.restart();
+	mRightAniMagnet.restart();
 };

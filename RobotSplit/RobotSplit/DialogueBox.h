@@ -6,15 +6,19 @@
 class DialogueBox: public Unit
 {
 public:
-	DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn);
+	DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn, bool visible);
 
 	void update();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
 
+	bool isFullyVisible();
+
 private:
 	int mAlpha;
+	bool mVisible;
+
 	sf::Text mText;
 };
 

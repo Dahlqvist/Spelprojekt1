@@ -2,6 +2,7 @@
 #define INC_BRAINMAGNET
 #include "Unit.h"
 #include "Animation.h"
+#include <iostream>
 
 class BrainMagnet:public Unit{
 public:
@@ -9,7 +10,7 @@ public:
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position){mPosition=position; mActiveAnimation->setPosition(mPosition);};
 
-	virtual sf::Sprite getSprite(){mActiveAnimation->setPosition(mPosition); return mActiveAnimation->getSprite();};
+	virtual sf::Sprite getSprite();
 	virtual sf::Vector2f getSize(){return mSize;};
 
 	virtual std::string getId(){return mId;};
@@ -17,7 +18,9 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	void setSolid(bool);
 	virtual void rotate(float r){mSprite.setRotation(r);}
-	void setOrigin(){mBrainAni.restart(); mTimer.restart();};
+	void setOrigin(){};
+	void restartAnimations();
+	bool getReady();
 
 	virtual void update();
 	virtual void draw(){};
@@ -31,7 +34,7 @@ private:
 	
 	sf::Sprite mSprite;
 
-	bool mSolid;
+	bool mSolid, mReady;
 };
 
 #endif

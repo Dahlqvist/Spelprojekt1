@@ -20,9 +20,9 @@ void PlayerPartBody::update()
 	mActiveAnimation->update();
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>0.15)
+		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1;
+			mJump-=1.3;
 			mJumpClock.restart();
 		}
 		else
@@ -85,7 +85,7 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump()
 {
-	mJump=7;
+	mJump=10;
 	mJumpClock.restart();
 }
 void PlayerPartBody::resetAnimation()
@@ -107,7 +107,7 @@ Unit* PlayerPartBody::getUnit()
 	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
-	mJump=3;
+	mJump=4;
 }
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;
@@ -115,4 +115,7 @@ void PlayerPartBody::forceMove(sf::Vector2f force){
 void PlayerPartBody::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
+}
+void PlayerPartBody::setId(std::string Text){
+	mId=Text;
 }

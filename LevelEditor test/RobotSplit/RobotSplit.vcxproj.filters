@@ -79,6 +79,9 @@
     <ClInclude Include="ObjectLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h">
+      <Filter>RobotSplit files\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="EditorBar.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp">
+      <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 class Unit;
 class Background;
 class Player;
+class DialogueBox;
 using namespace std;
 typedef vector<Unit*> UnitVector;
 
@@ -50,6 +51,8 @@ public:
 	vector<Background*>		getBackground()const;
 	//Returns the Player pointer				(Done)
 	Player*			getPlayer()const;
+	//Returns the Level's dialog boxes			(Done)
+	vector<DialogueBox*> getDialogueBoxes()const;
 	//Returns the Backgroundwrap				(Done)
 	BackgroundWrap&	getBackgroundWrap();
 	//Frees up all the pointers if using the
@@ -64,6 +67,8 @@ protected:
 	void			setName(const string&);
 	//Sets the player pointer					(Done)
 	void			setPlayer(Player*);
+	//Sets the level's dialogue boxes
+	void			addDialogueBox(DialogueBox*);
 	//Sets the level's Background
 	void			setBackground(vector<Background*>);
 	void			setBackground(Background*);
@@ -72,6 +77,7 @@ protected:
 	UnitVector		mObjects;
 	BackgroundWrap	mBackground;
 	Player*			mPlayer;
+	vector<DialogueBox*> mDialogueBoxes;
 private:
 	/*Defines the XmlLoader class as
 	a friend allowing XmlLoader to use

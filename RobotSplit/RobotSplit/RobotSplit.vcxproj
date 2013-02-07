@@ -107,6 +107,7 @@ sfml-main.lib
     <ClCompile Include="PlayerPartBody.cpp" />
     <ClCompile Include="PlayerPartFeet.cpp" />
     <ClCompile Include="PlayerPartHead.cpp" />
+    <ClCompile Include="RocketFuel.cpp" />
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateInput.cpp" />
@@ -141,6 +142,7 @@ sfml-main.lib
     <ClInclude Include="PlayerPartBody.h" />
     <ClInclude Include="PlayerPartFeet.h" />
     <ClInclude Include="PlayerPartHead.h" />
+    <ClInclude Include="RocketFuel.h" />
     <ClInclude Include="Splash.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateInput.h" />
@@ -154,7 +156,9 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test.xml" />
+    <None Include="Test.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

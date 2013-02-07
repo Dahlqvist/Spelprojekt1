@@ -13,6 +13,7 @@
 #include "Unit.h"
 #include "Animation.h"
 #include "Line.h"
+#include "DialogueBox.h"
 LevelLoader::LevelLoader(void)
 {
 }
@@ -89,6 +90,10 @@ Level	LevelLoader::getLevel()
 		else if(type=="Line")
 		{
 			addLine(RetLevel,Gameobject);
+		}
+		else if(type=="DialogueBox")
+		{
+			addDialogueBox(RetLevel,Gameobject);
 		}
 		else
 		{
@@ -253,6 +258,53 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	TempObject=		new Platform(Position,Sprite);
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
+}
+
+void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Sprite,Text;
+	DialogueBox				*TempObject;
+	sf::Vector2f			Position;
+	bool					FadeIn,Visible;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+	
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
+	//Initiates the text
+	CurrentChild=	Node->first_node("Text");
+	Text=getValue(CurrentChild);
+
+	//Initiates whether to fade the box in or not
+	CurrentChild=	Node->first_node("FadeIn");
+	FadeIn=true;
+	if (getValue(CurrentChild)=="false")
+	{
+		FadeIn=false;
+	}
+
+	//Initiates whether to to make the box invisible or not
+	CurrentChild=	Node->first_node("Visible");
+	Visible=true;
+	if (getValue(CurrentChild)=="false")
+	{
+		Visible=false;
+	}
+
+	//Puts the Dialogue box object into the level's vector
+	level.addDialogueBox(new DialogueBox(Position,Sprite,Text,FadeIn,Visible));
 }
 
 void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)

@@ -93,6 +93,9 @@
     <ClCompile Include="DialogueBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RocketFuel.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -183,12 +186,15 @@
     <ClInclude Include="Option.h">
       <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Header Files\Level</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h" />
     <ClInclude Include="DialogueBox.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RocketFuel.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
