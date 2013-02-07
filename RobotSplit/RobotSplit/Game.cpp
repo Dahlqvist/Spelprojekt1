@@ -124,12 +124,6 @@ void Game::input()
 			mPlayer->reFuel(100);
 			TestTimer.restart();
 		}
-		mPlayer->update();
-		Objects->update();
-		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-		{
-			diaBox[i]->update();
-		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
