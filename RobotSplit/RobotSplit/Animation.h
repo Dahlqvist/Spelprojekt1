@@ -18,6 +18,7 @@ public:
 	const sf::Sprite& getSprite() const;
 	const sf::Texture& getTexture() const;
 
+	int getCurrentFrame();
 	void restart();
 private:
 	sf::Clock mFrameTimer;

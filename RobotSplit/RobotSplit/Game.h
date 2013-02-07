@@ -19,7 +19,9 @@ public:
 	virtual ~Game();
 	virtual void update();
 	virtual void render();
+	void input();
 private:
+	int mSecurityLevel;
 	StateInput& mStateInput;
 	Level mlevel;
 	Player* mPlayer;
@@ -30,7 +32,7 @@ private:
 	sf::RenderWindow& mWindow;
 	sf::Clock TestTimer;
 	float mTime;
-	DialogueBox *diaBox;
+	std::vector<DialogueBox*> diaBox;
 	std::vector<Background*> BG;
 	
 };

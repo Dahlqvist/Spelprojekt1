@@ -116,6 +116,11 @@ void	Level::setPlayer(Player* source)
 	mPlayer	=	source;
 }
 
+void	Level::addDialogueBox(DialogueBox* source)
+{
+	mDialogueBoxes.push_back(source);
+}
+
 void	Level::setBackground(vector<Background*> source)
 {
 	mBackground.setBackground(source);
@@ -127,6 +132,7 @@ void	Level::operator=(const Level& other)
 	mBackground=other.mBackground;
 	mName=other.getName();
 	mPlayer=other.getPlayer();
+	mDialogueBoxes=other.getDialogueBoxes();
 }
 
 
@@ -148,6 +154,11 @@ vector<Background*>		Level::getBackground()const
 Player*			Level::getPlayer	()const
 {
 	return	mPlayer;
+}
+
+vector<DialogueBox*> Level::getDialogueBoxes()const
+{
+	return mDialogueBoxes;
 }
 
 BackgroundWrap&	Level::getBackgroundWrap()
