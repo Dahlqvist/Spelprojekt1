@@ -1065,6 +1065,16 @@
 			<Size>1</Size>
 			<Rotation>0</Rotation>
 		</Unit>
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Position>
+        <x>400</x>
+        <y>100</y>
+      </Position>
+      <SpriteName>"DialogueBox1"</SpriteName>
+      <Text>"Hello, World!"</Text>
+      <FadeIn>true</FadeIn>
+      <Visible>false</Visible>
+    </Unit>
 	</Objects>
 </Level>
-
