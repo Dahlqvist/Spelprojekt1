@@ -31,6 +31,7 @@ void DialogueBox::update()
 	if (!mVisible)
 	{
 		mAlpha=0;
+		mText.setColor(sf::Color(255, 255, 255, mAlpha));
 	}
 	else if (mAlpha<255-FADE_SPEED)
 	{

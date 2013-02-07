@@ -19,7 +19,9 @@ public:
 	virtual ~Game();
 	virtual void update();
 	virtual void render();
+	void input();
 private:
+	int mSecurityLevel;
 	StateInput& mStateInput;
 	Level mlevel;
 	Player* mPlayer;

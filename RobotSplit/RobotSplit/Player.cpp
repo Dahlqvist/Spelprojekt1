@@ -46,13 +46,6 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
-	/*if(mTogether==true)
-	{
-	mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
-	Window.draw(mSprite);
-	}
-	else
-	{*/
 	if(mTogether==true)
 	{
 		mLjus.setTexture(mLjus1);
@@ -85,15 +78,6 @@ void Player::draw(sf::RenderWindow& Window)
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
 	//Window.draw(TempPart->getSprite());
-	/*for(unsigned int i=0; i<mParts.size(); i++)
-	{
-	if(mParts[i]->getUnit()!=0)
-	{
-	Window.draw(mParts[i]->getUnit()->getSprite());
-	}	
-	}*/
-	//}
-	//Window.draw(mBody.getObject()->getSprite());
 }
 void Player::update()
 {

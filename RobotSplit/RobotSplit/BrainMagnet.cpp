@@ -1,4 +1,5 @@
 #include "BrainMagnet.h"
+#include <iostream>
 
 BrainMagnet::BrainMagnet(std::string spriteName):
 	Unit(sf::Vector2f(100, 100), "FeetExt", spriteName),
@@ -8,7 +9,7 @@ BrainMagnet::BrainMagnet(std::string spriteName):
 	mSprite=TextureManager::getSprite(spriteName);
 	mSolid=true;
 	mTimer.restart();
-	mActiveAnimation=&mBrain;
+	mActiveAnimation=&mBrainAni;
 }
 
 void BrainMagnet::setSolid(bool b){
@@ -17,10 +18,15 @@ void BrainMagnet::setSolid(bool b){
 
 void BrainMagnet::update(){
 	mActiveAnimation->update();
-	if(mTimer.getElapsedTime().asSeconds() < 1.6){
+	if(mBrainAni.getCurrentFrame()!=7){
 		mActiveAnimation=&mBrainAni;
 	}
 	else{
 		mActiveAnimation=&mBrain;
 	}
+}
+
+sf::Sprite BrainMagnet::getSprite(){
+	mActiveAnimation->setPosition(mPosition);
+	return mActiveAnimation->getSprite();
 }

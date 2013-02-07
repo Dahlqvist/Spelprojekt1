@@ -21,6 +21,9 @@ Animation::~Animation()
 void Animation::restart(){
 	mFrameTimer.restart();
 	mCurrentFrame=0;
+	sf::IntRect currentRect = mSprite.getTextureRect();
+	currentRect.left = currentRect.width * mCurrentFrame;
+	mSprite.setTextureRect(currentRect);
 }
 void Animation::update()
 {
@@ -55,4 +58,7 @@ const sf::Sprite& Animation::getSprite() const
 const sf::Texture& Animation::getTexture() const
 {
 	return mTexture;
+}
+int Animation::getCurrentFrame(){
+	return mCurrentFrame;
 }
