@@ -43,6 +43,7 @@ private:
 	static std::set<Unit*> mUnitsOnRightBottom;
 
 	bool mMovedX, mMovedY;
+	bool mResetted;
 
 	int mPlayerPart;
 };
