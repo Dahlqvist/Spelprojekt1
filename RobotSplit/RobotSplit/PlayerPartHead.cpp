@@ -20,6 +20,7 @@ mBody(Body),
 }
 void PlayerPartHead::update()
 {
+	//mMagnet.setOrigin();
 	mActiveAnimation->update();
 	if(mUnit!=0){
 		mUnit->update();
@@ -87,6 +88,7 @@ void PlayerPartHead::jump()
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
+	mMagnet.setOrigin();
 	float mSpeed=5;
 	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
 }
@@ -105,10 +107,10 @@ void PlayerPartHead::forceMove(sf::Vector2f force){
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
 	if(mAttached==false && mMagnetCollided==false){
-		mUnit=&mMagnet;
 		mMagnet.setOrigin();
-		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 		mMagnet.setSolid(true);
+		mUnit=&mMagnet;
+		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 	}
 	mMagnetCollided=true;
 }

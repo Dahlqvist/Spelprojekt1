@@ -14,14 +14,14 @@ FeetExtensions::FeetExtensions():
 
 void FeetExtensions::update(){
 	mActiveAnimation->update();
-	if(mFacingRight==true && mTimer.getElapsedTime().asSeconds() < 0.43)
+	if(mFacingRight==true && mRightAni.getCurrentFrame()!=4 && mLeftAni.getCurrentFrame()!=4)
 	{
 		if(mMagnet==true)
 			mActiveAnimation=&mRightAni;
 		else
 			mActiveAnimation=&mRightAni;
 	}
-	else if(mFacingRight==false && mTimer.getElapsedTime().asSeconds() < 0.43)
+	else if(mFacingRight==false && mRightAni.getCurrentFrame()!=4 && mLeftAni.getCurrentFrame()!=4)
 	{
 		if(mMagnet==true)
 			mActiveAnimation=&mLeftAni;
@@ -35,8 +35,6 @@ void FeetExtensions::update(){
 		//else
 		mActiveAnimation=&mRight;
 
-		mLeftAni.restart();
-		mRightAni.restart();
 		mSolid=true;
 	}
 	else
@@ -60,5 +58,6 @@ void FeetExtensions::setFacingRight(bool b, bool m){
 	mFacingRight=b;
 	mMagnet=m;
 	mTimer.restart();
-
+	mLeftAni.restart();
+	mRightAni.restart();
 };
