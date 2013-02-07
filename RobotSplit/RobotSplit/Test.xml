@@ -1074,8 +1074,7 @@
       <SpriteName>"DialogueBox1"</SpriteName>
       <Text>"Hello, World!"</Text>
       <FadeIn>true</FadeIn>
-      <Visible>true</Visible>
+      <Visible>false</Visible>
     </Unit>
 	</Objects>
 </Level>
-
