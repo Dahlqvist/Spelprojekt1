@@ -89,11 +89,11 @@ void Player::update()
 		mParts[i]->update();
 		if(i==1)
 		{
-			mParts[i]->setPosition(sf::Vector2f(0, 3));
+			mParts[i]->setPosition(sf::Vector2f(0, 4));
 		}
 		else if(i==0 && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
 		{
-			mParts[i]->setPosition(sf::Vector2f(0, 3));
+			mParts[i]->setPosition(sf::Vector2f(0, 4));
 		}
 	}
 
@@ -346,7 +346,21 @@ void Player::shootHead(sf::Vector2f Vec)
 void Player::setAttachFeetExtension(bool b)
 {
 	sf::FloatRect Test(mFeet.getSprite().getGlobalBounds());
-	if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
+	if(mFeet.getAttachedWall()==false)
+	{
+		if(b==true)
+		{
+			Test.top-=32;
+			Test.height+=32;
+		}
+		else
+		{
+			Test.width-=50;
+			Test.left+=25;
+			Test.top+=5;
+		}
+	}
+	else if(mFeet.getWall()==0)
 	{
 		if(b==true)
 		{
@@ -358,11 +372,23 @@ void Player::setAttachFeetExtension(bool b)
 			Test.top+=25;
 		}
 	}
+	else if(mFeet.getWall()==2)
+	{
+		if(b==true)
+		{
+			Test.width+=32;
+			Test.left-=32;
+		}
+		else
+		{
+			Test.height-=50;
+			Test.top+=25;
+		}
+	}
 	else
 	{
 		if(b==true)
 		{
-			Test.top-=32;
 			Test.height+=32;
 		}
 		else
@@ -427,7 +453,7 @@ void Player::activateFeetRockets(){
 void Player::reFuel(float fuel){
 	mFeet.reFuel(fuel);
 }
-//Göra om till string sen när alla kontroller är satta
+
 void Player::interact(int action){
 	thisKey=action;
 	if(thisKey==lastKey)
@@ -625,6 +651,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		{
 			mHead.forceMove(Vec);
 			mHead.setShootVector(sf::Vector2f(0, 0));
+			mMagnetTimer.restart();
 		}
 		else if(part==3)
 		{
@@ -657,7 +684,7 @@ void Player::checkCollisionExt(){
 		TempFeet.top+=25;
 	}
 	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-		if(mBody.getPosition().y<(TempFeet.top-60)){
+		if(mBody.getPosition().y<(TempFeet.top-55)){
 			mBodyStandningFeet=true;
 		}
 		if(ColRect.width<ColRect.height)
@@ -716,7 +743,7 @@ void Player::checkCollisionExt(){
 void Player::checkCollisionMagnet()
 {
 	if(mHead.getUnit()->isSolid()==false){
-		if(mMagnetTimer.getElapsedTime().asSeconds()>0.4){
+		if(mMagnetTimer.getElapsedTime().asSeconds()>0.5){
 			mHead.setMagnetSolid(true);
 			magnetSlot=2;
 		}
