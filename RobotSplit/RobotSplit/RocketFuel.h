@@ -1,11 +1,11 @@
-#ifndef INC_FEETEXTENSIONS
-#define INC_FEETEXTENSIONS
+#ifndef INC_ROCKETFUEL
+#define INC_ROCKETFUEL
 #include "Unit.h"
 #include "Animation.h"
 
-class FeetExtensions:public Unit{
+class RocketFuel:public Unit{
 public:
-	FeetExtensions();
+	RocketFuel();
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position){mPosition=position; mActiveAnimation->setPosition(mPosition);};
 
@@ -17,25 +17,11 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){}
 
-	void setFacingRight(bool, bool);
-
 	virtual void update();
 	virtual void draw(){};
 private:
 	Animation* mActiveAnimation;
-	Animation mRight;
-	Animation mLeft;
-	Animation mRightAni;
-	Animation mLeftAni;
-	Animation mRightAniMagnet;
-	Animation mLeftAniMagnet;
-	bool mFacingRight, mMagnet;
-	sf::Vector2f mSize;
-	
-	sf::Sprite mSprite;
-
-	sf::Clock mTimer;
-	bool mSolid;
+	Animation mRocketFuel;
 };
 
 #endif

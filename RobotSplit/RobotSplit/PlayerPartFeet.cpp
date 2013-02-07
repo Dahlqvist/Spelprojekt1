@@ -10,7 +10,9 @@ PlayerPartFeet::PlayerPartFeet():
 	mLeftMagnet("StixLowerLMagnet", 200, 1),
 	mRightMagnet("StixLowerMagnet", 200, 1),
 	mLeftAnimationMagnet("StixLowerAniLMagnet", 200, 8),
-	mRightAnimationMagnet("StixLowerAniMagnet", 200, 8)
+	mRightAnimationMagnet("StixLowerAniMagnet", 200, 8),
+	mJumpAni("StixFeetJumpAni", 100, 8),
+	mJumpAniLeft("StixFeetJumpAniL", 100, 8)
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);
@@ -33,7 +35,7 @@ void PlayerPartFeet::update()
 	{
 		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1.2;
+			mJump-=1.3;
 			mJumpClock.restart();
 		}
 		else
@@ -71,43 +73,57 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 	}
 }
 void PlayerPartFeet::decideAnimation(sf::Vector2f Vec){
-	if(mAttachedWall==false){
+	if(mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
+	{
+		if(mAttachedWall==false){
+			if(Vec.x>0)
+			{
+				mActiveAnimation=&mRightAnimation;
+			}
+			if(Vec.x<0)
+			{
+				mActiveAnimation=&mLeftAnimation;
+			}
+		}
+		else if(mAO==0)
+		{
+			if(Vec.y>0){
+				mActiveAnimation=&mRightAnimationMagnet;
+			}
+			if(Vec.y<0){
+				mActiveAnimation=&mLeftAnimationMagnet;
+			}
+		}
+		else if(mAO==2)
+		{
+			if(Vec.y<0){
+				mActiveAnimation=&mRightAnimationMagnet;
+			}
+			if(Vec.y>0){
+				mActiveAnimation=&mLeftAnimationMagnet;
+			}
+		}
+		else
+		{
+			if(Vec.x<0)
+			{
+				mActiveAnimation=&mRightAnimationMagnet;
+			}
+			if(Vec.x>0)
+			{
+				mActiveAnimation=&mLeftAnimationMagnet;
+			}
+		}
+	}
+	else if(mActiveAnimation==&mJumpAni || mActiveAnimation==&mJumpAniLeft)
+	{
 		if(Vec.x>0)
 		{
-			mActiveAnimation=&mRightAnimation;
+			mActiveAnimation=&mJumpAni;
 		}
-		if(Vec.x<0)
+		else if(Vec.x<0)
 		{
-			mActiveAnimation=&mLeftAnimation;
-		}
-	}
-	else if(mAO==0)
-	{
-		if(Vec.y>0){
-			mActiveAnimation=&mRightAnimationMagnet;
-		}
-		if(Vec.y<0){
-			mActiveAnimation=&mLeftAnimationMagnet;
-		}
-	}
-	else if(mAO==2)
-	{
-		if(Vec.y<0){
-			mActiveAnimation=&mRightAnimationMagnet;
-		}
-		if(Vec.y>0){
-			mActiveAnimation=&mLeftAnimationMagnet;
-		}
-	}
-	else
-	{
-		if(Vec.x<0)
-		{
-			mActiveAnimation=&mRightAnimationMagnet;
-		}
-		if(Vec.x>0)
-		{
-			mActiveAnimation=&mLeftAnimationMagnet;
+			mActiveAnimation=&mJumpAniLeft;
 		}
 	}
 }
@@ -234,6 +250,17 @@ void PlayerPartFeet::jump()
 {
 	mJump=10;
 	mJumpClock.restart();
+	mJumpAni.restart();
+	mJumpAniLeft.restart();
+	mAnimationTimer.restart();
+	if(mActiveAnimation==&mRight || mActiveAnimation==&mRightAnimation || mActiveAnimation==&mJumpAni){
+		mActiveAnimation=&mJumpAni;
+	}
+	else
+	{
+		mActiveAnimation=&mJumpAniLeft;
+	}
+	mAniTime=0.8;
 }
 void PlayerPartFeet::resetAnimation()
 {
@@ -241,11 +268,11 @@ void PlayerPartFeet::resetAnimation()
 	{
 		if(mAttachedWall==false)
 		{
-			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet) 
+			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni) 
 			{
 				mActiveAnimation=&mRight;
 			}
-			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet)
+			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet || mActiveAnimation==&mJumpAniLeft)
 			{
 				mActiveAnimation=&mLeft;
 			}
@@ -260,6 +287,9 @@ void PlayerPartFeet::resetAnimation()
 			}
 		}
 	}
+	if(mUnit==&mRocketFuel){
+		mUnit=0;
+	}
 }
 Unit* PlayerPartFeet::getUnit()
 {
@@ -270,7 +300,9 @@ void PlayerPartFeet::activateRocketBoots()
 {
 	if(mFuel>0 && mAttached==false)
 	{
+		mUnit=&mRocketFuel;
 		mJump=0;
+		mUnit->setPosition(mPosition+sf::Vector2f(16, 32));
 		PlayerPartFeet::setPosition(sf::Vector2f(0, -6));
 		mFuel--;
 	}
@@ -289,6 +321,8 @@ void PlayerPartFeet::jumpReset()
 void PlayerPartFeet::setAttachedWall(bool b, int w){
 	if(b==true)
 	{
+		mAniTime=0;
+		PlayerPartFeet::resetAnimation();
 		mAttachedWall=b;
 		mAO=w;
 		if(mAO==0)

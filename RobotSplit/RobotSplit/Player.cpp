@@ -19,6 +19,8 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeetAttached=false;
 	mSprintTimer.restart();
 	mFeet.setPosition(Position);
+	mBody.update();
+	mHead.update();
 	mTexture.loadFromFile("Texture/Stix/stix.png");
 	mSprite.setTexture(mTexture);
 	mLjus1.loadFromFile("Texture/Stix/stix_sil_full.png");
@@ -70,9 +72,13 @@ void Player::draw(sf::RenderWindow& Window)
 		}
 	}
 	Window.draw(mLjus);
+
 	if(mHead.getUnit()!=0)
 	{
 		Window.draw(mHead.getUnit()->getSprite());
+	}
+	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
+		Window.draw(mFeet.getUnit()->getSprite());
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());

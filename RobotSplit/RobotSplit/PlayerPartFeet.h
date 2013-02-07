@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "FeetExtensions.h"
 #include "FeetWall.h"
+#include "RocketFuel.h"
 
 class PlayerPartFeet:public PlayerPart
 {
@@ -35,6 +36,7 @@ private:
 	Unit* mUnit;
 	Unit* mAUnit;
 	FeetExtensions mFeetExt;
+	RocketFuel mRocketFuel;
 	FeetWall mRightWall;
 	FeetWall mLeftWall;
 	FeetWall mRoof;
@@ -47,6 +49,8 @@ private:
 	Animation mRightMagnet;
 	Animation mLeftAnimationMagnet;
 	Animation mRightAnimationMagnet;
+	Animation mJumpAni;
+	Animation mJumpAniLeft;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime, mFuel, mRotation;

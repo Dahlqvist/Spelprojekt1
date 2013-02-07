@@ -22,7 +22,7 @@ void PlayerPartBody::update()
 	{
 		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1.2;
+			mJump-=1.3;
 			mJumpClock.restart();
 		}
 		else
