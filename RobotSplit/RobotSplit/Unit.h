@@ -14,7 +14,11 @@ public:
 	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true);
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
-	virtual void setPosition(sf::Vector2f position){mPosition=position;};
+	virtual void setPosition(sf::Vector2f position)
+	{
+		mPosition=position;
+		mSprite.setPosition(mPosition);
+	};
 
 	virtual sf::Sprite getSprite(){return mSprite;};
 
