@@ -18,7 +18,9 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	void setSolid(bool);
 	virtual void rotate(float r){mSprite.setRotation(r);}
-	void setOrigin(){mBrainAni.restart(); mTimer.restart(); mActiveAnimation=&mBrainAni;};
+	void setOrigin(){};
+	void restartAnimations();
+	bool getReady();
 
 	virtual void update();
 	virtual void draw(){};
@@ -32,7 +34,7 @@ private:
 	
 	sf::Sprite mSprite;
 
-	bool mSolid;
+	bool mSolid, mReady;
 };
 
 #endif

@@ -31,9 +31,9 @@ void PlayerPartFeet::update()
 	}
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>0.15)
+		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1;
+			mJump-=1.2;
 			mJumpClock.restart();
 		}
 		else
@@ -232,7 +232,7 @@ void PlayerPartFeet::setAttached(bool b)
 }
 void PlayerPartFeet::jump()
 {
-	mJump=7;
+	mJump=10;
 	mJumpClock.restart();
 }
 void PlayerPartFeet::resetAnimation()
@@ -271,7 +271,7 @@ void PlayerPartFeet::activateRocketBoots()
 	if(mFuel>0 && mAttached==false)
 	{
 		mJump=0;
-		PlayerPartFeet::setPosition(sf::Vector2f(0, -5));
+		PlayerPartFeet::setPosition(sf::Vector2f(0, -6));
 		mFuel--;
 	}
 }
@@ -283,7 +283,7 @@ void PlayerPartFeet::reFuel(float fuel)
 }
 void PlayerPartFeet::jumpReset()
 {
-	mJump=3;
+	mJump=4;
 }
 
 void PlayerPartFeet::setAttachedWall(bool b, int w){
