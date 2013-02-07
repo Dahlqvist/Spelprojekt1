@@ -32,7 +32,7 @@ private:
 	sf::RenderWindow& mWindow;
 	sf::Clock TestTimer;
 	float mTime;
-	DialogueBox *diaBox;
+	std::vector<DialogueBox*> diaBox;
 	std::vector<Background*> BG;
 	
 };

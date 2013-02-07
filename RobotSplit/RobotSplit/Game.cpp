@@ -34,13 +34,17 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
-	diaBox = new DialogueBox(sf::Vector2f(200, 200), "DialogueBox1", "Hello, World!", true, true);
+	diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
 }
 
 Game::~Game()
 {
-	delete diaBox;
+	while (!diaBox.empty())
+	{
+		delete diaBox.back();
+		diaBox.pop_back();
+	}
 	delete Objects;
 	/*system("PAUSE");
 	XmlSaver saver("TestSave");
@@ -60,7 +64,10 @@ void Game::update()
 		//window.setKeyRepeatEnabled(true);
 		mPlayer->update();
 		Objects->update();
-		diaBox->update();
+		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
+		{
+			diaBox[i]->update();
+		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
@@ -117,6 +124,8 @@ void Game::input()
 			mPlayer->reFuel(100);
 			TestTimer.restart();
 		}
+
+		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 }
 
@@ -132,7 +141,11 @@ void Game::render()
 	Objects->draw(mWindow);
 	mPlayer->draw(mWindow);
 	mPlayer->resetAnimations();
-	//mWindow.draw(diaBox->getSprite());
+	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
+	{
+		mWindow.draw(diaBox[i]->getSprite());
+		mWindow.draw(diaBox[i]->getText());
+	}
 	//mWindow.draw(diaBox->getText());
 
 	mWindow.display();

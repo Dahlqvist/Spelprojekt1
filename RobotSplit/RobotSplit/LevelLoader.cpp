@@ -303,10 +303,8 @@ void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 		Visible=false;
 	}
 
-	//Creates a DialogueBox object
-	TempObject=		new DialogueBox(Position,Sprite,Text,FadeIn,Visible);
-	//Puts the Platform object into the level's UnitVector
-	level.mObjects.push_back(TempObject);
+	//Puts the Dialogue box object into the level's vector
+	level.addDialogueBox(new DialogueBox(Position,Sprite,Text,FadeIn,Visible));
 }
 
 void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
