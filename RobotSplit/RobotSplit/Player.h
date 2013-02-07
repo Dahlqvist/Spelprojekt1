@@ -26,6 +26,7 @@ public:
 	void forceMove(int, sf::Vector2f);
 	void checkCollisionExt();
 	void checkCollisionMagnet();
+	void restartPlayer(sf::Vector2f);
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -39,8 +40,10 @@ private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;
 	PlayerPartHead mHead;
+	PlayerPartBody* TempPart;
 	PlayerParts mParts;
 	sf::Sprite mSprite;
+	sf::Texture mTexture;
 	sf::Sprite mLjus;
 	sf::Texture mLjus1;
 	sf::Texture mLjus2;
@@ -48,12 +51,13 @@ private:
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;
-	sf::Texture mTexture;
+	sf::Sprite* Temp4;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mTest;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
-	int magnetSlot;
+	bool mKeys;
+	int magnetSlot, lastKey, thisKey;
 };
 
 #endif

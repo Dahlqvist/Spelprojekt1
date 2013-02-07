@@ -23,8 +23,9 @@ public:
 	virtual void forceMove(sf::Vector2f);
 	void setShootVector(sf::Vector2f);
 	void setMagnetSolid(bool);
+	void setMagnetCollided(bool);
 private: 
-	bool mAttached;
+	bool mAttached, mMagnetCollided;
 	Unit* mUnit;
 	BrainMagnet mMagnet;
 	Animation* mActiveAnimation;

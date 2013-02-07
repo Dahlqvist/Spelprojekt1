@@ -2,7 +2,7 @@
 #include "LevelLoader.h"
 
 //BackgroundWrap Functions
-Background*		BackgroundWrap::getBackground	()const
+vector<Background*>		BackgroundWrap::getBackground	()const
 {
 	return	mBackground;
 }
@@ -22,7 +22,7 @@ int				BackgroundWrap::getSpeed		()const
 	return	mSpeed;
 }
 
-void			BackgroundWrap::setBackground	(Background* Source)
+void			BackgroundWrap::setBackground	(vector<Background*> Source)
 {
 	mBackground=Source;
 }
@@ -52,10 +52,14 @@ void			BackgroundWrap::operator=		(const BackgroundWrap& Source)
 }
 void		BackgroundWrap::deletePointer()
 {
-	if(mBackground==NULL)
+	for (vector<Background*>::size_type i=0; i<mBackground.size(); i++)
 	{
-		delete mBackground;
+		if(mBackground[i]==NULL)
+		{
+			delete mBackground[i];
+		}
 	}
+	mBackground.clear();
 }
 
 //Level Functions
@@ -112,7 +116,12 @@ void	Level::setPlayer(Player* source)
 	mPlayer	=	source;
 }
 
-void	Level::setBackground(Background* source)
+void	Level::addDialogueBox(DialogueBox* source)
+{
+	mDialogueBoxes.push_back(source);
+}
+
+void	Level::setBackground(vector<Background*> source)
 {
 	mBackground.setBackground(source);
 }
@@ -123,6 +132,7 @@ void	Level::operator=(const Level& other)
 	mBackground=other.mBackground;
 	mName=other.getName();
 	mPlayer=other.getPlayer();
+	mDialogueBoxes=other.getDialogueBoxes();
 }
 
 
@@ -136,7 +146,7 @@ UnitVector	Level::getObjects	()const
 	return	mObjects;
 }
 
-Background*		Level::getBackground()const
+vector<Background*>		Level::getBackground()const
 {
 	return	mBackground.getBackground();
 }
@@ -144,6 +154,11 @@ Background*		Level::getBackground()const
 Player*			Level::getPlayer	()const
 {
 	return	mPlayer;
+}
+
+vector<DialogueBox*> Level::getDialogueBoxes()const
+{
+	return mDialogueBoxes;
 }
 
 BackgroundWrap&	Level::getBackgroundWrap()

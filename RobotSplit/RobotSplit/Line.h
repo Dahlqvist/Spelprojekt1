@@ -9,5 +9,7 @@ class Line :public Unit
 public:
 	Line(Vector2f Position,int Rotation,float Size);
 	~Line(void);
+	int		getRotation()const;
+	float	getSize()const;
 };
 #endif

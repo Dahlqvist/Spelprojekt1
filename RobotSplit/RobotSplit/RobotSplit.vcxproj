@@ -58,14 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-audio-d.lib;
-sfml-graphics-d.lib;
-sfml-network-d.lib;
-sfml-system-d.lib;
-sfml-window-d.lib;
-sfml-main-d.lib
-
-;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,21 +91,31 @@ sfml-main.lib
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="DialogueBox.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
     <ClCompile Include="FeetWall.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InGameMenu.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Option.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerPartBody.cpp" />
     <ClCompile Include="PlayerPartFeet.cpp" />
     <ClCompile Include="PlayerPartHead.cpp" />
+    <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateInput.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UnitManager.cpp" />
     <ClCompile Include="UnitWrap.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="XmlLoader.cpp" />
     <ClCompile Include="XmlSaver.cpp" />
   </ItemGroup>
@@ -121,27 +124,39 @@ sfml-main.lib
     <ClInclude Include="Background.h" />
     <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="DialogueBox.h" />
     <ClInclude Include="FeetExtensions.h" />
     <ClInclude Include="FeetWall.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="InGameMenu.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Option.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerPart.h" />
     <ClInclude Include="PlayerPartBody.h" />
     <ClInclude Include="PlayerPartFeet.h" />
     <ClInclude Include="PlayerPartHead.h" />
+    <ClInclude Include="Splash.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateInput.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="UnitManager.h" />
     <ClInclude Include="UnitWrap.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="XmlLoader.h" />
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test.xml" />
+    <None Include="Test.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

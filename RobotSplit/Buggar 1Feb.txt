@@ -1,4 +1,6 @@
-1. Du kan gå över kanter med benen
+1. Du kan gå över kanter med benen -fixed 05/02 Rasmus
 2. ben extensions kan bugga fast om du fäller ut imellan 2 väggar
-3. repet från hjärnan åker alltid ut
-4. kan ta ut extensions om kroppen är precis ovanför
+3. repet från hjärnan åker alltid ut	-fixed 05/02 Rasmus
+4. kan ta ut extensions om kroppen är precis ovanför -fixed 06/02 rasmus
+5. överdelen kan hoppa om den ligger mot sidan av underdelens förlängning -Fixed 05/02 Rasmus
+6. faller igenom lavan ibland (risk för samma problem på plattformar)

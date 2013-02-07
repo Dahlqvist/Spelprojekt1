@@ -1,5 +1,7 @@
 #include "LevelLoader.h"
 
+#include <vector>
+
 //Includefiles for objects
 //#include "TestObject.h"
 
@@ -11,6 +13,7 @@
 #include "Unit.h"
 #include "Animation.h"
 #include "Line.h"
+#include "DialogueBox.h"
 LevelLoader::LevelLoader(void)
 {
 }
@@ -27,6 +30,7 @@ LevelLoader::~LevelLoader(void)
 Level	LevelLoader::getLevel()
 {
 	Level					RetLevel;
+	std::vector<Background*> backgrounds;
 	rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
 	//Gets the Level Node
 	LevelNode=		mDocument.first_node("Level");
@@ -35,18 +39,22 @@ Level	LevelLoader::getLevel()
 	//Initiation of level begins
 	//Sets the level's name
 	RetLevel.setName(getValue(LevelNode->first_node("Name")));
+	RetLevel.setBackground(getBackground());
 	//Sets the level's background
-	int	Frames,Speed;
+	/*int	Frames,Speed;
+	float PosX, PosY;
 	string Filename;
 	BackgroundNode=	LevelNode->first_node("Background");
 	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
 	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
 	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	Background*BACK=new Background(Filename,Speed,Frames);
+	PosX=			atof(getValue(BackgroundNode->first_node("Position")->first_node("X")).c_str());
+	PosY=			atof(getValue(BackgroundNode->first_node("Position")->first_node("Y")).c_str());
+	Background*BACK=new Background(Filename,Speed,Frames, sf::Vector2f(PosX, PosY));
 	RetLevel.setBackground(BACK);
 	RetLevel.getBackgroundWrap().setFrames(Frames);
 	RetLevel.getBackgroundWrap().setSpeed(Speed);
-	RetLevel.getBackgroundWrap().setName(Filename);
+	RetLevel.getBackgroundWrap().setName(Filename);*/
 	//Used to check when the loop looped once
 	bool oneLoop=false;
 	//Loop that adds GameObjects to the Level
@@ -60,8 +68,13 @@ Level	LevelLoader::getLevel()
 		{
 			oneLoop=true;
 		}
+		/*if (type=="Background")
+		{
+			addBackground(RetLevel, Gameobject);
+		}*/
 		string type;
 		type=	getValue(Gameobject->first_node("Type"));
+		
 		if(type=="Player")
 		{
 			addPlayer(RetLevel,Gameobject);
@@ -78,6 +91,10 @@ Level	LevelLoader::getLevel()
 		{
 			addLine(RetLevel,Gameobject);
 		}
+		else if(type=="DialogueBox")
+		{
+			addDialogueBox(RetLevel,Gameobject);
+		}
 		else
 		{
 			addUnit(RetLevel,Gameobject);
@@ -85,6 +102,65 @@ Level	LevelLoader::getLevel()
 	}
 	while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
 	return	RetLevel;
+}
+
+vector<Background*>	LevelLoader::getBackground()
+{
+	rapidxml::xml_node<>	*CurrentChild, *Node;
+	string					CurrentValue;
+	Background				*TempObject;
+	sf::Vector2f			Position;
+	int						Frames,Speed;
+	string					SpriteName;
+	vector<Background*>		retBackground;
+	bool oneLoop=			false;
+
+	Node=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background");
+	string foo=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background")->name();
+
+	do
+	{
+		if(oneLoop)
+		{
+			Node=Node->next_sibling();
+		}
+		else
+		{
+			oneLoop=true;
+		}
+		string foo=Node->name();
+		//Gets the Position childnode from the GameObject node
+		CurrentChild=	Node->first_node("Position");
+		//Gets the x Value from CurrentChild
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		//Sets X to CurentValue's value
+		Position.x=((float)atof(CurrentValue.c_str()));
+
+		//Initializes Y's value
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Position.y=((float)atof(CurrentValue.c_str()));
+
+		//Initializes the number of frames
+		CurrentChild=	Node->first_node("Frames");
+		CurrentValue=	getValue(CurrentChild);
+		Frames=			atoi(CurrentValue.c_str());
+
+		//Initializes the time per frame
+		CurrentChild=	Node->first_node("Speed");
+		CurrentValue=	getValue(CurrentChild);
+		Speed=			atoi(CurrentValue.c_str());
+
+		//Initializes the sprite name
+		CurrentChild=	Node->first_node("SpriteName");
+		CurrentValue=	getValue(CurrentChild);
+		SpriteName=		CurrentValue.c_str();
+
+		retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
+	}
+	while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
+
+	//Adds the Player pointer to the Level object
+	return retBackground;
 }
 
 void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)
@@ -184,12 +260,60 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	level.mObjects.push_back(TempObject);
 }
 
+void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Sprite,Text;
+	DialogueBox				*TempObject;
+	sf::Vector2f			Position;
+	bool					FadeIn,Visible;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+	
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
+	//Initiates the text
+	CurrentChild=	Node->first_node("Text");
+	Text=getValue(CurrentChild);
+
+	//Initiates whether to fade the box in or not
+	CurrentChild=	Node->first_node("FadeIn");
+	FadeIn=true;
+	if (getValue(CurrentChild)=="false")
+	{
+		FadeIn=false;
+	}
+
+	//Initiates whether to to make the box invisible or not
+	CurrentChild=	Node->first_node("Visible");
+	Visible=true;
+	if (getValue(CurrentChild)=="false")
+	{
+		Visible=false;
+	}
+
+	//Puts the Dialogue box object into the level's vector
+	level.addDialogueBox(new DialogueBox(Position,Sprite,Text,FadeIn,Visible));
+}
+
 void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Id,Sprite;
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size;
+	bool					Solid=true;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -216,6 +340,17 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
+
+	//Sets if solid
+	CurrentChild=	Node->first_node("Solid");
+	//If solid is given
+	if (CurrentChild!=0x0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Solid=true;
+		else if (getValue(CurrentChild)=="false")
+			Solid=false;
+	}
 	
 	//Checks if the Unit Uses animation
 	if(Node->first_node("Frames")!=0)
@@ -227,12 +362,12 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(Node->first_node("Speed"));
 		Speed=((float)atof(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
-		TempObject=		new Unit(Position,Id,ani);
+		TempObject=		new Unit(Position,Id,ani, Solid);
 	}
 	else
 	{
 		//Creates an Unit object
-		TempObject=		new Unit(Position,Id,Sprite);
+		TempObject=		new Unit(Position,Id,Sprite, Solid);
 	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);

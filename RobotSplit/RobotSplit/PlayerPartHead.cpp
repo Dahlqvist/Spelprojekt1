@@ -1,5 +1,6 @@
 #include "PlayerPartHead.h"
 #include <iostream>
+#include "UnitManager.h"
 
 PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
@@ -12,13 +13,18 @@ mBody(Body),
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
+	mMagnetCollided=true;
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
 }
 void PlayerPartHead::update()
 {
+	//mMagnet.setOrigin();
 	mActiveAnimation->update();
+	if(mUnit!=0){
+		mUnit->update();
+	}
 	if(mAttached==true)
 	{
 		mPosition=mBody->getPosition()+sf::Vector2f(26, 26);
@@ -26,6 +32,7 @@ void PlayerPartHead::update()
 	if(mShootVector!=sf::Vector2f(0, 0))
 	{
 		PlayerPartHead::setPosition(mShootVector);
+		//mMagnetCollided=true;
 	}
 } 
 void PlayerPartHead::draw()
@@ -81,7 +88,7 @@ void PlayerPartHead::jump()
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
-	float mSpeed=3;
+	float mSpeed=5;
 	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
 }
 void PlayerPartHead::resetAnimation()
@@ -98,12 +105,18 @@ Unit* PlayerPartHead::getUnit()
 void PlayerPartHead::forceMove(sf::Vector2f force){
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
-	if(mAttached==false){
+	if(mAttached==false && mMagnetCollided==false){
+		mMagnet.restartAnimations();
+		mMagnet.setSolid(false);
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
-		mMagnet.setSolid(true);
 	}
+	mMagnetCollided=true;
 }
 void PlayerPartHead::setMagnetSolid(bool b){
 	mMagnet.setSolid(b);
+}
+void PlayerPartHead::setMagnetCollided(bool b)
+{
+	mMagnetCollided=b;
 }
