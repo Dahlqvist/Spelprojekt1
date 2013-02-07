@@ -21,12 +21,15 @@ public:
 	virtual void render();
 	void input();
 private:
+	void moveCamera();
+
 	int mSecurityLevel;
 	StateInput& mStateInput;
 	Level mlevel;
 	Player* mPlayer;
 	UnitManager* Objects;
 	sf::Clock lastUpdateClock;
+	bool mRenderGame;
 	double lastUpdate;
 	int loops;
 	sf::RenderWindow& mWindow;

@@ -56,3 +56,8 @@ sf::Sprite DialogueBox::getSprite()
 	mSprite.setColor(sf::Color(255, 255, 255, mAlpha));
 	return mSprite;
 }
+
+bool DialogueBox::isFullyVisible()
+{
+	return mAlpha==255;
+}
