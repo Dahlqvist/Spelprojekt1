@@ -9,10 +9,13 @@
 class Sound
 {
 public:
-	Sound();
+	
 	~Sound();
 	const static void playSound(std::string sound);
 private:
+	Sound();
+	Sound(const Sound& sound);
+
 	void loadSound();
 	static sf::SoundBuffer mDelaBuff;
 	static sf::SoundBuffer mHoppaBuff;
