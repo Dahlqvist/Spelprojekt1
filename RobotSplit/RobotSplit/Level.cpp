@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "LevelLoader.h"
+#include "Background.h"
 
 //BackgroundWrap Functions
 vector<Background*>		BackgroundWrap::getBackground	()const
@@ -135,6 +136,20 @@ void	Level::operator=(const Level& other)
 	mDialogueBoxes=other.getDialogueBoxes();
 }
 
+sf::Vector2f	Level::getSize()const
+{
+	float sizeX=0;
+	float sizeY=0;
+	for (vector<Background*>::size_type i=0; i<getBackground().size(); i++)
+	{
+		sf::FloatRect bgRect=getBackground()[i]->draw().getGlobalBounds();
+		if (bgRect.left+bgRect.width>sizeX)
+			sizeX=bgRect.left+bgRect.width;
+		if (bgRect.top+bgRect.height>sizeY)
+			sizeY=bgRect.top+bgRect.height;
+	}
+	return sf::Vector2f(sizeX, sizeY);
+}
 
 std::string		Level::getName		()const
 {
