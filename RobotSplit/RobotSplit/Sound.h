@@ -4,26 +4,27 @@
 #include <SFML/Audio/SoundBuffer.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include <string>
+#include <map>
 
 
 class Sound
 {
 public:
 	static Sound& getInstance();
-	~Sound();
+	
 	const static void playSound(std::string sound);
+	const static void stopSound(std::string sound);
 private:
 	Sound();
 	Sound(const Sound& sound);
 	Sound operator=(const Sound& sound);
+	~Sound();
 	void loadSound();
-	static sf::SoundBuffer mDelaBuff;
-	static sf::SoundBuffer mHoppaBuff;
-	static sf::SoundBuffer mSkjutaBuff;
 
-	static sf::Sound mDela;
-	static sf::Sound mHoppa;
-	static sf::Sound mSkjuta;
+	typedef std::map<std::string, sf::Sound> SoundMap;
+	static SoundMap mSoundMap;
+	typedef std::map<std::string, sf::SoundBuffer> BufferMap;
+	static BufferMap mBufferMap;
 };
 
 #endif

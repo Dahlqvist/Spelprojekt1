@@ -18,6 +18,8 @@
 #include "UnitManager.h"
 
 #include "Window.h"
+#include "Sound.h"
+#include "Music.h"
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
@@ -35,6 +37,7 @@ Game::Game():
 	mWindow.setKeyRepeatEnabled(false);
 	diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
+	Music::loadMusic("Music/menu_1.wav");
 }
 
 Game::~Game()
@@ -180,7 +183,6 @@ void Game::render()
 			mWindow.draw(BG[i]->draw());
 			BG[i]->update();
 		}
-
 		Objects->draw(mWindow);
 		mPlayer->draw(mWindow);
 		mPlayer->resetAnimations();
@@ -190,7 +192,7 @@ void Game::render()
 			mWindow.draw(diaBox[i]->getText());
 		}
 		//mWindow.draw(diaBox->getText());
-
+		Music::playMusic();
 		mWindow.display();
 	}
 }

@@ -12,6 +12,7 @@ class UnitManager;
 class DialogueBox;
 
 
+
 class Game: public State
 {
 public:
@@ -37,6 +38,7 @@ private:
 	float mTime;
 	std::vector<DialogueBox*> diaBox;
 	std::vector<Background*> BG;
+	//Sound& mSound;
 	
 };
 

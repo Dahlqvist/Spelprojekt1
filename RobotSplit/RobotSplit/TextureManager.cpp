@@ -165,7 +165,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Line"].loadFromFile("Texture/Line.png");
 
 	//Initializing splash-screens
-	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robot_split_concept1.png");
+	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robotsplit_promo1024.png");
 	
 	mTextureMap["StixSplashDash"].loadFromFile("Texture/Splash/stix_splashscreen_dash.png");
 	
