@@ -167,7 +167,11 @@ sfml-main.lib
     <None Include="Test.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tutorial3.xml" />
+    <None Include="Tutorial3.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Tutorial4.xml" />
+    <None Include="Tutorial5.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

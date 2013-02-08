@@ -698,6 +698,7 @@ void Player::checkCollisionExt(){
 		TempFeet.width-=50;
 		TempFeet.left+=25;
 		TempFeet.top+=2;
+		TempFeet.height-=16;
 	}
 	else{
 		TempFeet.height-=50;
@@ -730,6 +731,10 @@ void Player::checkCollisionExt(){
 				mBody.forceMove(sf::Vector2f(0, -ColRect.height));
 			}
 		}
+	}
+	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
+	{
+		TempFeet.height+=16;
 	}
 	if(mHeadless==true){
 		sf::FloatRect ColRect2;

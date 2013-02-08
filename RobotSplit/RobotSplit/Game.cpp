@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial3.xml"),
+		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -123,7 +123,7 @@ void Game::input()
 		}
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
-			mPlayer->restartPlayer(sf::Vector2f(100, 100));
+			mPlayer->restartPlayer(sf::Vector2f(64, 384));
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
