@@ -35,8 +35,9 @@ void PlayerPartFeet::update()
 	{
 		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1.3;
+			mJump-=1.8;
 			mJumpClock.restart();
+			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
 		else
 		{
@@ -309,9 +310,9 @@ void PlayerPartFeet::activateRocketBoots()
 }
 void PlayerPartFeet::reFuel(float fuel)
 {
-	if(mFuel<=0 && fuel<=100){
+	//if(mFuel<=0 && fuel<=100){
 		mFuel=fuel;
-	}
+	//}
 }
 void PlayerPartFeet::jumpReset()
 {

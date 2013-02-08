@@ -2,105 +2,6 @@
 //Skapar statiska variablar som alltid kommer att finnas
 TextureManager::TextureMap TextureManager::mTextureMap;
 
-//Bakgrund
-sf::Texture TextureManager::textureBackground;
-
-//Stix Right
-sf::Texture TextureManager::textureStix_lowerRight;
-
-sf::Texture TextureManager::textureStix_lowerRight_Magnet;
-
-sf::Texture TextureManager::textureStix_lower_aniRight;
-
-sf::Texture TextureManager::textureStix_lower_aniRight_Magnet;
-
-sf::Texture TextureManager::textureStix_upperRight;
-
-sf::Texture TextureManager::textureStix_upper_aniRight;
-
-sf::Texture TextureManager::textureStix_shoot_aniRight;
-
-sf::Texture TextureManager::textureStix_upper_split_aniRight;
-
-
-//Stix Left
-sf::Texture TextureManager::textureStix_lowerLeft;
-
-sf::Texture TextureManager::textureStix_lowerLeft_Magnet;
-
-sf::Texture TextureManager::textureStix_lower_aniLeft;
-
-sf::Texture TextureManager::textureStix_lower_aniLeft_Magnet;
-
-sf::Texture TextureManager::textureStix_upperLeft;
-
-sf::Texture TextureManager::textureStix_upper_aniLeft;
-
-sf::Texture TextureManager::textureStix_shoot_aniLeft;
-
-sf::Texture TextureManager::textureStix_upper_split_aniLeft;
-
-//Stix Other
-
-sf::Texture TextureManager::texture_stix_brain_flight;
-
-sf::Texture TextureManager::textureStix_smoke_ani;
-
-//Enviroment
-
-sf::Texture TextureManager::textureAnti_magnet;
-
-sf::Texture TextureManager::textureBolcony_corner_L;
-
-sf::Texture TextureManager::textureBolcony_corner_R;
-
-sf::Texture TextureManager::textureBolcony_middle;
-	
-sf::Texture TextureManager::texturePlatform_break_ani;
-
-sf::Texture TextureManager::textureBlue_button_ani;
-
-sf::Texture TextureManager::textureRed_button_ani;
-
-sf::Texture TextureManager::textureYellow_button_ani;
-
-sf::Texture TextureManager::textureExit;
-
-sf::Texture TextureManager::textureRail_end_L;
-
-sf::Texture TextureManager::textureRail_end_R;
-
-sf::Texture TextureManager::textureRail_middle;
-
-sf::Texture TextureManager::textureTile1;
-
-sf::Texture TextureManager::textureTile2;
-
-sf::Texture TextureManager::textureTile3;
-
-sf::Texture TextureManager::textureTile4;
-
-sf::Texture TextureManager::textureTile5;
-
-sf::Texture TextureManager::textureTile6;
-
-sf::Texture TextureManager::textureTile7;
-
-sf::Texture TextureManager::textureTile8;
-
-sf::Texture TextureManager::textureTile9;
-
-//Splash screens
-sf::Texture TextureManager::textureSplash_Concept1;
-
-sf::Texture TextureManager::textureStix_Dash;
-
-sf::Texture TextureManager::textureStix_Jump;
-
-sf::Texture TextureManager::textureStix_Magnet;
-
-sf::Texture TextureManager::textureStix_Platform;
-
 TextureManager::TextureManager()
 {
 	loadTexture();
@@ -116,15 +17,19 @@ TextureManager&	TextureManager::getManager()
 	return Manager;
 }
 
+void TextureManager::internalClear()
+{
+	/*while(!mTextureMap.empty())
+	{
+		delete mTextureMap.en;
+	}*/
+}
+
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	//Test
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
-	
+	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 	//Stix Right
-	//textureStix_lowerRight.loadFromFile("Texture/Stix/stix_lower_dark.png");
-	//TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lowerRight;
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 
 	mTextureMap["StixLowerMagnet"].loadFromFile("Texture/Stix/stix_lower_magnet_dark.png");
@@ -194,16 +99,21 @@ void TextureManager::loadTexture()
 	//Test
 	mTextureMap["StixSmokeAni"].loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 
+	mTextureMap["LightTogether"].loadFromFile("Texture/Stix/stix_sil_full.png");
+
+	mTextureMap["LightBody"].loadFromFile("Texture/Stix/stix_sil_upper.png");
+
+	mTextureMap["LightFeet"].loadFromFile("Texture/Stix/stix_sil_lower.png");
+
 	//Enviroment
 
 	mTextureMap["AntiMagnet"].loadFromFile("Texture/Enviroment/Avmagnitiserad_extraplatta.png");
 
-	mTextureMap["BolconyCornerL"].loadFromFile("Texture/Enviroment/Bolcony_Corner_L.png");
+	mTextureMap["BolconyCornerL"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Corner_L_32_dark.png");
 
-	textureBolcony_corner_R.loadFromFile("Texture/Enviroment/Bolcony_Corner_R.png");
-	mTextureMap["BolconyCornerR"] = textureBolcony_corner_R;
+	mTextureMap["BolconyCornerR"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Corner_R_32_dark.png");
 
-	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Bolcony_Middle.png");
+	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Middle_32_dark.png");
 
 	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
 
@@ -213,13 +123,13 @@ void TextureManager::loadTexture()
 
 	mTextureMap["YellowButtonAni"].loadFromFile("Texture/Enviroment/Button_Yellow_Sprite_16px.png");
 
-	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit.png");
+	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
 
-	mTextureMap["RailEndL"].loadFromFile("Texture/Enviroment/Rail_End_L.png");
+	mTextureMap["RailEndL"].loadFromFile("Texture/Enviroment/Rail_End_L_dark.png");
 
-	mTextureMap["RailEndR"].loadFromFile("Texture/Enviroment/Rail_End_R.png");
+	mTextureMap["RailEndR"].loadFromFile("Texture/Enviroment/Rail_End_R_dark.png");
 
-	mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_middle.png");
+	mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_Middle_dark.png");
 
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
@@ -231,10 +141,17 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
 
+	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
+	
+
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
+	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
+
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
+
+	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
@@ -261,7 +178,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Line"].loadFromFile("Texture/Line.png");
 
 	//Initializing splash-screens
-	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robot_split_concept1.png");
+	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robotsplit_promo1024.png");
 	
 	mTextureMap["StixSplashDash"].loadFromFile("Texture/Splash/stix_splashscreen_dash.png");
 	
@@ -269,16 +186,16 @@ void TextureManager::loadTexture()
 	
 	mTextureMap["StixSplashMagnet"].loadFromFile("Texture/Splash/stix_splashscreen_magnet.png");
 	
-	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform");
+	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform.png");
 	
+	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
+
+	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
 {
 	//Påkalla funktionen med namnet till rätt animationen
-	if(texture == "Background")
-		return getManager().textureBackground;
-	else
 		return getManager().mTextureMap[texture];
 };
 

@@ -23,10 +23,6 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mHead.update();
 	mTexture.loadFromFile("Texture/Stix/stix.png");
 	mSprite.setTexture(mTexture);
-	mLjus1.loadFromFile("Texture/Stix/stix_sil_full.png");
-	mLjus2.loadFromFile("Texture/Stix/stix_sil_lower.png");
-	mLjus3.loadFromFile("Texture/Stix/stix_sil_upper.png");
-	mLjus.setTexture(mLjus1);
 	mDash=0;
 	mFacingRight=true;
 	mJumpTemp.restart();
@@ -44,35 +40,44 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mParts.push_back(TempPart);
 	lastKey=0;
 	thisKey=0;
-	mTest.restart();
+	mKeyTimer.restart();
 }
+
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
-	if(mTogether==true)
+	//if(mTogether==true)
+	//{
+	//	mLjus.setTexture(mLjus1);
+	//	mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mSprite.getGlobalBounds().width/2, -mSprite.getGlobalBounds().height/2));
+	//}
+	//else if(mBodyActive==true)
+	//{
+	//	mLjus.setTexture(mLjus3);
+	//	mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mBody.getSprite().getGlobalBounds().width/2, -mBody.getSprite().getGlobalBounds().height/2));
+	//}
+	//else
+	//{
+	//	if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
+	//	{
+	//		mLjus.setTexture(mLjus2);
+	//		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
+	//	}
+	//	else
+	//	{
+	//		mLjus.setTexture(mLjus2);
+	//		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
+	//	}
+	//}
+	if(mBodyActive!=false || mTogether==true)
 	{
-		mLjus.setTexture(mLjus1);
-		mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mSprite.getGlobalBounds().width/2, -mSprite.getGlobalBounds().height/2));
-	}
-	else if(mBodyActive==true)
-	{
-		mLjus.setTexture(mLjus3);
-		mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mBody.getSprite().getGlobalBounds().width/2, -mBody.getSprite().getGlobalBounds().height/2));
+		mLights.setSprite(mTogether, mBodyActive, mFeet.getAttachedWall(), mFeet.getWall(), mBody.getPosition());
 	}
 	else
 	{
-		if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
-		{
-			mLjus.setTexture(mLjus2);
-			mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
-		}
-		else
-		{
-			mLjus.setTexture(mLjus2);
-			mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
-		}
+		mLights.setSprite(mTogether, mBodyActive, mFeet.getAttachedWall(), mFeet.getWall(), mFeet.getPosition());
 	}
-	Window.draw(mLjus);
+	Window.draw(*mLights.getSprite());
 
 	if(mHead.getUnit()!=0)
 	{
@@ -88,7 +93,7 @@ void Player::draw(sf::RenderWindow& Window)
 }
 void Player::update()
 {
-	if(mTest.getElapsedTime().asSeconds()>0.03){
+	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
@@ -359,6 +364,8 @@ void Player::setAttachFeetExtension(bool b)
 		{
 			Test.top-=32;
 			Test.height+=32;
+			Test.width-=50;
+			Test.left+=25;
 		}
 		else
 		{
@@ -372,6 +379,8 @@ void Player::setAttachFeetExtension(bool b)
 		if(b==true)
 		{
 			Test.width+=32;
+			Test.height-=50;
+			Test.top+=25;
 		}
 		else
 		{
@@ -385,6 +394,8 @@ void Player::setAttachFeetExtension(bool b)
 		{
 			Test.width+=32;
 			Test.left-=32;
+			Test.height-=50;
+			Test.top+=25;
 		}
 		else
 		{
@@ -397,6 +408,8 @@ void Player::setAttachFeetExtension(bool b)
 		if(b==true)
 		{
 			Test.height+=32;
+			Test.width-=50;
+			Test.left+=25;
 		}
 		else
 		{
@@ -472,7 +485,7 @@ void Player::interact(int action){
 	}
 	if(action==0)
 	{
-		mTest.restart();
+		mKeyTimer.restart();
 		//Upp
 		if(mTogether==true || mBodyActive==true){
 			Player::jump();
@@ -496,7 +509,7 @@ void Player::interact(int action){
 	}
 	if(action==1)
 	{
-		mTest.restart();
+		mKeyTimer.restart();
 		//Höger
 		if(mTogether==true || mBodyActive==true){
 			Player::move(sf::Vector2f(1, 0));
@@ -517,7 +530,7 @@ void Player::interact(int action){
 	}
 	if(action==2)
 	{
-		mTest.restart();
+		mKeyTimer.restart();
 		//Vänster
 		if(mTogether==true || mBodyActive==true){
 			Player::move(sf::Vector2f(-1, 0));
@@ -685,6 +698,7 @@ void Player::checkCollisionExt(){
 		TempFeet.width-=50;
 		TempFeet.left+=25;
 		TempFeet.top+=2;
+		TempFeet.height-=16;
 	}
 	else{
 		TempFeet.height-=50;
@@ -717,6 +731,10 @@ void Player::checkCollisionExt(){
 				mBody.forceMove(sf::Vector2f(0, -ColRect.height));
 			}
 		}
+	}
+	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
+	{
+		TempFeet.height+=16;
 	}
 	if(mHeadless==true){
 		sf::FloatRect ColRect2;
@@ -781,6 +799,7 @@ void Player::restartPlayer(sf::Vector2f Vec){
 	mTogether=true;
 	Player::move(sf::Vector2f((float)0.1, 0));
 	mFeet.forceMove(Vec-mFeet.getPosition());
+	mFeet.reFuel(100);
 }
 //bool Player::bodyStandningFeet()
 //{

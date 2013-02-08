@@ -26,17 +26,20 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlLoader.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlSaver.cpp" />
+    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorBar.cpp" />
     <ClCompile Include="LevelConstructor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ObjectLoader.cpp" />
     <ClCompile Include="TextField.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
@@ -56,16 +59,20 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlLoader.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlSaver.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Editor.h" />
     <ClInclude Include="EditorBar.h" />
     <ClInclude Include="LevelConstructor.h" />
     <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="TextField.h" />
+    <ClInclude Include="Toolbar.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E859E788-8F4C-4343-B695-6E5B289E230A}</ProjectGuid>

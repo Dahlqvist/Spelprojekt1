@@ -24,7 +24,6 @@ public:
 	void last();
 	void pushGame();
 	void pushOption();
-	void pushSplash();
 	void pushInGameMenu();
 	void pushMenu();
 
@@ -41,7 +40,6 @@ private:
 
 	State* mGame;
 	State* mOption;
-	State* mSplash;
 	State* mMenu;
 	State* mInGameMenu;
 

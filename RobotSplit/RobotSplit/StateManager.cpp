@@ -17,7 +17,6 @@ void StateManager::loadState()
 {
 	 mGame = new Game();
 	 mOption = new Option;
-	 mSplash = new Splash();
 	 mMenu = new Menu;
 	 mInGameMenu = new InGameMenu;
 }
@@ -26,7 +25,6 @@ StateManager::~StateManager()
 	void internalClear();
 	delete mGame;
 	delete mOption;
-	delete mSplash;
 	delete mInGameMenu;
 	delete mMenu;
 }
@@ -81,11 +79,6 @@ void StateManager::pushGame()
 	pushState(mGame);
 }
 
-void StateManager::pushSplash()
-{
-	pushState(mSplash);
-}
-
 void StateManager::pushInGameMenu()
 {
 	pushState(mInGameMenu);
@@ -100,5 +93,5 @@ void StateManager::restart()
 {
 	while(!mStateStack.empty())
 		mStateStack.pop();
-	pushState(mSplash);
+	pushState(mMenu);
 }

@@ -22,8 +22,6 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushGame();
 	else if(state == "Option")
 		mStateManager.pushOption();
-	else if(state == "Splash")
-		mStateManager.pushSplash();
 	else if(state == "InGameMenu")
 		mStateManager.pushInGameMenu();
 	else if(state == "Menu")

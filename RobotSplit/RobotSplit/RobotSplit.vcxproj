@@ -101,13 +101,16 @@ sfml-main.lib
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerLight.cpp" />
     <ClCompile Include="PlayerPartBody.cpp" />
     <ClCompile Include="PlayerPartFeet.cpp" />
     <ClCompile Include="PlayerPartHead.cpp" />
     <ClCompile Include="RocketFuel.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateInput.cpp" />
@@ -135,14 +138,17 @@ sfml-main.lib
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerLight.h" />
     <ClInclude Include="PlayerPart.h" />
     <ClInclude Include="PlayerPartBody.h" />
     <ClInclude Include="PlayerPartFeet.h" />
     <ClInclude Include="PlayerPartHead.h" />
     <ClInclude Include="RocketFuel.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Splash.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateInput.h" />
@@ -156,9 +162,16 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tutorial2.xml" />
+    <None Include="Tutorial1.xml" />
     <None Include="Test.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Tutorial3.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Tutorial4.xml" />
+    <None Include="Tutorial5.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

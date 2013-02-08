@@ -82,6 +82,18 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h">
       <Filter>RobotSplit files\Header</Filter>
     </ClInclude>
+    <ClInclude Include="Toolbar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h">
+      <Filter>RobotSplit files\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -177,6 +189,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp">
+      <Filter>RobotSplit files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Toolbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp">
       <Filter>RobotSplit files\Source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -22,8 +22,9 @@ void PlayerPartBody::update()
 	{
 		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1.3;
+			mJump-=1.7;
 			mJumpClock.restart();
+			PlayerPartBody::setPosition(sf::Vector2f(0, -mJump));
 		}
 		else
 		{
