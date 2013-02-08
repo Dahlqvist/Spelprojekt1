@@ -23,7 +23,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	mResetted=false;
-	for (int j=0; j<objects.size(); j++)
+	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart")
 		{
@@ -44,9 +44,9 @@ bool Collision::isCollidedSide(int side)
 
 void Collision::unitAtSides(const std::vector<Unit*> &objects)
 {
-	for (int i=0; i<objects.size(); i++)
+	for (std::vector<Unit*>::size_type i=0; i<objects.size(); i++)
 	{
-		for (int j=i+1; j<objects.size(); j++)
+		for (std::vector<Unit*>::size_type j=i+1; j<objects.size(); j++)
 		{
 			sf::FloatRect obj1=objects[i]->getSprite().getGlobalBounds();
 			sf::FloatRect obj2=objects[j]->getSprite().getGlobalBounds();
