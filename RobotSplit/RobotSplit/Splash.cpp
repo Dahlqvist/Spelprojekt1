@@ -18,7 +18,7 @@ Splash::Splash():
 
 Splash::~Splash()
 {
-	delete currentAnimation;
+//	delete currentAnimation;
 }
 
 Splash& Splash::getInstance()

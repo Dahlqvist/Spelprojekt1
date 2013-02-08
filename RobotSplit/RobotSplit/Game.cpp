@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial3.xml"),
+		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -150,15 +150,16 @@ void Game::moveCamera()
 	}
 	float posX=partRect.left+(partRect.width/2.0f);
 	float posY=partRect.top+(partRect.height/2.0f);
-	float levelHeight=BG[0]->draw().getGlobalBounds().height;
+	float levelWidth=mlevel.getSize().x;
+	float levelHeight=mlevel.getSize().y;
 
 	if (posX<view.getSize().x/2.0)
 	{
 		posX=view.getSize().x/2.0;
 	}
-	else if (posX>view.getSize().x/2.0)
+	else if (posX>levelWidth-view.getSize().x/2.0)
 	{
-		//posX=mWindow.getSize().x-view.getSize().x/2.0;
+		posX=levelWidth-view.getSize().x/2.0;
 	}
 
 	if (posY<view.getSize().y/2.0)
@@ -167,7 +168,7 @@ void Game::moveCamera()
 	}
 	else if (posY>levelHeight-view.getSize().y/2.0)
 	{
-		posY=mWindow.getSize().y-view.getSize().y/2.0;
+		posY=levelHeight-view.getSize().y/2.0;
 	}
 
 	view.setCenter(posX, posY);
