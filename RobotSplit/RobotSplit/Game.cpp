@@ -17,7 +17,6 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 
-
 #include "Window.h"
 
 Game::Game():
