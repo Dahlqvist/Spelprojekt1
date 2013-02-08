@@ -309,9 +309,9 @@ void PlayerPartFeet::activateRocketBoots()
 }
 void PlayerPartFeet::reFuel(float fuel)
 {
-	if(mFuel<=0 && fuel<=100){
+	//if(mFuel<=0 && fuel<=100){
 		mFuel=fuel;
-	}
+	//}
 }
 void PlayerPartFeet::jumpReset()
 {

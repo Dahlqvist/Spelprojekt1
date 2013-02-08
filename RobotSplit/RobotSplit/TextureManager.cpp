@@ -99,6 +99,12 @@ void TextureManager::loadTexture()
 	//Test
 	mTextureMap["StixSmokeAni"].loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 
+	mTextureMap["LightTogether"].loadFromFile("Texture/Stix/stix_sil_full.png");
+
+	mTextureMap["LightBody"].loadFromFile("Texture/Stix/stix_sil_upper.png");
+
+	mTextureMap["LightFeet"].loadFromFile("Texture/Stix/stix_sil_lower.png");
+
 	//Enviroment
 
 	mTextureMap["AntiMagnet"].loadFromFile("Texture/Enviroment/Avmagnitiserad_extraplatta.png");
@@ -138,7 +144,11 @@ void TextureManager::loadTexture()
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
+	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
+
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
+
+	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");

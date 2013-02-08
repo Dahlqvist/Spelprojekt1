@@ -96,6 +96,9 @@
     <ClCompile Include="RocketFuel.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerLight.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -196,6 +199,9 @@
     <ClInclude Include="RocketFuel.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerLight.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -228,10 +234,22 @@
     <Filter Include="Source Files\Menu\State">
       <UniqueIdentifier>{8c78ea07-2567-4c7b-8ab2-a93773b369a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Banor">
+      <UniqueIdentifier>{80266ddf-1c89-4549-a9ba-eeaef1b93cc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.xml">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial1.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial2.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial3.xml">
+      <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>
 </Project>

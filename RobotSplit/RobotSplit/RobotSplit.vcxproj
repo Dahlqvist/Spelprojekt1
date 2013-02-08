@@ -104,6 +104,7 @@ sfml-main.lib
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerLight.cpp" />
     <ClCompile Include="PlayerPartBody.cpp" />
     <ClCompile Include="PlayerPartFeet.cpp" />
     <ClCompile Include="PlayerPartHead.cpp" />
@@ -138,6 +139,7 @@ sfml-main.lib
     <ClInclude Include="Option.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerLight.h" />
     <ClInclude Include="PlayerPart.h" />
     <ClInclude Include="PlayerPartBody.h" />
     <ClInclude Include="PlayerPartFeet.h" />
@@ -156,9 +158,12 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tutorial2.xml" />
+    <None Include="Tutorial1.xml" />
     <None Include="Test.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Tutorial3.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
