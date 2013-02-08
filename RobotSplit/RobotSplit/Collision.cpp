@@ -22,12 +22,13 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 {
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
+	mResetted=false;
 	for (int j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart")
 		{
 			sf::FloatRect collisionRect;
-			if (testCollisions(playerSprite, objects[j], collisionRect))
+			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
 				//testCollidedSides(playerSprite, objects[j], collisionRect);
 				handleCollisions(player, objects[j], collisionRect);
@@ -224,6 +225,12 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		player.forceMove(mPlayerPart, moveDistance);
 	}
 	//playerSprite->setPosition(moveDistance);
+
+	if (obj2->getId()=="Lava")
+	{
+		player.restartPlayer(sf::Vector2f(100, 100));
+		mResetted=true;
+	}
 }
 
 void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)

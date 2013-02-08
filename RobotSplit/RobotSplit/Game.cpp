@@ -17,7 +17,6 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 
-
 #include "Window.h"
 
 Game::Game():
@@ -56,8 +55,10 @@ Game::~Game()
 void Game::update()
 {
 	loops = 0;
+	mRenderGame=false;
 	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
 	{
+		mRenderGame=true;
 		loops++;
 		lastUpdate+=1/60.0;
 		Game::input();
@@ -68,6 +69,8 @@ void Game::update()
 		{
 			diaBox[i]->update();
 		}
+
+		moveCamera();
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
@@ -129,24 +132,65 @@ void Game::input()
 	}
 }
 
+void Game::moveCamera()
+{
+	sf::View view=mWindow.getDefaultView();
+	sf::FloatRect partRect;
+	
+	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
+	{
+		partRect=mPlayer->getCollisionSprite()[0]->getGlobalBounds();
+	}
+	else
+	{
+		partRect=mPlayer->getCollisionSprite()[1]->getGlobalBounds();
+	}
+	float posX=partRect.left+(partRect.width/2.0f);
+	float posY=partRect.top+(partRect.height/2.0f);
+
+	if (posX<view.getSize().x/2.0)
+	{
+		posX=view.getSize().x/2.0;
+	}
+	else if (posX>view.getSize().x/2.0)
+	{
+		posX=mWindow.getSize().x-view.getSize().x/2.0;
+	}
+
+	if (posY<view.getSize().y/2.0)
+	{
+		posY=view.getSize().y/2.0;
+	}
+	else if (posY>view.getSize().y/2.0)
+	{
+		posY=mWindow.getSize().y-view.getSize().y/2.0;
+	}
+
+	view.setCenter(posX, posY);
+	mWindow.setView(view);
+}
+
 void Game::render()
 {
-	mWindow.clear(sf::Color::Black);
-	for(vector<Background*>::size_type i =0; i < BG.size(); i++)
+	if (mRenderGame)
 	{
-		mWindow.draw(BG[i]->draw());
-		BG[i]->update();
-	}
+		mWindow.clear(sf::Color::Black);
+		for(vector<Background*>::size_type i =0; i < BG.size(); i++)
+		{
+			mWindow.draw(BG[i]->draw());
+			BG[i]->update();
+		}
 
-	Objects->draw(mWindow);
-	mPlayer->draw(mWindow);
-	mPlayer->resetAnimations();
-	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-	{
-		mWindow.draw(diaBox[i]->getSprite());
-		mWindow.draw(diaBox[i]->getText());
-	}
-	//mWindow.draw(diaBox->getText());
+		Objects->draw(mWindow);
+		mPlayer->draw(mWindow);
+		mPlayer->resetAnimations();
+		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
+		{
+			mWindow.draw(diaBox[i]->getSprite());
+			mWindow.draw(diaBox[i]->getText());
+		}
+		//mWindow.draw(diaBox->getText());
 
-	mWindow.display();
+		mWindow.display();
+	}
 }

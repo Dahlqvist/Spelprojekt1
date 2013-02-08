@@ -19,6 +19,8 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeetAttached=false;
 	mSprintTimer.restart();
 	mFeet.setPosition(Position);
+	mBody.update();
+	mHead.update();
 	mTexture.loadFromFile("Texture/Stix/stix.png");
 	mSprite.setTexture(mTexture);
 	mLjus1.loadFromFile("Texture/Stix/stix_sil_full.png");
@@ -38,11 +40,13 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	Temp4=new sf::Sprite;
 	TempPart= new PlayerPartBody(&mFeet);
 	TempPart->setAttached(false);
+	TempPart->setId("InteKollision");
 	mParts.push_back(TempPart);
 	lastKey=0;
 	thisKey=0;
 	mTest.restart();
 }
+
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
@@ -70,9 +74,13 @@ void Player::draw(sf::RenderWindow& Window)
 		}
 	}
 	Window.draw(mLjus);
+
 	if(mHead.getUnit()!=0)
 	{
 		Window.draw(mHead.getUnit()->getSprite());
+	}
+	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
+		Window.draw(mFeet.getUnit()->getSprite());
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());

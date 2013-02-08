@@ -2,105 +2,6 @@
 //Skapar statiska variablar som alltid kommer att finnas
 TextureManager::TextureMap TextureManager::mTextureMap;
 
-//Bakgrund
-sf::Texture TextureManager::textureBackground;
-
-//Stix Right
-sf::Texture TextureManager::textureStix_lowerRight;
-
-sf::Texture TextureManager::textureStix_lowerRight_Magnet;
-
-sf::Texture TextureManager::textureStix_lower_aniRight;
-
-sf::Texture TextureManager::textureStix_lower_aniRight_Magnet;
-
-sf::Texture TextureManager::textureStix_upperRight;
-
-sf::Texture TextureManager::textureStix_upper_aniRight;
-
-sf::Texture TextureManager::textureStix_shoot_aniRight;
-
-sf::Texture TextureManager::textureStix_upper_split_aniRight;
-
-
-//Stix Left
-sf::Texture TextureManager::textureStix_lowerLeft;
-
-sf::Texture TextureManager::textureStix_lowerLeft_Magnet;
-
-sf::Texture TextureManager::textureStix_lower_aniLeft;
-
-sf::Texture TextureManager::textureStix_lower_aniLeft_Magnet;
-
-sf::Texture TextureManager::textureStix_upperLeft;
-
-sf::Texture TextureManager::textureStix_upper_aniLeft;
-
-sf::Texture TextureManager::textureStix_shoot_aniLeft;
-
-sf::Texture TextureManager::textureStix_upper_split_aniLeft;
-
-//Stix Other
-
-sf::Texture TextureManager::texture_stix_brain_flight;
-
-sf::Texture TextureManager::textureStix_smoke_ani;
-
-//Enviroment
-
-sf::Texture TextureManager::textureAnti_magnet;
-
-sf::Texture TextureManager::textureBolcony_corner_L;
-
-sf::Texture TextureManager::textureBolcony_corner_R;
-
-sf::Texture TextureManager::textureBolcony_middle;
-	
-sf::Texture TextureManager::texturePlatform_break_ani;
-
-sf::Texture TextureManager::textureBlue_button_ani;
-
-sf::Texture TextureManager::textureRed_button_ani;
-
-sf::Texture TextureManager::textureYellow_button_ani;
-
-sf::Texture TextureManager::textureExit;
-
-sf::Texture TextureManager::textureRail_end_L;
-
-sf::Texture TextureManager::textureRail_end_R;
-
-sf::Texture TextureManager::textureRail_middle;
-
-sf::Texture TextureManager::textureTile1;
-
-sf::Texture TextureManager::textureTile2;
-
-sf::Texture TextureManager::textureTile3;
-
-sf::Texture TextureManager::textureTile4;
-
-sf::Texture TextureManager::textureTile5;
-
-sf::Texture TextureManager::textureTile6;
-
-sf::Texture TextureManager::textureTile7;
-
-sf::Texture TextureManager::textureTile8;
-
-sf::Texture TextureManager::textureTile9;
-
-//Splash screens
-sf::Texture TextureManager::textureSplash_Concept1;
-
-sf::Texture TextureManager::textureStix_Dash;
-
-sf::Texture TextureManager::textureStix_Jump;
-
-sf::Texture TextureManager::textureStix_Magnet;
-
-sf::Texture TextureManager::textureStix_Platform;
-
 TextureManager::TextureManager()
 {
 	loadTexture();
@@ -116,15 +17,19 @@ TextureManager&	TextureManager::getManager()
 	return Manager;
 }
 
+void TextureManager::internalClear()
+{
+	/*while(!mTextureMap.empty())
+	{
+		delete mTextureMap.en;
+	}*/
+}
+
 void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	//Test
-	textureBackground.loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
-	
+	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 	//Stix Right
-	//textureStix_lowerRight.loadFromFile("Texture/Stix/stix_lower_dark.png");
-	//TextureManager::getManager().mTextureMap["StixLower"] = textureStix_lowerRight;
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 
 	mTextureMap["StixLowerMagnet"].loadFromFile("Texture/Stix/stix_lower_magnet_dark.png");
@@ -145,9 +50,13 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_dark.png");
 
-	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_R.png");
+	mTextureMap["StixFeetExtend"].loadFromFile("Texture/Stix/Single_stix_lower_Freeze_Ext_R_Dark.png");
+	
+	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_R_Dark.png");
 
-	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze.png");
+	mTextureMap["StixFeetExtendAniMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_R_Dark.png");
+
+	mTextureMap["StixFeetJumpAni"].loadFromFile("Texture/Stix/stix_lowerjumpanimation_strip8_dark.png");
 
 	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
 	//spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
@@ -171,9 +80,13 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixUpperSplitL"].loadFromFile("Texture/Stix/Mirror_stix_upper_splitanimation_strip8_dark.png");
 
-	mTextureMap["StixFeetExtendL"].loadFromFile("Texture/Stix/stix_lower_Freeze_RedExt_L.png");
+	mTextureMap["StixFeetExtendL"].loadFromFile("Texture/Stix/Single_stix_lower_Freeze_Ext_L_Dark.png");
 
-	mTextureMap["StixFeetExtendAniL"].loadFromFile("Texture/Stix/stix_lower_Freeze_Flip.png");
+	mTextureMap["StixFeetExtendAniL"].loadFromFile("Texture/Stix/stix_lower_Freeze_Flip_Dark.png");
+
+	mTextureMap["StixFeetExtendAniLMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_Ext_L_Dark.png");
+
+	mTextureMap["StixFeetJumpAniL"].loadFromFile("Texture/Stix/Mirror_stix_lowerjumpanimation_strip8_dark.png");
 	//Stix Other
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
@@ -181,6 +94,8 @@ void TextureManager::loadTexture()
 	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
 
 	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
+
+	mTextureMap["StixRocketFuel"].loadFromFile("Texture/Stix/Rocket_Flame_Sprite.png");
 	//Test
 	mTextureMap["StixSmokeAni"].loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 
@@ -190,8 +105,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["BolconyCornerL"].loadFromFile("Texture/Enviroment/Bolcony_Corner_L.png");
 
-	textureBolcony_corner_R.loadFromFile("Texture/Enviroment/Bolcony_Corner_R.png");
-	mTextureMap["BolconyCornerR"] = textureBolcony_corner_R;
+	mTextureMap["BolconyCornerR"].loadFromFile("Texture/Enviroment/Bolcony_Corner_R.png");
 
 	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Bolcony_Middle.png");
 
@@ -259,16 +173,16 @@ void TextureManager::loadTexture()
 	
 	mTextureMap["StixSplashMagnet"].loadFromFile("Texture/Splash/stix_splashscreen_magnet.png");
 	
-	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform");
+	mTextureMap["StixSplashPlatform"].loadFromFile("Texture/Splash/stix_splashscreen_platform.png");
 	
+	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
+
+	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
 {
 	//Påkalla funktionen med namnet till rätt animationen
-	if(texture == "Background")
-		return getManager().textureBackground;
-	else
 		return getManager().mTextureMap[texture];
 };
 

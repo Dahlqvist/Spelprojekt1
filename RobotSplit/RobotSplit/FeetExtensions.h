@@ -27,6 +27,8 @@ private:
 	Animation mLeft;
 	Animation mRightAni;
 	Animation mLeftAni;
+	Animation mRightAniMagnet;
+	Animation mLeftAniMagnet;
 	bool mFacingRight, mMagnet;
 	sf::Vector2f mSize;
 	

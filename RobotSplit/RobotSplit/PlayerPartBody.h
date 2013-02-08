@@ -23,6 +23,7 @@ public:
 	virtual void forceMove(sf::Vector2f);
 	void jumpReset();
 	void restartAnimation();
+	void setId(std::string);
 private: 
 	bool mAttached;
 	Unit* mUnit;

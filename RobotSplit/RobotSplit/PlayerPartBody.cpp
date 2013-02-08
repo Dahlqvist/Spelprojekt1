@@ -22,7 +22,7 @@ void PlayerPartBody::update()
 	{
 		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
 		{
-			mJump-=1.2;
+			mJump-=1.3;
 			mJumpClock.restart();
 		}
 		else
@@ -115,4 +115,7 @@ void PlayerPartBody::forceMove(sf::Vector2f force){
 void PlayerPartBody::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
+}
+void PlayerPartBody::setId(std::string Text){
+	mId=Text;
 }

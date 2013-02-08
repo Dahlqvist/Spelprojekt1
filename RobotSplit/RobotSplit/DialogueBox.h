@@ -13,6 +13,8 @@ public:
 	sf::Text getText();
 	sf::Sprite getSprite();
 
+	bool isFullyVisible();
+
 private:
 	int mAlpha;
 	bool mVisible;
