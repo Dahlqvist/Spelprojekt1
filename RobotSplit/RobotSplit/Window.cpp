@@ -10,6 +10,12 @@ Window::Window()
 Window::~Window()
 {}
 
+Window& Window::getInstance()
+{
+	Window window;
+	return window;
+}
+
 void Window::loadWindow()
 {
 	mWindow.create(sf::VideoMode(1280, 768), "Robot split", sf::Style::Fullscreen);

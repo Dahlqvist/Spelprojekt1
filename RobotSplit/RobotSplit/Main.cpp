@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-	Window window;
+	Window& window = Window::getInstance();
 	Splash& splash = Splash::getInstance();
 	Sound& sound = Sound::getInstance();
 	Music& music = Music::getInstance();

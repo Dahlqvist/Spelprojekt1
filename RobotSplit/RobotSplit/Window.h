@@ -6,11 +6,15 @@
 class Window
 {
 public:
-	Window();
-	~Window();
 	static sf::RenderWindow& getWindow();
+	static Window& getInstance();
 
 private:
+	Window();
+	Window(const Window& window);
+	Window operator=(const Window& window);
+	~Window();
+
 	void loadWindow();
 	static sf::RenderWindow mWindow;
 };

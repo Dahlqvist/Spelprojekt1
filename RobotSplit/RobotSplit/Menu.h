@@ -1,9 +1,10 @@
 #ifndef INC_MENU
 #define INC_MENU
 
-class StateInput;
-
+#include "Animation.h"
 #include "State.h"
+
+class StateInput;
 
 class Menu: public State
 {
@@ -16,6 +17,13 @@ public:
 	void choice();
 private:
 	StateInput& mStateInput;
+	Animation mBackground;
+	Animation mNewGame;
+	Animation mOptions;
+	Animation mQuit;
+
+	sf::RenderWindow &mWindow;
+
 };
 
 #endif
