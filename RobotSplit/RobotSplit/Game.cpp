@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Test.xml"),
+		mlevel("Tutorial3.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -37,7 +37,7 @@ Game::Game():
 	mWindow.setKeyRepeatEnabled(false);
 	diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/menu_1.wav");
+	Music::loadMusic("Music/level_1.wav");
 }
 
 Game::~Game()
@@ -137,7 +137,7 @@ void Game::input()
 
 void Game::moveCamera()
 {
-	sf::View view=mWindow.getDefaultView();
+	sf::View view(sf::FloatRect(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y));
 	sf::FloatRect partRect;
 	
 	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
@@ -150,6 +150,7 @@ void Game::moveCamera()
 	}
 	float posX=partRect.left+(partRect.width/2.0f);
 	float posY=partRect.top+(partRect.height/2.0f);
+	float levelHeight=BG[0]->draw().getGlobalBounds().height;
 
 	if (posX<view.getSize().x/2.0)
 	{
@@ -157,14 +158,14 @@ void Game::moveCamera()
 	}
 	else if (posX>view.getSize().x/2.0)
 	{
-		posX=mWindow.getSize().x-view.getSize().x/2.0;
+		//posX=mWindow.getSize().x-view.getSize().x/2.0;
 	}
 
 	if (posY<view.getSize().y/2.0)
 	{
 		posY=view.getSize().y/2.0;
 	}
-	else if (posY>view.getSize().y/2.0)
+	else if (posY>levelHeight-view.getSize().y/2.0)
 	{
 		posY=mWindow.getSize().y-view.getSize().y/2.0;
 	}
