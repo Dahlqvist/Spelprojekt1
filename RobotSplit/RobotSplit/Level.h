@@ -2,6 +2,7 @@
 #define	INC_BANA
 #include<vector>
 #include<string>
+#include <SFML/System/Vector2.hpp>
 
 //Inuslated classes
 class Unit;
@@ -43,6 +44,8 @@ public:
 	~Level(void);
 	//Reads a Level from a XML-file				(Done)
 	void			loadNewLevel(string FileName);
+	//Returns the size of the level
+	sf::Vector2f	getSize()const;
 	//Returns the Level's objects				(Done)
 	UnitVector		getObjects()const;
 	//Returns the Level's name					(Done)

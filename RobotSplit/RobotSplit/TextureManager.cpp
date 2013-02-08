@@ -99,15 +99,21 @@ void TextureManager::loadTexture()
 	//Test
 	mTextureMap["StixSmokeAni"].loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 
+	mTextureMap["LightTogether"].loadFromFile("Texture/Stix/stix_sil_full.png");
+
+	mTextureMap["LightBody"].loadFromFile("Texture/Stix/stix_sil_upper.png");
+
+	mTextureMap["LightFeet"].loadFromFile("Texture/Stix/stix_sil_lower.png");
+
 	//Enviroment
 
 	mTextureMap["AntiMagnet"].loadFromFile("Texture/Enviroment/Avmagnitiserad_extraplatta.png");
 
-	mTextureMap["BolconyCornerL"].loadFromFile("Texture/Enviroment/Bolcony_Corner_L.png");
+	mTextureMap["BolconyCornerL"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Corner_L_32_dark.png");
 
-	mTextureMap["BolconyCornerR"].loadFromFile("Texture/Enviroment/Bolcony_Corner_R.png");
+	mTextureMap["BolconyCornerR"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Corner_R_32_dark.png");
 
-	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Bolcony_Middle.png");
+	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Middle_32_dark.png");
 
 	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
 
@@ -117,13 +123,13 @@ void TextureManager::loadTexture()
 
 	mTextureMap["YellowButtonAni"].loadFromFile("Texture/Enviroment/Button_Yellow_Sprite_16px.png");
 
-	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit.png");
+	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
 
-	mTextureMap["RailEndL"].loadFromFile("Texture/Enviroment/Rail_End_L.png");
+	mTextureMap["RailEndL"].loadFromFile("Texture/Enviroment/Rail_End_L_dark.png");
 
-	mTextureMap["RailEndR"].loadFromFile("Texture/Enviroment/Rail_End_R.png");
+	mTextureMap["RailEndR"].loadFromFile("Texture/Enviroment/Rail_End_R_dark.png");
 
-	mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_middle.png");
+	mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_Middle_dark.png");
 
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
@@ -135,10 +141,17 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
 
+	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
+	
+
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
+	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
+
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
+
+	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");

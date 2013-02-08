@@ -13,12 +13,12 @@ Splash::Splash():
 	currentAnimation(&mWatermelon)	
 {
 	mTime.restart();
-	mStatus = true;
+	mStatus = false;
 }
 
 Splash::~Splash()
 {
-	delete currentAnimation;
+//	delete currentAnimation;
 }
 
 Splash& Splash::getInstance()

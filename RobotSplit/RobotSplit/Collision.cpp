@@ -228,7 +228,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 
 	if (obj2->getId()=="Lava")
 	{
-		player.restartPlayer(sf::Vector2f(100, 100));
+		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
 	}
 }

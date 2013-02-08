@@ -116,14 +116,14 @@ void Game::input()
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=0){
 			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(mWindow).x;
-			Temp.y=(float)sf::Mouse::getPosition(mWindow).y;
+			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
+			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
 			mPlayer->shootHead(sf::Vector2f(Temp));
 			TestTimer.restart();
 		}
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
-			mPlayer->restartPlayer(sf::Vector2f(100, 100));
+			mPlayer->restartPlayer(sf::Vector2f(64, 384));
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
@@ -137,7 +137,7 @@ void Game::input()
 
 void Game::moveCamera()
 {
-	sf::View view=mWindow.getDefaultView();
+	sf::View view(sf::FloatRect(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y));
 	sf::FloatRect partRect;
 	
 	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
@@ -150,23 +150,25 @@ void Game::moveCamera()
 	}
 	float posX=partRect.left+(partRect.width/2.0f);
 	float posY=partRect.top+(partRect.height/2.0f);
+	float levelWidth=mlevel.getSize().x;
+	float levelHeight=mlevel.getSize().y;
 
 	if (posX<view.getSize().x/2.0)
 	{
 		posX=view.getSize().x/2.0;
 	}
-	else if (posX>view.getSize().x/2.0)
+	else if (posX>levelWidth-view.getSize().x/2.0)
 	{
-		posX=mWindow.getSize().x-view.getSize().x/2.0;
+		posX=levelWidth-view.getSize().x/2.0;
 	}
 
 	if (posY<view.getSize().y/2.0)
 	{
 		posY=view.getSize().y/2.0;
 	}
-	else if (posY>view.getSize().y/2.0)
+	else if (posY>levelHeight-view.getSize().y/2.0)
 	{
-		posY=mWindow.getSize().y-view.getSize().y/2.0;
+		posY=levelHeight-view.getSize().y/2.0;
 	}
 
 	view.setCenter(posX, posY);
