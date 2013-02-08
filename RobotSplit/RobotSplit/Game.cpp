@@ -116,8 +116,8 @@ void Game::input()
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=0){
 			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(mWindow).x;
-			Temp.y=(float)sf::Mouse::getPosition(mWindow).y;
+			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
+			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
 			mPlayer->shootHead(sf::Vector2f(Temp));
 			TestTimer.restart();
 		}
