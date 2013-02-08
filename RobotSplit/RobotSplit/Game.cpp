@@ -37,7 +37,7 @@ Game::Game():
 	mWindow.setKeyRepeatEnabled(false);
 	diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/menu_1.wav");
+	Music::loadMusic("Music/level_1.wav");
 }
 
 Game::~Game()
