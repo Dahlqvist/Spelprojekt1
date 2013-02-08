@@ -3,21 +3,28 @@
 #include "Window.h"
 #include "TextureManager.h"
 
+bool Splash::mStatus;
 
 Splash::Splash():
 	mStateInput(StateInput::getInstance()),
 	mWindow(Window::getWindow()),
 	mWatermelon("Watermelon", 1, 1),
 	mConcept1("RobotSplitConcept1", 1, 1),
-	currentAnimation(&mWatermelon)
-	
+	currentAnimation(&mWatermelon)	
 {
 	mTime.restart();
+	mStatus = true;
 }
 
 Splash::~Splash()
 {
 	delete currentAnimation;
+}
+
+Splash& Splash::getInstance()
+{
+	static Splash splash;
+	return splash;
 }
 
 void Splash::update()
@@ -32,9 +39,7 @@ void Splash::update()
 	}
 
 	if(mTime.getElapsedTime().asSeconds() > 6 )
-		mStateInput.changeState("Menu");
-	//När Splash-screen är klar skall menu visas
-	//mStateInput.changeState("Menu");	
+		runSplash(false);
 }
 
 void Splash::render()
@@ -42,4 +47,14 @@ void Splash::render()
 	mWindow.clear(sf::Color::Black);
 	mWindow.draw(currentAnimation->getSprite());
 	mWindow.display();
+}
+
+void Splash::runSplash(bool status)
+{
+	mStatus = status;
+}
+
+bool Splash::getStatus()
+{
+	return mStatus;
 }

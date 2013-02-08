@@ -4,12 +4,14 @@
 #include "StateInput.h"
 #include "StateManager.h"
 #include "Window.h"
+#include "Splash.h"
 
 using namespace std;
 
 int main()
 {
 	Window window;
+	Splash& splash = Splash::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
@@ -22,8 +24,17 @@ int main()
 			if(event.type == sf::Event::Closed)
 				mWindow.close();
 		}
-		statemanager.updateState();
-		statemanager.renderState();
+
+		if(Splash::getStatus())
+		{
+			splash.update();
+			splash.render();
+		}
+		else
+		{
+			statemanager.updateState();
+			statemanager.renderState();
+		}
 	}
 
 	
