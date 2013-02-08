@@ -14,7 +14,6 @@ Splash::Splash():
 {
 	mTime.restart();
 	mStatus = true;
-	//mConcept1.getSprite().scale(bilden/fönstret)
 }
 
 Splash::~Splash()
@@ -40,7 +39,7 @@ void Splash::update()
 	}
 
 	if(mTime.getElapsedTime().asSeconds() > 6 )
-		runSplash(true);
+		runSplash(false);
 }
 
 void Splash::render()

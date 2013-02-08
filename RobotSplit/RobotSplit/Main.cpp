@@ -34,11 +34,11 @@ int main()
 			splash.update();
 			splash.render();
 		}
-		/*else
+		else
 		{
 			statemanager.updateState();
 			statemanager.renderState();
-		}*/
+		}
 	}
 
 	
