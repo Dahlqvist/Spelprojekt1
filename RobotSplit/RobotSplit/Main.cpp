@@ -5,6 +5,8 @@
 #include "StateManager.h"
 #include "Window.h"
 #include "Splash.h"
+#include "Sound.h"
+#include "Music.h"
 
 using namespace std;
 
@@ -12,6 +14,8 @@ int main()
 {
 	Window window;
 	Splash& splash = Splash::getInstance();
+	Sound& sound = Sound::getInstance();
+	Music& music = Music::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
