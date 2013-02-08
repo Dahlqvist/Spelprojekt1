@@ -9,13 +9,13 @@
 class Sound
 {
 public:
-	
+	static Sound& getInstance();
 	~Sound();
 	const static void playSound(std::string sound);
 private:
 	Sound();
 	Sound(const Sound& sound);
-
+	Sound operator=(const Sound& sound);
 	void loadSound();
 	static sf::SoundBuffer mDelaBuff;
 	static sf::SoundBuffer mHoppaBuff;
