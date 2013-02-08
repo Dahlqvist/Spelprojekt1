@@ -14,7 +14,7 @@ public:
 	virtual void update();
 	virtual void render();
 
-	void choice();
+	void input();
 private:
 	StateInput& mStateInput;
 	Animation mBackground;

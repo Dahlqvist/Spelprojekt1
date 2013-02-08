@@ -20,25 +20,24 @@ Menu::~Menu()
 
 void Menu::update()
 {
-	choice();
+	input();
 }
 
 void Menu::render()
 {
+	mWindow.clear(sf::Color::Black);
 	mWindow.draw(mBackground.getSprite());
 	mWindow.draw(mNewGame.getSprite());
 	mWindow.draw(mOptions.getSprite());
 	mWindow.draw(mQuit.getSprite());
+	mWindow.display();
 }
 
-void Menu::choice()
+void Menu::input()
 {
-	/*int p;
-	std::cin >> p;
-	if(p == 1)
-		mStateInput.changeState("Game");
-	else if(p == 2)
+
+
+	/*mStateInput.changeState("Game");
 		mStateInput.changeState("Option");
-	else
 		mStateInput.changeState("Last");*/
 }
