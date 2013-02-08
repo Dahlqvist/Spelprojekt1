@@ -172,7 +172,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	mWindow.setView(view);
+	//mWindow.setView(view);
 }
 
 void Game::render()

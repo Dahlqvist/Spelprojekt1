@@ -2,7 +2,7 @@
 #include "StateInput.h"
 #include "Window.h"
 #include "TextureManager.h"
-
+#include <iostream>
 bool Splash::mStatus;
 
 Splash::Splash():
@@ -13,8 +13,8 @@ Splash::Splash():
 	currentAnimation(&mWatermelon)	
 {
 	mTime.restart();
-	mStatus = false;
-}
+	//mConcept1.getSprite().scale(bilden/fönstret)
+	mStatus = true;
 
 Splash::~Splash()
 {
@@ -45,7 +45,17 @@ void Splash::update()
 void Splash::render()
 {
 	mWindow.clear(sf::Color::Black);
-	mWindow.draw(currentAnimation->getSprite());
+	sf::Sprite Temp=currentAnimation->getSprite();
+	sf::View tempView = mWindow.getView();
+	sf::Vector2u p = mWindow.getSize();
+	float ratio = mWindow.getSize().y/Temp.getGlobalBounds().height;
+	float x = (mWindow.getSize().x - (Temp.getGlobalBounds().width*ratio)) / 2;
+	float y = (mWindow.getSize().y - (Temp.getGlobalBounds().height*ratio))/2;
+	Temp.setPosition(x, y);
+	Temp.scale(ratio, ratio);
+	
+	
+	mWindow.draw(Temp);
 	mWindow.display();
 }
 
