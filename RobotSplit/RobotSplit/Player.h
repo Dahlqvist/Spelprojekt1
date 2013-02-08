@@ -4,6 +4,7 @@
 #include "PlayerPartFeet.h"
 #include "PlayerPartBody.h"
 #include "PlayerPartHead.h"
+#include "PlayerLight.h"
 
 class Player
 {
@@ -44,16 +45,17 @@ private:
 	PlayerParts mParts;
 	sf::Sprite mSprite;
 	sf::Texture mTexture;
-	sf::Sprite mLjus;
-	sf::Texture mLjus1;
-	sf::Texture mLjus2;
-	sf::Texture mLjus3;
+	PlayerLight mLights;
+	//sf::Sprite mLjus;
+	//sf::Texture mLjus1;
+	//sf::Texture mLjus2;
+	//sf::Texture mLjus3;
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;
 	sf::Sprite* Temp4;
 	float mSpeed, mJump, mDash;
-	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mTest;
+	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
 	bool mKeys;
