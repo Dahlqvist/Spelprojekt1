@@ -2,6 +2,7 @@
 
 
 Toolbar::Toolbar(void)
+	:mMiniView()
 {
 }
 

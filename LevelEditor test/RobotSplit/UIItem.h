@@ -6,8 +6,7 @@ class UIItem
 public:
 	UIItem(void);
 	virtual	~UIItem(void);
-	virtual void draw(RenderWindow&)=0;
+	virtual void draw(sf::RenderWindow&)=0;
 private:
 };
-
 #endif

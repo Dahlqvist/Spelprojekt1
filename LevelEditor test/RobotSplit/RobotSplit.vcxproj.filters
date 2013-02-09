@@ -94,6 +94,9 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h">
       <Filter>RobotSplit files\Header</Filter>
     </ClInclude>
+    <ClInclude Include="UIItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -199,6 +202,9 @@
     </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp">
       <Filter>RobotSplit files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="UIItem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

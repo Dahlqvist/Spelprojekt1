@@ -48,6 +48,7 @@ public:
 		mActivated=true;
 		mTHIS=NEW;
 		mOffset=offset;
+		mOriginal=original;
 	}
 	Vector2f	getOffset()const
 	{
