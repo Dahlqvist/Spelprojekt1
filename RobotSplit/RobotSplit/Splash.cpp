@@ -15,6 +15,7 @@ Splash::Splash():
 	mTime.restart();
 	//mConcept1.getSprite().scale(bilden/fönstret)
 	mStatus = true;
+}
 
 Splash::~Splash()
 {
