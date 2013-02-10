@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPart.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h" />

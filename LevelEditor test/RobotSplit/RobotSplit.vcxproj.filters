@@ -97,6 +97,9 @@
     <ClInclude Include="UIItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h">
+      <Filter>RobotSplit files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="UIItem.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp">
+      <Filter>RobotSplit files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
