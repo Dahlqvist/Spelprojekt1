@@ -807,7 +807,7 @@ void Player::restartPlayer(sf::Vector2f Vec){
 void Player::Win(){
 	mFeet.winning();
 	mBody.winning();
-	std::cout << "Finnishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
+	std::cout << "Finishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
 }
 //bool Player::bodyStandningFeet()
 //{
