@@ -170,6 +170,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
 
+	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px.png");
+
 	//Initializing the frame parts.
 
 	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part01.png");
