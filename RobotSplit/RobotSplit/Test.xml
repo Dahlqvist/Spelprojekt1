@@ -257,7 +257,7 @@
       <Solid>false</Solid>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Door"</Type>
       <SpriteName>"Exit"</SpriteName>
       <Position>
@@ -269,7 +269,7 @@
         <y>96</y>
       </Size>
       <Solid>false</Solid>
-    </Unit>
+    </Unit>-->
     
 		<Unit>
 			<Type>"Platform"</Type>
