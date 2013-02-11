@@ -256,6 +256,20 @@
       </Size>
       <Solid>false</Solid>
     </Unit>
+
+    <Unit>
+      <Type>"Door"</Type>
+      <SpriteName>"Exit"</SpriteName>
+      <Position>
+        <x>640</x>
+        <y>98</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>96</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
     
 		<Unit>
 			<Type>"Platform"</Type>
@@ -396,6 +410,7 @@
       </Size>
       <Solid>false</Solid>
     </Unit>
+    
     <Unit>
       <Type>"Rail"</Type>
       <SpriteName>"RailL1c"</SpriteName>
@@ -427,7 +442,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>64</x>
 				<y>704</y>
@@ -441,7 +456,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>128</x>
 				<y>704</y>
@@ -455,7 +470,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>192</x>
 				<y>704</y>
@@ -469,7 +484,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>256</x>
 				<y>704</y>
@@ -483,7 +498,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>320</x>
 				<y>704</y>
@@ -497,7 +512,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>384</x>
 				<y>704</y>
@@ -511,7 +526,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>448</x>
 				<y>704</y>
@@ -525,7 +540,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>512</x>
 				<y>704</y>
@@ -539,7 +554,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>576</x>
 				<y>704</y>
@@ -553,7 +568,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>640</x>
 				<y>704</y>
@@ -567,7 +582,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>704</x>
 				<y>704</y>
@@ -581,7 +596,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>768</x>
 				<y>704</y>
@@ -595,7 +610,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>832</x>
 				<y>704</y>
@@ -609,7 +624,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>896</x>
 				<y>704</y>
@@ -623,7 +638,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>960</x>
 				<y>704</y>
@@ -637,7 +652,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>1024</x>
 				<y>704</y>
@@ -651,7 +666,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>1088</x>
 				<y>704</y>
@@ -665,7 +680,7 @@
 			<Type>"Lava"</Type>
 			<SpriteName>"LavaMiddle"</SpriteName>
 			<Frames>8</Frames>
-			<Speed>	60</Speed>
+			<Speed>180</Speed>
 			<Position>
 				<x>1152</x>
 				<y>704</y>
@@ -1144,8 +1159,8 @@
       <Type>"BGAnim"</Type>
       <SpriteName>"MouseSuicide"</SpriteName>
       <Position>
-        <x>436</x>
-        <y>700</y>
+        <x>455</x>
+        <y>625</y>
       </Position>
       <Frames>22</Frames>
       <Speed>100</Speed>

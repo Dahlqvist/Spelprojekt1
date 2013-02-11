@@ -177,7 +177,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
 	
 	//Initializing Lava
-	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/Lava_Middle.png");
+	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
@@ -214,7 +214,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
 
-	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px.png");
+	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px_NEW.png");
 
 	//Initializing the frame parts.
 
