@@ -32,6 +32,7 @@ public:
 	virtual void update(){};
 	virtual void draw();
 	virtual void hit(){};
+	virtual void activate(){};
 
 protected:
 	sf::Vector2f mSize;

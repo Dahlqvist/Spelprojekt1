@@ -9,6 +9,8 @@ public:
 	DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn, bool visible);
 
 	void update();
+	void hit();
+	void activate();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
@@ -17,7 +19,7 @@ public:
 
 private:
 	int mAlpha;
-	bool mVisible;
+	bool mVisible, mFadeIn;
 
 	sf::Text mText;
 };
