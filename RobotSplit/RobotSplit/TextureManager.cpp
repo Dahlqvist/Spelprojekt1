@@ -29,6 +29,7 @@ void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
+
 	//Stix Right
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 
@@ -145,6 +146,22 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
 
+	mTextureMap["TileL1a"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P2.png");
+	mTextureMap["TileL1b"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P3&P7.png");
+	mTextureMap["TileL1c"].loadFromFile("Texture/Enviroment/tiles/tile2_dark_P4&P10.png");
+	mTextureMap["TileL1d"].loadFromFile("Texture/Enviroment/tiles/tile4_dark_P5.png");
+	mTextureMap["TileL1e"].loadFromFile("Texture/Enviroment/tiles/tile3_dark_P6.png");
+	mTextureMap["TileL1f"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P8.png");
+
+	mTextureMap["TileL1g"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P13.png");
+	mTextureMap["TileL1h"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P14.png");
+	mTextureMap["TileL1i"].loadFromFile("Texture/Enviroment/tiles/tile2_dark_P15.png");
+
+	mTextureMap["RailL1a"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_L-1_2.png");
+	mTextureMap["RailL1b"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt-1_2.png");
+	mTextureMap["RailL1c"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt_Sluttning_R_2.png");
+	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_R_2.png");
+
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
 	
 
@@ -152,6 +169,8 @@ void TextureManager::loadTexture()
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
 	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
+
+	mTextureMap["HelpBoxActive"].loadFromFile("Texture/Dialogue/help_active.png");
 
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
 
@@ -164,6 +183,38 @@ void TextureManager::loadTexture()
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
 	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+
+	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
+
+	mTextureMap["Tutorial1b"].loadFromFile("Texture/Background/background_tutorial0_PT02.png");
+
+	mTextureMap["Tutorial2a"].loadFromFile("Texture/Background/background_tutorial1_PT01.png");
+
+	mTextureMap["Tutorial2b"].loadFromFile("Texture/Background/background_tutorial1_PT02.png");
+
+	mTextureMap["Tutorial3a"].loadFromFile("Texture/Background/background_tutorial2_PT01.png");
+
+	mTextureMap["Tutorial3b"].loadFromFile("Texture/Background/background_tutorial2_PT02.png");
+
+	mTextureMap["Tutorial4a"].loadFromFile("Texture/Background/background_tutorial3_PT01.png");
+
+	mTextureMap["Tutorial4b"].loadFromFile("Texture/Background/background_tutorial3_PT02.png");
+
+	mTextureMap["Tutorial5a"].loadFromFile("Texture/Background/background_tutorial4_PT01.png");
+
+	mTextureMap["Tutorial5b"].loadFromFile("Texture/Background/background_tutorial4_PT02.png");
+
+	mTextureMap["Tutorial6a"].loadFromFile("Texture/Background/background_tutorial5_PT01.png");
+
+	mTextureMap["Tutorial6b"].loadFromFile("Texture/Background/background_tutorial5_PT02.png");
+
+	mTextureMap["Tutorial7a"].loadFromFile("Texture/Background/background_tutorial6_PT01.png");
+
+	mTextureMap["Tutorial7b"].loadFromFile("Texture/Background/background_tutorial6_PT02.png");
+
+	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
+
+	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px.png");
 
 	//Initializing the frame parts.
 

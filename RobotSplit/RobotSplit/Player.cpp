@@ -42,6 +42,8 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	lastKey=0;
 	thisKey=0;
 	mKeyTimer.restart();
+	mClock.restart();
+	mClockStart=false;
 }
 
 //Kontroller och funktioner för Player
@@ -465,6 +467,10 @@ void Player::reFuel(float fuel){
 }
 
 void Player::interact(int action){
+	if(mClockStart==false){
+		mClockStart=true;
+		mClock.restart();
+	}
 	thisKey=action;
 	if(thisKey==lastKey)
 	{
@@ -794,11 +800,14 @@ void Player::restartPlayer(sf::Vector2f Vec){
 	mFeet.forceMove(Vec-mFeet.getPosition());
 	mFeet.reFuel(100);
 	Sound::playSound("Death");
+	mClock.restart();
+	mClockStart=false;
 }
 
 void Player::Win(){
 	mFeet.winning();
 	mBody.winning();
+	std::cout << "Finnishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
 }
 //bool Player::bodyStandningFeet()
 //{
