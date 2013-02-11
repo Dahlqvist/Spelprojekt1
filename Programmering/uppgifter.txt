@@ -15,6 +15,7 @@ Units
 Tidsplanering
 Kollision
 Dialoger
+Kamera
 
 Mats:
 Bana
@@ -23,4 +24,6 @@ Xml
 
 
 Senare:
-Kamera
+Vända meanix mot stix
+Lägga in tidtagare
+FontManager?
