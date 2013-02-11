@@ -1,5 +1,4 @@
 Rasmus:
-GameObject
 Player
 Huvudloop
 
@@ -10,12 +9,10 @@ Bakgrund
 Meny
 
 Robbin:
-GameObject
-Units
 Tidsplanering
 Kollision
 Dialoger
-Kamera
+Triggers
 
 Mats:
 Bana
@@ -27,3 +24,9 @@ Senare:
 Vända meanix mot stix
 Lägga in tidtagare
 FontManager?
+World map för att välja bana
+
+Klart:
+GameObject
+Units
+Kamera

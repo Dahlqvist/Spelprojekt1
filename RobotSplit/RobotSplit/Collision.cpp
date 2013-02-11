@@ -30,7 +30,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
-				//testCollidedSides(playerSprite, objects[j], collisionRect);
+				objects[j]->hit();
 				handleCollisions(player, objects[j], collisionRect);
 			}
 		}
@@ -230,6 +230,11 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	{
 		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
+	}
+	if(obj2->getId()=="Door" && player.getTogether()==true)
+	{
+		player.Win();
+		player.restartPlayer(sf::Vector2f(64, 384));
 	}
 }
 
