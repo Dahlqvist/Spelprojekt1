@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial7.xml"),
+		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -80,9 +80,6 @@ void Game::update()
 }
 void Game::input()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::P)){
-		mPlayer->Win();
-	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
 		mPlayer->interact(0);
 	}
@@ -189,8 +186,8 @@ void Game::render()
 			mWindow.draw(BG[i]->draw());
 			BG[i]->update();
 		}
-		Objects->draw(mWindow);
 		mPlayer->draw(mWindow);
+		Objects->draw(mWindow);
 		mPlayer->resetAnimations();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{

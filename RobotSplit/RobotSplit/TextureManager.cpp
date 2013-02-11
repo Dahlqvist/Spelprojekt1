@@ -145,6 +145,22 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
 
+	mTextureMap["TileL1a"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P2.png");
+	mTextureMap["TileL1b"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P3&P7.png");
+	mTextureMap["TileL1c"].loadFromFile("Texture/Enviroment/tiles/tile2_dark_P4&P10.png");
+	mTextureMap["TileL1d"].loadFromFile("Texture/Enviroment/tiles/tile4_dark_P5.png");
+	mTextureMap["TileL1e"].loadFromFile("Texture/Enviroment/tiles/tile3_dark_P6.png");
+	mTextureMap["TileL1f"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P8.png");
+
+	mTextureMap["TileL1g"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P13.png");
+	mTextureMap["TileL1h"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P14.png");
+	mTextureMap["TileL1i"].loadFromFile("Texture/Enviroment/tiles/tile2_dark_P15.png");
+
+	mTextureMap["RailL1a"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_L-1_2.png");
+	mTextureMap["RailL1b"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt-1_2.png");
+	mTextureMap["RailL1c"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt_Sluttning_R_2.png");
+	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_R_2.png");
+
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
 	
 
