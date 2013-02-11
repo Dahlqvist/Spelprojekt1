@@ -10,6 +10,7 @@ public:
 	Trigger(sf::Vector2f position, std::string id, std::string spriteName, Unit* triggedObject);
 
 	void hit();
+	void activate();
 private:
 	Unit* mTriggedObject;
 };

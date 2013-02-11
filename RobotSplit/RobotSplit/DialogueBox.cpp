@@ -52,7 +52,10 @@ void DialogueBox::update()
 
 void DialogueBox::hit()
 {
-	mAlpha=255/2;
+	if (mVisible)
+	{
+		mAlpha=255/2;
+	}
 }
 
 void DialogueBox::activate()
@@ -62,7 +65,6 @@ void DialogueBox::activate()
 
 sf::Text DialogueBox::getText()
 {
-	
 	return mText;
 }
 

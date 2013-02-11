@@ -1065,5 +1065,18 @@
 			<Size>1</Size>
 			<Rotation>0</Rotation>
 		</Unit>
-	</Objects>
+    <Unit>
+      <Type>"BGAnim"</Type>
+      <SpriteName>"SparkleAnim"</SpriteName>
+      <Position>
+        <x>512</x>
+        <y>192</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>32</y>
+      </Size>
+      <Solid>"false"</Solid>
+    </Unit>
+  </Objects>
 </Level>
