@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Test.xml"),
+		mlevel("Tutorial7.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),

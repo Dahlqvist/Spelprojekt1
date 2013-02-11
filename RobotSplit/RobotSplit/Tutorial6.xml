@@ -5,7 +5,7 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial5a"</SpriteName>
+      <SpriteName>"Tutorial6a"</SpriteName>
       <Position>
         <x>0</x>
         <y>0</y>
@@ -14,7 +14,7 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial5b"</SpriteName>
+      <SpriteName>"Tutorial6b"</SpriteName>
       <Position>
         <x>640</x>
         <y>0</y>
@@ -41,7 +41,7 @@
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
         <x>272</x>
-        <y>418</y>
+        <y>512</y>
       </Position>
       <Size>
         <x>32</x>
@@ -66,8 +66,8 @@
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
-        <x>432</x>
-        <y>192</y>
+        <x>400</x>
+        <y>418</y>
       </Position>
       <Size>
         <x>32</x>
@@ -79,8 +79,8 @@
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
-        <x>592</x>
-        <y>192</y>
+        <x>528</x>
+        <y>418</y>
       </Position>
       <Size>
         <x>32</x>
@@ -92,8 +92,8 @@
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
-        <x>976</x>
-        <y>192</y>
+        <x>688</x>
+        <y>418</y>
       </Position>
       <Size>
         <x>32</x>
@@ -105,8 +105,21 @@
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
-        <x>432</x>
-        <y>98</y>
+        <x>880</x>
+        <y>418</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>1072</x>
+        <y>418</y>
       </Position>
       <Size>
         <x>32</x>
@@ -155,7 +168,19 @@
       <Type>"Platform"</Type>
       <SpriteName>"Tile4"</SpriteName>
       <Position>
-        <x>192</x>
+        <x>256</x>
+        <y>576</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile6"</SpriteName>
+      <Position>
+        <x>384</x>
         <y>480</y>
       </Position>
       <Size>
@@ -167,7 +192,19 @@
       <Type>"Platform"</Type>
       <SpriteName>"Tile6"</SpriteName>
       <Position>
-        <x>256</x>
+        <x>448</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile6"</SpriteName>
+      <Position>
+        <x>512</x>
         <y>480</y>
       </Position>
       <Size>

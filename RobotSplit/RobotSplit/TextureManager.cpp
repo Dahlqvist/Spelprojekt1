@@ -165,6 +165,34 @@ void TextureManager::loadTexture()
 
 	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
 
+	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
+
+	mTextureMap["Tutorial1b"].loadFromFile("Texture/Background/background_tutorial0_PT02.png");
+
+	mTextureMap["Tutorial2a"].loadFromFile("Texture/Background/background_tutorial1_PT01.png");
+
+	mTextureMap["Tutorial2b"].loadFromFile("Texture/Background/background_tutorial1_PT02.png");
+
+	mTextureMap["Tutorial3a"].loadFromFile("Texture/Background/background_tutorial2_PT01.png");
+
+	mTextureMap["Tutorial3b"].loadFromFile("Texture/Background/background_tutorial2_PT02.png");
+
+	mTextureMap["Tutorial4a"].loadFromFile("Texture/Background/background_tutorial3_PT01.png");
+
+	mTextureMap["Tutorial4b"].loadFromFile("Texture/Background/background_tutorial3_PT02.png");
+
+	mTextureMap["Tutorial5a"].loadFromFile("Texture/Background/background_tutorial4_PT01.png");
+
+	mTextureMap["Tutorial5b"].loadFromFile("Texture/Background/background_tutorial4_PT02.png");
+
+	mTextureMap["Tutorial6a"].loadFromFile("Texture/Background/background_tutorial5_PT01.png");
+
+	mTextureMap["Tutorial6b"].loadFromFile("Texture/Background/background_tutorial5_PT02.png");
+
+	mTextureMap["Tutorial7a"].loadFromFile("Texture/Background/background_tutorial6_PT01.png");
+
+	mTextureMap["Tutorial7b"].loadFromFile("Texture/Background/background_tutorial6_PT02.png");
+
 	//Initializing the frame parts.
 
 	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part01.png");
