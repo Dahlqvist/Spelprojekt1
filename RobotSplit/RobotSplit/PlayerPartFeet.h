@@ -23,6 +23,8 @@ public:
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
+	virtual void winning();
+
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
@@ -51,6 +53,7 @@ private:
 	Animation mRightAnimationMagnet;
 	Animation mJumpAni;
 	Animation mJumpAniLeft;
+	Animation mWinningAni;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime, mFuel, mRotation;

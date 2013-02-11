@@ -23,7 +23,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial1.xml"),
+		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -80,6 +80,9 @@ void Game::update()
 }
 void Game::input()
 {
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::P)){
+		mPlayer->Win();
+	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
 		mPlayer->interact(0);
 	}
@@ -173,7 +176,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	//mWindow.setView(view);
+	mWindow.setView(view);
 }
 
 void Game::render()
