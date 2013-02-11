@@ -36,6 +36,7 @@ public:
 	void dash();
 	void activateFeetRockets();
 	void reFuel(float);
+	void Win();
 	//bool bodyStandningFeet();
 private:
 	PlayerPartFeet mFeet;
@@ -46,10 +47,6 @@ private:
 	sf::Sprite mSprite;
 	sf::Texture mTexture;
 	PlayerLight mLights;
-	//sf::Sprite mLjus;
-	//sf::Texture mLjus1;
-	//sf::Texture mLjus2;
-	//sf::Texture mLjus3;
 	sf::Sprite* Temp1;
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;

@@ -6,7 +6,8 @@ PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 	mLeftAnimation("StixUpperAniL", 200, 8),
 	mRightAnimation("StixUpperAni", 200, 8),
 	mLeft("StixUpperL", 200, 1),
-	mRight("StixUpper", 200, 1)
+	mRight("StixUpper", 200, 1),
+	mWinningAni("WinningBody", 100, 6)
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
@@ -119,4 +120,10 @@ void PlayerPartBody::restartAnimation(){
 }
 void PlayerPartBody::setId(std::string Text){
 	mId=Text;
+}
+void PlayerPartBody::winning(){
+	mWinningAni.restart();
+	mAnimationTimer.restart();
+	mAniTime=0.6;
+	mActiveAnimation=&mWinningAni;
 }
