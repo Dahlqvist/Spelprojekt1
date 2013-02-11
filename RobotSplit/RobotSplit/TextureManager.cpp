@@ -29,6 +29,7 @@ void TextureManager::loadTexture()
 {
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
+
 	//Stix Right
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 
@@ -169,6 +170,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
 
+	mTextureMap["HelpBoxActive"].loadFromFile("Texture/Dialogue/help_active.png");
+
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
 
 	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
@@ -208,6 +211,10 @@ void TextureManager::loadTexture()
 	mTextureMap["Tutorial7a"].loadFromFile("Texture/Background/background_tutorial6_PT01.png");
 
 	mTextureMap["Tutorial7b"].loadFromFile("Texture/Background/background_tutorial6_PT02.png");
+
+	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
+
+	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px.png");
 
 	//Initializing the frame parts.
 

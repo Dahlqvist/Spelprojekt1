@@ -30,7 +30,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
-				//testCollidedSides(playerSprite, objects[j], collisionRect);
+				objects[j]->hit();
 				handleCollisions(player, objects[j], collisionRect);
 			}
 		}

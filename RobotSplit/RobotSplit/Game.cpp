@@ -16,6 +16,7 @@
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
+#include "Trigger.h"
 
 #include "Window.h"
 #include "Sound.h"
@@ -32,6 +33,8 @@ Game::Game():
 		mTime(0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
+	Objects->addUnit(new DialogueBox(sf::Vector2f(300, 100), "HelpBox1", "Hello, world!", false, false));
+	//Objects->addUnit(new Trigger(sf::Vector2f(500, 300), "Trigger", "HelpBoxInactive", Objects->getUnits().back()));
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
