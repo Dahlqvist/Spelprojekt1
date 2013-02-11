@@ -54,7 +54,7 @@ void TextureManager::loadTexture()
 	
 	mTextureMap["StixFeetExtendAni"].loadFromFile("Texture/Stix/stix_lower_Freeze_R_Dark.png");
 
-	mTextureMap["StixFeetExtendAniMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_R_Dark.png");
+	mTextureMap["StixFeetExtendAniMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_Ext_R_Dark.png");
 
 	mTextureMap["StixFeetJumpAni"].loadFromFile("Texture/Stix/stix_lowerjumpanimation_strip8_dark.png");
 
@@ -96,7 +96,7 @@ void TextureManager::loadTexture()
 	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
 
 	mTextureMap["StixRocketFuel"].loadFromFile("Texture/Stix/Rocket_Flame_Sprite.png");
-	//Test
+
 	mTextureMap["StixSmokeAni"].loadFromFile("Texture/Stix/stix_smokeanimation_strip4.png");
 
 	mTextureMap["LightTogether"].loadFromFile("Texture/Stix/stix_sil_full.png");
@@ -104,6 +104,10 @@ void TextureManager::loadTexture()
 	mTextureMap["LightBody"].loadFromFile("Texture/Stix/stix_sil_upper.png");
 
 	mTextureMap["LightFeet"].loadFromFile("Texture/Stix/stix_sil_lower.png");
+
+	mTextureMap["WinningFeet"].loadFromFile("Texture/Stix/stix_winning_lower_strip6.png");
+
+	mTextureMap["WinningBody"].loadFromFile("Texture/Stix/stix_winning_upper_strip6.png");
 
 	//Enviroment
 

@@ -12,7 +12,8 @@ PlayerPartFeet::PlayerPartFeet():
 	mLeftAnimationMagnet("StixLowerAniLMagnet", 200, 8),
 	mRightAnimationMagnet("StixLowerAniMagnet", 200, 8),
 	mJumpAni("StixFeetJumpAni", 100, 8),
-	mJumpAniLeft("StixFeetJumpAniL", 100, 8)
+	mJumpAniLeft("StixFeetJumpAniL", 100, 8),
+	mWinningAni("WinningFeet", 100, 6)
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);
@@ -226,6 +227,7 @@ void PlayerPartFeet::setAttached(bool b)
 	}
 	if(mAttached)
 	{
+		Sound::playSound("Extend");
 		mFeetExt.setPosition(mPosition+sf::Vector2f(0, -32));
 		if(mAttachedWall==false && (mActiveAnimation==&mRight || mActiveAnimation==&mRightAnimation))
 		{
@@ -326,6 +328,7 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		PlayerPartFeet::resetAnimation();
 		mAttachedWall=b;
 		mAO=w;
+		Sound::playSound("MagnetStuckWall");
 		if(mAO==0)
 		{
 			mAUnit=&mRightWall;
@@ -346,6 +349,7 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 	}
 	else
 	{
+		Sound::playSound("MagnetLetGo");
 		mAO=w;
 		mAttachedWall=false;
 		mAUnit=0;
@@ -363,4 +367,10 @@ void PlayerPartFeet::forceMove(sf::Vector2f force){
 void PlayerPartFeet::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
+}
+void PlayerPartFeet::winning(){
+	mWinningAni.restart();
+	mAnimationTimer.restart();
+	mAniTime=0.6;
+	mActiveAnimation=&mWinningAni;
 }

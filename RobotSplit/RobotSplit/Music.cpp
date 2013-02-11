@@ -29,6 +29,7 @@ const void Music::playMusic()
 {
 	if(mMusic.getStatus() == sf::Music::Stopped)
 	{
+		mMusic.setVolume(10);
 		mMusic.play();
 		mMusic.setLoop(true);
 	}

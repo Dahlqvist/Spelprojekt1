@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Animation.h"
 #include "Unit.h"
+#include "Sound.h"
 
 
 class PlayerPart:public GameObject
@@ -21,6 +22,7 @@ public:
 	virtual void resetAnimation()=0;
 	virtual Unit* getUnit()=0;
 	virtual void forceMove(sf::Vector2f)=0;
+	virtual void winning()=0;
 private: 
 	bool mAttached;
 	sf::Vector2f mPosition; 

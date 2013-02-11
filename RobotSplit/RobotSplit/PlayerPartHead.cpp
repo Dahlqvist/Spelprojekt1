@@ -111,6 +111,7 @@ void PlayerPartHead::forceMove(sf::Vector2f force){
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 	}
+	Sound::playSound("HeadStuck");
 	mMagnetCollided=true;
 }
 void PlayerPartHead::setMagnetSolid(bool b){
@@ -119,4 +120,7 @@ void PlayerPartHead::setMagnetSolid(bool b){
 void PlayerPartHead::setMagnetCollided(bool b)
 {
 	mMagnetCollided=b;
+}
+void PlayerPartHead::winning(){
+
 }
