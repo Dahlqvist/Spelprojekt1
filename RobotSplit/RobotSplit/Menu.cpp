@@ -11,15 +11,17 @@ Menu::Menu(): mStateInput(StateInput::getInstance()),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
 			mStatus(0),
-			mBlipPos(240, 150),
-			mDelay(0),
-			mTimer(0)
+			mBlipPos(240, 150)
 
 {
-	mNewGame.setPosition(sf::Vector2f(300, 150));
-	mOptions.setPosition(sf::Vector2f(300, 250));
-	mQuit.setPosition(sf::Vector2f(300, 350));
+	sf::Vector2f tempPos(mWindow.getSize().x/2-mBackground.getSprite().getGlobalBounds().width/2, 0);
+	mBackground.setPosition(tempPos);
+	mNewGame.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
+	mOptions.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
+	mQuit.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
+	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
+	
 }
 
 Menu::~Menu()
@@ -27,6 +29,8 @@ Menu::~Menu()
 
 void Menu::update()
 {
+	if(!mStateInput.getMenuStatus())
+		mStateInput.changeMenu();
 	input();
 }
 
@@ -44,7 +48,8 @@ void Menu::render()
 void Menu::input()
 {
 	int mChoices = 2;
-	mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
+	double mDelay = 0.15;
+	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
 	if(mTimer > mDelay)
 	{
 		if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
@@ -52,7 +57,6 @@ void Menu::input()
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus++;
-			mDelay = 0.15;
 		}
 		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
 		{			
@@ -60,7 +64,6 @@ void Menu::input()
 				mBlipPos.y -= 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus--;
-			mDelay = 0.15;
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		{
@@ -70,7 +73,6 @@ void Menu::input()
 				mStateInput.changeState("Option");
 			else if(mStatus == 2)
 				mWindow.close();
-			mDelay = 2;
 		}
 		MenuClock::restartClock();
 	}

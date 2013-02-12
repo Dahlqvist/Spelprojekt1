@@ -13,8 +13,7 @@ public:
 	virtual void update();
 	virtual void render();
 private:
-	int p;
-	void choice();
+	void input();
 	StateInput& mStateInput;
 };
 

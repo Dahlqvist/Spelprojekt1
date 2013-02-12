@@ -1,9 +1,12 @@
 #include "StateInput.h"
 #include "StateManager.h"
 
+bool StateInput::mMenuStatus;
 
 StateInput::StateInput(): mStateManager(StateManager::getInstance())
-{}
+{
+	mMenuStatus = true;
+}
 
 StateInput::~StateInput()
 {}
@@ -30,4 +33,14 @@ void StateInput::changeState(std::string state)
 		mStateManager.restart();
 	else
 		std::cout << "Error" << std::endl;
+}
+
+void StateInput::changeMenu()
+{
+	mMenuStatus != mMenuStatus;
+}
+
+bool StateInput::getMenuStatus()
+{
+	return mMenuStatus;
 }

@@ -23,9 +23,7 @@ private:
 	Animation mQuit;
 	Animation mBlip;
 
-	double mDelay;
 	int mStatus;
-	float mTimer;
 
 	sf::Vector2f mBlipPos;
 

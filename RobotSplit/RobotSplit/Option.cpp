@@ -1,7 +1,7 @@
 #include "Option.h"
 #include "StateInput.h"
 
-Option::Option(): p(0), mStateInput(StateInput::getInstance())
+Option::Option(): mStateInput(StateInput::getInstance())
 {}
 
 Option::~Option()
@@ -9,17 +9,11 @@ Option::~Option()
 
 void Option::update()
 {
-	p++;
-	choice();
+	input();
 }
 
 void Option::render()
 {}
 
-void Option::choice()
-{
-	int p;
-	std::cin >> p;
-	if(p == 1)
-		mStateInput.changeState("Last");
-}
+void Option::input()
+{}
