@@ -29,7 +29,7 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushInGameMenu();
 	else if(state == "Menu")
 		mStateManager.pushMenu();
-	else if(state == "Quit")
+	else if(state == "QuitToMenu")
 		mStateManager.restart();
 	else
 		std::cout << "Error" << std::endl;
@@ -37,7 +37,7 @@ void StateInput::changeState(std::string state)
 
 void StateInput::changeMenu()
 {
-	mMenuStatus != mMenuStatus;
+	mMenuStatus = !mMenuStatus;
 }
 
 bool StateInput::getMenuStatus()

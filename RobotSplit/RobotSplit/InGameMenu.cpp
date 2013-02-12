@@ -71,7 +71,7 @@ void InGameMenu::input()
 			else if(mStatus == 1)
 				mStateInput.changeState("Option");
 			else if(mStatus == 2)
-				mWindow.close();
+				mStateInput.changeState("QuitToMenu");
 		}
 		MenuClock::restartClock();
 	}
