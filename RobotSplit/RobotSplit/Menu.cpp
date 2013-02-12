@@ -67,7 +67,7 @@ void Menu::input()
 			if(mStatus == 0)
 				mStateInput.changeState("Game");
 			else if(mStatus == 1)
-				mStateInput.changeState("InGameMenu");
+				mStateInput.changeState("Option");
 			else if(mStatus == 2)
 				mWindow.close();
 			mDelay = 2;

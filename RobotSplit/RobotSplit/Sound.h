@@ -3,6 +3,7 @@
 
 #include <SFML/Audio/SoundBuffer.hpp>
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/Music.hpp>
 #include <string>
 #include <map>
 
@@ -25,6 +26,7 @@ private:
 	static SoundMap mSoundMap;
 	typedef std::map<std::string, sf::SoundBuffer> BufferMap;
 	static BufferMap mBufferMap;
+	static sf::Music mLava;
 };
 
 #endif

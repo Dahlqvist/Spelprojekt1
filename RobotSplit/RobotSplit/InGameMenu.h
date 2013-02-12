@@ -18,7 +18,7 @@ public:
 private:
 	StateInput& mStateInput;
 	Animation mBackground;
-	Animation mNewGame;
+	Animation mResume;
 	Animation mOptions;
 	Animation mQuit;
 	Animation mBlip;

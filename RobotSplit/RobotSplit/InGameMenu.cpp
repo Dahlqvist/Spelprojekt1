@@ -5,18 +5,18 @@
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
 			mBackground("Ingame", 1, 1),
-			mNewGame("Newgame", 1, 1),
+			mResume("Resume", 1, 1),
 			mOptions("Options", 1, 1),
 			mQuit("Quit", 1, 1),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
-			mDelay(2),
+			mDelay(0.1),
 			mTimer(0)
 
 {
-	mNewGame.setPosition(sf::Vector2f(300, 150));
+	mResume.setPosition(sf::Vector2f(300, 150));
 	mOptions.setPosition(sf::Vector2f(300, 250));
 	mQuit.setPosition(sf::Vector2f(300, 350));
 	mBlip.setPosition(mBlipPos);
@@ -34,7 +34,7 @@ void InGameMenu::render()
 {
 	mWindow.clear(sf::Color::Black);
 	mWindow.draw(mBackground.getSprite());
-	mWindow.draw(mNewGame.getSprite());
+	mWindow.draw(mResume.getSprite());
 	mWindow.draw(mOptions.getSprite());
 	mWindow.draw(mQuit.getSprite());
 	mWindow.draw(mBlip.getSprite());
@@ -65,7 +65,7 @@ void InGameMenu::input()
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		{
 			if(mStatus == 0)
-				mStateInput.changeState("Game");
+				mStateInput.changeState("Last");
 			else if(mStatus == 1)
 				mStateInput.changeState("Menu");
 			else if(mStatus == 2)

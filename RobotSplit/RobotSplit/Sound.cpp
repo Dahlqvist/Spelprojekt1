@@ -4,6 +4,7 @@
 
 Sound::SoundMap Sound::mSoundMap;
 Sound::BufferMap Sound::mBufferMap;
+sf::Music Sound::mLava;
 
 //Statiska variabler som får en SoundBuffer tilldelad, det är via
 //dessa variabler som funktioner t.ex. play används.
@@ -26,6 +27,8 @@ Sound& Sound::getInstance()
 //rätt ljudvariabel.
 void Sound::loadSound()
 {
+	mLava.openFromFile("Sound/lava_proto.wav");
+
 	mBufferMap["Dash"].loadFromFile("Sound/dash_proto.wav");
 	mBufferMap["Extend"].loadFromFile("Sound/extend_proto.wav");
 	mBufferMap["ExtBodyColl"].loadFromFile("Sound/extention_body_collision_proto.wav");
@@ -56,11 +59,17 @@ void Sound::loadSound()
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
 {
-	if(mSoundMap[sound].getStatus() == sf::Sound::Stopped)
-		mSoundMap[sound].play();
+	if(sound == "Lava")
+		mLava.play();
+	else
+		if(mSoundMap[sound].getStatus() == sf::Sound::Stopped)
+			mSoundMap[sound].play();
 }
 
 const void Sound::stopSound(std::string sound)
 {
-	mSoundMap[sound].stop();
+	if(sound == "Lava")
+		mLava.stop();
+	else
+		mSoundMap[sound].stop();
 }
