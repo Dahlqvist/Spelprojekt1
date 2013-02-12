@@ -6,7 +6,8 @@
 Animation::Animation(const std::string& filename, int timePerFrame, int numFrames):
 	mTimePerFrame(timePerFrame),
 	mNumFrames(numFrames),
-	mCurrentFrame(0)
+	mCurrentFrame(0),
+	mAnimate(true)
 {
 	mTexture = TextureManager::getTexture(filename);
 	mSprite = TextureManager::getSprite(filename);
@@ -27,20 +28,22 @@ void Animation::restart(){
 }
 void Animation::update()
 {
-	if(mFrameTimer.getElapsedTime().asMilliseconds() > mTimePerFrame)
+	if(mAnimate)
 	{
-		mFrameTimer.restart();
-		mCurrentFrame++;
-
-		if(mCurrentFrame >= mNumFrames)
+		if(mFrameTimer.getElapsedTime().asMilliseconds() > mTimePerFrame)
 		{
-			mCurrentFrame = 0;
+			mFrameTimer.restart();
+			mCurrentFrame++;
+
+			if(mCurrentFrame >= mNumFrames)
+			{
+				mCurrentFrame = 0;
+			}
 		}
-		
-		sf::IntRect currentRect = mSprite.getTextureRect();
-		currentRect.left = currentRect.width * mCurrentFrame;
-		mSprite.setTextureRect(currentRect);
 	}
+	sf::IntRect currentRect = mSprite.getTextureRect();
+	currentRect.left = currentRect.width * mCurrentFrame;
+	mSprite.setTextureRect(currentRect);
 }
 //Sätter positionen för vart spriten skall visas
 //Bör uppdateras med varje frame ifall det animationen kopplas till
@@ -68,4 +71,9 @@ int Animation::getCurrentFrame()
 void Animation::setCurrentFrame(int q)
 {
 	mCurrentFrame = q;
+}
+
+void Animation::setAnimate(bool animate)
+{
+	mAnimate = animate;
 }

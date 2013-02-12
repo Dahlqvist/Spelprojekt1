@@ -6,14 +6,15 @@
 Option::Option(): mStateInput(StateInput::getInstance()),
 			mMainBackground("Main", 1, 1),
 			mInGameBackground("Ingame", 1, 1),
-			mAudio("Audio", 1, 1),
-			mControls("Controls", 1, 1),
-			mBack("Back", 1, 1),
+			mAudio("Audio", 1, 2),
+			mControls("Controls", 1, 2),
+			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
-			currentBackground(&mMainBackground)
+			currentBackground(&mMainBackground),
+			currentSelection(&mAudio)
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mMainBackground.getSprite().getGlobalBounds().width/2, 0);
 	sf::Vector2f tempPos2(mWindow.getSize().x/2-mInGameBackground.getSprite().getGlobalBounds().width/2, 0);
@@ -24,12 +25,14 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
+
+	mAudio.setAnimate(false);
+	mControls.setAnimate(false);
+	mBack.setAnimate(false);
 }
 
 Option::~Option()
-{
-	delete currentBackground;
-}
+{}
 
 void Option::update()
 {
@@ -37,6 +40,15 @@ void Option::update()
 		currentBackground = &mMainBackground;
 	else if(!StateInput::getMenuStatus())
 		currentBackground = &mInGameBackground;
+	if(mStatus == 0)
+		currentSelection = &mAudio;
+	else if(mStatus == 1)
+		currentSelection = &mControls;
+	else if(mStatus == 2)
+		currentSelection = &mBack;
+	currentSelection->setCurrentFrame(1);
+	currentSelection->update();
+		
 	input();
 }
 
@@ -63,6 +75,8 @@ void Option::input()
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus++;
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
 		}
 		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
 		{			
@@ -70,6 +84,8 @@ void Option::input()
 				mBlipPos.y -= 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus--;
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		{

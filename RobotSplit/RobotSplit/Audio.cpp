@@ -9,7 +9,7 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mInGameBackground("Ingame", 1, 1),
 			//mAudio("Audio", 1, 1),
 			//mControls("Controls", 1, 1),
-			mBack("Back", 1, 1),
+			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
 			mStatus(0),
@@ -28,9 +28,7 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 }
 
 Audio::~Audio()
-{
-	delete currentBackground;
-}
+{}
 
 void Audio::update()
 {

@@ -21,6 +21,7 @@ public:
 	int getCurrentFrame();
 	void setCurrentFrame(int q);
 	void restart();
+	void setAnimate(bool animate);
 private:
 	sf::Clock mFrameTimer;
 	sf::Sprite mSprite;
@@ -28,6 +29,7 @@ private:
 	int mTimePerFrame;
 	int mNumFrames;
 	int mCurrentFrame;
+	bool mAnimate;
 	friend class XmlSaver;
 };
 

@@ -17,6 +17,7 @@ public:
 	void input();
 private:
 	StateInput& mStateInput;
+	Animation *currentSelection;
 	Animation mBackground;
 	Animation mNewGame;
 	Animation mOptions;

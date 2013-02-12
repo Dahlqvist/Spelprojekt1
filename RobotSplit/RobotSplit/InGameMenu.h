@@ -18,6 +18,7 @@ public:
 	void input();
 private:
 	StateInput& mStateInput;
+	Animation *currentSelection;
 	Animation mBackground;
 	Animation mResume;
 	Animation mOptions;

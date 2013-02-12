@@ -6,13 +6,14 @@
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()), 
 			mBackground("Ingame", 1, 1),
-			mResume("Resume", 1, 1),
-			mOptions("Options", 1, 1),
-			mQuit("Quit", 1, 1),
+			mResume("Resume", 1, 2),
+			mOptions("Options", 1, 2),
+			mQuit("Quit", 1, 2),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
 			mStatus(0),
-			mBlipPos(240, 150)
+			mBlipPos(240, 150),
+			currentSelection(&mResume)
 
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mBackground.getSprite().getGlobalBounds().width/2, 0);
@@ -22,6 +23,10 @@ InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
 	mQuit.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
+
+	mResume.setAnimate(false);
+	mOptions.setAnimate(false);
+	mQuit.setAnimate(false);
 }
 
 InGameMenu::~InGameMenu()
@@ -31,6 +36,14 @@ void InGameMenu::update()
 {
 	if(mStateInput.getMenuStatus())
 		mStateInput.changeMenu();
+	if(mStatus == 0)
+		currentSelection = &mResume;
+	else if(mStatus == 1)
+		currentSelection = &mOptions;
+	else if(mStatus == 2)
+		currentSelection = &mQuit;
+	currentSelection->setCurrentFrame(1);
+	currentSelection->update();
 	input();
 }
 
@@ -57,6 +70,8 @@ void InGameMenu::input()
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus++;
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
 		}
 		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
 		{			
@@ -64,6 +79,8 @@ void InGameMenu::input()
 				mBlipPos.y -= 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus--;
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
 		}
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		{

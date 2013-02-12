@@ -18,6 +18,7 @@ public:
 private:
 	StateInput& mStateInput;
 	Animation *currentBackground;
+	Animation *currentSelection;
 	Animation mMainBackground;
 	Animation mInGameBackground;
 	Animation mAudio;
