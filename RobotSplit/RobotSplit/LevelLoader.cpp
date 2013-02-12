@@ -1,6 +1,7 @@
 #include "LevelLoader.h"
 
 #include <vector>
+#include <string>
 
 //Includefiles for objects
 //#include "TestObject.h"
@@ -14,6 +15,7 @@
 #include "Animation.h"
 #include "Line.h"
 #include "DialogueBox.h"
+#include "Trigger.h"
 LevelLoader::LevelLoader(void)
 {
 }
@@ -31,6 +33,8 @@ Level	LevelLoader::getLevel()
 {
 	Level					RetLevel;
 	std::vector<Background*> backgrounds;
+	std::vector<Trigger*> triggers;
+	std::vector<std::string> triggerTargets;
 	rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
 	//Gets the Level Node
 	LevelNode=		mDocument.first_node("Level");
@@ -95,12 +99,34 @@ Level	LevelLoader::getLevel()
 		{
 			addDialogueBox(RetLevel,Gameobject);
 		}
+		else if(type=="Trigger")
+		{
+			addTrigger(triggers,triggerTargets,Gameobject);
+		}
 		else
 		{
 			addUnit(RetLevel,Gameobject);
 		}
 	}
 	while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
+
+	//Sets the targets for the triggers
+	for (std::vector<Trigger*>::size_type i=0; i<triggers.size(); i++)
+	{
+		Unit* tempUnit;
+		for (std::vector<Unit*>::size_type j=0; j<RetLevel.getObjects().size(); j++)
+		{
+			std::string foo1=RetLevel.getObjects()[j]->getId();
+			std::string foo2=triggerTargets[i];
+			if (RetLevel.getObjects()[j]->getId()==triggerTargets[i])
+			{
+				tempUnit=RetLevel.getObjects()[j];
+			}
+		}
+		triggers[i]->setTarget(tempUnit);
+		RetLevel.mObjects.push_back(triggers[i]);
+	}
+
 	return	RetLevel;
 }
 
@@ -267,6 +293,7 @@ void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 	DialogueBox				*TempObject;
 	sf::Vector2f			Position;
 	bool					FadeIn,Visible;
+	std::string				Id;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -303,8 +330,15 @@ void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 		Visible=false;
 	}
 
+	CurrentChild=	Node->first_node("Id");
+	Id=getValue(CurrentChild);
+
+	std::replace(Text.begin(), Text.end(), '#', '\n');
+
 	//Puts the Dialogue box object into the level's vector
-	level.addDialogueBox(new DialogueBox(Position,Sprite,Text,FadeIn,Visible));
+	DialogueBox* tempBox=new DialogueBox(Position,Sprite,Text,FadeIn,Visible, Id);
+	level.addDialogueBox(tempBox);
+	level.mObjects.push_back(tempBox);
 }
 
 void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
@@ -405,4 +439,38 @@ void	LevelLoader::addLine(Level	&level,xml_node<>* Node)
 	TempObject=		new Line(Position,Rotation,Size);
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
+}
+
+void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Sprite;
+	DialogueBox				*TempObject;
+	sf::Vector2f			Position;
+	bool					FadeIn,Visible;
+	std::string				Id;
+	std::string				targetObject;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	CurrentChild=Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
+	CurrentChild=Node->first_node("Id");
+	Id=getValue(CurrentChild);
+
+	CurrentChild=Node->first_node("Target");
+	targetObject=getValue(CurrentChild);
+
+	triggers.push_back(new Trigger(Position, Id, Sprite, 0x0));
+	targets.push_back(targetObject);
 }
