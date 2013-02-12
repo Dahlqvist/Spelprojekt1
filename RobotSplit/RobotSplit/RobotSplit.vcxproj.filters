@@ -271,5 +271,11 @@
     <None Include="Tutorial5.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Tutorial6.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial7.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>

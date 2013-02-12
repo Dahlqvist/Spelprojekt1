@@ -83,9 +83,6 @@ void Game::update()
 }
 void Game::input()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::P)){
-		mPlayer->Win();
-	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
 		mPlayer->interact(0);
 	}
@@ -179,7 +176,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	mWindow.setView(view);
+	//mWindow.setView(view);
 }
 
 void Game::render()
@@ -192,8 +189,8 @@ void Game::render()
 			mWindow.draw(BG[i]->draw());
 			BG[i]->update();
 		}
-		Objects->draw(mWindow);
 		mPlayer->draw(mWindow);
+		Objects->draw(mWindow);
 		mPlayer->resetAnimations();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{

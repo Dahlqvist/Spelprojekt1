@@ -231,6 +231,11 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
 	}
+	if(obj2->getId()=="Door" && player.getTogether()==true)
+	{
+		player.Win();
+		player.restartPlayer(sf::Vector2f(64, 384));
+	}
 }
 
 void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)
