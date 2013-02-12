@@ -15,5 +15,5 @@ void Trigger::hit()
 void Trigger::activate()
 {
 	mTriggedObject->activate();
-	mSprite=TextureManager::getSprite("HelpBoxActive");
+	//mSprite=TextureManager::getSprite("HelpBoxActive");
 }

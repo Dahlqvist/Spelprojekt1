@@ -23,30 +23,54 @@
   </Backgrounds>
   <Objects>
     <Unit>
-      <Type>"HelpBox"</Type>
+      <Type>"DialogueBox"</Type>
+      <Position>
+        <x>100</x>
+        <y>100</y>
+      </Position>
+      <Text>
+        "I'm a help box. #I will teach you how to play Robot Split. #When you leave I will fade away."
+      </Text>
+      <SpriteName>"HelpBox1"</SpriteName>
+      <Solid>"false"</Solid>
+      <FadeIn>"false"</FadeIn>
+      <Visible>"false"</Visible>
+      <Id>"HelpTextBox1"</Id>
+    </Unit>
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Position>
+        <x>400</x>
+        <y>100</y>
+      </Position>
+      <Text>
+        "Make a quick dash on the SHIFT-key."
+      </Text>
+      <SpriteName>"HelpBox1"</SpriteName>
+      <Solid>"false"</Solid>
+      <FadeIn>"false"</FadeIn>
+      <Visible>"false"</Visible>
+      <Id>"HelpTextBox2"</Id>
+    </Unit>
+    <Unit>
+      <Type>"Trigger"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
         <x>208</x>
         <y>416</y>
       </Position>
-      <Size>
-        <x>32</x>
-        <y>32</y>
-      </Size>
-      <Solid>false</Solid>
+      <Id>"Trigger1"</Id>
+      <Target>"HelpTextBox1"</Target>
     </Unit>
     <Unit>
-      <Type>"HelpBox"</Type>
+      <Type>"Trigger"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
         <x>400</x>
         <y>416</y>
       </Position>
-      <Size>
-        <x>32</x>
-        <y>32</y>
-      </Size>
-      <Solid>false</Solid>
+      <Id>"Trigger2"</Id>
+      <Target>"HelpTextBox2"</Target>
     </Unit>
     <Unit>
       <Type>"Player"</Type>
