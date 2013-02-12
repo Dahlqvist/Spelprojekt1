@@ -5,7 +5,7 @@
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
 			mBackground("Ingame", 1, 1),
-			mNewGame("NewGame", 1, 1),
+			mNewGame("Newgame", 1, 1),
 			mOptions("Options", 1, 1),
 			mQuit("Quit", 1, 1),
 			mBlip("Blip", 1, 1),
