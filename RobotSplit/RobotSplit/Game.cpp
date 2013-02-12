@@ -16,6 +16,7 @@
 #include "Background.h"
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
+#include "Trigger.h"
 
 #include "Window.h"
 #include "Sound.h"
@@ -32,6 +33,8 @@ Game::Game():
 		mTime(0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
+	Objects->addUnit(new DialogueBox(sf::Vector2f(300, 100), "HelpBox1", "Hello, world!", false, false));
+	//Objects->addUnit(new Trigger(sf::Vector2f(500, 300), "Trigger", "HelpBoxInactive", Objects->getUnits().back()));
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
@@ -137,7 +140,8 @@ void Game::input()
 
 void Game::moveCamera()
 {
-	sf::View view(sf::FloatRect(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y));
+	//sf::View view(sf::FloatRect(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y));
+	sf::View view(mWindow.getView());
 	sf::FloatRect partRect;
 	
 	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
@@ -172,7 +176,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	mWindow.setView(view);
+	//mWindow.setView(view);
 }
 
 void Game::render()
@@ -185,8 +189,8 @@ void Game::render()
 			mWindow.draw(BG[i]->draw());
 			BG[i]->update();
 		}
-		Objects->draw(mWindow);
 		mPlayer->draw(mWindow);
+		Objects->draw(mWindow);
 		mPlayer->resetAnimations();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{

@@ -21,6 +21,8 @@ public:
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
+	virtual void winning();
+
 	void jumpReset();
 	void restartAnimation();
 	void setId(std::string);
@@ -32,6 +34,7 @@ private:
 	Animation mRightAnimation;
 	Animation mLeft;
 	Animation mRight;
+	Animation mWinningAni;
 	PlayerPart* mFeet;
 	sf::Vector2f mPosition; 
 	std::string mId;

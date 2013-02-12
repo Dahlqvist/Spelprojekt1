@@ -9,19 +9,27 @@
 #include "TextField.h"
 #include "Container.h"
 #include <SFML/Window/WindowHandle.hpp>
-using namespace sf;
+
 typedef	Container<Unit>		UnitContainer;
 typedef	Container<Player>	PlayerContainer;
+
+using namespace sf;
+
 class Editor
 {
-	RenderWindow		window;
-	LevelConstructor	level;
-	UnitContainer	selected;
 public:
 	Editor(void);
 	void	run();
 	~Editor(void);
-	void	renderLevel(View);
+private:
+	RenderWindow		window;
+	LevelConstructor	level;
+	UnitContainer		selected;
+	TextField			MTEXT;
+	View				CurrView,miniView;
+	void				renderLevel(View&);
+	void				eventHandler(const Event&);
+	bool				collide(UnitContainer&);
 };
 
 #endif

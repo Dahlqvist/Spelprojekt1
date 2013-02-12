@@ -13,6 +13,7 @@ Splash::Splash():
 	currentAnimation(&mWatermelon)	
 {
 	mTime.restart();
+	//mConcept1.getSprite().scale(bilden/fönstret)
 	mStatus = false;
 }
 

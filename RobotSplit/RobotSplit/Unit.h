@@ -22,8 +22,6 @@ public:
 
 	virtual sf::Sprite getSprite(){return mSprite;};
 
-
-
 	virtual sf::Vector2f getSize(){return mSize;};
 
 	virtual std::string getId(){return mId;};
@@ -33,6 +31,8 @@ public:
 
 	virtual void update(){};
 	virtual void draw();
+	virtual void hit(){};
+	virtual void activate(){};
 
 protected:
 	sf::Vector2f mSize;

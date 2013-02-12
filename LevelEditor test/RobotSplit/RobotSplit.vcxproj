@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
@@ -40,6 +41,7 @@
     <ClCompile Include="ObjectLoader.cpp" />
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Toolbar.cpp" />
+    <ClCompile Include="UIItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
@@ -55,6 +57,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPart.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h" />
@@ -73,6 +76,7 @@
     <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Toolbar.h" />
+    <ClInclude Include="UIItem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E859E788-8F4C-4343-B695-6E5B289E230A}</ProjectGuid>

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include "UnitManager.h"
+#include "Sound.h"
 
 Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
@@ -41,34 +42,13 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	lastKey=0;
 	thisKey=0;
 	mKeyTimer.restart();
+	mClock.restart();
+	mClockStart=false;
 }
 
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
-	//if(mTogether==true)
-	//{
-	//	mLjus.setTexture(mLjus1);
-	//	mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mSprite.getGlobalBounds().width/2, -mSprite.getGlobalBounds().height/2));
-	//}
-	//else if(mBodyActive==true)
-	//{
-	//	mLjus.setTexture(mLjus3);
-	//	mLjus.setPosition(mBody.getPosition()+sf::Vector2f(-mBody.getSprite().getGlobalBounds().width/2, -mBody.getSprite().getGlobalBounds().height/2));
-	//}
-	//else
-	//{
-	//	if(mFeet.getAttachedWall()==true && (mFeet.getWall()==0 || mFeet.getWall()==2))
-	//	{
-	//		mLjus.setTexture(mLjus2);
-	//		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -64));
-	//	}
-	//	else
-	//	{
-	//		mLjus.setTexture(mLjus2);
-	//		mLjus.setPosition(mFeet.getPosition()+sf::Vector2f(-32, -48));
-	//	}
-	//}
 	if(mBodyActive!=false || mTogether==true)
 	{
 		mLights.setSprite(mTogether, mBodyActive, mFeet.getAttachedWall(), mFeet.getWall(), mBody.getPosition());
@@ -95,6 +75,7 @@ void Player::update()
 {
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
+		Sound::stopSound("Move");
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
@@ -259,6 +240,7 @@ void Player::setTogether(bool b)
 		mBodyActive=false;
 		mBody.setAttached(false);
 		mTogether=b;
+		Sound::playSound("Split");
 	}
 	else if((mFeet.getPosition().x-mBody.getPosition().x)*(mFeet.getPosition().x-mBody.getPosition().x) +
 		(mFeet.getPosition().y-mBody.getPosition().y)*(mFeet.getPosition().y-mBody.getPosition().y) < 70*70 
@@ -301,6 +283,7 @@ void Player::jump()
 {
 	if(mDashing==false)
 	{
+		Sound::playSound("Jump");
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
 			mFeet.jump();
@@ -330,6 +313,7 @@ void Player::shootHead(sf::Vector2f Vec)
 	}
 	else if(mHead.getAttached()==true)
 	{
+		Sound::playSound("ShootHead");
 		mHeadless=true;
 		float k=(mHead.getPosition().y-Vec.y)/(mHead.getPosition().x-Vec.x);
 		//float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
@@ -418,7 +402,7 @@ void Player::setAttachFeetExtension(bool b)
 		}
 	}
 	if(!mBody.getSprite().getGlobalBounds().intersects(Test))
-	{
+	{	
 		if(mFeet.getAttachedWall()==true){
 			if(mFeet.getWall()==0 && UnitManager::isCollidedSide(0, 4)){
 				mFeetAttached=b;
@@ -426,6 +410,7 @@ void Player::setAttachFeetExtension(bool b)
 				if(mHeadAttachedFeet==true){
 					mHead.setAttached(true);
 					mHeadAttachedFeet=false;
+					mAttachedMagnet=false;
 				}
 			}
 			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1)){
@@ -434,6 +419,7 @@ void Player::setAttachFeetExtension(bool b)
 				if(mHeadAttachedFeet==true){
 					mHead.setAttached(true);
 					mHeadAttachedFeet=false;
+					mAttachedMagnet=false;
 				}
 			}
 			else if(mFeet.getWall()==2 && UnitManager::isCollidedSide(0, 3)){
@@ -442,6 +428,7 @@ void Player::setAttachFeetExtension(bool b)
 				if(mHeadAttachedFeet==true){
 					mHead.setAttached(true);
 					mHeadAttachedFeet=false;
+					mAttachedMagnet=false;
 				}
 			}
 		}
@@ -451,8 +438,12 @@ void Player::setAttachFeetExtension(bool b)
 			if(mHeadAttachedFeet==true){
 				mHead.setAttached(true);
 				mHeadAttachedFeet=false;
+				mAttachedMagnet=false;
 			}
 		}
+	}
+	else{
+		Sound::playSound("ExtBodyColl");
 	}
 }
 bool Player::getAttachFeetExtension()
@@ -466,6 +457,7 @@ void Player::dash()
 		mDashing=true;
 		mDash=20;
 	}
+	Sound::playSound("Dash");
 }
 void Player::activateFeetRockets(){
 	mFeet.activateRocketBoots();
@@ -475,6 +467,10 @@ void Player::reFuel(float fuel){
 }
 
 void Player::interact(int action){
+	if(mClockStart==false){
+		mClockStart=true;
+		mClock.restart();
+	}
 	thisKey=action;
 	if(thisKey==lastKey)
 	{
@@ -498,6 +494,7 @@ void Player::interact(int action){
 			{
 				//mFeet.setPosition(sf::Vector2f(0, -1));
 				Player::move(sf::Vector2f(0, -1));
+				Sound::playSound("Move");
 			}
 		}
 		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
@@ -526,6 +523,12 @@ void Player::interact(int action){
 				mFeet.setAttachedWall(false);
 			}
 		}
+		if(mTogether==true&&UnitManager::isCollidedSide(0, 2) || (mBodyActive==false && mFeet.getAttachedWall()==false && UnitManager::isCollidedSide(0, 2)) || mBodyActive==false&&mFeet.getAttachedWall()==true&&mFeet.getWall()==1){
+			Sound::playSound("Move");
+		}
+		else{
+			Sound::stopSound("Move");
+		}
 		lastKey=action;
 	}
 	if(action==2)
@@ -542,27 +545,22 @@ void Player::interact(int action){
 			if(mFeet.getWall()==1)
 			{
 				Player::move(sf::Vector2f(-1, 0));
-				//std::cout << "anrop";
-				//mFeet.setPosition(sf::Vector2f(-1, 0));
 			}
 			else if(mFeet.getWall()==2){
 				mFeet.setAttachedWall(false);
 			}
 		}
+		if(mTogether==true&&UnitManager::isCollidedSide(0, 2) || (mBodyActive==false && mFeet.getAttachedWall()==false && UnitManager::isCollidedSide(0, 2)) || mBodyActive==false&&mFeet.getAttachedWall()==true&&mFeet.getWall()==1){
+			Sound::playSound("Move");
+		}
+		else{
+			Sound::stopSound("Move");
+		}
 		lastKey=action;
-		//if(mTogether==true || mBodyActive==true)
-		//{
-		//	Player::move(sf::Vector2f(-1, 0));
-		//}
-		//else if(mFeet.getAttached()==false)
-		//{
-		//	Player::move(sf::Vector2f(-1, 0));
-		//}
-		//else if(mFeet.getAttached()/*==Wall side*/){}
-		//else if(mFeet.getAttached()/*==Top*/){}
 	}
 	if(action==3)
 	{
+		mKeyTimer.restart();
 		//Ner "S"
 		if(mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==true)
 		{
@@ -573,6 +571,7 @@ void Player::interact(int action){
 			else
 			{
 				Player::move(sf::Vector2f(0, 1));
+				Sound::playSound("Move");
 			}
 		}
 		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
@@ -800,6 +799,15 @@ void Player::restartPlayer(sf::Vector2f Vec){
 	Player::move(sf::Vector2f((float)0.1, 0));
 	mFeet.forceMove(Vec-mFeet.getPosition());
 	mFeet.reFuel(100);
+	Sound::playSound("Death");
+	mClock.restart();
+	mClockStart=false;
+}
+
+void Player::Win(){
+	mFeet.winning();
+	mBody.winning();
+	std::cout << "Finishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
 }
 //bool Player::bodyStandningFeet()
 //{
