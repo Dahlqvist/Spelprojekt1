@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Test.xml"),
+		mlevel("Tutorial1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -35,8 +35,6 @@ Game::Game():
 		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
-	Objects->addUnit(new DialogueBox(sf::Vector2f(300, 100), "HelpBox1", "Hello, world!", false, false));
-	//Objects->addUnit(new Trigger(sf::Vector2f(500, 300), "Trigger", "HelpBoxInactive", Objects->getUnits().back()));
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
@@ -71,13 +69,13 @@ void Game::update()
 		lastUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
-		mPlayer->update();
-		Objects->update();
 		AwesomeLaser.update();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{
 			diaBox[i]->update();
 		}
+		mPlayer->update();
+		Objects->update();
 
 		moveCamera();
 

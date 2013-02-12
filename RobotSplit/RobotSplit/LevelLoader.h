@@ -2,6 +2,7 @@
 #define	INC_LEVELLOADER
 #include "xmlloader.h"
 #include "Level.h"
+#include "Trigger.h"
 
 //Class is Done	(01-23-2013)
 class LevelLoader :public XmlLoader
@@ -23,6 +24,7 @@ private:
 	void	addLaser		(Level	&level,xml_node<>* Node);
 	void	addLine			(Level	&level,xml_node<>* Node);
 	void	addDialogueBox	(Level	&level,xml_node<>* Node);
+	void	addTrigger		(vector<Trigger*> &triggers,std::vector<std::string> &triggerTargets,xml_node<>* Node);
 	void	addUnit			(Level	&level,xml_node<>* Node);
 };
 

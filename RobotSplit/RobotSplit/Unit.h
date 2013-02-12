@@ -25,6 +25,7 @@ public:
 	virtual sf::Vector2f getSize(){return mSize;};
 
 	virtual std::string getId(){return mId;};
+	virtual void setId(std::string id){mId=id;};
 
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
@@ -33,6 +34,7 @@ public:
 	virtual void draw();
 	virtual void hit(){};
 	virtual void activate(){};
+	virtual void deactivate(){};
 
 protected:
 	sf::Vector2f mSize;
