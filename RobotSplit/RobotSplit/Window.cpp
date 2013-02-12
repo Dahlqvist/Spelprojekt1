@@ -18,7 +18,7 @@ Window& Window::getInstance()
 
 void Window::loadWindow()
 {
-	mWindow.create(sf::VideoMode(1280, 768), "Robot split", sf::Style::Fullscreen);
+	mWindow.create(sf::VideoMode(1280, 768), "Robot split"/*, sf::Style::Fullscreen*/);
 	mWindow.clear(sf::Color::Black);
 	mWindow.display();
 }

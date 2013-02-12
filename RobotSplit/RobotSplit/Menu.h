@@ -21,6 +21,13 @@ private:
 	Animation mNewGame;
 	Animation mOptions;
 	Animation mQuit;
+	Animation mBlip;
+
+	double mDelay;
+	int mStatus;
+	float mTimer;
+
+	sf::Vector2f mBlipPos;
 
 	sf::RenderWindow &mWindow;
 

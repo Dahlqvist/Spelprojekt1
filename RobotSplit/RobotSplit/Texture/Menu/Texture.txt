@@ -13,7 +13,7 @@ Back	=	Back
 Blip	=	Blip		=	Bilden som visar vilket val man är på
 Controls =	Controls
 EffectMuteChecked =	Effect_Mute_Checked  =	När effect mute är checkad
-MuteUnChecked = Effect_Mute_Unchecked =	När effect mute inte är checkad
+EffectMuteUnChecked = Effect_Mute_Unchecked =	När effect mute inte är checkad
 EffectVolym  =	Effect_Volym	=	Effect volym
 MusicMuteUnChecked =  Music_Mute =	Music mute inte är checkad
 MusicMuteChecked  =  Music_Mute_Checked  =  Music mute är checkad

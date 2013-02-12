@@ -13,7 +13,7 @@ Splash::Splash():
 	currentAnimation(&mWatermelon)	
 {
 	mTime.restart();
-	mStatus = true;
+	mStatus = false;
 }
 
 Splash::~Splash()
