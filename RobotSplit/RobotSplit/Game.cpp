@@ -24,17 +24,17 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Test.xml"),
+		mlevel("Tutorial1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2)
+		mTime(0.2),
+		AwesomeLaser(sf::Vector2f(400, 490), "Yellow", true, 253, 0),
+		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
-	Objects->addUnit(new DialogueBox(sf::Vector2f(300, 100), "HelpBox1", "Hello, world!", false, false));
-	//Objects->addUnit(new Trigger(sf::Vector2f(500, 300), "Trigger", "HelpBoxInactive", Objects->getUnits().back()));
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
@@ -69,12 +69,13 @@ void Game::update()
 		lastUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
-		mPlayer->update();
-		Objects->update();
+		AwesomeLaser.update();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{
 			diaBox[i]->update();
 		}
+		mPlayer->update();
+		Objects->update();
 
 		moveCamera();
 
@@ -132,6 +133,12 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 			mPlayer->reFuel(100);
 			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
+			AwesomeLaser.activate();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
+			AwesomeLaser.shutDownLaser();
 		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
@@ -199,6 +206,8 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
+		mWindow.draw(holder.getSprite());
+		mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 	}
 }

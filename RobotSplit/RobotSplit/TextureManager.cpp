@@ -123,10 +123,14 @@ void TextureManager::loadTexture()
 	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
 
 	mTextureMap["BlueButtonAni"].loadFromFile("Texture/Enviroment/Button_Blue_Sprite_16px.png");
-
 	mTextureMap["RedButtonAni"].loadFromFile("Texture/Enviroment/Button_Red_Sprite_16px.png");
-
 	mTextureMap["YellowButtonAni"].loadFromFile("Texture/Enviroment/Button_Yellow_Sprite_16px.png");
+
+	mTextureMap["YellowLaserHolder"].loadFromFile("Texture/Enviroment/Laser_Emitter_Yellow_Label.png");
+	
+	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
+	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_Blå_Sprite_4px.png");
+	mTextureMap["YellowLaser"].loadFromFile("Texture/Enviroment/Laser_Gul_Sprite_4px.png");
 
 	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
 
