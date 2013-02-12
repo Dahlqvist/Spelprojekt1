@@ -6,8 +6,8 @@
 Option::Option(): mStateInput(StateInput::getInstance()),
 			mMainBackground("Main", 1, 1),
 			mInGameBackground("Ingame", 1, 1),
-			mNewGame("NewGame", 1, 1),
-			mOptions("Options", 1, 1),
+			mAudio("Audio", 1, 1),
+			mControls("Controls", 1, 1),
 			mBack("Back", 1, 1),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
@@ -19,15 +19,17 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 	sf::Vector2f tempPos2(mWindow.getSize().x/2-mInGameBackground.getSprite().getGlobalBounds().width/2, 0);
 	mMainBackground.setPosition(tempPos);
 	mInGameBackground.setPosition(tempPos2);
-	mNewGame.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
-	mOptions.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
+	mAudio.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
+	mControls.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
 	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
 }
 
 Option::~Option()
-{}
+{
+	delete currentBackground;
+}
 
 void Option::update()
 {
@@ -42,9 +44,9 @@ void Option::render()
 {
 	mWindow.clear(sf::Color::Black);
 	mWindow.draw(currentBackground->getSprite());
-	mWindow.draw(mNewGame.getSprite());
-	mWindow.draw(mOptions.getSprite());
-	mWindow.draw(mQuit.getSprite());
+	mWindow.draw(mAudio.getSprite());
+	mWindow.draw(mControls.getSprite());
+	mWindow.draw(mBack.getSprite());
 	mWindow.draw(mBlip.getSprite());
 	mWindow.display();
 }
@@ -72,9 +74,9 @@ void Option::input()
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		{
 			if(mStatus == 0)
-				mStateInput.changeState("Game");
+				mStateInput.changeState("Audio");
 			else if(mStatus == 1)
-				mStateInput.changeState("Option");
+				mStateInput.changeState("Controls");
 			else if(mStatus == 2)
 				mStateInput.changeState("Last");
 		}

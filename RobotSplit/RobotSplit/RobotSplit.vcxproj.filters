@@ -106,6 +106,13 @@
     <ClCompile Include="Trigger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MenuClock.cpp" />
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files\Menu\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls.cpp">
+      <Filter>Source Files\Menu\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -215,6 +222,13 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="Trigger.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuClock.h" />
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files\Menu\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls.h">
+      <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

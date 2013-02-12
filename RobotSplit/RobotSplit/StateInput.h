@@ -12,6 +12,7 @@ public:
 	void changeState(std::string state);
 	static void changeMenu();
 	static bool getMenuStatus();
+	
 
 private:
 	StateInput();

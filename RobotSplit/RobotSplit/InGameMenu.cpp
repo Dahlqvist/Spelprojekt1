@@ -2,8 +2,9 @@
 #include "StateInput.h"
 #include "Window.h"
 #include "MenuClock.h"
+#include "Game.h"
 
-InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
+InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()), 
 			mBackground("Ingame", 1, 1),
 			mResume("Resume", 1, 1),
 			mOptions("Options", 1, 1),

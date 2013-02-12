@@ -59,6 +59,13 @@ const sf::Texture& Animation::getTexture() const
 {
 	return mTexture;
 }
-int Animation::getCurrentFrame(){
+
+int Animation::getCurrentFrame()
+{
 	return mCurrentFrame;
+}
+
+void Animation::setCurrentFrame(int q)
+{
+	mCurrentFrame = q;
 }

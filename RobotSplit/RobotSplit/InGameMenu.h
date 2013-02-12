@@ -5,6 +5,7 @@
 #include "State.h"
 
 class StateInput;
+class Game;
 
 class InGameMenu: public State
 {
@@ -26,7 +27,6 @@ private:
 	int mStatus;
 
 	sf::Vector2f mBlipPos;
-
 	sf::RenderWindow &mWindow;
 
 };

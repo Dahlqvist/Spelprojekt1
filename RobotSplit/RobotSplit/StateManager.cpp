@@ -5,6 +5,7 @@
 #include "Splash.h"
 #include "InGameMenu.h"
 #include "Menu.h"
+#include "Audio.h"
 
 StateManager::StateManager()
 	
@@ -15,10 +16,12 @@ StateManager::StateManager()
 
 void StateManager::loadState()
 {
-	 mGame = new Game();
+	 mGame = new Game;
 	 mOption = new Option;
 	 mMenu = new Menu;
 	 mInGameMenu = new InGameMenu;
+	 mAudio = new Audio;
+
 }
 StateManager::~StateManager()
 {
@@ -27,6 +30,7 @@ StateManager::~StateManager()
 	delete mOption;
 	delete mInGameMenu;
 	delete mMenu;
+	delete mAudio;
 }
 
 StateManager& StateManager::getInstance()
@@ -94,4 +98,9 @@ void StateManager::restart()
 	while(!mStateStack.empty())
 		mStateStack.pop();
 	pushState(mMenu);
+}
+
+void StateManager::pushAudio()
+{
+	pushState(mAudio);
 }

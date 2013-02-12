@@ -31,6 +31,8 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushMenu();
 	else if(state == "QuitToMenu")
 		mStateManager.restart();
+	else if(state == "Audio")
+		mStateManager.pushAudio();
 	else
 		std::cout << "Error" << std::endl;
 }

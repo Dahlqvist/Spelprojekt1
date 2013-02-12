@@ -19,6 +19,7 @@ public:
 	const sf::Texture& getTexture() const;
 
 	int getCurrentFrame();
+	void setCurrentFrame(int q);
 	void restart();
 private:
 	sf::Clock mFrameTimer;

@@ -20,8 +20,8 @@ private:
 	Animation *currentBackground;
 	Animation mMainBackground;
 	Animation mInGameBackground;
-	Animation mNewGame;
-	Animation mOptions;
+	Animation mAudio;
+	Animation mControls;
 	Animation mBack;
 	Animation mBlip;
 
