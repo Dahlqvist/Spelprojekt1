@@ -73,6 +73,7 @@ void Player::draw(sf::RenderWindow& Window)
 }
 void Player::update()
 {
+	Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
 		Sound::stopSound("Move");
@@ -809,28 +810,3 @@ void Player::Win(){
 	mBody.winning();
 	std::cout << "Finishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
 }
-//bool Player::bodyStandningFeet()
-//{
-//	sf::FloatRect ColRect;
-//	sf::FloatRect TempFeet=mFeet.getSprite().getGlobalBounds();
-//	TempFeet.top-=5;
-//	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
-//	{
-//		TempFeet.width-=50;
-//		TempFeet.left+=25;
-//	}
-//	else{
-//		TempFeet.height-=50;
-//		TempFeet.top+=25;
-//	}
-//	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-//		if(ColRect.height>0){
-//			std::cout << "Står på  ";
-//		}
-//		return true;
-//	}
-//	else
-//	{
-//		return false;
-//	}
-//}

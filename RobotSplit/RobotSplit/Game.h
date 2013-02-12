@@ -4,6 +4,8 @@
 #include "State.h"
 #include "Level.h"
 #include "DialogueBox.h"
+#include "Laser.h"
+#include "LaserHolder.h"
 
 class StateInput;
 class Background;
@@ -23,6 +25,9 @@ public:
 	void input();
 private:
 	void moveCamera();
+	Laser AwesomeLaser;
+	LaserHolder holder;
+
 
 	int mSecurityLevel;
 	StateInput& mStateInput;

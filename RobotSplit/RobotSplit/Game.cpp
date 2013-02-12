@@ -30,7 +30,9 @@ Game::Game():
 		lastUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2)
+		mTime(0.2),
+		AwesomeLaser(sf::Vector2f(400, 490), "Yellow", true, 253, 0),
+		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Objects->addUnit(new DialogueBox(sf::Vector2f(300, 100), "HelpBox1", "Hello, world!", false, false));
@@ -71,6 +73,7 @@ void Game::update()
 		//window.setKeyRepeatEnabled(true);
 		mPlayer->update();
 		Objects->update();
+		AwesomeLaser.update();
 		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 		{
 			diaBox[i]->update();
@@ -132,6 +135,12 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 			mPlayer->reFuel(100);
 			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
+			AwesomeLaser.activate();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
+			AwesomeLaser.shutDownLaser();
 		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
@@ -199,6 +208,8 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
+		mWindow.draw(holder.getSprite());
+		mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 	}
 }

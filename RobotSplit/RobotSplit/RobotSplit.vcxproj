@@ -96,6 +96,8 @@ sfml-main.lib
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
+    <ClCompile Include="Laser.cpp" />
+    <ClCompile Include="LaserHolder.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="Line.cpp" />
@@ -135,6 +137,8 @@ sfml-main.lib
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameMenu.h" />
+    <ClInclude Include="Laser.h" />
+    <ClInclude Include="LaserHolder.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Line.h" />
