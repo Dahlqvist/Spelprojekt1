@@ -281,7 +281,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	Sprite=getValue(CurrentChild);
 
 	//Creates a Platform object
-	TempObject=		new Platform(Position,Sprite);
+	TempObject=		new Platform(Position,Sprite,Size);
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

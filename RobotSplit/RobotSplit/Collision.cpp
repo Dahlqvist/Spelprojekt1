@@ -136,7 +136,16 @@ bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRe
 	playerRect.width+=2;
 	playerRect.top-=1;
 	playerRect.height+=2;
-	sf::FloatRect objRect=obj2->getSprite().getGlobalBounds();
+
+	sf::FloatRect objRect;
+	if (obj2->getSize()==sf::Vector2f(0,0))
+	{
+		objRect=obj2->getSprite().getGlobalBounds();
+	}
+	else
+	{
+		objRect=sf::FloatRect(obj2->getPosition(), obj2->getSize());
+	}
 
 	return playerRect.intersects(objRect, collisionRect);
 }

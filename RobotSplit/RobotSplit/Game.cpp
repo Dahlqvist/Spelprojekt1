@@ -68,10 +68,6 @@ void Game::update()
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
 		
-		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-		{
-			diaBox[i]->update();
-		}
 		mPlayer->update();
 		Objects->update();
 

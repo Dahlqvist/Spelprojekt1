@@ -12,6 +12,8 @@ class Unit: public GameObject
 public:
 	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true);
 	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true);
+	Unit(sf::Vector2f position, sf::Vector2f size, std::string id, std::string spriteName, bool solid=true);
+	Unit(sf::Vector2f position, sf::Vector2f size, std::string id, Animation* animation, bool solid=true);
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
