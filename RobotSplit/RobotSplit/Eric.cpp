@@ -3,31 +3,32 @@
 float Eric::getGravity()
 {
 	//Standardvärde 4
-	return 4;
+	//bra 4.5
+	return 4.5;
 }
 
 float Eric::getHeadspeed()
 {
 	//Standardvärde 3
-	return 3;
+	return 8;
 }
 
 float Eric::getJump()
 {
 	//Standardvärde 10
-	return 10;
+	return 12;
 }
 
 float Eric::getJumpchange()
 {
 	//Standardvärde 1.8
-	return 1.8;
+	return 3;
 }
 
 float Eric::getSpeed()
 {
 	//Standardvärde 2
-	return 2;
+	return 3;
 }
 
 float Eric::getTimer()
