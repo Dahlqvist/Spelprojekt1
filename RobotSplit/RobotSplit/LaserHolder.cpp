@@ -1,15 +1,15 @@
 #include "LaserHolder.h"
 
-LaserHolder::LaserHolder(Laser* laser):
-	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false)
+LaserHolder::LaserHolder(Laser* laser, bool active):
+	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false),
+	mActive(active)
 {
 	mStandby=TextureManager::getSprite("YellowLaserHolder");
 	mOn=TextureManager::getSprite("YellowLaserHolder");
 	mOff=TextureManager::getSprite("YellowLaserHolder");
 	mActiveSprite=&mStandby;
-	mPosition=laser->getPosition();//+sf::Vector2f(2, -2);
+	mPosition=laser->getPosition();
 	mRotation=laser->getRotation()+180;
-	//mSprite.setOrigin(8, 8);
 	mActiveSprite->setRotation(mRotation);
 	if(laser->getRotation()==0)
 	{

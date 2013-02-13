@@ -67,16 +67,17 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(*mLights.getSprite());
 
-	if(mHead.getUnit()!=0)
-	{
-		Window.draw(mHead.getUnit()->getSprite());
-	}
+
 	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
 		Window.draw(mFeet.getUnit()->getSprite());
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
+	if(mHead.getUnit()!=0)
+	{
+		Window.draw(mHead.getUnit()->getSprite());
+	}
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()

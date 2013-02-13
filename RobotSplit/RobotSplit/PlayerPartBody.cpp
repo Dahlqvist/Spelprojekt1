@@ -7,7 +7,15 @@ PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 	mRightAnimation("StixUpperAni", 200, 8),
 	mLeft("StixUpperL", 200, 1),
 	mRight("StixUpper", 200, 1),
-	mWinningAni("WinningBody", 100, 6)
+	mWinningAni("WinningBody", 100, 6),
+	mWalkingRight("StixUpperWalkPart", 100, 8),
+	mWalkingLeft("StixUpperWalkPartL", 100, 8),
+	mJumpingRight("StixUpperJump", 100, 8),
+	mJumpingLeft("StixUpperJumpL", 100, 8),
+	mLeftPart("StixUpperIdlePartL", 100, 1),
+	mRightPart("StixUpperIdlePart", 100, 1),
+	mSplitting("StixUpperSplit", 100, 8),
+	mSplittingLeft("StixUpperSplitL", 100, 8)
 {
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
@@ -43,14 +51,7 @@ void PlayerPartBody::draw()
 }
 void PlayerPartBody::setPosition(sf::Vector2f Vec)
 {
-	if(Vec.x>0)
-	{
-		mActiveAnimation=&mRightAnimation;
-	}
-	else if(Vec.x<0)
-	{
-		mActiveAnimation=&mLeftAnimation;
-	}
+	PlayerPartBody::decideAnimation(Vec);
 	if(mAttached==true)
 	{
 		mPosition=sf::Vector2f(mFeet->getPosition().x, mFeet->getPosition().y-64);
@@ -58,6 +59,39 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 	else if(mAttached==false)
 	{
 		mPosition+=Vec;
+	}
+}
+void PlayerPartBody::decideAnimation(sf::Vector2f Vec)
+{
+	if(mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
+		{
+		if(Vec.x>0 && mAttached==true)
+		{
+			mActiveAnimation=&mRightAnimation;
+		}
+		else if(Vec.x<0 && mAttached==true)
+		{
+			mActiveAnimation=&mLeftAnimation;
+		}
+		else if(Vec.x>0 && mAttached==false)
+		{
+			mActiveAnimation=&mWalkingRight;
+		}
+		else if(Vec.x<0 && mAttached==false)
+		{
+			mActiveAnimation=&mWalkingLeft;
+		}
+	}
+	else if(mActiveAnimation==&mJumpingRight || mActiveAnimation==&mJumpingLeft)
+	{
+		if(Vec.x>0)
+		{
+			mActiveAnimation=&mJumpingRight;
+		}
+		else if(Vec.x<0)
+		{
+			mActiveAnimation=&mJumpingLeft;
+		}
 	}
 }
 sf::Vector2f PlayerPartBody::getPosition()
@@ -84,11 +118,40 @@ bool PlayerPartBody::getAttached()
 void PlayerPartBody::setAttached(bool b)
 {
 	mAttached=b;
+	if(b==false)
+	{
+		mSplitting.restart();
+		mSplittingLeft.restart();
+		mAnimationTimer.restart();
+		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mRight)
+		{
+			mActiveAnimation=&mSplitting;
+			mAniTime=0.8;
+		}
+		else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mLeft)
+		{
+			mActiveAnimation=&mSplittingLeft;
+			mAniTime=0.8;
+		}
+	}
 }
 void PlayerPartBody::jump(float jump)
 {
 	mJump=jump;
 	mJumpClock.restart();
+	if(mAttached==false){
+		mJumpingRight.restart();
+		mJumpingLeft.restart();
+		mAnimationTimer.restart();
+		if(mActiveAnimation==&mRightPart || mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight){
+			mActiveAnimation=&mJumpingRight;
+		}
+		else
+		{
+			mActiveAnimation=&mJumpingLeft;
+		}
+		mAniTime=0.8;
+	}
 }
 void PlayerPartBody::resetAnimation()
 {
@@ -101,6 +164,14 @@ void PlayerPartBody::resetAnimation()
 		else if(mActiveAnimation==&mLeftAnimation)
 		{
 			mActiveAnimation=&mLeft;
+		}
+		else if(mActiveAnimation==&mWalkingLeft || mActiveAnimation==&mJumpingLeft || mActiveAnimation==&mSplittingLeft)
+		{
+			mActiveAnimation=&mLeftPart;
+		}
+		else if(mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight || mActiveAnimation==&mSplitting)
+		{
+			mActiveAnimation=&mRightPart;
 		}
 	}
 }

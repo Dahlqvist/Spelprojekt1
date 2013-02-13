@@ -5,7 +5,7 @@
 class LaserHolder:public Unit
 {
 public:
-	LaserHolder(Laser*);
+	LaserHolder(Laser*, bool active=true);
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
 	{
@@ -22,10 +22,10 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
 
-	virtual void update(){};
+	virtual void update(){if(mActive==true){mActiveSprite=&mStandby;};};
 	virtual void draw(){};
 	virtual void hit(){};
-	virtual void activate(){};
+	virtual void activate(){mActiveSprite=&mOn;};
 
 protected:
 	sf::Vector2f mSize;
@@ -37,6 +37,7 @@ protected:
 	sf::Sprite mOff;
 
 	Animation* mAnimation;
+	bool mActive;
 
 	bool mSolid;
 };

@@ -31,10 +31,8 @@ private:
 	Unit* mUnit;
 	BrainMagnet mMagnet;
 	Animation* mActiveAnimation;
-	Animation mLeftAnimation;
-	Animation mRightAnimation;
-	Animation mLeft;
-	Animation mRight;
+	Animation mBrain;
+	Animation mBrainStuck;
 	PlayerPart* mBody;
 	sf::Vector2f mPosition, mShootVector; 
 	std::string mId;

@@ -4,13 +4,11 @@
 
 PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
-	mLeftAnimation("StixShootAni", 200, 8),
-	mRightAnimation("StixShootAni", 200, 8),
-	mLeft("StixUpper", 200, 1),
-	mRight("StixBrain", 200, 1),
+	mBrain("StixBrain", 200, 1),
+	mBrainStuck("StixBrainStuck", 200, 1),
 	mMagnet("StixBrainLowered")
 {
-	mActiveAnimation=&mRight;
+	mActiveAnimation=&mBrain;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
 	mMagnetCollided=true;
@@ -92,9 +90,9 @@ void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 }
 void PlayerPartHead::resetAnimation()
 {
-	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
+	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime && mAttached==true)
 	{
-		mActiveAnimation=&mRight;
+		mActiveAnimation=&mBrain;
 	}
 }
 Unit* PlayerPartHead::getUnit()
@@ -110,7 +108,10 @@ void PlayerPartHead::forceMove(sf::Vector2f force){
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 	}
-	Sound::playSound("HeadStuck");
+	else{
+		Sound::playSound("HeadStuck");
+		mActiveAnimation=&mBrainStuck;
+	}
 	mMagnetCollided=true;
 }
 void PlayerPartHead::setMagnetSolid(bool b){

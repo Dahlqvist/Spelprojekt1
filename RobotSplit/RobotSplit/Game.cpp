@@ -31,7 +31,7 @@ Game::Game():
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(400, 250), "Yellow", true, 253, 0),
+		AwesomeLaser(sf::Vector2f(400, 250), "Blue", true, 253, 0),
 		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
