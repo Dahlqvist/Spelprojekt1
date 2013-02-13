@@ -48,6 +48,7 @@ sf::Sprite Laser::getSprite()
 	mSprite=mAnimation->getSprite();
 	mSprite.setTextureRect(sf::IntRect(mSprite.getTextureRect().left,  mSprite.getTextureRect().top, mSprite.getTextureRect().width, mLength));
 	mSprite.setPosition(mPosition);
+	//mSprite.setOrigin(-8, -4);
 	mSprite.setRotation(mRotation);
 	return mSprite;
 }
