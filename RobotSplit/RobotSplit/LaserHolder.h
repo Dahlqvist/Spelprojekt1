@@ -13,7 +13,7 @@ public:
 		mSprite.setPosition(mPosition);
 	};
 
-	virtual sf::Sprite getSprite(){return mSprite;};
+	virtual sf::Sprite getSprite(){return *mActiveSprite;};
 
 	virtual sf::Vector2f getSize(){return mSize;};
 
@@ -30,7 +30,12 @@ public:
 protected:
 	sf::Vector2f mSize;
 	float mRotation;
-	sf::Sprite mSprite;
+
+	sf::Sprite* mActiveSprite;
+	sf::Sprite mOn;
+	sf::Sprite mStandby;
+	sf::Sprite mOff;
+
 	Animation* mAnimation;
 
 	bool mSolid;

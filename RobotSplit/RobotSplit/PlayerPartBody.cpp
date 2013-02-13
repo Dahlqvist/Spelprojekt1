@@ -21,9 +21,9 @@ void PlayerPartBody::update()
 	mActiveAnimation->update();
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
+		if(mJumpClock.getElapsedTime().asSeconds()>Eric::getTimer())
 		{
-			mJump-=1.7;
+			mJump-=Eric::getJumpchange();
 			mJumpClock.restart();
 			PlayerPartBody::setPosition(sf::Vector2f(0, -mJump));
 		}
@@ -85,9 +85,9 @@ void PlayerPartBody::setAttached(bool b)
 {
 	mAttached=b;
 }
-void PlayerPartBody::jump()
+void PlayerPartBody::jump(float jump)
 {
-	mJump=10;
+	mJump=jump;
 	mJumpClock.restart();
 }
 void PlayerPartBody::resetAnimation()
@@ -109,7 +109,7 @@ Unit* PlayerPartBody::getUnit()
 	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
-	mJump=4;
+	mJump=Eric::getGravity();
 }
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;

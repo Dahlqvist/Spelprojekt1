@@ -3,12 +3,30 @@
 LaserHolder::LaserHolder(Laser* laser):
 	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false)
 {
-	mSprite=TextureManager::getSprite("YellowLaserHolder");
+	mStandby=TextureManager::getSprite("YellowLaserHolder");
+	mOn=TextureManager::getSprite("YellowLaserHolder");
+	mOff=TextureManager::getSprite("YellowLaserHolder");
+	mActiveSprite=&mStandby;
 	mPosition=laser->getPosition();//+sf::Vector2f(2, -2);
-	mPosition+=sf::Vector2f(-8, -8);
-	mRotation=laser->getRotation();
+	mRotation=laser->getRotation()+180;
 	//mSprite.setOrigin(8, 8);
-	//mSprite.setRotation(mRotation);
-	mSprite.setPosition(mPosition);
+	mActiveSprite->setRotation(mRotation);
+	if(laser->getRotation()==0)
+	{
+		mPosition+=sf::Vector2f(10, 0);
+	}
+	if(laser->getRotation()==90)
+	{
+		mPosition+=sf::Vector2f(0, 10);
+	}
+	if(laser->getRotation()==180)
+	{
+		mPosition+=sf::Vector2f(-10, 0);
+	}
+	if(laser->getRotation()==270)
+	{
+		mPosition+=sf::Vector2f(0, -10);
+	}
+	mActiveSprite->setPosition(mPosition);
 }
 

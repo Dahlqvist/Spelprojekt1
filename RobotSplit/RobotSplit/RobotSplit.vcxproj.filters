@@ -112,6 +112,9 @@
     <ClCompile Include="LaserHolder.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="Eric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="LaserHolder.h">
       <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Eric.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
