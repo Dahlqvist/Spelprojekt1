@@ -24,14 +24,14 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial1.xml"),
+		mlevel("Test.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(400, 250), "Yellow", true, 253, -0),
+		AwesomeLaser(sf::Vector2f(400, 250), "Yellow", true, 253, 0),
 		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());

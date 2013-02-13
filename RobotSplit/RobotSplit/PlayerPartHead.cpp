@@ -82,14 +82,13 @@ void PlayerPartHead::setAttached(bool b)
 	}
 	mAttached=b;
 }
-void PlayerPartHead::jump()
+void PlayerPartHead::jump(float)
 {
 	mJump=0;
 }
 void PlayerPartHead::setShootVector(sf::Vector2f Vec)
 {
-	float mSpeed=5;
-	mShootVector=sf::Vector2f(Vec.x*mSpeed, Vec.y*mSpeed);
+	mShootVector=sf::Vector2f(Vec.x*Eric::getHeadspeed(), Vec.y*Eric::getHeadspeed());
 }
 void PlayerPartHead::resetAnimation()
 {

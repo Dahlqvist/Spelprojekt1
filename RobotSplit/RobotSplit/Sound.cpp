@@ -36,7 +36,7 @@ void Sound::loadSound()
 	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
 	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/magnet_stuck_wall_proto.wav");
 	mBufferMap["ShootHead"].loadFromFile("Sound/shoot_head_proto.wav");
-	mBufferMap["Move"].loadFromFile("Sound/move_proto.wav");
+	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);

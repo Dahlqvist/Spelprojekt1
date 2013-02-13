@@ -34,9 +34,9 @@ void PlayerPartFeet::update()
 	}
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
+		if(mJumpClock.getElapsedTime().asSeconds()>Eric::getTimer())
 		{
-			mJump-=1.8;
+			mJump-=Eric::getJumpchange();
 			mJumpClock.restart();
 			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
@@ -249,9 +249,9 @@ void PlayerPartFeet::setAttached(bool b)
 		mUnit=&mFeetExt;
 	}
 }
-void PlayerPartFeet::jump()
+void PlayerPartFeet::jump(float jump)
 {
-	mJump=10;
+	mJump=jump;
 	mJumpClock.restart();
 	mJumpAni.restart();
 	mJumpAniLeft.restart();
@@ -306,19 +306,18 @@ void PlayerPartFeet::activateRocketBoots()
 		mUnit=&mRocketFuel;
 		mJump=0;
 		mUnit->setPosition(mPosition+sf::Vector2f(16, 32));
-		PlayerPartFeet::setPosition(sf::Vector2f(0, -6));
+		PlayerPartFeet::setPosition(sf::Vector2f(0, -2));
 		mFuel--;
+		mJump=Eric::getGravity();
 	}
 }
 void PlayerPartFeet::reFuel(float fuel)
 {
-	//if(mFuel<=0 && fuel<=100){
 		mFuel=fuel;
-	//}
 }
 void PlayerPartFeet::jumpReset()
 {
-	mJump=4;
+	mJump=Eric::getGravity();
 }
 
 void PlayerPartFeet::setAttachedWall(bool b, int w){
