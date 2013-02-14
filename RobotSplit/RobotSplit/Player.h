@@ -37,6 +37,7 @@ public:
 	void activateFeetRockets();
 	void reFuel(float);
 	void Win();
+	std::string getId(int);
 	//bool bodyStandningFeet();
 private:
 	PlayerPartFeet mFeet;

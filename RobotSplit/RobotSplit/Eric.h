@@ -17,6 +17,7 @@ namespace Eric
 	float getTimer();
 	float getJumpchange();
 	float getHeadspeed();
+	float getRocketboost();
 };
 
 #endif

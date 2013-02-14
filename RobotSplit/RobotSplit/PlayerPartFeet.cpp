@@ -15,6 +15,7 @@ PlayerPartFeet::PlayerPartFeet():
 	mJumpAniLeft("StixFeetJumpAniL", 100, 8),
 	mWinningAni("WinningFeet", 100, 6)
 {
+	mId="PlayerPartFeet";
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(0, 0);
 	mAttached=false;
@@ -306,7 +307,7 @@ void PlayerPartFeet::activateRocketBoots()
 		mUnit=&mRocketFuel;
 		mJump=0;
 		mUnit->setPosition(mPosition+sf::Vector2f(16, 32));
-		PlayerPartFeet::setPosition(sf::Vector2f(0, -2));
+		PlayerPartFeet::setPosition(sf::Vector2f(0, -Eric::getRocketboost()));
 		mFuel--;
 		mJump=Eric::getGravity();
 	}

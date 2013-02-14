@@ -170,6 +170,7 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Bana2.xml" />
     <None Include="Tutorial2.xml" />
     <None Include="Tutorial1.xml" />
     <None Include="Test.xml">

@@ -17,6 +17,7 @@ PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
 	mSplitting("StixUpperSplit", 100, 8),
 	mSplittingLeft("StixUpperSplitL", 100, 8)
 {
+	mId="PlayerPartBody";
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
