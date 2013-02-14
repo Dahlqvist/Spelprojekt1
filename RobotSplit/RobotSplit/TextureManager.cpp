@@ -181,7 +181,9 @@ void TextureManager::loadTexture()
 	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_R_2.png");
 
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
-	
+
+	mTextureMap["TileHigh"].loadFromFile("Texture/Enviroment/tiles/tile13_dark.png");
+	mTextureMap["TileBreak"].loadFromFile("Texture/Enviroment/tiles/break2_dark.png");
 
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
@@ -201,6 +203,14 @@ void TextureManager::loadTexture()
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
 	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+
+	mTextureMap["Bana2_bg1"].loadFromFile("Texture/Background/Background_2_Part01.png");
+
+	mTextureMap["Bana2_bg2"].loadFromFile("Texture/Background/Background_2_Part02.png");
+
+	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3_Part01.png");
+
+	mTextureMap["Bana3_bg2"].loadFromFile("Texture/Background/Background_3_Part02.png");
 
 	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
 

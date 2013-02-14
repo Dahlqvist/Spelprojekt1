@@ -217,10 +217,10 @@ void Player::move(sf::Vector2f Vec)
 			{
 				mFeet.setAttachedWall(true, 1);
 			}
-	/*		else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
-			{
-				mFeet.setAttachedWall(true, 1);
-			}*/
+			//else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
+			//{
+			//	mFeet.setAttachedWall(true, 1);
+			//}
 			else
 			{
 				mFeet.setPosition(Vec);
@@ -504,7 +504,6 @@ void Player::interact(int action){
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==0 || mFeet.getWall()==2)
 			{
-				//mFeet.setPosition(sf::Vector2f(0, -1));
 				Player::move(sf::Vector2f(0, -1));
 				Sound::playSound("Move");
 			}
