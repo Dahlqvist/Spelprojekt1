@@ -13,6 +13,7 @@ public:
 	UIDrop()
 	{
 	}
+
 private:
 	int				mCurrent;
 	vector<T>		mOptions;

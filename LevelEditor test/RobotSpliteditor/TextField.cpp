@@ -57,3 +57,8 @@ int	TextField::getCurrentPosition()const
 {
 	return mCurrentPosition;
 }
+
+int	TextField::getLength()const
+{
+	return	mText.toAnsiString().size();
+}
