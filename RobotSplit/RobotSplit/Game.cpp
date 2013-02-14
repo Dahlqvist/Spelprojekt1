@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Test.xml"),
+		mlevel("Tutorial1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
@@ -70,10 +70,6 @@ void Game::update()
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
 		AwesomeLaser.update();
-		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-		{
-			diaBox[i]->update();
-		}
 		mPlayer->update();
 		Objects->update();
 

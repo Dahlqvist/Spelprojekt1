@@ -30,6 +30,17 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
+				testCollidedSides(playerSprite, objects[j], collisionRect);
+			}
+		}
+	}
+	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
+	{
+		if (objects[j]->getId()!="PlayerPart")
+		{
+			sf::FloatRect collisionRect;
+			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
+			{
 				objects[j]->hit();
 				handleCollisions(player, objects[j], collisionRect);
 			}
@@ -48,8 +59,25 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 	{
 		for (std::vector<Unit*>::size_type j=i+1; j<objects.size(); j++)
 		{
-			sf::FloatRect obj1=objects[i]->getSprite().getGlobalBounds();
-			sf::FloatRect obj2=objects[j]->getSprite().getGlobalBounds();
+			sf::FloatRect obj1;
+			sf::FloatRect obj2;
+			if (objects[i]->getSize()==sf::Vector2f(0,0))
+			{
+				obj1=objects[i]->getSprite().getGlobalBounds();
+			}
+			else
+			{
+				obj1=sf::FloatRect(objects[i]->getPosition(), objects[i]->getSize());
+			}
+
+			if (objects[j]->getSize()==sf::Vector2f(0,0))
+			{
+				obj2=objects[j]->getSprite().getGlobalBounds();
+			}
+			else
+			{
+				obj2=sf::FloatRect(objects[j]->getPosition(), objects[j]->getSize());
+			}
 			obj1.width+=1;
 			obj2.width+=1;
 
@@ -136,7 +164,18 @@ bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRe
 	playerRect.width+=2;
 	playerRect.top-=1;
 	playerRect.height+=2;
-	sf::FloatRect objRect=obj2->getSprite().getGlobalBounds();
+
+	sf::FloatRect objRect;
+	if (obj2->getSize()==sf::Vector2f(0,0))
+	{
+		objRect=obj2->getSprite().getGlobalBounds();
+		objRect.left+=obj2->getOffset().x;
+		objRect.top+=obj2->getOffset().y;
+	}
+	else
+	{
+		objRect=sf::FloatRect(obj2->getPosition()+obj2->getOffset(), obj2->getSize());
+	}
 
 	return playerRect.intersects(objRect, collisionRect);
 }
@@ -155,21 +194,27 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is above object
 				if (playerSprite->getPosition().y<obj2->getPosition().y)
 				{
-					if (collisionRect.width>5 || (mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT)))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
 						moveDistance.y=-(collisionRect.height-1);
-						mCollidedSides.insert(BOTTOM);
 						mMovedY=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(BOTTOM), mCollidedSides.end());
 					}
 				}
 				//If player is below object
 				else
 				{
-					if (collisionRect.width>5 || (mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT) || mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT)))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
 						moveDistance.y=collisionRect.height-1;
-						mCollidedSides.insert(TOP);
 						mMovedY=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(TOP), mCollidedSides.end());
 					}
 				}
 			}
@@ -182,21 +227,27 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is left of object
 				if (playerSprite->getPosition().x<obj2->getPosition().x)
 				{
-					if (collisionRect.height>5 || (mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP)))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
 						moveDistance.x=-(collisionRect.width-1);
-						mCollidedSides.insert(LEFT);
 						mMovedX=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(RIGHT), mCollidedSides.end());
 					}
 				}
 				//If player is right of object
 				else
 				{
-					if (collisionRect.height>5 || (mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM) || mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP)))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
 						moveDistance.x=collisionRect.width-1;
-						mCollidedSides.insert(RIGHT);
 						mMovedX=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(LEFT), mCollidedSides.end());
 					}
 				}
 			}

@@ -12,6 +12,8 @@ class Unit: public GameObject
 public:
 	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true);
 	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true);
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
@@ -23,6 +25,8 @@ public:
 	virtual sf::Sprite getSprite(){return mSprite;};
 
 	virtual sf::Vector2f getSize(){return mSize;};
+
+	virtual sf::Vector2f getOffset(){return mOffset;};
 
 	virtual std::string getId(){return mId;};
 	virtual void setId(std::string id){mId=id;};
@@ -37,7 +41,7 @@ public:
 	virtual void deactivate(){};
 
 protected:
-	sf::Vector2f mSize;
+	sf::Vector2f mSize, mOffset;
 	
 	sf::Sprite mSprite;
 	Animation* mAnimation;

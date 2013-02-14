@@ -278,10 +278,6 @@
 				<x>512</x>
 				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
@@ -290,10 +286,6 @@
 				<x>576</x>
 				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
@@ -302,10 +294,6 @@
 				<x>640</x>
 				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
@@ -314,10 +302,6 @@
 				<x>704</x>
 				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Platform"</Type>
@@ -326,10 +310,6 @@
 				<x>768</x>
 				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Rail"</Type>
@@ -338,10 +318,6 @@
 				<x>512</x>
 				<y>192</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>32</y>
-			</Size>
       <Solid>"false"</Solid>
 		</Unit>		
 		<Unit>
