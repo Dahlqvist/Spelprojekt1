@@ -85,6 +85,7 @@
     <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Toolbar.h" />
+    <ClInclude Include="UIDrop.h" />
     <ClInclude Include="UIItem.h" />
     <ClInclude Include="UIText.h" />
   </ItemGroup>
