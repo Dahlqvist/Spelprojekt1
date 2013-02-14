@@ -815,6 +815,10 @@ void Player::restartPlayer(sf::Vector2f Vec){
 	mClock.restart();
 	mClockStart=false;
 }
+std::string Player::getId(int i)
+{
+	return mParts[i]->getId();
+}
 
 void Player::Win(){
 	mFeet.winning();

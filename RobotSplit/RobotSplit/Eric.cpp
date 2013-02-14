@@ -36,3 +36,8 @@ float Eric::getTimer()
 	//Standardvärde 0.1
 	return 0.1;
 }
+
+float Eric::getRocketboost()
+{
+	return 2;
+}

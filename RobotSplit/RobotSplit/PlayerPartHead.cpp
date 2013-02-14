@@ -8,6 +8,7 @@ mBody(Body),
 	mBrainStuck("StixBrainStuck", 200, 1),
 	mMagnet("StixBrainLowered")
 {
+	mId="PlayerPartHead";
 	mActiveAnimation=&mBrain;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
