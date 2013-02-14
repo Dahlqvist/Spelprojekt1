@@ -4,7 +4,11 @@ float Eric::getGravity()
 {
 	//Standardvärde 4
 	//bra 4.5
+<<<<<<< HEAD
 	return 5.0;
+=======
+	return 5;
+>>>>>>> 9c49530524f3ebfa8607d9fc384a998ac1e39d6a
 }
 
 float Eric::getHeadspeed()
