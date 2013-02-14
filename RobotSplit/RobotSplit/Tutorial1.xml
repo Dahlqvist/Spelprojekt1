@@ -80,7 +80,7 @@
       </Position>
       <Size>
         <x>64</x>
-        <y>128</y>
+        <y>64</y>
       </Size>
     </Unit>
     <Unit>
@@ -92,8 +92,12 @@
       </Position>
       <Size>
         <x>64</x>
-        <y>64</y>
+        <y>128</y>
       </Size>
+      <Offset>
+        <x>0</x>
+        <y>64</y>
+      </Offset>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -102,10 +106,6 @@
         <x>128</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -114,10 +114,6 @@
         <x>192</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -126,10 +122,6 @@
         <x>256</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -138,10 +130,6 @@
         <x>320</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -150,10 +138,6 @@
         <x>384</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -162,10 +146,6 @@
         <x>448</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -174,10 +154,6 @@
         <x>512</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -186,10 +162,6 @@
         <x>576</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -198,10 +170,6 @@
         <x>640</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -210,10 +178,6 @@
         <x>704</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -222,10 +186,6 @@
         <x>768</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -234,10 +194,6 @@
         <x>832</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -246,10 +202,6 @@
         <x>896</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -258,10 +210,6 @@
         <x>1024</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -270,10 +218,6 @@
         <x>1088</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -282,10 +226,6 @@
         <x>1152</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Door"</Type>
@@ -294,10 +234,6 @@
         <x>1152</x>
         <y>352</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>96</y>
-      </Size>
       <Solid>false</Solid>
     </Unit>
     <Unit>
@@ -309,10 +245,6 @@
         <x>64</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -323,10 +255,6 @@
         <x>128</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -337,10 +265,6 @@
         <x>192</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -351,10 +275,6 @@
         <x>256</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -365,10 +285,6 @@
         <x>320</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -379,10 +295,6 @@
         <x>384</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -393,10 +305,6 @@
         <x>448</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -407,10 +315,6 @@
         <x>512</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -421,10 +325,6 @@
         <x>576</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -435,10 +335,6 @@
         <x>640</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -449,10 +345,6 @@
         <x>704</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -463,10 +355,6 @@
         <x>768</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -477,10 +365,6 @@
         <x>832</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -491,10 +375,6 @@
         <x>896</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -505,10 +385,6 @@
         <x>960</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -519,10 +395,6 @@
         <x>1024</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -533,10 +405,6 @@
         <x>1088</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
@@ -547,10 +415,6 @@
         <x>1152</x>
         <y>704</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -559,10 +423,6 @@
         <x>0</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -571,10 +431,6 @@
         <x>640</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -583,10 +439,6 @@
         <x>0</x>
         <y>64</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -595,10 +447,6 @@
         <x>1216</x>
         <y>64</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -607,10 +455,6 @@
         <x>0</x>
         <y>696</y>
       </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -619,10 +463,6 @@
         <x>1202</x>
         <y>696</y>
       </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
     </Unit>
     <!--<Unit>
       <Type>"Line"</Type>

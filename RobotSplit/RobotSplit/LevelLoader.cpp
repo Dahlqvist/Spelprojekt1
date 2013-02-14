@@ -256,7 +256,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
 	Platform				*TempObject;
-	sf::Vector2f			Position, Size;
+	sf::Vector2f			Position, Size, Offset;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -270,18 +270,29 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
+	Size=sf::Vector2f(0,0);
+	Offset=sf::Vector2f(0,0);
 	CurrentChild=	Node->first_node("Size");
-	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.x=((float)atof(CurrentValue.c_str()));
-	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.y=((float)atof(CurrentValue.c_str()));
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+
+		CurrentChild=Node->first_node("Offset");
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Offset.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Offset.y=((float)atof(CurrentValue.c_str()));
+	}
 	
 	//Initiates the SpriteName
 	CurrentChild=	Node->first_node("SpriteName");
 	Sprite=getValue(CurrentChild);
 
 	//Creates a Platform object
-	TempObject=		new Platform(Position,Sprite,Size);
+	TempObject=		new Platform(Position,Sprite,Size,Offset);
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
@@ -346,7 +357,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Id,Sprite;
 	Unit					*TempObject;
-	sf::Vector2f			Position, Size;
+	sf::Vector2f			Position, Size, Offset;
 	bool					Solid=true;
 
 	//Gets the Position childnode from the GameObject node
@@ -361,11 +372,26 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	Position.y=((float)atof(CurrentValue.c_str()));
 
 	//Initiates the Size vector
+	Size=sf::Vector2f(0,0);
+	Offset=sf::Vector2f(0,0);
 	CurrentChild=	Node->first_node("Size");
-	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.x=((float)atof(CurrentValue.c_str()));
-	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.y=((float)atof(CurrentValue.c_str()));
+	if (!CurrentChild==0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+	
+
+		CurrentChild=	Node->first_node("Offset");
+		if (!CurrentChild==0x0)
+		{
+			CurrentValue=	getValue(CurrentChild->first_node("x"));
+			Offset.x=((float)atof(CurrentValue.c_str()));
+			CurrentValue=	getValue(CurrentChild->first_node("y"));
+			Offset.y=((float)atof(CurrentValue.c_str()));
+		}
+	}
 
 	//Initiates the SpriteName
 	CurrentChild=	Node->first_node("SpriteName");
@@ -396,12 +422,12 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(Node->first_node("Speed"));
 		Speed=((float)atof(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
-		TempObject=		new Unit(Position,Id,ani, Solid);
+		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid);
 	}
 	else
 	{
 		//Creates an Unit object
-		TempObject=		new Unit(Position,Id,Sprite, Solid);
+		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid);
 	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
