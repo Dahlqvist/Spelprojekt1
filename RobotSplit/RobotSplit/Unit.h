@@ -26,6 +26,8 @@ public:
 
 	virtual sf::Vector2f getSize(){return mSize;};
 
+	virtual sf::Vector2f getOffset(){return mOffset;};
+
 	virtual std::string getId(){return mId;};
 	virtual void setId(std::string id){mId=id;};
 

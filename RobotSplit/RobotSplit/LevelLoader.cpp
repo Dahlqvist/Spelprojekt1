@@ -280,7 +280,12 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(CurrentChild->first_node("y"));
 		Size.y=((float)atof(CurrentValue.c_str()));
 
-		CurrentChild=Node->first_node("Offset");
+		
+	}
+
+	CurrentChild=Node->first_node("Offset");
+	if (CurrentChild!=0x0)
+	{
 		CurrentValue=	getValue(CurrentChild->first_node("x"));
 		Offset.x=((float)atof(CurrentValue.c_str()));
 		CurrentValue=	getValue(CurrentChild->first_node("y"));

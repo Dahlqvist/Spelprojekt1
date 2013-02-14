@@ -169,10 +169,12 @@ bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRe
 	if (obj2->getSize()==sf::Vector2f(0,0))
 	{
 		objRect=obj2->getSprite().getGlobalBounds();
+		objRect.left+=obj2->getOffset().x;
+		objRect.top+=obj2->getOffset().y;
 	}
 	else
 	{
-		objRect=sf::FloatRect(obj2->getPosition(), obj2->getSize());
+		objRect=sf::FloatRect(obj2->getPosition()+obj2->getOffset(), obj2->getSize());
 	}
 
 	return playerRect.intersects(objRect, collisionRect);
@@ -192,7 +194,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is above object
 				if (playerSprite->getPosition().y<obj2->getPosition().y)
 				{
-					if (collisionRect.width>5 || ((mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT))))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
@@ -205,7 +207,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is below object
 				else
 				{
-					if (collisionRect.width>5 || ((mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT))))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
@@ -225,7 +227,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is left of object
 				if (playerSprite->getPosition().x<obj2->getPosition().x)
 				{
-					if (collisionRect.height>5 || ((mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
@@ -238,7 +240,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				//If player is right of object
 				else
 				{
-					if (collisionRect.height>5 || ((mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
