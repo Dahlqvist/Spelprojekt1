@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Unit.h"
 #include "Sound.h"
+#include "Eric.h"
 
 
 class PlayerPart:public GameObject
@@ -18,7 +19,7 @@ public:
 	virtual void restartTimer()=0;
 	virtual bool getAttached()=0;
 	virtual void setAttached(bool)=0;
-	virtual void jump()=0;
+	virtual void jump(float)=0;
 	virtual void resetAnimation()=0;
 	virtual Unit* getUnit()=0;
 	virtual void forceMove(sf::Vector2f)=0;

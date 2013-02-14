@@ -17,7 +17,7 @@ public:
 	virtual void restartTimer();
 	virtual bool getAttached();
 	virtual void setAttached(bool);
-	virtual void jump();
+	virtual void jump(float);
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
@@ -31,10 +31,8 @@ private:
 	Unit* mUnit;
 	BrainMagnet mMagnet;
 	Animation* mActiveAnimation;
-	Animation mLeftAnimation;
-	Animation mRightAnimation;
-	Animation mLeft;
-	Animation mRight;
+	Animation mBrain;
+	Animation mBrainStuck;
 	PlayerPart* mBody;
 	sf::Vector2f mPosition, mShootVector; 
 	std::string mId;

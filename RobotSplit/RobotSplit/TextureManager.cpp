@@ -59,6 +59,12 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixFeetJumpAni"].loadFromFile("Texture/Stix/stix_lowerjumpanimation_strip8_dark.png");
 
+	mTextureMap["StixUpperWalkPart"].loadFromFile("Texture/Stix/stix_upper_walkanimation.png");
+
+	mTextureMap["StixUpperJump"].loadFromFile("Texture/Stix/stix_upper_jump.png");
+	
+	mTextureMap["StixUpperIdlePart"].loadFromFile("Texture/Stix/Stix004.png");
+
 	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
 	//spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
 	//mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
@@ -88,11 +94,19 @@ void TextureManager::loadTexture()
 	mTextureMap["StixFeetExtendAniLMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_Ext_L_Dark.png");
 
 	mTextureMap["StixFeetJumpAniL"].loadFromFile("Texture/Stix/Mirror_stix_lowerjumpanimation_strip8_dark.png");
+
+	mTextureMap["StixUpperWalkPartL"].loadFromFile("Texture/Stix/Mirror_stix_upper_walkanimation.png");
+
+	mTextureMap["StixUpperJumpL"].loadFromFile("Texture/Stix/Mirror_stix_upper_jump.png");
+
+	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
 
 	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
+
+	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/stix_brain_no_spaceasd.png");
 
 	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
 
@@ -123,10 +137,14 @@ void TextureManager::loadTexture()
 	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
 
 	mTextureMap["BlueButtonAni"].loadFromFile("Texture/Enviroment/Button_Blue_Sprite_16px.png");
-
 	mTextureMap["RedButtonAni"].loadFromFile("Texture/Enviroment/Button_Red_Sprite_16px.png");
-
 	mTextureMap["YellowButtonAni"].loadFromFile("Texture/Enviroment/Button_Yellow_Sprite_16px.png");
+
+	mTextureMap["YellowLaserHolder"].loadFromFile("Texture/Enviroment/Laser_Emitter_Standby.png");
+	
+	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
+	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_Blå_Sprite_4px.png");
+	mTextureMap["YellowLaser"].loadFromFile("Texture/Enviroment/Laser_Gul_Sprite_4px.png");
 
 	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
 

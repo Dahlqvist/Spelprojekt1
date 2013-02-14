@@ -4,6 +4,7 @@
 #include <math.h>
 #include "UnitManager.h"
 #include "Sound.h"
+#include "Eric.h"
 
 Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
@@ -14,7 +15,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mFeet.restartTimer();
 	mBody.restartTimer();
 	mHead.restartTimer();
-	mSpeed=2;
+	//mSpeed=2;
 	mHeadless=false;
 	mTogether=true;
 	mFeetAttached=false;
@@ -44,6 +45,13 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mKeyTimer.restart();
 	mClock.restart();
 	mClockStart=false;
+
+
+
+	//Till Eric
+	mJump=10;
+	mSpeed=2;
+	mGravity=4;
 }
 
 //Kontroller och funktioner för Player
@@ -59,20 +67,22 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(*mLights.getSprite());
 
-	if(mHead.getUnit()!=0)
-	{
-		Window.draw(mHead.getUnit()->getSprite());
-	}
+
 	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
 		Window.draw(mFeet.getUnit()->getSprite());
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mHead.getSprite());
 	Window.draw(mBody.getSprite());
+	if(mHead.getUnit()!=0)
+	{
+		Window.draw(mHead.getUnit()->getSprite());
+	}
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
 {
+	Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
 		Sound::stopSound("Move");
@@ -82,27 +92,27 @@ void Player::update()
 		mParts[i]->update();
 		if(i==1)
 		{
-			mParts[i]->setPosition(sf::Vector2f(0, 4));
+			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
 		}
 		else if(i==0 && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
 		{
-			mParts[i]->setPosition(sf::Vector2f(0, 4));
+			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
 		}
 	}
 
 	if(mDash>0){
 		if(mFacingRight==true)
 		{
-			mFeet.setPosition(sf::Vector2f(mSpeed*2, 0));
-			mBody.setPosition(sf::Vector2f(mSpeed*2, 0));
+			mFeet.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
+			mBody.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
 			mFeet.update();
 			mBody.update();
 			mDash--;
 		}
 		else
 		{
-			mFeet.setPosition(sf::Vector2f(-mSpeed*2, 0));
-			mBody.setPosition(sf::Vector2f(-mSpeed*2, 0));
+			mFeet.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
+			mBody.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
 			mFeet.update();
 			mBody.update();
 			mDash--;
@@ -173,8 +183,8 @@ void Player::move(sf::Vector2f Vec)
 		if(Vec.x<0){
 			mFacingRight=false;
 		}
-		Vec.x*=mSpeed;
-		Vec.y*=mSpeed;
+		Vec.x*=Eric::getSpeed();
+		Vec.y*=Eric::getSpeed();
 		if(mTogether==true)
 		{
 			for(unsigned int i=0; i < mParts.size(); i++)
@@ -283,19 +293,21 @@ void Player::jump()
 {
 	if(mDashing==false)
 	{
-		Sound::playSound("Jump");
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
-			mFeet.jump();
-			mBody.jump();
+			mFeet.jump(Eric::getJump());
+			mBody.jump(Eric::getJump());
+			Sound::playSound("Jump");
 		}
 		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyStandningFeet==true || (mAttachedMagnet==true && mBodyAttached==true))
 		{
-			mBody.jump();
+			mBody.jump(Eric::getJump());
+			Sound::playSound("Jump");
 		}
 		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || (mAttachedMagnet==true && mBodyAttached==false))
 		{
-			mFeet.jump();
+			mFeet.jump(Eric::getJump());
+			Sound::playSound("Jump");
 		}
 		mJumpTemp.restart();
 	}	
@@ -809,28 +821,3 @@ void Player::Win(){
 	mBody.winning();
 	std::cout << "Finishing time: " << mClock.getElapsedTime().asSeconds() << std::endl;
 }
-//bool Player::bodyStandningFeet()
-//{
-//	sf::FloatRect ColRect;
-//	sf::FloatRect TempFeet=mFeet.getSprite().getGlobalBounds();
-//	TempFeet.top-=5;
-//	if(mFeet.getAttachedWall()==false || (mFeet.getAttachedWall()==true && mFeet.getWall()==1))
-//	{
-//		TempFeet.width-=50;
-//		TempFeet.left+=25;
-//	}
-//	else{
-//		TempFeet.height-=50;
-//		TempFeet.top+=25;
-//	}
-//	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-//		if(ColRect.height>0){
-//			std::cout << "Står på  ";
-//		}
-//		return true;
-//	}
-//	else
-//	{
-//		return false;
-//	}
-//}

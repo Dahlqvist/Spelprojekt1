@@ -51,13 +51,17 @@ private:
 	sf::Sprite* Temp2;
 	sf::Sprite* Temp3;
 	sf::Sprite* Temp4;
-	float mSpeed, mJump, mDash;
+	float mDash;
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
 	bool mKeys;
 	int magnetSlot, lastKey, thisKey;
+	//Till Eric
+	float mSpeed;
+	float mJump;
+	float mGravity;
 };
 
 #endif

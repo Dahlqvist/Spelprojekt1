@@ -17,7 +17,7 @@ public:
 	virtual void restartTimer();
 	virtual bool getAttached();
 	virtual void setAttached(bool);
-	virtual void jump();
+	virtual void jump(float);
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
@@ -26,6 +26,7 @@ public:
 	void jumpReset();
 	void restartAnimation();
 	void setId(std::string);
+	void decideAnimation(sf::Vector2f);
 private: 
 	bool mAttached;
 	Unit* mUnit;
@@ -35,6 +36,14 @@ private:
 	Animation mLeft;
 	Animation mRight;
 	Animation mWinningAni;
+	Animation mWalkingRight;
+	Animation mWalkingLeft;
+	Animation mJumpingRight;
+	Animation mJumpingLeft;
+	Animation mLeftPart;
+	Animation mRightPart;
+	Animation mSplitting;
+	Animation mSplittingLeft;
 	PlayerPart* mFeet;
 	sf::Vector2f mPosition; 
 	std::string mId;
