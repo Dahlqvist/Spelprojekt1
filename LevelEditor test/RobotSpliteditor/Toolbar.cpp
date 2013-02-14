@@ -1,12 +1,13 @@
 #include "Toolbar.h"
 #include "Editor.h"
+#include "UIText.h"
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer()
 {
+	mMenu.push_back(new UIText("Test",mPosition,"Param",Color(255,255,255,255),Color(0,0,0,255),15));
 }
-
 
 Toolbar::~Toolbar(void)
 {
@@ -25,6 +26,10 @@ void	Toolbar::render(Editor* editor)
 	View	MiniView=window.getDefaultView();
 	MiniView.setViewport(FloatRect(Position,Size));
 	editor->renderLevel(MiniView);
+	for(vector<UIItem*>::iterator it= mMenu.begin();it!=mMenu.end();it++)
+	{
+		(*it)->draw(window);
+	}
 }
 
 void	Toolbar::setUnit(Unit*	Source)

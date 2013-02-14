@@ -6,8 +6,10 @@ class UIItem
 public:
 	UIItem(void);
 	virtual	~UIItem(void);
-	virtual void draw(sf::RenderWindow&)=0;
 	virtual bool selected();
+	virtual void draw(sf::RenderWindow&,sf::Uint8 alpha=255)=0;
+	virtual	void handleEvent(sf::Event&)=0;	
 private:
+	bool	mSelected;
 };
 #endif

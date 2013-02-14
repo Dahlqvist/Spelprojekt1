@@ -112,6 +112,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h">
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
+    <ClInclude Include="UIText.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -230,5 +231,6 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp">
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
+    <ClCompile Include="UIText.cpp" />
   </ItemGroup>
 </Project>

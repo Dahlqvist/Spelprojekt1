@@ -46,6 +46,7 @@
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Toolbar.cpp" />
     <ClCompile Include="UIItem.cpp" />
+    <ClCompile Include="UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
@@ -85,6 +86,7 @@
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Toolbar.h" />
     <ClInclude Include="UIItem.h" />
+    <ClInclude Include="UIText.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30D2A94B-EB26-488B-A2AE-A019E1B653DB}</ProjectGuid>
