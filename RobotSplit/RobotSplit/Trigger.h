@@ -7,7 +7,7 @@ class Trigger: public Unit
 {
 public:
 	//Constuctor not final!
-	Trigger(sf::Vector2f position, std::string id, std::string spriteName, Unit* triggedObject);
+	Trigger(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, Unit* triggedObject);
 
 	void setTarget(Unit* target){mTriggedObject=target;};
 

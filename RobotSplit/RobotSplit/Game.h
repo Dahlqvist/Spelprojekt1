@@ -25,8 +25,6 @@ public:
 	void input();
 private:
 	void moveCamera();
-	Laser AwesomeLaser;
-	LaserHolder holder;
 
 
 	int mSecurityLevel;

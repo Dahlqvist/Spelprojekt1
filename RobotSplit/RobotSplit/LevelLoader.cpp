@@ -16,6 +16,9 @@
 #include "Line.h"
 #include "DialogueBox.h"
 #include "Trigger.h"
+#include "Laser.h"
+#include "LaserHolder.h"
+
 LevelLoader::LevelLoader(void)
 {
 }
@@ -215,9 +218,14 @@ void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)
 void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue,Id,Sprite;
-	Unit					*TempObject;
-	sf::Vector2f			Position, Size;
+	string					CurrentValue,Id,Color;
+	Laser					*TempObject;
+	LaserHolder				*Holder;
+	Trigger					*VisibilityBox;
+	sf::Vector2f			Position, Size, Offset;
+	float					VisibilityRange;
+	bool					Active;
+	float					Length, Rotation;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -232,23 +240,59 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 
 	//Initiates the Size vector
 	CurrentChild=	Node->first_node("Size");
-	CurrentValue=	getValue(CurrentChild->first_node("x"));
-	Size.x=((float)atof(CurrentValue.c_str()));
-	CurrentValue=	getValue(CurrentChild->first_node("y"));
-	Size.y=((float)atof(CurrentValue.c_str()));
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+	}
+
+	//Initiates the Offset vector
+	CurrentChild=	Node->first_node("Offset");
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Offset.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Offset.y=((float)atof(CurrentValue.c_str()));
+	}
 
 	//Initiates the SpriteName
-	CurrentChild=	Node->first_node("SpriteName");
-	Sprite=getValue(CurrentChild);
+	CurrentChild=	Node->first_node("Color");
+	Color=getValue(CurrentChild);
 	
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
 
-	//Creates an AntiMagnet object
-	TempObject=		new Unit(Position,Id,Sprite);
+	CurrentChild=	Node->first_node("Active");
+	if (getValue(CurrentChild)=="true")
+	{
+		Active=true;
+	}
+	else
+	{
+		Active=false;
+	}
+
+	CurrentChild=	Node->first_node("Length");
+	Length=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("Rotation");
+	Rotation=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("VisibilityRange");
+	VisibilityRange=atof(getValue(CurrentChild).c_str());
+
+
+	TempObject=		new Laser(Position, Color, Active, Length, Rotation);
+	Holder=			new LaserHolder(TempObject, Active);
+	VisibilityBox=	new Trigger(Position, sf::Vector2f(VisibilityRange*2, Length+VisibilityRange*2), sf::Vector2f(-VisibilityRange, -VisibilityRange), "", "", Holder);
 	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
+	level.mObjects.push_back(Holder);
+	level.mObjects.push_back(VisibilityBox);
 }
 
 void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
@@ -476,9 +520,7 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
-	DialogueBox				*TempObject;
-	sf::Vector2f			Position;
-	bool					FadeIn,Visible;
+	sf::Vector2f			Position, Size, Offset;
 	std::string				Id;
 	std::string				targetObject;
 
@@ -493,6 +535,29 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	//Sets Y to CurentValue's value
 	Position.y=((float)atof(CurrentValue.c_str()));
 
+	//Initiates the Size vector
+	Size=sf::Vector2f(0,0);
+	Offset=sf::Vector2f(0,0);
+	CurrentChild=	Node->first_node("Size");
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+
+		
+	}
+
+	CurrentChild=Node->first_node("Offset");
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Offset.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Offset.y=((float)atof(CurrentValue.c_str()));
+	}
+
 	CurrentChild=Node->first_node("SpriteName");
 	Sprite=getValue(CurrentChild);
 
@@ -502,6 +567,6 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	CurrentChild=Node->first_node("Target");
 	targetObject=getValue(CurrentChild);
 
-	triggers.push_back(new Trigger(Position, Id, Sprite, 0x0));
+	triggers.push_back(new Trigger(Position, Size, Offset, Id, Sprite, 0x0));
 	targets.push_back(targetObject);
 }
