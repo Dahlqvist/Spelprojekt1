@@ -363,6 +363,10 @@ int PlayerPartFeet::getWall(){
 }
 void PlayerPartFeet::forceMove(sf::Vector2f force){
 	mPosition+=force;
+	//if(force.y!=0)
+	//{
+	//	mJump=Eric::getGravity();
+	//}
 }
 void PlayerPartFeet::restartAnimation(){
 	mRightAnimation.restart();
@@ -373,4 +377,8 @@ void PlayerPartFeet::winning(){
 	mAnimationTimer.restart();
 	mAniTime=0.6;
 	mActiveAnimation=&mWinningAni;
+}
+int PlayerPartFeet::getFrame()
+{
+	return mActiveAnimation->getCurrentFrame();
 }
