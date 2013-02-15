@@ -7,7 +7,7 @@
 class PlayerPartBody:public PlayerPart
 {
 public:
-	PlayerPartBody(PlayerPart* Feet);
+	PlayerPartBody(PlayerPartFeet* Feet);
 	virtual void update(); 
 	virtual void draw(); 
 	virtual sf::Vector2f getPosition(); 
@@ -44,7 +44,7 @@ private:
 	Animation mRightPart;
 	Animation mSplitting;
 	Animation mSplittingLeft;
-	PlayerPart* mFeet;
+	PlayerPartFeet* mFeet;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime;

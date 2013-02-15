@@ -71,13 +71,15 @@ void Player::draw(sf::RenderWindow& Window)
 	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
 		Window.draw(mFeet.getUnit()->getSprite());
 	}
-	Window.draw(mFeet.getSprite());
+	
 	Window.draw(mHead.getSprite());
-	Window.draw(mBody.getSprite());
 	if(mHead.getUnit()!=0)
 	{
 		Window.draw(mHead.getUnit()->getSprite());
 	}
+	Window.draw(mFeet.getSprite());
+	Window.draw(mBody.getSprite());
+
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
@@ -86,6 +88,23 @@ void Player::update()
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
 		Sound::stopSound("Move");
+	}
+	if(mDash>0){
+		if(mFacingRight==true)
+		{
+			mFeet.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
+			mBody.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
+			mDash--;
+		}
+		else
+		{
+			mFeet.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
+			mBody.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
+			mDash--;
+		}
+	}
+	else{
+		mDashing=false;
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
@@ -98,28 +117,6 @@ void Player::update()
 		{
 			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
 		}
-	}
-
-	if(mDash>0){
-		if(mFacingRight==true)
-		{
-			mFeet.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
-			mBody.setPosition(sf::Vector2f(Eric::getSpeed()*2, 0));
-			mFeet.update();
-			mBody.update();
-			mDash--;
-		}
-		else
-		{
-			mFeet.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
-			mBody.setPosition(sf::Vector2f(-Eric::getSpeed()*2, 0));
-			mFeet.update();
-			mBody.update();
-			mDash--;
-		}
-	}
-	else{
-		mDashing=false;
 	}
 	mBodyStandningFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
@@ -163,7 +160,7 @@ void Player::update()
 		}
 		if(mFeet.getWall()==1 && !UnitManager::isCollidedSide(0, 1))
 		{
-			//mFeet.forceMove(sf::Vector2f(0, 1));
+			mFeet.forceMove(sf::Vector2f(0, 1));
 			mFeet.setAttachedWall(false);
 		}
 		if(mFeet.getWall()==2 && !UnitManager::isCollidedSide(0, 3))
@@ -187,20 +184,22 @@ void Player::move(sf::Vector2f Vec)
 		Vec.y*=Eric::getSpeed();
 		if(mTogether==true)
 		{
-			for(unsigned int i=0; i < mParts.size(); i++)
-			{
-				if(mParts[i]!=&mHead || mHeadless!=true)
-				{
-					mParts[i]->setPosition(Vec);
-				}
-			}
+			//for(unsigned int i=0; i < mParts.size(); i++)
+			//{
+			//	if(mParts[i]!=&mHead || mHeadless!=true)
+			//	{
+			//		mParts[i]->setPosition(Vec);
+			//	}
+			//}
+			mFeet.setPosition(Vec);
+			mBody.setPosition(Vec);
 		}
 		else if(mBodyActive)
 		{
 			mBody.setPosition(Vec);
 			if(mHeadless==false)
 			{
-				mHead.setPosition(Vec);
+				//mHead.setPosition(Vec);
 			}
 		}
 		else
@@ -217,10 +216,10 @@ void Player::move(sf::Vector2f Vec)
 			{
 				mFeet.setAttachedWall(true, 1);
 			}
-	/*		else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
-			{
-				mFeet.setAttachedWall(true, 1);
-			}*/
+			//else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
+			//{
+			//	mFeet.setAttachedWall(true, 1);
+			//}
 			else
 			{
 				mFeet.setPosition(Vec);
@@ -326,7 +325,7 @@ void Player::shootHead(sf::Vector2f Vec)
 	else if(mHead.getAttached()==true)
 	{
 		Sound::playSound("ShootHead");
-		mHeadless=true;
+		mHeadless=true;	
 		float k=(mHead.getPosition().y-Vec.y)/(mHead.getPosition().x-Vec.x);
 		//float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
 		//float Ys=mHead.getPosition().y-Vec.y;
@@ -504,7 +503,6 @@ void Player::interact(int action){
 		else if(mFeet.getAttached()==false){
 			if(mFeet.getWall()==0 || mFeet.getWall()==2)
 			{
-				//mFeet.setPosition(sf::Vector2f(0, -1));
 				Player::move(sf::Vector2f(0, -1));
 				Sound::playSound("Move");
 			}
@@ -533,6 +531,7 @@ void Player::interact(int action){
 			}
 			else if(mFeet.getWall()==0){
 				mFeet.setAttachedWall(false);
+				mFeet.jumpReset();
 			}
 		}
 		if(mTogether==true&&UnitManager::isCollidedSide(0, 2) || (mBodyActive==false && mFeet.getAttachedWall()==false && UnitManager::isCollidedSide(0, 2)) || mBodyActive==false&&mFeet.getAttachedWall()==true&&mFeet.getWall()==1){
@@ -560,6 +559,7 @@ void Player::interact(int action){
 			}
 			else if(mFeet.getWall()==2){
 				mFeet.setAttachedWall(false);
+				mFeet.jumpReset();
 			}
 		}
 		if(mTogether==true&&UnitManager::isCollidedSide(0, 2) || (mBodyActive==false && mFeet.getAttachedWall()==false && UnitManager::isCollidedSide(0, 2)) || mBodyActive==false&&mFeet.getAttachedWall()==true&&mFeet.getWall()==1){
@@ -579,6 +579,7 @@ void Player::interact(int action){
 			if(mFeet.getWall()==1)
 			{
 				mFeet.setAttachedWall(false);
+				mFeet.jumpReset();
 			}
 			else
 			{
@@ -664,7 +665,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 	{
 		if(part==0)
 		{
-			if(Vec.y>0 && mFeet.getAttachedWall()==false)
+			if(Vec.y!=0 && mFeet.getAttachedWall()==false)
 			{
 				mFeet.jumpReset();
 			}
@@ -672,7 +673,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		}
 		else if(part==1)
 		{
-			if(Vec.y>0)
+			if(Vec.y!=0)
 			{
 				mBody.jumpReset();
 			}
@@ -690,7 +691,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		}
 		else
 		{
-			if(Vec.y>0)
+			if(Vec.y!=0)
 			{
 				mBody.jumpReset();
 				mFeet.jumpReset();
@@ -716,7 +717,7 @@ void Player::checkCollisionExt(){
 		TempFeet.top+=25;
 	}
 	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-		if(mBody.getPosition().y<(TempFeet.top-55)){
+		if(mBody.getPosition().y<(TempFeet.top-50)){
 			mBodyStandningFeet=true;
 		}
 		if(ColRect.width<ColRect.height)

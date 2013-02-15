@@ -1,7 +1,7 @@
 #include "PlayerPartBody.h"
 #include <iostream>
 
-PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
+PlayerPartBody::PlayerPartBody(PlayerPartFeet* Feet):
 	mFeet(Feet),
 	mLeftAnimation("StixUpperAniL", 200, 8),
 	mRightAnimation("StixUpperAni", 200, 8),
@@ -53,6 +53,10 @@ void PlayerPartBody::draw()
 void PlayerPartBody::setPosition(sf::Vector2f Vec)
 {
 	PlayerPartBody::decideAnimation(Vec);
+	if(mAttached==true && mActiveAnimation->getCurrentFrame()!=mFeet->getFrame())
+	{
+		mActiveAnimation->restart();
+	}
 	if(mAttached==true)
 	{
 		mPosition=sf::Vector2f(mFeet->getPosition().x, mFeet->getPosition().y-64);

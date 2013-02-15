@@ -168,10 +168,14 @@ void	Editor::eventHandler(const Event& Current)
 						mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
 						if(!mSelectedUnit.fromLevel())
 						{
-							mLevel.addUnit(mSelectedUnit.getObject());
+							mSelectedUnit.deletePtr();
 						}
 					}
-						mSelectedUnit.unInitiate();
+					else if(!mSelectedUnit.fromLevel())
+					{
+						mLevel.addUnit(mSelectedUnit.getObject());
+					}
+					mSelectedUnit.unInitiate();
 				}
 				else
 				{

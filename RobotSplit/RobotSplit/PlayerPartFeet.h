@@ -25,6 +25,7 @@ public:
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
 
+	int getFrame();
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();
