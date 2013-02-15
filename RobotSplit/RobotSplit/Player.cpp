@@ -74,7 +74,8 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mBody.getSprite());
-	Window.draw(*mCourser->getSprite());
+	sf::Vector2f mVec(sf::Mouse::getPosition(Window).x,sf::Mouse::getPosition(Window).y);
+	Window.draw(*mCourser->getSprite(mVec));
 
 	//Window.draw(TempPart->getSprite());
 }
@@ -418,39 +419,26 @@ void Player::setAttachFeetExtension(bool b)
 			if(mFeet.getWall()==0 && UnitManager::isCollidedSide(0, 4)){
 				mFeetAttached=b;
 				mFeet.setAttached(b);
-				if(mHeadAttachedFeet==true){
-					mHead.setAttached(true);
-					mHeadAttachedFeet=false;
-					mAttachedMagnet=false;
-				}
 			}
 			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1)){
 				mFeetAttached=b;
 				mFeet.setAttached(b);
-				if(mHeadAttachedFeet==true){
-					mHead.setAttached(true);
-					mHeadAttachedFeet=false;
-					mAttachedMagnet=false;
-				}
 			}
 			else if(mFeet.getWall()==2 && UnitManager::isCollidedSide(0, 3)){
 				mFeetAttached=b;
 				mFeet.setAttached(b);
-				if(mHeadAttachedFeet==true){
-					mHead.setAttached(true);
-					mHeadAttachedFeet=false;
-					mAttachedMagnet=false;
-				}
 			}
 		}
 		else if(UnitManager::isCollidedSide(0, 2) || b==false){
 			mFeetAttached=b;
 			mFeet.setAttached(b);
-			if(mHeadAttachedFeet==true){
-				mHead.setAttached(true);
-				mHeadAttachedFeet=false;
-				mAttachedMagnet=false;
-			}
+		}
+		if(mHeadAttachedFeet==true)
+		{
+			mHead.setAttached(true);
+			mHeadAttachedFeet=false;
+			mAttachedMagnet=false;
+			mBody.jumpReset();
 		}
 	}
 	else{
@@ -848,6 +836,7 @@ std::string Player::getId(int i)
 void Player::dropFeet()
 {
 	mFeet.setAttachedWall(false);
+	mFeet.jumpReset();
 }
 
 void Player::Win(){
