@@ -311,7 +311,7 @@
       <Type>"Lava"</Type>
       <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>	60</Speed>
+      <Speed>60</Speed>
       <Position>
         <x>64</x>
         <y>704</y>
@@ -325,7 +325,7 @@
       <Type>"Lava"</Type>
       <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>	60</Speed>
+      <Speed>60</Speed>
       <Position>
         <x>128</x>
         <y>704</y>

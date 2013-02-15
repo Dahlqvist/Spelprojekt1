@@ -9,7 +9,57 @@ set<UIItem*>&	UIItemContainer::accessActive()
 
 set<UIItem*>&	UIItemContainer::accessInactive()
 {
-	return	mActive;
+	return	mInactive;
+}
+
+UIItem*	UIItemContainer::getActivated(std::string Name)
+{
+	for(UISet::iterator	it=mActive.begin();it!=mActive.end();it++)
+	{
+		if((*it)->getName()==Name)
+		{
+			return	*it;
+		}
+	}
+	return	0;
+}
+
+UIItem*	UIItemContainer::getDeactivated(std::string Name)
+{
+	for(UISet::iterator	it=mInactive.begin();it!=mInactive.end();it++)
+	{
+		if((*it)->getName()==Name)
+		{
+			return	*it;
+		}
+	}
+	return	0;
+}
+
+void	UIItemContainer::deactivate(std::string Name)
+{
+	for(UISet::iterator	it=mActive.begin();it!=mActive.end();it++)
+	{
+		if((*it)->getName()==Name)
+		{
+			mInactive.insert(*it);
+			mActive.erase(it);
+			break;
+		}
+	}
+}
+
+void	UIItemContainer::activate(std::string Name)
+{
+	for(UISet::iterator	it=mInactive.begin();it!=mInactive.end();it++)
+	{
+		if((*it)->getName()==Name)
+		{
+			mActive.insert(*it);
+			mInactive.erase(it);
+			break;
+		}
+	}
 }
 
 UIItemContainer::UIItemContainer()
@@ -20,7 +70,8 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer()
 {
-	mUIItems.accessActive().insert(new UIText("Test","Param",Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessActive().insert(new UIText("Name","Param",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	(*mUIItems.accessActive().begin())->setSelect(true);
 }
 
 Toolbar::~Toolbar(void)
@@ -57,6 +108,8 @@ void	Toolbar::setUnit(Unit*	Source)
 	mCurrUnit.unInitiate();
 	mCurrUnit.setPtr(Source);
 	mCurrPlayer.unInitiate();
+	mUIItems.activate("Name");
+	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(mCurrUnit.getObject()->getId());
 }
 
 void	Toolbar::setPlayer(Player*	Source)
@@ -64,6 +117,8 @@ void	Toolbar::setPlayer(Player*	Source)
 	mCurrPlayer.unInitiate();
 	mCurrPlayer.setPtr(Source);
 	mCurrUnit.unInitiate();
+	mUIItems.activate("Name");
+	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));
 }
 
 Vector2f	Toolbar::getPosition()
@@ -74,4 +129,38 @@ Vector2f	Toolbar::getPosition()
 Vector2f	Toolbar::getSize()
 {
 	return mPosition;
+}
+
+bool	Toolbar::checkHit(const Vector2f& Point)const
+{
+	FloatRect	Test(mPosition,mSize);
+	return	Test.contains(Point);
+}
+
+void	Toolbar::eventHandle(const	Event&	Current)
+{
+	UIItem*	Selected=0;
+	for(UISet::iterator	it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
+	{
+		if((*it)->selected())
+		{
+			Selected=(*it);
+			break;
+		}
+	}
+	switch(Current.type)
+	{
+	case sf::Event::EventType::TextEntered:
+		Selected->handleEvent(Current);
+	}
+}
+
+void	Toolbar::setSelect(const bool&	Select)
+{
+	mSelected=Select;
+}
+
+bool	Toolbar::isSelected()const
+{
+	return	mSelected;
 }
