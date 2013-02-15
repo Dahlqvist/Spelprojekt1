@@ -24,15 +24,13 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana1.xml"),
+		mlevel("Tutorial1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
-		lastUpdate(0),
+		nextUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(402, 220), "Blue", true, 253, 0),
-		holder(&AwesomeLaser)
+		mTime(0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -62,14 +60,13 @@ void Game::update()
 {
 	loops = 0;
 	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<10)
 	{
 		mRenderGame=true;
 		loops++;
-		lastUpdate+=1/60.0;
+		nextUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
-		AwesomeLaser.update();
 		mPlayer->update();
 		Objects->update();
 
@@ -129,12 +126,6 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 			mPlayer->reFuel(100);
 			TestTimer.restart();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
-			AwesomeLaser.activate();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
-			AwesomeLaser.deactivate();
 		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
@@ -203,8 +194,8 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
-		mWindow.draw(holder.getSprite());
-		mWindow.draw(AwesomeLaser.getSprite());
+		//mWindow.draw(holder.getSprite());
+		//mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 	}
 }
