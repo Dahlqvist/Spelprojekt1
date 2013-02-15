@@ -29,7 +29,6 @@ private:
 	LevelConstructor	mLevel;
 	UnitContainer		mSelectedUnit;
 	PlayerContainer		mSelectedPlayer;
-	TextField			MTEXT;
 	View				mCurrView,miniView;
 	Toolbar				mTools;
 	void				eventHandler(const Event&);

@@ -5,13 +5,11 @@ using namespace sf;
 
 
 Editor::Editor(void)
-	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),
-	MTEXT(Color(1,1,1,255)),mCurrView(mWindow.getDefaultView())
+	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView())
 {
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
 	mCurrView.setViewport(FloatRect(Vector2f(0,0.05),size));
 }
-
 
 Editor::~Editor(void)
 {
@@ -73,161 +71,201 @@ void	Editor::eventHandler(const Event& Current)
 		mWindow.setView(mCurrView);
 		break;
 	case sf::Event::MouseMoved:
-			temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));
-		if(mSelectedUnit.isActive())
+		temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));
+		point	=Vector2f(Current.mouseMove.x,Current.mouseMove.y);
+		mTools.setSelect(mTools.checkHit(point));
+		if(mTools.isSelected())
 		{
-			mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+			if(mSelectedUnit.isActive())
+			{
+				mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
+				if(!mSelectedUnit.fromLevel())
+				{
+					mSelectedUnit.deletePtr();
+				}
+					mSelectedUnit.unInitiate();
+			}
+			else if(mSelectedPlayer.isActive())
+			{
+				mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getOriginal()));
+				mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+				mSelectedPlayer.getObject()->update();
+				if(!mSelectedPlayer.fromLevel())
+				{
+					mSelectedPlayer.deletePtr();
+				}
+				mSelectedPlayer.unInitiate();
+			}
+			mTools.eventHandle(Current);
 		}
-		else if(mSelectedPlayer.isActive())
+		else
 		{
-			mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset()));
-			mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-			mSelectedPlayer.getObject()->update();
+			if(mSelectedUnit.isActive())
+			{
+				mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+			}
+			else if(mSelectedPlayer.isActive())
+			{
+				mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset()));
+				mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+				mSelectedPlayer.getObject()->update();
+			}
 		}
 		break;
 	case sf::Event::EventType::MouseButtonPressed:
-		point=mWindow.convertCoords(Vector2i(Current.mouseButton.x,Current.mouseButton.y));
-		std::cout<<"MousePosition: "<<point.y<<","<<point.y<<std::endl;
-		if(Current.mouseButton.button==sf::Mouse::Button::Middle)
+		temp=	mWindow.convertCoords(Vector2i(Current.mouseButton.x,Current.mouseButton.y));
+		point=	Vector2f(Current.mouseButton.x,Current.mouseButton.y);
+		std::cout<<"MousePosition: "<<temp.y<<","<<temp.y<<std::endl;
+		mTools.setSelect(mTools.checkHit(point));
+		if(mTools.isSelected())
 		{
-			if(!mSelectedUnit.isActive())
-			{
-				mSelectedUnit.setPtr(new Unit(point,"Door","Exit"));
-				mTools.setUnit(mSelectedUnit.getObject());
-			}
+			mTools.eventHandle(Current);
 		}
-		else if(Current.mouseButton.button==sf::Mouse::Button::Right)
+		else
 		{
-			if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
+			if(Current.mouseButton.button==sf::Mouse::Button::Middle)
 			{
-				for(UnitVector::size_type i=0;i < mLevel.getObjects().size();i++)
+				if(!mSelectedUnit.isActive())
 				{
-					sf::FloatRect hitbox(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
-					if(hitbox.contains(point))
+					mSelectedUnit.setPtr(new Unit(temp,"Door","Exit"));
+					mTools.setUnit(mSelectedUnit.getObject());
+				}
+			}
+			else if(Current.mouseButton.button==sf::Mouse::Button::Right)
+			{
+				if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
+				{
+					for(UnitVector::size_type i=0;i < mLevel.getObjects().size();i++)
 					{
-						mLevel.deleteItem(mLevel.getObjects()[i]);
-						break;
+						sf::FloatRect hitbox(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
+						if(hitbox.contains(temp))
+						{
+							mLevel.deleteItem(mLevel.getObjects()[i]);
+							break;
+						}
+					}
+					if(mLevel.ifPlayerExist())
+					{
+						const sf::FloatRect hitbox(mLevel.getPlayer()->
+							getCollisionSprite()[0]->getGlobalBounds());
+						if(hitbox.contains(temp))
+						{
+							mLevel.deletePlayer();
+						}
 					}
 				}
-				if(mLevel.ifPlayerExist())
+				else
 				{
-					const sf::FloatRect hitbox(mLevel.getPlayer()->
-						getCollisionSprite()[0]->getGlobalBounds());
-					if(hitbox.contains(point))
+					if(mSelectedPlayer.isActive())
 					{
 						mLevel.deletePlayer();
+						mSelectedPlayer.unInitiate();
+					}
+					else
+					{
+						mLevel.deleteItem(mSelectedUnit.getObject());
+						mSelectedUnit.unInitiate();
 					}
 				}
 			}
-			else
-			{
-				if(mSelectedPlayer.isActive())
-				{
-					mLevel.deletePlayer();
-					mSelectedPlayer.unInitiate();
-				}
-				else
-				{
-					mLevel.deleteItem(mSelectedUnit.getObject());
-					mSelectedUnit.unInitiate();
-				}
-			}
-		}
 	
-		else	if(Current.mouseButton.button==sf::Mouse::Button::Left)
-		{
-			if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
+			else	if(Current.mouseButton.button==sf::Mouse::Button::Left)
 			{
-				for(UnitVector::size_type i=0;i < mLevel.getObjects().size();i++)
+				if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
 				{
-					hitbox=FloatRect(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
-					if(hitbox.contains(point))
+					for(UnitVector::size_type i=0;i < mLevel.getObjects().size();i++)
 					{
-						mSelectedUnit.setPtr(mLevel.accessObjects()[i],mLevel.accessObjects()[i]->getPosition(),Vector2f(point-mLevel.accessObjects()[i]->getPosition()),true);
-						mTools.setUnit(mSelectedUnit.getObject());
-						break;
-					}
-				}
-				if(mLevel.ifPlayerExist())
-				{
-					const sf::FloatRect hitbox(mLevel.getPlayer()->
-						getCollisionSprite()[0]->getGlobalBounds());
-					if(hitbox.contains(point))
-					{
-						mSelectedPlayer.setPtr(mLevel.getPlayer(),mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),point-mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),true);
-						mTools.setPlayer(mSelectedPlayer.getObject());
-					}
-				}
-			}
-			else
-			{
-				if(mSelectedUnit.isActive())
-				{
-					if(collide(mSelectedUnit))
-					{
-						mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
-						if(!mSelectedUnit.fromLevel())
+						hitbox=FloatRect(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
+						if(hitbox.contains(temp))
 						{
-							mSelectedUnit.deletePtr();
+							mSelectedUnit.setPtr(mLevel.accessObjects()[i],mLevel.accessObjects()[i]->getPosition(),Vector2f(temp-mLevel.accessObjects()[i]->getPosition()),true);
+							mTools.setUnit(mSelectedUnit.getObject());
+							break;
 						}
 					}
-					else if(!mSelectedUnit.fromLevel())
+					if(mLevel.ifPlayerExist())
 					{
-						mLevel.addUnit(mSelectedUnit.getObject());
+						const sf::FloatRect hitbox(mLevel.getPlayer()->
+							getCollisionSprite()[0]->getGlobalBounds());
+						if(hitbox.contains(temp))
+						{
+							mSelectedPlayer.setPtr(mLevel.getPlayer(),mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),temp-mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),true);
+							mTools.setPlayer(mSelectedPlayer.getObject());
+						}
 					}
-					mSelectedUnit.unInitiate();
 				}
 				else
 				{
-					if(collide(mSelectedPlayer))
+					if(mSelectedUnit.isActive())
 					{
-						Vector2f	temp=mSelectedPlayer.getOriginal()-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset());
-						mSelectedPlayer.getObject()->forceMove(0,temp);
-						mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-						mSelectedPlayer.getObject()->update();
-						if(!mSelectedPlayer.fromLevel())
+						if(collide(mSelectedUnit))
 						{
-							mLevel.addPlayer(mSelectedPlayer.getObject());
+							mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
+							if(!mSelectedUnit.fromLevel())
+							{
+								mSelectedUnit.deletePtr();
+							}
 						}
+						else if(!mSelectedUnit.fromLevel())
+						{
+							mLevel.addUnit(mSelectedUnit.getObject());
+						}
+						mSelectedUnit.unInitiate();
 					}
-					mSelectedPlayer.unInitiate();
+					else
+					{
+						if(collide(mSelectedPlayer))
+						{
+							Vector2f	temp=mSelectedPlayer.getOriginal()-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset());
+							mSelectedPlayer.getObject()->forceMove(0,temp);
+							mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+							mSelectedPlayer.getObject()->update();
+							if(!mSelectedPlayer.fromLevel())
+							{
+								mLevel.addPlayer(mSelectedPlayer.getObject());
+							}
+						}
+						mSelectedPlayer.unInitiate();
+					}
 				}
 			}
 		}
 		cout<<"Hitscan end!"<<endl;
 		break;
 	case sf::Event::EventType::TextEntered:
-		std::cout<<int(Current.text.unicode)<<std::endl;
-		MTEXT.insertCharacter(Current.text.unicode);
-		break;
+		mTools.eventHandle(Current);
 	case sf::Event::EventType::KeyReleased:
-		switch(Current.key.code)
+		if(mTools.isSelected())
 		{
-		case sf::Keyboard::P:
-			MTEXT.setCurrentPosition(MTEXT.getCurrentPosition()-1);
-			break;
-		case sf::Keyboard::O:
-			MTEXT.setCurrentPosition(MTEXT.getCurrentPosition()+1);
-			break;
-		case sf::Keyboard::Subtract:
-			mCurrView.zoom(1.1);
-			break;
-		case sf::Keyboard::Add:
-			mCurrView.zoom(0.9);
-			break;
-		case sf::Keyboard::Left:
-			mCurrView.move(-10,0);
-			break;
-		case sf::Keyboard::Right:
-			mCurrView.move(10,0);
-			break;
-		case sf::Keyboard::Up:
-			mCurrView.move(0,-10);
-			break;
-		case sf::Keyboard::Down:
-			mCurrView.move(0,10);
-			break;
+			mTools.eventHandle(Current);
 		}
+		else
+		{
+			switch(Current.key.code)
+			{
+			case sf::Keyboard::Subtract:
+				mCurrView.zoom(1.1);
+				break;
+			case sf::Keyboard::Add:
+				mCurrView.zoom(0.9);
+				break;
+			case sf::Keyboard::Left:
+				mCurrView.move(-10,0);
+				break;
+			case sf::Keyboard::Right:
+				mCurrView.move(10,0);
+				break;
+			case sf::Keyboard::Up:
+				mCurrView.move(0,-10);
+				break;
+			case sf::Keyboard::Down:
+				mCurrView.move(0,10);
+				break;
+			}
+		}
+		break;
+	default:
+		mTools.eventHandle(Current);
 		break;
 	}
 }

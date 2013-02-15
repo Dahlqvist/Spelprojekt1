@@ -10,6 +10,7 @@
 
 typedef	Container<Unit>		UnitContainer;
 typedef	Container<Player>	PlayerContainer;
+typedef	std::set<UIItem*>	UISet;
 
 using namespace sf;
 
@@ -19,31 +20,37 @@ class	UIItemContainer
 {
 public:
 	UIItemContainer	();
-	void				activate	(std::string);
-	void				deActivate	(std::string);
-	std::set<UIItem*>&	accessActive();
-	std::set<UIItem*>&	accessInactive();
+	void	activate	(std::string);
+	void	deactivate	(std::string);
+	UISet&	accessActive();
+	UIItem*	getActivated(std::string);
+	UIItem*	getDeactivated	(std::string);
+	UISet&	accessInactive	();
 private:
-	std::set<UIItem*>mActive,mInActive;
+	UISet	mActive,mInactive;
 };
 
 class Toolbar
 {
 public:
-	void	render(Editor*);
-	void	setUnit(Unit*);
-	void	setPlayer(Player*);
-	bool	checkHit(const Vector2f&);
-	Toolbar	(Vector2f	Position=Vector2f(1080,50),Vector2f	Size=Vector2f(200,728),Color BackColor=Color(150,150,150),Vector2f MiniViewSize=Vector2f(200,120));
+	Toolbar	(Vector2f Position=Vector2f(1080,50),Vector2f Size=Vector2f(200,728),Color BackColor=Color(150,150,150),Vector2f MiniViewSize=Vector2f(200,120));
 	~Toolbar(void);
-	Vector2f	getSize();
-	Vector2f	getPosition();
+	void		render	(Editor*);
+	Vector2f	getSize	();
+	void		setUnit	(Unit*);
+	bool		checkHit(const Vector2f&)const;
+	void		setPlayer	(Player*);
+	void		setSelect	(const	bool&);
+	bool		isSelected	()const;
+	Vector2f	getPosition	();
+	void		eventHandle	(const	Event&);
 private:
-	UnitContainer		mCurrUnit;
-	PlayerContainer		mCurrPlayer;
-	UIItemContainer		mUIItems;
-	Color				mBackground;
-	Vector2f			mSize,mPosition,mViewSize;
+	UnitContainer	mCurrUnit;
+	PlayerContainer	mCurrPlayer;
+	UIItemContainer	mUIItems;
+	Color			mBackground;
+	Vector2f		mSize,mPosition,mViewSize;
+	bool			mSelected;
 };
 
 #endif
