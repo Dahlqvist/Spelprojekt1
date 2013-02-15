@@ -24,11 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-<<<<<<< HEAD
 		mlevel("Bana3.xml"),
-=======
-		mlevel("Tutorial1.xml"),
->>>>>>> b8279156c065169b2c39f91183ba02b5d4bb4fb6
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		nextUpdate(0),
