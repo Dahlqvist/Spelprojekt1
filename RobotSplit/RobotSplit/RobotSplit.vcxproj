@@ -94,6 +94,7 @@ sfml-main.lib
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="DialogueBox.cpp" />
+    <ClCompile Include="Eric.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -137,6 +138,7 @@ sfml-main.lib
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Controls.h" />
     <ClInclude Include="DialogueBox.h" />
+    <ClInclude Include="Eric.h" />
     <ClInclude Include="FeetExtensions.h" />
     <ClInclude Include="FeetWall.h" />
     <ClInclude Include="Game.h" />
@@ -174,9 +176,11 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Bana2.xml" />
+    <None Include="Bana3.xml" />
     <None Include="Tutorial2.xml" />
     <None Include="Tutorial1.xml" />
-    <None Include="Test.xml">
+    <None Include="Bana1.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Tutorial3.xml">

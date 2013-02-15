@@ -5,12 +5,14 @@
 Sound::SoundMap Sound::mSoundMap;
 Sound::BufferMap Sound::mBufferMap;
 sf::Music Sound::mLava;
+float Sound::mVolume;
 
 //Statiska variabler som får en SoundBuffer tilldelad, det är via
 //dessa variabler som funktioner t.ex. play används.
 
 Sound::Sound()
 {
+	mVolume = 100;
 	loadSound();
 }
 
@@ -39,7 +41,7 @@ void Sound::loadSound()
 	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
 	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/magnet_stuck_wall_proto.wav");
 	mBufferMap["ShootHead"].loadFromFile("Sound/shoot_head_proto.wav");
-	mBufferMap["Move"].loadFromFile("Sound/move_proto.wav");
+	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);
@@ -54,16 +56,23 @@ void Sound::loadSound()
 	mSoundMap["ShootHead"].setBuffer(mBufferMap["ShootHead"]);
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
-	mSoundMap["Move"].setVolume(20);
+	//mSoundMap["Move"].setVolume(20);
+	//mSoundMap["Lava"].setVolume(20);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
 {
 	if(sound == "Lava")
+	{
+		mLava.setVolume(mVolume);
 		mLava.play();
+	}
 	else
 		if(mSoundMap[sound].getStatus() == sf::Sound::Stopped)
+		{
+			mSoundMap[sound].setVolume(mVolume);
 			mSoundMap[sound].play();
+		}
 }
 
 const void Sound::stopSound(std::string sound)
@@ -72,4 +81,9 @@ const void Sound::stopSound(std::string sound)
 		mLava.stop();
 	else
 		mSoundMap[sound].stop();
+}
+
+const void Sound::changeVolume(float q)
+{
+	mVolume = q;
 }

@@ -14,16 +14,30 @@ public:
 	virtual void update();
 	virtual void render();
 
-	void input();
+	
 private:
+	void input();
+	void raiseVolyme();
+	void lowerVolyme();
+
 	StateInput& mStateInput;
 	Animation *currentBackground;
+	Animation *currentSelection;
 	Animation mMainBackground;
 	Animation mInGameBackground;
 	Animation mBack;
 	Animation mBlip;
+	Animation mEffectMuteChecked;
+	Animation mEffectMuteUnchecked;
+	Animation mEffectVolyme;
+	Animation mMusicMuteChecked;
+	Animation mMusicMuteUnchecked;
+	Animation mMusicVolyme;
 
 	int mStatus;
+	float mEVolyme;
+	float mMVolyme;
+	bool mChangeVolyme;
 
 	sf::Vector2f mBlipPos;
 

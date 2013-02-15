@@ -59,6 +59,12 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixFeetJumpAni"].loadFromFile("Texture/Stix/stix_lowerjumpanimation_strip8_dark.png");
 
+	mTextureMap["StixUpperWalkPart"].loadFromFile("Texture/Stix/stix_upper_walkanimation.png");
+
+	mTextureMap["StixUpperJump"].loadFromFile("Texture/Stix/stix_upper_jump.png");
+	
+	mTextureMap["StixUpperIdlePart"].loadFromFile("Texture/Stix/Stix004.png");
+
 	//textureStix_FeetExtented.loadFromFile("Texture/Stix/stix_lower_Freeze_dark_R.png");
 	//spriteStix_FeetExtented.setTexture(textureStix_FeetExtented);
 	//mTextureMap["StixFeetExtend"] = textureStix_FeetExtented;
@@ -88,11 +94,19 @@ void TextureManager::loadTexture()
 	mTextureMap["StixFeetExtendAniLMagnet"].loadFromFile("Texture/Stix/stix_lower_Freeze_Ext_L_Dark.png");
 
 	mTextureMap["StixFeetJumpAniL"].loadFromFile("Texture/Stix/Mirror_stix_lowerjumpanimation_strip8_dark.png");
+
+	mTextureMap["StixUpperWalkPartL"].loadFromFile("Texture/Stix/Mirror_stix_upper_walkanimation.png");
+
+	mTextureMap["StixUpperJumpL"].loadFromFile("Texture/Stix/Mirror_stix_upper_jump.png");
+
+	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
 
 	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
+
+	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/stix_brain_no_spaceasd.png");
 
 	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
 
@@ -126,7 +140,7 @@ void TextureManager::loadTexture()
 	mTextureMap["RedButtonAni"].loadFromFile("Texture/Enviroment/Button_Red_Sprite_16px.png");
 	mTextureMap["YellowButtonAni"].loadFromFile("Texture/Enviroment/Button_Yellow_Sprite_16px.png");
 
-	mTextureMap["YellowLaserHolder"].loadFromFile("Texture/Enviroment/Laser_Emitter_Yellow_Label.png");
+	mTextureMap["YellowLaserHolder"].loadFromFile("Texture/Enviroment/Laser_Emitter_Standby.png");
 	
 	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
 	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_Blå_Sprite_4px.png");
@@ -167,7 +181,9 @@ void TextureManager::loadTexture()
 	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_R_2.png");
 
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
-	
+
+	mTextureMap["TileHigh"].loadFromFile("Texture/Enviroment/tiles/tile13_dark.png");
+	mTextureMap["TileBreak"].loadFromFile("Texture/Enviroment/tiles/break2_dark.png");
 
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
@@ -187,6 +203,14 @@ void TextureManager::loadTexture()
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
 	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+
+	mTextureMap["Bana2_bg1"].loadFromFile("Texture/Background/Background_2_Part01.png");
+
+	mTextureMap["Bana2_bg2"].loadFromFile("Texture/Background/Background_2_Part02.png");
+
+	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3_Part01.png");
+
+	mTextureMap["Bana3_bg2"].loadFromFile("Texture/Background/Background_3_Part02.png");
 
 	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
 

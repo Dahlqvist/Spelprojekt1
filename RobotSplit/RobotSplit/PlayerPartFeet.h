@@ -19,12 +19,13 @@ public:
 	virtual void restartTimer();
 	virtual bool getAttached();
 	virtual void setAttached(bool);
-	virtual void jump();
+	virtual void jump(float);
 	virtual void resetAnimation();
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
 
+	int getFrame();
 	void activateRocketBoots();
 	void reFuel(float);
 	void jumpReset();

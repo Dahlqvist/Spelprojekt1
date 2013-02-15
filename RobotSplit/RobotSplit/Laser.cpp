@@ -6,8 +6,8 @@ Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float l
 	mActive(active),
 	mLength(0),
 	mRotation(rotate),
-	mRedLaser("RedLaser", 40, 2),
-	mBlueLaser("BlueLaser", 40, 2),
+	mRedLaser("RedLaser", 10, 2),
+	mBlueLaser("BlueLaser", 10, 2),
 	mYellowLaser("YellowLaser", 10, 2)
 {
 	if(laserColor=="Red")
@@ -35,11 +35,11 @@ void Laser::update()
 	mAnimation->update();
 	if(mMaxLength>mLength && mActive==true)
 	{
-		mLength+=5;
+		mLength+=7;
 	}
 	else if(mLength>0 && mActive==false)
 	{
-		mLength-=5;
+		mLength-=7;
 	}
 }
 
@@ -48,6 +48,7 @@ sf::Sprite Laser::getSprite()
 	mSprite=mAnimation->getSprite();
 	mSprite.setTextureRect(sf::IntRect(mSprite.getTextureRect().left,  mSprite.getTextureRect().top, mSprite.getTextureRect().width, mLength));
 	mSprite.setPosition(mPosition);
+	//mSprite.setOrigin(-8, -4);
 	mSprite.setRotation(mRotation);
 	return mSprite;
 }

@@ -14,8 +14,6 @@ int main()
 {
 	Window& window = Window::getInstance();
 	Splash& splash = Splash::getInstance();
-	Sound& sound = Sound::getInstance();
-	Music& music = Music::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();

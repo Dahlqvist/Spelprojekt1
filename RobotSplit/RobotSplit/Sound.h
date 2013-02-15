@@ -15,6 +15,8 @@ public:
 	
 	const static void playSound(std::string sound);
 	const static void stopSound(std::string sound);
+
+	const static void changeVolume(float q);
 private:
 	Sound();
 	Sound(const Sound& sound);
@@ -27,6 +29,7 @@ private:
 	typedef std::map<std::string, sf::SoundBuffer> BufferMap;
 	static BufferMap mBufferMap;
 	static sf::Music mLava;
+	static float mVolume;
 };
 
 #endif

@@ -1,14 +1,23 @@
 #include "PlayerPartBody.h"
 #include <iostream>
 
-PlayerPartBody::PlayerPartBody(PlayerPart* Feet):
+PlayerPartBody::PlayerPartBody(PlayerPartFeet* Feet):
 	mFeet(Feet),
 	mLeftAnimation("StixUpperAniL", 200, 8),
 	mRightAnimation("StixUpperAni", 200, 8),
 	mLeft("StixUpperL", 200, 1),
 	mRight("StixUpper", 200, 1),
-	mWinningAni("WinningBody", 100, 6)
+	mWinningAni("WinningBody", 100, 6),
+	mWalkingRight("StixUpperWalkPart", 100, 8),
+	mWalkingLeft("StixUpperWalkPartL", 100, 8),
+	mJumpingRight("StixUpperJump", 100, 8),
+	mJumpingLeft("StixUpperJumpL", 100, 8),
+	mLeftPart("StixUpperIdlePartL", 100, 1),
+	mRightPart("StixUpperIdlePart", 100, 1),
+	mSplitting("StixUpperSplit", 100, 8),
+	mSplittingLeft("StixUpperSplitL", 100, 8)
 {
+	mId="PlayerPartBody";
 	mActiveAnimation=&mRight;
 	mPosition=sf::Vector2f(100, 100);
 	mAttached=true;
@@ -21,9 +30,9 @@ void PlayerPartBody::update()
 	mActiveAnimation->update();
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>0.1)
+		if(mJumpClock.getElapsedTime().asSeconds()>Eric::getTimer())
 		{
-			mJump-=1.7;
+			mJump-=Eric::getJumpchange();
 			mJumpClock.restart();
 			PlayerPartBody::setPosition(sf::Vector2f(0, -mJump));
 		}
@@ -43,13 +52,10 @@ void PlayerPartBody::draw()
 }
 void PlayerPartBody::setPosition(sf::Vector2f Vec)
 {
-	if(Vec.x>0)
+	PlayerPartBody::decideAnimation(Vec);
+	if(mAttached==true && mActiveAnimation->getCurrentFrame()!=mFeet->getFrame())
 	{
-		mActiveAnimation=&mRightAnimation;
-	}
-	else if(Vec.x<0)
-	{
-		mActiveAnimation=&mLeftAnimation;
+		mActiveAnimation->restart();
 	}
 	if(mAttached==true)
 	{
@@ -58,6 +64,39 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 	else if(mAttached==false)
 	{
 		mPosition+=Vec;
+	}
+}
+void PlayerPartBody::decideAnimation(sf::Vector2f Vec)
+{
+	if(mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
+		{
+		if(Vec.x>0 && mAttached==true)
+		{
+			mActiveAnimation=&mRightAnimation;
+		}
+		else if(Vec.x<0 && mAttached==true)
+		{
+			mActiveAnimation=&mLeftAnimation;
+		}
+		else if(Vec.x>0 && mAttached==false)
+		{
+			mActiveAnimation=&mWalkingRight;
+		}
+		else if(Vec.x<0 && mAttached==false)
+		{
+			mActiveAnimation=&mWalkingLeft;
+		}
+	}
+	else if(mActiveAnimation==&mJumpingRight || mActiveAnimation==&mJumpingLeft)
+	{
+		if(Vec.x>0)
+		{
+			mActiveAnimation=&mJumpingRight;
+		}
+		else if(Vec.x<0)
+		{
+			mActiveAnimation=&mJumpingLeft;
+		}
 	}
 }
 sf::Vector2f PlayerPartBody::getPosition()
@@ -84,11 +123,40 @@ bool PlayerPartBody::getAttached()
 void PlayerPartBody::setAttached(bool b)
 {
 	mAttached=b;
+	if(b==false)
+	{
+		mSplitting.restart();
+		mSplittingLeft.restart();
+		mAnimationTimer.restart();
+		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mRight)
+		{
+			mActiveAnimation=&mSplitting;
+			mAniTime=0.8;
+		}
+		else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mLeft)
+		{
+			mActiveAnimation=&mSplittingLeft;
+			mAniTime=0.8;
+		}
+	}
 }
-void PlayerPartBody::jump()
+void PlayerPartBody::jump(float jump)
 {
-	mJump=10;
+	mJump=jump;
 	mJumpClock.restart();
+	if(mAttached==false){
+		mJumpingRight.restart();
+		mJumpingLeft.restart();
+		mAnimationTimer.restart();
+		if(mActiveAnimation==&mRightPart || mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight){
+			mActiveAnimation=&mJumpingRight;
+		}
+		else
+		{
+			mActiveAnimation=&mJumpingLeft;
+		}
+		mAniTime=0.8;
+	}
 }
 void PlayerPartBody::resetAnimation()
 {
@@ -102,6 +170,14 @@ void PlayerPartBody::resetAnimation()
 		{
 			mActiveAnimation=&mLeft;
 		}
+		else if(mActiveAnimation==&mWalkingLeft || mActiveAnimation==&mJumpingLeft || mActiveAnimation==&mSplittingLeft)
+		{
+			mActiveAnimation=&mLeftPart;
+		}
+		else if(mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight || mActiveAnimation==&mSplitting)
+		{
+			mActiveAnimation=&mRightPart;
+		}
 	}
 }
 Unit* PlayerPartBody::getUnit()
@@ -109,7 +185,7 @@ Unit* PlayerPartBody::getUnit()
 	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
-	mJump=4;
+	mJump=Eric::getGravity();
 }
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;

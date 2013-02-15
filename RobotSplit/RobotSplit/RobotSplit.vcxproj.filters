@@ -118,6 +118,8 @@
     </ClCompile>
     <ClCompile Include="Controls.cpp">
       <Filter>Source Files\Menu\State</Filter>
+    <ClCompile Include="Eric.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +243,8 @@
     </ClInclude>
     <ClInclude Include="Controls.h">
       <Filter>Header Files\Menu\State</Filter>
+    <ClInclude Include="Eric.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +289,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Tutorial1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -307,6 +308,15 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Tutorial7.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana2.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana3.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>

@@ -1,14 +1,32 @@
 #include "LaserHolder.h"
 
-LaserHolder::LaserHolder(Laser* laser):
-	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false)
+LaserHolder::LaserHolder(Laser* laser, bool active):
+	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false),
+	mActive(active)
 {
-	mSprite=TextureManager::getSprite("YellowLaserHolder");
-	mPosition=laser->getPosition();//+sf::Vector2f(2, -2);
-	mRotation=laser->getRotation()-180;
-	//mSprite.setOrigin(mSprite.getGlobalBounds().width/2, mSprite.getGlobalBounds().height/2);
-	mSprite.setRotation(mRotation);
-	mPosition+=sf::Vector2f(2, -2);
-	mSprite.setPosition(mPosition);
+	mStandby=TextureManager::getSprite("YellowLaserHolder");
+	mOn=TextureManager::getSprite("YellowLaserHolder");
+	mOff=TextureManager::getSprite("YellowLaserHolder");
+	mActiveSprite=&mStandby;
+	mPosition=laser->getPosition();
+	mRotation=laser->getRotation()+180;
+	mActiveSprite->setRotation(mRotation);
+	if(laser->getRotation()==0)
+	{
+		mPosition+=sf::Vector2f(10, 0);
+	}
+	if(laser->getRotation()==90)
+	{
+		mPosition+=sf::Vector2f(0, 10);
+	}
+	if(laser->getRotation()==180)
+	{
+		mPosition+=sf::Vector2f(-10, 0);
+	}
+	if(laser->getRotation()==270)
+	{
+		mPosition+=sf::Vector2f(0, -10);
+	}
+	mActiveSprite->setPosition(mPosition);
 }
 

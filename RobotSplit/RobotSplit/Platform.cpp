@@ -2,16 +2,16 @@
 #include <sstream>
 #include <cassert>
 
-Platform::Platform(sf::Vector2f position, std::string spriteName)
-	:Unit(position, "Platform", spriteName)
+Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset)
+	:Unit(position, size, offset, "Platform", spriteName)
 	,mLives(0)
 	,mDestructible(false)
 {
 	mSprite.setPosition(position);
 }
 
-Platform::Platform(int lives, sf::Vector2f position, std::string spriteName)
-	:Unit(position, "Platform", spriteName)
+Platform::Platform(int lives, sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset)
+	:Unit(position, size, offset, "Platform", spriteName)
 	,mLives(lives)
 	,mDestructible(true)
 {
