@@ -36,8 +36,6 @@ protected:
 	Animation mRedLaser;
 	Animation mBlueLaser;
 	Animation mYellowLaser;
-
-	bool mSolid;
 };
 
 #endif

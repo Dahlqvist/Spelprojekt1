@@ -285,9 +285,11 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 	CurrentChild=	Node->first_node("VisibilityRange");
 	VisibilityRange=atof(getValue(CurrentChild).c_str());
 
+	CurrentChild=	Node->first_node("Id");
+	Id=getValue(CurrentChild);
 
 	TempObject=		new Laser(Position, Color, Active, Length, Rotation);
-	Holder=			new LaserHolder(TempObject, Active);
+	Holder=			new LaserHolder(TempObject, Id, Active);
 	VisibilityBox=	new Trigger(Position, sf::Vector2f(VisibilityRange*2, Length+VisibilityRange*2), sf::Vector2f(-VisibilityRange, -VisibilityRange), "", "", Holder);
 	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);

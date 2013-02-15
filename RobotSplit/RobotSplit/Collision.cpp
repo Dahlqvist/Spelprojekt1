@@ -41,8 +41,26 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
+				//Hit once per collision
+				if (!objects[j]->isHit())
+				{
+					objects[j]->setHit(true);
+					objects[j]->setHitThisFrame(true);
+				}
+				if (objects[j]->isHitThisFrame())
+				{
+					objects[j]->hitOnce();
+					objects[j]->setHitThisFrame(false);
+				}
+
+				//Hit every frame during collision
 				objects[j]->hit();
+
 				handleCollisions(player, objects[j], collisionRect);
+			}
+			else 
+			{
+				objects[j]->setHit(false);
 			}
 		}
 	}

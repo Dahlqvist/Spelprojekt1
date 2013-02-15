@@ -11,8 +11,10 @@ public:
 
 	void setTarget(Unit* target){mTriggedObject=target;};
 
-	void hit();
-	void activate();
+	virtual void hit();
+	virtual void hitOnce();
+	virtual void activate();
+	virtual void deactivate();
 private:
 	Unit* mTriggedObject;
 };

@@ -24,14 +24,10 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-<<<<<<< HEAD
 		mlevel("Tutorial1.xml"),
-=======
-		mlevel("Bana1.xml"),
->>>>>>> master
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
-		lastUpdate(0),
+		nextUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2)
@@ -64,11 +60,11 @@ void Game::update()
 {
 	loops = 0;
 	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<10)
 	{
 		mRenderGame=true;
 		loops++;
-		lastUpdate+=1/60.0;
+		nextUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
 		mPlayer->update();

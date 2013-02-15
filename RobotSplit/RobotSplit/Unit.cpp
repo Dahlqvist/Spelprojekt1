@@ -6,6 +6,8 @@ Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool s
 	,mSprite(TextureManager::getSprite(spriteName))
 	,mAnimation(nullptr)
 	,mSize(sf::Vector2f(0,0))
+	,mHit(false)
+	,mHitThisFrame(false)
 {
 	mPosition=position;
 	mId=id;

@@ -12,7 +12,7 @@ Window::~Window()
 
 void Window::loadWindow()
 {
-	mWindow.create(sf::VideoMode(1280, 758), "Robot split", sf::Style::Close);
+	mWindow.create(sf::VideoMode(1280, 768), "Robot split", sf::Style::Close);
 	mWindow.setVerticalSyncEnabled(true);
 	mWindow.clear(sf::Color::Black);
 	mWindow.display();

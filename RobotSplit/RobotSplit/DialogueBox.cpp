@@ -58,10 +58,7 @@ void DialogueBox::hit()
 
 void DialogueBox::activate()
 {
-	if (!mDeactivated)
-	{
-		mVisible=true;
-	}
+	mVisible=true;
 }
 
 void DialogueBox::deactivate()

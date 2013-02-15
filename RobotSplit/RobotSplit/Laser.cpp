@@ -1,7 +1,7 @@
 #include "Laser.h"
 
 Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float length, float rotate):
-	Unit(position, laserColor, "Laser", active),
+	Unit(position, laserColor, "Laser", false),
 	mMaxLength(length),
 	mActive(active),
 	mLength(0),
