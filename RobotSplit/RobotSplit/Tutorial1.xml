@@ -472,7 +472,7 @@
         <y>696</y>
       </Position>
     </Unit>
-    <Unit>
+    <!--<Unit>
       <Type>"Laser"</Type>
       <Position>
         <x>600</x>
@@ -484,6 +484,6 @@
       <Rotation>0</Rotation>
       <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
-    </Unit>
+    </Unit>-->
   </Objects>
 </Level>
