@@ -143,9 +143,9 @@ void Game::input()
 
 void Game::moveCamera()
 {
-	sf::View view(sf::FloatRect(mWindow.getPosition().x/2, mWindow.getPosition().y/2, mWindow.getSize().x/2, mWindow.getSize().y/2));
-	view.setViewport(sf::FloatRect(0, 0, 1, 1));
-	//sf::View view(mWindow.getView());
+	//sf::View view(sf::FloatRect(mWindow.getPosition().x/2, mWindow.getPosition().y/2, mWindow.getSize().x/2, mWindow.getSize().y/2));
+	//view.setViewport(sf::FloatRect(0, 0, 1, 1));
+	sf::View view(mWindow.getView());
 	sf::FloatRect partRect;
 	
 	if (mPlayer->getTogether() || !mPlayer->getBodyActive())
