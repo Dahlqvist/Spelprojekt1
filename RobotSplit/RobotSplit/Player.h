@@ -57,7 +57,7 @@ private:
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
-	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
 	bool mKeys;
 	int magnetSlot, lastKey, thisKey;
 	//Till Eric

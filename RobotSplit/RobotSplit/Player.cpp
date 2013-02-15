@@ -31,7 +31,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mMagnetTimer.restart();
 	magnetSlot=2;
 	mHeadAttachedFeet=false;
-	mBodyStandningFeet=false;
+	mBodyStandingFeet=false;
 	Temp1=new sf::Sprite;
 	Temp2=new sf::Sprite;
 	Temp3=new sf::Sprite;
@@ -118,7 +118,7 @@ void Player::update()
 			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
 		}
 	}
-	mBodyStandningFeet=false;
+	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
 	{
 		if(mTogether==false){
@@ -298,7 +298,7 @@ void Player::jump()
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
 		}
-		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyActive==true && mBodyStandningFeet==true || mBodyActive==true && (mAttachedMagnet==true && mBodyAttached==true))
+		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyActive==true && mBodyStandingFeet==true || mBodyActive==true && (mAttachedMagnet==true && mBodyAttached==true))
 		{
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
@@ -717,10 +717,10 @@ void Player::checkCollisionExt(){
 		TempFeet.top+=25;
 	}
 	if(mBody.getSprite().getGlobalBounds().intersects(TempFeet, ColRect)){
-		if(mBody.getPosition().y<(TempFeet.top-50)){
-			mBodyStandningFeet=true;
+		if(mBody.getPosition().y<(TempFeet.top-45)){
+			mBodyStandingFeet=true;
 		}
-		if(ColRect.width<ColRect.height)
+		if(ColRect.width<ColRect.height && mBodyStandingFeet==false)
 		{
 			if(mBody.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
 			{
@@ -741,6 +741,7 @@ void Player::checkCollisionExt(){
 			else
 			{
 				mBody.forceMove(sf::Vector2f(0, -ColRect.height));
+				mBody.jumpReset();
 			}
 		}
 	}

@@ -78,4 +78,5 @@ void BrainMagnet::restartAnimations(){
 	mActiveAnimation=&mBrainAni;
 	mRot=0;
 	mRotation=0;
+	ropeSwing=false;
 }

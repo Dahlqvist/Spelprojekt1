@@ -26,7 +26,7 @@ sf::RenderWindow& Window::getWindow()
 	//mWindow.setView(Test);
 	//sf::FloatRect temp(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y);
 	//sf::View tempView(temp);
-	//mWindow.setView(tempView);
+	//mWindow.setView(Test);
 	return mWindow;
 
 }
