@@ -5,6 +5,7 @@
 #include "PlayerPartBody.h"
 #include "PlayerPartHead.h"
 #include "PlayerLight.h"
+#include "Courser.h"
 
 class Player
 {
@@ -60,10 +61,9 @@ private:
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
 	bool mKeys;
 	int magnetSlot, lastKey, thisKey;
-	//Till Eric
-	float mSpeed;
-	float mJump;
-	float mGravity;
+
+	Courser* mCourser;
+
 };
 
 #endif

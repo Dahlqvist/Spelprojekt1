@@ -4,9 +4,9 @@ LaserHolder::LaserHolder(Laser* laser, bool active):
 	Unit(laser->getPosition(), "LaserHolder", "LaserHolder", false),
 	mActive(active)
 {
-	mStandby=TextureManager::getSprite("YellowLaserHolder");
-	mOn=TextureManager::getSprite("YellowLaserHolder");
-	mOff=TextureManager::getSprite("YellowLaserHolder");
+	mStandby=TextureManager::getSprite("LaserHolderStandby");
+	mOn=TextureManager::getSprite("LaserHolderOn");
+	mOff=TextureManager::getSprite("LaserHolderOff");
 	mActiveSprite=&mStandby;
 	mPosition=laser->getPosition();
 	mRotation=laser->getRotation()+180;
