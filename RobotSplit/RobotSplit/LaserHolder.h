@@ -13,7 +13,7 @@ public:
 		mSprite.setPosition(mPosition);
 	};
 
-	virtual sf::Sprite getSprite(){return *mActiveSprite;};
+	virtual sf::Sprite getSprite(){mActiveSprite->setRotation(mRotation);mActiveSprite->setPosition(mPosition);return *mActiveSprite;};
 
 	virtual sf::Vector2f getSize(){return mSize;};
 

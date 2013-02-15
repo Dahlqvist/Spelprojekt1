@@ -25,7 +25,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	mResetted=false;
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart")
+		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
@@ -36,7 +36,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	}
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart")
+		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
