@@ -28,6 +28,7 @@ public:
 	void checkCollisionExt();
 	void checkCollisionMagnet();
 	void restartPlayer(sf::Vector2f);
+	void dropFeet();
 
 	void jump();
 	void shootHead(sf::Vector2f);

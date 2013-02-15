@@ -17,7 +17,7 @@ public:
 
 	virtual bool isSolid(){return mSolid;};
 	void setSolid(bool);
-	virtual void rotate(float r){mSprite.setRotation(r);}
+	virtual void rotate(float r){mRotation=r;}
 	void setOrigin(){};
 	void restartAnimations();
 	bool getReady();
@@ -31,10 +31,15 @@ private:
 	Animation mBrainAni;
 	sf::Vector2f mSize;
 	sf::Clock mTimer;
+
+	float mRot;
+	float mRotation;
 	
 	sf::Sprite mSprite;
 
 	bool mSolid, mReady;
+
+	bool ropeSwing;
 };
 
 #endif

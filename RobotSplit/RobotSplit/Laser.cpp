@@ -1,14 +1,15 @@
 #include "Laser.h"
 
 Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float length, float rotate):
-	Unit(position, laserColor, "Laser", active),
+	Unit(position, laserColor, "Laser", false),
 	mMaxLength(length),
 	mActive(active),
 	mLength(0),
 	mRotation(rotate),
 	mRedLaser("RedLaser", 10, 2),
 	mBlueLaser("BlueLaser", 10, 2),
-	mYellowLaser("YellowLaser", 10, 2)
+	mYellowLaser("YellowLaser", 10, 2),
+	mSpeed(9)
 {
 	if(laserColor=="Red")
 	{
@@ -35,11 +36,11 @@ void Laser::update()
 	mAnimation->update();
 	if(mMaxLength>mLength && mActive==true)
 	{
-		mLength+=7;
+		mLength+=mSpeed;
 	}
 	else if(mLength>0 && mActive==false)
 	{
-		mLength-=7;
+		mLength-=mSpeed;
 	}
 }
 

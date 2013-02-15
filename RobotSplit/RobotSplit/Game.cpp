@@ -24,14 +24,14 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana1.xml"),
+		mlevel("Bana2.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		lastUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(400, 250), "Blue", true, 253, 0),
+		AwesomeLaser(sf::Vector2f(402, 220), "Blue", true, 253, 0),
 		holder(&AwesomeLaser)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
@@ -134,7 +134,7 @@ void Game::input()
 			AwesomeLaser.activate();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
-			AwesomeLaser.shutDownLaser();
+			AwesomeLaser.deactivate();
 		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);

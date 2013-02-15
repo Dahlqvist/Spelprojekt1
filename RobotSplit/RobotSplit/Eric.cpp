@@ -16,7 +16,7 @@ float Eric::getHeadspeed()
 float Eric::getJump()
 {
 	//Standardvärde 10
-	return 15;
+	return 11;
 }
 
 float Eric::getJumpchange()
