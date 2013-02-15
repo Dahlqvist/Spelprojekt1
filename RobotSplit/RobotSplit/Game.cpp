@@ -24,23 +24,13 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-<<<<<<< HEAD
 		mlevel("Tutorial1.xml"),
-=======
-		mlevel("Bana2.xml"),
->>>>>>> master
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		nextUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
-<<<<<<< HEAD
 		mTime(0.2)
-=======
-		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(402, 220), "Blue", true, 253, 0),
-		holder(&AwesomeLaser)
->>>>>>> master
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -137,15 +127,6 @@ void Game::input()
 			mPlayer->reFuel(100);
 			TestTimer.restart();
 		}
-<<<<<<< HEAD
-=======
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
-			AwesomeLaser.activate();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
-			AwesomeLaser.deactivate();
-		}
->>>>>>> master
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}

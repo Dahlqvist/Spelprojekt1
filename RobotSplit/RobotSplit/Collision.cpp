@@ -310,6 +310,17 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
 	}
+	if (obj2->getId()=="AntiMagnet")
+	{
+		if (player.getId(mPlayerPart)=="PlayerPartFeet")
+		{
+			player.dropFeet();
+		}
+		if (player.getId(mPlayerPart)=="PlayerPartHead")
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
+	}
 }
 
 void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)
