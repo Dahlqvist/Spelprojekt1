@@ -91,6 +91,7 @@ sfml-main.lib
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Courser.cpp" />
     <ClCompile Include="DialogueBox.cpp" />
     <ClCompile Include="Eric.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
@@ -132,6 +133,7 @@ sfml-main.lib
     <ClInclude Include="Background.h" />
     <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Courser.h" />
     <ClInclude Include="DialogueBox.h" />
     <ClInclude Include="Eric.h" />
     <ClInclude Include="FeetExtensions.h" />
@@ -173,7 +175,9 @@ sfml-main.lib
     <None Include="Bana2.xml" />
     <None Include="Bana3.xml" />
     <None Include="Tutorial2.xml" />
-    <None Include="Tutorial1.xml" />
+    <None Include="Tutorial1.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Bana1.xml">
       <SubType>Designer</SubType>
     </None>

@@ -25,8 +25,6 @@ public:
 	void input();
 private:
 	void moveCamera();
-	Laser AwesomeLaser;
-	LaserHolder holder;
 
 
 	int mSecurityLevel;
@@ -36,7 +34,7 @@ private:
 	UnitManager* Objects;
 	sf::Clock lastUpdateClock;
 	bool mRenderGame;
-	double lastUpdate;
+	double nextUpdate;
 	int loops;
 	sf::RenderWindow& mWindow;
 	sf::Clock TestTimer;

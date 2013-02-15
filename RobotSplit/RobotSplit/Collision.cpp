@@ -25,7 +25,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	mResetted=false;
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart")
+		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
@@ -36,13 +36,31 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	}
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart")
+		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
+				//Hit once per collision
+				if (!objects[j]->isHit())
+				{
+					objects[j]->setHit(true);
+					objects[j]->setHitThisFrame(true);
+				}
+				if (objects[j]->isHitThisFrame())
+				{
+					objects[j]->hitOnce();
+					objects[j]->setHitThisFrame(false);
+				}
+
+				//Hit every frame during collision
 				objects[j]->hit();
+
 				handleCollisions(player, objects[j], collisionRect);
+			}
+			else 
+			{
+				objects[j]->setHit(false);
 			}
 		}
 	}
@@ -286,6 +304,22 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	{
 		player.Win();
 		player.restartPlayer(sf::Vector2f(64, 384));
+	}
+	if (obj2->getId()=="Laser")
+	{
+		player.restartPlayer(sf::Vector2f(64, 384));
+		mResetted=true;
+	}
+	if (obj2->getId()=="AntiMagnet")
+	{
+		if (player.getId(mPlayerPart)=="PlayerPartFeet")
+		{
+			player.dropFeet();
+		}
+		if (player.getId(mPlayerPart)=="PlayerPartHead")
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
 	}
 }
 

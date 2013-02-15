@@ -46,12 +46,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mClock.restart();
 	mClockStart=false;
 
-
-
-	//Till Eric
-	mJump=10;
-	mSpeed=2;
-	mGravity=4;
+	mCourser=new Courser;
 }
 
 //Kontroller och funktioner för Player
@@ -79,6 +74,7 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mBody.getSprite());
+	Window.draw(*mCourser->getSprite());
 
 	//Window.draw(TempPart->getSprite());
 }
@@ -157,16 +153,19 @@ void Player::update()
 		{
 			mFeet.forceMove(sf::Vector2f(0, 5));
 			mFeet.setAttachedWall(false);
+			mFeet.jumpReset();
 		}
 		if(mFeet.getWall()==1 && !UnitManager::isCollidedSide(0, 1))
 		{
 			mFeet.forceMove(sf::Vector2f(0, 1));
 			mFeet.setAttachedWall(false);
+			mFeet.jumpReset();
 		}
 		if(mFeet.getWall()==2 && !UnitManager::isCollidedSide(0, 3))
 		{
 			mFeet.forceMove(sf::Vector2f(0, 5));
 			mFeet.setAttachedWall(false);
+			mFeet.jumpReset();
 		}
 	}
 }
@@ -364,6 +363,7 @@ void Player::setAttachFeetExtension(bool b)
 		}
 		else
 		{
+			mFeet.jumpReset();
 			Test.width-=50;
 			Test.left+=25;
 			Test.top+=5;
@@ -590,6 +590,8 @@ void Player::interact(int action){
 		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
 			mHead.setMagnetSolid(false);
 			mAttachedMagnet=false;
+			mBody.jumpReset();
+			mFeet.jumpReset();
 			mMagnetTimer.restart();
 		}
 	}
