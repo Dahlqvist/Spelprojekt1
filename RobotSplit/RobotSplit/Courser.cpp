@@ -1,5 +1,6 @@
 #include "Courser.h"
 #include "TextureManager.h"
+#include "Window.h"
 
 Courser::Courser()
 {
@@ -8,7 +9,7 @@ Courser::Courser()
 
 sf::Sprite* Courser::getSprite()
 {
-	sf::Vector2f Mouse(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
+	sf::Vector2f Mouse(sf::Mouse::getPosition(Window.getWindow().getSize().x), sf::Mouse::getPosition(Window.getWindow().getPosition().y));
 	mSprite.setPosition(Mouse);
 	return &mSprite;
 }
