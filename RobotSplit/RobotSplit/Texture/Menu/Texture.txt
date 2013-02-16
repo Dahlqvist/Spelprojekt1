@@ -34,3 +34,6 @@ TimerChecked  =	Timer_Checked	=	Om man vill ha timer checkad
 TimerUnchecked  = Timer_Unchecked  =	Om man inte vill ha timer checkad
 Tutorial   =	Tutorial
 Yes	=	Yes
+Numbers	=	Numbers
+LeftArrow =	Arrow_Left
+RightArrow =	Arrow_Right

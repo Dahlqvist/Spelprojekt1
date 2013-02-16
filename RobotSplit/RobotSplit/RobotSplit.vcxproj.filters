@@ -90,7 +90,6 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Music.cpp" />
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
@@ -112,15 +111,20 @@
     <ClCompile Include="LaserHolder.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
-    <ClCompile Include="MenuClock.cpp" />
-    <ClCompile Include="Audio.cpp">
-      <Filter>Source Files\Menu\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Controls.cpp">
-    </ClCompile>
-      <Filter>Source Files\Menu\State</Filter>
     <ClCompile Include="Eric.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls.cpp">
+      <Filter>Source Files\Menu\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuClock.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +217,6 @@
     <ClInclude Include="Sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Music.h" />
     <ClInclude Include="DialogueBox.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
@@ -238,14 +241,20 @@
     <ClInclude Include="LaserHolder.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="MenuClock.h" />
-    <ClInclude Include="Audio.h">
-      <Filter>Header Files\Menu\State</Filter>
+    <ClInclude Include="Eric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuClock.h">
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Controls.h">
       <Filter>Header Files\Menu\State</Filter>
-    <ClInclude Include="Eric.h">
+    </ClInclude>
+    <ClInclude Include="Music.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

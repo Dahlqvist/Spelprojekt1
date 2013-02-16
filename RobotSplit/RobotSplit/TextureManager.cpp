@@ -307,6 +307,9 @@ void TextureManager::loadTexture()
 	mTextureMap["TimerUnchecked"].loadFromFile("Texture/Menu/Timer_Unchecked.png");
 	mTextureMap["Tutorial"].loadFromFile("Texture/Menu/Tutorial.png");
 	mTextureMap["Yes"].loadFromFile("Texture/Menu/Yes.png");
+	mTextureMap["Numbers"].loadFromFile("Texture/Menu/Numbers.png");
+	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
+	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
 
 }
 

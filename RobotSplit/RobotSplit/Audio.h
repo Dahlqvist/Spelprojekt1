@@ -18,7 +18,12 @@ public:
 private:
 	void input();
 	void raiseVolyme();
+	void raiseNumbers(bool effect);
+	void lowerNumbers(bool effect);
 	void lowerVolyme();
+	void setAnimate();
+	void setSpritePosition();
+	void updateNumbers();
 
 	StateInput& mStateInput;
 	Animation *currentBackground;
@@ -33,11 +38,25 @@ private:
 	Animation mMusicMuteChecked;
 	Animation mMusicMuteUnchecked;
 	Animation mMusicVolyme;
+	Animation mEffectNumbers1;
+	Animation mEffectNumbers10;
+	Animation mEffectNumbers100;
+	Animation mMusicNumbers1;
+	Animation mMusicNumbers10;
+	Animation mMusicNumbers100;
+	Animation mEffectLeftArrow;
+	Animation mEffectRightArrow;
+	Animation mMusicLeftArrow;
+	Animation mMusicRightArrow;
 
 	int mStatus;
 	float mEVolyme;
 	float mMVolyme;
 	bool mChangeVolyme;
+
+	int mEffectNr1;
+	int mEffectNr10;
+	int mEffectNr100;
 
 	sf::Vector2f mBlipPos;
 
