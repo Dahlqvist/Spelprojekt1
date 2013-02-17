@@ -5,7 +5,7 @@
 class LaserHolder:public Unit
 {
 public:
-	LaserHolder(Laser*, std::string id, bool active=true);
+	LaserHolder(Laser*, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active=true);
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
 	{
@@ -24,11 +24,11 @@ public:
 
 	virtual void update(){if(mActive==true){mActiveSprite=&mStandby;};};
 	virtual void draw(){};
-	virtual void hit(){};
+	virtual void hit();
 	virtual void activate(){mActiveSprite=&mOn;};
+	virtual void deactivate(){mActiveSprite=&mOff;};
 
 protected:
-	sf::Vector2f mSize;
 	float mRotation;
 
 	sf::Sprite* mActiveSprite;
@@ -38,6 +38,8 @@ protected:
 
 	Animation* mAnimation;
 	bool mActive;
+
+	Laser* mLaser;
 };
 
 #endif
