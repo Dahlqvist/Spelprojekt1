@@ -88,9 +88,11 @@ sfml-main.lib
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Courser.cpp" />
     <ClCompile Include="DialogueBox.cpp" />
     <ClCompile Include="Eric.cpp" />
@@ -98,6 +100,7 @@ sfml-main.lib
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
+    <ClCompile Include="MenuClock.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserHolder.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -131,9 +134,11 @@ sfml-main.lib
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Controls.h" />
     <ClInclude Include="Courser.h" />
     <ClInclude Include="DialogueBox.h" />
     <ClInclude Include="Eric.h" />
@@ -142,6 +147,7 @@ sfml-main.lib
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameMenu.h" />
+    <ClInclude Include="MenuClock.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserHolder.h" />
     <ClInclude Include="Level.h" />

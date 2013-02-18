@@ -90,7 +90,6 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Music.cpp" />
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
@@ -114,6 +113,18 @@
     </ClCompile>
     <ClCompile Include="Eric.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls.cpp">
+      <Filter>Source Files\Menu\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuClock.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
     <ClCompile Include="Courser.cpp">
       <Filter>Source Files\Player</Filter>
@@ -212,7 +223,6 @@
     <ClInclude Include="Sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Music.h" />
     <ClInclude Include="DialogueBox.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
@@ -239,6 +249,18 @@
     </ClInclude>
     <ClInclude Include="Eric.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuClock.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls.h">
+      <Filter>Header Files\Menu\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
     <ClInclude Include="Courser.h">
       <Filter>Header Files\Player</Filter>

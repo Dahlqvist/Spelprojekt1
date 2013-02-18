@@ -20,6 +20,7 @@ public:
 	virtual ~Game();
 	virtual void update();
 	virtual void render();
+
 	void input();
 private:
 	void moveCamera();

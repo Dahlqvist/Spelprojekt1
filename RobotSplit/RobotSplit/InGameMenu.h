@@ -1,9 +1,11 @@
 #ifndef INC_INGAMEMENU
 #define INC_INGAMEMENU
 
+#include "Animation.h"
 #include "State.h"
 
 class StateInput;
+class Game;
 
 class InGameMenu: public State
 {
@@ -12,9 +14,22 @@ public:
 	virtual ~InGameMenu();
 	virtual void update();
 	virtual void render();
+
+	void input();
 private:
-	void choice();
 	StateInput& mStateInput;
+	Animation *currentSelection;
+	Animation mBackground;
+	Animation mResume;
+	Animation mOptions;
+	Animation mQuit;
+	Animation mBlip;
+
+	int mStatus;
+
+	sf::Vector2f mBlipPos;
+	sf::RenderWindow &mWindow;
+
 };
 
 #endif

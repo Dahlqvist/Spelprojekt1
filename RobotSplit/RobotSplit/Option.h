@@ -1,6 +1,7 @@
-#ifndef INC_OPTION
-#define INC_OPTION
+#ifndef INC_Option
+#define INC_Option
 
+#include "Animation.h"
 #include "State.h"
 
 class StateInput;
@@ -12,10 +13,25 @@ public:
 	virtual ~Option();
 	virtual void update();
 	virtual void render();
+
+	void input();
 private:
-	int p;
-	void choice();
 	StateInput& mStateInput;
+	Animation *currentBackground;
+	Animation *currentSelection;
+	Animation mMainBackground;
+	Animation mInGameBackground;
+	Animation mAudio;
+	Animation mControls;
+	Animation mBack;
+	Animation mBlip;
+
+	int mStatus;
+
+	sf::Vector2f mBlipPos;
+
+	sf::RenderWindow &mWindow;
+
 };
 
 #endif
