@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana3.xml"),
+		mlevel("Bana1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		nextUpdate(0),
@@ -195,8 +195,6 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
-		//mWindow.draw(holder.getSprite());
-		//mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 	}
 }

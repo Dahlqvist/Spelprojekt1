@@ -34,8 +34,23 @@
 				<y>64</y>
 			</Size>
 		</Unit>
-    
-		<Unit>
+
+    <Unit>
+      <Type>"Meanix"</Type>
+      <SpriteName>"MeanixAni"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>100</Speed>
+      <Position>
+        <x>640</x>
+        <y>96</y>
+      </Position>
+      <Size>
+        <x>0</x>
+        <y>0</y>
+      </Size>
+    </Unit>
+
+    <Unit>
 			<Type>"Platform"</Type>
 			<SpriteName>"TileL1a"</SpriteName>
 			<Position>
@@ -257,7 +272,7 @@
       <Solid>false</Solid>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Door"</Type>
       <SpriteName>"Exit"</SpriteName>
       <Position>
@@ -269,7 +284,7 @@
         <y>96</y>
       </Size>
       <Solid>false</Solid>
-    </Unit>
+    </Unit>-->
     
 		<Unit>
 			<Type>"Platform"</Type>

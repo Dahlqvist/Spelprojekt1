@@ -67,7 +67,7 @@ void BrainMagnet::update(){
 sf::Sprite BrainMagnet::getSprite(){
 	mActiveAnimation->setPosition(mPosition);
 	mSprite=mActiveAnimation->getSprite();
-	mSprite.setPosition(mSprite.getPosition()+sf::Vector2f(mSprite.getGlobalBounds().width/2, 0));
+	mSprite.setPosition(mSprite.getPosition()+sf::Vector2f(mSprite.getGlobalBounds().width/2, 10));
 	mSprite.setOrigin(mSprite.getGlobalBounds().width/2, 0);
 	mSprite.setRotation(mRotation);
 	return mSprite;

@@ -108,7 +108,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/stix_brain_no_spaceasd.png");
 
-	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
+	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_stringasd.png");
 
 	mTextureMap["StixRocketFuel"].loadFromFile("Texture/Stix/Rocket_Flame_Sprite.png");
 
@@ -202,6 +202,8 @@ void TextureManager::loadTexture()
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 
+	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
+
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
@@ -277,6 +279,8 @@ void TextureManager::loadTexture()
 	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
 
 	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
+
+
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)
