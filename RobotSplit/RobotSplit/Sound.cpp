@@ -54,6 +54,7 @@ void Sound::loadSound()
 	mSoundMap["ShootHead"].setBuffer(mBufferMap["ShootHead"]);
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
+	//mSoundMap["Move"].setVolume(20);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
@@ -67,7 +68,7 @@ const void Sound::playSound(std::string sound)
 		if(mSoundMap[sound].getStatus() == sf::Sound::Stopped)
 		{
 			mSoundMap[sound].setVolume(mVolume);
-			//mSoundMap[sound].play();
+			mSoundMap[sound].play();
 		}
 }
 
