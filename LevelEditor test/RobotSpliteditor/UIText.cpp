@@ -1,8 +1,8 @@
 #include "UIText.h"
 #include <SFML\Graphics.hpp>
 
-UIText::UIText(std::string Name,std::string Default,Color Back,Color Text,int Size)
-	:UIItem(Name),mBack(Back),mTextColor(Text),mSize(Size)
+UIText::UIText(std::string Name,std::string Default,bool Select,Color Back,Color Text,int Size)
+	:UIItem(Name,Select),mBack(Back),mTextColor(Text),mSize(Size)
 {
 	setDefault(Default);
 	mLineSwitch.setLimit(0.5);
@@ -14,11 +14,15 @@ UIText::~UIText(void)
 {
 }
 
-void	UIText::draw(RenderWindow& window,Vector2f	Position,Uint8	alpha)
+void	UIText::draw(RenderWindow& window,Vector2f	Position)
 {
 	sf::Text	renderString;
+	Uint8		alpha=255;
+	if(!mChangeable)
+	{
+		alpha=100;
+	}
 	Color		temp(mTextColor);
-	temp.a=alpha;
 	renderString.setColor(temp);
 	renderString.setCharacterSize(mSize);
 	renderString.setString(mName+": ");
@@ -31,15 +35,15 @@ void	UIText::draw(RenderWindow& window,Vector2f	Position,Uint8	alpha)
 	sf::RectangleShape Back(Vector2f(renderString.getGlobalBounds().width+2,renderString.getGlobalBounds().height+5))
 		,Frame(Vector2f(renderString.getGlobalBounds().width+1,renderString.getGlobalBounds().height+4))
 		,Line(Vector2f(1.f,renderString.getCharacterSize()));
-	Back.setFillColor(mBack);
-	Line.setFillColor(Color(0,0,0,alpha));
+	Back.setFillColor(Color(mBack.r,mBack.g,mBack.b,alpha));
+	Line.setFillColor(Color(0,0,0,255));
 	Back.setPosition(renderString.getPosition());
 	Line.setPosition(renderString.findCharacterPos(mEnter.getCurrentPosition()));
 	window.draw(Back);
 	window.draw(renderString);
 	Frame.setFillColor(sf::Color::Transparent);
 	Frame.setOutlineThickness(1);
-	Frame.setOutlineColor(Color(0,0,0,alpha));
+	Frame.setOutlineColor(Color(0,0,0,255));
 	Frame.setPosition(newPos);
 	window.draw(Frame);
 	if(mLineSwitch.isExpired())
@@ -47,50 +51,45 @@ void	UIText::draw(RenderWindow& window,Vector2f	Position,Uint8	alpha)
 		mLineDraw=!mLineDraw;
 		mLineSwitch.reset();
 	}
-	if(mLineDraw&&mSelected)
+	if(mLineDraw&&mSelected&&mChangeable)
 	{
 		window.draw(Line);
 	}
 }
 
-void	UIText::handleEvent(Event&	Current)
+void	UIText::handleEvent(const Event&	Current)
 {
-	switch(Current.type)
+	if(mChangeable)
 	{
-	case sf::Event::EventType::TextEntered :
-		if(Current.text.unicode==sf::Keyboard::Key::Back)
+		switch(Current.type)
 		{
-			mEnter.deleteCharacter();
+		case sf::Event::EventType::TextEntered :
+			if(Current.text.unicode>='1')
+			{
+				mEnter.insertCharacter(Current.text.unicode);
+			}
+			break;
+		case sf::Event::EventType::KeyPressed :
+			if(Current.key.code==sf::Keyboard::Left)
+			{
+				mEnter.setCurrentPosition(mEnter.getCurrentPosition()-1);
+			}
+			else if(Current.key.code==sf::Keyboard::Right)
+			{
+				mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
+			}
+			break;
+		default:
+			break;
 		}
-		else if(Current.text.unicode==sf::Keyboard::Key::Delete)
-		{
-			mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
-			mEnter.deleteCharacter();
-		}
-		else
-		{
-			mEnter.insertCharacter(Current.text.unicode);
-		}
-		break;
-	case sf::Event::EventType::KeyPressed :
-		if(Current.key.code==sf::Keyboard::Left)
-		{
-			mEnter.setCurrentPosition(mEnter.getCurrentPosition()-1);
-		}
-		else if(Current.key.code==sf::Keyboard::Right)
-		{
-			mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
-		}
-		break;
-	default:
-		break;
 	}
 }
 
 void	UIText::setDefault(std::string&	Default)
 {
-	while(mEnter.getLength()<0)
+	while(mEnter.getLength()>0)
 	{
+//		mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
 		mEnter.deleteCharacter();
 	}
 	for(std::string::size_type i=0;i<Default.size();i++)

@@ -5,6 +5,7 @@
 #include "PlayerPartBody.h"
 #include "PlayerPartHead.h"
 #include "PlayerLight.h"
+#include "Courser.h"
 
 class Player
 {
@@ -28,6 +29,7 @@ public:
 	void checkCollisionExt();
 	void checkCollisionMagnet();
 	void restartPlayer(sf::Vector2f);
+	void dropFeet();
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -56,13 +58,12 @@ private:
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
-	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandningFeet;
+	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
 	bool mKeys;
 	int magnetSlot, lastKey, thisKey;
-	//Till Eric
-	float mSpeed;
-	float mJump;
-	float mGravity;
+
+	Courser* mCourser;
+
 };
 
 #endif

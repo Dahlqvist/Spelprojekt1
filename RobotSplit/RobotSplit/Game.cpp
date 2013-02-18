@@ -24,23 +24,22 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana1.xml"),
+		mlevel("Bana3.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
-		lastUpdate(0),
+		nextUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2),
-		AwesomeLaser(sf::Vector2f(400, 250), "Blue", true, 253, 0),
-		holder(&AwesomeLaser)
+		mTime(0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
 	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
+	mWindow.setMouseCursorVisible(false);
 	diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/level_1.wav");
+	Music::loadMusic("Music/menu_1.wav");
 }
 
 Game::~Game()
@@ -62,14 +61,13 @@ void Game::update()
 {
 	loops = 0;
 	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>lastUpdate && loops<10)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<10)
 	{
 		mRenderGame=true;
 		loops++;
-		lastUpdate+=1/60.0;
+		nextUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
-		AwesomeLaser.update();
 		mPlayer->update();
 		Objects->update();
 
@@ -130,12 +128,6 @@ void Game::input()
 			mPlayer->reFuel(100);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)){
-			AwesomeLaser.activate();
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
-			AwesomeLaser.shutDownLaser();
-		}
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
@@ -145,7 +137,8 @@ void Game::input()
 
 void Game::moveCamera()
 {
-	//sf::View view(sf::FloatRect(mWindow.getPosition().x, mWindow.getPosition().y, mWindow.getSize().x, mWindow.getSize().y));
+	//sf::View view(sf::FloatRect(mWindow.getPosition().x/2, mWindow.getPosition().y/2, mWindow.getSize().x/2, mWindow.getSize().y/2));
+	//view.setViewport(sf::FloatRect(0, 0, 1, 1));
 	sf::View view(mWindow.getView());
 	sf::FloatRect partRect;
 	
@@ -181,7 +174,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	//mWindow.setView(view);
+	mWindow.setView(view);
 }
 
 void Game::render()
@@ -204,8 +197,8 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
-		mWindow.draw(holder.getSprite());
-		mWindow.draw(AwesomeLaser.getSprite());
+		//mWindow.draw(holder.getSprite());
+		//mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 	}
 }

@@ -54,7 +54,7 @@ sf::Vector2f PlayerPartHead::getPosition()
 } 
 sf::Sprite PlayerPartHead::getSprite()
 {
-	mActiveAnimation->setPosition(sf::Vector2f(mPosition.x, mPosition.y));
+	mActiveAnimation->setPosition(mPosition);
 	//sf::Sprite test(mActiveAnimation->getSprite());
 	//test.scale(0.5, 0.5);
 	return mActiveAnimation->getSprite();

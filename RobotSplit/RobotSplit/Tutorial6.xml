@@ -514,6 +514,54 @@
       </Size>
     </Unit>
 
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>224</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>128</x>
+        <y>224</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>192</x>
+        <y>224</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>256</x>
+        <y>224</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>320</x>
+        <y>224</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>384</x>
+        <y>224</y>
+      </Position>
+    </Unit>
 
     <Unit>
       <Type>"Door"</Type>

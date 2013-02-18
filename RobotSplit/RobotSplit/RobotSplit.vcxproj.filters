@@ -126,6 +126,9 @@
     <ClCompile Include="Audio.cpp">
       <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
+    <ClCompile Include="Courser.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -255,6 +258,9 @@
     </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Header Files\Menu\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Courser.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

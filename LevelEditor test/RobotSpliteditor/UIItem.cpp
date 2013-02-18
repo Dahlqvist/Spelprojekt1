@@ -1,7 +1,7 @@
 #include "UIItem.h"
 
 
-UIItem::UIItem(void):mSelected(false)
+UIItem::UIItem(void):mSelected(false),mChangeable(true)
 {
 }
 
@@ -20,10 +20,9 @@ std::string	UIItem::getName()
 	return	mName;
 }
 
-UIItem::UIItem(std::string Name)
-	:mName(Name),mSelected(false)
+UIItem::UIItem(std::string Name,bool change)
+	:mName(Name),mSelected(false),mChangeable(change)
 {
-	mChangeable=true;
 }
 
 void	UIItem::setChangeablitiy(bool&	NEW)
@@ -34,4 +33,9 @@ void	UIItem::setChangeablitiy(bool&	NEW)
 bool	UIItem::getChangeablitiy()const
 {
 	return	mChangeable;
+}
+
+void	UIItem::setSelect(const bool& NEW)
+{
+	mSelected=NEW;
 }

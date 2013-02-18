@@ -57,7 +57,7 @@ void Sound::loadSound()
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
 	//mSoundMap["Move"].setVolume(20);
-	//mSoundMap["Lava"].setVolume(20);
+	mSoundMap["Lava"].setVolume(20);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)

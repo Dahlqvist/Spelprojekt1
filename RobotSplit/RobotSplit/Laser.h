@@ -19,25 +19,25 @@ public:
 	virtual void rotate(float r){mRotation=r;};
 	float getRotation(){return mRotation;}
 	void setLength(float l);
+	void setSpeed(float s){mSpeed=s;};
 
 	virtual void update();
 	virtual void draw(){};
 	virtual void hit(){};
 	virtual void activate(){mActive=true;};
-	void shutDownLaser(){mActive=false;};
+	void deactivate(){mActive=false;};
 
 protected:
 	sf::Vector2f mSize;
 	float mRotation, mLength, mMaxLength;
 	bool mActive;
+	float mSpeed;
 	
 	sf::Sprite mSprite;
 	Animation* mAnimation;
 	Animation mRedLaser;
 	Animation mBlueLaser;
 	Animation mYellowLaser;
-
-	bool mSolid;
 };
 
 #endif
