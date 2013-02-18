@@ -23,7 +23,7 @@ Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float l
 	{
 		mAnimation=&mYellowLaser;
 	}
-	mId=laserColor;
+	mId="Laser"+laserColor;
 }
 
 void Laser::setLength(float l)

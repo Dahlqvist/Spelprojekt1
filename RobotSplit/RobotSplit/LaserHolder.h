@@ -22,7 +22,7 @@ public:
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
 
-	virtual void update(){if(mActive==true){mActiveSprite=&mStandby;};};
+	virtual void update();
 	virtual void draw(){};
 	virtual void hit();
 	virtual void activate(){mActiveSprite=&mOn;};

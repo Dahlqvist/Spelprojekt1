@@ -23,6 +23,8 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	mResetted=false;
+
+	//Check which sides collide
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
@@ -34,6 +36,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			}
 		}
 	}
+	//Handle collisions
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
@@ -305,8 +308,9 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		player.Win();
 		player.restartPlayer(sf::Vector2f(64, 384));
 	}
-	if (obj2->getId()=="Laser")
+	if (obj2->getId()=="LaserRed" && (player.getId(mPlayerPart)=="PlayerPartFeet" || (player.getId(mPlayerPart)=="PlayerPartBody")))
 	{
+		std::string foo=player.getId(mPlayerPart);
 		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
 	}

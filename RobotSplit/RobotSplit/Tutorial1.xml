@@ -475,8 +475,8 @@
     <Unit>
       <Type>"Laser"</Type>
       <Position>
-        <x>600</x>
-        <y>100</y>
+        <x>200</x>
+        <y>200</y>
       </Position>
       <Id>"Laser1"</Id>
       <Active>true</Active>
