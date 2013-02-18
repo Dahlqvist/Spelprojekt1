@@ -4,6 +4,10 @@ kunna starta ljud/animationer efter att dialogboxen visas helt
 
 Laser:
 Om hjärnan åker in i en laser dör inte spelaren, utan hjärnan åker bara tillbaka
+Vissa lasrar ska aktiveras av knappar (ist för avaktiveras)
 
 Kollision:
 Skicka id ist för siffra till Player::forceMove
+
+Plattformar:
+Ska kunna förstöras ovanifrån och underifrån (vid hopp), men inte från sidorna

@@ -709,5 +709,41 @@
         <y>72</y>
       </Size>
     </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>704</x>
+        <y>126</y>
+      </Position>
+      <Id>"LaserBlue1"</Id>
+      <Active>true</Active>
+      <Length>200</Length>
+      <Rotation>270</Rotation>
+      <Color>"Blue"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>862</x>
+        <y>64</y>
+      </Position>
+      <Id>"LaserRed1"</Id>
+      <Active>true</Active>
+      <Length>200</Length>
+      <Rotation>0</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>920</x>
+        <y>56</y>
+      </Position>
+      <SpriteName>"RedButtonAni"</SpriteName>
+      <Id>"LaserTrigger"</Id>
+      <Target>"LaserRed1"</Target>
+    </Unit>
   </Objects>
 </Level>

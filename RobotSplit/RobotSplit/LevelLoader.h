@@ -25,6 +25,7 @@ private:
 	void	addLine			(Level	&level,xml_node<>* Node);
 	void	addDialogueBox	(Level	&level,xml_node<>* Node);
 	void	addTrigger		(vector<Trigger*> &triggers,std::vector<std::string> &triggerTargets,xml_node<>* Node);
+	void	addLaserDeactivator	(vector<Trigger*> &triggers,std::vector<std::string> &triggerTargets,xml_node<>* Node);
 	void	addUnit			(Level	&level,xml_node<>* Node);
 };
 

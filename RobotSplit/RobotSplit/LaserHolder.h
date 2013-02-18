@@ -25,8 +25,8 @@ public:
 	virtual void update();
 	virtual void draw(){};
 	virtual void hit();
-	virtual void activate(){mActiveSprite=&mOn;};
-	virtual void deactivate(){mActiveSprite=&mOff;};
+	virtual void activate();
+	virtual void deactivate();
 
 protected:
 	float mRotation;

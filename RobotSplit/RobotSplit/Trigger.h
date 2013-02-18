@@ -15,7 +15,7 @@ public:
 	virtual void hitOnce();
 	virtual void activate();
 	virtual void deactivate();
-private:
+protected:
 	Unit* mTriggedObject;
 };
 

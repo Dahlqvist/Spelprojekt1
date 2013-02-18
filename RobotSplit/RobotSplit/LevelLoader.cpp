@@ -18,6 +18,7 @@
 #include "Trigger.h"
 #include "Laser.h"
 #include "LaserHolder.h"
+#include "LaserDeactivator.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -105,6 +106,10 @@ Level	LevelLoader::getLevel()
 		else if(type=="Trigger")
 		{
 			addTrigger(triggers,triggerTargets,Gameobject);
+		}
+		else if(type=="LaserDeactivator")
+		{
+			addLaserDeactivator(triggers,triggerTargets,Gameobject);
 		}
 		else
 		{
@@ -289,7 +294,23 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 	Id=getValue(CurrentChild);
 
 	TempObject=		new Laser(Position, Color, Active, Length, Rotation);
-	Holder=			new LaserHolder(TempObject, Id, sf::Vector2f(VisibilityRange*2, Length+VisibilityRange*2), sf::Vector2f(-VisibilityRange, -VisibilityRange), Active);
+
+	if (Rotation==0)
+	{
+		Holder=		new LaserHolder(TempObject, Id, sf::Vector2f(VisibilityRange*2, Length+VisibilityRange*2), sf::Vector2f(-VisibilityRange, -VisibilityRange), Active);
+	}
+	if (Rotation==90)
+	{
+		Holder=		new LaserHolder(TempObject, Id, sf::Vector2f(Length+VisibilityRange*2, VisibilityRange*2), sf::Vector2f(-Length-VisibilityRange, -VisibilityRange), Active);
+	}
+	if (Rotation==180)
+	{
+		Holder=		new LaserHolder(TempObject, Id, sf::Vector2f(VisibilityRange*2, Length+VisibilityRange*2), sf::Vector2f(-VisibilityRange, -Length-VisibilityRange), Active);
+	}
+	if (Rotation==270)
+	{
+		Holder=		new LaserHolder(TempObject, Id, sf::Vector2f(Length+VisibilityRange*2, VisibilityRange*2), sf::Vector2f(-VisibilityRange, -VisibilityRange), Active);
+	}
 	//Puts the AntiMagnet object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 	level.mObjects.push_back(Holder);
@@ -568,5 +589,60 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	targetObject=getValue(CurrentChild);
 
 	triggers.push_back(new Trigger(Position, Size, Offset, Id, Sprite, 0x0));
+	targets.push_back(targetObject);
+}
+
+void LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Sprite;
+	sf::Vector2f			Position, Size, Offset;
+	std::string				Id;
+	std::string				targetObject;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size vector
+	Size=sf::Vector2f(0,0);
+	Offset=sf::Vector2f(0,0);
+	CurrentChild=	Node->first_node("Size");
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+
+		
+	}
+
+	CurrentChild=Node->first_node("Offset");
+	if (CurrentChild!=0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Offset.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Offset.y=((float)atof(CurrentValue.c_str()));
+	}
+
+	CurrentChild=Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
+	CurrentChild=Node->first_node("Id");
+	Id=getValue(CurrentChild);
+
+	CurrentChild=Node->first_node("Target");
+	targetObject=getValue(CurrentChild);
+
+	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, Sprite, 0x0)));
 	targets.push_back(targetObject);
 }
