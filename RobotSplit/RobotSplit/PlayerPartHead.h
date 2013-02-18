@@ -33,6 +33,7 @@ private:
 	Animation* mActiveAnimation;
 	Animation mBrain;
 	Animation mBrainStuck;
+	Animation mBrainLowered;
 	PlayerPart* mBody;
 	sf::Vector2f mPosition, mShootVector; 
 	std::string mId;

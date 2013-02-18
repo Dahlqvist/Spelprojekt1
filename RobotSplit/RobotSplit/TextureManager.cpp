@@ -102,13 +102,15 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
-	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
+	mTextureMap["StixBrainWall"].loadFromFile("Texture/Stix/brain/stix_brain_on.png");
 
-	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
+	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/brain/stix_brain_off.png");
 
-	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/stix_brain_no_spaceasd.png");
+	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/brain/stix_brain_animation_strip7.png");
 
-	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_stringasd.png");
+	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/brain/stix_brain_error.png");
+
+	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/brain/stix_brain_stringasd.png");
 
 	mTextureMap["StixRocketFuel"].loadFromFile("Texture/Stix/Rocket_Flame_Sprite.png");
 
