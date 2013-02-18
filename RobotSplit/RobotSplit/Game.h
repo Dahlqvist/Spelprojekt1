@@ -4,8 +4,6 @@
 #include "State.h"
 #include "Level.h"
 #include "DialogueBox.h"
-#include "Laser.h"
-#include "LaserHolder.h"
 
 class StateInput;
 class Background;
@@ -26,7 +24,6 @@ public:
 	void input();
 private:
 	void moveCamera();
-
 
 	int mSecurityLevel;
 	StateInput& mStateInput;

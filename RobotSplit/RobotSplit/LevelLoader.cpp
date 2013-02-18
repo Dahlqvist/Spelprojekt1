@@ -18,6 +18,7 @@
 #include "Trigger.h"
 #include "Laser.h"
 #include "LaserHolder.h"
+#include "Meanix.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -105,6 +106,10 @@ Level	LevelLoader::getLevel()
 		else if(type=="Trigger")
 		{
 			addTrigger(triggers,triggerTargets,Gameobject);
+		}
+		else if(type=="Meanix")
+		{
+			addMeanix(RetLevel,Gameobject);
 		}
 		else
 		{
@@ -342,6 +347,36 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 
 	//Creates a Platform object
 	TempObject=		new Platform(Position,Sprite,Size,Offset);
+	//Puts the Platform object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+
+void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Sprite;
+	Meanix				*TempObject;
+	sf::Vector2f			Position, Size, Offset;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size vector
+	
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
+	//Creates a Platform object
+	TempObject=		new Meanix(Position);
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
