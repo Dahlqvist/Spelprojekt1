@@ -77,7 +77,7 @@ void Player::draw(sf::RenderWindow& Window)
 	sf::Vector2f mVec(sf::Mouse::getPosition(Window).x,sf::Mouse::getPosition(Window).y);
 	Window.draw(*mCourser->getSprite(mVec));
 
-	//Window.draw(TempPart->getSprite());
+	Window.draw(TempPart->getSprite());
 }
 void Player::update()
 {
@@ -118,26 +118,13 @@ void Player::update()
 	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
 	{
-		if(mTogether==false){
-			TempPart->setPosition((mHead.getPosition()-TempPart->getPosition())+sf::Vector2f(-24, 32));
-			if(!UnitManager::isCollidedSide(3, 2) && !UnitManager::isCollidedSide(3, 3) && !UnitManager::isCollidedSide(3, 4) && !UnitManager::isCollidedSide(3, 1))
-			{
-				mHead.setMagnetCollided(false);
-			}
-			else{
-				mHead.setMagnetCollided(true);
-			}
-		}
-		else
+		TempPart->setPosition((mHead.getPosition()-TempPart->getPosition())+sf::Vector2f(-24, 32));
+		if(!UnitManager::isCollidedSide(3, 2) && !UnitManager::isCollidedSide(3, 3) && !UnitManager::isCollidedSide(3, 4) && !UnitManager::isCollidedSide(3, 1))
 		{
-			TempPart->setPosition((mHead.getPosition()-TempPart->getPosition())+sf::Vector2f(-24, 32));
-			if(!UnitManager::isCollidedSide(2, 2) && !UnitManager::isCollidedSide(2, 3) && !UnitManager::isCollidedSide(2, 4) && !UnitManager::isCollidedSide(2, 1))
-			{
-				mHead.setMagnetCollided(false);
-			}
-			else{
-				mHead.setMagnetCollided(true);
-			}
+			mHead.setMagnetCollided(false);
+		}
+		else{
+			mHead.setMagnetCollided(true);
 		}
 	}
 	if(mTogether==false && mFeet.getAttached()==true)
@@ -626,18 +613,18 @@ void Player::interact(int action){
 std::vector<sf::Sprite*> Player::getCollisionSprite()
 {
 	std::vector<sf::Sprite*> Parts;
-	if(mTogether==true){
-		mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
-		*Temp1=mSprite;
-		Parts.push_back(Temp1);
-		if(mHeadless==true){
-			*Temp2=mHead.getSprite();
-			Parts.push_back(Temp2);
-			*Temp4=TempPart->getSprite();
-			Parts.push_back(Temp4);
-		}
-	}
-	else{
+	//if(mTogether==true){
+	//	mSprite.setPosition(mFeet.getPosition() + sf::Vector2f(0, -64));
+	//	*Temp1=mSprite;
+	//	Parts.push_back(Temp1);
+	//	if(mHeadless==true){
+	//		*Temp2=mHead.getSprite();
+	//		Parts.push_back(Temp2);
+	//		*Temp4=TempPart->getSprite();
+	//		Parts.push_back(Temp4);
+	//	}
+	//}
+	//else{
 		*Temp1=mFeet.getSprite();
 		Parts.push_back(Temp1);
 		*Temp2=mBody.getSprite();
@@ -646,14 +633,14 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		Parts.push_back(Temp3);
 		*Temp4=TempPart->getSprite();
 		Parts.push_back(Temp4);
-	}
+	//}
 	return Parts;
 }
 void Player::forceMove(int part, sf::Vector2f Vec)
 {
 	if(Vec!=sf::Vector2f(0, 0))
 	{
-		if(part==0)
+		if(part==0 && mTogether==false)
 		{
 			if(Vec.y!=0 && mFeet.getAttachedWall()==false)
 			{
@@ -661,7 +648,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 			}
 			mFeet.forceMove(Vec);
 		}
-		else if(part==1)
+		else if(part==1 && mTogether==false)
 		{
 			if(Vec.y!=0)
 			{
