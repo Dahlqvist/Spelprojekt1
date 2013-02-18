@@ -37,7 +37,6 @@ void Sound::loadSound()
 	mBufferMap["Death"].loadFromFile("Sound/general_death_proto.wav");
 	mBufferMap["HeadStuck"].loadFromFile("Sound/head_stuck_proto.wav");
 	mBufferMap["Jump"].loadFromFile("Sound/jump_proto.wav");
-	mBufferMap["Lava"].loadFromFile("Sound/lava_proto.wav");
 	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
 	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/magnet_stuck_wall_proto.wav");
 	mBufferMap["ShootHead"].loadFromFile("Sound/shoot_head_proto.wav");
@@ -50,14 +49,12 @@ void Sound::loadSound()
 	mSoundMap["Death"].setBuffer(mBufferMap["Death"]);
 	mSoundMap["HeadStuck"].setBuffer(mBufferMap["HeadStuck"]);
 	mSoundMap["Jump"].setBuffer(mBufferMap["Jump"]);
-	mSoundMap["Lava"].setBuffer(mBufferMap["Lava"]);
 	mSoundMap["MagnetLetGo"].setBuffer(mBufferMap["MagnetLetGo"]);
 	mSoundMap["MagnetStuckWall"].setBuffer(mBufferMap["MagnetStuckWall"]);
 	mSoundMap["ShootHead"].setBuffer(mBufferMap["ShootHead"]);
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
 	//mSoundMap["Move"].setVolume(20);
-	mSoundMap["Lava"].setVolume(20);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
