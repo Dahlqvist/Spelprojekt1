@@ -482,7 +482,7 @@
       <Active>true</Active>
       <Length>200</Length>
       <Rotation>0</Rotation>
-      <Color>"Red"</Color>
+      <Color>"Blue"</Color>
       <VisibilityRange>100</VisibilityRange>
     </Unit>
   </Objects>
