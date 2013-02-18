@@ -277,6 +277,43 @@ void TextureManager::loadTexture()
 	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
 
 	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
+
+	//Initializing menu
+	//Bakgrunder
+	mTextureMap["Main"].loadFromFile("Texture/Menu/Background/Main.png");
+	mTextureMap["Ingame"].loadFromFile("Texture/Menu/Background/Ingame.png");
+
+	//Knappar
+	mTextureMap["Audio"].loadFromFile("Texture/Menu/Audio.png");
+	mTextureMap["Back"].loadFromFile("Texture/Menu/Back.png");
+	mTextureMap["Blip"].loadFromFile("Texture/Menu/Blip.png");
+	mTextureMap["Controls"].loadFromFile("Texture/Menu/Controls.png");
+	mTextureMap["EffectMuteChecked"].loadFromFile("Texture/Menu/Effect_Mute_Checked.png");
+	mTextureMap["EffectMuteUnChecked"].loadFromFile("Texture/Menu/Effect_Mute_Unchecked.png");
+	mTextureMap["EffectVolym"].loadFromFile("Texture/Menu/Effect_Volym.png");
+	mTextureMap["MusicMuteUnChecked"].loadFromFile("Texture/Menu/Music_Mute.png");
+	mTextureMap["MusicMuteChecked"].loadFromFile("Texture/Menu/Music_Mute_Checked.png");
+	mTextureMap["MusicVolym"].loadFromFile("Texture/Menu/Music_Volym.png");
+	mTextureMap["NewGame"].loadFromFile("Texture/Menu/New_Game.png");
+	mTextureMap["No"].loadFromFile("Texture/Menu/No.png");
+	mTextureMap["Options"].loadFromFile("Texture/Menu/Options.png");
+	mTextureMap["Quit"].loadFromFile("Texture/Menu/Quit.png");
+	mTextureMap["QuitToMenu"].loadFromFile("Texture/Menu/Quit_To_Menu.png");
+	mTextureMap["Restart"].loadFromFile("Texture/Menu/Restart.png");
+	mTextureMap["Resume"].loadFromFile("Texture/Menu/Resume.png");
+	mTextureMap["Slider"].loadFromFile("Texture/Menu/Slider.png");
+	mTextureMap["SliderIcon"].loadFromFile("Texture/Menu/Slider_Icon.png");
+	mTextureMap["StoryMode"].loadFromFile("Texture/Menu/Story_Mode.png");
+	mTextureMap["Sure"].loadFromFile("Texture/Menu/Sure.png");
+	mTextureMap["TimeTrial"].loadFromFile("Texture/Menu/Time_Trial.png");
+	mTextureMap["TimerChecked"].loadFromFile("Texture/Menu/Timer_Checked.png");
+	mTextureMap["TimerUnchecked"].loadFromFile("Texture/Menu/Timer_Unchecked.png");
+	mTextureMap["Tutorial"].loadFromFile("Texture/Menu/Tutorial.png");
+	mTextureMap["Yes"].loadFromFile("Texture/Menu/Yes.png");
+	mTextureMap["Numbers"].loadFromFile("Texture/Menu/Numbers.png");
+	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
+	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
+
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

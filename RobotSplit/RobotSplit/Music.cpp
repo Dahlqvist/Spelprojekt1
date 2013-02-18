@@ -2,9 +2,12 @@
 //Skapar statiska variabler.
 
 sf::Music Music::mMusic;
+float Music::mVolyme;
 
 Music::Music()
-{}
+{
+	mVolyme = 100;
+}
 
 Music::~Music()
 {}
@@ -29,7 +32,7 @@ const void Music::playMusic()
 {
 	if(mMusic.getStatus() == sf::Music::Stopped)
 	{
-		mMusic.setVolume(10);
+		mMusic.setVolume(mVolyme);
 		mMusic.play();
 		mMusic.setLoop(true);
 	}
@@ -45,4 +48,14 @@ const void Music::pauseMusic()
 const void Music::stopMusic()
 {
 	mMusic.stop();
+}
+
+const void Music::changeVolyme(float q)
+{
+	mVolyme = q;
+}
+
+const float Music::getVolyme()
+{
+	return mMusic.getVolume();
 }
