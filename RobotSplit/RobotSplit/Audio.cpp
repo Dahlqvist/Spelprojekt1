@@ -32,12 +32,12 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mBlipPos(240, 150),
 			currentBackground(&mMainBackground),
 			currentSelection(&mBack),
-			mEVolyme(100),
+			mEVolyme(53),
 			mMVolyme(100),
 			mChangeVolyme(false),
-			mEffectNr1(0),
-			mEffectNr10(0),
-			mEffectNr100(1)
+			mEffectNr1(3),
+			mEffectNr10(5),
+			mEffectNr100(0)
 {
 	
 	setSpritePosition();
@@ -114,8 +114,16 @@ void Audio::update()
 		currentSelection = &mMusicMuteUnchecked;
 	else if(mStatus == 4)
 		currentSelection = &mBack;
-	currentSelection->setCurrentFrame(1);
-	currentSelection->update();
+	if(mChangeVolyme == true)
+	{
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+	}
+	else
+	{
+		currentSelection->setCurrentFrame(1);
+		currentSelection->update();
+	}
 	updateNumbers();
 	input();
 }
@@ -150,53 +158,80 @@ void Audio::input()
 	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
 	if(mTimer > mDelay)
 	{
-		if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
-		{
-			mBlipPos.y += 100;
-			mBlip.setPosition(mBlipPos);
-			mStatus++;
-			currentSelection->setCurrentFrame(0);
-			currentSelection->update();
-		}
-		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
-		{			
-			if(mStatus > 0)
-				mBlipPos.y -= 100;
-			mBlip.setPosition(mBlipPos);
-			mStatus--;
-			currentSelection->setCurrentFrame(0);
-			currentSelection->update();
-		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-		{
-			if(mStatus == 0)
-			{
-				mChangeVolyme = !mChangeVolyme;
-				Sound::changeVolume(mEVolyme);
-			}
-			else if(mStatus == 1)
-			{
-				mChangeVolyme = !mChangeVolyme;
-				Music::changeVolyme(mMVolyme);
-			}
-			else if(mStatus == 2)
-			{}
-			else if(mStatus == 3)
-			{}
-			else if(mStatus == 4)
-				mStateInput.changeState("Last");
-		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && mChangeVolyme == true)
-		{
-			lowerVolyme();
-			lowerNumbers(true);
-		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && mChangeVolyme == true)
-		{
-			raiseVolyme();
-			raiseNumbers(true);
-		}
+		changeSelection(mChoices);
+		volymeInput();
 		MenuClock::restartClock();
+	}
+}
+
+void Audio::changeSelection(int choices)
+{
+	int mChoices = choices;
+	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+	{
+		mBlipPos.y += 100;
+		mBlip.setPosition(mBlipPos);
+		mStatus++;
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+	}
+	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+	{			
+		if(mStatus > 0)
+			mBlipPos.y -= 100;
+		mBlip.setPosition(mBlipPos);
+			mStatus--;
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	{
+		if(mStatus == 0)
+		{
+			mChangeVolyme = !mChangeVolyme;
+			if(mChangeVolyme == true)
+			{
+				mEffectNr1 += 10;
+				mEffectNr10 += 10;
+				mEffectNr100 += 10;
+				currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();
+			}
+			else
+			{
+				mEffectNr1 -= 10;
+				mEffectNr10 -= 10;
+				mEffectNr100 -= 10;
+				currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();
+			}
+			Sound::changeVolume(mEVolyme);
+		}
+		else if(mStatus == 1)
+		{
+			mChangeVolyme = !mChangeVolyme;
+			Music::changeVolyme(mMVolyme);
+		}
+		else if(mStatus == 2)
+		{}
+		else if(mStatus == 3)
+		{}
+		else if(mStatus == 4)
+			mStateInput.changeState("Last");
+	}
+}
+
+void Audio::volymeInput()
+{
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && mChangeVolyme == true)
+	{
+		lowerNumbers(true);
+		lowerVolyme();		
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && mChangeVolyme == true)
+	{
+		raiseNumbers(true);
+		raiseVolyme();
 	}
 }
 
@@ -230,14 +265,14 @@ void Audio::lowerVolyme()
 
 void Audio::raiseNumbers(bool effect)
 {
-	if(effect == true)
+	if((effect == true) && (mEVolyme != 100))
 	{
 		mEffectNr1++;
-		if(mEffectNr1 >=10)
+		if(mEffectNr1 >= 10)
 		{
 			mEffectNr1 = 0;
 			mEffectNr10++;
-			if(mEffectNr10 >=10)
+			if(mEffectNr10 >= 10)
 			{
 				mEffectNr10 = 0;
 				mEffectNr100 = 1;
@@ -262,18 +297,20 @@ void Audio::lowerNumbers(bool effect)
 {
 	if(effect == true)
 	{
-		mEffectNr1--;
-		if(mEffectNr1 < 0)
+		if(mEVolyme > 0)
 		{
-			mEffectNr1 = 10;
-			mEffectNr10--;
-			if(mEffectNr10 < 10)
+			mEffectNr1--;
+			if(mEffectNr1 < 0)
 			{
-				mEffectNr10 = 10;
-				mEffectNr100 = 0;
-			}
+				mEffectNr1 = 9;
+				mEffectNr10--;
+				if(mEffectNr10 < 0)
+				{
+					mEffectNr10 = 9;
+					mEffectNr100 = 0;
+				}
+			}	
 		}
-		
 	}
 }
 

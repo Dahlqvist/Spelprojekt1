@@ -11,7 +11,7 @@ StateManager::StateManager()
 	
 {
 	loadState();
-	pushState(mMenu);
+	pushState(mGame);
 }
 
 void StateManager::loadState()

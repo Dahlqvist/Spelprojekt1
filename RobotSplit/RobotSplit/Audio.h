@@ -17,6 +17,8 @@ public:
 	
 private:
 	void input();
+	void changeSelection(int choices);
+	void volymeInput();
 	void raiseVolyme();
 	void raiseNumbers(bool effect);
 	void lowerNumbers(bool effect);

@@ -18,6 +18,7 @@ int main()
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
 	mWindow.setFramerateLimit(60);
+	Splash::runSplash(false);
 	while(mWindow.isOpen())
 	{
 		sf::Event event;
