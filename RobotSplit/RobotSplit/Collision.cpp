@@ -27,7 +27,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	//Check which sides collide
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
+		if (objects[j]->getId()!="PlayerPart"/* && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead")*/)
 		{
 			sf::FloatRect collisionRect;
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
@@ -276,26 +276,29 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 	}
 	//If the feet and body is connected, but head is away
 	//std::cout << player.getCollisionSprite().size() << std::endl;
-	if(player.getCollisionSprite().size()==3)
-	{
-		if(mPlayerPart==1)
-		{
-			player.forceMove(2, moveDistance);
-		}
-		else if(mPlayerPart==0){
-			player.forceMove(5, moveDistance);
-		}
-	}
-	//If the feet, body and head is connected
-	else if(player.getCollisionSprite().size()==1)
-	{
-		player.forceMove(-1, moveDistance);
-	}
-	else
-	{
-		if(mPlayerPart!=3)
+	if(mPlayerPart!=3){
 		player.forceMove(mPlayerPart, moveDistance);
 	}
+	//if(player.getCollisionSprite().size()==3)
+	//{
+	//	if(mPlayerPart==1)
+	//	{
+	//		player.forceMove(2, moveDistance);
+	//	}
+	//	else if(mPlayerPart==0){
+	//		player.forceMove(5, moveDistance);
+	//	}
+	//}
+	////If the feet, body and head is connected
+	//else if(player.getCollisionSprite().size()==1)
+	//{
+	//	player.forceMove(-1, moveDistance);
+	//}
+	//else
+	//{
+	//	if(mPlayerPart!=3)
+	//	player.forceMove(mPlayerPart, moveDistance);
+	//}
 	//playerSprite->setPosition(moveDistance);
 
 	if (obj2->getId()=="Lava")
