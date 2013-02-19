@@ -129,10 +129,10 @@
     <ClCompile Include="Courser.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="LaserDeactivator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Meanix.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserDeactivator.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
   </ItemGroup>
@@ -268,10 +268,10 @@
     <ClInclude Include="Courser.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="LaserDeactivator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Meanix.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserDeactivator.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
   </ItemGroup>

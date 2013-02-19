@@ -19,11 +19,10 @@ int main()
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
-	mWindow.setFramerateLimit(60);
 	Splash::runSplash(false);
 
 	sf::Clock lastUpdate;
-	float nextUpdate = 0;
+	float nextUpdate = 0.0;
 
 	while(mWindow.isOpen())
 	{
@@ -46,14 +45,16 @@ int main()
 			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 5)
 			{
 				loops++;
-				nextUpdate +=1/60;
+				nextUpdate +=1/60.0;
 				render = true;
 				statemanager.updateState();
 			}
 			if(render)
+			{
 				statemanager.renderState();
-			lastUpdate.restart();
-			nextUpdate = 0;
+				lastUpdate.restart();
+				nextUpdate = 0;
+			}
 		}
 	}
 

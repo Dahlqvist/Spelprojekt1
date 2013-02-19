@@ -30,9 +30,7 @@ private:
 	Level mlevel;
 	Player* mPlayer;
 	UnitManager* Objects;
-	sf::Clock lastUpdateClock;
 	bool mRenderGame;
-	double nextUpdate;
 	int loops;
 	sf::RenderWindow& mWindow;
 	sf::Clock TestTimer;
