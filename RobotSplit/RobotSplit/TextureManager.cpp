@@ -8,8 +8,7 @@ TextureManager::TextureManager()
 }
 
 TextureManager::~TextureManager()
-{
-}
+{}
 
 TextureManager&	TextureManager::getManager()
 {
