@@ -57,14 +57,17 @@ Game::~Game()
 
 void Game::update()
 {
-		Game::input();
-		//window.setKeyRepeatEnabled(true);
-		mPlayer->update();
-		Objects->update();
+	
 
-		moveCamera();
+	Game::input();
+	//window.setKeyRepeatEnabled(true);
+	mPlayer->update();
+	Objects->update();
 
-		//runCollisions(Objects.getUnits(), *mPlayer);
+
+	moveCamera();
+
+	//runCollisions(Objects.getUnits(), *mPlayer);
 }
 void Game::input()
 {

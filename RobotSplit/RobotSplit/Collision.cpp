@@ -284,8 +284,15 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 
 	if (obj2->getId()=="Lava")
 	{
-		player.restartPlayer(sf::Vector2f(64, 384));
-		mResetted=true;
+		if (player.getId(mPlayerPart)!="PlayerPartHead")
+		{
+			player.restartPlayer(sf::Vector2f(64, 384));
+			mResetted=true;
+		}
+		else
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
 	}
 	if(obj2->getId()=="Door" && player.getTogether()==true && player.getId(mPlayerPart)!="PlayerPartHead")
 	{
