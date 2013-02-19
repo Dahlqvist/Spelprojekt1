@@ -159,6 +159,7 @@ void TextureManager::loadTexture()
 
 	//mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_Middle_dark.png");
 
+
 	//mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	//mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
 	//mTextureMap["Tile3"].loadFromFile("Texture/Enviroment/tiles/tile3_dark.png");
@@ -168,6 +169,10 @@ void TextureManager::loadTexture()
 	//mTextureMap["Tile7"].loadFromFile("Texture/Enviroment/tiles/tile7_dark.png");
 	//mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	//mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
+
+	//mTextureMap["Break1"].loadFromFile("Texture/Enviroment/Tiles/break3_dark.png");
+	//mTextureMap["Break2"].loadFromFile("Texture/Enviroment/Tiles/break2_dark.png");
+	//mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
 
 	//mTextureMap["TileL1a"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P2.png");
 	//mTextureMap["TileL1b"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P3&P7.png");
@@ -264,6 +269,10 @@ void TextureManager::loadTexture()
 	//mTextureMap["RamPipeLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_L_Pipe.png");
 
 	//mTextureMap["RamPipeRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_R_Pipe.png");
+
+	//mTextureMap["RamPipeLeftWOPipe1"].loadFromFile("Texture/Enviroment/ram_level2_L_dark.png");
+
+	//mTextureMap["RamPipeRightWOPipe1"].loadFromFile("Texture/Enviroment/ram_level2_R_dark.png");
 
 	//mTextureMap["Line"].loadFromFile("Texture/Line.png");
 

@@ -45,9 +45,9 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
 				//Hit once per collision
-				if (!objects[j]->isHit())
+				if (!objects[j]->wasHit())
 				{
-					objects[j]->setHit(true);
+					objects[j]->setWasHit(true);
 					objects[j]->setHitThisFrame(true);
 				}
 				if (objects[j]->isHitThisFrame())
@@ -57,13 +57,10 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 				}
 
 				//Hit every frame during collision
+				objects[j]->setHit(true);
 				objects[j]->hit();
 
 				handleCollisions(player, objects[j], collisionRect);
-			}
-			else 
-			{
-				objects[j]->setHit(false);
 			}
 		}
 	}
@@ -220,10 +217,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
 					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(BOTTOM), mCollidedSides.end());
-					}
 				}
 				//If player is below object
 				else
@@ -232,10 +225,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 					{
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
-					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(TOP), mCollidedSides.end());
 					}
 				}
 			}
@@ -253,10 +242,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
 					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(RIGHT), mCollidedSides.end());
-					}
 				}
 				//If player is right of object
 				else
@@ -265,10 +250,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 					{
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
-					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(LEFT), mCollidedSides.end());
 					}
 				}
 			}
@@ -303,8 +284,15 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 
 	if (obj2->getId()=="Lava")
 	{
-		player.restartPlayer(sf::Vector2f(64, 384));
-		mResetted=true;
+		if (player.getId(mPlayerPart)!="PlayerPartHead")
+		{
+			player.restartPlayer(sf::Vector2f(64, 384));
+			mResetted=true;
+		}
+		else
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
 	}
 	if(obj2->getId()=="Door" && player.getTogether()==true && player.getId(mPlayerPart)!="PlayerPartHead")
 	{

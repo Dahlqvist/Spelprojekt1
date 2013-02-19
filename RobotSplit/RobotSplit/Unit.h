@@ -34,13 +34,16 @@ public:
 	virtual bool isHit(){return mHit;};
 	virtual void setHit(bool hit){mHit=hit;};
 
+	virtual bool wasHit(){return mWasHit;};
+	virtual void setWasHit(bool hit){mWasHit=hit;};
+
 	virtual bool isHitThisFrame(){return mHitThisFrame;};
 	virtual void setHitThisFrame(bool hit){mHitThisFrame=hit;};
 
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
 
-	virtual void update(){};
+	virtual void update();
 	virtual void draw();
 	virtual void hit(){};
 	virtual void hitOnce(){};
@@ -53,7 +56,7 @@ protected:
 	sf::Sprite mSprite;
 	Animation* mAnimation;
 
-	bool mSolid, mHit, mHitThisFrame;
+	bool mSolid, mHit, mHitThisFrame, mWasHit;
 };
 
 #endif

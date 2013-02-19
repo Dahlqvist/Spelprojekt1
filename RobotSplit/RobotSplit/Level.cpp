@@ -91,6 +91,7 @@ void	Level::deletePointers()
 		delete mPlayer;
 	}
 	mObjects.clear();
+	mDialogueBoxes.clear();
 	mBackground.deletePointer();
 }
 

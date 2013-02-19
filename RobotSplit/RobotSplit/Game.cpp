@@ -24,17 +24,15 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana2.xml"),
+		mlevel("Bana1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
-		nextUpdate(0),
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
-	lastUpdateClock.restart();
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 	diaBox = mlevel.getDialogueBoxes();
@@ -59,14 +57,17 @@ Game::~Game()
 
 void Game::update()
 {
-		Game::input();
-		//window.setKeyRepeatEnabled(true);
-		mPlayer->update();
-		Objects->update();
+	
 
-		moveCamera();
+	Game::input();
+	//window.setKeyRepeatEnabled(true);
+	mPlayer->update();
+	Objects->update();
 
-		//runCollisions(Objects.getUnits(), *mPlayer);
+
+	moveCamera();
+
+	//runCollisions(Objects.getUnits(), *mPlayer);
 }
 void Game::input()
 {
@@ -182,7 +183,7 @@ void Game::render()
 	mPlayer->resetAnimations();
 	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	{
-		mWindow.draw(diaBox[i]->getSprite());
+		//mWindow.draw(diaBox[i]->getSprite());
 		mWindow.draw(diaBox[i]->getText());
 	}
 	//mWindow.draw(diaBox->getText());

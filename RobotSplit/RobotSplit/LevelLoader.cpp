@@ -326,9 +326,10 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue,Sprite;
+	string					CurrentValue, Sprite;
 	Platform				*TempObject;
 	sf::Vector2f			Position, Size, Offset;
+	int						Lives;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -368,8 +369,22 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	CurrentChild=	Node->first_node("SpriteName");
 	Sprite=getValue(CurrentChild);
 
+	Lives=-1;
+	CurrentChild=	Node->first_node("Lives");
+	if (CurrentChild!=0x0)
+	{
+		Lives=atoi(getValue(CurrentChild).c_str());
+	}
+
 	//Creates a Platform object
-	TempObject=		new Platform(Position,Sprite,Size,Offset);
+	if (Lives==-1)
+	{
+		TempObject=		new Platform(Position,Sprite,Size,Offset);
+	}
+	else
+	{
+		TempObject=		new Platform(Lives,Position,Size,Offset);
+	}
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
