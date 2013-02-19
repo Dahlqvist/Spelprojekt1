@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial1.xml"),
+		mlevel("Bana2.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		nextUpdate(0),
@@ -182,7 +182,7 @@ void Game::render()
 	mPlayer->resetAnimations();
 	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	{
-		mWindow.draw(diaBox[i]->getSprite());
+		//mWindow.draw(diaBox[i]->getSprite());
 		mWindow.draw(diaBox[i]->getText());
 	}
 	//mWindow.draw(diaBox->getText());

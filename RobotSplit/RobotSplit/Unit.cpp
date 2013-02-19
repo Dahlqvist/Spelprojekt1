@@ -61,3 +61,12 @@ void Unit::draw()
 	}
 	mSprite.setPosition(mPosition);
 }
+
+void Unit::update()
+{
+	if (mHit==false)
+	{
+		mWasHit=false;
+	}
+	mHit=false;
+}

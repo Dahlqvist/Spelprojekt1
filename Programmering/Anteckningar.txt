@@ -9,3 +9,7 @@ Skicka id ist för siffra till Player::forceMove
 
 Plattformar:
 Ska kunna förstöras ovanifrån och underifrån (vid hopp), men inte från sidorna
+
+Akuta fixar:
+Kunna sätta sig på väggen längst ner till höger
+Inte hoppa direkt när man sätter sig på magneten vid huvudet

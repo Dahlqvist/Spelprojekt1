@@ -51,9 +51,11 @@ int main()
 				statemanager.updateState();
 			}
 			if(render)
+			{
 				statemanager.renderState();
-			lastUpdate.restart();
-			nextUpdate = 0;
+				lastUpdate.restart();
+				nextUpdate = 0;
+			}
 		}
 	}
 

@@ -246,6 +246,18 @@
       <Type>"Platform"</Type>
       <SpriteName>"Tile1"</SpriteName>
       <Position>
+        <x>1216</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile1"</SpriteName>
+      <Position>
         <x>832</x>
         <y>384</y>
       </Position>
@@ -712,7 +724,7 @@
         <y>72</y>
       </Size>
     </Unit>
-    <Unit>
+    <!--<Unit>
       <Type>"Ram"</Type>
       <SpriteName>"RamPipeRight1"</SpriteName>
       <Position>
@@ -723,7 +735,7 @@
         <x>78</x>
         <y>72</y>
       </Size>
-    </Unit>
+    </Unit>-->
     <Unit>
       <Type>"Laser"</Type>
       <Position>

@@ -45,9 +45,9 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
 			{
 				//Hit once per collision
-				if (!objects[j]->isHit())
+				if (!objects[j]->wasHit())
 				{
-					objects[j]->setHit(true);
+					objects[j]->setWasHit(true);
 					objects[j]->setHitThisFrame(true);
 				}
 				if (objects[j]->isHitThisFrame())
@@ -57,6 +57,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 				}
 
 				//Hit every frame during collision
+				objects[j]->setHit(true);
 				objects[j]->hit();
 
 				handleCollisions(player, objects[j], collisionRect);
