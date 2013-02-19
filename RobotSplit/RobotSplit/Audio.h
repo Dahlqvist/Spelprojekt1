@@ -18,6 +18,7 @@ public:
 private:
 	void input();
 	void changeSelection(int choices);
+	void select();
 	void volymeInput();
 	void raiseVolyme();
 	void raiseNumbers(bool effect);
@@ -34,11 +35,9 @@ private:
 	Animation mInGameBackground;
 	Animation mBack;
 	Animation mBlip;
-	Animation mEffectMuteChecked;
-	Animation mEffectMuteUnchecked;
+	Animation mEffectMute;
 	Animation mEffectVolyme;
-	Animation mMusicMuteChecked;
-	Animation mMusicMuteUnchecked;
+	Animation mMusicMute;
 	Animation mMusicVolyme;
 	Animation mEffectNumbers1;
 	Animation mEffectNumbers10;
@@ -59,6 +58,12 @@ private:
 	int mEffectNr1;
 	int mEffectNr10;
 	int mEffectNr100;
+	int mEffectHighlightNr;
+
+	int mMusicNr1;
+	int mMusicNr10;
+	int mMusicNr100;
+	int mMusicHighlightNr;
 
 	sf::Vector2f mBlipPos;
 

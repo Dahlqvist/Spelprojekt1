@@ -21,10 +21,8 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicNumbers1("Numbers", 1, 20),
 			mMusicNumbers10("Numbers", 1, 20),
 			mMusicNumbers100("Numbers", 1, 20),
-			mEffectMuteChecked("EffectMuteChecked", 1, 2),
-			mEffectMuteUnchecked("EffectMuteUnChecked", 1, 2),
-			mMusicMuteChecked("MusicMuteChecked", 1, 2),
-			mMusicMuteUnchecked("MusicMuteUnChecked", 1, 2),
+			mEffectMute("EffectMute", 1, 4),
+			mMusicMute("MusicMute", 1, 4),
 			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
@@ -32,17 +30,21 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mBlipPos(240, 150),
 			currentBackground(&mMainBackground),
 			currentSelection(&mBack),
-			mEVolyme(53),
+			mEVolyme(100),
 			mMVolyme(100),
 			mChangeVolyme(false),
-			mEffectNr1(3),
-			mEffectNr10(5),
-			mEffectNr100(0)
-{
-	
+			mEffectNr1(0),
+			mEffectNr10(0),
+			mEffectNr100(1),
+			mEffectHighlightNr(0),
+			mMusicNr1(0),
+			mMusicNr10(0),
+			mMusicNr100(1),
+			mMusicHighlightNr(0)
+
+{	
 	setSpritePosition();
 	setAnimate();
-
 }
 
 void Audio::setSpritePosition()
@@ -67,8 +69,8 @@ void Audio::setSpritePosition()
 	mMusicNumbers1.setPosition(sf::Vector2f(mMusicNumbers10.getSprite().getPosition().x + mMusicNumbers10.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 	mMusicRightArrow.setPosition(sf::Vector2f(mMusicNumbers1.getSprite().getPosition().x + mMusicNumbers1.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 
-	mEffectMuteUnchecked.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
-	mMusicMuteUnchecked.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 450));
+	mEffectMute.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
+	mMusicMute.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 450));
 	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 550));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
@@ -76,16 +78,14 @@ void Audio::setSpritePosition()
 
 void Audio::setAnimate()
 {
-	mEffectMuteChecked.setAnimate(false);
-	mEffectMuteUnchecked.setAnimate(false);
+	mEffectMute.setAnimate(false);
 	mEffectVolyme.setAnimate(false);
 	mEffectNumbers1.setAnimate(false);
 	mEffectNumbers10.setAnimate(false);
 	mEffectNumbers100.setAnimate(false);
 	mEffectLeftArrow.setAnimate(false);
 	mEffectRightArrow.setAnimate(false);
-	mMusicMuteChecked.setAnimate(false);
-	mMusicMuteUnchecked.setAnimate(false);
+	mMusicMute.setAnimate(false);
 	mMusicVolyme.setAnimate(false);
 	mMusicNumbers1.setAnimate(false);
 	mMusicNumbers10.setAnimate(false);
@@ -109,9 +109,9 @@ void Audio::update()
 	else if(mStatus == 1)
 		currentSelection = &mMusicVolyme;
 	else if(mStatus == 2)
-		currentSelection = &mEffectMuteUnchecked;
+		currentSelection = &mEffectMute;
 	else if(mStatus == 3)
-		currentSelection = &mMusicMuteUnchecked;
+		currentSelection = &mMusicMute;
 	else if(mStatus == 4)
 		currentSelection = &mBack;
 	if(mChangeVolyme == true)
@@ -134,8 +134,8 @@ void Audio::render()
 	mWindow.draw(currentBackground->getSprite());
 	mWindow.draw(mEffectVolyme.getSprite());
 	mWindow.draw(mMusicVolyme.getSprite());
-	mWindow.draw(mEffectMuteUnchecked.getSprite());
-	mWindow.draw(mMusicMuteUnchecked.getSprite());
+	mWindow.draw(mEffectMute.getSprite());
+	mWindow.draw(mMusicMute.getSprite());
 	mWindow.draw(mEffectNumbers1.getSprite());
 	mWindow.draw(mEffectNumbers10.getSprite());
 	mWindow.draw(mEffectNumbers100.getSprite());
@@ -159,6 +159,7 @@ void Audio::input()
 	if(mTimer > mDelay)
 	{
 		changeSelection(mChoices);
+		select();
 		volymeInput();
 		MenuClock::restartClock();
 	}
@@ -167,7 +168,7 @@ void Audio::input()
 void Audio::changeSelection(int choices)
 {
 	int mChoices = choices;
-	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
 	{
 		mBlipPos.y += 100;
 		mBlip.setPosition(mBlipPos);
@@ -175,7 +176,7 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
 	{			
 		if(mStatus > 0)
 			mBlipPos.y -= 100;
@@ -184,36 +185,54 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+}
+
+void Audio::select()
+{
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
 		if(mStatus == 0)
 		{
 			mChangeVolyme = !mChangeVolyme;
 			if(mChangeVolyme == true)
 			{
-				mEffectNr1 += 10;
-				mEffectNr10 += 10;
-				mEffectNr100 += 10;
+				mEffectHighlightNr = 10;
 				currentSelection ->setCurrentFrame(0);
 				currentSelection ->update();
 			}
 			else
 			{
-				mEffectNr1 -= 10;
-				mEffectNr10 -= 10;
-				mEffectNr100 -= 10;
+				mEffectHighlightNr = 0;
 				currentSelection ->setCurrentFrame(0);
 				currentSelection ->update();
 			}
+			Sound::pauseSound("Lava");
 			Sound::changeVolume(mEVolyme);
+			Sound::playSound("Lava");
 		}
 		else if(mStatus == 1)
 		{
 			mChangeVolyme = !mChangeVolyme;
+			if(mChangeVolyme == true)
+			{
+				mMusicHighlightNr = 10;
+				currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();
+			}
+			else
+			{
+				mMusicHighlightNr = 0;
+				currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();
+			}
+			Music::pauseMusic();
 			Music::changeVolyme(mMVolyme);
+			Music::playMusic();
 		}
 		else if(mStatus == 2)
-		{}
+		{
+			//currentSelection ->setCurrentFrame(
+		}
 		else if(mStatus == 3)
 		{}
 		else if(mStatus == 4)
@@ -223,14 +242,20 @@ void Audio::changeSelection(int choices)
 
 void Audio::volymeInput()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && mChangeVolyme == true)
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) && mChangeVolyme == true)
 	{
-		lowerNumbers(true);
+		if(mStatus == 0)
+			lowerNumbers(true);
+		else if(mStatus == 1)
+			lowerNumbers(false);
 		lowerVolyme();		
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && mChangeVolyme == true)
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && mChangeVolyme == true)
 	{
-		raiseNumbers(true);
+		if(mStatus == 0)
+			raiseNumbers(true);
+		else if(mStatus == 1)
+			raiseNumbers(false);
 		raiseVolyme();
 	}
 }
@@ -280,48 +305,71 @@ void Audio::raiseNumbers(bool effect)
 		}
 	}
 	//Music
-	//else
-	//{
-	//	mEffectNr1++;
-	//	if(mEffectNr1 >=10)
-	//	{
-	//		mEffectNr1 = 0;
-	//		mEffectNr10++;
-	//		if(mEffectNr10 >=10)
-	//		{
-	//			mEffectNr10 = 0;
-	//			mEffectNr100 = 1;
+	else if((effect == false && mMVolyme != 100))
+	{
+		mMusicNr1++;
+		if(mMusicNr1 >= 10)
+		{
+			mMusicNr1 = 0;
+			mMusicNr10++;
+			if(mMusicNr10 >= 10)
+			{
+				mMusicNr10 = 0;
+				mMusicNr100 = 1;
+			}
+		}
+	}
 }
 
 void Audio::lowerNumbers(bool effect)
 {
-	if(effect == true)
+	if((effect == true) && mEVolyme > 0)
 	{
-		if(mEVolyme > 0)
+		mEffectNr1--;
+		if(mEffectNr1 < 0)
 		{
-			mEffectNr1--;
-			if(mEffectNr1 < 0)
+			mEffectNr1 = 9;
+			mEffectNr10--;
+			if(mEffectNr10 < 0)
 			{
-				mEffectNr1 = 9;
-				mEffectNr10--;
-				if(mEffectNr10 < 0)
-				{
-					mEffectNr10 = 9;
-					mEffectNr100 = 0;
-				}
-			}	
-		}
+				mEffectNr10 = 9;
+				mEffectNr100 = 0;
+			}
+		}	
+	}
+	else if((effect == false) && mMVolyme > 0)
+	{
+		mMusicNr1--;
+		if(mMusicNr1 < 0)
+		{
+			mMusicNr1 = 9;
+			mMusicNr10--;
+			if(mMusicNr10 < 0)
+			{
+				mMusicNr10 = 9;
+				mMusicNr100 = 0;
+			}
+		}	
 	}
 }
 
 void Audio::updateNumbers()
 {
-	mEffectNumbers1.setCurrentFrame(mEffectNr1);
+	mEffectNumbers1.setCurrentFrame(mEffectNr1 + mEffectHighlightNr);
 	mEffectNumbers1.update();
 	
-	mEffectNumbers10.setCurrentFrame(mEffectNr10);
+	mEffectNumbers10.setCurrentFrame(mEffectNr10 + mEffectHighlightNr);
 	mEffectNumbers10.update();
 
-	mEffectNumbers100.setCurrentFrame(mEffectNr100);
+	mEffectNumbers100.setCurrentFrame(mEffectNr100 + mEffectHighlightNr);
 	mEffectNumbers100.update();
+
+	mMusicNumbers1.setCurrentFrame(mMusicNr1 + mMusicHighlightNr);
+	mMusicNumbers1.update();
+	
+	mMusicNumbers10.setCurrentFrame(mMusicNr10 + mMusicHighlightNr);
+	mMusicNumbers10.update();
+
+	mMusicNumbers100.setCurrentFrame(mMusicNr100 + mMusicHighlightNr);
+	mMusicNumbers100.update();
 }

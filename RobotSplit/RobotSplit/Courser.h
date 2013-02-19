@@ -6,7 +6,7 @@ class Courser
 {
 public:
 	Courser();
-	sf::Sprite* getSprite(sf::Vector2f);
+	sf::Sprite* getSprite(const sf::Vector2f&);
 private:
 	sf::Sprite mSprite;
 };

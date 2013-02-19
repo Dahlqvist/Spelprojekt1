@@ -472,11 +472,11 @@
         <y>696</y>
       </Position>
     </Unit>
-    <Unit>
+    <!--<Unit>
       <Type>"Laser"</Type>
       <Position>
-        <x>600</x>
-        <y>100</y>
+        <x>500</x>
+        <y>200</y>
       </Position>
       <Id>"Laser1"</Id>
       <Active>true</Active>
@@ -485,5 +485,15 @@
       <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
     </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>300</x>
+        <y>450</y>
+      </Position>
+      <SpriteName>"RedButtonAni"</SpriteName>
+      <Id>"LaserTrigger"</Id>
+      <Target>"Laser1"</Target>
+    </Unit>-->
   </Objects>
 </Level>

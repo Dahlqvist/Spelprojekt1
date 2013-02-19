@@ -30,7 +30,7 @@ void Music::loadMusic(std::string music)
 //Fortsätter spela ifall musiken är pausad.
 const void Music::playMusic()
 {
-	if(mMusic.getStatus() == sf::Music::Stopped)
+	if(mMusic.getStatus() == sf::Music::Stopped || mMusic.getStatus() == sf::Music::Paused)
 	{
 		mMusic.setVolume(mVolyme);
 		mMusic.play();

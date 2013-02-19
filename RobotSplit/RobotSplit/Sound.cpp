@@ -58,13 +58,13 @@ void Sound::loadSound()
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
 {
-	if(sound == "Lava")
+	if((sound == "Lava" && mLava.getStatus() == sf::Music::Stopped) || (sound == "Lava" && mLava.getStatus() == sf::Music::Paused))
 	{
 		mLava.setVolume(mVolume);
 		mLava.play();
 	}
 	else
-		if(mSoundMap[sound].getStatus() == sf::Sound::Stopped)
+		if((mSoundMap[sound].getStatus() == sf::Sound::Stopped) || (mSoundMap[sound].getStatus() == sf::Sound::Paused))
 		{
 			mSoundMap[sound].setVolume(mVolume);
 			mSoundMap[sound].play();
@@ -77,6 +77,14 @@ const void Sound::stopSound(std::string sound)
 		mLava.stop();
 	else
 		mSoundMap[sound].stop();
+}
+
+const void Sound::pauseSound(std::string sound)
+{
+	if(sound == "Lava")
+		mLava.pause();
+	else
+		mSoundMap[sound].pause();
 }
 
 const void Sound::changeVolume(float q)
