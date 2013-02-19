@@ -6,9 +6,13 @@
 class LaserDeactivator: public Trigger
 {
 public:
-	LaserDeactivator(Trigger* trigger);
+	LaserDeactivator(Trigger* trigger, float rotation);
 
 	void hitOnce();
+	void draw();
+
+private:
+	bool mPressed;
 };
 
 #endif

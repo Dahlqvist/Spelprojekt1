@@ -7,6 +7,13 @@ Trigger::Trigger(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, 
 
 }
 
+Trigger::Trigger(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, Unit* triggedObject)
+	:Unit(position, size, offset, id, animation, false)
+	,mTriggedObject(triggedObject)
+{
+
+}
+
 void Trigger::hit()
 {
 	

@@ -601,6 +601,7 @@ void LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vec
 	sf::Vector2f			Position, Size, Offset;
 	std::string				Id;
 	std::string				targetObject;
+	float					Rotation;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -645,6 +646,9 @@ void LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vec
 	CurrentChild=Node->first_node("Target");
 	targetObject=getValue(CurrentChild);
 
-	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, Sprite, 0x0)));
+	CurrentChild=Node->first_node("Rotation");
+	Rotation=atof(getValue(CurrentChild).c_str());
+
+	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, new Animation(Sprite, 100, 3), 0x0), Rotation));
 	targets.push_back(targetObject);
 }
