@@ -197,14 +197,14 @@ void Audio::select()
 			if(mChangeVolyme == true)
 			{
 				mEffectHighlightNr = 10;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
+				/*currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();*/
 			}
 			else
 			{
 				mEffectHighlightNr = 0;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
+				/*currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();*/
 			}
 			Sound::pauseSound("Lava");
 			Sound::changeVolume(mEVolyme);
@@ -231,7 +231,8 @@ void Audio::select()
 		}
 		else if(mStatus == 2)
 		{
-			//currentSelection ->setCurrentFrame(
+			currentSelection ->setCurrentFrame(2);
+			currentSelection ->update();
 		}
 		else if(mStatus == 3)
 		{}
