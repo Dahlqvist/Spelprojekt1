@@ -46,7 +46,7 @@ int main()
 			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 5)
 			{
 				loops++;
-				nextUpdate +=1/60;
+				nextUpdate +=1/60.0;
 				render = true;
 				statemanager.updateState();
 			}

@@ -54,6 +54,10 @@ private:
 	float mEVolyme;
 	float mMVolyme;
 	bool mChangeVolyme;
+	bool mEMute;
+	bool mMMute;
+
+	int mHighlight;
 
 	int mEffectNr1;
 	int mEffectNr10;

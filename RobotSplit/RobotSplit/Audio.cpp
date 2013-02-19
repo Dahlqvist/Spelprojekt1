@@ -40,7 +40,10 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicNr1(0),
 			mMusicNr10(0),
 			mMusicNr100(1),
-			mMusicHighlightNr(0)
+			mMusicHighlightNr(0),
+			mEMute(false),
+			mMMute(false),
+			mHighlight(1)
 
 {	
 	setSpritePosition();
@@ -114,16 +117,14 @@ void Audio::update()
 		currentSelection = &mMusicMute;
 	else if(mStatus == 4)
 		currentSelection = &mBack;
-	if(mChangeVolyme == true)
-	{
-		currentSelection->setCurrentFrame(0);
-		currentSelection->update();
-	}
-	else
-	{
-		currentSelection->setCurrentFrame(1);
-		currentSelection->update();
-	}
+
+	if(mChangeVolyme)
+		currentSelection ->setCurrentFrame(0);
+	else	
+		currentSelection ->setCurrentFrame(1);
+
+	currentSelection ->update();
+	
 	updateNumbers();
 	input();
 }
@@ -197,14 +198,14 @@ void Audio::select()
 			if(mChangeVolyme == true)
 			{
 				mEffectHighlightNr = 10;
-				/*currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();*/
+				currentSelection ->setCurrentFrame(0);
+				currentSelection ->update();
 			}
 			else
 			{
 				mEffectHighlightNr = 0;
-				/*currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();*/
+				currentSelection ->setCurrentFrame(1);
+				currentSelection ->update();
 			}
 			Sound::pauseSound("Lava");
 			Sound::changeVolume(mEVolyme);
@@ -216,14 +217,10 @@ void Audio::select()
 			if(mChangeVolyme == true)
 			{
 				mMusicHighlightNr = 10;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
 			}
 			else
 			{
 				mMusicHighlightNr = 0;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
 			}
 			Music::pauseMusic();
 			Music::changeVolyme(mMVolyme);
@@ -231,11 +228,16 @@ void Audio::select()
 		}
 		else if(mStatus == 2)
 		{
+			mEMute = !mEMute;
 			currentSelection ->setCurrentFrame(2);
 			currentSelection ->update();
 		}
 		else if(mStatus == 3)
-		{}
+		{
+			mMMute = !mMMute;
+			currentSelection ->setCurrentFrame(2);
+			currentSelection ->update();
+		}
 		else if(mStatus == 4)
 			mStateInput.changeState("Last");
 	}
