@@ -36,6 +36,21 @@
     </Unit>
 
     <Unit>
+      <Type>"Meanix"</Type>
+      <SpriteName>"MeanixAni"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>100</Speed>
+      <Position>
+        <x>1120</x>
+        <y>128</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+
+    <Unit>
       <Type>"Platform"</Type>
       <SpriteName>"Tile1"</SpriteName>
       <Position>

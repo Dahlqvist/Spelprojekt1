@@ -4,7 +4,7 @@
 BrainMagnet::BrainMagnet(std::string spriteName):
 	Unit(sf::Vector2f(100, 100), "FeetExt", spriteName),
 	mBrain ("StixBrainLowered", 200, 1),
-	mBrainAni("StixBrainAni", 50, 8)
+	mBrainAni("StixBrainAni", 50, 7)
 {
 	mSprite=TextureManager::getSprite(spriteName);
 	mSolid=true;
@@ -55,7 +55,7 @@ void BrainMagnet::update(){
 		BrainMagnet::rotate(mRot);
 	}
 
-	if(mBrainAni.getCurrentFrame()!=7){
+	if(mBrainAni.getCurrentFrame()!=6){
 		mActiveAnimation=&mBrainAni;
 		mSolid=false;
 	}
@@ -67,7 +67,7 @@ void BrainMagnet::update(){
 sf::Sprite BrainMagnet::getSprite(){
 	mActiveAnimation->setPosition(mPosition);
 	mSprite=mActiveAnimation->getSprite();
-	mSprite.setPosition(mSprite.getPosition()+sf::Vector2f(mSprite.getGlobalBounds().width/2, 0));
+	mSprite.setPosition(mSprite.getPosition()+sf::Vector2f(mSprite.getGlobalBounds().width/2, 10));
 	mSprite.setOrigin(mSprite.getGlobalBounds().width/2, 0);
 	mSprite.setRotation(mRotation);
 	return mSprite;

@@ -6,7 +6,8 @@ PlayerPartHead::PlayerPartHead(PlayerPart* Body):
 mBody(Body),
 	mBrain("StixBrain", 200, 1),
 	mBrainStuck("StixBrainStuck", 200, 1),
-	mMagnet("StixBrainLowered")
+	mMagnet("StixBrainLowered"),
+	mBrainLowered("StixBrainWall", 200, 1)
 {
 	mId="PlayerPartHead";
 	mActiveAnimation=&mBrain;
@@ -108,6 +109,7 @@ void PlayerPartHead::forceMove(sf::Vector2f force){
 		mMagnet.setSolid(false);
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
+		mActiveAnimation=&mBrainLowered;
 	}
 	else{
 		Sound::playSound("HeadStuck");

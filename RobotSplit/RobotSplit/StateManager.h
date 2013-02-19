@@ -26,6 +26,7 @@ public:
 	void pushOption();
 	void pushInGameMenu();
 	void pushMenu();
+	void pushAudio();
 
 	void loadState();
 private:
@@ -42,6 +43,7 @@ private:
 	State* mOption;
 	State* mMenu;
 	State* mInGameMenu;
+	State* mAudio;
 
 };
 #endif

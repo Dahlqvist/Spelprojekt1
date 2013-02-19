@@ -102,13 +102,15 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
-	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/stix_brain_flight_dark.png");
+	mTextureMap["StixBrainWall"].loadFromFile("Texture/Stix/brain/stix_brain_on.png");
 
-	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/stix_brain_animation_strip8_dark.png");
+	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/brain/stix_brain_off.png");
 
-	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/stix_brain_no_spaceasd.png");
+	mTextureMap["StixBrainAni"].loadFromFile("Texture/Stix/brain/stix_brain_animation_strip7.png");
 
-	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/stix_brain_lowered_dark.png");
+	mTextureMap["StixBrainStuck"].loadFromFile("Texture/Stix/brain/stix_brain_error.png");
+
+	mTextureMap["StixBrainLowered"].loadFromFile("Texture/Stix/brain/stix_brain_stringasd.png");
 
 	mTextureMap["StixRocketFuel"].loadFromFile("Texture/Stix/Rocket_Flame_Sprite.png");
 
@@ -202,6 +204,8 @@ void TextureManager::loadTexture()
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 
+	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
+
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
@@ -277,6 +281,43 @@ void TextureManager::loadTexture()
 	mTextureMap["StixSplashSplit"].loadFromFile("Texture/Splash/stix_splashscreen_split.png");
 
 	mTextureMap["Watermelon"].loadFromFile("Texture/Splash/watermelon_games.png");
+
+	//Initializing menu
+	//Bakgrunder
+	mTextureMap["Main"].loadFromFile("Texture/Menu/Background/Main.png");
+	mTextureMap["Ingame"].loadFromFile("Texture/Menu/Background/Ingame.png");
+
+	//Knappar
+	mTextureMap["Audio"].loadFromFile("Texture/Menu/Audio.png");
+	mTextureMap["Back"].loadFromFile("Texture/Menu/Back.png");
+	mTextureMap["Blip"].loadFromFile("Texture/Menu/Blip.png");
+	mTextureMap["Controls"].loadFromFile("Texture/Menu/Controls.png");
+	mTextureMap["EffectMuteChecked"].loadFromFile("Texture/Menu/Effect_Mute_Checked.png");
+	mTextureMap["EffectMuteUnChecked"].loadFromFile("Texture/Menu/Effect_Mute_Unchecked.png");
+	mTextureMap["EffectVolym"].loadFromFile("Texture/Menu/Effect_Volym.png");
+	mTextureMap["MusicMuteUnChecked"].loadFromFile("Texture/Menu/Music_Mute.png");
+	mTextureMap["MusicMuteChecked"].loadFromFile("Texture/Menu/Music_Mute_Checked.png");
+	mTextureMap["MusicVolym"].loadFromFile("Texture/Menu/Music_Volym.png");
+	mTextureMap["NewGame"].loadFromFile("Texture/Menu/New_Game.png");
+	mTextureMap["No"].loadFromFile("Texture/Menu/No.png");
+	mTextureMap["Options"].loadFromFile("Texture/Menu/Options.png");
+	mTextureMap["Quit"].loadFromFile("Texture/Menu/Quit.png");
+	mTextureMap["QuitToMenu"].loadFromFile("Texture/Menu/Quit_To_Menu.png");
+	mTextureMap["Restart"].loadFromFile("Texture/Menu/Restart.png");
+	mTextureMap["Resume"].loadFromFile("Texture/Menu/Resume.png");
+	mTextureMap["Slider"].loadFromFile("Texture/Menu/Slider.png");
+	mTextureMap["SliderIcon"].loadFromFile("Texture/Menu/Slider_Icon.png");
+	mTextureMap["StoryMode"].loadFromFile("Texture/Menu/Story_Mode.png");
+	mTextureMap["Sure"].loadFromFile("Texture/Menu/Sure.png");
+	mTextureMap["TimeTrial"].loadFromFile("Texture/Menu/Time_Trial.png");
+	mTextureMap["TimerChecked"].loadFromFile("Texture/Menu/Timer_Checked.png");
+	mTextureMap["TimerUnchecked"].loadFromFile("Texture/Menu/Timer_Unchecked.png");
+	mTextureMap["Tutorial"].loadFromFile("Texture/Menu/Tutorial.png");
+	mTextureMap["Yes"].loadFromFile("Texture/Menu/Yes.png");
+	mTextureMap["Numbers"].loadFromFile("Texture/Menu/Numbers.png");
+	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
+	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
+
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

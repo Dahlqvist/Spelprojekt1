@@ -12,20 +12,21 @@ using namespace std;
 
 int main()
 {
-	Window window;
-	Splash& splash = Splash::getInstance();
+	Window& window = Window::getInstance();
 	Sound& sound = Sound::getInstance();
 	Music& music = Music::getInstance();
+	Splash& splash = Splash::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
 	mWindow.setFramerateLimit(60);
+	Splash::runSplash(false);
 	while(mWindow.isOpen())
 	{
 		sf::Event event;
 		while(mWindow.pollEvent(event))
 		{
-			if(event.type == sf::Event::Closed)
+			if(event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 				mWindow.close();
 		}
 
