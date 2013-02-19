@@ -8,6 +8,7 @@
 #include <map>
 
 
+
 class Sound
 {
 public:
@@ -15,6 +16,7 @@ public:
 	
 	const static void playSound(std::string sound);
 	const static void stopSound(std::string sound);
+	const static void pauseSound(std::string sound);
 
 	const static void changeVolume(float q);
 private:

@@ -59,13 +59,6 @@ Game::~Game()
 
 void Game::update()
 {
-	loops = 0;
-	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<5)
-	{
-		mRenderGame=true;
-		loops++;
-		nextUpdate+=1/60.0;
 		Game::input();
 		//window.setKeyRepeatEnabled(true);
 		mPlayer->update();
@@ -74,7 +67,6 @@ void Game::update()
 		moveCamera();
 
 		//runCollisions(Objects.getUnits(), *mPlayer);
-	}
 }
 void Game::input()
 {
@@ -179,27 +171,21 @@ void Game::moveCamera()
 
 void Game::render()
 {
-	if (mRenderGame)
+	mWindow.clear(sf::Color::Black);
+	for(vector<Background*>::size_type i =0; i < BG.size(); i++)
 	{
-		mWindow.clear(sf::Color::Black);
-		for(vector<Background*>::size_type i =0; i < BG.size(); i++)
-		{
-			mWindow.draw(BG[i]->draw());
-			BG[i]->update();
-		}
-		mPlayer->draw(mWindow);
-		Objects->draw(mWindow);
-		mPlayer->resetAnimations();
-		for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-		{
-			mWindow.draw(diaBox[i]->getSprite());
-			mWindow.draw(diaBox[i]->getText());
-		}
-		//mWindow.draw(diaBox->getText());
-		Music::playMusic();
-		mWindow.display();
-
-		lastUpdateClock.restart();
-		nextUpdate=0;
+		mWindow.draw(BG[i]->draw());
+		BG[i]->update();
 	}
+	mPlayer->draw(mWindow);
+	Objects->draw(mWindow);
+	mPlayer->resetAnimations();
+	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
+	{
+		mWindow.draw(diaBox[i]->getSprite());
+		mWindow.draw(diaBox[i]->getText());
+	}
+	//mWindow.draw(diaBox->getText());
+	Music::playMusic();
+	mWindow.display();
 }
