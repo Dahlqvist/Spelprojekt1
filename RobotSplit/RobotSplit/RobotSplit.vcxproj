@@ -102,6 +102,7 @@ sfml-main.lib
     <ClCompile Include="InGameMenu.cpp" />
     <ClCompile Include="MenuClock.cpp" />
     <ClCompile Include="Laser.cpp" />
+    <ClCompile Include="LaserDeactivator.cpp" />
     <ClCompile Include="LaserHolder.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
@@ -149,6 +150,7 @@ sfml-main.lib
     <ClInclude Include="InGameMenu.h" />
     <ClInclude Include="MenuClock.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="LaserDeactivator.h" />
     <ClInclude Include="LaserHolder.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLoader.h" />

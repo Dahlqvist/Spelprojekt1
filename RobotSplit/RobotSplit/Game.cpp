@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana1.xml"),
+		mlevel("Bana2.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		nextUpdate(0),
@@ -61,7 +61,7 @@ void Game::update()
 {
 	loops = 0;
 	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<10)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<5)
 	{
 		mRenderGame=true;
 		loops++;
@@ -198,5 +198,8 @@ void Game::render()
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
 		mWindow.display();
+
+		lastUpdateClock.restart();
+		nextUpdate=0;
 	}
 }

@@ -23,6 +23,8 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 	mPlayerPart=playerPart;
 	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
 	mResetted=false;
+
+	//Check which sides collide
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart"/* && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead")*/)
@@ -34,6 +36,7 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 			}
 		}
 	}
+	//Handle collisions
 	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
 	{
 		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
@@ -303,15 +306,46 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 		player.restartPlayer(sf::Vector2f(64, 384));
 		mResetted=true;
 	}
-	if(obj2->getId()=="Door" && player.getTogether()==true)
+	if(obj2->getId()=="Door" && player.getTogether()==true && player.getId(mPlayerPart)!="PlayerPartHead")
 	{
 		player.Win();
 		player.restartPlayer(sf::Vector2f(64, 384));
 	}
-	if (obj2->getId()=="Laser")
+	if (obj2->getId()=="LaserRed")
 	{
-		player.restartPlayer(sf::Vector2f(64, 384));
-		mResetted=true;
+		if (player.getId(mPlayerPart)!="PlayerPartHead")
+		{
+			player.restartPlayer(sf::Vector2f(64, 384));
+			mResetted=true;
+		}
+		else
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
+	}
+	if (obj2->getId()=="LaserYellow")
+	{
+		if (player.getId(mPlayerPart)=="PlayerPartBody")
+		{
+			player.restartPlayer(sf::Vector2f(64, 384));
+			mResetted=true;
+		}
+		if (player.getId(mPlayerPart)=="PlayerPartHead")
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
+	}
+	if (obj2->getId()=="LaserBlue")
+	{
+		if (player.getId(mPlayerPart)=="PlayerPartFeet")
+		{
+			player.restartPlayer(sf::Vector2f(64, 384));
+			mResetted=true;
+		}
+		if (player.getId(mPlayerPart)=="PlayerPartHead" && player.getHeadless())
+		{
+			player.shootHead(sf::Vector2f(0,0));
+		}
 	}
 	if (obj2->getId()=="AntiMagnet")
 	{
