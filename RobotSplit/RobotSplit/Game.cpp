@@ -61,7 +61,7 @@ void Game::update()
 {
 	loops = 0;
 	mRenderGame=false;
-	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<10)
+	while (lastUpdateClock.getElapsedTime().asSeconds()>nextUpdate && loops<5)
 	{
 		mRenderGame=true;
 		loops++;
@@ -200,5 +200,8 @@ void Game::render()
 		//mWindow.draw(holder.getSprite());
 		//mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
+
+		lastUpdateClock.restart();
+		nextUpdate=0;
 	}
 }

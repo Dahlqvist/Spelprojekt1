@@ -717,8 +717,21 @@
       </Position>
       <Id>"LaserBlue1"</Id>
       <Active>true</Active>
-      <Length>200</Length>
+      <Length>414</Length>
       <Rotation>270</Rotation>
+      <Color>"Blue"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1022</x>
+        <y>576</y>
+      </Position>
+      <Id>"LaserBlue2"</Id>
+      <Active>true</Active>
+      <Length>55</Length>
+      <Rotation>0</Rotation>
       <Color>"Blue"</Color>
       <VisibilityRange>100</VisibilityRange>
     </Unit>
@@ -730,10 +743,79 @@
       </Position>
       <Id>"LaserRed1"</Id>
       <Active>true</Active>
-      <Length>200</Length>
+      <Length>316</Length>
       <Rotation>0</Rotation>
       <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>862</x>
+        <y>448</y>
+      </Position>
+      <Id>"LaserRed2"</Id>
+      <Active>true</Active>
+      <Length>185</Length>
+      <Rotation>0</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>896</x>
+        <y>654</y>
+      </Position>
+      <Id>"LaserRed3"</Id>
+      <Active>true</Active>
+      <Length>95</Length>
+      <Rotation>270</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1022</x>
+        <y>64</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>95</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>728</x>
+        <y>152</y>
+      </Position>
+      <SpriteName>"YellowButtonAni"</SpriteName>
+      <Id>"LaserTriggerYellow"</Id>
+      <Target>"LaserYellow1"</Target>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>984</x>
+        <y>536</y>
+      </Position>
+      <SpriteName>"BlueButtonAni"</SpriteName>
+      <Id>"LaserTriggerBlue"</Id>
+      <Target>"LaserBlue1"</Target>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>984</x>
+        <y>536</y>
+      </Position>
+      <SpriteName>"BlueButtonAni"</SpriteName>
+      <Id>"LaserTriggerBlue"</Id>
+      <Target>"LaserBlue2"</Target>
     </Unit>
     <Unit>
       <Type>"LaserDeactivator"</Type>
@@ -742,8 +824,28 @@
         <y>56</y>
       </Position>
       <SpriteName>"RedButtonAni"</SpriteName>
-      <Id>"LaserTrigger"</Id>
+      <Id>"LaserTriggerRed"</Id>
       <Target>"LaserRed1"</Target>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>920</x>
+        <y>56</y>
+      </Position>
+      <SpriteName>"RedButtonAni"</SpriteName>
+      <Id>"LaserTriggerRed"</Id>
+      <Target>"LaserRed2"</Target>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>920</x>
+        <y>56</y>
+      </Position>
+      <SpriteName>"RedButtonAni"</SpriteName>
+      <Id>"LaserTriggerRed"</Id>
+      <Target>"LaserRed3"</Target>
     </Unit>
   </Objects>
 </Level>

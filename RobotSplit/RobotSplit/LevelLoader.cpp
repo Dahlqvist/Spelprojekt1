@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <cassert>
 
 //Includefiles for objects
 //#include "TestObject.h"
@@ -121,7 +122,7 @@ Level	LevelLoader::getLevel()
 	//Sets the targets for the triggers
 	for (std::vector<Trigger*>::size_type i=0; i<triggers.size(); i++)
 	{
-		Unit* tempUnit;
+		Unit* tempUnit=0x0;
 		for (std::vector<Unit*>::size_type j=0; j<RetLevel.getObjects().size(); j++)
 		{
 			std::string foo1=RetLevel.getObjects()[j]->getId();
@@ -131,6 +132,7 @@ Level	LevelLoader::getLevel()
 				tempUnit=RetLevel.getObjects()[j];
 			}
 		}
+		assert(tempUnit!=0x0);
 		triggers[i]->setTarget(tempUnit);
 		RetLevel.mObjects.push_back(triggers[i]);
 	}

@@ -129,7 +129,9 @@
     <ClCompile Include="Courser.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="LaserDeactivator.cpp" />
+    <ClCompile Include="LaserDeactivator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -263,7 +265,9 @@
     <ClInclude Include="Courser.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="LaserDeactivator.h" />
+    <ClInclude Include="LaserDeactivator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
