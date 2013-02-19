@@ -132,6 +132,9 @@
     <ClCompile Include="LaserDeactivator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Meanix.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -267,6 +270,9 @@
     </ClInclude>
     <ClInclude Include="LaserDeactivator.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Meanix.h">
+      <Filter>Header Files\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

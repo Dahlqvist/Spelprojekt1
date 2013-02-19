@@ -197,8 +197,6 @@ void Game::render()
 		}
 		//mWindow.draw(diaBox->getText());
 		Music::playMusic();
-		//mWindow.draw(holder.getSprite());
-		//mWindow.draw(AwesomeLaser.getSprite());
 		mWindow.display();
 
 		lastUpdateClock.restart();

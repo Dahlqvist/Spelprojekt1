@@ -13,6 +13,8 @@ using namespace std;
 int main()
 {
 	Window& window = Window::getInstance();
+	Sound& sound = Sound::getInstance();
+	Music& music = Music::getInstance();
 	Splash& splash = Splash::getInstance();
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();

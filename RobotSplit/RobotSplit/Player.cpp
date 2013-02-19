@@ -77,7 +77,7 @@ void Player::draw(sf::RenderWindow& Window)
 	sf::Vector2f mVec(sf::Mouse::getPosition(Window).x,sf::Mouse::getPosition(Window).y);
 	Window.draw(*mCourser->getSprite(mVec));
 
-	Window.draw(TempPart->getSprite());
+	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
 {
@@ -240,11 +240,12 @@ void Player::setTogether(bool b)
 	}
 	else if((mFeet.getPosition().x-mBody.getPosition().x)*(mFeet.getPosition().x-mBody.getPosition().x) +
 		(mFeet.getPosition().y-mBody.getPosition().y)*(mFeet.getPosition().y-mBody.getPosition().y) < 70*70 
-		&& mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
+		&& mFeet.getAttached()==false && mFeet.getAttachedWall()==false && mFeet.getPosition().y-20>mBody.getPosition().y)
 	{
 		//mBodyActive=false;
 		mBody.setAttached(true);
 		mTogether=b;
+		//mFeet.forceMove(mBody.getPosition()-mFeet.getPosition()+sf::Vector2f(0, 64));
 		Player::move(sf::Vector2f((float)-0.1, 0));
 		Player::move(sf::Vector2f((float)0.1, 0));
 		mFeet.restartAnimation();
