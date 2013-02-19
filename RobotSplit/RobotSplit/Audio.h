@@ -59,6 +59,12 @@ private:
 	int mEffectNr1;
 	int mEffectNr10;
 	int mEffectNr100;
+	int mEffectHighlightNr;
+
+	int mMusicNr1;
+	int mMusicNr10;
+	int mMusicNr100;
+	int mMusicHighlightNr;
 
 	sf::Vector2f mBlipPos;
 

@@ -21,6 +21,10 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	mWindow.setFramerateLimit(60);
 	Splash::runSplash(false);
+
+	sf::Clock lastUpdate;
+	float nextUpdate = 0;
+
 	while(mWindow.isOpen())
 	{
 		sf::Event event;
@@ -37,8 +41,19 @@ int main()
 		}
 		else
 		{
-			statemanager.updateState();
-			statemanager.renderState();
+			int loops = 0;
+			bool render = false;
+			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 5)
+			{
+				loops++;
+				nextUpdate +=1/60;
+				render = true;
+				statemanager.updateState();
+			}
+			if(render)
+				statemanager.renderState();
+			lastUpdate.restart();
+			nextUpdate = 0;
 		}
 	}
 
