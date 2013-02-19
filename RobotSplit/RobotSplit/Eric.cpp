@@ -41,3 +41,8 @@ float Eric::getRocketboost()
 	//Erics bra värde: 2
 	return 2;
 }
+
+float Eric::getJumpdelayMagnet()
+{
+	return 0.2;
+}

@@ -1,6 +1,22 @@
 #include "Platform.h"
-#include <sstream>
 #include <cassert>
+
+std::string getSpriteName(int lives)
+{
+	if (lives==3)
+	{
+		return "Break3";
+	}
+	if (lives==2)
+	{
+		return "Break2";
+	}
+	if (lives==1)
+	{
+		return "Break1";
+	}
+	return "Break3";
+}
 
 Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset)
 	:Unit(position, size, offset, "Platform", spriteName)
@@ -10,8 +26,8 @@ Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f s
 	mSprite.setPosition(position);
 }
 
-Platform::Platform(int lives, sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset)
-	:Unit(position, size, offset, "Platform", spriteName)
+Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset)
+	:Unit(position, size, offset, "Platform", getSpriteName(lives))
 	,mLives(lives)
 	,mDestructible(true)
 {
@@ -32,13 +48,11 @@ void Platform::draw()
 	mSprite.setPosition(mPosition);
 }
 
-void Platform::hit()
+void Platform::hitOnce()
 {
 	if (mDestructible)
 	{
 		--mLives;
+		//mSprite=TextureManager::getSprite(getSpriteName(mLives));
 	}
-	std::stringstream spriteName;
-	spriteName<<"Platform"<<mLives;
-	//mSprite=TextureManager::getSprite(spriteName.str());
 }

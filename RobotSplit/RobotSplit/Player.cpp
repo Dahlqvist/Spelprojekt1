@@ -296,7 +296,6 @@ void Player::jump()
 			mFeet.jump(Eric::getJump());
 			Sound::playSound("Jump");
 		}
-		mJumpTemp.restart();
 	}	
 }
 void Player::shootHead(sf::Vector2f Vec)
@@ -421,6 +420,10 @@ void Player::setAttachFeetExtension(bool b)
 			mFeetAttached=b;
 			mFeet.setAttached(b);
 		}
+		if(b==true)
+		{
+			mBodyActive=true;
+		}
 		if(mHeadAttachedFeet==true)
 		{
 			mHead.setAttached(true);
@@ -483,7 +486,7 @@ void Player::interact(int action){
 				Sound::playSound("Move");
 			}
 		}
-		if(mAttachedMagnet==true && mBodyActive==mBodyAttached){
+		if(mAttachedMagnet==true && mBodyActive==mBodyAttached && mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet()){
 			mHead.setMagnetSolid(false);
 			mAttachedMagnet=false;
 			mMagnetTimer.restart();
@@ -793,6 +796,9 @@ void Player::checkCollisionMagnet()
 	{
 		mAttachedMagnet=true;
 		mBodyAttached=true;
+		if(magnetSlot!=1){
+			mJumpTemp.restart();
+		}
 		magnetSlot=1;
 		mBody.forceMove(TempHead-TempBody);
 	}
@@ -800,6 +806,9 @@ void Player::checkCollisionMagnet()
 	{
 		mAttachedMagnet=true;
 		mBodyAttached=false;
+		if(magnetSlot!=0){
+			mJumpTemp.restart();
+		}
 		magnetSlot=0;
 		mFeet.forceMove(TempHead-TempFeet);
 	}
