@@ -8,7 +8,7 @@ class Platform: public Unit
 public:
 	//Setting lives makes the platform destructible
 	Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset);
-	Platform(int lives, sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset);
+	Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset);
 
 	sf::Sprite getSprite(){return mSprite;};
 
@@ -17,7 +17,7 @@ public:
 
 	void update();
 	void draw();
-	void hit();
+	void hitOnce();
 
 private:
 	int mLives;

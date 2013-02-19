@@ -159,6 +159,10 @@ void TextureManager::loadTexture()
 
 	mTextureMap["RailMiddle"].loadFromFile("Texture/Enviroment/Rail_Middle_dark.png");
 
+	mTextureMap["Break1"].loadFromFile("Texture/Enviroment/Tiles/break3_dark.png");
+	mTextureMap["Break2"].loadFromFile("Texture/Enviroment/Tiles/break2_dark.png");
+	mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
+
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
 	mTextureMap["Tile3"].loadFromFile("Texture/Enviroment/tiles/tile3_dark.png");

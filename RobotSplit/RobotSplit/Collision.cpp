@@ -61,10 +61,6 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 
 				handleCollisions(player, objects[j], collisionRect);
 			}
-			else 
-			{
-				objects[j]->setHit(false);
-			}
 		}
 	}
 }
