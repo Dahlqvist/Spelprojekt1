@@ -21,10 +21,8 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicNumbers1("Numbers", 1, 20),
 			mMusicNumbers10("Numbers", 1, 20),
 			mMusicNumbers100("Numbers", 1, 20),
-			mEffectMuteChecked("EffectMuteChecked", 1, 2),
-			mEffectMuteUnchecked("EffectMuteUnChecked", 1, 2),
-			mMusicMuteChecked("MusicMuteChecked", 1, 2),
-			mMusicMuteUnchecked("MusicMuteUnChecked", 1, 2),
+			mEffectMute("EffectMute", 1, 4),
+			mMusicMute("MusicMute", 1, 4),
 			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
 			mWindow(Window::getWindow()),
@@ -71,8 +69,8 @@ void Audio::setSpritePosition()
 	mMusicNumbers1.setPosition(sf::Vector2f(mMusicNumbers10.getSprite().getPosition().x + mMusicNumbers10.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 	mMusicRightArrow.setPosition(sf::Vector2f(mMusicNumbers1.getSprite().getPosition().x + mMusicNumbers1.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 
-	mEffectMuteUnchecked.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
-	mMusicMuteUnchecked.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 450));
+	mEffectMute.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
+	mMusicMute.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 450));
 	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 550));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
@@ -80,16 +78,14 @@ void Audio::setSpritePosition()
 
 void Audio::setAnimate()
 {
-	mEffectMuteChecked.setAnimate(false);
-	mEffectMuteUnchecked.setAnimate(false);
+	mEffectMute.setAnimate(false);
 	mEffectVolyme.setAnimate(false);
 	mEffectNumbers1.setAnimate(false);
 	mEffectNumbers10.setAnimate(false);
 	mEffectNumbers100.setAnimate(false);
 	mEffectLeftArrow.setAnimate(false);
 	mEffectRightArrow.setAnimate(false);
-	mMusicMuteChecked.setAnimate(false);
-	mMusicMuteUnchecked.setAnimate(false);
+	mMusicMute.setAnimate(false);
 	mMusicVolyme.setAnimate(false);
 	mMusicNumbers1.setAnimate(false);
 	mMusicNumbers10.setAnimate(false);
@@ -113,9 +109,9 @@ void Audio::update()
 	else if(mStatus == 1)
 		currentSelection = &mMusicVolyme;
 	else if(mStatus == 2)
-		currentSelection = &mEffectMuteUnchecked;
+		currentSelection = &mEffectMute;
 	else if(mStatus == 3)
-		currentSelection = &mMusicMuteUnchecked;
+		currentSelection = &mMusicMute;
 	else if(mStatus == 4)
 		currentSelection = &mBack;
 	if(mChangeVolyme == true)
@@ -138,8 +134,8 @@ void Audio::render()
 	mWindow.draw(currentBackground->getSprite());
 	mWindow.draw(mEffectVolyme.getSprite());
 	mWindow.draw(mMusicVolyme.getSprite());
-	mWindow.draw(mEffectMuteUnchecked.getSprite());
-	mWindow.draw(mMusicMuteUnchecked.getSprite());
+	mWindow.draw(mEffectMute.getSprite());
+	mWindow.draw(mMusicMute.getSprite());
 	mWindow.draw(mEffectNumbers1.getSprite());
 	mWindow.draw(mEffectNumbers10.getSprite());
 	mWindow.draw(mEffectNumbers100.getSprite());
@@ -163,6 +159,7 @@ void Audio::input()
 	if(mTimer > mDelay)
 	{
 		changeSelection(mChoices);
+		select();
 		volymeInput();
 		MenuClock::restartClock();
 	}
@@ -171,7 +168,7 @@ void Audio::input()
 void Audio::changeSelection(int choices)
 {
 	int mChoices = choices;
-	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
 	{
 		mBlipPos.y += 100;
 		mBlip.setPosition(mBlipPos);
@@ -179,7 +176,7 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
 	{			
 		if(mStatus > 0)
 			mBlipPos.y -= 100;
@@ -188,7 +185,11 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+}
+
+void Audio::select()
+{
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
 		if(mStatus == 0)
 		{
@@ -229,7 +230,9 @@ void Audio::changeSelection(int choices)
 			Music::playMusic();
 		}
 		else if(mStatus == 2)
-		{}
+		{
+			//currentSelection ->setCurrentFrame(
+		}
 		else if(mStatus == 3)
 		{}
 		else if(mStatus == 4)
@@ -239,7 +242,7 @@ void Audio::changeSelection(int choices)
 
 void Audio::volymeInput()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && mChangeVolyme == true)
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) && mChangeVolyme == true)
 	{
 		if(mStatus == 0)
 			lowerNumbers(true);
@@ -247,7 +250,7 @@ void Audio::volymeInput()
 			lowerNumbers(false);
 		lowerVolyme();		
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && mChangeVolyme == true)
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && mChangeVolyme == true)
 	{
 		if(mStatus == 0)
 			raiseNumbers(true);

@@ -18,6 +18,7 @@ public:
 private:
 	void input();
 	void changeSelection(int choices);
+	void select();
 	void volymeInput();
 	void raiseVolyme();
 	void raiseNumbers(bool effect);
@@ -34,11 +35,9 @@ private:
 	Animation mInGameBackground;
 	Animation mBack;
 	Animation mBlip;
-	Animation mEffectMuteChecked;
-	Animation mEffectMuteUnchecked;
+	Animation mEffectMute;
 	Animation mEffectVolyme;
-	Animation mMusicMuteChecked;
-	Animation mMusicMuteUnchecked;
+	Animation mMusicMute;
 	Animation mMusicVolyme;
 	Animation mEffectNumbers1;
 	Animation mEffectNumbers10;

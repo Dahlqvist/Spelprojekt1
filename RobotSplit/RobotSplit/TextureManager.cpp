@@ -296,11 +296,9 @@ void TextureManager::loadTexture()
 	mTextureMap["Back"].loadFromFile("Texture/Menu/Back.png");
 	mTextureMap["Blip"].loadFromFile("Texture/Menu/Blip.png");
 	mTextureMap["Controls"].loadFromFile("Texture/Menu/Controls.png");
-	mTextureMap["EffectMuteChecked"].loadFromFile("Texture/Menu/Effect_Mute_Checked.png");
-	mTextureMap["EffectMuteUnChecked"].loadFromFile("Texture/Menu/Effect_Mute_Unchecked.png");
+	mTextureMap["EffectMute"].loadFromFile("Texture/Menu/Effect_Mute.png");
 	mTextureMap["EffectVolym"].loadFromFile("Texture/Menu/Effect_Volym.png");
-	mTextureMap["MusicMuteUnChecked"].loadFromFile("Texture/Menu/Music_Mute.png");
-	mTextureMap["MusicMuteChecked"].loadFromFile("Texture/Menu/Music_Mute_Checked.png");
+	mTextureMap["MusicMute"].loadFromFile("Texture/Menu/Music_Mute.png");
 	mTextureMap["MusicVolym"].loadFromFile("Texture/Menu/Music_Volym.png");
 	mTextureMap["NewGame"].loadFromFile("Texture/Menu/New_Game.png");
 	mTextureMap["No"].loadFromFile("Texture/Menu/No.png");
