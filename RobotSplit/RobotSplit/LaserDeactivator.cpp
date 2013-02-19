@@ -5,6 +5,7 @@
 LaserDeactivator::LaserDeactivator(Trigger* trigger, float rotation)
 	:Trigger(*trigger)
 	,mPressed(false)
+	,mRotation(rotation)
 {
 	assert(rotation==0 || rotation==90 || rotation==180 || rotation==270);
 	mSprite.setRotation(rotation);
@@ -26,5 +27,6 @@ void LaserDeactivator::draw()
 	if (mPressed && mAnimation!=0x0 && mAnimation->getCurrentFrame()<2)
 	{
 		Unit::draw();
+		mSprite.setRotation(mRotation);
 	}
 }

@@ -217,10 +217,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
 					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(BOTTOM), mCollidedSides.end());
-					}
 				}
 				//If player is below object
 				else
@@ -229,10 +225,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 					{
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
-					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(TOP), mCollidedSides.end());
 					}
 				}
 			}
@@ -250,10 +242,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
 					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(RIGHT), mCollidedSides.end());
-					}
 				}
 				//If player is right of object
 				else
@@ -262,10 +250,6 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 					{
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
-					}
-					else
-					{
-						mCollidedSides.erase(mCollidedSides.find(LEFT), mCollidedSides.end());
 					}
 				}
 			}

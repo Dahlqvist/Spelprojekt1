@@ -13,6 +13,7 @@ public:
 
 private:
 	bool mPressed;
+	float mRotation;
 };
 
 #endif

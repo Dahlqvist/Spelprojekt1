@@ -269,6 +269,10 @@ void TextureManager::loadTexture()
 
 	mTextureMap["RamPipeRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_R_Pipe.png");
 
+	mTextureMap["RamPipeLeftWOPipe1"].loadFromFile("Texture/Enviroment/ram_level2_L_dark.png");
+
+	mTextureMap["RamPipeRightWOPipe1"].loadFromFile("Texture/Enviroment/ram_level2_R_dark.png");
+
 	mTextureMap["Line"].loadFromFile("Texture/Line.png");
 
 	//Initializing splash-screens
