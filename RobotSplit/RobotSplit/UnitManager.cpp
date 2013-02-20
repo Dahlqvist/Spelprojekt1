@@ -38,7 +38,10 @@ void UnitManager::update()
 	{
 		mUnits[i]->update();
 	}
+}
 
+void UnitManager::collide()
+{
 	mSidePairs.clear();
 	Collision col[4];
 	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)

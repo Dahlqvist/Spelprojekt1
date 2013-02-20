@@ -14,6 +14,10 @@ std::set<Unit*> Collision::mUnitsOnRightBottom;
 Collision::Collision()
 	:mMovedX(false)
 	,mMovedY(false)
+	,mMovedLeft(false)
+	,mMovedRight(false)
+	,mMovedUp(false)
+	,mMovedDown(false)
 {
 
 }
@@ -68,7 +72,32 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 
 bool Collision::isCollidedSide(int side)
 {
-	return (mCollidedSides.count(side)!=0);
+	if (mCollidedSides.count(side)==0)
+	{
+		return false;
+	}
+
+	std::cout<<"Side: "<<side<<std::endl;
+
+	//If the player haven't been moved, return false (bugfix)
+	if (side==LEFT && !mMovedLeft)
+	{
+		return false;
+	}
+	if (side==RIGHT && !mMovedRight)
+	{
+		return false;
+	}
+	if (side==TOP && !mMovedDown)
+	{
+		return false;
+	}
+	if (side==BOTTOM && !mMovedUp)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 void Collision::unitAtSides(const std::vector<Unit*> &objects)
@@ -214,6 +243,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				{
 					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
+						mMovedUp=true;
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
 					}
@@ -223,6 +253,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				{
 					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT))))
 					{
+						mMovedDown=true;
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
 					}
@@ -239,6 +270,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				{
 					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
+						mMovedLeft=true;
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
 					}
@@ -248,6 +280,7 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 				{
 					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))))
 					{
+						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
 					}

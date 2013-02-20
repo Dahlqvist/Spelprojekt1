@@ -63,11 +63,9 @@ void Game::update()
 	//window.setKeyRepeatEnabled(true);
 	mPlayer->update();
 	Objects->update();
-
+	Objects->collide();
 
 	moveCamera();
-
-	//runCollisions(Objects.getUnits(), *mPlayer);
 }
 void Game::input()
 {

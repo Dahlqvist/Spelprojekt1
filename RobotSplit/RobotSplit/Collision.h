@@ -44,6 +44,7 @@ private:
 
 	bool mMovedX, mMovedY;
 	bool mResetted;
+	bool mMovedLeft, mMovedRight, mMovedUp, mMovedDown;
 
 	int mPlayerPart;
 };
