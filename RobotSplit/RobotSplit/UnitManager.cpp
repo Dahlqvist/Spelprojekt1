@@ -39,7 +39,6 @@ void UnitManager::update()
 		mUnits[i]->update();
 	}
 
-	sf::Clock timer;
 	mSidePairs.clear();
 	Collision col[4];
 	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)
@@ -53,8 +52,6 @@ void UnitManager::update()
 			}
 		}
 	}
-	
-	std::cout<<"Time: "<<timer.getElapsedTime().asMicroseconds()<<std::endl;
 }
 
 void UnitManager::draw(sf::RenderWindow& window)
