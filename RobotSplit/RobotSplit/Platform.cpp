@@ -35,14 +35,6 @@ Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vect
 	assert(lives<=3);
 }
 
-void Platform::update()
-{
-	if (mLives==1)
-	{
-		mSolid=false;
-	}
-}
-
 void Platform::draw()
 {
 	mSprite.setPosition(mPosition);

@@ -15,7 +15,6 @@ public:
 	int getLives(){return mLives;};
 	bool getDestructible(){return mDestructible;};
 
-	void update();
 	void draw();
 	void hitOnce();
 
