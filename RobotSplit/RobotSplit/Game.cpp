@@ -57,8 +57,6 @@ Game::~Game()
 
 void Game::update()
 {
-	
-
 	Game::input();
 	//window.setKeyRepeatEnabled(true);
 	mPlayer->update();

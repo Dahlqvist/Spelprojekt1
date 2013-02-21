@@ -77,8 +77,6 @@ bool Collision::isCollidedSide(int side)
 		return false;
 	}
 
-	std::cout<<"Side: "<<side<<std::endl;
-
 	//If the player haven't been moved, return false (bugfix)
 	if (side==LEFT && !mMovedLeft)
 	{
