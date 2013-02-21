@@ -125,7 +125,10 @@ void Game::input()
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
+	}
 }
 
 void Game::moveCamera()

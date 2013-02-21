@@ -13,7 +13,8 @@ InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
-			currentSelection(&mResume)
+			currentSelection(&mResume),
+			mRelease(false)
 
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mBackground.getSprite().getGlobalBounds().width/2, 0);

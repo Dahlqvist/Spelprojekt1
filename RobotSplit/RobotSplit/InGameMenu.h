@@ -26,6 +26,7 @@ private:
 	Animation mBlip;
 
 	int mStatus;
+	bool mRelease;
 
 	sf::Vector2f mBlipPos;
 	sf::RenderWindow &mWindow;

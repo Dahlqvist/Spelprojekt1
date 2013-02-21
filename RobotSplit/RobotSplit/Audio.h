@@ -57,6 +57,8 @@ private:
 	bool mEMute;
 	bool mMMute;
 
+	bool mRelease;
+
 	int mHighlight;
 
 	int mEffectNr1;

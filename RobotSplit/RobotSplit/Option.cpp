@@ -14,7 +14,8 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 			mStatus(0),
 			mBlipPos(240, 150),
 			currentBackground(&mMainBackground),
-			currentSelection(&mAudio)
+			currentSelection(&mAudio),
+			mRelease(false)
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mMainBackground.getSprite().getGlobalBounds().width/2, 0);
 	sf::Vector2f tempPos2(mWindow.getSize().x/2-mInGameBackground.getSprite().getGlobalBounds().width/2, 0);
@@ -87,7 +88,7 @@ void Option::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
 		{
 			if(mStatus == 0)
 				mStateInput.changeState("Audio");
@@ -97,5 +98,7 @@ void Option::input()
 				mStateInput.changeState("Last");
 		}
 		MenuClock::restartClock();
+		if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			mRelease = true;
 	}
 }

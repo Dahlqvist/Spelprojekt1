@@ -23,7 +23,7 @@ int main()
 
 	sf::Clock lastUpdate;
 	float nextUpdate = 0.0;
-
+	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
 		sf::Event event;
@@ -42,7 +42,8 @@ int main()
 		{
 			int loops = 0;
 			bool render = false;
-			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 5)
+			cout << "LastUpdate: " << lastUpdate.getElapsedTime().asSeconds() << endl;
+			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 2)
 			{
 				loops++;
 				nextUpdate +=1/60.0;
@@ -51,9 +52,10 @@ int main()
 			}
 			if(render)
 			{
+				cout << "Loops: " << loops << endl;
 				statemanager.renderState();
 				lastUpdate.restart();
-				nextUpdate = 0;
+				nextUpdate = 1/60.0;
 			}
 		}
 	}

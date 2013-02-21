@@ -43,7 +43,8 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicHighlightNr(0),
 			mEMute(false),
 			mMMute(false),
-			mHighlight(1)
+			mHighlight(1),
+			mRelease(false)
 
 {	
 	setSpritePosition();
@@ -103,6 +104,8 @@ Audio::~Audio()
 
 void Audio::update()
 {
+	input();
+
 	if(StateInput::getMenuStatus())
 		currentBackground = &mMainBackground;
 	else if(!StateInput::getMenuStatus())
@@ -123,10 +126,26 @@ void Audio::update()
 	else	
 		currentSelection ->setCurrentFrame(1);
 
+	if(mEMute)
+	{
+		mEffectMute.setCurrentFrame(2);
+		if(mStatus == 2)
+			mEffectMute.setCurrentFrame(mEffectMute.getCurrentFrame() + 1);
+		mEffectMute.update();
+	}
+	if(mMMute)
+	{
+		mMusicMute.setCurrentFrame(2);
+		if(mStatus == 3)
+			mMusicMute.setCurrentFrame(mMusicMute.getCurrentFrame() + 1);
+		mMusicMute.update();
+	}
+	
+		
+
 	currentSelection ->update();
 	
 	updateNumbers();
-	input();
 }
 
 void Audio::render()
@@ -159,11 +178,22 @@ void Audio::input()
 	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
 	if(mTimer > mDelay)
 	{
+		//Byta rad
 		changeSelection(mChoices);
-		select();
+		//Vad som händer när man trycker på enter på respektive rad
+
+		//if((event.type == sf::Event::KeyReleased) && (event.key.code == sf::Keyboard::Return))
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
+			select();
+
+
+		//Hur man justerar ljudet
 		volymeInput();
+		//Restartar klockan så att alla delay går efter samma klocka
 		MenuClock::restartClock();
 	}
+	if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		mRelease = true;
 }
 
 void Audio::changeSelection(int choices)
@@ -207,9 +237,14 @@ void Audio::select()
 				currentSelection ->setCurrentFrame(1);
 				currentSelection ->update();
 			}
-			Sound::pauseSound("Lava");
-			Sound::changeVolume(mEVolyme);
-			Sound::playSound("Lava");
+			if(!StateInput::getMenuStatus())
+			{
+				Sound::pauseSound("Lava");
+				Sound::changeVolume(mEVolyme);
+				Sound::playSound("Lava");
+			}
+			else
+				Sound::changeVolume(mEVolyme);
 		}
 		else if(mStatus == 1)
 		{
@@ -222,21 +257,44 @@ void Audio::select()
 			{
 				mMusicHighlightNr = 0;
 			}
-			Music::pauseMusic();
-			Music::changeVolyme(mMVolyme);
-			Music::playMusic();
+			if(!StateInput::getMenuStatus())
+			{
+				Music::pauseMusic();
+				Music::changeVolyme(mMVolyme);
+				Music::playMusic();
+			}
+			else
+				Music::changeVolyme(mMVolyme);
 		}
 		else if(mStatus == 2)
 		{
 			mEMute = !mEMute;
-			currentSelection ->setCurrentFrame(2);
-			currentSelection ->update();
+			if(!StateInput::getMenuStatus())
+			{
+				if(mEMute)
+				{
+					Sound::pauseSound("Lava");
+					Sound::changeVolume(0);
+					Sound::playSound("Lava");
+				}
+				else if(!mEMute)
+				{
+					Sound::pauseSound("Lava");
+					Sound::changeVolume(mEVolyme);
+					Sound::playSound("Lava");
+				}
+			}
+			else
+			{
+				if(mEMute)
+					Sound::changeVolume(0);
+				else if(!mEMute)
+					Sound::changeVolume(mEVolyme);
+			}
 		}
 		else if(mStatus == 3)
 		{
 			mMMute = !mMMute;
-			currentSelection ->setCurrentFrame(2);
-			currentSelection ->update();
 		}
 		else if(mStatus == 4)
 			mStateInput.changeState("Last");
@@ -245,7 +303,7 @@ void Audio::select()
 
 void Audio::volymeInput()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) && mChangeVolyme == true)
+	if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolyme == true)
 	{
 		if(mStatus == 0)
 			lowerNumbers(true);
@@ -253,7 +311,7 @@ void Audio::volymeInput()
 			lowerNumbers(false);
 		lowerVolyme();		
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && mChangeVolyme == true)
+	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolyme == true)
 	{
 		if(mStatus == 0)
 			raiseNumbers(true);
