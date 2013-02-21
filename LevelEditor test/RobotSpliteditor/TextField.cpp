@@ -12,6 +12,12 @@ TextField::~TextField(void)
 {
 }
 
+void	TextField::clear()
+{
+	mText.clear();
+	mCurrentPosition=0;
+}
+
 void	TextField::insertCharacter(const char& Insert)
 {
 	mText.insert(mCurrentPosition,Insert);

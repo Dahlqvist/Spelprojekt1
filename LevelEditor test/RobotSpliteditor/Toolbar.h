@@ -1,34 +1,18 @@
 #ifndef		INC_TOOLBAR
 #define		INC_TOOLBAR
 #include	<SFML/Graphics.hpp>
-#include	<set>
-#include	"UIItem.h"
 #include	"Container.h"
 #include	"Unit.h"
 #include	"Player.h"
 #include	"Level.h"
+#include	"UIItemContainer.h"
 
 typedef	Container<Unit>		UnitContainer;
 typedef	Container<Player>	PlayerContainer;
-typedef	std::set<UIItem*>	UISet;
 
 using namespace sf;
 
 class	Editor;
-
-class	UIItemContainer
-{
-public:
-	UIItemContainer	();
-	void	activate	(std::string);
-	void	deactivate	(std::string);
-	UISet&	accessActive();
-	UIItem*	getActivated(std::string);
-	UIItem*	getDeactivated	(std::string);
-	UISet&	accessInactive	();
-private:
-	UISet	mActive,mInactive;
-};
 
 class Toolbar
 {
@@ -44,6 +28,7 @@ public:
 	bool		isSelected	()const;
 	Vector2f	getPosition	();
 	void		eventHandle	(const	Event&);
+	bool		mChange;
 private:
 	UnitContainer	mCurrUnit;
 	PlayerContainer	mCurrPlayer;
