@@ -10,6 +10,7 @@ public:
 
 	void hitOnce();
 	void draw();
+	void reset();
 
 private:
 	bool mPressed;

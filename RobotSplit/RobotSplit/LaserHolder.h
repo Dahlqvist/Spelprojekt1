@@ -27,6 +27,7 @@ public:
 	virtual void hit();
 	virtual void activate();
 	virtual void deactivate();
+	virtual void reset();
 
 protected:
 	float mRotation;
@@ -37,7 +38,7 @@ protected:
 	sf::Sprite mOff;
 
 	Animation* mAnimation;
-	bool mActive;
+	bool mActive, mStartActive;
 
 	Laser* mLaser;
 };
