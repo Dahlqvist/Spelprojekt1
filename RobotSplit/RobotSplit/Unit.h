@@ -49,6 +49,7 @@ public:
 	virtual void hitOnce(){};
 	virtual void activate(){};
 	virtual void deactivate(){};
+	virtual void reset(){};
 
 protected:
 	sf::Vector2f mSize, mOffset;

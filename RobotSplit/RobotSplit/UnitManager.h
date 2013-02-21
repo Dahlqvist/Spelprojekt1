@@ -26,6 +26,7 @@ public:
 	static bool isCollidedSide(int playerPart, int side);
 
 	void update();
+	void collide();
 	void draw(sf::RenderWindow& window);
 
 private:

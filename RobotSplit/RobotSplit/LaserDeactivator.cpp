@@ -30,3 +30,12 @@ void LaserDeactivator::draw()
 		mSprite.setRotation(mRotation);
 	}
 }
+
+void LaserDeactivator::reset()
+{
+	mPressed=false;
+	mAnimation->restart();
+	mSprite=mAnimation->getSprite();
+	mSprite.setPosition(mPosition);
+	mSprite.setRotation(mRotation);
+}

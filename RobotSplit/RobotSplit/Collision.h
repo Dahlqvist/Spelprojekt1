@@ -11,8 +11,8 @@
 class Collision
 {
 public:
-	Collision();
-	void collide(int playerPart, Player& player, const std::vector<Unit*> &objects);
+	Collision(int playerPart, Player& player, std::vector<Unit*> &objects);
+	void collide();
 	bool isCollidedSide(int side);
 	static void unitAtSides(const std::vector<Unit*> &objects);
 
@@ -25,9 +25,10 @@ public:
 		MAX_VALUE_SIDES};
 
 private:
-	bool testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);
-	void handleCollisions(Player& player, Unit* obj2, const sf::FloatRect& collisionRect);
-	void testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect);
+	bool testCollisions(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
+	void handleCollisions(int unit, const sf::FloatRect& collisionRect);
+	void testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
+	void killPlayer();
 
 	std::set<int> mCollidedSides;
 	//Objects at the sides
@@ -44,8 +45,12 @@ private:
 
 	bool mMovedX, mMovedY;
 	bool mResetted;
+	bool mMovedLeft, mMovedRight, mMovedUp, mMovedDown;
 
 	int mPlayerPart;
+
+	Player* mPlayer;
+	std::vector<Unit*> &mUnits;
 };
 
 #endif

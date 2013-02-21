@@ -3,6 +3,7 @@
 LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active):
 	Unit(laser->getPosition(), size, offset, id, "LaserHolder", false),
 	mActive(active),
+	mStartActive(active),
 	mLaser(laser)
 {
 	mStandby=TextureManager::getSprite("LaserHolderStandby");
@@ -38,7 +39,7 @@ void LaserHolder::update()
 		mActiveSprite=&mStandby;
 	};
 	mLaser->deactivate();
-};
+}
 
 void LaserHolder::hit(){
 	if(mActive==true)
@@ -46,16 +47,28 @@ void LaserHolder::hit(){
 		mActiveSprite=&mOn;
 		mLaser->activate();
 	};
-};
+}
 
 void LaserHolder::activate()
 {
 	mActiveSprite=&mOn;
 	mActive=true;
-};
+}
 
 void LaserHolder::deactivate()
 {
 	mActiveSprite=&mOff;
 	mActive=false;
-};
+}
+
+void LaserHolder::reset()
+{
+	if (mStartActive)
+	{
+		activate();
+	}
+	else
+	{
+		deactivate();
+	}
+}

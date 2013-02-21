@@ -42,7 +42,7 @@ int main()
 		{
 			int loops = 0;
 			bool render = false;
-			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 2)
+			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 3)
 			{
 				loops++;
 				nextUpdate +=1/60.0;
