@@ -74,6 +74,7 @@ void Platform::hitOnce()
 		if (mLives==0)
 		{
 			mAnimation=new Animation("BreakAnim", 100, 5);
+			mSize=sf::Vector2f(64, 36);
 		}
 	}
 }
