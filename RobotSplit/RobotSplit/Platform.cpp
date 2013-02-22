@@ -73,7 +73,7 @@ void Platform::hitOnce()
 
 		if (mLives==0)
 		{
-			mAnimation=new Animation("BreakAnim", 100, 4);
+			mAnimation=new Animation("BreakAnim", 100, 5);
 		}
 	}
 }
