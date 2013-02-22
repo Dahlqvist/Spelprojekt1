@@ -2,7 +2,10 @@
 #include "Toolbar.h"
 #include "Editor.h"
 #include "UIText.h"
+#include "UIDrop.h"
 #include "ObjectMenu.h"
+#include "LevelLoader.h"
+#include "XmlSaver.h"
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
@@ -13,6 +16,10 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	meny->addIcon(new UnitIcon("Platform","Tile1"));
 	meny->addIcon(new UnitIcon("Platform","Tile2"));
 	meny->addIcon(new UnitIcon("Platform","Tile3"));
+	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
+	Solid->addOption("Yes",true);
+	Solid->addOption("No",false);
+	mUIItems.accessInactive().insert(Solid);
 	mUIItems.accessInactive().insert(new UIText("Name","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
@@ -99,10 +106,13 @@ void	Toolbar::setUnit(Unit*	Source)
 	mCurrUnit.unInitiate();
 	mCurrUnit.setPtr(Source);
 	mCurrPlayer.unInitiate();
+	mUIItems.deactivateAll();
 	mUIItems.activate("Name");
 	mUIItems.activate("Sprite");
 	mUIItems.activate("Position x");
 	mUIItems.activate("Position y");
+	mUIItems.activate("Solid");
+	mUIItems.activate("zOther");
 	char*	temp=new char[10];
 	string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
 	itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
@@ -111,6 +121,7 @@ void	Toolbar::setUnit(Unit*	Source)
 	dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
 	itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
 	dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+	dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
 }
 
 void	Toolbar::setPlayer(Player*	Source)
@@ -118,9 +129,11 @@ void	Toolbar::setPlayer(Player*	Source)
 	mCurrPlayer.unInitiate();
 	mCurrPlayer.setPtr(Source);
 	mCurrUnit.unInitiate();
+	mUIItems.deactivateAll();
 	mUIItems.activate("Name");
 	mUIItems.activate("Position x");
 	mUIItems.activate("Position y");
+	mUIItems.activate("zOther");
 	mUIItems.deactivate("Sprite");
 	char*	temp=new char[10];
 	itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
@@ -175,22 +188,25 @@ void	Toolbar::eventHandle(const	Event&	Current)
 			}
 			else if(mCurrUnit.isActive())
 			{
+				mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
 				mCurrUnit.getObject()->setPosition(temp);
 			}
 		}
 		else
 		{
-			Selected->handleEvent(Current,Vector2f(mPosition.x+5,mPosition.y+Height));
+			if(Selected!=0)
+				Selected->handleEvent(Current,Vector2f(mPosition.x+5,mPosition.y+Height));
 		}
 		break;
 	case sf::Event::EventType::MouseButtonPressed:
 		for(it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
 		{
-			if(Selected!=0)
+			if(Selected==(*it))
 			{
 				if((*it)->getHitBox(Vector2f(mPosition.x+5,mPosition.y+Height)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					Selected->handleEvent(Current,Vector2f(mPosition.x+5,mPosition.y+Height));
+					break;
 				}
 				else
 				{
@@ -202,10 +218,12 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+5,mPosition.y+Height)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					(*it)->setSelect(true);
+//					mChange=true;
 				}
 				else
 				{
 					(*it)->setSelect(false);
+//					mChange=true;
 				}
 			}
 			Height+=(*it)->getHitBox(Vector2f()).height;
@@ -216,6 +234,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 		{
 			Selected->handleEvent(Current,Vector2f(mPosition.x+5,mPosition.y+Height));
 		}
+		break;
 	}
 }
 
@@ -227,4 +246,14 @@ void	Toolbar::setSelect(const bool&	Select)
 bool	Toolbar::isSelected()const
 {
 	return	mSelected;
+}
+
+void	Toolbar::unIniUnit()
+{
+	mCurrUnit.unInitiate();
+}
+
+void	Toolbar::unIniPlayer()
+{
+	mCurrPlayer.unInitiate();
 }

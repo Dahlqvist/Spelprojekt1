@@ -15,20 +15,18 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Background.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\BrainMagnet.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Collision.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Courser.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Eric.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetExtensions.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetWall.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Game.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\InGameMenu.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Laser.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserHolder.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Level.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Menu.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Music.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Option.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp" />
@@ -37,10 +35,6 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Splash.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\State.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\StateInput.cpp" />
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\StateManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Trigger.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
@@ -52,6 +46,7 @@
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorBar.cpp" />
     <ClCompile Include="GameTimer.cpp" />
+    <ClCompile Include="LevelBar.cpp" />
     <ClCompile Include="LevelConstructor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ObjectLoader.cpp" />
@@ -68,21 +63,19 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Background.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\BrainMagnet.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Collision.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Courser.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Eric.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetExtensions.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetWall.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Game.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\GameObject.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\InGameMenu.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Laser.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserHolder.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Level.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Menu.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Music.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Option.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Meanix.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h" />
@@ -92,10 +85,6 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Splash.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\State.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\StateInput.h" />
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\StateManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Trigger.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
@@ -108,6 +97,7 @@
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EditorBar.h" />
     <ClInclude Include="GameTimer.h" />
+    <ClInclude Include="LevelBar.h" />
     <ClInclude Include="LevelConstructor.h" />
     <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="ObjectMenu.h" />
@@ -154,7 +144,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

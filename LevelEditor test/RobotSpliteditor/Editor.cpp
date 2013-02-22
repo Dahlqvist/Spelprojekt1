@@ -5,10 +5,12 @@ using namespace sf;
 
 
 Editor::Editor(void)
-	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView())
+	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),mLevelTool(mLevel)
 {
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
-	mCurrView.setViewport(FloatRect(Vector2f(0,0.05),size));
+	float	mjao=float(mLevelTool.getSize().y);
+	Vector2f	position(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y)));
+	mCurrView.setViewport(FloatRect(position,size));
 }
 
 Editor::~Editor(void)
@@ -30,6 +32,7 @@ void	Editor::run()
 		renderLevel(mCurrView);
 //		mWindow.draw(sf::Text(MTEXT.getString()));
 		mTools.render(this);
+		mLevelTool.render(mWindow);
 		mWindow.display();
 	}
 }
@@ -77,7 +80,7 @@ void	Editor::eventHandler(const Event& Current)
 	case sf::Event::MouseMoved:
 		temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));
 		point	=Vector2f(Current.mouseMove.x,Current.mouseMove.y);
-		if(!mTools.checkHit(point))
+		if(!mTools.checkHit(point)||!mLevelTool.checkHit(point))
 		{
 			if(mSelectedUnit.isActive())
 			{
@@ -96,21 +99,22 @@ void	Editor::eventHandler(const Event& Current)
 		point=	Vector2f(Current.mouseButton.x,Current.mouseButton.y);
 		std::cout<<"MousePosition: "<<temp.y<<","<<temp.y<<std::endl;
 		mTools.setSelect(mTools.checkHit(point));
+		mLevelTool.setSelect(mLevelTool.checkHit(point));
 		if(mTools.isSelected())
 		{
+			mSelectedUnit.unInitiate();
+			mSelectedPlayer.unInitiate();
 			mTools.eventHandle(Current);
+		}
+		else if(mLevelTool.isSelected())
+		{
+			mSelectedUnit.unInitiate();
+			mSelectedPlayer.unInitiate();
+			mLevelTool.eventHandle(Current);
 		}
 		else
 		{
-			if(Current.mouseButton.button==sf::Mouse::Button::Middle)
-			{
-				if(!mSelectedUnit.isActive())
-				{
-					mSelectedUnit.setPtr(new Unit(temp,"Door","Exit"));
-					mTools.setUnit(mSelectedUnit.getObject());
-				}
-			}
-			else if(Current.mouseButton.button==sf::Mouse::Button::Right)
+			if(Current.mouseButton.button==sf::Mouse::Button::Right)
 			{
 				if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
 				{
@@ -119,6 +123,8 @@ void	Editor::eventHandler(const Event& Current)
 						sf::FloatRect hitbox(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
 						if(hitbox.contains(temp))
 						{
+							mTools.unIniUnit();
+							mTools.unIniPlayer();
 							mLevel.deleteItem(mLevel.getObjects()[i]);
 							break;
 						}
@@ -129,6 +135,8 @@ void	Editor::eventHandler(const Event& Current)
 							getCollisionSprite()[0]->getGlobalBounds());
 						if(hitbox.contains(temp))
 						{
+							mTools.unIniUnit();
+							mTools.unIniPlayer();
 							mLevel.deletePlayer();
 						}
 					}
@@ -137,11 +145,15 @@ void	Editor::eventHandler(const Event& Current)
 				{
 					if(mSelectedPlayer.isActive())
 					{
+						mTools.unIniUnit();
+						mTools.unIniPlayer();
 						mLevel.deletePlayer();
 						mSelectedPlayer.unInitiate();
 					}
 					else
 					{
+						mTools.unIniUnit();
+						mTools.unIniPlayer();
 						mLevel.deleteItem(mSelectedUnit.getObject());
 						mSelectedUnit.unInitiate();
 					}
@@ -218,12 +230,14 @@ void	Editor::eventHandler(const Event& Current)
 		}
 		cout<<"Hitscan end!"<<endl;
 		break;
-	case sf::Event::EventType::TextEntered:
-		mTools.eventHandle(Current);
 	case sf::Event::EventType::KeyReleased:
 		if(mTools.isSelected())
 		{
 			mTools.eventHandle(Current);
+		}
+		else if(mLevelTool.isSelected())
+		{
+			mLevelTool.eventHandle(Current);
 		}
 		else
 		{
@@ -251,7 +265,14 @@ void	Editor::eventHandler(const Event& Current)
 		}
 		break;
 	default:
-		mTools.eventHandle(Current);
+		if(mTools.isSelected())
+		{
+			mTools.eventHandle(Current);
+		}
+		else if(mLevelTool.isSelected())
+		{
+			mLevelTool.eventHandle(Current);
+		}
 		break;
 	}
 }

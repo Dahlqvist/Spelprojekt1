@@ -130,6 +130,7 @@ void	Level::setBackground(vector<Background*> source)
 
 void	Level::operator=(const Level& other)
 {
+	mObjects.clear();
 	mObjects=other.getObjects();
 	mBackground=other.mBackground;
 	mName=other.getName();
