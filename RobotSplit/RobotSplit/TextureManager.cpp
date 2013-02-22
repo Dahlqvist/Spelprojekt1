@@ -162,6 +162,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Break1"].loadFromFile("Texture/Enviroment/Tiles/break3_dark.png");
 	mTextureMap["Break2"].loadFromFile("Texture/Enviroment/Tiles/break2_dark.png");
 	mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
+	mTextureMap["BreakAnim"].loadFromFile("Texture/Enviroment/Tiles/break_dustanimation_strip5.png");
 
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
@@ -343,12 +344,13 @@ const sf::Sprite TextureManager::getSprite(std::string sprite)
 
 const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
 {
-	/*for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
+	for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
 	{
-		if(it->second==sprite.getTexture())
+		sf::Texture* temp=&it->second;
+		if(temp==sprite.getTexture())
 		{
 			return	it->first;
 		}
-	}*/
+	}
 	return	"ERROR!";
 }

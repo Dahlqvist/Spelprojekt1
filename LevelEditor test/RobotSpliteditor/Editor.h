@@ -24,6 +24,8 @@ public:
 	void				run();
 	void				renderLevel(View&);
 	RenderWindow&		getWindow();
+	void				setUnit(UnitContainer&);
+	void				setPlayer(PlayerContainer&);
 private:
 	RenderWindow		mWindow;
 	LevelConstructor	mLevel;

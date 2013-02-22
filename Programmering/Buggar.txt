@@ -6,3 +6,6 @@
 6. faller igenom lavan ibland (risk för samma problem på plattformar)
 7. Om man hoppar när man träffar lavan, så hoppar man när gubben har resettats istället
 8. Huvudet kan "studsa" på lavan
+9. Benen krockar inte med lavan om de sitter på en vägg
+10. En del kontroller slutar fungera en kort tid, efter att vissa kontroller har använts (t.ex. fälla ut extention efter att ha delat kroppen)
+11. Byter till huvud om man fäller ut extention, även om extention inte fälls ut

@@ -28,6 +28,7 @@ public:
 	void update();
 	void collide();
 	void draw(sf::RenderWindow& window);
+	void reset();
 
 private:
 	typedef std::vector<Unit*> unitVector;

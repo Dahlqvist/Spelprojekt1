@@ -55,10 +55,13 @@
     <ClCompile Include="LevelConstructor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ObjectLoader.cpp" />
+    <ClCompile Include="ObjectMenu.cpp" />
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Toolbar.cpp" />
     <ClCompile Include="UIItem.cpp" />
+    <ClCompile Include="UIItemContainer.cpp" />
     <ClCompile Include="UIText.cpp" />
+    <ClCompile Include="UnitIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
@@ -107,11 +110,14 @@
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="LevelConstructor.h" />
     <ClInclude Include="ObjectLoader.h" />
+    <ClInclude Include="ObjectMenu.h" />
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Toolbar.h" />
     <ClInclude Include="UIDrop.h" />
     <ClInclude Include="UIItem.h" />
+    <ClInclude Include="UIItemContainer.h" />
     <ClInclude Include="UIText.h" />
+    <ClInclude Include="UnitIcon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30D2A94B-EB26-488B-A2AE-A019E1B653DB}</ProjectGuid>

@@ -65,3 +65,11 @@ void UnitManager::draw(sf::RenderWindow& window)
 		window.draw(mUnits[i]->getSprite());
 	}
 }
+
+void UnitManager::reset()
+{
+	for (unitVector::size_type i=0; i<mUnits.size(); i++)
+	{
+		mUnits[i]->reset();
+	}
+}
