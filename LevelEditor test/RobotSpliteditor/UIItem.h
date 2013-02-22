@@ -10,11 +10,11 @@ public:
 	virtual	std::string	getName	();
 	virtual bool		selected();
 	virtual void		draw	(sf::RenderWindow&,sf::Vector2f Position)=0;
+	virtual	FloatRect	getHitBox	(Vector2f	Position)const=0;
 	virtual	void		setSelect	(const bool&);
-	virtual	void		handleEvent	(const sf::Event&)=0;
+	virtual	void		handleEvent	(const sf::Event&,Vector2f	Position)=0;
 	virtual	void		setChangeablitiy(bool&);
 	virtual	bool		getChangeablitiy()const;
-	virtual	FloatRect	getHitBox(Vector2f	Position)const=0;
 protected:
 	UIItem	(void);
 	UIItem	(const UIItem&);

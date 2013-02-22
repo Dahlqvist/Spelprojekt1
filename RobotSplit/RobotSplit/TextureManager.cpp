@@ -343,12 +343,13 @@ const sf::Sprite TextureManager::getSprite(std::string sprite)
 
 const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
 {
-	/*for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
+	for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
 	{
-		if(it->second==sprite.getTexture())
+		sf::Texture* temp=&it->second;
+		if(temp==sprite.getTexture())
 		{
 			return	it->first;
 		}
-	}*/
+	}
 	return	"ERROR!";
 }

@@ -52,6 +52,10 @@ void	Editor::renderLevel(View& Target)
 	{
 		mWindow.draw(mSelectedUnit.getObject()->getSprite());		
 	}
+	if(mSelectedPlayer.isActive())
+	{
+		mSelectedPlayer.getObject()->draw(mWindow);		
+	}
 	mWindow.setView(mWindow.getDefaultView());
 }
 
@@ -73,32 +77,7 @@ void	Editor::eventHandler(const Event& Current)
 	case sf::Event::MouseMoved:
 		temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));
 		point	=Vector2f(Current.mouseMove.x,Current.mouseMove.y);
-		mTools.setSelect(mTools.checkHit(point));
-		if(mTools.isSelected())
-		{
-			if(mSelectedUnit.isActive())
-			{
-				mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
-				if(!mSelectedUnit.fromLevel())
-				{
-					mSelectedUnit.deletePtr();
-				}
-					mSelectedUnit.unInitiate();
-			}
-			else if(mSelectedPlayer.isActive())
-			{
-				mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getOriginal()));
-				mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-				mSelectedPlayer.getObject()->update();
-				if(!mSelectedPlayer.fromLevel())
-				{
-					mSelectedPlayer.deletePtr();
-				}
-				mSelectedPlayer.unInitiate();
-			}
-			mTools.eventHandle(Current);
-		}
-		else
+		if(!mTools.checkHit(point))
 		{
 			if(mSelectedUnit.isActive())
 			{
@@ -225,6 +204,13 @@ void	Editor::eventHandler(const Event& Current)
 								mLevel.addPlayer(mSelectedPlayer.getObject());
 							}
 						}
+						else
+						{
+							if(!mSelectedPlayer.fromLevel())
+							{
+								mLevel.addPlayer(mSelectedPlayer.getObject());
+							}
+						}
 						mSelectedPlayer.unInitiate();
 					}
 				}
@@ -306,4 +292,24 @@ bool	Editor::collide(PlayerContainer&	Other)
 RenderWindow&	Editor::getWindow()
 {
 	return	mWindow;
+}
+
+void	Editor::setPlayer(PlayerContainer&	Cont)
+{
+	if(Cont.isActive())
+	{
+		mSelectedPlayer.unInitiate();
+		mSelectedPlayer.setPtr(Cont.getObject());
+		mSelectedUnit.unInitiate();
+	}
+}
+
+void	Editor::setUnit(UnitContainer&	Cont)
+{
+	if(Cont.isActive())
+	{
+		mSelectedUnit.unInitiate();
+		mSelectedUnit.setPtr(Cont.getObject());
+		mSelectedPlayer.unInitiate();
+	}
 }
