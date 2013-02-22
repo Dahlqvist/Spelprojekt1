@@ -107,6 +107,7 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
 			mPlayer->restartPlayer(sf::Vector2f(64, 384));
 			TestTimer.restart();
+			Objects->reset();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 			mPlayer->reFuel(100);
