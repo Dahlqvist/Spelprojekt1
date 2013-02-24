@@ -66,10 +66,13 @@ void		BackgroundWrap::deletePointer()
 //Level Functions
 Level::Level(void)
 {
+	mPlayer=NULL;
+	mName="Default";
 }
 
 Level::Level(string	FileName)
 {
+	mPlayer=NULL;
 	loadNewLevel(FileName);
 }
 
@@ -81,14 +84,12 @@ void	Level::deletePointers()
 {
 	for(UnitVector::size_type i=0;i<mObjects.size();i++)
 	{
-		if(mPlayer==NULL)
-		{
-			delete mObjects[i];
-		}
+		delete mObjects[i];
 	}
-	if(mPlayer==NULL)
+	if(mPlayer!=NULL)
 	{
 		delete mPlayer;
+		mPlayer==NULL;
 	}
 	mObjects.clear();
 	mDialogueBoxes.clear();
@@ -98,8 +99,10 @@ void	Level::deletePointers()
 void	Level::loadNewLevel(string FileName)
 {
 	LevelLoader	Loader;
-	Loader.loadFile(FileName);
-	(*this)=Loader.getLevel();
+	if(Loader.loadFile(FileName))
+	{
+		(*this)=Loader.getLevel();
+	}
 }
 
 
@@ -130,7 +133,7 @@ void	Level::setBackground(vector<Background*> source)
 
 void	Level::operator=(const Level& other)
 {
-	mObjects.clear();
+	deletePointers();
 	mObjects=other.getObjects();
 	mBackground=other.mBackground;
 	mName=other.getName();

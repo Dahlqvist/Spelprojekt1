@@ -9,9 +9,10 @@ enum	Type
 	Load,Save,Background
 };
 
-LevelBar::LevelBar(Level& LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
+LevelBar::LevelBar(Level* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
 	:mPosition(Position),mSize(Size),mBackground(BackColor)
 {
+	mLevel=LEVEL;
 	UIDrop<Type>*Solid=new UIDrop<Type>("Action",Color(255,255,255,255),Color(0,0,0,255),20);
 	Solid->addOption("Load File",Load);
 	Solid->addOption("Save File",Save);

@@ -5,7 +5,8 @@ using namespace sf;
 
 
 Editor::Editor(void)
-	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),mLevelTool(mLevel)
+	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),
+	mLevelTool(&mLevel)
 {
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
 	float	mjao=float(mLevelTool.getSize().y);
