@@ -299,7 +299,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(RIGHT));
+ 						mCollidedSides.erase(mCollidedSides.find(RIGHT));
 					}
 				}
 			}
@@ -346,7 +346,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)=="PlayerPartBody")
 	{
 		mPlayer->win();
-		//mPlayer->restartPlayer(sf::Vector2f(64, 384));
 	}
 	if (mUnits[unit]->getId()=="LaserRed")
 	{

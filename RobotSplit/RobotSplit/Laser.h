@@ -15,6 +15,8 @@ public:
 
 	virtual std::string getId(){return mId;};
 
+	virtual float getLength(){return mMaxLength;};
+
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mRotation=r;};
 	float getRotation(){return mRotation;}
