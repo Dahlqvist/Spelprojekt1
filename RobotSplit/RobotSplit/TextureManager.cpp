@@ -164,6 +164,12 @@ void TextureManager::loadTexture()
 	mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
 	mTextureMap["BreakAnim"].loadFromFile("Texture/Enviroment/Tiles/break_dustanimation_strip5.png");
 
+	//Tutorial 1
+	mTextureMap["House1"].loadFromFile("Texture/Tutorials/Tutorial01/House02_High02.png");
+	mTextureMap["House2"].loadFromFile("Texture/Tutorials/Tutorial01/House02_TutLvl01.png");
+	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/Tutorial01/radio_help_1.png");
+	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/Tutorial01/radio_help_2.png");
+
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
 	mTextureMap["Tile3"].loadFromFile("Texture/Enviroment/tiles/tile3_dark.png");
