@@ -43,8 +43,7 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicHighlightNr(0),
 			mEMute(false),
 			mMMute(false),
-			mHighlight(1),
-			mRelease(false)
+			mHighlight(1)
 
 {	
 	setSpritePosition();
@@ -104,7 +103,8 @@ Audio::~Audio()
 
 void Audio::update()
 {
-	input();
+	//Volymen justeras
+	volymeInput();
 
 	if(StateInput::getMenuStatus())
 		currentBackground = &mMainBackground;
@@ -140,9 +140,6 @@ void Audio::update()
 			mMusicMute.setCurrentFrame(mMusicMute.getCurrentFrame() + 1);
 		mMusicMute.update();
 	}
-	
-		
-
 	currentSelection ->update();
 	
 	updateNumbers();
@@ -174,32 +171,18 @@ void Audio::render()
 void Audio::input()
 {
 	int mChoices = 4;
-	double mDelay = 0.15;
-	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
-	if(mTimer > mDelay)
-	{
 		//Byta rad
 		changeSelection(mChoices);
+
 		//Vad som händer när man trycker på enter på respektive rad
-
-		//if((event.type == sf::Event::KeyReleased) && (event.key.code == sf::Keyboard::Return))
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
-			select();
-
-
-		//Hur man justerar ljudet
-		volymeInput();
-		//Restartar klockan så att alla delay går efter samma klocka
-		MenuClock::restartClock();
-	}
-	if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-		mRelease = true;
+		select();
 }
 
 void Audio::changeSelection(int choices)
 {
 	int mChoices = choices;
-	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
+	if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
+	//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
 	{
 		mBlipPos.y += 100;
 		mBlip.setPosition(mBlipPos);
@@ -207,12 +190,12 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
+	//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
+	else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
 	{			
-		if(mStatus > 0)
-			mBlipPos.y -= 100;
+		mBlipPos.y -= 100;
 		mBlip.setPosition(mBlipPos);
-			mStatus--;
+		mStatus--;
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
@@ -220,7 +203,8 @@ void Audio::changeSelection(int choices)
 
 void Audio::select()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	//if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 	{
 		if(mStatus == 0)
 		{
@@ -303,21 +287,26 @@ void Audio::select()
 
 void Audio::volymeInput()
 {
-	if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolyme == true)
+	float mDelay = 0.1;
+	if(mClock.getElapsedTime().asSeconds() > mDelay)
 	{
-		if(mStatus == 0)
-			lowerNumbers(true);
-		else if(mStatus == 1)
-			lowerNumbers(false);
-		lowerVolyme();		
-	}
-	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolyme == true)
-	{
-		if(mStatus == 0)
-			raiseNumbers(true);
-		else if(mStatus == 1)
-			raiseNumbers(false);
-		raiseVolyme();
+		if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolyme == true)
+		{
+			if(mStatus == 0)
+				lowerNumbers(true);
+			else if(mStatus == 1)
+				lowerNumbers(false);
+			lowerVolyme();		
+		}
+		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolyme == true)
+		{
+			if(mStatus == 0)
+				raiseNumbers(true);
+			else if(mStatus == 1)
+				raiseNumbers(false);
+			raiseVolyme();
+		}
+		mClock.restart();
 	}
 }
 

@@ -21,7 +21,7 @@ public:
 	virtual void update();
 	virtual void render();
 
-	void input();
+	virtual void input();
 private:
 	void moveCamera();
 

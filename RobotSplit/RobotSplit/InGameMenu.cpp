@@ -45,7 +45,7 @@ void InGameMenu::update()
 		currentSelection = &mQuit;
 	currentSelection->setCurrentFrame(1);
 	currentSelection->update();
-	input();
+	//input();
 }
 
 void InGameMenu::render()

@@ -14,8 +14,7 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 			mStatus(0),
 			mBlipPos(240, 150),
 			currentBackground(&mMainBackground),
-			currentSelection(&mAudio),
-			mRelease(false)
+			currentSelection(&mAudio)
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mMainBackground.getSprite().getGlobalBounds().width/2, 0);
 	sf::Vector2f tempPos2(mWindow.getSize().x/2-mInGameBackground.getSprite().getGlobalBounds().width/2, 0);
@@ -49,8 +48,6 @@ void Option::update()
 		currentSelection = &mBack;
 	currentSelection->setCurrentFrame(1);
 	currentSelection->update();
-		
-	input();
 }
 
 void Option::render()
@@ -67,11 +64,8 @@ void Option::render()
 void Option::input()
 {
 	int mChoices = 2;
-	double mDelay = 0.15;
-	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
-	if(mTimer > mDelay)
-	{
-		if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+		//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+		if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
@@ -79,16 +73,17 @@ void Option::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+		//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
 		{			
-			if(mStatus > 0)
-				mBlipPos.y -= 100;
+			mBlipPos.y -= 100;
 			mBlip.setPosition(mBlipPos);
 			mStatus--;
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
+		//else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
+		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 		{
 			if(mStatus == 0)
 				mStateInput.changeState("Audio");
@@ -97,8 +92,4 @@ void Option::input()
 			else if(mStatus == 2)
 				mStateInput.changeState("Last");
 		}
-		MenuClock::restartClock();
-		if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-			mRelease = true;
-	}
 }

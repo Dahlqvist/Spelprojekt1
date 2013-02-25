@@ -61,6 +61,16 @@ void StateManager::renderState()
 	mStateStack.top()->render();
 }
 
+void StateManager::inputState()
+{
+	mStateStack.top()->input();
+}
+
+State* StateManager::getState()
+{
+	return mStateStack.top();
+}
+
 void StateManager::internalClear()
 {
 	while(!mStateStack.empty())

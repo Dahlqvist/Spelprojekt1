@@ -5,8 +5,10 @@
 #include "StateManager.h"
 #include "Window.h"
 #include "Splash.h"
+#include "Game.h"
 #include "Sound.h"
 #include "Music.h"
+#include "State.h"
 
 using namespace std;
 
@@ -23,15 +25,18 @@ int main()
 
 	sf::Clock lastUpdate;
 	float nextUpdate = 0.0;
-	mWindow.setFramerateLimit(60);
+	float temp = 0.0;
+	//mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
-		sf::Event event;
-		while(mWindow.pollEvent(event))
+		while(mWindow.pollEvent(Window::getEvent()))
 		{
-			if(event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+			if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 				mWindow.close();
+			
+			statemanager.inputState();
 		}
+
 
 		if(Splash::getStatus())
 		{
@@ -42,6 +47,7 @@ int main()
 		{
 			int loops = 0;
 			bool render = false;
+			
 
 			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 3)
 			{
@@ -49,14 +55,20 @@ int main()
 				nextUpdate +=1/60.0;
 				render = true;
 				statemanager.updateState();
+				temp = lastUpdate.getElapsedTime().asSeconds();
+				cout << "Time: " << temp << endl;
 			}
+			
 			if(render)
 			{
-				cout << "Loops: " << loops << endl;
 				statemanager.renderState();
 				lastUpdate.restart();
 				nextUpdate = 1/60.0;
+				//cout << "Loops: " << loops << endl;
 			}
+			//cout << "Time: " << lastUpdate.getElapsedTime().asSeconds() << endl;
+			
+			
 		}
 	}
 
