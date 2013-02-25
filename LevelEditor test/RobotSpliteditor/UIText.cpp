@@ -64,7 +64,7 @@ void	UIText::handleEvent(const sf::Event& Current,Vector2f	Position)
 		switch(Current.type)
 		{
 		case sf::Event::EventType::TextEntered :
-			if(Current.text.unicode>='1')
+			if(Current.text.unicode>='0')
 			{
 				mEnter.insertCharacter(Current.text.unicode);
 			}

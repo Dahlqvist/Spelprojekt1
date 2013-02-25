@@ -81,7 +81,6 @@ protected:
 	BackgroundWrap	mBackground;
 	Player*			mPlayer;
 	vector<DialogueBox*> mDialogueBoxes;
-private:
 	/*Defines the XmlLoader class as
 	a friend allowing XmlLoader to use
 	Level's private and protected functions*/

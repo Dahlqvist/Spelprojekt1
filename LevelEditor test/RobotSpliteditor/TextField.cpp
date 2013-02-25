@@ -20,8 +20,16 @@ void	TextField::clear()
 
 void	TextField::insertCharacter(const char& Insert)
 {
-	mText.insert(mCurrentPosition,Insert);
-	mCurrentPosition++;
+	if(!mText.isEmpty())
+	{
+		mText.insert(mCurrentPosition,Insert);
+		mCurrentPosition++;
+	}
+	else
+	{
+		mText+=Insert;
+		mCurrentPosition=1;
+	}
 }
 
 void	TextField::setColor(const Color& nColor)
@@ -39,13 +47,17 @@ void	TextField::setCurrentPosition(const int& nPosition)
 
 void	TextField::deleteCharacter()
 {
-	if(mCurrentPosition>0)
+	if(mCurrentPosition>0&&!mText.isEmpty())
 	{
 		mCurrentPosition--;
 	}
 	if(!mText.isEmpty())
 	{
 		mText.erase(mCurrentPosition,1);
+	}
+	else
+	{
+		mCurrentPosition=0;
 	}
 }
 

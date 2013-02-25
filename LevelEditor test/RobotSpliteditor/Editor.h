@@ -9,6 +9,7 @@
 #include "TextField.h"
 #include "Container.h"
 #include "Toolbar.h"
+#include "LevelBar.h"
 #include <SFML/Window/WindowHandle.hpp>
 
 typedef	Container<Unit>		UnitContainer;
@@ -33,6 +34,7 @@ private:
 	PlayerContainer		mSelectedPlayer;
 	View				mCurrView,miniView;
 	Toolbar				mTools;
+	LevelBar			mLevelTool;
 	void				eventHandler(const Event&);
 	bool				collide(UnitContainer&);
 	bool				collide(PlayerContainer&);

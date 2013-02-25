@@ -1,3 +1,5 @@
+#ifndef	INC_UIITEMCONTAINER
+#define INC_UIITEMCONTAINER
 #include	<set>
 #include	"UIItem.h"
 
@@ -15,6 +17,8 @@ public:
 	UIItemContainer	();
 	void	activate	(std::string);
 	void	deactivate	(std::string);
+	void	activateAll	();
+	void	deactivateAll	();
 	UISet&	accessActive();
 	UIItem*	getActivated(std::string);
 	UIItem*	getDeactivated	(std::string);
@@ -22,3 +26,4 @@ public:
 private:
 	UISet	mActive,mInactive;
 };
+#endif

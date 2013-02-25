@@ -25,6 +25,8 @@ public:
 	bool		checkHit(const Vector2f&)const;
 	void		setPlayer	(Player*);
 	void		setSelect	(const	bool&);
+	void		unIniUnit	();
+	void		unIniPlayer	();
 	bool		isSelected	()const;
 	Vector2f	getPosition	();
 	void		eventHandle	(const	Event&);

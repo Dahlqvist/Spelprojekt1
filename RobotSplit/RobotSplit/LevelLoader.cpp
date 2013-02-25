@@ -38,110 +38,118 @@ LevelLoader::~LevelLoader(void)
 Level	LevelLoader::getLevel()
 {
 	Level					RetLevel;
-	std::vector<Background*> backgrounds;
-	std::vector<Trigger*> triggers;
-	std::vector<std::string> triggerTargets;
-	rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
-	//Gets the Level Node
-	LevelNode=		mDocument.first_node("Level");
-	//Gets the first GameObject child node to level
-	Gameobject=		LevelNode->first_node("Objects")->first_node("Unit");
-	//Initiation of level begins
-	//Sets the level's name
-	RetLevel.setName(getValue(LevelNode->first_node("Name")));
-	RetLevel.setBackground(getBackground());
-	//Sets the level's background
-	/*int	Frames,Speed;
-	float PosX, PosY;
-	string Filename;
-	BackgroundNode=	LevelNode->first_node("Background");
-	Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
-	Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
-	Filename=		getValue(BackgroundNode->first_node("SpriteName"));
-	PosX=			atof(getValue(BackgroundNode->first_node("Position")->first_node("X")).c_str());
-	PosY=			atof(getValue(BackgroundNode->first_node("Position")->first_node("Y")).c_str());
-	Background*BACK=new Background(Filename,Speed,Frames, sf::Vector2f(PosX, PosY));
-	RetLevel.setBackground(BACK);
-	RetLevel.getBackgroundWrap().setFrames(Frames);
-	RetLevel.getBackgroundWrap().setSpeed(Speed);
-	RetLevel.getBackgroundWrap().setName(Filename);*/
-	//Used to check when the loop looped once
-	bool oneLoop=false;
-	//Loop that adds GameObjects to the Level
-	do
+	if(mFileOpen)
 	{
-		if(oneLoop)
+		std::vector<Background*> backgrounds;
+		std::vector<Trigger*> triggers;
+		std::vector<std::string> triggerTargets;
+		rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
+		//Gets the Level Node
+		LevelNode=		mDocument.first_node("Level");
+		//Gets the first GameObject child node to level
+		Gameobject=		LevelNode->first_node("Objects")->first_node("Unit");
+		//Initiation of level begins
+		//Sets the level's name
+		RetLevel.setName(getValue(LevelNode->first_node("Name")));
+		RetLevel.setBackground(getBackground());
+		//Sets the level's background
+		/*int	Frames,Speed;
+		float PosX, PosY;
+		string Filename;
+		BackgroundNode=	LevelNode->first_node("Background");
+		Frames=			atoi(getValue(BackgroundNode->first_node("Frames")).c_str());
+		Speed=			atoi(getValue(BackgroundNode->first_node("Speed")).c_str());
+		Filename=		getValue(BackgroundNode->first_node("SpriteName"));
+		PosX=			atof(getValue(BackgroundNode->first_node("Position")->first_node("X")).c_str());
+		PosY=			atof(getValue(BackgroundNode->first_node("Position")->first_node("Y")).c_str());
+		Background*BACK=new Background(Filename,Speed,Frames, sf::Vector2f(PosX, PosY));
+		RetLevel.setBackground(BACK);
+		RetLevel.getBackgroundWrap().setFrames(Frames);
+		RetLevel.getBackgroundWrap().setSpeed(Speed);
+		RetLevel.getBackgroundWrap().setName(Filename);*/
+		//Used to check when the loop looped once
+		bool oneLoop=false;
+		//Loop that adds GameObjects to the Level
+		do
 		{
-			Gameobject=Gameobject->next_sibling();
-		}
-		else
-		{
-			oneLoop=true;
-		}
-		/*if (type=="Background")
-		{
-			addBackground(RetLevel, Gameobject);
-		}*/
-		string type;
-		type=	getValue(Gameobject->first_node("Type"));
-		
-		if(type=="Player")
-		{
-			addPlayer(RetLevel,Gameobject);
-		}
-		else if(type=="Platform")
-		{
-			addPlatform(RetLevel,Gameobject);
-		}
-		else if(type=="Laser")
-		{
-			addLaser(RetLevel,Gameobject);
-		}
-		else if(type=="Line")
-		{
-			addLine(RetLevel,Gameobject);
-		}
-		else if(type=="DialogueBox")
-		{
-			addDialogueBox(RetLevel,Gameobject);
-		}
-		else if(type=="Trigger")
-		{
-			addTrigger(triggers,triggerTargets,Gameobject);
-		}
-		else if(type=="LaserDeactivator")
-		{
-			addLaserDeactivator(triggers,triggerTargets,Gameobject);
-		}
-		else if(type=="Meanix")
-		{
-			addMeanix(RetLevel,Gameobject);
-		}
-		else
-		{
-			addUnit(RetLevel,Gameobject);
-		}
-	}
-	while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
-
-	//Sets the targets for the triggers
-	for (std::vector<Trigger*>::size_type i=0; i<triggers.size(); i++)
-	{
-		Unit* tempUnit=0x0;
-		for (std::vector<Unit*>::size_type j=0; j<RetLevel.getObjects().size(); j++)
-		{
-			std::string foo1=RetLevel.getObjects()[j]->getId();
-			std::string foo2=triggerTargets[i];
-			if (RetLevel.getObjects()[j]->getId()==triggerTargets[i])
+			if(oneLoop)
 			{
-				tempUnit=RetLevel.getObjects()[j];
+				Gameobject=Gameobject->next_sibling();
+			}
+			else
+			{
+				oneLoop=true;
+			}
+			/*if (type=="Background")
+			{
+				addBackground(RetLevel, Gameobject);
+			}*/
+			string type;
+			type=	getValue(Gameobject->first_node("Type"));
+		
+			if(type=="Player")
+			{
+				addPlayer(RetLevel,Gameobject);
+			}
+			else if(type=="Platform")
+			{
+				addPlatform(RetLevel,Gameobject);
+			}
+			else if(type=="Laser")
+			{
+				addLaser(RetLevel,Gameobject);
+			}
+			else if(type=="Line")
+			{
+				addLine(RetLevel,Gameobject);
+			}
+			else if(type=="DialogueBox")
+			{
+				addDialogueBox(RetLevel,Gameobject);
+			}
+			else if(type=="Trigger")
+			{
+				addTrigger(triggers,triggerTargets,Gameobject);
+			}
+			else if(type=="LaserDeactivator")
+			{
+				addLaserDeactivator(triggers,triggerTargets,Gameobject);
+			}
+			else if(type=="Meanix")
+			{
+				addMeanix(RetLevel,Gameobject);
+			}
+			else
+			{
+				addUnit(RetLevel,Gameobject);
 			}
 		}
-		assert(tempUnit!=0x0);
-		triggers[i]->setTarget(tempUnit);
-		RetLevel.mObjects.push_back(triggers[i]);
-	}
+		while(Gameobject!=LevelNode->first_node("Objects")->last_node("Unit"));
 
+		//Sets the targets for the triggers
+		for (std::vector<Trigger*>::size_type i=0; i<triggers.size(); i++)
+		{
+			Unit* tempUnit=0x0;
+			for (std::vector<Unit*>::size_type j=0; j<RetLevel.getObjects().size(); j++)
+			{
+				std::string foo1=RetLevel.getObjects()[j]->getId();
+				std::string foo2=triggerTargets[i];
+				if (RetLevel.getObjects()[j]->getId()==triggerTargets[i])
+				{
+					tempUnit=RetLevel.getObjects()[j];
+				}
+			}
+			assert(tempUnit!=0x0);
+			triggers[i]->setTarget(tempUnit);
+			RetLevel.mObjects.push_back(triggers[i]);
+		}
+	}
+	else
+	{
+		RetLevel.setName("ERROR");
+		RetLevel.setPlayer(0);
+		RetLevel.setObjects(UnitVector());
+	}
 	return	RetLevel;
 }
 
@@ -419,7 +427,7 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	level.mObjects.push_back(TempObject);
 }
 
-void LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
+void	LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite,Text;
