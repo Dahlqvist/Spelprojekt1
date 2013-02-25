@@ -83,6 +83,28 @@ void	UIItemContainer::activate(std::string Name)
 	}
 }
 
+void	UIItemContainer::deactivateAll()
+{
+	UISet::iterator	it=mActive.begin();
+	while(it!=mActive.end())
+	{
+		mInactive.insert(*it);
+		mActive.erase(it);
+		it=mActive.begin();
+	}
+}
+
+void	UIItemContainer::activateAll()
+{
+	UISet::iterator	it=mInactive.begin();
+	while(it!=mInactive.end())
+	{
+		mActive.insert(*it);
+		mInactive.erase(it);
+		it=mInactive.begin();
+	}
+}
+
 UIItemContainer::UIItemContainer()
 {
 }

@@ -9,17 +9,19 @@ using namespace rapidxml;
 class	XmlLoader
 {
 public:
-	//Uninitalized constructor							(Done)
+	//Uninitalized constructor
 	XmlLoader();
-	//Initalized constructor							(Done)
+	//Initalized constructor
 	XmlLoader(std::string FileName);
-	//Loads a XML-File									(Done)
-	void	loadFile(std::string	FileName);
+	//Loads a XML-File and returns if it worked
+	bool	loadFile(std::string	FileName);
 protected:
-	//Returns a string of the value from a child node	(Done)
+	//Returns a string of the value from a child node
 	std::string	getValue(xml_node<>* Node);
-	//Memebervariables									(Done)
+	//Memebervariables
 	xml_document<>	mDocument;
+	//Bool for checking if the file is open
+	bool	mFileOpen;
 };
 
 #endif

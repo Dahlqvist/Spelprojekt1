@@ -92,8 +92,10 @@ void	ObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
  					mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
 					mHolder->mChange=true;
 				}
+				break;
 			}
 			i++;
+			mSelected=false;
 		}
 		if(!mHolder->mChange)
 		{

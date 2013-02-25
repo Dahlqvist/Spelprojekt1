@@ -29,8 +29,6 @@ private:
 	void	addUnit			(Level	&level,xml_node<>* Node);
 	void	addMeanix		(Level	&level,xml_node<>* Node);
 
-	vector<Laser*> mLasers;
-	vector<LaserHolder*> mLaserHolder;
 };
 
 #endif

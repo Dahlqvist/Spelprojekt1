@@ -1,6 +1,8 @@
 #ifndef	INC_XMLSAVER
 #define	INC_XMLSAVER
 #include"Level.h"
+#include "Laser.h"
+#include "LaserHolder.h"
 #include<rapidxml.hpp>
 
 using namespace rapidxml;
@@ -32,7 +34,7 @@ private:
 	//Functions adding objects to the parameter				(Done)
 	void	addPlayer		(Player		*Source,xml_node<>* Parent);
 	void	addPlatform		(Unit		*Source,xml_node<>* Parent);
-	void	addLaser		(Unit		*Source,xml_node<>* Parent);
+	void	addLaser		(Laser		*Source,LaserHolder *Holder,xml_node<>* Parent);
 	void	addLine			(Unit		*Source,xml_node<>* Parent);
 	void	addUnit			(Unit		*Source,xml_node<>* Parent);
 };

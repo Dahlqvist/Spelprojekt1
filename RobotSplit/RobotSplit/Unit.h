@@ -40,6 +40,7 @@ public:
 	virtual bool isHitThisFrame(){return mHitThisFrame;};
 	virtual void setHitThisFrame(bool hit){mHitThisFrame=hit;};
 
+	virtual	void setSolid(bool	Solid){mSolid=Solid;}
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
 
