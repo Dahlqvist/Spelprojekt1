@@ -3,7 +3,7 @@
 #include "Editor.h"
 #include "UIText.h"
 #include "UIDrop.h"
-#include "ObjectMenu.h"
+#include "UIObjectMenu.h"
 #include "LevelLoader.h"
 #include "XmlSaver.h"
 
@@ -11,7 +11,7 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer()
 {
-	ObjectMenu *meny= new ObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
+	UIObjectMenu *meny= new UIObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
 	meny->addIcon(new PlayerIcon());
 	meny->addIcon(new UnitIcon("Platform","Tile1"));
 	meny->addIcon(new UnitIcon("Platform","Tile2"));

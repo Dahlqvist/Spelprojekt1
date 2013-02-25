@@ -61,8 +61,8 @@ void	LevelBar::render(RenderWindow& window)
 void	LevelBar::execute()
 {
 	XmlSaver	Saver;
-	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->getString();
-	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
+	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->getString();
+ 	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
 	{
 	case	Background:
 		break;
@@ -138,7 +138,18 @@ void	LevelBar::eventHandle(const	Event&	Current)
 					Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
 					if(dynamic_cast<UIDrop<Type>*>(Selected)!=0)
 					{
-						dynamic_cast<UIDrop<Type>*>(Selected)->getValue();
+						switch(dynamic_cast<UIDrop<Type>*>(Selected)->getValue())
+						{
+						case	Name:
+							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(mLevel->getName());
+							break;
+						case	Background:
+							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(mLevel->getBackgroundWrap().getName());
+							break;
+						default:
+							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(string("Default"));
+							break;
+						}
 					}
 				}
 				else
