@@ -42,6 +42,7 @@ void Sound::loadSound()
 	mBufferMap["ShootHead"].loadFromFile("Sound/shoot_head_proto.wav");
 	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
+	mBufferMap["Winning"].loadFromFile("Music/level_complete.wav");
 
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);
 	mSoundMap["Extend"].setBuffer(mBufferMap["Extend"]);
@@ -54,6 +55,7 @@ void Sound::loadSound()
 	mSoundMap["ShootHead"].setBuffer(mBufferMap["ShootHead"]);
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
+	mSoundMap["Winning"].setBuffer(mBufferMap["Winning"]);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
@@ -90,4 +92,9 @@ const void Sound::pauseSound(std::string sound)
 const void Sound::changeVolume(float q)
 {
 	mVolume = q;
+}
+
+const int Sound::getSoundStatus(std::string sound)
+{
+	return mSoundMap[sound].getStatus();
 }
