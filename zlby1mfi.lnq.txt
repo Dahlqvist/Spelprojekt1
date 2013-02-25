@@ -1,0 +1,26 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   LevelEditor test/RobotSpliteditor/Editor.cpp
+#	modified:   LevelEditor test/RobotSpliteditor/LevelBar.cpp
+#	modified:   LevelEditor test/RobotSpliteditor/LevelBar.h
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial1.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial2.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial3.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial4.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial5.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial6.xml
+#	new file:   LevelEditor test/RobotSpliteditor/Tutorial7.xml
+#	modified:   RobotSplit/RobotSplit/Level.cpp
+#	modified:   RobotSplit/RobotSplit/Level.h
+#	modified:   RobotSplit/RobotSplit/LevelLoader.cpp
+#	modified:   RobotSplit/RobotSplit/XmlLoader.cpp
+#	modified:   RobotSplit/RobotSplit/XmlLoader.h
+#
+

@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana2.xml"),
+		mlevel("Bana3.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		loops(0),
@@ -42,11 +42,6 @@ Game::Game():
 
 Game::~Game()
 {
-	while (!diaBox.empty())
-	{
-		delete diaBox.back();
-		diaBox.pop_back();
-	}
 	delete Objects;
 	/*system("PAUSE");
 	XmlSaver saver("TestSave");
@@ -57,17 +52,13 @@ Game::~Game()
 
 void Game::update()
 {
-	
-
 	Game::input();
 	//window.setKeyRepeatEnabled(true);
 	mPlayer->update();
 	Objects->update();
-
+	Objects->collide();
 
 	moveCamera();
-
-	//runCollisions(Objects.getUnits(), *mPlayer);
 }
 void Game::input()
 {
@@ -116,6 +107,7 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
 			mPlayer->restartPlayer(sf::Vector2f(64, 384));
 			TestTimer.restart();
+			Objects->reset();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
 			mPlayer->reFuel(100);

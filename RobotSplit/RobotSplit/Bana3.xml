@@ -400,70 +400,78 @@
     </Unit>
 
     <Unit>
-      <Type>"Balcony"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <Type>"Platform"</Type>
+      <SpriteName>""</SpriteName>
       <Position>
         <x>64</x>
         <y>256</y>
       </Position>
+      <Lives>3</Lives>
     </Unit>
     <Unit>
-      <Type>"Balcony"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <Type>"Platform"</Type>
+      <SpriteName>""</SpriteName>
       <Position>
         <x>224</x>
         <y>544</y>
       </Position>
+      <Lives>3</Lives>
     </Unit>
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>320</x>
         <y>576</y>
       </Position>
+      <Lives>3</Lives>
     </Unit>
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>416</x>
         <y>608</y>
       </Position>
+      <Lives>3</Lives>
     </Unit>
 
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>96</x>
         <y>512</y>
       </Position>
+      <Lives>2</Lives>
     </Unit>
 
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>64</x>
         <y>384</y>
       </Position>
+      <Lives>1</Lives>
     </Unit>
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>416</x>
         <y>416</y>
       </Position>
+      <Lives>1</Lives>
     </Unit>
     <Unit>
-      <Type>"Balcony"</Type>
+      <Type>"Platform"</Type>
       <SpriteName>"TileBreak"</SpriteName>
       <Position>
         <x>320</x>
         <y>672</y>
       </Position>
+      <Lives>1</Lives>
     </Unit>
 
     <Unit>

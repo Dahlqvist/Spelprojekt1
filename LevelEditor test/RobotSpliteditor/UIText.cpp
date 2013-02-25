@@ -57,14 +57,14 @@ void	UIText::draw(RenderWindow& window,Vector2f	Position)
 	}
 }
 
-void	UIText::handleEvent(const Event&	Current)
+void	UIText::handleEvent(const sf::Event& Current,Vector2f	Position)
 {
 	if(mChangeable)
 	{
 		switch(Current.type)
 		{
 		case sf::Event::EventType::TextEntered :
-			if(Current.text.unicode>='1')
+			if(Current.text.unicode>='0')
 			{
 				mEnter.insertCharacter(Current.text.unicode);
 			}
@@ -78,6 +78,10 @@ void	UIText::handleEvent(const Event&	Current)
 			{
 				mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
 			}
+			else if(Current.key.code==sf::Keyboard::Back)
+			{
+				mEnter.deleteCharacter();
+			}
 			break;
 		default:
 			break;
@@ -87,15 +91,16 @@ void	UIText::handleEvent(const Event&	Current)
 
 void	UIText::setDefault(std::string&	Default)
 {
-	while(mEnter.getLength()>0)
-	{
-//		mEnter.setCurrentPosition(mEnter.getCurrentPosition()+1);
-		mEnter.deleteCharacter();
-	}
+	mEnter.clear();
 	for(std::string::size_type i=0;i<Default.size();i++)
 	{
 		mEnter.insertCharacter(Default[i]);
 	}
+}
+
+std::string	UIText::getString()
+{
+	return	mEnter.getString();
 }
 
 FloatRect	UIText::getHitBox(Vector2f	Position)const

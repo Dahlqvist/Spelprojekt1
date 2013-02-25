@@ -9,7 +9,7 @@ using namespace	std;
 
 
 XmlLoader::XmlLoader()
-	:mDocument()
+	:mDocument(),mFileOpen(false)
 {
 }
 
@@ -19,7 +19,7 @@ XmlLoader::XmlLoader(string	FileName)
 	loadFile(FileName);
 }
 
-void	XmlLoader::loadFile(std::string	FileName)
+bool	XmlLoader::loadFile(std::string	FileName)
 {
 	ifstream	xmlFil;
 	string		xmlText;
@@ -28,22 +28,26 @@ void	XmlLoader::loadFile(std::string	FileName)
 	//Opens the xml file
 	xmlFil.open(FileName);
 	//Checks if the file is open
-	assert(xmlFil.is_open());
-	//Starts the load session
-	while(!	xmlFil.eof())
+	mFileOpen=xmlFil.is_open();
+	//Starts the load session if the file is open
+	if(mFileOpen)
 	{
-		string temp;
-		//The line gets transfered to the temp  string
-		getline(xmlFil,temp);
-		//The temp string gets added to the xmlText string
-		xmlText+=temp;
+		while(!xmlFil.eof())
+		{
+			string temp;
+			//The line gets transfered to the temp  string
+			getline(xmlFil,temp);
+			//The temp string gets added to the xmlText string
+			xmlText+=temp;
+		}
+		char	*temp=new char[xmlText.length()+1];
+		//Copies the xmlText string to the temp c-string
+		strcpy(temp, xmlText.c_str());
+		//The xml document parses the c-string
+		//Bascily constructing the XmlTree
+		mDocument.parse<0>(temp);
 	}
-	char	*temp=new char[xmlText.length()+1];
-	//Copies the xmlText string to the temp c-string
-	strcpy(temp, xmlText.c_str());
-	//The xml document parses the c-string
-	//Bascily constructing the XmlTree
-	mDocument.parse<0>(temp);
+	return	mFileOpen;
 }
 
 

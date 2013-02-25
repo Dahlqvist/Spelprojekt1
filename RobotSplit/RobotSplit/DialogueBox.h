@@ -12,6 +12,7 @@ public:
 	void hit();
 	void activate();
 	void deactivate();
+	void reset();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
@@ -21,6 +22,7 @@ public:
 private:
 	int mAlpha;
 	bool mVisible, mFadeIn, mDeactivated;
+	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;
 };

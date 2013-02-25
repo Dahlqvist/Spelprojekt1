@@ -11,56 +11,62 @@ std::set<Unit*> Collision::mUnitsOnLeftBottom;
 std::set<Unit*> Collision::mUnitsOnRightTop;
 std::set<Unit*> Collision::mUnitsOnRightBottom;
 
-Collision::Collision()
+Collision::Collision(int playerPart, Player& player, std::vector<Unit*> &mUnits)
 	:mMovedX(false)
 	,mMovedY(false)
+	,mMovedLeft(false)
+	,mMovedRight(false)
+	,mMovedUp(false)
+	,mMovedDown(false)
+	,mPlayer(&player)
+	,mUnits(mUnits)
+	,mPlayerPart(playerPart)
 {
 
 }
 
-void Collision::collide(int playerPart, Player& player, const std::vector<Unit*> &objects)
+void Collision::collide()
 {
-	mPlayerPart=playerPart;
-	sf::Sprite* playerSprite=player.getCollisionSprite()[playerPart];
+	sf::Sprite* playerSprite=mPlayer->getCollisionSprite()[mPlayerPart];
 	mResetted=false;
 
 	//Check which sides collide
-	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
+	for (std::vector<Unit*>::size_type j=0; j<mUnits.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart"/* && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead")*/)
+		if (mUnits[j]->getId()!="PlayerPart")
 		{
 			sf::FloatRect collisionRect;
-			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
+			if (!mResetted && testCollisions(playerSprite, j, collisionRect))
 			{
-				testCollidedSides(playerSprite, objects[j], collisionRect);
+				testCollidedSides(playerSprite, j, collisionRect);
 			}
 		}
 	}
 	//Handle collisions
-	for (std::vector<Unit*>::size_type j=0; j<objects.size(); j++)
+	for (std::vector<Unit*>::size_type j=0; j<mUnits.size(); j++)
 	{
-		if (objects[j]->getId()!="PlayerPart" && (player.getId(playerPart)=="PlayerPartFeet" || player.getId(playerPart)=="PlayerPartBody" || player.getId(playerPart)=="PlayerPartHead"))
+		if (mUnits[j]->getId()!="PlayerPart" && (mPlayer->getId(mPlayerPart)=="PlayerPartFeet" || mPlayer->getId(mPlayerPart)=="PlayerPartBody" || mPlayer->getId(mPlayerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
-			if (!mResetted && testCollisions(playerSprite, objects[j], collisionRect))
+			if (!mResetted && testCollisions(playerSprite, j, collisionRect))
 			{
 				//Hit once per collision
-				if (!objects[j]->wasHit())
+				if (!mUnits[j]->wasHit())
 				{
-					objects[j]->setWasHit(true);
-					objects[j]->setHitThisFrame(true);
+					mUnits[j]->setWasHit(true);
+					mUnits[j]->setHitThisFrame(true);
 				}
-				if (objects[j]->isHitThisFrame())
+				if (mUnits[j]->isHitThisFrame())
 				{
-					objects[j]->hitOnce();
-					objects[j]->setHitThisFrame(false);
+					mUnits[j]->hitOnce();
+					mUnits[j]->setHitThisFrame(false);
 				}
 
 				//Hit every frame during collision
-				objects[j]->setHit(true);
-				objects[j]->hit();
+				mUnits[j]->setHit(true);
+				mUnits[j]->hit();
 
-				handleCollisions(player, objects[j], collisionRect);
+				handleCollisions(j, collisionRect);
 			}
 		}
 	}
@@ -68,51 +74,74 @@ void Collision::collide(int playerPart, Player& player, const std::vector<Unit*>
 
 bool Collision::isCollidedSide(int side)
 {
-	return (mCollidedSides.count(side)!=0);
+	if (mCollidedSides.count(side)==0)
+	{
+		return false;
+	}
+
+	////If the player haven't been moved, return false (bugfix)
+	//if (side==LEFT && !mMovedLeft)
+	//{
+	//	return false;
+	//}
+	//if (side==RIGHT && !mMovedRight)
+	//{
+	//	return false;
+	//}
+	//if (side==TOP && !mMovedDown)
+	//{
+	//	return false;
+	//}
+	//if (side==BOTTOM && !mMovedUp)
+	//{
+	//	return false;
+	//}
+
+	return true;
 }
 
-void Collision::unitAtSides(const std::vector<Unit*> &objects)
+void Collision::unitAtSides(const std::vector<Unit*> &mUnits)
 {
-	for (std::vector<Unit*>::size_type i=0; i<objects.size(); i++)
+	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
 	{
-		for (std::vector<Unit*>::size_type j=i+1; j<objects.size(); j++)
+		for (std::vector<Unit*>::size_type j=i+1; j<mUnits.size(); j++)
 		{
 			sf::FloatRect obj1;
 			sf::FloatRect obj2;
-			if (objects[i]->getSize()==sf::Vector2f(0,0))
+			if (mUnits[i]->getSize()==sf::Vector2f(0,0))
 			{
-				obj1=objects[i]->getSprite().getGlobalBounds();
+				obj1=mUnits[i]->getSprite().getGlobalBounds();
 			}
 			else
 			{
-				obj1=sf::FloatRect(objects[i]->getPosition(), objects[i]->getSize());
+				obj1=sf::FloatRect(mUnits[i]->getPosition(), mUnits[i]->getSize());
 			}
 
-			if (objects[j]->getSize()==sf::Vector2f(0,0))
+			if (mUnits[j]->getSize()==sf::Vector2f(0,0))
 			{
-				obj2=objects[j]->getSprite().getGlobalBounds();
+				obj2=mUnits[j]->getSprite().getGlobalBounds();
 			}
 			else
 			{
-				obj2=sf::FloatRect(objects[j]->getPosition(), objects[j]->getSize());
+				obj2=sf::FloatRect(mUnits[j]->getPosition(), mUnits[j]->getSize());
 			}
 			obj1.width+=1;
 			obj2.width+=1;
 
-			if (objects[i]->isSolid() && objects[j]->isSolid() && obj1.intersects(obj2))
+			if (mUnits[i]->isSolid() && mUnits[j]->isSolid() && obj1.intersects(obj2))
 			{
 				//If the top sides are equal
 				if (obj1.top==obj2.top)
 				{
 					if (obj1.left<obj2.left)
 					{
-						mUnitsOnTopLeft.insert(objects[i]);
-						mUnitsOnTopRight.insert(objects[j]);
+						mUnitsOnTopLeft.insert(mUnits[i]);
+						mUnitsOnTopRight.insert(mUnits[j]);
 					}
 					else
 					{
-						mUnitsOnTopLeft.insert(objects[j]);
-						mUnitsOnTopRight.insert(objects[i]);
+						mUnitsOnTopLeft.insert(mUnits[j]);
+						mUnitsOnTopRight.insert(mUnits[i]);
 					}
 				}
 				//If the bottom sides are equal
@@ -120,13 +149,13 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 				{
 					if (obj1.left<obj2.left)
 					{
-						mUnitsOnBottomLeft.insert(objects[i]);
-						mUnitsOnBottomRight.insert(objects[j]);
+						mUnitsOnBottomLeft.insert(mUnits[i]);
+						mUnitsOnBottomRight.insert(mUnits[j]);
 					}
 					else
 					{
-						mUnitsOnBottomLeft.insert(objects[j]);
-						mUnitsOnBottomRight.insert(objects[i]);
+						mUnitsOnBottomLeft.insert(mUnits[j]);
+						mUnitsOnBottomRight.insert(mUnits[i]);
 					}
 				}
 			}
@@ -135,7 +164,7 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 
 			obj1.height+=1;
 			obj2.height+=1;
-			if (objects[i]->isSolid() && objects[j]->isSolid() && obj1.intersects(obj2))
+			if (mUnits[i]->isSolid() && mUnits[j]->isSolid() && obj1.intersects(obj2))
 			{
 
 				//If the left sides are equal
@@ -143,13 +172,13 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 				{
 					if (obj1.top<obj2.top)
 					{
-						mUnitsOnLeftBottom.insert(objects[i]);
-						mUnitsOnLeftTop.insert(objects[j]);
+						mUnitsOnLeftBottom.insert(mUnits[i]);
+						mUnitsOnLeftTop.insert(mUnits[j]);
 					}
 					else
 					{
-						mUnitsOnLeftBottom.insert(objects[j]);
-						mUnitsOnLeftTop.insert(objects[i]);
+						mUnitsOnLeftBottom.insert(mUnits[j]);
+						mUnitsOnLeftTop.insert(mUnits[i]);
 					}
 				}
 				//If the right sides are equal
@@ -157,13 +186,13 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 				{
 					if (obj1.top<obj2.top)
 					{
-						mUnitsOnRightBottom.insert(objects[i]);
-						mUnitsOnRightTop.insert(objects[j]);
+						mUnitsOnRightBottom.insert(mUnits[i]);
+						mUnitsOnRightTop.insert(mUnits[j]);
 					}
 					else
 					{
-						mUnitsOnRightBottom.insert(objects[j]);
-						mUnitsOnRightTop.insert(objects[i]);
+						mUnitsOnRightBottom.insert(mUnits[j]);
+						mUnitsOnRightTop.insert(mUnits[i]);
 					}
 				}
 
@@ -174,7 +203,7 @@ void Collision::unitAtSides(const std::vector<Unit*> &objects)
 	}
 }
 
-bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)
+bool Collision::testCollisions(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect)
 {
 	sf::FloatRect rect;
 	sf::FloatRect playerRect=playerSprite->getGlobalBounds();
@@ -184,25 +213,25 @@ bool Collision::testCollisions(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRe
 	playerRect.height+=2;
 
 	sf::FloatRect objRect;
-	if (obj2->getSize()==sf::Vector2f(0,0))
+	if (mUnits[unit]->getSize()==sf::Vector2f(0,0))
 	{
-		objRect=obj2->getSprite().getGlobalBounds();
-		objRect.left+=obj2->getOffset().x;
-		objRect.top+=obj2->getOffset().y;
+		objRect=mUnits[unit]->getSprite().getGlobalBounds();
+		objRect.left+=mUnits[unit]->getOffset().x;
+		objRect.top+=mUnits[unit]->getOffset().y;
 	}
 	else
 	{
-		objRect=sf::FloatRect(obj2->getPosition()+obj2->getOffset(), obj2->getSize());
+		objRect=sf::FloatRect(mUnits[unit]->getPosition()+mUnits[unit]->getOffset(), mUnits[unit]->getSize());
 	}
 
 	return playerRect.intersects(objRect, collisionRect);
 }
 
-void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect& collisionRect)
+void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 {
 	sf::Vector2f moveDistance;
-	const sf::Sprite* playerSprite=player.getCollisionSprite()[mPlayerPart];
-	if (obj2->isSolid())
+	const sf::Sprite* playerSprite=mPlayer->getCollisionSprite()[mPlayerPart];
+	if (mUnits[unit]->isSolid())
 	{
 		//Collision from the above/below
 		if (collisionRect.width>collisionRect.height)
@@ -210,21 +239,31 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			if (!mMovedY)
 			{
 				//If player is above object
-				if (playerSprite->getPosition().y<obj2->getPosition().y)
+				if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 				{
-					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftTop.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(obj2)==0 && !isCollidedSide(LEFT))))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftTop.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
 					{
+						mMovedUp=true;
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(BOTTOM));
 					}
 				}
 				//If player is below object
 				else
 				{
-					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftBottom.count(obj2)==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(obj2)==0 && !isCollidedSide(LEFT))))
+					if (collisionRect.width>Eric::getSpeed()+1.1 || ((mUnitsOnLeftBottom.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
 					{
+						mMovedDown=true;
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(TOP));
 					}
 				}
 			}
@@ -235,128 +274,137 @@ void Collision::handleCollisions(Player& player, Unit* obj2, const sf::FloatRect
 			if (!mMovedX)
 			{
 				//If player is left of object
-				if (playerSprite->getPosition().x<obj2->getPosition().x)
+				if (playerSprite->getPosition().x<mUnits[unit]->getPosition().x)
 				{
-					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopRight.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(obj2)==0 && !isCollidedSide(TOP))))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopRight.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
+						mMovedLeft=true;
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
 					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(LEFT));
+					}
+
 				}
 				//If player is right of object
 				else
 				{
-					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopLeft.count(obj2)==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(obj2)==0 && !isCollidedSide(TOP))))
+					if (collisionRect.height>Eric::getGravity()+1.1 || ((mUnitsOnTopLeft.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
+						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
+					}
+					else
+					{
+						mCollidedSides.erase(mCollidedSides.find(RIGHT));
 					}
 				}
 			}
 		}
 	}
 	//If the feet and body is connected, but head is away
-	//std::cout << player.getCollisionSprite().size() << std::endl;
+	//std::cout << mPlayer->getCollisionSprite().size() << std::endl;
 	if(mPlayerPart!=3){
-		player.forceMove(mPlayerPart, moveDistance);
+		mPlayer->forceMove(mPlayerPart, moveDistance);
 	}
-	//if(player.getCollisionSprite().size()==3)
+	//if(mPlayer->getCollisionSprite().size()==3)
 	//{
 	//	if(mPlayerPart==1)
 	//	{
-	//		player.forceMove(2, moveDistance);
+	//		mPlayer->forceMove(2, moveDistance);
 	//	}
 	//	else if(mPlayerPart==0){
-	//		player.forceMove(5, moveDistance);
+	//		mPlayer->forceMove(5, moveDistance);
 	//	}
 	//}
 	////If the feet, body and head is connected
-	//else if(player.getCollisionSprite().size()==1)
+	//else if(mPlayer->getCollisionSprite().size()==1)
 	//{
-	//	player.forceMove(-1, moveDistance);
+	//	mPlayer->forceMove(-1, moveDistance);
 	//}
 	//else
 	//{
 	//	if(mPlayerPart!=3)
-	//	player.forceMove(mPlayerPart, moveDistance);
+	//	mPlayer->forceMove(mPlayerPart, moveDistance);
 	//}
 	//playerSprite->setPosition(moveDistance);
 
-	if (obj2->getId()=="Lava")
+	if (mUnits[unit]->getId()=="Lava")
 	{
-		if (player.getId(mPlayerPart)!="PlayerPartHead")
+		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead")
 		{
-			player.restartPlayer(sf::Vector2f(64, 384));
-			mResetted=true;
+			killPlayer();
 		}
 		else
 		{
-			player.shootHead(sf::Vector2f(0,0));
+			mPlayer->shootHead(sf::Vector2f(0,0));
 		}
 	}
-	if(obj2->getId()=="Door" && player.getTogether()==true && player.getId(mPlayerPart)!="PlayerPartHead")
+	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)!="PlayerPartHead")
 	{
-		player.Win();
-		player.restartPlayer(sf::Vector2f(64, 384));
+		mPlayer->Win();
+		mPlayer->restartPlayer(sf::Vector2f(64, 384));
 	}
-	if (obj2->getId()=="LaserRed")
+	if (mUnits[unit]->getId()=="LaserRed")
 	{
-		if (player.getId(mPlayerPart)!="PlayerPartHead")
+		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead")
 		{
-			player.restartPlayer(sf::Vector2f(64, 384));
-			mResetted=true;
+			killPlayer();
 		}
 		else
 		{
-			player.shootHead(sf::Vector2f(0,0));
+			mPlayer->shootHead(sf::Vector2f(0,0));
 		}
 	}
-	if (obj2->getId()=="LaserYellow")
+	if (mUnits[unit]->getId()=="LaserYellow")
 	{
-		if (player.getId(mPlayerPart)=="PlayerPartBody")
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartBody")
 		{
-			player.restartPlayer(sf::Vector2f(64, 384));
-			mResetted=true;
-		}
-		if (player.getId(mPlayerPart)=="PlayerPartHead")
-		{
-			player.shootHead(sf::Vector2f(0,0));
+			killPlayer();
 		}
 	}
-	if (obj2->getId()=="LaserBlue")
+	if (mUnits[unit]->getId()=="LaserBlue")
 	{
-		if (player.getId(mPlayerPart)=="PlayerPartFeet")
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
 		{
-			player.restartPlayer(sf::Vector2f(64, 384));
-			mResetted=true;
-		}
-		if (player.getId(mPlayerPart)=="PlayerPartHead" && player.getHeadless())
-		{
-			player.shootHead(sf::Vector2f(0,0));
+			killPlayer();
 		}
 	}
-	if (obj2->getId()=="AntiMagnet")
+	if (mUnits[unit]->getId()=="AntiMagnet")
 	{
-		if (player.getId(mPlayerPart)=="PlayerPartFeet")
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
 		{
-			player.dropFeet();
+			mPlayer->dropFeet();
 		}
-		if (player.getId(mPlayerPart)=="PlayerPartHead")
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartHead")
 		{
-			player.shootHead(sf::Vector2f(0,0));
+			mPlayer->shootHead(sf::Vector2f(0,0));
 		}
 	}
 }
 
-void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::FloatRect& collisionRect)
+void Collision::killPlayer()
 {
-	if (obj2->isSolid())
+	mPlayer->restartPlayer(sf::Vector2f(64, 384));
+	mResetted=true;
+	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
+	{
+		mUnits[i]->reset();
+	}
+}
+
+void Collision::testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect)
+{
+	if (mUnits[unit]->isSolid())
 	{
 		//Collision from above/below
 		if (collisionRect.width>collisionRect.height)
 		{
 			//If player is above object
-			if (playerSprite->getPosition().y<obj2->getPosition().y)
+			if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 			{
 				mCollidedSides.insert(BOTTOM);
 			}
@@ -369,7 +417,7 @@ void Collision::testCollidedSides(sf::Sprite* playerSprite, Unit* obj2, sf::Floa
 		else
 		{
 			//If player is left of object
-			if (playerSprite->getPosition().x<obj2->getPosition().x)
+			if (playerSprite->getPosition().x<mUnits[unit]->getPosition().x)
 			{
 				mCollidedSides.insert(LEFT);
 			}
