@@ -13,7 +13,7 @@ LevelBar::LevelBar(Level* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
 	:mPosition(Position),mSize(Size),mBackground(BackColor)
 {
 	mLevel=LEVEL;
-	UIDrop<Type>*Solid=new UIDrop<Type>("Action",Color(255,255,255,255),Color(0,0,0,255),20);
+	UIDrop<Type>*Solid=new UIDrop<Type>("Action",Color(255,255,255,255),Color(0,0,0,255),20,2);
 	Solid->addOption("Load File",Load);
 	Solid->addOption("Save File",Save);
 	Solid->addOption("Background",Background);
@@ -42,15 +42,18 @@ void	LevelBar::render(RenderWindow& window)
 	window.setView(View(FloatRect(Vector2f(0,0),Vector2f(window.getSize()))));
 	window.draw(Frame);
 	int i=0;
+	int width=5;
 	for(UISet::iterator	it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
 	{
-		int width=5;
-		for(UISet::iterator	et=mUIItems.accessActive().begin();et!=it;et++)
+		if(!mSelected)
 		{
-			width+=200;
+			(*it)->setSelect(false);
 		}
-		i++;
+		sf::Text	renderText((*it)->getName()+":");
+		renderText.setPosition(Position);
+		renderText.setCharacterSize(20);
 		(*it)->draw(window,Vector2f(mPosition.x+width,mPosition.y));
+		width+=(*it)->getHitBox(Vector2f(0,0)).width+renderText.getGlobalBounds().width+20;
 	}
 }
 
@@ -146,7 +149,10 @@ void	LevelBar::eventHandle(const	Event&	Current)
 					(*it)->setSelect(false);
 				}
 			}
-			Width+=200;
+			sf::Text	renderText((*it)->getName()+":");
+			renderText.setPosition(mPosition);
+			renderText.setCharacterSize(20);
+			Width+=(*it)->getHitBox(Vector2f(0,0)).width+renderText.getGlobalBounds().width+20;
 		}
 		break;
 	default:
