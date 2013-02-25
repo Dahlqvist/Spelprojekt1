@@ -299,7 +299,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(RIGHT));
+ 						mCollidedSides.erase(mCollidedSides.find(RIGHT));
 					}
 				}
 			}

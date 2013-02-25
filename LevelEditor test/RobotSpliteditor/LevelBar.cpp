@@ -6,10 +6,10 @@
 
 enum	Type
 {
-	Load,Save,Background
+	Load,Save,Background,Name
 };
 
-LevelBar::LevelBar(Level* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
+LevelBar::LevelBar(LevelConstructor* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
 	:mPosition(Position),mSize(Size),mBackground(BackColor)
 {
 	mLevel=LEVEL;
@@ -17,8 +17,9 @@ LevelBar::LevelBar(Level* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
 	Solid->addOption("Load File",Load);
 	Solid->addOption("Save File",Save);
 	Solid->addOption("Background",Background);
+	Solid->addOption("Level Name",Name);
 	mUIItems.accessActive().insert(Solid);
-	mUIItems.accessActive().insert(new UIText("FileName","TestBana",true,Color(255,255,255,255),Color(0,0,0,255),20));
+	mUIItems.accessActive().insert(new UIText("NewName","TestBana",true,Color(255,255,255,255),Color(0,0,0,255),20));
 }
 
 LevelBar::~LevelBar(void)
@@ -60,7 +61,7 @@ void	LevelBar::render(RenderWindow& window)
 void	LevelBar::execute()
 {
 	XmlSaver	Saver;
-	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("FileName"))->getString();
+	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->getString();
 	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
 	{
 	case	Background:
@@ -72,6 +73,9 @@ void	LevelBar::execute()
 		break;
 	case	Load:
 		mLevel->loadNewLevel(filename+".xml");
+		break;
+	case	Name:
+		mLevel->setNewName(filename);
 		break;
 	default:
 		break;
@@ -132,6 +136,10 @@ void	LevelBar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+Width,mPosition.y+5)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
+					if(dynamic_cast<UIDrop<Type>*>(Selected)!=0)
+					{
+						dynamic_cast<UIDrop<Type>*>(Selected)->getValue();
+					}
 				}
 				else
 				{
