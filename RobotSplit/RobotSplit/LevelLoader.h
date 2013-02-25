@@ -28,6 +28,9 @@ private:
 	void	addLaserDeactivator	(vector<Trigger*> &triggers,std::vector<std::string> &triggerTargets,xml_node<>* Node);
 	void	addUnit			(Level	&level,xml_node<>* Node);
 	void	addMeanix		(Level	&level,xml_node<>* Node);
+
+	vector<Laser*> mLasers;
+	vector<LaserHolder*> mLaserHolder;
 };
 
 #endif

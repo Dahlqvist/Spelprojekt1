@@ -134,7 +134,15 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 
 void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
 {
-	//std::cout<<"Adds Laser"<<endl;
+	xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
+	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Laser\"");
+	xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
+	xml_node<> *Id			=mDocument.allocate_node(node_element,"Id", modifyString(Source->getId()));
+	xml_node<> *Active		=mDocument.allocate_node(node_element,"Active");
+	xml_node<> *Length		=mDocument.allocate_node(node_element,"Length");
+	xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation");
+	xml_node<> *Color		=mDocument.allocate_node(node_element,"Color");
+	xml_node<> *VisibilityRange	=mDocument.allocate_node(node_element,"VisibilityRange");
 }
 
 void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)
