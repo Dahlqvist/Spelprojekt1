@@ -82,3 +82,8 @@ bool&		LevelConstructor::ifPlayerExist()
 {
 	return	mPlayerExist;
 }
+
+void		LevelConstructor::setNewName(const string& NEW)
+{
+	setName(NEW);	
+}

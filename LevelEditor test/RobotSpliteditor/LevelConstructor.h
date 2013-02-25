@@ -18,6 +18,7 @@ public:
 	void		deleteItem(Unit*);
 	void		deletePlayer();
 	bool&		ifPlayerExist();
+	void		setNewName(const string&);
 private:
 	bool		mPlayerExist;
 	void		createLines();

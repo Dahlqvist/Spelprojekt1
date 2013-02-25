@@ -2,6 +2,8 @@
 #include	<fstream>
 //#include	<iostream>
 #include	<stdlib.h>
+#include	<sstream>
+
 #include	"XmlSaver.h"
 #include	"Level.h"
 #include	"Line.h"
@@ -83,7 +85,7 @@ void	XmlSaver::saveLevel(Level &Source)
 			}
 			else if(VectorCopy[i]->getId()=="Laser")
 			{
-				addLaser(VectorCopy[i],Objects);
+			//	addLaser(VectorCopy[i],Objects);
 			}
 			else if(VectorCopy[i]->getId()=="Line")
 			{
@@ -132,9 +134,23 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 	//std::cout<<"Adds Player"<<endl;
 }
 
-void	XmlSaver::addLaser			(Unit *Source,xml_node<>* Parent)
+void	XmlSaver::addLaser			(Laser *Source,LaserHolder *Holder,xml_node<>* Parent)
 {
-	//std::cout<<"Adds Laser"<<endl;
+	xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
+	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Player\"");
+	xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
+	xml_node<> *Id			=mDocument.allocate_node(node_element,"Id", Holder->getId().c_str());
+	xml_node<> *Active;		
+	//xml_node<> *Length		=mDocument.allocate_node(node_element,"Length", Source->getLength());
+
+	if (Holder->isActive())
+	{
+		Active=mDocument.allocate_node(node_element,"Active", "true");
+	}
+	else
+	{
+		Active=mDocument.allocate_node(node_element,"Active", "false");
+	}
 }
 
 void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)
