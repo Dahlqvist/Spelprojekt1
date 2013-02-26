@@ -127,9 +127,6 @@
     <ClInclude Include="UIItemContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UnitIcon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -146,6 +143,9 @@
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
     <ClInclude Include="LevelBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObjectMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -281,9 +281,6 @@
     <ClCompile Include="UnitIcon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp">
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
@@ -297,6 +294,9 @@
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
     <ClCompile Include="LevelBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObjectMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

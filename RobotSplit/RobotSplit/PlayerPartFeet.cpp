@@ -272,7 +272,7 @@ void PlayerPartFeet::resetAnimation()
 	{
 		if(mAttachedWall==false)
 		{
-			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni) 
+			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni) 
 			{
 				mActiveAnimation=&mRight;
 			}
@@ -290,6 +290,7 @@ void PlayerPartFeet::resetAnimation()
 				mActiveAnimation=&mLeftMagnet;
 			}
 		}
+
 	}
 	if(mUnit==&mRocketFuel){
 		mUnit=0;
@@ -375,7 +376,7 @@ void PlayerPartFeet::restartAnimation(){
 void PlayerPartFeet::winning(){
 	mWinningAni.restart();
 	mAnimationTimer.restart();
-	mAniTime=0.6;
+	mAniTime=2;
 	mActiveAnimation=&mWinningAni;
 }
 int PlayerPartFeet::getFrame()
