@@ -27,7 +27,7 @@ float Eric::getJumpchange()
 float Eric::getSpeed()
 {
 	//Erics bra värde: 3
-	return 3;
+	return 1.5;
 }
 
 float Eric::getTimer()
