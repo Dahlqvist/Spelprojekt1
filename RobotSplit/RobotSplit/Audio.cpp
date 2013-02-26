@@ -9,13 +9,13 @@
 Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMainBackground("Main", 1, 1),
 			mInGameBackground("Ingame", 1, 1),
-			mEffectVolyme("EffectVolym", 1, 2),
+			mEffectVolume("EffectVolym", 1, 2),
 			mEffectLeftArrow("LeftArrow", 1, 2),
 			mEffectRightArrow("RightArrow", 1, 2),
 			mEffectNumbers1("Numbers", 1, 20),
 			mEffectNumbers10("Numbers", 1, 20),
 			mEffectNumbers100("Numbers", 1, 20),
-			mMusicVolyme("MusicVolym", 1, 2),
+			mMusicVolume("MusicVolym", 1, 2),
 			mMusicLeftArrow("LeftArrow", 1, 2),
 			mMusicRightArrow("RightArrow", 1, 2),
 			mMusicNumbers1("Numbers", 1, 20),
@@ -30,9 +30,9 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mBlipPos(240, 150),
 			currentBackground(&mMainBackground),
 			currentSelection(&mBack),
-			mEVolyme(100),
-			mMVolyme(100),
-			mChangeVolyme(false),
+			mEVolume(100),
+			mMVolume(100),
+			mChangeVolume(false),
 			mEffectNr1(0),
 			mEffectNr10(0),
 			mEffectNr100(1),
@@ -56,17 +56,17 @@ void Audio::setSpritePosition()
 	sf::Vector2f tempPos2(mWindow.getSize().x/2-mInGameBackground.getSprite().getGlobalBounds().width/2, 0);
 	mMainBackground.setPosition(tempPos);
 	mInGameBackground.setPosition(tempPos2);
-	mEffectVolyme.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
+	mEffectVolume.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
 
-	mEffectLeftArrow.setPosition(sf::Vector2f(mEffectVolyme.getSprite().getPosition().x + mEffectVolyme.getSprite().getGlobalBounds().width + 24, tempPos.y + 150));
+	mEffectLeftArrow.setPosition(sf::Vector2f(mEffectVolume.getSprite().getPosition().x + mEffectVolume.getSprite().getGlobalBounds().width + 24, tempPos.y + 150));
 	mEffectNumbers100.setPosition(sf::Vector2f(mEffectLeftArrow.getSprite().getPosition().x + mEffectLeftArrow.getSprite().getGlobalBounds().width + 6, tempPos.y + 150));
 	mEffectNumbers10.setPosition(sf::Vector2f(mEffectNumbers100.getSprite().getPosition().x + mEffectNumbers100.getSprite().getGlobalBounds().width + 6, tempPos.y + 150));
 	mEffectNumbers1.setPosition(sf::Vector2f(mEffectNumbers10.getSprite().getPosition().x + mEffectNumbers10.getSprite().getGlobalBounds().width + 6, tempPos.y + 150));
 	mEffectRightArrow.setPosition(sf::Vector2f(mEffectNumbers1.getSprite().getPosition().x + mEffectNumbers1.getSprite().getGlobalBounds().width + 6, tempPos.y + 150));
 
-	mMusicVolyme.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
+	mMusicVolume.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
 
-	mMusicLeftArrow.setPosition(sf::Vector2f(mMusicVolyme.getSprite().getPosition().x + mMusicVolyme.getSprite().getGlobalBounds().width + 24, tempPos.y + 250));
+	mMusicLeftArrow.setPosition(sf::Vector2f(mMusicVolume.getSprite().getPosition().x + mMusicVolume.getSprite().getGlobalBounds().width + 24, tempPos.y + 250));
 	mMusicNumbers100.setPosition(sf::Vector2f(mMusicLeftArrow.getSprite().getPosition().x + mMusicLeftArrow.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 	mMusicNumbers10.setPosition(sf::Vector2f(mMusicNumbers100.getSprite().getPosition().x + mMusicNumbers100.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
 	mMusicNumbers1.setPosition(sf::Vector2f(mMusicNumbers10.getSprite().getPosition().x + mMusicNumbers10.getSprite().getGlobalBounds().width + 6, tempPos.y + 250));
@@ -82,14 +82,14 @@ void Audio::setSpritePosition()
 void Audio::setAnimate()
 {
 	mEffectMute.setAnimate(false);
-	mEffectVolyme.setAnimate(false);
+	mEffectVolume.setAnimate(false);
 	mEffectNumbers1.setAnimate(false);
 	mEffectNumbers10.setAnimate(false);
 	mEffectNumbers100.setAnimate(false);
 	mEffectLeftArrow.setAnimate(false);
 	mEffectRightArrow.setAnimate(false);
 	mMusicMute.setAnimate(false);
-	mMusicVolyme.setAnimate(false);
+	mMusicVolume.setAnimate(false);
 	mMusicNumbers1.setAnimate(false);
 	mMusicNumbers10.setAnimate(false);
 	mMusicNumbers100.setAnimate(false);
@@ -103,17 +103,17 @@ Audio::~Audio()
 
 void Audio::update()
 {
-	//Volymen justeras
-	volymeInput();
+	//Volumen justeras
+	VolumeInput();
 
 	if(StateInput::getMenuStatus())
 		currentBackground = &mMainBackground;
 	else if(!StateInput::getMenuStatus())
 		currentBackground = &mInGameBackground;
 	if(mStatus == 0)
-		currentSelection = &mEffectVolyme;
+		currentSelection = &mEffectVolume;
 	else if(mStatus == 1)
-		currentSelection = &mMusicVolyme;
+		currentSelection = &mMusicVolume;
 	else if(mStatus == 2)
 		currentSelection = &mEffectMute;
 	else if(mStatus == 3)
@@ -121,7 +121,7 @@ void Audio::update()
 	else if(mStatus == 4)
 		currentSelection = &mBack;
 
-	if(mChangeVolyme)
+	if(mChangeVolume)
 		currentSelection ->setCurrentFrame(0);
 	else	
 		currentSelection ->setCurrentFrame(1);
@@ -149,8 +149,8 @@ void Audio::render()
 {
 	mWindow.clear(sf::Color::Black);
 	mWindow.draw(currentBackground->getSprite());
-	mWindow.draw(mEffectVolyme.getSprite());
-	mWindow.draw(mMusicVolyme.getSprite());
+	mWindow.draw(mEffectVolume.getSprite());
+	mWindow.draw(mMusicVolume.getSprite());
 	mWindow.draw(mEffectMute.getSprite());
 	mWindow.draw(mMusicMute.getSprite());
 	mWindow.draw(mEffectNumbers1.getSprite());
@@ -205,8 +205,8 @@ void Audio::select()
 	{
 		if(mStatus == 0)
 		{
-			mChangeVolyme = !mChangeVolyme;
-			if(mChangeVolyme == true)
+			mChangeVolume = !mChangeVolume;
+			if(mChangeVolume == true)
 			{
 				mEffectHighlightNr = 10;
 				currentSelection ->setCurrentFrame(0);
@@ -221,16 +221,16 @@ void Audio::select()
 			if(!StateInput::getMenuStatus())
 			{
 				Sound::pauseSound("Lava");
-				Sound::changeVolume(mEVolyme);
+				Sound::changeVolume(mEVolume);
 				Sound::playSound("Lava");
 			}
 			else
-				Sound::changeVolume(mEVolyme);
+				Sound::changeVolume(mEVolume);
 		}
 		else if(mStatus == 1)
 		{
-			mChangeVolyme = !mChangeVolyme;
-			if(mChangeVolyme == true)
+			mChangeVolume = !mChangeVolume;
+			if(mChangeVolume == true)
 			{
 				mMusicHighlightNr = 10;
 			}
@@ -241,11 +241,11 @@ void Audio::select()
 			if(!StateInput::getMenuStatus())
 			{
 				Music::pauseMusic();
-				Music::changeVolyme(mMVolyme);
+				Music::changeVolume(mMVolume);
 				Music::playMusic();
 			}
 			else
-				Music::changeVolyme(mMVolyme);
+				Music::changeVolume(mMVolume);
 		}
 		else if(mStatus == 2)
 		{
@@ -261,7 +261,7 @@ void Audio::select()
 				else if(!mEMute)
 				{
 					Sound::pauseSound("Lava");
-					Sound::changeVolume(mEVolyme);
+					Sound::changeVolume(mEVolume);
 					Sound::playSound("Lava");
 				}
 			}
@@ -270,12 +270,34 @@ void Audio::select()
 				if(mEMute)
 					Sound::changeVolume(0);
 				else if(!mEMute)
-					Sound::changeVolume(mEVolyme);
+					Sound::changeVolume(mEVolume);
 			}
 		}
 		else if(mStatus == 3)
 		{
 			mMMute = !mMMute;
+			if(!StateInput::getMenuStatus())
+			{
+				if(mMMute)
+				{
+					Music::stopMusic();
+					Music::changeVolume(0);
+					Music::playMusic();
+				}
+				else if(!mMMute)
+				{
+					Music::stopMusic();
+					Music::changeVolume(mMVolume);
+					Music::playMusic();
+				}
+			}
+			else
+			{
+				if(mMMute)
+					Music::changeVolume(0);
+				else if(!mMMute)
+					Music::changeVolume(mMVolume);
+			}
 		}
 		else if(mStatus == 4)
 		{	
@@ -289,62 +311,62 @@ void Audio::select()
 	}
 }
 
-void Audio::volymeInput()
+void Audio::VolumeInput()
 {
 	float mDelay = 0.1;
 	if(mClock.getElapsedTime().asSeconds() > mDelay)
 	{
-		if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolyme == true)
+		if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolume == true)
 		{
 			if(mStatus == 0)
 				lowerNumbers(true);
 			else if(mStatus == 1)
 				lowerNumbers(false);
-			lowerVolyme();		
+			lowerVolume();		
 		}
-		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolyme == true)
+		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolume == true)
 		{
 			if(mStatus == 0)
 				raiseNumbers(true);
 			else if(mStatus == 1)
 				raiseNumbers(false);
-			raiseVolyme();
+			raiseVolume();
 		}
 		mClock.restart();
 	}
 }
 
-void Audio::raiseVolyme()
+void Audio::raiseVolume()
 {
 	if(mStatus == 0)
 	{
-		if(mEVolyme < 100)
-			mEVolyme++;
+		if(mEVolume < 100)
+			mEVolume++;
 	}
 	else if(mStatus == 1)
 	{
-		if(mMVolyme < 100)
-			mMVolyme++;
+		if(mMVolume < 100)
+			mMVolume++;
 	}
 }
 
-void Audio::lowerVolyme()
+void Audio::lowerVolume()
 {
 	if(mStatus == 0)
 	{
-		if(mEVolyme > 0)
-			mEVolyme--;
+		if(mEVolume > 0)
+			mEVolume--;
 	}
 	else if(mStatus == 1)
 	{
-		if(mMVolyme > 0)
-			mMVolyme--;
+		if(mMVolume > 0)
+			mMVolume--;
 	}
 }
 
 void Audio::raiseNumbers(bool effect)
 {
-	if((effect == true) && (mEVolyme != 100))
+	if((effect == true) && (mEVolume != 100))
 	{
 		mEffectNr1++;
 		if(mEffectNr1 >= 10)
@@ -359,7 +381,7 @@ void Audio::raiseNumbers(bool effect)
 		}
 	}
 	//Music
-	else if((effect == false && mMVolyme != 100))
+	else if((effect == false && mMVolume != 100))
 	{
 		mMusicNr1++;
 		if(mMusicNr1 >= 10)
@@ -377,7 +399,7 @@ void Audio::raiseNumbers(bool effect)
 
 void Audio::lowerNumbers(bool effect)
 {
-	if((effect == true) && mEVolyme > 0)
+	if((effect == true) && mEVolume > 0)
 	{
 		mEffectNr1--;
 		if(mEffectNr1 < 0)
@@ -391,7 +413,7 @@ void Audio::lowerNumbers(bool effect)
 			}
 		}	
 	}
-	else if((effect == false) && mMVolyme > 0)
+	else if((effect == false) && mMVolume > 0)
 	{
 		mMusicNr1--;
 		if(mMusicNr1 < 0)

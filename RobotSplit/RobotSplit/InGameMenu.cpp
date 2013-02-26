@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "MenuClock.h"
 #include "Game.h"
+#include "Sound.h"
+#include "Music.h"
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()), 
 			mBackground("Ingame", 1, 1),
@@ -90,6 +92,8 @@ void InGameMenu::input()
 				currentSelection->setCurrentFrame(0);
 				currentSelection->update();
 				mStatus = 0;
+				Sound::stopSound("Lava");
+				Music::stopMusic();
 				mStateInput.changeState("QuitToMenu");				
 			}
 		}
