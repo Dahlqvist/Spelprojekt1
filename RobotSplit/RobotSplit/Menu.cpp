@@ -1,7 +1,6 @@
 #include "Menu.h"
 #include "StateInput.h"
 #include "Window.h"
-#include "MenuClock.h"
 
 Menu::Menu(): mStateInput(StateInput::getInstance()),
 			mBackground("Main", 1, 1),
@@ -44,7 +43,6 @@ void Menu::update()
 		currentSelection = &mQuit;
 	currentSelection->setCurrentFrame(1);
 	currentSelection->update();
-	input();
 }
 
 void Menu::render()
@@ -58,14 +56,14 @@ void Menu::render()
 	mWindow.display();
 }
 
+
+
 void Menu::input()
 {
 	int mChoices = 2;
-	double mDelay = 0.15;
-	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
-	if(mTimer > mDelay)
-	{
-		if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+		//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+
+		if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
@@ -73,7 +71,8 @@ void Menu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+		//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
 		{			
 			if(mStatus > 0)
 				mBlipPos.y -= 100;
@@ -82,7 +81,8 @@ void Menu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+//		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 		{
 			if(mStatus == 0)
 				mStateInput.changeState("Game");
@@ -91,6 +91,4 @@ void Menu::input()
 			else if(mStatus == 2)
 				mWindow.close();
 		}
-		MenuClock::restartClock();
-	}
 }

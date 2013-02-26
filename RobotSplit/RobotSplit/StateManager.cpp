@@ -6,12 +6,13 @@
 #include "InGameMenu.h"
 #include "Menu.h"
 #include "Audio.h"
+#include "MenuClock.h"
 
 StateManager::StateManager()
 	
 {
 	loadState();
-	pushState(mGame);
+	pushState(mMenu);
 }
 
 void StateManager::loadState()
@@ -42,6 +43,7 @@ StateManager& StateManager::getInstance()
 void StateManager::pushState(State* state)
 {
 	mStateStack.push(state);
+	mStateStack.top() ->update();
 }
 
 void StateManager::popState()
@@ -57,6 +59,16 @@ void StateManager::updateState()
 void StateManager::renderState()
 {
 	mStateStack.top()->render();
+}
+
+void StateManager::inputState()
+{
+	mStateStack.top()->input();
+}
+
+State* StateManager::getState()
+{
+	return mStateStack.top();
 }
 
 void StateManager::internalClear()

@@ -15,7 +15,7 @@ public:
 	virtual void update();
 	virtual void render();
 
-	void input();
+	virtual void input();
 private:
 	StateInput& mStateInput;
 	Animation *currentSelection;
@@ -26,6 +26,7 @@ private:
 	Animation mBlip;
 
 	int mStatus;
+	bool mRelease;
 
 	sf::Vector2f mBlipPos;
 	sf::RenderWindow &mWindow;

@@ -40,7 +40,10 @@ Audio::Audio(): mStateInput(StateInput::getInstance()),
 			mMusicNr1(0),
 			mMusicNr10(0),
 			mMusicNr100(1),
-			mMusicHighlightNr(0)
+			mMusicHighlightNr(0),
+			mEMute(false),
+			mMMute(false),
+			mHighlight(1)
 
 {	
 	setSpritePosition();
@@ -100,6 +103,9 @@ Audio::~Audio()
 
 void Audio::update()
 {
+	//Volymen justeras
+	volymeInput();
+
 	if(StateInput::getMenuStatus())
 		currentBackground = &mMainBackground;
 	else if(!StateInput::getMenuStatus())
@@ -114,18 +120,29 @@ void Audio::update()
 		currentSelection = &mMusicMute;
 	else if(mStatus == 4)
 		currentSelection = &mBack;
-	if(mChangeVolyme == true)
+
+	if(mChangeVolyme)
+		currentSelection ->setCurrentFrame(0);
+	else	
+		currentSelection ->setCurrentFrame(1);
+
+	if(mEMute)
 	{
-		currentSelection->setCurrentFrame(0);
-		currentSelection->update();
+		mEffectMute.setCurrentFrame(2);
+		if(mStatus == 2)
+			mEffectMute.setCurrentFrame(mEffectMute.getCurrentFrame() + 1);
+		mEffectMute.update();
 	}
-	else
+	if(mMMute)
 	{
-		currentSelection->setCurrentFrame(1);
-		currentSelection->update();
+		mMusicMute.setCurrentFrame(2);
+		if(mStatus == 3)
+			mMusicMute.setCurrentFrame(mMusicMute.getCurrentFrame() + 1);
+		mMusicMute.update();
 	}
+	currentSelection ->update();
+	
 	updateNumbers();
-	input();
 }
 
 void Audio::render()
@@ -154,21 +171,18 @@ void Audio::render()
 void Audio::input()
 {
 	int mChoices = 4;
-	double mDelay = 0.15;
-	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
-	if(mTimer > mDelay)
-	{
+		//Byta rad
 		changeSelection(mChoices);
+
+		//Vad som händer när man trycker på enter på respektive rad
 		select();
-		volymeInput();
-		MenuClock::restartClock();
-	}
 }
 
 void Audio::changeSelection(int choices)
 {
 	int mChoices = choices;
-	if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
+	if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
+	//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
 	{
 		mBlipPos.y += 100;
 		mBlip.setPosition(mBlipPos);
@@ -176,12 +190,12 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
+	//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
+	else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
 	{			
-		if(mStatus > 0)
-			mBlipPos.y -= 100;
+		mBlipPos.y -= 100;
 		mBlip.setPosition(mBlipPos);
-			mStatus--;
+		mStatus--;
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
@@ -189,7 +203,8 @@ void Audio::changeSelection(int choices)
 
 void Audio::select()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	//if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+	if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 	{
 		if(mStatus == 0)
 		{
@@ -203,12 +218,17 @@ void Audio::select()
 			else
 			{
 				mEffectHighlightNr = 0;
-				currentSelection ->setCurrentFrame(0);
+				currentSelection ->setCurrentFrame(1);
 				currentSelection ->update();
 			}
-			Sound::pauseSound("Lava");
-			Sound::changeVolume(mEVolyme);
-			Sound::playSound("Lava");
+			if(!StateInput::getMenuStatus())
+			{
+				Sound::pauseSound("Lava");
+				Sound::changeVolume(mEVolyme);
+				Sound::playSound("Lava");
+			}
+			else
+				Sound::changeVolume(mEVolyme);
 		}
 		else if(mStatus == 1)
 		{
@@ -216,25 +236,50 @@ void Audio::select()
 			if(mChangeVolyme == true)
 			{
 				mMusicHighlightNr = 10;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
 			}
 			else
 			{
 				mMusicHighlightNr = 0;
-				currentSelection ->setCurrentFrame(0);
-				currentSelection ->update();
 			}
-			Music::pauseMusic();
-			Music::changeVolyme(mMVolyme);
-			Music::playMusic();
+			if(!StateInput::getMenuStatus())
+			{
+				Music::pauseMusic();
+				Music::changeVolyme(mMVolyme);
+				Music::playMusic();
+			}
+			else
+				Music::changeVolyme(mMVolyme);
 		}
 		else if(mStatus == 2)
 		{
-			//currentSelection ->setCurrentFrame(
+			mEMute = !mEMute;
+			if(!StateInput::getMenuStatus())
+			{
+				if(mEMute)
+				{
+					Sound::pauseSound("Lava");
+					Sound::changeVolume(0);
+					Sound::playSound("Lava");
+				}
+				else if(!mEMute)
+				{
+					Sound::pauseSound("Lava");
+					Sound::changeVolume(mEVolyme);
+					Sound::playSound("Lava");
+				}
+			}
+			else
+			{
+				if(mEMute)
+					Sound::changeVolume(0);
+				else if(!mEMute)
+					Sound::changeVolume(mEVolyme);
+			}
 		}
 		else if(mStatus == 3)
-		{}
+		{
+			mMMute = !mMMute;
+		}
 		else if(mStatus == 4)
 			mStateInput.changeState("Last");
 	}
@@ -242,21 +287,26 @@ void Audio::select()
 
 void Audio::volymeInput()
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) && mChangeVolyme == true)
+	float mDelay = 0.1;
+	if(mClock.getElapsedTime().asSeconds() > mDelay)
 	{
-		if(mStatus == 0)
-			lowerNumbers(true);
-		else if(mStatus == 1)
-			lowerNumbers(false);
-		lowerVolyme();		
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && mChangeVolyme == true)
-	{
-		if(mStatus == 0)
-			raiseNumbers(true);
-		else if(mStatus == 1)
-			raiseNumbers(false);
-		raiseVolyme();
+		if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) && mChangeVolyme == true)
+		{
+			if(mStatus == 0)
+				lowerNumbers(true);
+			else if(mStatus == 1)
+				lowerNumbers(false);
+			lowerVolyme();		
+		}
+		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) && mChangeVolyme == true)
+		{
+			if(mStatus == 0)
+				raiseNumbers(true);
+			else if(mStatus == 1)
+				raiseNumbers(false);
+			raiseVolyme();
+		}
+		mClock.restart();
 	}
 }
 

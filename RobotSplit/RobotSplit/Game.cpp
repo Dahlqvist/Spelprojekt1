@@ -117,6 +117,7 @@ void Game::update()
 		moveCamera();
 	}
 }
+
 void Game::input()
 {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
@@ -183,7 +184,10 @@ void Game::input()
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
+	}
 }
 
 void Game::moveCamera()
