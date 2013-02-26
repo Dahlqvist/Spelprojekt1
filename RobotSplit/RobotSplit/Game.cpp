@@ -69,6 +69,8 @@ Game::~Game()
 	mlevel.deletePointers();
 }
 
+
+
 void Game::changeMap(int map)
 {
 	if(mBana+map<mBanor.size() && mBana+map>=0)
@@ -91,7 +93,7 @@ void Game::changeMap(int map)
 	mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	//mPlayer->restartPlayer();
-	Music::playMusic();
+	
 	if(mlevel.getName()=="Tutorial1")
 	{
 		mSecurityLevel=0;
@@ -103,6 +105,24 @@ void Game::changeMap(int map)
 	else
 	{
 		mSecurityLevel=2;
+	}
+
+	setMusic();
+
+	Music::playMusic();
+}
+
+void Game::setMusic()
+{
+	if (mlevel.getName()=="Tutorial2")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/tutorial_2.wav");
+	}
+	else if (mlevel.getName()=="Bana1")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/level_1.wav");
 	}
 }
 
