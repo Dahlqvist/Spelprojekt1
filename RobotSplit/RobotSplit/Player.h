@@ -12,6 +12,7 @@ class Player
 public:
 	typedef std::vector<PlayerPart*> PlayerParts;
 	Player(sf::Vector2f);
+	~Player();
 	void move(sf::Vector2f);
 	void draw(sf::RenderWindow&);
 	void update();

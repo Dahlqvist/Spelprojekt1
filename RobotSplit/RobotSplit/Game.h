@@ -22,6 +22,7 @@ public:
 	virtual void render();
 
 	virtual void input();
+	void changeMap(int);
 private:
 	void moveCamera();
 

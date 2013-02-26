@@ -137,20 +137,15 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 void	XmlSaver::addLaser			(Laser *Source,LaserHolder *Holder,xml_node<>* Parent)
 {
 	xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Player\"");
+	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Laser\"");
 	xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-	xml_node<> *Id			=mDocument.allocate_node(node_element,"Id", Holder->getId().c_str());
-	xml_node<> *Active;		
+	xml_node<> *Id			=mDocument.allocate_node(node_element,"Id", modifyString(Source->getId()));
+	xml_node<> *Active		=mDocument.allocate_node(node_element,"Active");
+	xml_node<> *Length		=mDocument.allocate_node(node_element,"Length");
+	xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation");
+	xml_node<> *Color		=mDocument.allocate_node(node_element,"Color");
+	xml_node<> *VisibilityRange	=mDocument.allocate_node(node_element,"VisibilityRange");
 	//xml_node<> *Length		=mDocument.allocate_node(node_element,"Length", Source->getLength());
-
-	if (Holder->isActive())
-	{
-		Active=mDocument.allocate_node(node_element,"Active", "true");
-	}
-	else
-	{
-		Active=mDocument.allocate_node(node_element,"Active", "false");
-	}
 }
 
 void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)

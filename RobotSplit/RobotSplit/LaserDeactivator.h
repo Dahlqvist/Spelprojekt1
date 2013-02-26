@@ -9,6 +9,7 @@ public:
 	LaserDeactivator(Trigger* trigger, float rotation);
 
 	void hitOnce();
+	void hit(){};
 	void draw();
 	void reset();
 

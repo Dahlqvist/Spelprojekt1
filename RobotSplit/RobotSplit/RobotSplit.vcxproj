@@ -188,7 +188,9 @@ sfml-main.lib
     <None Include="Bana3.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tutorial2.xml" />
+    <None Include="Tutorial2.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tutorial1.xml">
       <SubType>Designer</SubType>
     </None>

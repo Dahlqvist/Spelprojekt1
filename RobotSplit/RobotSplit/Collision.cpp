@@ -249,7 +249,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(BOTTOM));
+						if (mCollidedSides.count(BOTTOM)!=0)
+						{
+ 							mCollidedSides.erase(mCollidedSides.find(BOTTOM));
+						}
 					}
 				}
 				//If player is below object
@@ -263,7 +266,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(TOP));
+						if (mCollidedSides.count(TOP)!=0)
+						{
+ 							mCollidedSides.erase(mCollidedSides.find(TOP));
+						}
 					}
 				}
 			}
@@ -284,7 +290,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(LEFT));
+						if (mCollidedSides.count(LEFT)!=0)
+						{
+ 							mCollidedSides.erase(mCollidedSides.find(LEFT));
+						}
 					}
 
 				}
@@ -299,7 +308,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
- 						mCollidedSides.erase(mCollidedSides.find(RIGHT));
+						if (mCollidedSides.count(RIGHT)!=0)
+						{
+ 							mCollidedSides.erase(mCollidedSides.find(RIGHT));
+						}
 					}
 				}
 			}
@@ -332,7 +344,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	//}
 	//playerSprite->setPosition(moveDistance);
 
-	if (mUnits[unit]->getId()=="Lava")
+	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill")
 	{
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead")
 		{
@@ -397,7 +409,7 @@ void Collision::killPlayer()
 
 void Collision::testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect)
 {
-	if (mUnits[unit]->isSolid())
+	if (mUnits[unit]->isSolid() && mUnits[unit]->getId()!="Unclimbable")
 	{
 		//Collision from above/below
 		if (collisionRect.width>collisionRect.height)
