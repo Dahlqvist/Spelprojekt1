@@ -33,6 +33,8 @@ void StateInput::changeState(std::string state)
 		mStateManager.restart();
 	else if(state == "Audio")
 		mStateManager.pushAudio();
+	else if(state == "Controls")
+		mStateManager.pushControls();
 	else
 		std::cout << "Error" << std::endl;
 }

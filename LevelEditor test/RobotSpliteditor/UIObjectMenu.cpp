@@ -1,4 +1,5 @@
 #include "UIObjectMenu.h"
+#include "Platform.h"
 #include <SFML\Graphics.hpp>
 
 UIObjectMenu::UIObjectMenu(string Name,sf::Vector2f& Max,Toolbar* Holder,Color Back,int Size)
@@ -31,11 +32,11 @@ void	UIObjectMenu::draw(RenderWindow& window,sf::Vector2f Position)
 		for(int i=0;i<mIcons.size();i++)
 		{
 			Vector2i	pos((i)%int(mMaxSize.x/64),((i)/int(mMaxSize.x/64)));
-			if(pos.y<=mBotRow&&pos.y>=mBotRow-int(mMaxSize.y/64))
+			if(pos.y<=mBotRow-1&&pos.y>=mBotRow-int(mMaxSize.y/64))
 			{
 				mIcons[i]->render(window,
 				Vector2f(Position+
-				Vector2f(64*pos.x,64*pos.y
+				Vector2f(64*pos.x,64*(pos.y-(mBotRow-int(mMaxSize.y/64)))
 				)));
 			}
 		}
@@ -87,9 +88,16 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					mHolder->setPlayer(new	Player(Vector2f(0,0)));
 					mHolder->mChange=true;
 				}
-				else
+				else	
 				{ 
+					if((*it)->getType()=="Platform")
+					{
+						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),Vector2f(0,0),Vector2f(0,0)));
+					}
+					else
+					{
  					mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+					}
 					mHolder->mChange=true;
 				}
 				break;
@@ -106,6 +114,17 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 			{
 				mSelected=!mSelected;
 			}
+		}
+	}
+	else if(Current.type==sf::Event::EventType::KeyPressed)
+	{
+		if(Current.key.code==sf::Keyboard::Up&&mBotRow>int(mMaxSize.y/64))
+		{
+			mBotRow--;
+		}
+		else if(Current.key.code==sf::Keyboard::Down&&mBotRow<int(mIcons.size()/2))
+		{
+			mBotRow++;
 		}
 	}
 }

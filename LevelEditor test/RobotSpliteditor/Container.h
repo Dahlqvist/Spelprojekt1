@@ -38,6 +38,10 @@ public:
 		mActivated=false;
 		mTHIS=0;
 	}
+	void		setOriginal(const sf::Vector2f& Source)
+	{
+		mOriginal=Source;
+	}
 	void		setPtr(T*	NEW,Vector2f	original=Vector2f(0,0),Vector2f offset=Vector2f(0,0),bool fromLevel=false)
 	{
 		if(isActive())

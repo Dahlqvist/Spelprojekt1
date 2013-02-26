@@ -6,12 +6,15 @@
 #include "UIObjectMenu.h"
 #include "LevelLoader.h"
 #include "XmlSaver.h"
+#include "Platform.h"
+#include "ObjectLoader.h"
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
-	,mCurrUnit(),mCurrPlayer()
+	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false)
 {
-	UIObjectMenu *meny= new UIObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
+	ObjectLoader	Loader("OtherMenu.xml");	
+	UIObjectMenu *meny=Loader.getObject(this);// new UIObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
 	meny->addIcon(new PlayerIcon());
 	meny->addIcon(new UnitIcon("Platform","Tile1"));
 	meny->addIcon(new UnitIcon("Platform","Tile2"));
@@ -21,6 +24,7 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	Solid->addOption("No",false);
 	mUIItems.accessInactive().insert(Solid);
 	mUIItems.accessInactive().insert(new UIText("Name","",false,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Lives","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position y","",true,Color(255,255,255,255),Color(0,0,0,255),15));
@@ -55,6 +59,18 @@ void	Toolbar::render(Editor* editor)
 		{
 			dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
 		}
+		if(mNewPos)
+		{
+			if(editor->collide(mCurrUnit))
+			{
+				mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+			}
+			else
+			{
+				mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+			}
+			mNewPos=false;
+		}
 	}
 	else if(mCurrPlayer.isActive())
 	{
@@ -68,6 +84,21 @@ void	Toolbar::render(Editor* editor)
 		if(!mUIItems.getActivated("Position y")->selected())
 		{
 			dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+		}
+		if(mNewPos)
+		{
+			if(editor->collide(mCurrPlayer))
+			{
+				Vector2f	temp=mCurrPlayer.getOriginal()-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2);
+				mCurrPlayer.getObject()->forceMove(0,temp);
+				mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+				mCurrPlayer.getObject()->update();
+			}
+			else
+			{
+				mCurrPlayer.setOriginal(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition());
+			}
+			mNewPos=false;
 		}
 	}
 	//Renders stuff
@@ -122,12 +153,24 @@ void	Toolbar::setUnit(Unit*	Source)
 	itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
 	dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
 	dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
+	std::string	CompString=mCurrUnit.getObject()->getId();
+	if(CompString=="Platform")
+	{
+		mUIItems.activate("Lives");
+		char*	temp=new	char[10];
+		itoa(dynamic_cast<Platform*>(mCurrUnit.getObject())->getLives(),temp,10);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->setDefault(string(temp));
+		delete temp;
+	}
+	else if(CompString=="Laser")
+	{
+	}
 }
 
 void	Toolbar::setPlayer(Player*	Source)
 {
 	mCurrPlayer.unInitiate();
-	mCurrPlayer.setPtr(Source);
+	mCurrPlayer.setPtr(Source,Source->getCollisionSprite()[0]->getPosition(),Vector2f(0,0),true);
 	mCurrUnit.unInitiate();
 	mUIItems.deactivateAll();
 	mUIItems.activate("Name");
@@ -180,16 +223,29 @@ void	Toolbar::eventHandle(const	Event&	Current)
 			Vector2f	 temp;
 			temp.x=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->getString().c_str());
 			temp.y=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->getString().c_str());
+			mNewPos=true;
 			if(mCurrPlayer.isActive())
 			{
-				mCurrPlayer.getObject()->forceMove(0,temp-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mCurrPlayer.getOffset()));
+				mCurrPlayer.getObject()->forceMove(0,temp-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mCurrPlayer.getOffset())+sf::Vector2f(0,2));
 				mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
 				mCurrPlayer.getObject()->update();
 			}
 			else if(mCurrUnit.isActive())
 			{
+				std::string	CompString=mCurrUnit.getObject()->getId();
 				mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
 				mCurrUnit.getObject()->setPosition(temp);
+				if(CompString=="Platform")
+				{
+					mUIItems.activate("Lives");
+					char*	temp=new	char[10];
+					itoa(dynamic_cast<Platform*>(mCurrUnit.getObject())->getLives(),temp,10);
+					dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->setDefault(string(temp));
+					delete temp;
+				}
+				else if(CompString=="Laser")
+				{
+				}
 			}
 		}
 		else
@@ -218,12 +274,10 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+5,mPosition.y+Height)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					(*it)->setSelect(true);
-//					mChange=true;
 				}
 				else
 				{
 					(*it)->setSelect(false);
-//					mChange=true;
 				}
 			}
 			Height+=(*it)->getHitBox(Vector2f()).height;

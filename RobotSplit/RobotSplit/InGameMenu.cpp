@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "MenuClock.h"
 #include "Game.h"
+#include "Sound.h"
+#include "Music.h"
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()), 
 			mBackground("Ingame", 1, 1),
@@ -13,8 +15,7 @@ InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
-			currentSelection(&mResume),
-			mRelease(false)
+			currentSelection(&mResume)
 
 {
 	sf::Vector2f tempPos(mWindow.getSize().x/2-mBackground.getSprite().getGlobalBounds().width/2, 0);
@@ -45,7 +46,6 @@ void InGameMenu::update()
 		currentSelection = &mQuit;
 	currentSelection->setCurrentFrame(1);
 	currentSelection->update();
-	//input();
 }
 
 void InGameMenu::render()
@@ -62,11 +62,7 @@ void InGameMenu::render()
 void InGameMenu::input()
 {
 	int mChoices = 2;
-	double mDelay = 0.15;
-	float mTimer = MenuClock::getClock().getElapsedTime().asSeconds();
-	if(mTimer > mDelay)
-	{
-		if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
+		if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
@@ -74,7 +70,7 @@ void InGameMenu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 		{			
 			if(mStatus > 0)
 				mBlipPos.y -= 100;
@@ -83,15 +79,22 @@ void InGameMenu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 		{
 			if(mStatus == 0)
 				mStateInput.changeState("Last");
 			else if(mStatus == 1)
 				mStateInput.changeState("Option");
 			else if(mStatus == 2)
-				mStateInput.changeState("QuitToMenu");
+			{
+				mBlipPos.y -= (100*mStatus);
+				mBlip.setPosition(mBlipPos);
+				currentSelection->setCurrentFrame(0);
+				currentSelection->update();
+				mStatus = 0;
+				Sound::stopSound("Lava");
+				Music::stopMusic();
+				mStateInput.changeState("QuitToMenu");				
+			}
 		}
-		MenuClock::restartClock();
-	}
 }
