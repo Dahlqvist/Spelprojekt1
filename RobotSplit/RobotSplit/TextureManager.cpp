@@ -8,8 +8,7 @@ TextureManager::TextureManager()
 }
 
 TextureManager::~TextureManager()
-{
-}
+{}
 
 TextureManager&	TextureManager::getManager()
 {
@@ -183,6 +182,10 @@ void TextureManager::loadTexture()
 	mTextureMap["Tile7"].loadFromFile("Texture/Enviroment/tiles/tile7_dark.png");
 	mTextureMap["Tile8"].loadFromFile("Texture/Enviroment/tiles/tile8_dark.png");
 	mTextureMap["Tile9"].loadFromFile("Texture/Enviroment/tiles/tile9_dark.png");
+
+	mTextureMap["Break1"].loadFromFile("Texture/Enviroment/Tiles/break3_dark.png");
+	mTextureMap["Break2"].loadFromFile("Texture/Enviroment/Tiles/break2_dark.png");
+	mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
 
 	mTextureMap["TileL1a"].loadFromFile("Texture/Enviroment/tiles/tile8_dark_P2.png");
 	mTextureMap["TileL1b"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P3&P7.png");

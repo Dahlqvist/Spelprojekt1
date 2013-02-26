@@ -24,16 +24,18 @@ PlayerPartBody::PlayerPartBody(PlayerPartFeet* Feet):
 	mAniTime=0;
 	mAnimationTimer.restart();
 	mUnit=0;
+	mCounter=0;
 }
 void PlayerPartBody::update()
 {
 	mActiveAnimation->update();
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>Eric::getTimer())
+		mCounter++;
+		if(mCounter>=Eric::getTimer())
 		{
 			mJump-=Eric::getJumpchange();
-			mJumpClock.restart();
+			mCounter=0;
 			PlayerPartBody::setPosition(sf::Vector2f(0, -mJump));
 		}
 		else
@@ -44,6 +46,10 @@ void PlayerPartBody::update()
 	if(mAttached==true)
 	{
 		mPosition=sf::Vector2f(mFeet->getPosition().x, mFeet->getPosition().y-64);
+	}
+	else
+	{
+		mPosition+=sf::Vector2f(0, Eric::getGravity());
 	}
 } 
 void PlayerPartBody::draw()
@@ -143,6 +149,7 @@ void PlayerPartBody::setAttached(bool b)
 }
 void PlayerPartBody::jump(float jump)
 {
+	mCounter=0;
 	mJump=jump;
 	mJumpClock.restart();
 	if(mAttached==false){

@@ -57,7 +57,7 @@ private:
 	Animation mWinningAni;
 	sf::Vector2f mPosition; 
 	std::string mId;
-	float mJump, mAniTime, mFuel, mRotation;
+	float mJump, mAniTime, mFuel, mRotation, mCounter;
 	sf::Clock mJumpClock, mAnimationTimer;
 	int mAO;
 };

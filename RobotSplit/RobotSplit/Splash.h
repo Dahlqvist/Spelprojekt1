@@ -17,6 +17,7 @@ public:
 
 	virtual void update();
 	virtual void render();
+	virtual void input(){};
 private:
 	Splash();
 	Splash(const Splash& splash);

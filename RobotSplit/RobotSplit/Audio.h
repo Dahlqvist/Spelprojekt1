@@ -14,9 +14,9 @@ public:
 	virtual void update();
 	virtual void render();
 
-	
+	virtual void input();
 private:
-	void input();
+	
 	void changeSelection(int choices);
 	void select();
 	void volymeInput();
@@ -54,6 +54,12 @@ private:
 	float mEVolyme;
 	float mMVolyme;
 	bool mChangeVolyme;
+	bool mEMute;
+	bool mMMute;
+
+	sf::Clock mClock;
+
+	int mHighlight;
 
 	int mEffectNr1;
 	int mEffectNr10;

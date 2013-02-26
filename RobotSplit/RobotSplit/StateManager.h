@@ -18,6 +18,7 @@ public:
 
 	void updateState();
 	void renderState();
+	void inputState();
 
 	void restart();
 
@@ -29,6 +30,7 @@ public:
 	void pushAudio();
 
 	void loadState();
+	State* getState();
 private:
 	StateManager();
 	StateManager(const StateManager& statemanager);
