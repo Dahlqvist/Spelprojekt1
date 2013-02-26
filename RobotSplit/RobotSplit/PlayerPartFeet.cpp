@@ -48,7 +48,10 @@ void PlayerPartFeet::update()
 			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
 	}
-	mPosition+=sf::Vector2f(0, Eric::getGravity());
+	if(mAttached==false && mAttachedWall==false)
+	{
+		mPosition+=sf::Vector2f(0, Eric::getGravity());
+	}
 } 
 void PlayerPartFeet::draw()
 {
