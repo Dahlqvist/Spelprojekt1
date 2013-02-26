@@ -243,6 +243,7 @@
         <y>352</y>
       </Position>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>

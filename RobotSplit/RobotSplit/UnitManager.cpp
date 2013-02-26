@@ -57,12 +57,15 @@ void UnitManager::collide()
 	}
 }
 
-void UnitManager::draw(sf::RenderWindow& window)
+void UnitManager::draw(sf::RenderWindow& window, bool inFrontOf)
 {
 	for (unitVector::size_type i=0; i<mUnits.size(); i++)
 	{
-		mUnits[i]->draw();
-		window.draw(mUnits[i]->getSprite());
+		if (mUnits[i]->isBehind()==inFrontOf)
+		{
+			mUnits[i]->draw();
+			window.draw(mUnits[i]->getSprite());
+		}
 	}
 }
 

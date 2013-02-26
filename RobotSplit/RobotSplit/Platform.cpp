@@ -18,8 +18,8 @@ std::string getSpriteName(int lives)
 	return "";
 }
 
-Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset)
-	:Unit(position, size, offset, "Platform", spriteName)
+Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f size, sf::Vector2f offset, bool behind)
+	:Unit(position, size, offset, "Platform", spriteName, true, behind)
 	,mLives(0)
 	,mStartLives(0)
 	,mDestructible(false)
@@ -27,8 +27,8 @@ Platform::Platform(sf::Vector2f position, std::string spriteName, sf::Vector2f s
 	mSprite.setPosition(position);
 }
 
-Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset)
-	:Unit(position, size, offset, "Platform", getSpriteName(lives))
+Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, bool behind)
+	:Unit(position, size, offset, "Platform", getSpriteName(lives), true, behind)
 	,mLives(lives)
 	,mStartLives(lives)
 	,mDestructible(true)

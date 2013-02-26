@@ -10,10 +10,10 @@
 class Unit: public GameObject
 {
 public:
-	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true);
-	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true);
+	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true, bool behind=false);
+	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false);
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
@@ -42,6 +42,9 @@ public:
 
 	virtual	void setSolid(bool	Solid){mSolid=Solid;}
 	virtual bool isSolid(){return mSolid;};
+
+	virtual bool isBehind(){return mBehind;};
+
 	virtual void rotate(float r){mSprite.rotate(r);}
 
 	virtual void update();
@@ -58,7 +61,7 @@ protected:
 	sf::Sprite mSprite;
 	Animation* mAnimation;
 
-	bool mSolid, mHit, mHitThisFrame, mWasHit;
+	bool mSolid, mHit, mHitThisFrame, mWasHit, mBehind;
 };
 
 #endif
