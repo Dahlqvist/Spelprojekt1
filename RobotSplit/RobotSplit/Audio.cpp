@@ -181,8 +181,7 @@ void Audio::input()
 void Audio::changeSelection(int choices)
 {
 	int mChoices = choices;
-	if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
-	//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices) && (!mChangeVolyme))
+	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 	{
 		mBlipPos.y += 100;
 		mBlip.setPosition(mBlipPos);
@@ -190,8 +189,7 @@ void Audio::changeSelection(int choices)
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
 	}
-	//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ) && (!mChangeVolyme))
-	else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 	{			
 		mBlipPos.y -= 100;
 		mBlip.setPosition(mBlipPos);
@@ -203,7 +201,6 @@ void Audio::changeSelection(int choices)
 
 void Audio::select()
 {
-	//if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 	{
 		if(mStatus == 0)
@@ -281,7 +278,14 @@ void Audio::select()
 			mMMute = !mMMute;
 		}
 		else if(mStatus == 4)
+		{	
+			mBlipPos.y -= (100*mStatus);
+			mBlip.setPosition(mBlipPos);
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
+			mStatus = 0;
 			mStateInput.changeState("Last");
+		}
 	}
 }
 

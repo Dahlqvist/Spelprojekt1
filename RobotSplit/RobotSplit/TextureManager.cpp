@@ -327,6 +327,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Numbers"].loadFromFile("Texture/Menu/Numbers.png");
 	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
 	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
+	mTextureMap["ControlSchedule"].loadFromFile("Texture/Menu/Control_Schedule.png");
 
 }
 

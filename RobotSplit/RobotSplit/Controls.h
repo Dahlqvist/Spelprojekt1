@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Animation.h"
 
+
 class StateInput;
 
 class Controls: public State
@@ -16,6 +17,19 @@ public:
 	virtual void input();
 
 private:
+	StateInput& mStateInput;
+	Animation *currentSelection;
+	Animation *currentBackground;
+	Animation mBackground;
+	Animation mInGameBackground;
+	Animation mControlSchedule;
+	Animation mBlip;
+	Animation mBack;
+
+	int mStatus;
+
+	sf::Vector2f mBlipPos;
+	sf::RenderWindow &mWindow;
 };
 
 #endif

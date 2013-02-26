@@ -14,7 +14,6 @@ public:
 	virtual ~InGameMenu();
 	virtual void update();
 	virtual void render();
-
 	virtual void input();
 private:
 	StateInput& mStateInput;
@@ -26,7 +25,6 @@ private:
 	Animation mBlip;
 
 	int mStatus;
-	bool mRelease;
 
 	sf::Vector2f mBlipPos;
 	sf::RenderWindow &mWindow;

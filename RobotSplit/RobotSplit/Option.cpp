@@ -64,8 +64,7 @@ void Option::render()
 void Option::input()
 {
 	int mChoices = 2;
-		//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
-		if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
+	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
@@ -73,8 +72,7 @@ void Option::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
-		else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 		{			
 			mBlipPos.y -= 100;
 			mBlip.setPosition(mBlipPos);
@@ -82,7 +80,6 @@ void Option::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		//else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && mRelease)
 		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 		{
 			if(mStatus == 0)
@@ -90,6 +87,13 @@ void Option::input()
 			else if(mStatus == 1)
 				mStateInput.changeState("Controls");
 			else if(mStatus == 2)
+			{
+				mBlipPos.y -= (100*mStatus);
+				mBlip.setPosition(mBlipPos);
+				currentSelection->setCurrentFrame(0);
+				currentSelection->update();
+				mStatus = 0;
 				mStateInput.changeState("Last");
+			}
 		}
 }
