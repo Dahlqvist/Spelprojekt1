@@ -27,6 +27,8 @@ public:
 	RenderWindow&		getWindow();
 	void				setUnit(UnitContainer&);
 	void				setPlayer(PlayerContainer&);
+	bool				collide(UnitContainer&);
+	bool				collide(PlayerContainer&);
 private:
 	RenderWindow		mWindow;
 	LevelConstructor	mLevel;
@@ -36,8 +38,6 @@ private:
 	Toolbar				mTools;
 	LevelBar			mLevelTool;
 	void				eventHandler(const Event&);
-	bool				collide(UnitContainer&);
-	bool				collide(PlayerContainer&);
 };
 
 #endif

@@ -1,5 +1,5 @@
 #include "Editor.h"
-
+#include "Background.h"
 using namespace sf;
 
 
@@ -8,10 +8,13 @@ Editor::Editor(void)
 	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),
 	mLevelTool(&mLevel)
 {
+	Vector2f	SIZE=mLevel.getSize();
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
-	float	mjao=float(mLevelTool.getSize().y);
+	float		mjao=float(mLevelTool.getSize().y);
 	Vector2f	position(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y)));
 	mCurrView.setViewport(FloatRect(position,size));
+	mLevel.getPlayer()->setTogether(true);
+	mLevel.getPlayer()->setHeadless(false);
 }
 
 Editor::~Editor(void)
@@ -43,6 +46,10 @@ void	Editor::renderLevel(View& Target)
 	mWindow.setView(mWindow.getDefaultView());
 	UnitVector Units = mLevel.getObjects();
 	mWindow.setView(Target);
+	for(int i=0;i<mLevel.getBackground().size();i++)
+	{
+		mWindow.draw(mLevel.getBackground()[i]->draw());
+	}
 	if(mLevel.ifPlayerExist())
 	{
 		mLevel.getPlayer()->draw(mWindow);
@@ -132,8 +139,10 @@ void	Editor::eventHandler(const Event& Current)
 					}
 					if(mLevel.ifPlayerExist())
 					{
-						const sf::FloatRect hitbox(mLevel.getPlayer()->
-							getCollisionSprite()[0]->getGlobalBounds());
+						sf::FloatRect hitbox(mLevel.getPlayer()->
+							getCollisionSprite()[1]->getGlobalBounds());
+						hitbox.height+=mLevel.getPlayer()->
+							getCollisionSprite()[0]->getGlobalBounds().height;
 						if(hitbox.contains(temp))
 						{
 							mTools.unIniUnit();
@@ -177,8 +186,10 @@ void	Editor::eventHandler(const Event& Current)
 					}
 					if(mLevel.ifPlayerExist())
 					{
-						const sf::FloatRect hitbox(mLevel.getPlayer()->
-							getCollisionSprite()[0]->getGlobalBounds());
+						sf::FloatRect hitbox(mLevel.getPlayer()->
+							getCollisionSprite()[1]->getGlobalBounds());
+						hitbox.height+=mLevel.getPlayer()->
+							getCollisionSprite()[0]->getGlobalBounds().height;
 						if(hitbox.contains(temp))
 						{
 							mSelectedPlayer.setPtr(mLevel.getPlayer(),mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),temp-mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),true);
@@ -208,13 +219,13 @@ void	Editor::eventHandler(const Event& Current)
 					{
 						if(collide(mSelectedPlayer))
 						{
-							Vector2f	temp=mSelectedPlayer.getOriginal()-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset());
-							mSelectedPlayer.getObject()->forceMove(0,temp);
+							Vector2f	temp=mSelectedPlayer.getOriginal();
+							mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2));
 							mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
 							mSelectedPlayer.getObject()->update();
 							if(!mSelectedPlayer.fromLevel())
 							{
-								mLevel.addPlayer(mSelectedPlayer.getObject());
+								mSelectedPlayer.deletePtr();
 							}
 						}
 						else
@@ -300,9 +311,13 @@ bool	Editor::collide(UnitContainer&	Other)
 
 bool	Editor::collide(PlayerContainer&	Other)
 {
+	sf::FloatRect hitbox(Other.getObject()->
+		getCollisionSprite()[1]->getGlobalBounds());
+	hitbox.height+=Other.getObject()->
+		getCollisionSprite()[0]->getGlobalBounds().height;
 	for(UnitVector::iterator it=mLevel.accessObjects().begin();it+1!=mLevel.accessObjects().end();it++)
 	{
-		if(Other.getObject()->getCollisionSprite()[0]->getGlobalBounds().intersects((*it)->getSprite().getGlobalBounds())
+		if(hitbox.intersects((*it)->getSprite().getGlobalBounds())
 			&&(*it)->isSolid())
 		{
 			 return true;

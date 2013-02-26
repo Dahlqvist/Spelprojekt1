@@ -91,7 +91,7 @@ void Player::draw(sf::RenderWindow& Window)
 }
 void Player::update()
 {
-	Sound::playSound("Lava");
+	//Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
 		Sound::stopSound("Move");
@@ -357,6 +357,7 @@ void Player::setAttachFeetExtension(bool b)
 			Test.width-=50;
 			Test.left+=25;
 			Test.top+=5;
+			Test.height-=5;
 		}
 	}
 	else if(mFeet.getWall()==0)
@@ -652,7 +653,8 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 		{
 			if(Vec.y!=0 && mFeet.getAttachedWall()==false)
 			{
-				mFeet.jumpReset();
+			//std::cout << "Changing Jump";
+			mFeet.jumpReset();
 			}
 			mFeet.forceMove(Vec);
 		}
@@ -738,9 +740,10 @@ void Player::checkCollisionExt(){
 		sf::FloatRect ColRect2;
 		if(mHead.getSprite().getGlobalBounds().intersects(TempFeet, ColRect2)){
 			mHeadAttachedFeet=true;
-			if(ColRect2.width<ColRect2.height)
+						std::cout << ColRect2.width << std::endl;
+			if(ColRect2.width<=ColRect2.height)
 			{
-				if(mHead.getSprite().getPosition().x > mFeet.getSprite().getPosition().x)
+				if(mHead.getSprite().getPosition().x > TempFeet.left)
 				{
 					mHead.forceMove(sf::Vector2f(ColRect2.width, 0));
 				}
@@ -751,7 +754,7 @@ void Player::checkCollisionExt(){
 			}
 			else
 			{
-				if(mHead.getSprite().getPosition().y > mFeet.getSprite().getPosition().y)
+				if(mHead.getSprite().getPosition().y > TempFeet.top)
 				{
 					mHead.forceMove(sf::Vector2f(0, ColRect2.height));
 				}

@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid)
+Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid, bool behind)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(TextureManager::getSprite(spriteName))
@@ -8,17 +8,19 @@ Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool s
 	,mSize(sf::Vector2f(0,0))
 	,mHit(false)
 	,mHitThisFrame(false)
+	,mBehind(behind)
 {
 	mPosition=position;
 	mId=id;
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid)
+Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid, bool behind)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(animation->getSprite())
 	,mSize(sf::Vector2f(0,0))
+	,mBehind(behind)
 {
 	mAnimation =animation;
 	mPosition=position;
@@ -26,25 +28,27 @@ Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool sol
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid)
+Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid, bool behind)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(TextureManager::getSprite(spriteName))
 	,mAnimation(nullptr)
 	,mSize(size)
 	,mOffset(offset)
+	,mBehind(behind)
 {
 	mPosition=position;
 	mId=id;
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid)
+Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid, bool behind)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(animation->getSprite())
 	,mSize(size)
 	,mOffset(offset)
+	,mBehind(behind)
 {
 	mAnimation =animation;
 	mPosition=position;

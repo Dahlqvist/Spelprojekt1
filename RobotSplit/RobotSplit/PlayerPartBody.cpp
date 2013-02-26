@@ -193,7 +193,7 @@ Unit* PlayerPartBody::getUnit()
 	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
-	mJump=Eric::getGravity();
+	mJump=Eric::getGravity()-Eric::getJumpchange();
 }
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;

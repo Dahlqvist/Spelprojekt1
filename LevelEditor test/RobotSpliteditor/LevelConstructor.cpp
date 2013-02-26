@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Unit.h"
+#include "Background.h"
 using namespace sf;
 
 LevelConstructor::LevelConstructor(void)
@@ -86,4 +87,15 @@ bool&		LevelConstructor::ifPlayerExist()
 void		LevelConstructor::setNewName(const string& NEW)
 {
 	setName(NEW);	
+}
+
+sf::Vector2f	LevelConstructor::getSize()
+{
+	sf::Vector2f Size(0,0);
+	for(int i=0;i<mBackground.getBackground().size();i++)
+	{
+		Size.x+=mBackground.getBackground()[i]->draw().getGlobalBounds().width;
+		Size.y+=mBackground.getBackground()[i]->draw().getGlobalBounds().height;
+	}
+	return	Size;
 }

@@ -15,13 +15,13 @@ float Eric::getHeadspeed()
 float Eric::getJump()
 {
 	//Erics bra värde: 20.7
-	return 20.7;
+	return 19;
 }
 
 float Eric::getJumpchange()
 {
 	//Erics bra värde: 2
-	return 2;
+	return 0.5;
 }
 
 float Eric::getSpeed()
@@ -32,8 +32,8 @@ float Eric::getSpeed()
 
 float Eric::getTimer()
 {
-	//Erics bra värde: 0.1
-	return 13;
+	//Erics bra värde: 13
+	return 5;
 }
 
 float Eric::getRocketboost()

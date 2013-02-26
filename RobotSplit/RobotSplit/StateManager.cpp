@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Audio.h"
 #include "MenuClock.h"
+#include "Controls.h"
 
 StateManager::StateManager()
 	
@@ -22,6 +23,7 @@ void StateManager::loadState()
 	 mMenu = new Menu;
 	 mInGameMenu = new InGameMenu;
 	 mAudio = new Audio;
+	 mControls = new Controls;
 
 }
 StateManager::~StateManager()
@@ -32,6 +34,7 @@ StateManager::~StateManager()
 	delete mInGameMenu;
 	delete mMenu;
 	delete mAudio;
+	delete mControls;
 }
 
 StateManager& StateManager::getInstance()
@@ -115,4 +118,9 @@ void StateManager::restart()
 void StateManager::pushAudio()
 {
 	pushState(mAudio);
+}
+
+void StateManager::pushControls()
+{
+	pushState(mControls);
 }

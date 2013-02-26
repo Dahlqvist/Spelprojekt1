@@ -7,7 +7,7 @@ class ObjectLoader :
 	public XmlLoader
 {
 public:
-	UIObjectMenu	getObject();
+	UIObjectMenu*	getObject(Toolbar*);
 	ObjectLoader(string	Filename);
 };
 
