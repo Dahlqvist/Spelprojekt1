@@ -69,41 +69,50 @@ Game::~Game()
 	mlevel.deletePointers();
 }
 
+void Game::changeMap(int map)
+{
+	if(mBana+map<mBanor.size() && mBana+map>=0)
+	{
+		mBana+=map;
+	}
+	else
+	{
+		mStateInput.changeState("QuitToMenu");
+	}
+	//std::cout << mBanor[mBana] << std::endl;
+	mlevel.loadNewLevel(mBanor[mBana]);
+	for(int i=0;i<BG.size();i++)
+	{
+		delete BG[i];
+	}
+	BG=mlevel.getBackground();
+	delete Objects;
+	delete mPlayer;
+	mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
+	Objects= new UnitManager(mPlayer, mlevel.getObjects());
+	//mPlayer->restartPlayer();
+	Music::playMusic();
+	if(mlevel.getName()=="Tutorial1")
+	{
+		mSecurityLevel=0;
+	}
+	else if(mlevel.getName()=="Tutorial2")
+	{
+		mSecurityLevel=1;
+	}
+	else
+	{
+		mSecurityLevel=2;
+	}
+}
+
 void Game::update()
 {
 	if(mPlayer->getWinning()==true)
 	{
 		Music::pauseMusic();
 		if(Sound::getSoundStatus("Winning") == 0){
-			if(mBana<mBanor.size())
-			{
-				mBana++;
-			}
-			else
-			{
-				mStateInput.changeState("QuitToMenu");
-			}
-			//std::cout << mBanor[mBana] << std::endl;
-			mlevel.loadNewLevel(mBanor[mBana]);
-			for(int i=0;i<BG.size();i++)
-			{
-				delete BG[i];
-			}
-			BG=mlevel.getBackground();
-			delete Objects;
-			delete mPlayer;
-			mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
-			Objects= new UnitManager(mPlayer, mlevel.getObjects());
-			//mPlayer->restartPlayer();
-			Music::playMusic();
-			if(mlevel.getName()=="Tutorial2")
-			{
-				mSecurityLevel=1;
-			}
-			else
-			{
-				mSecurityLevel=2;
-			}
+			Game::changeMap(1);
 		}
 		mPlayer->update();
 		Objects->update();
@@ -170,16 +179,15 @@ void Game::input()
 			Objects->reset();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-		/*					mlevel.loadNewLevel("Bana1.xml");
-							for(int i=0;i<BG.size();i++)
-							{
-								delete BG[i];
-							}
-							BG=mlevel.getBackground();
-							delete Objects;
-							Objects= new UnitManager(mPlayer, mlevel.getObjects());*/
-
 			mPlayer->reFuel(100);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7)){
+			Game::changeMap(-1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8)){
+			Game::changeMap(1);
 			TestTimer.restart();
 		}
 
