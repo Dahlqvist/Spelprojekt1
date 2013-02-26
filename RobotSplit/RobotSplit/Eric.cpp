@@ -42,7 +42,13 @@ float Eric::getRocketboost()
 	return 2;
 }
 
+float Eric::getFueltank()
+{
+	return 100;
+}
+
 float Eric::getJumpdelayMagnet()
 {
 	return 0.2;
 }
+
