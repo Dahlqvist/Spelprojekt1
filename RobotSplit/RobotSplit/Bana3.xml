@@ -26,8 +26,8 @@
     <Unit>
       <Type>"Player"</Type>
       <Position>
-        <x>500</x>
-        <y>192</y>
+        <x>64</x>
+        <y>128</y>
       </Position>
       <Size>
         <x>64</x>

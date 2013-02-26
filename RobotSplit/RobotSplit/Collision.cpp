@@ -299,7 +299,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						mCollidedSides.erase(mCollidedSides.find(RIGHT));
+ 						mCollidedSides.erase(mCollidedSides.find(RIGHT));
 					}
 				}
 			}
@@ -343,10 +343,9 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 			mPlayer->shootHead(sf::Vector2f(0,0));
 		}
 	}
-	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)!="PlayerPartHead")
+	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)=="PlayerPartBody")
 	{
-		mPlayer->Win();
-		mPlayer->restartPlayer(sf::Vector2f(64, 384));
+		mPlayer->win();
 	}
 	if (mUnits[unit]->getId()=="LaserRed")
 	{
@@ -388,7 +387,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 
 void Collision::killPlayer()
 {
-	mPlayer->restartPlayer(sf::Vector2f(64, 384));
+	mPlayer->restartPlayer();
 	mResetted=true;
 	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
 	{
