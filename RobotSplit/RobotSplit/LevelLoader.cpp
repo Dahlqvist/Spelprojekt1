@@ -30,7 +30,6 @@ LevelLoader::LevelLoader(string Filename):XmlLoader(Filename)
 {
 }
 
-
 LevelLoader::~LevelLoader(void)
 {
 }
@@ -401,7 +400,7 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
-	Meanix				*TempObject;
+	Meanix					*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 
 	//Gets the Position childnode from the GameObject node
