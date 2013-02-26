@@ -28,8 +28,10 @@ public:
 	void forceMove(int, sf::Vector2f);
 	void checkCollisionExt();
 	void checkCollisionMagnet();
-	void restartPlayer(sf::Vector2f);
+	void restartPlayer();
 	void dropFeet();
+
+	bool getWinning();
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -38,7 +40,7 @@ public:
 	void dash();
 	void activateFeetRockets();
 	void reFuel(float);
-	void Win();
+	void win();
 	std::string getId(int);
 	//bool bodyStandningFeet();
 private:
@@ -55,11 +57,12 @@ private:
 	sf::Sprite* Temp3;
 	sf::Sprite* Temp4;
 	float mDash;
+	sf::Vector2f mStartPosition;
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
-	bool mKeys;
+	bool mKeys, mWinning;
 	int magnetSlot, lastKey, thisKey;
 
 	Courser* mCourser;

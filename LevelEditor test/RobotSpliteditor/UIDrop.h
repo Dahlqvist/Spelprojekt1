@@ -11,8 +11,8 @@ template<typename T>
 class UIDrop: public UIItem
 {
 public:
-	UIDrop	(string Name,Color Back=Color(255,255,255,255),Color Text=Color(0,0,0,255),int Size=10)
-		:UIItem(Name,true),mSize(Size),mBack(Back),mTextColor(Text)
+	UIDrop	(string Name,Color Back=Color(255,255,255,255),Color Text=Color(0,0,0,255),int Size=10,int Rows=0)
+		:UIItem(Name,true),mSize(Size),mBack(Back),mTextColor(Text),mRows(Rows),mWidth(0),mBSize(0,0)
 	{
 		mCurrent=mOptions.begin();
 	}
@@ -42,8 +42,8 @@ public:
 		{
 			renderText.setPosition(NewPos);
 			renderText.setString(mCurrent->first);
-			sf::RectangleShape	RECT(Vector2f(renderText.getGlobalBounds().width+2,renderText.getGlobalBounds().height+5))
-				,Frame(Vector2f(renderText.getGlobalBounds().width+1,renderText.getGlobalBounds().height+4));
+			sf::RectangleShape	RECT(mBSize+sf::Vector2f(2,5))
+					,Frame(mBSize+sf::Vector2f(1,4));
 			RECT.setPosition(NewPos);
 			RECT.setFillColor(mBack);
 			Frame.setPosition(NewPos);
@@ -55,21 +55,30 @@ public:
 		}
 		else
 		{
+			int	i=0;
 			for(std::map<string,T>::iterator it=mOptions.begin();it!=mOptions.end();it++)
 			{
-				renderText.setPosition(NewPos);
+				Vector2f	extraPos;
+				Vector2i	intPos(0,i);
+				if(mRows>0)
+				{
+					intPos=Vector2i(i/mRows,i%mRows);
+				}
+				extraPos.x=intPos.x*mBSize.x+2*intPos.x;
+				extraPos.y=((intPos.y*mBSize.y)+5*intPos.y);
+				renderText.setPosition(NewPos+extraPos);
 				renderText.setString(it->first);
-				sf::RectangleShape	RECT(Vector2f(renderText.getGlobalBounds().width+2,renderText.getGlobalBounds().height+5))
-					,Frame(Vector2f(renderText.getGlobalBounds().width+1,renderText.getGlobalBounds().height+4));
-				RECT.setPosition(NewPos);
+				sf::RectangleShape	RECT(mBSize+sf::Vector2f(2,5))
+					,Frame(mBSize+sf::Vector2f(1,4));
+				RECT.setPosition(NewPos+extraPos);
 				RECT.setFillColor(mBack);
-				Frame.setPosition(NewPos);
+				Frame.setPosition(NewPos+extraPos);
 				Frame.setOutlineColor(sf::Color(0,0,0,255));
 				Frame.setOutlineThickness(1);
 				window.draw(RECT);
 				window.draw(Frame);
 				window.draw(renderText);
-				NewPos.y+=renderText.getGlobalBounds().height+5;
+				i++;
 			}
 		}
 	}
@@ -91,6 +100,21 @@ public:
 		{
 			mCurrent=mOptions.begin();
 		}
+		sf::Text	SizeString;
+		SizeString.setCharacterSize(mSize);
+		SizeString.setPosition(0.f,0.f);
+		for(map<std::string,T>::iterator	it=mOptions.begin();it!=mOptions.end();it++)
+		{
+			SizeString.setString(it->first);
+			if(SizeString.getGlobalBounds().width>mBSize.x)
+			{
+				mBSize.x=SizeString.getGlobalBounds().width;
+			}
+			if(SizeString.getGlobalBounds().height>mBSize.y)
+			{
+				mBSize.y=SizeString.getGlobalBounds().height;
+			}
+		}
 	}
 
 	FloatRect	getHitBox	(sf::Vector2f	Position)const
@@ -103,20 +127,20 @@ public:
 		NewPos.x+=renderText.getGlobalBounds().width+10;
 		if(!mSelected)
 		{
-			renderText.setString(mCurrent->first);
-			Size.x=(renderText.getGlobalBounds().width+2);
-			Size.y=(renderText.getGlobalBounds().height+5);
+			Size=mBSize+Vector2f(5,2);
 		}
 		else
 		{
-			for(std::map<string,T>::const_iterator it=mOptions.begin();it!=mOptions.end();it++)
+			int i=mOptions.size();
+			if(i>(mRows))
 			{
-				renderText.setString(it->first);
-				Size.y+=renderText.getGlobalBounds().height+5;
-				if(Size.x<renderText.getGlobalBounds().width)
-				{
-					Size.x=renderText.getGlobalBounds().width;
-				}
+				Size.y=mRows*(mBSize.y+5);
+				Size.x=mBSize.x*int(((i-1)/mRows)+1);
+			}
+			else
+			{
+				Size.x=mBSize.x+2;
+				Size.y=i*(mBSize.y+5);
 			}
 		}
 		sf::FloatRect Rect(NewPos,Size);
@@ -127,25 +151,30 @@ public:
 	{
 		if(Current.type==sf::Event::EventType::MouseButtonPressed)
 		{
-		sf::Text	renderText(mName+":");
-		renderText.setPosition(Position);
-		renderText.setCharacterSize(mSize);
-		sf::Vector2f	NewPos(Position);
-		sf::Vector2f	Size;
-		NewPos.x+=renderText.getGlobalBounds().width+10;
+			sf::Text	renderText(mName+":");
+			renderText.setPosition(Position);
+			renderText.setCharacterSize(mSize);
+			sf::Vector2f	NewPos(Position);
+			sf::Vector2f	Size;
+			NewPos.x+=renderText.getGlobalBounds().width+10;
+			int i=0;
 			for(std::map<string,T>::iterator it=mOptions.begin();it!=mOptions.end();it++)
-			{
-				renderText.setString(it->first);
-				Size.x=(renderText.getGlobalBounds().width+2);
-				Size.y=(renderText.getGlobalBounds().height+5);
-				sf::FloatRect Rect(NewPos,Size);
+			{				Vector2f	extraPos;
+				Vector2i	intPos(0,i);
+				if(mRows>0)
+				{
+					intPos=Vector2i(i/mRows,i%mRows);
+				}
+				extraPos.x=intPos.x*(mBSize.x+2);
+				extraPos.y=(intPos.y*(mBSize.y+5));
+				sf::FloatRect Rect(NewPos+extraPos,mBSize+Vector2f(2,5));
 				if(Rect.contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					mCurrent=it;
 					mSelected=false;
 					break;
 				}
-				NewPos.y+=renderText.getGlobalBounds().height+5;
+				i++;
 			}
 		}
 	}
@@ -156,9 +185,13 @@ public:
 private:
 	Color							mBack,
 									mTextColor;
-	int								mSize;
+	int								mSize,
+									mRows,
+									mWidth;
 	std::map<string,T>				mOptions;
-typename	std::map<string,T>::iterator	mCurrent;
+	sf::Vector2f					mBSize;
+	typename	
+	std::map<string,T>::iterator	mCurrent;
 };
 
 

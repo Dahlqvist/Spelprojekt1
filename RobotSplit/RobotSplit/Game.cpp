@@ -24,7 +24,7 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Bana1.xml"),
+		mlevel("Tutorial1.xml"),
 		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
 		BG(mlevel.getBackground()),
 		loops(0),
@@ -35,9 +35,28 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
-	diaBox = mlevel.getDialogueBoxes();
+	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
 	Music::loadMusic("Music/menu_1.wav");
+	mBana=0;
+	//if(mlevel.getName()=="Tutorial1"){
+	//	mSecurityLevel=0;
+	//}
+	//else if(mlevel.getName()=="Tutorial2"){
+	//	mSecurityLevel=1;
+	//}
+	//else{
+	//	mSecurityLevel=2;
+	//}
+	mBanor.push_back("Tutorial1.xml");
+	mBanor.push_back("Tutorial2.xml");
+	mBanor.push_back("Tutorial3.xml");
+	mBanor.push_back("Tutorial4.xml");
+	mBanor.push_back("Tutorial5.xml");
+	mBanor.push_back("Tutorial6.xml");
+	mBanor.push_back("Bana1.xml");
+	mBanor.push_back("Bana2.xml");
+	mBanor.push_back("Bana3.xml");
 }
 
 Game::~Game()
@@ -52,13 +71,51 @@ Game::~Game()
 
 void Game::update()
 {
-	Game::input();
-	//window.setKeyRepeatEnabled(true);
-	mPlayer->update();
-	Objects->update();
-	Objects->collide();
+	if(mPlayer->getWinning()==true)
+	{
+		Music::pauseMusic();
+		if(Sound::getSoundStatus("Winning") == 0){
+			if(mBana<mBanor.size())
+			{
+				mBana++;
+			}
+			else
+			{
+				mStateInput.changeState("QuitToMenu");
+			}
+			//std::cout << mBanor[mBana] << std::endl;
+			mlevel.loadNewLevel(mBanor[mBana]);
+			for(int i=0;i<BG.size();i++)
+			{
+				delete BG[i];
+			}
+			BG=mlevel.getBackground();
+			delete Objects;
+			Objects= new UnitManager(mPlayer, mlevel.getObjects());
+			mPlayer->restartPlayer();
+			Music::playMusic();
+			if(mlevel.getName()=="Tutorial2")
+			{
+				mSecurityLevel=1;
+			}
+			else
+			{
+				mSecurityLevel=2;
+			}
+		}
+		mPlayer->update();
+		Objects->update();
+		Objects->collide();
+	}
+	else{
+		Game::input();
+		//window.setKeyRepeatEnabled(true);
+		mPlayer->update();
+		Objects->update();
+		Objects->collide();
 
-	moveCamera();
+		moveCamera();
+	}
 }
 
 void Game::input()
@@ -75,20 +132,20 @@ void Game::input()
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0){
 		mPlayer->interact(3);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=0){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1){
 		mPlayer->interact(4);
 	}
 	if(TestTimer.getElapsedTime().asSeconds()>mTime){
 		mTime=(float)0.2;
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=0){
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1){
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=0){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1){
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=0){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2){
 			mPlayer->interact(7);
 			TestTimer.restart();
 		}
@@ -97,7 +154,7 @@ void Game::input()
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=0){
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2){
 			sf::Vector2f Temp;
 			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
 			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
@@ -106,11 +163,20 @@ void Game::input()
 		}
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
-			mPlayer->restartPlayer(sf::Vector2f(64, 384));
+			mPlayer->restartPlayer();
 			TestTimer.restart();
 			Objects->reset();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+		/*					mlevel.loadNewLevel("Bana1.xml");
+							for(int i=0;i<BG.size();i++)
+							{
+								delete BG[i];
+							}
+							BG=mlevel.getBackground();
+							delete Objects;
+							Objects= new UnitManager(mPlayer, mlevel.getObjects());*/
+
 			mPlayer->reFuel(100);
 			TestTimer.restart();
 		}
@@ -177,12 +243,14 @@ void Game::render()
 	mPlayer->draw(mWindow);
 	Objects->draw(mWindow);
 	mPlayer->resetAnimations();
-	for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
-	{
+	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
+	//{
 		//mWindow.draw(diaBox[i]->getSprite());
-		mWindow.draw(diaBox[i]->getText());
-	}
+		//mWindow.draw(diaBox[i]->getText());
+	//}
 	//mWindow.draw(diaBox->getText());
-	Music::playMusic();
+	if(mPlayer->getWinning()==false){
+		Music::playMusic();
+	}
 	mWindow.display();
 }

@@ -37,6 +37,8 @@ private:
 	float mTime;
 	std::vector<DialogueBox*> diaBox;
 	std::vector<Background*> BG;
+	std::vector<std::string> mBanor;
+	int mBana;
 	//Sound& mSound;
 	
 };

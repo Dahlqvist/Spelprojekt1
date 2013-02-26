@@ -56,6 +56,7 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 	if(mAttached==true && mActiveAnimation->getCurrentFrame()!=mFeet->getFrame())
 	{
 		mActiveAnimation->restart();
+		mFeet->restartAnimation();
 	}
 	if(mAttached==true)
 	{
@@ -162,7 +163,7 @@ void PlayerPartBody::resetAnimation()
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
 	{
-		if(mActiveAnimation==&mRightAnimation)
+		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mWinningAni)
 		{
 			mActiveAnimation=&mRight;
 		}
@@ -200,6 +201,6 @@ void PlayerPartBody::setId(std::string Text){
 void PlayerPartBody::winning(){
 	mWinningAni.restart();
 	mAnimationTimer.restart();
-	mAniTime=0.6;
+	mAniTime=2;
 	mActiveAnimation=&mWinningAni;
 }

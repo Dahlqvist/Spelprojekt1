@@ -19,6 +19,8 @@ public:
 
 	virtual std::string getId(){return mId;};
 
+	virtual bool isActive(){return mActive;};
+
 	virtual bool isSolid(){return mSolid;};
 	virtual void rotate(float r){mSprite.rotate(r);}
 
