@@ -8,6 +8,7 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 	,mStartVisible(visible)
 	,mStartFadeIn(fadeIn)
 	,mDeactivated(false)
+	,mHasFaded(false)
 {
 	const int TEXT_OFFSET_X=10;
 	const int TEXT_OFFSET_Y=10;
@@ -40,27 +41,41 @@ void DialogueBox::update()
 	{
 		mAlpha=255;
 	}
-	else if (mAlpha<255-FADE_SPEED)
+	else if (mAlpha>0)
 	{
-		mAlpha+=FADE_SPEED;
+		mAlpha-=FADE_SPEED;
 	}
-	else if (mAlpha<255)
+	else if (mAlpha<=0)
 	{
-		mAlpha=255;
+		mAlpha=0;
 	}
-}
 
-void DialogueBox::hit()
-{
-	if (mVisible)
-	{
-		mAlpha=255/2;
-	}
+	mVisible=false;
+	mHasFaded=false;
 }
 
 void DialogueBox::activate()
 {
+	const int FADE_SPEED=2;
+
 	mVisible=true;
+
+	if (!mFadeIn)
+	{
+		mAlpha=255;
+	}
+	else if (!mHasFaded)
+	{
+		mHasFaded=true;
+		if (mAlpha<255-FADE_SPEED)
+		{
+			mAlpha+=FADE_SPEED;
+		}
+		else if (mAlpha<255)
+		{
+			mAlpha=255;
+		}
+	}
 }
 
 void DialogueBox::deactivate()

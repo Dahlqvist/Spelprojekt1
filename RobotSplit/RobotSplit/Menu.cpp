@@ -61,9 +61,7 @@ void Menu::render()
 void Menu::input()
 {
 	int mChoices = 2;
-		//if((sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) && (mStatus < mChoices))
-
-		if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::S) && (mStatus < mChoices))
+		if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
 			mBlip.setPosition(mBlipPos);
@@ -71,8 +69,7 @@ void Menu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-		//else if((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (mStatus > 0 ))
-		else if((Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::W) && (mStatus > 0))
+		else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 		{			
 			if(mStatus > 0)
 				mBlipPos.y -= 100;
@@ -81,7 +78,6 @@ void Menu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 		}
-//		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 		{
 			if(mStatus == 0)

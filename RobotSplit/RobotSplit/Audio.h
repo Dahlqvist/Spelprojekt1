@@ -13,17 +13,15 @@ public:
 	virtual ~Audio();
 	virtual void update();
 	virtual void render();
-
 	virtual void input();
 private:
-	
 	void changeSelection(int choices);
 	void select();
-	void volymeInput();
-	void raiseVolyme();
+	void VolumeInput();
+	void raiseVolume();
 	void raiseNumbers(bool effect);
 	void lowerNumbers(bool effect);
-	void lowerVolyme();
+	void lowerVolume();
 	void setAnimate();
 	void setSpritePosition();
 	void updateNumbers();
@@ -36,9 +34,9 @@ private:
 	Animation mBack;
 	Animation mBlip;
 	Animation mEffectMute;
-	Animation mEffectVolyme;
+	Animation mEffectVolume;
 	Animation mMusicMute;
-	Animation mMusicVolyme;
+	Animation mMusicVolume;
 	Animation mEffectNumbers1;
 	Animation mEffectNumbers10;
 	Animation mEffectNumbers100;
@@ -51,9 +49,9 @@ private:
 	Animation mMusicRightArrow;
 
 	int mStatus;
-	float mEVolyme;
-	float mMVolyme;
-	bool mChangeVolyme;
+	float mEVolume;
+	float mMVolume;
+	bool mChangeVolume;
 	bool mEMute;
 	bool mMMute;
 

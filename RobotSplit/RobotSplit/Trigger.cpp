@@ -16,12 +16,11 @@ Trigger::Trigger(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, 
 
 void Trigger::hit()
 {
-	
+	mTriggedObject->activate();
 }
 
 void Trigger::hitOnce()
 {
-	activate();
 }
 
 void Trigger::activate()

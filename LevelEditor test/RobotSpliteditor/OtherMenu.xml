@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Menu>
+	<Name>"Other"</Name>
+	<Size>
+		<x>190</x>
+		<y>340</y>
+	</Size>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile1"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile2"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile3"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile4"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile5"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile6"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile7"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile8"</Sprite>
+	</Object>
+</Menu>
+
