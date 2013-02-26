@@ -23,10 +23,10 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	Splash::runSplash(false);
 
-	sf::Clock lastUpdate;
+	/*sf::Clock lastUpdate;
 	float nextUpdate = 0.0;
-	float temp = 0.0;
-	//mWindow.setFramerateLimit(60);
+	float temp = 0.0;*/
+	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
 		while(mWindow.pollEvent(Window::getEvent()))
@@ -46,26 +46,26 @@ int main()
 		else
 		{
 			int loops = 0;
-			bool render = false;
+			//bool render = false;
 			
 
-			while(lastUpdate.getElapsedTime().asSeconds() > nextUpdate && loops < 3)
+			while(/*lastUpdate.getElapsedTime().asSeconds() > nextUpdate && */loops < 2)
 			{
 				loops++;
-				nextUpdate +=1/60.0;
-				render = true;
+				//nextUpdate +=1/60.0;
+				//render = true;
 				statemanager.updateState();
-				temp = lastUpdate.getElapsedTime().asSeconds();
-				cout << "Time: " << temp << endl;
+				//temp = lastUpdate.getElapsedTime().asSeconds();
+				//cout << "Time: " << temp << endl;
 			}
 			
-			if(render)
-			{
+			//if(render)
+			//{
 				statemanager.renderState();
-				lastUpdate.restart();
-				nextUpdate = 1/60.0;
+				//lastUpdate.restart();
+				//nextUpdate = 1/60.0;
 				//cout << "Loops: " << loops << endl;
-			}
+			//}
 			//cout << "Time: " << lastUpdate.getElapsedTime().asSeconds() << endl;
 			
 			

@@ -60,6 +60,7 @@ void Game::update()
 
 	moveCamera();
 }
+
 void Game::input()
 {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
