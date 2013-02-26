@@ -49,6 +49,15 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mWinning=false;
 	mCourser=new Courser;
 }
+Player::~Player()
+{
+	delete mCourser;
+	delete Temp1;
+	delete Temp2;
+	delete Temp3;
+	delete Temp4;
+	delete TempPart;
+}
 
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
@@ -107,14 +116,6 @@ void Player::update()
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
 		mParts[i]->update();
-		if(i==1)
-		{
-			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
-		}
-		else if(i==0 && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
-		{
-			mParts[i]->setPosition(sf::Vector2f(0, Eric::getGravity()));
-		}
 	}
 	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)

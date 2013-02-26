@@ -91,8 +91,10 @@ void Game::update()
 			}
 			BG=mlevel.getBackground();
 			delete Objects;
+			delete mPlayer;
+			mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 			Objects= new UnitManager(mPlayer, mlevel.getObjects());
-			mPlayer->restartPlayer();
+			//mPlayer->restartPlayer();
 			Music::playMusic();
 			if(mlevel.getName()=="Tutorial2")
 			{

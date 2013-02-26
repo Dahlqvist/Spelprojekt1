@@ -47,7 +47,7 @@ private:
 	PlayerPartFeet* mFeet;
 	sf::Vector2f mPosition; 
 	std::string mId;
-	float mJump, mAniTime;
+	float mJump, mAniTime, mCounter;
  	sf::Clock mJumpClock, mAnimationTimer;
 };
 

@@ -26,6 +26,7 @@ PlayerPartFeet::PlayerPartFeet():
 	mAUnit=0;
 	mFuel=100;
 	mAO=0;
+	mCounter=0;
 }
 void PlayerPartFeet::update()
 {
@@ -35,10 +36,11 @@ void PlayerPartFeet::update()
 	}
 	if(mJump>0)
 	{
-		if(mJumpClock.getElapsedTime().asSeconds()>Eric::getTimer())
+		mCounter++;
+		if(mCounter>=Eric::getTimer())
 		{
 			mJump-=Eric::getJumpchange();
-			mJumpClock.restart();
+			mCounter=0;
 			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
 		else
@@ -46,6 +48,7 @@ void PlayerPartFeet::update()
 			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
 	}
+	mPosition+=sf::Vector2f(0, Eric::getGravity());
 } 
 void PlayerPartFeet::draw()
 {
@@ -252,6 +255,7 @@ void PlayerPartFeet::setAttached(bool b)
 }
 void PlayerPartFeet::jump(float jump)
 {
+	mCounter=0;
 	mJump=jump;
 	mJumpClock.restart();
 	mJumpAni.restart();

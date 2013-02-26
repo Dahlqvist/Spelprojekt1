@@ -33,7 +33,7 @@ float Eric::getSpeed()
 float Eric::getTimer()
 {
 	//Erics bra värde: 0.1
-	return 0.1;
+	return 13;
 }
 
 float Eric::getRocketboost()
