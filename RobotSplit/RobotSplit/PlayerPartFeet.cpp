@@ -326,7 +326,7 @@ void PlayerPartFeet::reFuel(float fuel)
 }
 void PlayerPartFeet::jumpReset()
 {
-	mJump=Eric::getGravity();
+	mJump=Eric::getGravity()-Eric::getJumpchange();
 }
 
 void PlayerPartFeet::setAttachedWall(bool b, int w){
