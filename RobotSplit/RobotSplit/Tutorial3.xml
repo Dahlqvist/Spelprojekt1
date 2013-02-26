@@ -5,18 +5,9 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial3a"</SpriteName>
+      <SpriteName>"BGTutorial"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Tutorial3b"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
@@ -24,6 +15,104 @@
 
   <Objects>
     <Unit>
+      <Type>"Player"</Type>
+      <Position>
+        <x>64</x>
+        <y>384</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>0</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>House3</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>320</x>
+        <y>352</y>
+      </Position>
+      <SpriteName>House4</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>576</x>
+        <y>608</y>
+      </Position>
+      <SpriteName>House5</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>960</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>House6</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>256</x>
+        <y>416</y>
+      </Position>
+      <SpriteName>WoodBox</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>512</x>
+        <y>288</y>
+      </Position>
+      <SpriteName>WoodBox</SpriteName>
+    </Unit>
+
+    <Unit>
+      <Type>Billboard</Type>
+      <Position>
+        <x>386</x>
+        <y>224</y>
+      </Position>
+      <SpriteName>Billboard1</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>Billboard</Type>
+      <Position>
+        <x>488</x>
+        <y>160</y>
+      </Position>
+      <SpriteName>Billboard2</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
+    
+    <Unit>
+      <Type>"Door"</Type>
+      <SpriteName>"BankSign"</SpriteName>
+      <Position>
+        <x>1180</x>
+        <y>380</y>
+      </Position>
+      <Size>
+        <x>100</x>
+        <y>100</y>
+      </Size>
+      <Offset>
+        <x>0</x>
+        <y>0</y>
+      </Offset>
+      <Solid>false</Solid>
+    </Unit>
+    
+    <!--<Unit>
       <Type>"HelpBox"</Type>
       <SpriteName>"Checkpoint"</SpriteName>
       <Position>
@@ -752,6 +841,6 @@
         <x>78</x>
         <y>72</y>
       </Size>
-    </Unit>
+    </Unit>-->
   </Objects>
 </Level>

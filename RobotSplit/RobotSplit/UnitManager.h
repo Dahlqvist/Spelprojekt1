@@ -27,7 +27,7 @@ public:
 
 	void update();
 	void collide();
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window, bool inFrontOf);
 	void reset();
 
 private:

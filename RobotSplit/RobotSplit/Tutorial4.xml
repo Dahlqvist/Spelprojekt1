@@ -263,10 +263,6 @@
         <x>512</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -275,10 +271,6 @@
         <x>736</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
 
     <Unit>

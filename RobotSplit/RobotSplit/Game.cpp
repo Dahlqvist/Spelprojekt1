@@ -251,8 +251,9 @@ void Game::render()
 		mWindow.draw(BG[i]->draw());
 		BG[i]->update();
 	}
+	Objects->draw(mWindow, true);
 	mPlayer->draw(mWindow);
-	Objects->draw(mWindow);
+	Objects->draw(mWindow, false);
 	mPlayer->resetAnimations();
 	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	//{
