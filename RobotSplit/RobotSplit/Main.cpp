@@ -9,6 +9,7 @@
 #include "Sound.h"
 #include "Music.h"
 #include "State.h"
+#include "Timer.h"
 
 using namespace std;
 
@@ -23,9 +24,8 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	Splash::runSplash(false);
 
-	/*sf::Clock lastUpdate;
-	float nextUpdate = 0.0;
-	float temp = 0.0;*/
+	Timer& timer = Timer::getInstance();
+
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
@@ -35,7 +35,10 @@ int main()
 				mWindow.close();
 			
 			statemanager.inputState();
+			timer.input();
 		}
+		timer.update();
+		timer.render();
 
 
 		if(Splash::getStatus())

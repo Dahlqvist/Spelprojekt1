@@ -1,8 +1,7 @@
 #include "Option.h"
 #include "StateInput.h"
 #include "Window.h"
-#include "MenuClock.h"
-
+#include "Timer.h"
 Option::Option(): mStateInput(StateInput::getInstance()),
 			mMainBackground("Main", 1, 1),
 			mInGameBackground("Ingame", 1, 1),

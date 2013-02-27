@@ -6,7 +6,6 @@
 #include "InGameMenu.h"
 #include "Menu.h"
 #include "Audio.h"
-#include "MenuClock.h"
 #include "Controls.h"
 
 StateManager::StateManager()

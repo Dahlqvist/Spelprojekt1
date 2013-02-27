@@ -100,7 +100,7 @@ sfml-main.lib
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
-    <ClCompile Include="MenuClock.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserDeactivator.cpp" />
     <ClCompile Include="LaserHolder.cpp" />
@@ -148,7 +148,7 @@ sfml-main.lib
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameMenu.h" />
-    <ClInclude Include="MenuClock.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserDeactivator.h" />
     <ClInclude Include="LaserHolder.h" />

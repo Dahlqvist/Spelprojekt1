@@ -1,7 +1,6 @@
 #include "InGameMenu.h"
 #include "StateInput.h"
 #include "Window.h"
-#include "MenuClock.h"
 #include "Game.h"
 #include "Sound.h"
 #include "Music.h"
