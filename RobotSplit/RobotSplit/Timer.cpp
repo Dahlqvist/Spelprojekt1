@@ -1,33 +1,62 @@
 #include "Timer.h"
-#include <iostream>
 #include "Window.h"
 
 sf::Clock Timer::mClock;
 sf::Clock Timer::mSecondClock;
-Animation* Timer::currentNr;
 int Timer::mDec;
 int Timer::mSek;
 int Timer::mMin;
 int Timer::mHour;
 
-Timer::Timer():
-	mNumbers("Numbers", 1, 9)
+int Timer::m1Sek;
+int Timer::m10Sek;
+int Timer::m1Min;
+int Timer::m10Min;
+int Timer::m1Hour;
+int Timer::m10Hour;
+
+Animation* Timer::mNumbers;
+
+Timer::Timer()/*: mNumbers("Numbers", 1, 20)*/
 {
-	currentNr = &mNumbers;
+	load();
+
+	initialize();
+	restartClock();
+
+	mNumbers->setPosition(sf::Vector2f(Window::getWindow().getSize()));
+	mNumbers->setAnimate(false);
+}
+
+void Timer::load()
+{
+	mNumbers = new Animation("Numbers", 1, 20);
+}
+
+void Timer::initialize()
+{
 	mDec = 0;
 	mSek = 0;
 	mMin = 0;
 	mHour = 0;
-	restartClock();
+
+	m1Sek = 0;
+	m10Sek = 0;
+	m1Min = 0;
+	m10Min = 0;
+	m1Hour = 0;
+	m10Hour = 0;
 }
 
 Timer::~Timer()
-{}
+{
+	delete mNumbers;
+}
 
 Timer& Timer::getInstance()
 {
-	Timer Timer;
-	return Timer;
+	Timer temp;
+	return temp;
 }
 
 sf::Clock& Timer::getClock()
@@ -45,51 +74,62 @@ void Timer::input()
 {
 	if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::G)
 	{
-		mDec = 0;
-		mSek = 0;
-		mMin = 0;
-		mHour = 0;
+		initialize();
 		restartClock();
 	}
 }
 
 void Timer::update()
 {
+	//sf::Vector2f timerPos = sf::Vector2f(Window::getWindow().getSize().x - 150, Window::getWindow().getSize().y +150 );
+	sf::Vector2f timerPos = sf::Vector2f(500, 500);
 	//För att få fram vilken bild som skall visas
-	mDec = mClock.getElapsedTime().asMilliseconds() / 100;
-	if(mDec >= 10)
-	{
-		mDec = 0;
-		mClock.restart();
-		mSek++;
-		if(mSek > 59)
-		{
-			mSek = 0;
-			mMin++;
-			if(mMin > 59)
-			{
-				mMin = 0;
-				mHour++;
-			}
-		}
-	}
+
+	mDec = (mClock.getElapsedTime().asMilliseconds() / 100) % 10;
+	mSek = mClock.getElapsedTime().asSeconds();
+	mMin = mClock.getElapsedTime().asSeconds() / 60;
+	mHour = mClock.getElapsedTime().asSeconds() / 3600;
+
+	m1Sek = mSek % 10;
+	m10Sek = (mSek / 10) % 6;
+	m1Min = mMin % 10;
+	m10Min = (mMin / 10) % 6;
+	m1Hour = mHour % 10;
+	m10Hour = (mHour / 10) % 10;
+
+	//Window::getWindow().clear(sf::Color::Black);
+
+	mNumbers->setCurrentFrame(mDec);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	Window::getWindow().draw(mNumbers->getSprite());
+
+	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+	mNumbers->setCurrentFrame(m1Sek);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	Window::getWindow().draw(mNumbers->getSprite());
+
+	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+	mNumbers->setCurrentFrame(m10Sek);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	Window::getWindow().draw(mNumbers->getSprite());
+
+	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+	mNumbers->setCurrentFrame(m1Min);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	Window::getWindow().draw(mNumbers->getSprite());
+
+	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+	mNumbers->setCurrentFrame(m10Min);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	Window::getWindow().draw(mNumbers->getSprite());
 }
 
 void Timer::render()
 {
-	for(int i=0; i<16; i++)
-	{
-		std::cout << std::endl;
-	}
-	std::cout << "Bild tid" << std::endl;
-	std::cout << "Dec: " << mDec << std::endl;
-	std::cout << "Sek: " << mSek << std::endl;
-	std::cout << "Min: " << mMin << std::endl;
-	std::cout << "Hour: " << mHour << std::endl;
-	std::cout << "SecondClock: " << std::endl;
-	std::cout << "Dec: " << mSecondClock.getElapsedTime().asMilliseconds() / 100 << std::endl;
-	std::cout << "Sek: " << mSecondClock.getElapsedTime().asSeconds() << std::endl;
-	std::cout << "Min: " << mSecondClock.getElapsedTime().asSeconds() / 60 << std::endl;
-	std::cout << "Hour: " << mSecondClock.getElapsedTime().asSeconds() / 3600 << std::endl;
-
+	Window::getWindow().display();
 }

@@ -37,8 +37,6 @@ int main()
 			statemanager.inputState();
 			timer.input();
 		}
-		timer.update();
-		timer.render();
 
 
 		if(Splash::getStatus())
@@ -48,33 +46,10 @@ int main()
 		}
 		else
 		{
-			int loops = 0;
-			//bool render = false;
-			
-
-			while(/*lastUpdate.getElapsedTime().asSeconds() > nextUpdate && */loops < 2)
-			{
-				loops++;
-				//nextUpdate +=1/60.0;
-				//render = true;
+			for(int i = 0; i<2; i++)
 				statemanager.updateState();
-				//temp = lastUpdate.getElapsedTime().asSeconds();
-				//cout << "Time: " << temp << endl;
-			}
-			
-			//if(render)
-			//{
-				statemanager.renderState();
-				//lastUpdate.restart();
-				//nextUpdate = 1/60.0;
-				//cout << "Loops: " << loops << endl;
-			//}
-			//cout << "Time: " << lastUpdate.getElapsedTime().asSeconds() << endl;
-			
-			
+			statemanager.renderState();			
 		}
-	}
-
-	
+	}	
 	return 0;
 }

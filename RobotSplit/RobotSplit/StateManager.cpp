@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Audio.h"
 #include "Controls.h"
+#include "Timer.h"
 
 StateManager::StateManager()
 	

@@ -21,6 +21,7 @@
 #include "Window.h"
 #include "Sound.h"
 #include "Music.h"
+#include "Timer.h"
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
@@ -29,7 +30,8 @@ Game::Game():
 		BG(mlevel.getBackground()),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2)
+		mTime(0.2),
+		mTimer(Timer::getInstance())
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -129,6 +131,7 @@ void Game::setMusic()
 
 void Game::update()
 {
+	mWindow.clear(sf::Color::Black);
 	if(mPlayer->getWinning()==true)
 	{
 		Music::pauseMusic();
@@ -148,6 +151,7 @@ void Game::update()
 
 		moveCamera();
 	}
+	mTimer.update();
 }
 
 void Game::input()
@@ -265,7 +269,7 @@ void Game::moveCamera()
 
 void Game::render()
 {
-	mWindow.clear(sf::Color::Black);
+	//mWindow.clear(sf::Color::Black);
 	for(vector<Background*>::size_type i =0; i < BG.size(); i++)
 	{
 		mWindow.draw(BG[i]->draw());
@@ -284,5 +288,6 @@ void Game::render()
 	if(mPlayer->getWinning()==false){
 		Music::playMusic();
 	}
+	mTimer.render();
 	mWindow.display();
 }

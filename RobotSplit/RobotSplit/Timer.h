@@ -8,26 +8,37 @@ class Timer
 {
 public:
 	static Timer& getInstance();
+
 	static sf::Clock& getClock();
 	static void restartClock();
-	static void update();
-	static void render();
 	static void input();
+	static void initialize();
+	virtual void update();
+	virtual void render();
+	void load();
 
 private:
 	Timer();
-	Timer(const Timer& Timer);
-	Timer operator=(const Timer& Timer);
 	~Timer();
+	Timer(const Timer& timer);
+	Timer operator=(const Timer& timer);
+	
 
 	static sf::Clock mClock;
 	static sf::Clock mSecondClock;
-	Animation mNumbers;
-	static Animation* currentNr;
+	//Animation mNumbers;
+	static Animation* mNumbers;
 	static int mDec;
 	static int mSek;
 	static int mMin;
 	static int mHour;
+
+	static int m1Sek;
+	static int m10Sek;
+	static int m1Min;
+	static int m10Min;
+	static int m1Hour;
+	static int m10Hour;
 
 
 };
