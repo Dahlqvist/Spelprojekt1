@@ -17,7 +17,7 @@ int Timer::m10Hour;
 
 Animation* Timer::mNumbers;
 
-Timer::Timer()/*: mNumbers("Numbers", 1, 20)*/
+Timer::Timer()
 {
 	load();
 
@@ -53,11 +53,11 @@ Timer::~Timer()
 	delete mNumbers;
 }
 
-Timer& Timer::getInstance()
-{
-	Timer temp;
-	return temp;
-}
+//Timer& Timer::getInstance()
+//{
+//	Timer temp;
+//	return temp;
+//}
 
 sf::Clock& Timer::getClock()
 {
@@ -81,8 +81,8 @@ void Timer::input()
 
 void Timer::update()
 {
-	//sf::Vector2f timerPos = sf::Vector2f(Window::getWindow().getSize().x - 150, Window::getWindow().getSize().y +150 );
-	sf::Vector2f timerPos = sf::Vector2f(500, 500);
+	//sf::Vector2f timerPos = sf::Vector2f(Window::getWindow().getSize().x - 400, Window::getWindow().getSize().y );
+	sf::Vector2f timerPos = sf::Vector2f(1200, 50);
 	//För att få fram vilken bild som skall visas
 
 	mDec = (mClock.getElapsedTime().asMilliseconds() / 100) % 10;

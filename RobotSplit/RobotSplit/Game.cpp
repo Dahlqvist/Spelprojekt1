@@ -31,7 +31,7 @@ Game::Game():
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTime(0.2),
-		mTimer(Timer::getInstance())
+		mTimer(new Timer)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -69,6 +69,7 @@ Game::~Game()
 	saver.saveLevel(mlevel);
 	saver.createFile();*/
 	mlevel.deletePointers();
+	delete mTimer;
 }
 
 
@@ -131,7 +132,6 @@ void Game::setMusic()
 
 void Game::update()
 {
-	mWindow.clear(sf::Color::Black);
 	if(mPlayer->getWinning()==true)
 	{
 		Music::pauseMusic();
@@ -151,11 +151,11 @@ void Game::update()
 
 		moveCamera();
 	}
-	mTimer.update();
 }
 
 void Game::input()
 {
+	mTimer->input();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
 		mPlayer->interact(0);
 	}
@@ -269,7 +269,7 @@ void Game::moveCamera()
 
 void Game::render()
 {
-	//mWindow.clear(sf::Color::Black);
+	mWindow.clear(sf::Color::Black);
 	for(vector<Background*>::size_type i =0; i < BG.size(); i++)
 	{
 		mWindow.draw(BG[i]->draw());
@@ -288,6 +288,6 @@ void Game::render()
 	if(mPlayer->getWinning()==false){
 		Music::playMusic();
 	}
-	mTimer.render();
+	mTimer->update();
 	mWindow.display();
 }

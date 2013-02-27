@@ -7,8 +7,9 @@
 class Timer
 {
 public:
-	static Timer& getInstance();
-
+	//static Timer& getInstance();
+	Timer();
+	~Timer();
 	static sf::Clock& getClock();
 	static void restartClock();
 	static void input();
@@ -18,10 +19,10 @@ public:
 	void load();
 
 private:
-	Timer();
+	/*Timer();
 	~Timer();
 	Timer(const Timer& timer);
-	Timer operator=(const Timer& timer);
+	Timer operator=(const Timer& timer);*/
 	
 
 	static sf::Clock mClock;

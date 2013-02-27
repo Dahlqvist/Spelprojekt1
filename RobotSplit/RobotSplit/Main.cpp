@@ -24,7 +24,7 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	Splash::runSplash(false);
 
-	Timer& timer = Timer::getInstance();
+	//Timer& timer = Timer::getInstance();
 
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
@@ -35,7 +35,7 @@ int main()
 				mWindow.close();
 			
 			statemanager.inputState();
-			timer.input();
+			//timer.input();
 		}
 
 

@@ -45,7 +45,7 @@ private:
 	int mBana;
 	//Sound& mSound;
 
-	Timer& mTimer;
+	Timer* mTimer;
 	
 };
 
