@@ -35,3 +35,4 @@ Yes	=	Yes
 Numbers	=	Numbers
 LeftArrow =	Arrow_Left
 RightArrow =	Arrow_Right
+ControlSchedule = Control_Schedule	= Kontrollschemat med instruktioner

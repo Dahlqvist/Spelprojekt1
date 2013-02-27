@@ -18,6 +18,7 @@ public:
 	bool		isSelected	()const;
 	Vector2f	getPosition	();
 	void		eventHandle	(const	Event&);
+	void		resize		(sf::RenderWindow&);
 private:
 	void				execute();
 	bool				mChange;

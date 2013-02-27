@@ -51,6 +51,7 @@ void			BackgroundWrap::operator=		(const BackgroundWrap& Source)
 	setFrames(Source.getFrames());
 	setSpeed(Source.getSpeed());
 }
+
 void		BackgroundWrap::deletePointer()
 {
 	for (vector<Background*>::size_type i=0; i<mBackground.size(); i++)
@@ -104,7 +105,6 @@ void	Level::loadNewLevel(string FileName)
 		(*this)=Loader.getLevel();
 	}
 }
-
 
 void	Level::setObjects(const UnitVector& Source)
 {

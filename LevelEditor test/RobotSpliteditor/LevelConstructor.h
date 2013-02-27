@@ -20,6 +20,7 @@ public:
 	void			deletePlayer();
 	bool&			ifPlayerExist();
 	void			setNewName(const string&);
+	void			setBackground(const string&);
 private:
 	bool		mPlayerExist;
 	void		createLines();

@@ -95,7 +95,12 @@ sf::Vector2f	LevelConstructor::getSize()
 	for(int i=0;i<mBackground.getBackground().size();i++)
 	{
 		Size.x+=mBackground.getBackground()[i]->draw().getGlobalBounds().width;
-		Size.y+=mBackground.getBackground()[i]->draw().getGlobalBounds().height;
+	//	Size.y+=mBackground.getBackground()[i]->draw().getGlobalBounds().height;
 	}
 	return	Size;
+}
+
+void	LevelConstructor::setBackground(const std::string&	source)
+{
+	mBackground.setBackground(TextureManager::getBackground(source));
 }

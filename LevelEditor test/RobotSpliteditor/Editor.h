@@ -34,10 +34,11 @@ private:
 	LevelConstructor	mLevel;
 	UnitContainer		mSelectedUnit;
 	PlayerContainer		mSelectedPlayer;
-	View				mCurrView,miniView;
+	View				mCurrView;
 	Toolbar				mTools;
 	LevelBar			mLevelTool;
 	void				eventHandler(const Event&);
+	friend				Toolbar;
 };
 
 #endif
