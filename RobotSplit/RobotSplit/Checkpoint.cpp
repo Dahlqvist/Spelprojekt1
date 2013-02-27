@@ -1,4 +1,5 @@
 #include "Checkpoint.h"
+#include "Sound.h"
 
 Checkpoint::Checkpoint(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string spriteOn, std::string spriteOff)
 	:Unit(position, size, offset, "Checkpoint", spriteOff, false, true)
@@ -11,6 +12,10 @@ Checkpoint::Checkpoint(sf::Vector2f position, sf::Vector2f size, sf::Vector2f of
 
 void Checkpoint::activate()
 {
+	if (!mActive)
+	{
+		Sound::playSound("Checkpoint");
+	}
 	mSprite=mSpriteOn;
 	mActive=true;
 }

@@ -194,7 +194,7 @@ void Game::input()
 			TestTimer.restart();
 		}
 
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
 			mPlayer->restartPlayer();
 			TestTimer.restart();
 			Objects->reset();
