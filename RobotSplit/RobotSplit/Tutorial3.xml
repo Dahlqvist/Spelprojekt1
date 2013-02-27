@@ -121,6 +121,31 @@
       </Offset>
       <Solid>false</Solid>
     </Unit>
+
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
     
     <!--<Unit>
       <Type>"HelpBox"</Type>
