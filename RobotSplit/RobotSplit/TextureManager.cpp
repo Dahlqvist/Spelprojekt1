@@ -29,6 +29,8 @@ void TextureManager::loadTexture()
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 
+
+	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
 	//Stix Right
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 

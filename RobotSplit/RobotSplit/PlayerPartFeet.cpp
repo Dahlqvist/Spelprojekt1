@@ -24,7 +24,7 @@ PlayerPartFeet::PlayerPartFeet():
 	mAnimationTimer.restart();
 	mUnit=0;
 	mAUnit=0;
-	mFuel=100;
+	mFuel=Eric::getFueltank();
 	mAO=0;
 	mCounter=0;
 }
@@ -48,7 +48,7 @@ void PlayerPartFeet::update()
 			PlayerPartFeet::setPosition(sf::Vector2f(0, -mJump));
 		}
 	}
-	if(mAttached==false && mAttachedWall==false)
+	if(mAttached==false && mAttachedWall==false && mId!="InteKollision")
 	{
 		mPosition+=sf::Vector2f(0, Eric::getGravity());
 	}
@@ -370,10 +370,13 @@ int PlayerPartFeet::getWall(){
 	return mAO;
 }
 void PlayerPartFeet::forceMove(sf::Vector2f force){
-	mPosition+=force;
-	//if(force.y!=0)
+	//if(mUnit==0)
 	//{
-	//	mJump=Eric::getGravity();
+		mPosition+=force;
+	//}
+	//else
+	//{
+	//	mUnit->setPosition(mUnit->getPosition()-force);
 	//}
 }
 void PlayerPartFeet::restartAnimation(){
@@ -389,4 +392,8 @@ void PlayerPartFeet::winning(){
 int PlayerPartFeet::getFrame()
 {
 	return mActiveAnimation->getCurrentFrame();
+}
+
+void PlayerPartFeet::setId(std::string Text){
+	mId=Text;
 }

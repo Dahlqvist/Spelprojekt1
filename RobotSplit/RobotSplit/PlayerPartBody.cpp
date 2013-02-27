@@ -202,9 +202,6 @@ void PlayerPartBody::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
 }
-void PlayerPartBody::setId(std::string Text){
-	mId=Text;
-}
 void PlayerPartBody::winning(){
 	mWinningAni.restart();
 	mAnimationTimer.restart();
