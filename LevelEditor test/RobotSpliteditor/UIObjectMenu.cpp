@@ -96,7 +96,14 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					else
 					{
- 					mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+						if((*it)->getFrames()>1)
+						{
+							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+						}
+						else
+						{
+							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+						}
 					}
 					mHolder->mChange=true;
 				}

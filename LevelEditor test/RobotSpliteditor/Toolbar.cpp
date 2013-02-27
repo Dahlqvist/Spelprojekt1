@@ -13,12 +13,8 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false)
 {
-	ObjectLoader	Loader("OtherMenu.xml");	
-	UIObjectMenu *meny=Loader.getObject(this);// new UIObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
-	meny->addIcon(new PlayerIcon());
-	meny->addIcon(new UnitIcon("Platform","Tile1"));
-	meny->addIcon(new UnitIcon("Platform","Tile2"));
-	meny->addIcon(new UnitIcon("Platform","Tile3"));
+	ObjectLoader	Loader("OtherMenu.xml");
+	UIObjectMenu *meny=Loader.getObject(this);
 	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
 	Solid->addOption("Yes",true);
 	Solid->addOption("No",false);
@@ -28,6 +24,9 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position y","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessActive().insert(meny);
+	Loader.loadFile("PlatFormMenu.xml");
+	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	mUIItems.getActivated("zOther")->setSelect(true);
 }
@@ -167,6 +166,7 @@ void	Toolbar::setUnit(Unit*	Source)
 	mUIItems.activate("Position y");
 	mUIItems.activate("Solid");
 	mUIItems.activate("zOther");
+	mUIItems.activate("zPlatform");
 	char*	temp=new char[10];
 	string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
 	itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
@@ -200,7 +200,7 @@ void	Toolbar::setPlayer(Player*	Source)
 	mUIItems.activate("Position x");
 	mUIItems.activate("Position y");
 	mUIItems.activate("zOther");
-	mUIItems.deactivate("Sprite");
+	mUIItems.activate("zPlatform");
 	char*	temp=new char[10];
 	itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
 	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));

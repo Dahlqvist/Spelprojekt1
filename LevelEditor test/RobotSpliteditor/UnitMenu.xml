@@ -8,12 +8,5 @@
 	<Object>
 		<Type>"Player"</Type>
 	</Object>
-	<Object>
-		<Type>"Lava"</Type>
-		<Sprite>"LavaMiddle"</Sprite>
-		<Frames>16</Frames>
-		<Speed>60</Speed>
-	</Object>
-	
 </Menu>
 

@@ -13,11 +13,14 @@ public:
 	sf::FloatRect	getHitBox(sf::Vector2f&	position);
 	string	getType();
 	string	getSpriteName();
-	UnitIcon(string Type,string Sprite);
+	int		getFrames();
+	int		getSpeed();
+	UnitIcon(string Type,string Sprite,int Frames=1,int Speed=60);
 protected:
 	UnitIcon();
 private:
 	string	mType,mSpriteName;
+	int mFrames,mSpeed;
 };
 
 class PlayerIcon
