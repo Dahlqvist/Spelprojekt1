@@ -78,20 +78,30 @@
     <Unit>
       <Type>Billboard</Type>
       <Position>
-        <x>386</x>
+        <x>384</x>
         <y>224</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
       <SpriteName>Billboard1</SpriteName>
-      <Solid>false</Solid>
+      <Solid>true</Solid>
+      <Behind>true</Behind>
     </Unit>
     <Unit>
       <Type>Billboard</Type>
       <Position>
-        <x>488</x>
+        <x>448</x>
         <y>160</y>
       </Position>
+      <Size>
+        <x>128</x>
+        <y>64</y>
+      </Size>
       <SpriteName>Billboard2</SpriteName>
-      <Solid>false</Solid>
+      <Solid>true</Solid>
+      <Behind>true</Behind>
     </Unit>
     
     <Unit>
