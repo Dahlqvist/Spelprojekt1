@@ -103,6 +103,10 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
+	mTextureMap["StixFuelbarEmpty"].loadFromFile("Texture/Stix/stix_fuelbar_empty.png");
+
+	mTextureMap["StixFuelbar"].loadFromFile("Texture/Stix/stix_fuelbar_fuel.png");
+
 	mTextureMap["StixBrainWall"].loadFromFile("Texture/Stix/brain/stix_brain_on.png");
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/brain/stix_brain_off.png");

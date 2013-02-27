@@ -5,6 +5,7 @@
 #include "UnitManager.h"
 #include "Sound.h"
 #include "Eric.h"
+#include "RocketFuel.h"
 
 Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
@@ -44,6 +45,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mWinning=false;
 	mCourser=new Courser;
 	Player::initSprites();
+	mRocketing=false;
 }
 void Player::initSprites()
 {
@@ -53,13 +55,17 @@ void Player::initSprites()
 	TempMagnet=new sf::Sprite;
 	TempExtension=new sf::Sprite;
 	TempWhole=new sf::Sprite;
+	mRocketFuel=TextureManager::getSprite("StixFuelbar");
+	mRocketFuelBar=TextureManager::getSprite("StixFuelbarEmpty");
+	mRocketFuel.setOrigin(mRocketFuel.getGlobalBounds().width, mRocketFuel.getGlobalBounds().height);
+	mRocketFuel.setRotation(180);
+	temporary=mRocketFuel.getGlobalBounds().height;
 	//TempFeet=&mFeet.getSprite();
 	//TempBody=new sf::Sprite(mBody.getSprite());
 	//TempHead=new sf::Sprite(mHead.getSprite());
 	//TempMagnet=new sf::Sprite(mBody.getSprite());
 	//TempExtension=new sf::Sprite(mBody.getSprite());
 	//TempWhole=new sf::Sprite(mBody.getSprite());
-
 }
 Player::~Player()
 {
@@ -74,7 +80,7 @@ Player::~Player()
 //Kontroller och funktioner för Player
 void Player::draw(sf::RenderWindow& Window)
 {
-	if(mBodyActive!=false || mTogether==true)
+	if(mBodyActive==true || mTogether==true)
 	{
 		mLights.setSprite(mTogether, mBodyActive, mFeet.getAttachedWall(), mFeet.getWall(), mBody.getPosition());
 	}
@@ -84,8 +90,7 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(*mLights.getSprite());
 
-
-	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture()){
+	if(mFeet.getUnit()!=0 && mFeet.getUnit()->getSprite().getTexture()!=mFeet.getSprite().getTexture() && mFeet.getFuel()>0){
 		Window.draw(mFeet.getUnit()->getSprite());
 	}
 	
@@ -99,11 +104,21 @@ void Player::draw(sf::RenderWindow& Window)
 	sf::Vector2f mVec(sf::Mouse::getPosition(Window).x,sf::Mouse::getPosition(Window).y);
 	Window.draw(*mCourser->getSprite(mVec));
 
+
+	if(mFeet.getUnit()!=0 && mFeet.getAttached()==false)
+	{
+		mRocketFuelBar.setPosition(mFeet.getPosition()+sf::Vector2f(-12, -32));
+		Window.draw(mRocketFuelBar);
+		mRocketFuel.setPosition(mRocketFuelBar.getPosition()+sf::Vector2f(1, 1));
+		mRocketFuel.setTextureRect(sf::IntRect(mRocketFuel.getTextureRect().left, mRocketFuel.getTextureRect().top, mRocketFuel.getTextureRect().width, temporary*(mFeet.getFuel()/Eric::getFueltank())));
+		Window.draw(mRocketFuel);
+	}
 	//Window.draw(*TempExtension);
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
 {
+	mRocketing=false;
 	//Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03){
 		lastKey=-1;
@@ -473,6 +488,7 @@ void Player::dash()
 }
 void Player::activateFeetRockets(){
 	mFeet.activateRocketBoots();
+	mRocketing=true;
 }
 void Player::reFuel(){
 	mFeet.reFuel();
@@ -601,7 +617,7 @@ void Player::interact(int action){
 		{
 			//RocketBoost
 			if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==false){
-				mFeet.activateRocketBoots();
+				Player::activateFeetRockets();
 			}
 			if(UnitManager::isCollidedSide(0, 1) && lastKey==0){
 				mFeet.setAttachedWall(true, 1);
@@ -701,6 +717,7 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 			mHead.forceMove(Vec);
 			mHead.setShootVector(sf::Vector2f(0, 0));
 			mMagnetTimer.restart();
+			std::cout << "Anrop    ";
 		}
 		else if(part==3)
 		{
@@ -877,4 +894,8 @@ void Player::win(){
 bool Player::getWinning()
 {
 	return mWinning;
+}
+void Player::setStartingPosition(sf::Vector2f Vec)
+{
+	mStartPosition=Vec;
 }
