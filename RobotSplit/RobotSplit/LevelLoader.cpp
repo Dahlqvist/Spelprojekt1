@@ -30,7 +30,6 @@ LevelLoader::LevelLoader(string Filename):XmlLoader(Filename)
 {
 }
 
-
 LevelLoader::~LevelLoader(void)
 {
 }
@@ -338,6 +337,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	Platform				*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 	int						Lives;
+	bool					Behind=false;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -384,14 +384,25 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 		Lives=atoi(getValue(CurrentChild).c_str());
 	}
 
+	//Sets if behind
+	CurrentChild=	Node->first_node("Behind");
+	//If behind is given
+	if (CurrentChild!=0x0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Behind=true;
+		else if (getValue(CurrentChild)=="false")
+			Behind=false;
+	}
+
 	//Creates a Platform object
 	if (Lives==-1)
 	{
-		TempObject=		new Platform(Position,Sprite,Size,Offset);
+		TempObject=		new Platform(Position,Sprite,Size,Offset, Behind);
 	}
 	else
 	{
-		TempObject=		new Platform(Lives,Position,Size,Offset);
+		TempObject=		new Platform(Lives,Position,Size,Offset, Behind);
 	}
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
@@ -401,7 +412,7 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
-	Meanix				*TempObject;
+	Meanix					*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 
 	//Gets the Position childnode from the GameObject node
@@ -488,7 +499,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	string					CurrentValue,Id,Sprite;
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size, Offset;
-	bool					Solid=true;
+	bool					Solid=true, Behind=false;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -541,6 +552,17 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		else if (getValue(CurrentChild)=="false")
 			Solid=false;
 	}
+
+	//Sets if behind
+	CurrentChild=	Node->first_node("Behind");
+	//If behind is given
+	if (CurrentChild!=0x0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Behind=true;
+		else if (getValue(CurrentChild)=="false")
+			Behind=false;
+	}
 	
 	//Checks if the Unit Uses animation
 	if(Node->first_node("Frames")!=0)
@@ -552,12 +574,12 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(Node->first_node("Speed"));
 		Speed=((float)atof(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
-		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid);
+		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid, Behind);
 	}
 	else
 	{
 		//Creates an Unit object
-		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid);
+		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid, Behind);
 	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
@@ -604,6 +626,7 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	sf::Vector2f			Position, Size, Offset;
 	std::string				Id;
 	std::string				targetObject;
+	std::string				Sound;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -648,7 +671,13 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	CurrentChild=Node->first_node("Target");
 	targetObject=getValue(CurrentChild);
 
-	triggers.push_back(new Trigger(Position, Size, Offset, Id, Sprite, 0x0));
+	CurrentChild=Node->first_node("Sound");
+	if (CurrentChild!=0x0)
+	{
+		Sound=getValue(CurrentChild);
+	}
+
+	triggers.push_back(new Trigger(Position, Size, Offset, Id, Sprite, 0x0, Sound));
 	targets.push_back(targetObject);
 }
 
@@ -707,6 +736,6 @@ void LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vec
 	CurrentChild=Node->first_node("Rotation");
 	Rotation=atof(getValue(CurrentChild).c_str());
 
-	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, new Animation(Sprite, 100, 3), 0x0), Rotation));
+	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, new Animation(Sprite, 100, 3), 0x0, ""), Rotation));
 	targets.push_back(targetObject);
 }

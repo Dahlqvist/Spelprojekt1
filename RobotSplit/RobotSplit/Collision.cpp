@@ -395,6 +395,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 			mPlayer->shootHead(sf::Vector2f(0,0));
 		}
 	}
+	if (mUnits[unit]->getId()=="Unclimbable" && mPlayer->getId(mPlayerPart)=="PlayerPartHead")
+	{
+		mPlayer->shootHead(sf::Vector2f(0,0));		
+	}
 }
 
 void Collision::killPlayer()

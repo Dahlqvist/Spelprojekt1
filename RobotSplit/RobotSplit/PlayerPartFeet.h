@@ -25,9 +25,11 @@ public:
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
 
+	
+	void setId(std::string);
 	int getFrame();
 	void activateRocketBoots();
-	void reFuel(float);
+	void reFuel();
 	void jumpReset();
 	int getWall();
 	bool getAttachedWall();

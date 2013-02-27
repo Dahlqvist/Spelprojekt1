@@ -11,6 +11,10 @@ bool UIComp::operator()(UIItem* ItemLess,UIItem* ItemMore)
 		{
 			ReturnBool==true;
 		}
+		else if(ItemMore->getName()=="Name")
+		{
+			ReturnBool=false;
+		}
 		else
 		{
 			ReturnBool=ItemLess->getName()<ItemMore->getName();
@@ -78,6 +82,7 @@ void	UIItemContainer::activate(std::string Name)
 		{
 			mActive.insert(*it);
 			mInactive.erase(it);
+			it=mInactive.begin();
 			break;
 		}
 	}

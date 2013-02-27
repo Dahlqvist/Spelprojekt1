@@ -24,6 +24,8 @@ public:
 	virtual void input();
 	void changeMap(int);
 private:
+	void setMusic();
+
 	void moveCamera();
 
 	int mSecurityLevel;

@@ -193,7 +193,7 @@ Unit* PlayerPartBody::getUnit()
 	return mUnit;
 }
 void PlayerPartBody::jumpReset(){
-	mJump=Eric::getGravity();
+	mJump=Eric::getGravity()-Eric::getJumpchange();
 }
 void PlayerPartBody::forceMove(sf::Vector2f force){
 	mPosition+=force;
@@ -201,9 +201,6 @@ void PlayerPartBody::forceMove(sf::Vector2f force){
 void PlayerPartBody::restartAnimation(){
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
-}
-void PlayerPartBody::setId(std::string Text){
-	mId=Text;
 }
 void PlayerPartBody::winning(){
 	mWinningAni.restart();

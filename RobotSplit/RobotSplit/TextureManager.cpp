@@ -29,6 +29,8 @@ void TextureManager::loadTexture()
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 
+
+	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
 	//Stix Right
 	mTextureMap["StixLower"].loadFromFile("Texture/Stix/stix_lower_dark.png");
 
@@ -164,14 +166,23 @@ void TextureManager::loadTexture()
 	mTextureMap["BreakAnim"].loadFromFile("Texture/Enviroment/Tiles/break_dustanimation_strip5.png");
 
 	//Tutorials
-	mTextureMap["House1"].loadFromFile("Texture/Tutorials/Tutorial01/House02_High02.png");
-	mTextureMap["House2"].loadFromFile("Texture/Tutorials/Tutorial01/House02_TutLvl01.png");
-	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/Tutorial01/radio_help_1.png");
-	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/Tutorial01/radio_help_2.png");
-	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Tutorial01/Trigger.png");
-	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Tutorial01/Vent.png");
-	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/Tutorial01/BANK_SIGN.png");
+	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
+	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");
+	mTextureMap["House3"].loadFromFile("Texture/Tutorials/House01.png");
+	mTextureMap["House4"].loadFromFile("Texture/Tutorials/House02.png");
+	mTextureMap["House5"].loadFromFile("Texture/Tutorials/House03.png");
+	mTextureMap["House6"].loadFromFile("Texture/Tutorials/House04.png");
+	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
+	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
+	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
+	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
+	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
+	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
+	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
 	mTextureMap["BGTutorial"].loadFromFile("Texture/Tutorials/tutorial_background.png");
+	mTextureMap["WoodBox"].loadFromFile("Texture/Tutorials/woodbox.png");
+	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
+	mTextureMap["Billboard2"].loadFromFile("Texture/Tutorials/Billboard02.png");
 
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");

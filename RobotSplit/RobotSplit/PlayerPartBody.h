@@ -25,7 +25,6 @@ public:
 
 	void jumpReset();
 	void restartAnimation();
-	void setId(std::string);
 	void decideAnimation(sf::Vector2f);
 private: 
 	bool mAttached;
