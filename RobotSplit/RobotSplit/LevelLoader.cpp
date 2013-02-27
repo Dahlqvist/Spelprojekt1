@@ -21,6 +21,7 @@
 #include "LaserHolder.h"
 #include "LaserDeactivator.h"
 #include "Meanix.h"
+#include "Checkpoint.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -117,6 +118,10 @@ Level	LevelLoader::getLevel()
 			else if(type=="Meanix")
 			{
 				addMeanix(RetLevel,Gameobject);
+			}
+			else if (type=="Checkpoint")
+			{
+				addCheckpoint(RetLevel,Gameobject);
 			}
 			else
 			{
@@ -581,6 +586,86 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		//Creates an Unit object
 		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid, Behind);
 	}
+	//Puts the Unit object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+
+void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Id,SpriteOn,SpriteOff;
+	Checkpoint				*TempObject;
+	sf::Vector2f			Position, Size, Offset;
+	bool					Solid=true, Behind=false;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	//Initiates the Size vector
+	Size=sf::Vector2f(0,0);
+	Offset=sf::Vector2f(0,0);
+	CurrentChild=	Node->first_node("Size");
+	if (!CurrentChild==0x0)
+	{
+		CurrentValue=	getValue(CurrentChild->first_node("x"));
+		Size.x=((float)atof(CurrentValue.c_str()));
+		CurrentValue=	getValue(CurrentChild->first_node("y"));
+		Size.y=((float)atof(CurrentValue.c_str()));
+	
+
+		CurrentChild=	Node->first_node("Offset");
+		if (!CurrentChild==0x0)
+		{
+			CurrentValue=	getValue(CurrentChild->first_node("x"));
+			Offset.x=((float)atof(CurrentValue.c_str()));
+			CurrentValue=	getValue(CurrentChild->first_node("y"));
+			Offset.y=((float)atof(CurrentValue.c_str()));
+		}
+	}
+
+	//Initiates the SpriteName
+	CurrentChild=	Node->first_node("SpriteOn");
+	SpriteOn=getValue(CurrentChild);
+
+	CurrentChild=	Node->first_node("SpriteOff");
+	SpriteOff=getValue(CurrentChild);
+	
+	//Initilizes the Id string
+	CurrentChild=	Node->first_node("Type");
+	Id=getValue(CurrentChild);
+
+	//Sets if solid
+	CurrentChild=	Node->first_node("Solid");
+	//If solid is given
+	if (CurrentChild!=0x0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Solid=true;
+		else if (getValue(CurrentChild)=="false")
+			Solid=false;
+	}
+
+	//Sets if behind
+	CurrentChild=	Node->first_node("Behind");
+	//If behind is given
+	if (CurrentChild!=0x0)
+	{
+		if (getValue(CurrentChild)=="true")
+			Behind=true;
+		else if (getValue(CurrentChild)=="false")
+			Behind=false;
+	}
+	
+	//Creates an Unit object
+	TempObject=		new Checkpoint(Position, Size, Offset,SpriteOn, SpriteOff);
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

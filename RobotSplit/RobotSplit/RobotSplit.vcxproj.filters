@@ -135,6 +135,9 @@
     <ClCompile Include="LaserDeactivator.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="Checkpoint.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -274,6 +277,9 @@
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
     <ClInclude Include="Window.h" />
+    <ClInclude Include="Checkpoint.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

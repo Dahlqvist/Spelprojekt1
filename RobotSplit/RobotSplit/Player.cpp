@@ -717,7 +717,6 @@ void Player::forceMove(int part, sf::Vector2f Vec)
 			mHead.forceMove(Vec);
 			mHead.setShootVector(sf::Vector2f(0, 0));
 			mMagnetTimer.restart();
-			std::cout << "Anrop    ";
 		}
 		else if(part==3)
 		{
