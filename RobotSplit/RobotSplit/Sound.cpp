@@ -44,6 +44,8 @@ void Sound::loadSound()
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 	mBufferMap["Winning"].loadFromFile("Music/level_complete.wav");
 
+	mBufferMap["TriggerHelp"].loadFromFile("Sound/Ljud/helpbox_1.wav");
+
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);
 	mSoundMap["Extend"].setBuffer(mBufferMap["Extend"]);
 	mSoundMap["ExtBodyColl"].setBuffer(mBufferMap["ExtBodyColl"]);
@@ -56,6 +58,8 @@ void Sound::loadSound()
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
 	mSoundMap["Winning"].setBuffer(mBufferMap["Winning"]);
+
+	mSoundMap["TriggerHelp"].setBuffer(mBufferMap["TriggerHelp"]);
 }
 //Statisk funktion, anropas genom Sound::playSound(namn)
 const void Sound::playSound(std::string sound)
