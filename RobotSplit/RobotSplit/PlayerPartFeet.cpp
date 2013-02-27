@@ -66,11 +66,12 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 	}
 	else
 	{
-		if(mUnit==&mRightWall){
-			mPosition+=Vec;
-			mActiveAnimation=&mRightAnimation;
+		/*		if(mAUnit==&mRightWall){
+		mPosition+=Vec;
+		mActiveAnimation=&mRightAnimation;
 		}
-		else if(mAUnit!=0){
+		else */
+		if(mAUnit!=0){
 			if(mAUnit==&mRightWall || mAUnit==&mLeftWall){
 				mPosition.y+=Vec.y;
 			}
@@ -319,6 +320,11 @@ void PlayerPartFeet::activateRocketBoots()
 		mFuel--;
 		mJump=Eric::getGravity();
 	}
+	if(mFuel<=0)
+	{
+		mUnit=&mRocketFuel;
+		mFuel=0;
+	}
 }
 void PlayerPartFeet::reFuel()
 {
@@ -396,4 +402,8 @@ int PlayerPartFeet::getFrame()
 
 void PlayerPartFeet::setId(std::string Text){
 	mId=Text;
+}
+float PlayerPartFeet::getFuel()
+{
+	return mFuel;
 }

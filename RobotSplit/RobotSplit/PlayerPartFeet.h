@@ -25,6 +25,7 @@ public:
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
 
+	float getFuel();
 	
 	void setId(std::string);
 	int getFrame();
