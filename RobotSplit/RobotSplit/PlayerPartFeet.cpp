@@ -320,9 +320,9 @@ void PlayerPartFeet::activateRocketBoots()
 		mJump=Eric::getGravity();
 	}
 }
-void PlayerPartFeet::reFuel(float fuel)
+void PlayerPartFeet::reFuel()
 {
-		mFuel=fuel;
+	mFuel=Eric::getFueltank();
 }
 void PlayerPartFeet::jumpReset()
 {

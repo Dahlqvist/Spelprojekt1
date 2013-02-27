@@ -455,8 +455,8 @@ void Player::dash()
 void Player::activateFeetRockets(){
 	mFeet.activateRocketBoots();
 }
-void Player::reFuel(float fuel){
-	mFeet.reFuel(fuel);
+void Player::reFuel(){
+	mFeet.reFuel();
 }
 
 void Player::interact(int action){
@@ -828,7 +828,7 @@ void Player::restartPlayer(){
 	mTogether=true;
 	Player::move(sf::Vector2f((float)0.1, 0));
 	mFeet.forceMove(mStartPosition-mFeet.getPosition());
-	mFeet.reFuel(100);
+	mFeet.reFuel();
 	mClock.restart();
 	mClockStart=false;
 	mWinning=false;

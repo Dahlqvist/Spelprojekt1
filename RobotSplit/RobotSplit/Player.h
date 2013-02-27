@@ -40,7 +40,7 @@ public:
 	bool getAttachFeetExtension();
 	void dash();
 	void activateFeetRockets();
-	void reFuel(float);
+	void reFuel();
 	void win();
 	std::string getId(int);
 	//bool bodyStandningFeet();

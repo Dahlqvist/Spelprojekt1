@@ -39,10 +39,16 @@ float Eric::getTimer()
 float Eric::getRocketboost()
 {
 	//Erics bra värde: 2
-	return 2;
+	return 1;
+}
+
+float Eric::getFueltank()
+{
+	return 240;
 }
 
 float Eric::getJumpdelayMagnet()
 {
 	return 0.2;
 }
+

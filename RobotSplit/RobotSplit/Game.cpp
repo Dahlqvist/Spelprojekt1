@@ -80,6 +80,7 @@ void Game::changeMap(int map)
 	else
 	{
 		mStateInput.changeState("QuitToMenu");
+		mBana=0;
 	}
 	//std::cout << mBanor[mBana] << std::endl;
 	mlevel.loadNewLevel(mBanor[mBana]);
@@ -199,7 +200,7 @@ void Game::input()
 			Objects->reset();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-			mPlayer->reFuel(100);
+			mPlayer->reFuel();
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7)){

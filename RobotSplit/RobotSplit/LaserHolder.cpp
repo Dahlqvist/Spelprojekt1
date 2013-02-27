@@ -7,7 +7,7 @@ LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Ve
 	mLaser(laser)
 {
 	mStandby=TextureManager::getSprite("LaserHolderStandby");
-	mOn=TextureManager::getSprite("LaserHolderOn");
+	mOn=TextureManager::getSprite("LaserHolderStandby");
 	mOff=TextureManager::getSprite("LaserHolderOff");
 	mActiveSprite=&mStandby;
 	mPosition=laser->getPosition();
@@ -15,19 +15,19 @@ LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Ve
 	mActiveSprite->setRotation(mRotation);
 	if(laser->getRotation()==0)
 	{
-		mPosition+=sf::Vector2f(10, 0);
+		mPosition+=sf::Vector2f(10, 8);
 	}
 	if(laser->getRotation()==90)
 	{
-		mPosition+=sf::Vector2f(0, 10);
+		mPosition+=sf::Vector2f(-8, 10);
 	}
 	if(laser->getRotation()==180)
 	{
-		mPosition+=sf::Vector2f(-10, 0);
+		mPosition+=sf::Vector2f(-10, -8);
 	}
 	if(laser->getRotation()==270)
 	{
-		mPosition+=sf::Vector2f(0, -10);
+		mPosition+=sf::Vector2f(8, -10);
 	}
 	mActiveSprite->setPosition(mPosition);
 }
