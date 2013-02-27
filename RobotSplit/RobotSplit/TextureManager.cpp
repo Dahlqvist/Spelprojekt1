@@ -383,3 +383,18 @@ const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
 	}
 	return	"ERROR!";
 }
+
+const std::vector<Background*>	TextureManager::getBackground(std::string	Name)
+{
+	std::vector<Background*>	BackVec;
+	sf::Vector2f	Position;
+	for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
+	{
+		if(it->first.find(Name)!=std::string::npos)
+		{
+			BackVec.push_back(new Background(it->first,1,1,Position));
+			Position.x+=sf::Sprite(it->second).getGlobalBounds().width;
+		}
+	}
+	return BackVec;
+}

@@ -8,7 +8,6 @@ Editor::Editor(void)
 	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),
 	mLevelTool(&mLevel)
 {
-	Vector2f	SIZE=mLevel.getSize();
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
 	float		mjao=float(mLevelTool.getSize().y);
 	Vector2f	position(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y)));
@@ -34,7 +33,6 @@ void	Editor::run()
 		}
 		mWindow.clear(Color(100,100,100,255));
 		renderLevel(mCurrView);
-//		mWindow.draw(sf::Text(MTEXT.getString()));
 		mTools.render(this);
 		mLevelTool.render(mWindow);
 		mWindow.display();
@@ -80,10 +78,20 @@ void	Editor::eventHandler(const Event& Current)
 		mWindow.close();
 		break;
 	case sf::Event::EventType::Resized:
-		Size.x=200.f/mWindow.getSize().x;
-		Size.y=120.f/mWindow.getSize().y;
-		miniView.setViewport(FloatRect(Vector2f(),Size));
-		mWindow.setView(mCurrView);
+		if(mWindow.getSize().x<500)
+		{
+			mWindow.setSize(Vector2u(600,mWindow.getSize().y));
+		}
+		if(mWindow.getSize().y<600)
+		{
+			mWindow.setSize(Vector2u(mWindow.getSize().x,600));
+		}
+		mTools.resize(mWindow);
+		mLevelTool.resize(mWindow);
+		mCurrView=sf::View(Vector2f(mWindow.getSize().x/2,mWindow.getSize().y/2),Vector2f(mWindow.getSize()));
+		mCurrView.setViewport(sf::FloatRect(Vector2f(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y))),
+			Vector2f(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x)));
+//		mCurrView.zoom(1+(1-mTools.getPosition().x/mWindow.getSize().x));
 		break;
 	case sf::Event::MouseMoved:
 		temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));

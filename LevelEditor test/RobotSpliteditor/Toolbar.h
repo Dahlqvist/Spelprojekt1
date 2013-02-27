@@ -31,6 +31,7 @@ public:
 	Vector2f	getPosition	();
 	void		eventHandle	(const	Event&);
 	bool		mChange;
+	void		resize		(RenderWindow&);
 private:
 	UnitContainer	mCurrUnit;
 	PlayerContainer	mCurrPlayer;
