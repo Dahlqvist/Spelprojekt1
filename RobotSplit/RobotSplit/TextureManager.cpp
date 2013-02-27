@@ -235,6 +235,7 @@ void TextureManager::loadTexture()
 	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
 	mTextureMap["Billboard2"].loadFromFile("Texture/Tutorials/Billboard02.png");
 	mTextureMap["CheckpointOff"].loadFromFile("Texture/Tutorials/checkpoint_off.png");
+	mTextureMap["CheckpointOn"].loadFromFile("Texture/Tutorials/checkpoint_active.png");
 
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");

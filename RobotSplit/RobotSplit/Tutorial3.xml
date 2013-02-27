@@ -124,7 +124,8 @@
 
     <Unit>
       <Type>Checkpoint</Type>
-      <SpriteName>CheckpointOff</SpriteName>
+      <SpriteOff>CheckpointOff</SpriteOff>
+      <SpriteOn>CheckpointOn</SpriteOn>
       <Position>
         <x>656</x>
         <y>544</y>

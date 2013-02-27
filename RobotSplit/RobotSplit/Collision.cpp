@@ -399,6 +399,22 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	{
 		mPlayer->shootHead(sf::Vector2f(0,0));		
 	}
+	if (mUnits[unit]->getId()=="Checkpoint")
+	{
+		if (mPlayer->getTogether())
+		{
+			mUnits[unit]->activate();
+			mPlayer->reFuel();
+			for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
+			{
+				mUnits[i]->setCheckpoint();
+			}
+		}
+		else if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
+		{
+			mPlayer->reFuel();
+		}
+	}
 }
 
 void Collision::killPlayer()
