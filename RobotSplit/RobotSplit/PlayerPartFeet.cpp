@@ -280,11 +280,11 @@ void PlayerPartFeet::resetAnimation()
 	{
 		if(mAttachedWall==false)
 		{
-			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni) 
+			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni || mActiveAnimation==&mRightAnimationMagnet) 
 			{
 				mActiveAnimation=&mRight;
 			}
-			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet || mActiveAnimation==&mJumpAniLeft)
+			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet || mActiveAnimation==&mJumpAniLeft || mActiveAnimation==&mLeftAnimationMagnet)
 			{
 				mActiveAnimation=&mLeft;
 			}

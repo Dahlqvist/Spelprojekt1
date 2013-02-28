@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Animation.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Background.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\BrainMagnet.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Checkpoint.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Collision.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Courser.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Background.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\BrainMagnet.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Checkpoint.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Collision.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Courser.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h" />

@@ -148,6 +148,9 @@
     <ClInclude Include="UIObjectMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Checkpoint.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -298,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="UIObjectMenu.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Checkpoint.cpp">
+      <Filter>SPLITROBOT</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
