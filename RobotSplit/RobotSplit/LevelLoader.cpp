@@ -416,9 +416,9 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue,Sprite;
+	string					CurrentValue;
 	Meanix					*TempObject;
-	sf::Vector2f			Position, Size, Offset;
+	sf::Vector2f			Position;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -430,13 +430,6 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
 	Position.y=((float)atof(CurrentValue.c_str()));
-
-	//Initiates the Size vector
-	
-	//Initiates the SpriteName
-	CurrentChild=	Node->first_node("SpriteName");
-	Sprite=getValue(CurrentChild);
-
 	//Creates a Platform object
 	TempObject=		new Meanix(Position);
 	//Puts the Platform object into the level's UnitVector
