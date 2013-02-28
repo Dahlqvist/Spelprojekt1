@@ -61,7 +61,7 @@ protected:
 	
 	sf::Sprite mSprite;
 	Animation* mAnimation;
-
+	friend	class	XML_Saver;
 	bool mSolid, mHit, mHitThisFrame, mWasHit, mBehind;
 };
 
