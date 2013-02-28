@@ -60,12 +60,6 @@ void Player::initSprites()
 	mRocketFuel.setOrigin(mRocketFuel.getGlobalBounds().width, mRocketFuel.getGlobalBounds().height);
 	mRocketFuel.setRotation(180);
 	temporary=mRocketFuel.getGlobalBounds().height;
-	//TempFeet=&mFeet.getSprite();
-	//TempBody=new sf::Sprite(mBody.getSprite());
-	//TempHead=new sf::Sprite(mHead.getSprite());
-	//TempMagnet=new sf::Sprite(mBody.getSprite());
-	//TempExtension=new sf::Sprite(mBody.getSprite());
-	//TempWhole=new sf::Sprite(mBody.getSprite());
 }
 Player::~Player()
 {
@@ -236,10 +230,6 @@ void Player::move(sf::Vector2f Vec)
 				mFeet.forceMove(sf::Vector2f(0, -16));
 				mFeet.setAttachedWall(true, 1);
 			}
-			//else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
-			//{
-			//	mFeet.setAttachedWall(true, 1);
-			//}
 			else
 			{
 				mFeet.setPosition(Vec);

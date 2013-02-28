@@ -62,14 +62,6 @@
       <Type>"Platform"</Type>
       <SpriteName>"Tile1"</SpriteName>
       <Position>
-        <x>352</x>
-        <y>512</y>
-      </Position>
-    </Unit>
-    <Unit>
-      <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
-      <Position>
         <x>416</x>
         <y>512</y>
       </Position>
