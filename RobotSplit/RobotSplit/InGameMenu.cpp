@@ -61,39 +61,48 @@ void InGameMenu::render()
 void InGameMenu::input()
 {
 	int mChoices = 2;
-		if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
+	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
+	{
+		mBlipPos.y += 100;
+		mBlip.setPosition(mBlipPos);
+		mStatus++;
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+	}
+	else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
+	{			
+		if(mStatus > 0)
+			mBlipPos.y -= 100;
+		mBlip.setPosition(mBlipPos);
+		mStatus--;
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+	}
+	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
+	{
+		if(mStatus == 0)
+			mStateInput.changeState("Last");
+		else if(mStatus == 1)
+			mStateInput.changeState("Option");
+		else if(mStatus == 2)
 		{
-			mBlipPos.y += 100;
+			mBlipPos.y -= (100*mStatus);
 			mBlip.setPosition(mBlipPos);
-			mStatus++;
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
+			mStatus = 0;
+			Sound::stopSound("Lava");
+			Music::stopMusic();
+			mStateInput.changeState("QuitToMenu");				
 		}
-		else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
-		{			
-			if(mStatus > 0)
-				mBlipPos.y -= 100;
-			mBlip.setPosition(mBlipPos);
-			mStatus--;
-			currentSelection->setCurrentFrame(0);
-			currentSelection->update();
-		}
-		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
-		{
-			if(mStatus == 0)
-				mStateInput.changeState("Last");
-			else if(mStatus == 1)
-				mStateInput.changeState("Option");
-			else if(mStatus == 2)
-			{
-				mBlipPos.y -= (100*mStatus);
-				mBlip.setPosition(mBlipPos);
-				currentSelection->setCurrentFrame(0);
-				currentSelection->update();
-				mStatus = 0;
-				Sound::stopSound("Lava");
-				Music::stopMusic();
-				mStateInput.changeState("QuitToMenu");				
-			}
-		}
+	}
+	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Escape)
+	{
+		mBlipPos.y -= (100*mStatus);
+		mBlip.setPosition(mBlipPos);
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+		mStatus = 0;
+		mStateInput.changeState("Last");
+	}
 }

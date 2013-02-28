@@ -112,6 +112,8 @@ void StateManager::restart()
 {
 	while(!mStateStack.empty())
 		mStateStack.pop();
+	delete mGame;
+	mGame = new Game;
 	pushState(mMenu);
 }
 
