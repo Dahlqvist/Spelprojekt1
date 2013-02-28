@@ -41,7 +41,13 @@ UIObjectMenu*	ObjectLoader::getObject(Toolbar*	Parent)
 			}
 			else
 			{
-				Object->addIcon(new UnitIcon(getValue(CurrentChild->first_node("Type")),getValue(CurrentChild->first_node("Sprite"))));
+				int	FPS=1,Speed;
+				if(CurrentChild->first_node("Frames")!=0x0)
+				{
+					FPS=atoi(getValue(CurrentChild->first_node("Frames")).c_str());
+					Speed=atoi(getValue(CurrentChild->first_node("Speed")).c_str());
+				}
+				Object->addIcon(new UnitIcon(getValue(CurrentChild->first_node("Type")),getValue(CurrentChild->first_node("Sprite")),FPS));
 			}
 		}
 		while(CurrentChild!=MenuNode->last_node("Object"));

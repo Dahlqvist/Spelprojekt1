@@ -103,6 +103,10 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
+	mTextureMap["StixFuelbarEmpty"].loadFromFile("Texture/Stix/stix_fuelbar_empty.png");
+
+	mTextureMap["StixFuelbar"].loadFromFile("Texture/Stix/stix_fuelbar_fuel.png");
+
 	mTextureMap["StixBrainWall"].loadFromFile("Texture/Stix/brain/stix_brain_on.png");
 
 	mTextureMap["StixBrain"].loadFromFile("Texture/Stix/brain/stix_brain_off.png");
@@ -165,25 +169,6 @@ void TextureManager::loadTexture()
 	mTextureMap["Break3"].loadFromFile("Texture/Enviroment/Tiles/break_dark.png");
 	mTextureMap["BreakAnim"].loadFromFile("Texture/Enviroment/Tiles/break_dustanimation_strip5.png");
 
-	//Tutorials
-	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
-	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");
-	mTextureMap["House3"].loadFromFile("Texture/Tutorials/House01.png");
-	mTextureMap["House4"].loadFromFile("Texture/Tutorials/House02.png");
-	mTextureMap["House5"].loadFromFile("Texture/Tutorials/House03.png");
-	mTextureMap["House6"].loadFromFile("Texture/Tutorials/House04.png");
-	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
-	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
-	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
-	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
-	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
-	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
-	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
-	mTextureMap["BGTutorial"].loadFromFile("Texture/Tutorials/tutorial_background.png");
-	mTextureMap["WoodBox"].loadFromFile("Texture/Tutorials/woodbox.png");
-	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
-	mTextureMap["Billboard2"].loadFromFile("Texture/Tutorials/Billboard02.png");
-
 	mTextureMap["Tile1"].loadFromFile("Texture/Enviroment/tile1.png");
 	mTextureMap["Tile2"].loadFromFile("Texture/Enviroment/tiles/tile2_dark.png");
 	mTextureMap["Tile3"].loadFromFile("Texture/Enviroment/tiles/tile3_dark.png");
@@ -234,6 +219,27 @@ void TextureManager::loadTexture()
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
+
+	//Tutorials
+	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
+	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");
+	mTextureMap["House3"].loadFromFile("Texture/Tutorials/House01.png");
+	mTextureMap["House4"].loadFromFile("Texture/Tutorials/House02.png");
+	mTextureMap["House5"].loadFromFile("Texture/Tutorials/House03.png");
+	mTextureMap["House6"].loadFromFile("Texture/Tutorials/House04.png");
+	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
+	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
+	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
+	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
+	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
+	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
+	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
+	mTextureMap["BGTutorial"].loadFromFile("Texture/Tutorials/tutorial_background.png");
+	mTextureMap["WoodBox"].loadFromFile("Texture/Tutorials/woodbox.png");
+	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
+	mTextureMap["Billboard2"].loadFromFile("Texture/Tutorials/Billboard02.png");
+	mTextureMap["CheckpointOff"].loadFromFile("Texture/Tutorials/checkpoint_off.png");
+	mTextureMap["CheckpointOn"].loadFromFile("Texture/Tutorials/checkpoint_active.png");
 
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
@@ -378,4 +384,19 @@ const std::string	TextureManager::getSpriteName(sf::Sprite sprite)
 		}
 	}
 	return	"ERROR!";
+}
+
+const std::vector<Background*>	TextureManager::getBackground(std::string	Name)
+{
+	std::vector<Background*>	BackVec;
+	sf::Vector2f	Position;
+	for(TextureMap::iterator it=getManager().mTextureMap.begin();it!=getManager().mTextureMap.end();it++)
+	{
+		if(it->first.find(Name)!=std::string::npos)
+		{
+			BackVec.push_back(new Background(it->first,1,1,Position));
+			Position.x+=sf::Sprite(it->second).getGlobalBounds().width;
+		}
+	}
+	return BackVec;
 }

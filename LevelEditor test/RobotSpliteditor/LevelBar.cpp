@@ -65,6 +65,7 @@ void	LevelBar::execute()
  	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
 	{
 	case	Background:
+		mLevel->setBackground(filename);
 		break;
 	case	Save:
 		Saver.saveLevel(*mLevel);
@@ -191,4 +192,9 @@ void	LevelBar::setSelect(const bool&	Select)
 bool	LevelBar::isSelected()const
 {
 	return	mSelected;
+}
+
+void	LevelBar::resize(sf::RenderWindow&	window)
+{
+	mSize.x=window.getSize().x;
 }

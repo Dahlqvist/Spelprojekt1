@@ -82,7 +82,7 @@ void Timer::input()
 void Timer::update()
 {
 	//sf::Vector2f timerPos = sf::Vector2f(Window::getWindow().getSize().x - 400, Window::getWindow().getSize().y );
-	sf::Vector2f timerPos = sf::Vector2f(1200, 50);
+	sf::Vector2f timerPos = sf::Vector2f(1200, 10);
 	//För att få fram vilken bild som skall visas
 
 	mDec = (mClock.getElapsedTime().asMilliseconds() / 100) % 10;
@@ -99,29 +99,37 @@ void Timer::update()
 
 	//Window::getWindow().clear(sf::Color::Black);
 
+	//tiondels sekunder
 	mNumbers->setCurrentFrame(mDec);
 	mNumbers->setPosition(timerPos);
 	mNumbers->update();
 	Window::getWindow().draw(mNumbers->getSprite());
 
+	//ental sekunder
 	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
 	mNumbers->setCurrentFrame(m1Sek);
 	mNumbers->setPosition(timerPos);
 	mNumbers->update();
 	Window::getWindow().draw(mNumbers->getSprite());
-
+	
+	//tiotal sekunder
 	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
 	mNumbers->setCurrentFrame(m10Sek);
 	mNumbers->setPosition(timerPos);
 	mNumbers->update();
 	Window::getWindow().draw(mNumbers->getSprite());
 
-	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
-	mNumbers->setCurrentFrame(m1Min);
-	mNumbers->setPosition(timerPos);
-	mNumbers->update();
-	Window::getWindow().draw(mNumbers->getSprite());
+	//ental minuter
+	if(mSek > 60)
+	{
+		timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+		mNumbers->setCurrentFrame(m1Min);
+		mNumbers->setPosition(timerPos);
+		mNumbers->update();
+		Window::getWindow().draw(mNumbers->getSprite());
+	}
 
+	//tiotal minuter
 	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
 	mNumbers->setCurrentFrame(m10Min);
 	mNumbers->setPosition(timerPos);

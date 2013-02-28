@@ -135,6 +135,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="Checkpoint.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -273,6 +276,9 @@
     <ClInclude Include="Window.h" />
     <ClInclude Include="Timer.h">
       <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Checkpoint.h">
+      <Filter>Header Files\Unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

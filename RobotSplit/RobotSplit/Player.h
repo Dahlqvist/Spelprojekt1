@@ -34,6 +34,7 @@ public:
 	void dropFeet();
 
 	bool getWinning();
+	void setStartingPosition(sf::Vector2f);
 
 	void jump();
 	void shootHead(sf::Vector2f);
@@ -58,13 +59,15 @@ private:
 	sf::Sprite* TempMagnet;
 	sf::Sprite* TempExtension;
 	sf::Sprite* TempWhole;
-	float mDash;
+	sf::Sprite mRocketFuelBar;
+	sf::Sprite mRocketFuel;
+	float mDash, temporary;
 	sf::Vector2f mStartPosition;
 	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
-	bool mKeys, mWinning;
+	bool mKeys, mWinning, mRocketing;
 	int magnetSlot, lastKey, thisKey;
 
 	Courser* mCourser;

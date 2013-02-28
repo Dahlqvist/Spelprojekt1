@@ -13,12 +13,8 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false)
 {
-	ObjectLoader	Loader("OtherMenu.xml");	
-	UIObjectMenu *meny=Loader.getObject(this);// new UIObjectMenu("Other",Vector2f(190,300),this,Color(100,100,100,255),15);
-	meny->addIcon(new PlayerIcon());
-	meny->addIcon(new UnitIcon("Platform","Tile1"));
-	meny->addIcon(new UnitIcon("Platform","Tile2"));
-	meny->addIcon(new UnitIcon("Platform","Tile3"));
+	ObjectLoader	Loader("OtherMenu.xml");
+	UIObjectMenu *meny=Loader.getObject(this);
 	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
 	Solid->addOption("Yes",true);
 	Solid->addOption("No",false);
@@ -28,6 +24,9 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position y","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessActive().insert(meny);
+	Loader.loadFile("PlatFormMenu.xml");
+	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	mUIItems.getActivated("zOther")->setSelect(true);
 }
@@ -105,8 +104,8 @@ void	Toolbar::render(Editor* editor)
 	RenderWindow&	window=editor->getWindow();
 	window.setView(View(FloatRect(Vector2f(0,0),Vector2f(window.getSize()))));
 	Vector2f	Size(mViewSize.x/window.getSize().x,mViewSize.y/window.getSize().y),
-		Position(mPosition.x/window.getSize().x,mPosition.y/window.getSize().y);
-	sf::RectangleShape	Bar(mSize),Frame(mSize);
+				Position(mPosition.x/window.getSize().x,mPosition.y/window.getSize().y);
+	sf::RectangleShape	Bar(mSize),Frame(mSize),Indicator;
 	Bar.setPosition(mPosition);
 	Frame.setPosition(mPosition);
 	Frame.setOutlineThickness(2);
@@ -114,11 +113,34 @@ void	Toolbar::render(Editor* editor)
 	Frame.setFillColor(sf::Color::Transparent);
 	Bar.setFillColor(mBackground);
 	window.draw(Bar);
+	//Renders the minimap
 	View	MiniView=window.getDefaultView();
 	MiniView.setViewport(FloatRect(Position,Size));
+	float	scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).x/editor->mLevel.getSize().x;
+	if(scale>window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y)
+	{
+		scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y;
+	}
+	if(scale>1)
+	{
+		MiniView.zoom(scale);
+	}
 	editor->renderLevel(MiniView);
+	//Renders the rect showing your view on the minimap
+	Position=window.convertCoords(Vector2i(0,editor->mLevelTool.getSize().y),editor->mCurrView)+Vector2f(10,10);
+	Size=window.convertCoords(Vector2i(editor->mCurrView.getViewport().width*window.getSize().x,
+		editor->mCurrView.getViewport().height*window.getSize().y+editor->mLevelTool.getSize().y),editor->mCurrView)-Position-Vector2f(10,10);
+	Indicator.setSize(Size);
+	Indicator.setPosition(Position);
+	Indicator.setFillColor(sf::Color::Transparent);
+	Indicator.setOutlineColor(sf::Color(255,0,0,255));
+	Indicator.setOutlineThickness(10);
+	window.setView(MiniView);
+	window.draw(Indicator);
+	//Renders the Frame
 	window.setView(View(FloatRect(Vector2f(0,0),Vector2f(window.getSize()))));
 	window.draw(Frame);
+	//Draws	the UIItems
 	int i=0;
 	for(UISet::iterator	it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
 	{
@@ -144,6 +166,7 @@ void	Toolbar::setUnit(Unit*	Source)
 	mUIItems.activate("Position y");
 	mUIItems.activate("Solid");
 	mUIItems.activate("zOther");
+	mUIItems.activate("zPlatform");
 	char*	temp=new char[10];
 	string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
 	itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
@@ -177,7 +200,7 @@ void	Toolbar::setPlayer(Player*	Source)
 	mUIItems.activate("Position x");
 	mUIItems.activate("Position y");
 	mUIItems.activate("zOther");
-	mUIItems.deactivate("Sprite");
+	mUIItems.activate("zPlatform");
 	char*	temp=new char[10];
 	itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
 	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));
@@ -310,4 +333,10 @@ void	Toolbar::unIniUnit()
 void	Toolbar::unIniPlayer()
 {
 	mCurrPlayer.unInitiate();
+}
+
+void	Toolbar::resize(RenderWindow&	window)
+{
+	mPosition.x=window.getSize().x-mSize.x;
+	mSize.y=window.getSize().y-mPosition.y;
 }

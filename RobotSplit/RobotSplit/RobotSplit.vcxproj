@@ -91,6 +91,7 @@ sfml-main.lib
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
+    <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Courser.cpp" />
@@ -138,6 +139,7 @@ sfml-main.lib
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BrainMagnet.h" />
+    <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Controls.h" />
     <ClInclude Include="Courser.h" />
