@@ -304,7 +304,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is right of object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()+15) || ((mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()) || ((mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
 						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
