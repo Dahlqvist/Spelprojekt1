@@ -76,7 +76,7 @@ void PlayerPartBody::setPosition(sf::Vector2f Vec)
 void PlayerPartBody::decideAnimation(sf::Vector2f Vec)
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
-		{
+	{
 		if(Vec.x>0 && mAttached==true)
 		{
 			mActiveAnimation=&mRightAnimation;
@@ -138,12 +138,12 @@ void PlayerPartBody::setAttached(bool b)
 		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mRight)
 		{
 			mActiveAnimation=&mSplitting;
-			mAniTime=0.8;
+			mAniTime=(float)0.8;
 		}
 		else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mLeft)
 		{
 			mActiveAnimation=&mSplittingLeft;
-			mAniTime=0.8;
+			mAniTime=(float)0.8;
 		}
 	}
 }
@@ -152,18 +152,20 @@ void PlayerPartBody::jump(float jump)
 	mCounter=0;
 	mJump=jump;
 	mJumpClock.restart();
-	if(mAttached==false){
+	if(mAttached==false)
+	{
 		mJumpingRight.restart();
 		mJumpingLeft.restart();
 		mAnimationTimer.restart();
-		if(mActiveAnimation==&mRightPart || mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight){
+		if(mActiveAnimation==&mRightPart || mActiveAnimation==&mWalkingRight || mActiveAnimation==&mJumpingRight)
+		{
 			mActiveAnimation=&mJumpingRight;
 		}
 		else
 		{
 			mActiveAnimation=&mJumpingLeft;
 		}
-		mAniTime=0.8;
+		mAniTime=(float)0.8;
 	}
 }
 void PlayerPartBody::resetAnimation()
@@ -192,17 +194,21 @@ Unit* PlayerPartBody::getUnit()
 {
 	return mUnit;
 }
-void PlayerPartBody::jumpReset(){
+void PlayerPartBody::jumpReset()
+{
 	mJump=Eric::getGravity()-Eric::getJumpchange();
 }
-void PlayerPartBody::forceMove(sf::Vector2f force){
+void PlayerPartBody::forceMove(sf::Vector2f force)
+{
 	mPosition+=force;
 }
-void PlayerPartBody::restartAnimation(){
+void PlayerPartBody::restartAnimation()
+{
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
 }
-void PlayerPartBody::winning(){
+void PlayerPartBody::winning()
+{
 	mWinningAni.restart();
 	mAnimationTimer.restart();
 	mAniTime=2;

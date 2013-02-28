@@ -231,7 +231,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 	int Height=mViewSize.y+5;
 	for(UISet::iterator	it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
 	{
-		if((*it)->selected())
+		if((*it)->selected()) 
 		{
 			Selected=(*it);
 			break;
@@ -261,10 +261,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				if(CompString=="Platform")
 				{
 					mUIItems.activate("Lives");
-					char*	temp=new	char[10];
-					itoa(dynamic_cast<Platform*>(mCurrUnit.getObject())->getLives(),temp,10);
-					dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->setDefault(string(temp));
-					delete temp;
+					dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
 				}
 				else if(CompString=="Laser")
 				{
@@ -328,6 +325,9 @@ bool	Toolbar::isSelected()const
 void	Toolbar::unIniUnit()
 {
 	mCurrUnit.unInitiate();
+	mUIItems.deactivateAll();
+	mUIItems.activate("zOther");
+	mUIItems.activate("zPlatform");
 }
 
 void	Toolbar::unIniPlayer()

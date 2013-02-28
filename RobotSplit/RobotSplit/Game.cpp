@@ -30,8 +30,8 @@ Game::Game():
 		BG(mlevel.getBackground()),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2),
-		mTimer(new Timer)
+		mTimer(new Timer),
+		mTime((float)0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -76,7 +76,7 @@ Game::~Game()
 
 void Game::changeMap(int map)
 {
-	if(mBana+map<mBanor.size() && mBana+map>=0)
+	if(mBana+map<(signed)mBanor.size() && mBana+map>=0)
 	{
 		mBana+=map;
 	}
@@ -135,7 +135,8 @@ void Game::update()
 	if(mPlayer->getWinning()==true)
 	{
 		Music::pauseMusic();
-		if(Sound::getSoundStatus("Winning") == 0){
+		if(Sound::getSoundStatus("Winning") == 0)
+		{
 			Game::changeMap(1);
 		}
 		mPlayer->update();
@@ -156,62 +157,77 @@ void Game::update()
 void Game::input()
 {
 	mTimer->input();
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0)
+	{
 		mPlayer->interact(0);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0)
+	{
 		mPlayer->interact(1);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
+	{
 		mPlayer->interact(2);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0)
+	{
 		mPlayer->interact(3);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1)
+	{
 		mPlayer->interact(4);
 	}
-	if(TestTimer.getElapsedTime().asSeconds()>mTime){
+	if(TestTimer.getElapsedTime().asSeconds()>mTime)
+	{
 		mTime=(float)0.2;
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1){
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1)
+		{
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1)
+		{
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2)
+		{
 			mPlayer->interact(7);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && mSecurityLevel>=0){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && mSecurityLevel>=0)
+		{
 			mPlayer->interact(8);
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2){
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2)
+		{
 			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
-			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
+			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
+			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
 			mPlayer->shootHead(sf::Vector2f(Temp));
 			TestTimer.restart();
 		}
 
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		{
 			mPlayer->restartPlayer();
 			TestTimer.restart();
 			Objects->reset();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		{
 			mPlayer->reFuel();
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+		{
 			Game::changeMap(-1);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8)){
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+		{
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
@@ -276,8 +292,9 @@ void Game::render()
 		BG[i]->update();
 	}
 	Objects->draw(mWindow, true);
-	mPlayer->draw(mWindow);
+	mPlayer->draw(mWindow, false);
 	Objects->draw(mWindow, false);
+	mPlayer->draw(mWindow, true);
 	mPlayer->resetAnimations();
 	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	//{
@@ -285,7 +302,8 @@ void Game::render()
 		//mWindow.draw(diaBox[i]->getText());
 	//}
 	//mWindow.draw(diaBox->getText());
-	if(mPlayer->getWinning()==false){
+	if(mPlayer->getWinning()==false)
+	{
 		Music::playMusic();
 	}
 	mTimer->update();

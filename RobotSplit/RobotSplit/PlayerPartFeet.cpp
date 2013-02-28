@@ -31,7 +31,8 @@ PlayerPartFeet::PlayerPartFeet():
 void PlayerPartFeet::update()
 {
 	mActiveAnimation->update();
-	if(mUnit!=0){
+	if(mUnit!=0)
+	{
 		mUnit->update();
 	}
 	if(mJump>0)
@@ -71,18 +72,22 @@ void PlayerPartFeet::setPosition(sf::Vector2f Vec)
 		mActiveAnimation=&mRightAnimation;
 		}
 		else */
-		if(mAUnit!=0){
-			if(mAUnit==&mRightWall || mAUnit==&mLeftWall){
+		if(mAUnit!=0)
+		{
+			if(mAUnit==&mRightWall || mAUnit==&mLeftWall)
+			{
 				mPosition.y+=Vec.y;
 			}
-			else{
+			else
+			{
 				mPosition.x+=Vec.x;
 			}
 		}
 		//En massa kod för när den går på väggar och liknande =)
 	}
 }
-void PlayerPartFeet::decideAnimation(sf::Vector2f Vec){
+void PlayerPartFeet::decideAnimation(sf::Vector2f Vec)
+{
 	if(mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
 	{
 		if(mAttachedWall==false){
@@ -97,19 +102,23 @@ void PlayerPartFeet::decideAnimation(sf::Vector2f Vec){
 		}
 		else if(mAO==0)
 		{
-			if(Vec.y>0){
+			if(Vec.y>0)
+			{
 				mActiveAnimation=&mRightAnimationMagnet;
 			}
-			if(Vec.y<0){
+			if(Vec.y<0)
+			{
 				mActiveAnimation=&mLeftAnimationMagnet;
 			}
 		}
 		else if(mAO==2)
 		{
-			if(Vec.y<0){
+			if(Vec.y<0)
+			{
 				mActiveAnimation=&mRightAnimationMagnet;
 			}
-			if(Vec.y>0){
+			if(Vec.y>0)
+			{
 				mActiveAnimation=&mLeftAnimationMagnet;
 			}
 		}
@@ -152,7 +161,8 @@ sf::Sprite PlayerPartFeet::getSprite()
 		return Temp;
 	}*/
 	sf::Vector2f TempOrigin(0, 0);
-	if(mAUnit!=0){
+	if(mAUnit!=0)
+	{
 		if(mAO==0)
 		{
 			mRotation=90;
@@ -169,7 +179,8 @@ sf::Sprite PlayerPartFeet::getSprite()
 			TempOrigin=sf::Vector2f(32, -32);
 		}
 	}
-	else{
+	else
+	{
 		mRotation=0;
 	}
 
@@ -202,7 +213,8 @@ sf::Sprite PlayerPartFeet::getSprite()
 		//mFeetExt.setPosition(mPosition+sf::Vector2f(32, 0));
 		return Temp2;
 	}
-	if(mRotation!=0){
+	if(mRotation!=0)
+	{
 		sf::Sprite Temp=mActiveAnimation->getSprite();
 		Temp.setOrigin(TempOrigin);
 		Temp.rotate(mRotation);
@@ -229,7 +241,8 @@ void PlayerPartFeet::setAttached(bool b)
 	{
 		mUnit=0;
 		mFeetExt.setFacingRight(true, true);
-		if(mAO==1){
+		if(mAO==1)
+		{
 			mPosition+=sf::Vector2f(0, -16);
 		}
 	}
@@ -265,14 +278,15 @@ void PlayerPartFeet::jump(float jump)
 	mJumpAni.restart();
 	mJumpAniLeft.restart();
 	mAnimationTimer.restart();
-	if(mActiveAnimation==&mRight || mActiveAnimation==&mRightAnimation || mActiveAnimation==&mJumpAni){
+	if(mActiveAnimation==&mRight || mActiveAnimation==&mRightAnimation || mActiveAnimation==&mJumpAni)
+	{
 		mActiveAnimation=&mJumpAni;
 	}
 	else
 	{
 		mActiveAnimation=&mJumpAniLeft;
 	}
-	mAniTime=0.8;
+	mAniTime=(float)0.8;
 }
 void PlayerPartFeet::resetAnimation()
 {
@@ -280,27 +294,30 @@ void PlayerPartFeet::resetAnimation()
 	{
 		if(mAttachedWall==false)
 		{
-			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni) 
+			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni || mActiveAnimation==&mRightAnimationMagnet) 
 			{
 				mActiveAnimation=&mRight;
 			}
-			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet || mActiveAnimation==&mJumpAniLeft)
+			else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mRightMagnet || mActiveAnimation==&mJumpAniLeft || mActiveAnimation==&mLeftAnimationMagnet)
 			{
 				mActiveAnimation=&mLeft;
 			}
 		}
 		else if(mAttachedWall==true)
 		{
-			if(mActiveAnimation==&mRightAnimationMagnet || mActiveAnimation==&mRight){
+			if(mActiveAnimation==&mRightAnimationMagnet || mActiveAnimation==&mRight)
+			{
 				mActiveAnimation=&mRightMagnet;
 			}
-			else if(mActiveAnimation==&mLeftAnimationMagnet || mActiveAnimation==&mLeft){
+			else if(mActiveAnimation==&mLeftAnimationMagnet || mActiveAnimation==&mLeft)
+			{
 				mActiveAnimation=&mLeftMagnet;
 			}
 		}
 
 	}
-	if(mUnit==&mRocketFuel){
+	if(mUnit==&mRocketFuel)
+	{
 		mUnit=0;
 	}
 }
@@ -335,7 +352,8 @@ void PlayerPartFeet::jumpReset()
 	mJump=Eric::getGravity()-Eric::getJumpchange();
 }
 
-void PlayerPartFeet::setAttachedWall(bool b, int w){
+void PlayerPartFeet::setAttachedWall(bool b, int w)
+{
 	if(b==true)
 	{
 		mAniTime=0;
@@ -352,7 +370,10 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		{
 			mAUnit=&mRoof;
 			mJump=0;
-			mPosition+=sf::Vector2f(0, -16);
+			if(mUnit==&mRocketFuel)
+			{
+				mPosition+=sf::Vector2f(0, -16);
+			}
 			//Får lägga in -16 i y-led för att få rätt position mot "taket"
 		}
 		if(mAO==2)
@@ -369,13 +390,16 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		mAUnit=0;
 	}
 }
-bool PlayerPartFeet::getAttachedWall(){
+bool PlayerPartFeet::getAttachedWall()
+{
 	return mAttachedWall;
 }
-int PlayerPartFeet::getWall(){
+int PlayerPartFeet::getWall()
+{
 	return mAO;
 }
-void PlayerPartFeet::forceMove(sf::Vector2f force){
+void PlayerPartFeet::forceMove(sf::Vector2f force)
+{
 	//if(mUnit==0)
 	//{
 		mPosition+=force;
@@ -385,11 +409,13 @@ void PlayerPartFeet::forceMove(sf::Vector2f force){
 	//	mUnit->setPosition(mUnit->getPosition()-force);
 	//}
 }
-void PlayerPartFeet::restartAnimation(){
+void PlayerPartFeet::restartAnimation()
+{
 	mRightAnimation.restart();
 	mLeftAnimation.restart();
 }
-void PlayerPartFeet::winning(){
+void PlayerPartFeet::winning()
+{
 	mWinningAni.restart();
 	mAnimationTimer.restart();
 	mAniTime=2;
@@ -400,7 +426,8 @@ int PlayerPartFeet::getFrame()
 	return mActiveAnimation->getCurrentFrame();
 }
 
-void PlayerPartFeet::setId(std::string Text){
+void PlayerPartFeet::setId(std::string Text)
+{
 	mId=Text;
 }
 float PlayerPartFeet::getFuel()

@@ -61,7 +61,6 @@ protected:
 	
 	sf::Sprite mSprite;
 	Animation* mAnimation;
-
 	bool mSolid, mHit, mHitThisFrame, mWasHit, mBehind;
 };
 
