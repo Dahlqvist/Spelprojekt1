@@ -43,6 +43,7 @@ void UnitManager::update()
 void UnitManager::collide()
 {
 	mSidePairs.clear();
+	Collision::resetCheckpointCollision();
 	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)
 	{
 		Collision col(i, *mPlayer, mUnits);
