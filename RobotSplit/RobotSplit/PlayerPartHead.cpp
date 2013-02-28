@@ -22,7 +22,8 @@ void PlayerPartHead::update()
 {
 	//mMagnet.setOrigin();
 	mActiveAnimation->update();
-	if(mUnit!=0){
+	if(mUnit!=0)
+	{
 		mUnit->update();
 	}
 	if(mAttached==true)
@@ -74,7 +75,8 @@ bool PlayerPartHead::getAttached()
 }
 void PlayerPartHead::setAttached(bool b)
 {
-	if (b==false){
+	if (b==false)
+	{
 		//mUnit=&mFeetExt;
 	}
 	else{
@@ -101,29 +103,34 @@ Unit* PlayerPartHead::getUnit()
 {
 	return mUnit;
 }
-void PlayerPartHead::forceMove(sf::Vector2f force){
+void PlayerPartHead::forceMove(sf::Vector2f force)
+{
 	mPosition+=force;
 	mShootVector=sf::Vector2f(0, 0);
-	if(mAttached==false && mMagnetCollided==false){
+	if(mAttached==false && mMagnetCollided==false)
+	{
 		mMagnet.restartAnimations();
 		mMagnet.setSolid(false);
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 		mActiveAnimation=&mBrainLowered;
 	}
-	else{
+	else
+	{
 		Sound::playSound("HeadStuck");
 		mActiveAnimation=&mBrainStuck;
 	}
 	mMagnetCollided=true;
 }
-void PlayerPartHead::setMagnetSolid(bool b){
+void PlayerPartHead::setMagnetSolid(bool b)
+{
 	mMagnet.setSolid(b);
 }
 void PlayerPartHead::setMagnetCollided(bool b)
 {
 	mMagnetCollided=b;
 }
-void PlayerPartHead::winning(){
+void PlayerPartHead::winning()
+{
 
 }
