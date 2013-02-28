@@ -7,9 +7,12 @@
 #include	"XmlSaver.h"
 #include	"Level.h"
 #include	"Line.h"
+#include	"Laser.h"
+#include	"LaserHolder.h"
 #include	"UnitWrap.h"
 #include	"Player.h"
 #include	"Platform.h"
+#include	"Trigger.h"
 #include	"TextureManager.h"
 
 using namespace rapidxml;
@@ -85,7 +88,10 @@ void	XmlSaver::saveLevel(Level &Source)
 			}
 			else if(VectorCopy[i]->getId()=="Laser")
 			{
-			//	addLaser(VectorCopy[i],Objects);
+			}
+			else if(VectorCopy[i]->getId()=="LaserHolder")
+			{
+				addLaser(VectorCopy[i],VectorCopy,Objects);
 			}
 			else if(VectorCopy[i]->getId()=="Line")
 			{
@@ -134,18 +140,36 @@ void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)
 	//std::cout<<"Adds Player"<<endl;
 }
 
-void	XmlSaver::addLaser			(Laser *Source,LaserHolder *Holder,xml_node<>* Parent)
+void	XmlSaver::addLaser			(Unit		*Source,UnitVector& vector,xml_node<>* Parent)
 {
-	xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type","\"Laser\"");
-	xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-	xml_node<> *Id			=mDocument.allocate_node(node_element,"Id", modifyString(Source->getId()));
-	xml_node<> *Active		=mDocument.allocate_node(node_element,"Active");
-	xml_node<> *Length		=mDocument.allocate_node(node_element,"Length");
-	xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation");
-	xml_node<> *Color		=mDocument.allocate_node(node_element,"Color");
+	LaserHolder*	laserholder=dynamic_cast<LaserHolder*>(Source);
+	Laser*			laser=laserholder->mLaser;
+	xml_node<> *Gameobject		=mDocument.allocate_node(node_element,"Unit");
+	xml_node<> *Type			=mDocument.allocate_node(node_element,"Type","\"Laser\"");
+	xml_node<> *Position		=mDocument.allocate_node(node_element,"Position");
+	xml_node<> *Id				=mDocument.allocate_node(node_element,"Id", modifyString(laser->getId()));
+	xml_node<> *Active			=mDocument.allocate_node(node_element,"Active");
+	xml_node<> *Rotation		=mDocument.allocate_node(node_element,"Rotation");
+	xml_node<> *Color			=mDocument.allocate_node(node_element,"Color");
 	xml_node<> *VisibilityRange	=mDocument.allocate_node(node_element,"VisibilityRange");
-	//xml_node<> *Length		=mDocument.allocate_node(node_element,"Length", Source->getLength());
+	xml_node<> *Length			=mDocument.allocate_node(node_element,"Length", modifyInt(laser->getLength()));
+	//Adds the x element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(laser->getPosition().x))));
+	//Adds the y element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(laser->getPosition().y))));
+	//Get Visibility range
+		float	visibility=laserholder->getSize().x;
+		float	length=visibility>laserholder->getSize().y;
+		if(visibility>laserholder->getSize().y)
+		{
+			length=visibility;
+			visibility>laserholder->getSize().y;
+		}
+		length-=visibility;
+		length/=2;
+		visibility/=2;
+	//
+	Gameobject->append_node(Position);
 }
 
 void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)
@@ -186,38 +210,62 @@ void	XmlSaver::addLine			(Unit *Source,xml_node<>* Parent)
 
 void	XmlSaver::addPlatform		(Unit *Source,xml_node<>* Parent)
 {
-	bool	bSolid;
-	string	sSolid;
-	bSolid=Source->isSolid();
-	if(bSolid)
-	{
-		sSolid="true";
-	}
-	else
-	{
-		sSolid="false";
-	}
+	Platform*	platform=dynamic_cast<Platform*>(Source);
 	//Allocates the Unit and Position elements in the Xml document
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
-		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
-		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
+		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(platform->getId()));
+		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(platform->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
-		xml_node<> *Solid		=mDocument.allocate_node(node_element,"Solid",modifyString(sSolid));
+		xml_node<> *Size=0;
+		xml_node<> *Offset=0;
+		xml_node<> *Lives=0;
+		xml_node<> *Behined=0;
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
-	//Adds the x element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
-	//Adds the y element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
-	//Adds the Position and Size elements to the Gameobject element
+	//Checks if it should include Offset or Size in the Document
+		if(platform->getSize()!=Vector2f(0,0))
+		{
+			Size		=mDocument.allocate_node(node_element,"Size");
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
+		}
+		Vector2f	null;
+		if(platform->getOffset()!=null)
+		{
+			Offset		=mDocument.allocate_node(node_element,"Offset");
+			Offset->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getOffset().x))));
+			Offset->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getOffset().y))));
+		}
+		if(platform->getLives()>0)
+		{
+			Lives	=mDocument.allocate_node(node_element,"Lives",modifyInt(platform->getLives()));
+		}
+		if(platform->isBehind())
+		{
+			Behined	=mDocument.allocate_node(node_element,"Behind","true");
+		}
+	//Adds the Position,Type and Sprite elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Sprite);
 	Gameobject->append_node(Position);
-	Gameobject->append_node(Size);
-	Gameobject->append_node(Solid);
+	if(Size!=0)
+	{
+		Gameobject->append_node(Size);
+	}
+	if(Offset!=0)
+	{
+		Gameobject->append_node(Offset);
+	}
+	if(Lives!=0)
+	{
+		Gameobject->append_node(Lives);
+	}
+	if(Behined!=0)
+	{
+		Gameobject->append_node(Behined);
+	}
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Platform"<<endl;
 }
@@ -234,39 +282,65 @@ void	XmlSaver::addUnit			(Unit *Source,xml_node<>* Parent)
 		sSolid="false";
 	}
 	//Allocates the Unit and Position elements in the Xml document
-		xml_node<> *Frames;
-		xml_node<> *Speed;
-		if(UnitWrap(*Source).getAnimation()!=nullptr)
+		xml_node<> *Frames=0;
+		xml_node<> *Speed=0;
+		if(UnitWrap(*Source).getAnimation()!=0)
 		{
 			Speed				=mDocument.allocate_node(node_element,"Speed",modifyInt(UnitWrap(*Source).getAnimation()->mTimePerFrame));
 			Frames				=mDocument.allocate_node(node_element,"Frames",modifyInt(UnitWrap(*Source).getAnimation()->mNumFrames));
+		}
+		xml_node<> *Size=0;
+		xml_node<> *Offset=0;
+		if(Source->getSize()!=Vector2f(0,0))
+		{
+			Size		=mDocument.allocate_node(node_element,"Size");
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+		}
+		Vector2f	null;
+		if(Source->getOffset()!=null)
+		{
+			Offset		=mDocument.allocate_node(node_element,"Offset");
+			Offset->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getOffset().x))));
+			Offset->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getOffset().y))));
 		}
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source->getSprite())));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
-		xml_node<> *Size		=mDocument.allocate_node(node_element,"Size");
 		xml_node<> *Solid		=mDocument.allocate_node(node_element,"Solid",modifyString(sSolid));
+		xml_node<> *Behined=0;
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
 	//Adds the y element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
-	//Adds the x element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
-	//Adds the y element into the Size element
-		Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 	//Adds the Type and Sprite elements to the Gameobject element
 	Gameobject->append_node(Type);
 	Gameobject->append_node(Sprite);
 	//Adds the Speed and Frames elements incase of the unit using Animation
-	if(UnitWrap(*Source).getAnimation()!=nullptr)
+	if(UnitWrap(*Source).getAnimation()!=0)
 	{
 		Gameobject->append_node(Speed);
 		Gameobject->append_node(Frames);
 	}
+	if(Source->isBehind())
+	{
+		Behined	=mDocument.allocate_node(node_element,"Behind","true");
+	}
 	//Adds the Position and Size elements to the Gameobject element
 	Gameobject->append_node(Position);
-	Gameobject->append_node(Size);
+	if(Size!=0)
+	{
+		Gameobject->append_node(Size);
+	}
+	if(Offset!=0)
+	{
+		Gameobject->append_node(Offset);
+	}
+	if(Behined!=0)
+	{
+		Gameobject->append_node(Behined);
+	}
 	Gameobject->append_node(Solid);
 	Parent->	append_node(Gameobject);
 	//std::cout<<"Adds Unit"<<endl;

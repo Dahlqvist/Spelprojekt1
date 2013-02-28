@@ -92,7 +92,7 @@ void		LevelConstructor::setNewName(const string& NEW)
 sf::Vector2f	LevelConstructor::getSize()
 {
 	sf::Vector2f Size(0,0);
-	for(int i=0;i<mBackground.getBackground().size();i++)
+	for(vector<int>::size_type i=0;i<mBackground.getBackground().size();i++)
 	{
 		Size.x+=mBackground.getBackground()[i]->draw().getGlobalBounds().width;
 	//	Size.y+=mBackground.getBackground()[i]->draw().getGlobalBounds().height;
