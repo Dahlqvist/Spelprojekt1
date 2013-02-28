@@ -231,7 +231,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 	int Height=mViewSize.y+5;
 	for(UISet::iterator	it=mUIItems.accessActive().begin();it!=mUIItems.accessActive().end();it++)
 	{
-		if((*it)->selected())
+		if((*it)->selected()) 
 		{
 			Selected=(*it);
 			break;

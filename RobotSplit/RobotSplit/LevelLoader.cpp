@@ -704,7 +704,7 @@ void	LevelLoader::addLine(Level	&level,xml_node<>* Node)
 	level.mObjects.push_back(TempObject);
 }
 
-void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
+void	LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
@@ -766,7 +766,7 @@ void LevelLoader::addTrigger (std::vector<Trigger*> &triggers, std::vector<std::
 	targets.push_back(targetObject);
 }
 
-void LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
+void	LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vector<std::string> &targets,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite;
