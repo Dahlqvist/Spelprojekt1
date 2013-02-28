@@ -11,6 +11,9 @@ std::set<Unit*> Collision::mUnitsOnLeftBottom;
 std::set<Unit*> Collision::mUnitsOnRightTop;
 std::set<Unit*> Collision::mUnitsOnRightBottom;
 
+int Collision::mFeetAtCheckpoint=-1;
+int Collision::mBodyAtCheckpoint=-1;
+
 Collision::Collision(int playerPart, Player& player, std::vector<Unit*> &mUnits)
 	:mMovedX(false)
 	,mMovedY(false)
@@ -74,6 +77,7 @@ void Collision::collide()
 
 bool Collision::isCollidedSide(int side)
 {
+	//std::cout<<std::endl<<side<<" ";
 	if (mCollidedSides.count(side)==0)
 	{
 		return false;
@@ -241,7 +245,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is above object
 				if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getSpeed()+1.1) || ((mUnitsOnLeftTop.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getGravity()+1.1) || ((mUnitsOnLeftTop.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) || (mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
 					{
 						mMovedUp=true;
 						moveDistance.y=-(collisionRect.height-1);
@@ -258,7 +262,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is below object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getSpeed()+1.1) || ((mUnitsOnLeftBottom.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) && (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getGravity()+1.1) || ((mUnitsOnLeftBottom.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) || (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
 					{
 						mMovedDown=true;
 						moveDistance.y=collisionRect.height-1;
@@ -282,7 +286,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is left of object
 				if (playerSprite->getPosition().x<mUnits[unit]->getPosition().x)
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getGravity()+1.1) || ((mUnitsOnTopRight.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomRight.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()+1.1) || ((mUnitsOnTopRight.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnBottomRight.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
 						mMovedLeft=true;
 						moveDistance.x=-(collisionRect.width-1);
@@ -300,7 +304,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is right of object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getGravity()+1.1) || ((mUnitsOnTopLeft.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) && (mUnitsOnBottomLeft.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()) || ((mUnitsOnTopLeft.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
 						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
@@ -401,7 +405,8 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	}
 	if (mUnits[unit]->getId()=="Checkpoint")
 	{
-		if (mPlayer->getTogether())
+		
+		if (mPlayer->getTogether() || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtCheckpoint==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtCheckpoint==unit)))
 		{
 			mUnits[unit]->activate();
 			mPlayer->reFuel();
@@ -411,9 +416,14 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				mUnits[i]->setCheckpoint();
 			}
 		}
-		else if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
 		{
 			mPlayer->reFuel();
+			mFeetAtCheckpoint=unit;
+		}
+		if (mPlayer->getId(mPlayerPart)=="PlayerPartBody")
+		{
+			mBodyAtCheckpoint=unit;
 		}
 	}
 }
