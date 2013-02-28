@@ -3,6 +3,7 @@
 
 #include <SFML/System/Clock.hpp>
 #include "Animation.h"
+#include <SFML/Graphics/Sprite.hpp>
 
 class Timer
 {
@@ -13,21 +14,33 @@ public:
 	static sf::Clock& getClock();
 	static void restartClock();
 	static void input();
-	static void initialize();
+	static bool getStatus();
+	static void changeStatus();
+	
 	virtual void update();
 	virtual void render();
-	void load();
+	
 
 private:
 	/*Timer();
 	~Timer();
 	Timer(const Timer& timer);
 	Timer operator=(const Timer& timer);*/
+
+	static void initialize();
+	void load();
+	void updateNumbers(int q);
+	void setDot();
+	void setColon();
+	sf::Vector2f timerPos;
 	
 
 	static sf::Clock mClock;
 	static sf::Clock mSecondClock;
-	//Animation mNumbers;
+	
+	sf::Sprite mDot;
+	sf::Sprite mColon;
+
 	static Animation* mNumbers;
 	static int mDec;
 	static int mSek;
@@ -40,6 +53,8 @@ private:
 	static int m10Min;
 	static int m1Hour;
 	static int m10Hour;
+
+	static bool mShow;
 
 
 };

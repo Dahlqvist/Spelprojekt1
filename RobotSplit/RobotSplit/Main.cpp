@@ -29,6 +29,7 @@ int main()
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
+		sf::Clock temp;
 		while(mWindow.pollEvent(Window::getEvent()))
 		{
 			if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
@@ -50,6 +51,7 @@ int main()
 				statemanager.updateState();
 			statemanager.renderState();			
 		}
+		cout << temp.getElapsedTime().asSeconds() << endl;
 	}	
 	return 0;
 }

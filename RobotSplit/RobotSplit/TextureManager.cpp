@@ -342,8 +342,6 @@ void TextureManager::loadTexture()
 	mTextureMap["QuitToMenu"].loadFromFile("Texture/Menu/Quit_To_Menu.png");
 	mTextureMap["Restart"].loadFromFile("Texture/Menu/Restart.png");
 	mTextureMap["Resume"].loadFromFile("Texture/Menu/Resume.png");
-	mTextureMap["Slider"].loadFromFile("Texture/Menu/Slider.png");
-	mTextureMap["SliderIcon"].loadFromFile("Texture/Menu/Slider_Icon.png");
 	mTextureMap["StoryMode"].loadFromFile("Texture/Menu/Story_Mode.png");
 	mTextureMap["Sure"].loadFromFile("Texture/Menu/Sure.png");
 	mTextureMap["TimeTrial"].loadFromFile("Texture/Menu/Time_Trial.png");
@@ -355,6 +353,8 @@ void TextureManager::loadTexture()
 	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
 	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
 	mTextureMap["ControlSchedule"].loadFromFile("Texture/Menu/Control_Schedule.png");
+	mTextureMap["Dot"].loadFromFile("Texture/Menu/dot.png");
+	mTextureMap["Colon"].loadFromFile("Texture/Menu/colon.png");
 
 }
 

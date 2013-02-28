@@ -1,5 +1,6 @@
 #include "Timer.h"
 #include "Window.h"
+#include "TextureManager.h"
 
 sf::Clock Timer::mClock;
 sf::Clock Timer::mSecondClock;
@@ -15,9 +16,15 @@ int Timer::m10Min;
 int Timer::m1Hour;
 int Timer::m10Hour;
 
+bool Timer::mShow;
+
 Animation* Timer::mNumbers;
 
-Timer::Timer()
+Timer::Timer():
+	timerPos(sf::Vector2f(1200, 20)),
+	mDot(TextureManager::getSprite("Dot")),
+	mColon(TextureManager::getSprite("Colon"))
+
 {
 	load();
 
@@ -35,6 +42,8 @@ void Timer::load()
 
 void Timer::initialize()
 {
+	mShow = true;
+
 	mDec = 0;
 	mSek = 0;
 	mMin = 0;
@@ -81,10 +90,7 @@ void Timer::input()
 
 void Timer::update()
 {
-	//sf::Vector2f timerPos = sf::Vector2f(Window::getWindow().getSize().x - 400, Window::getWindow().getSize().y );
-	sf::Vector2f timerPos = sf::Vector2f(1200, 10);
 	//För att få fram vilken bild som skall visas
-
 	mDec = (mClock.getElapsedTime().asMilliseconds() / 100) % 10;
 	mSek = mClock.getElapsedTime().asSeconds();
 	mMin = mClock.getElapsedTime().asSeconds() / 60;
@@ -97,47 +103,76 @@ void Timer::update()
 	m1Hour = mHour % 10;
 	m10Hour = (mHour / 10) % 10;
 
-	//Window::getWindow().clear(sf::Color::Black);
+	timerPos = sf::Vector2f(1200, 20);
 
 	//tiondels sekunder
-	mNumbers->setCurrentFrame(mDec);
-	mNumbers->setPosition(timerPos);
-	mNumbers->update();
-	Window::getWindow().draw(mNumbers->getSprite());
+	updateNumbers(mDec);
+	setDot();
 
 	//ental sekunder
-	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
-	mNumbers->setCurrentFrame(m1Sek);
-	mNumbers->setPosition(timerPos);
-	mNumbers->update();
-	Window::getWindow().draw(mNumbers->getSprite());
+	updateNumbers(m1Sek);
 	
 	//tiotal sekunder
-	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
-	mNumbers->setCurrentFrame(m10Sek);
-	mNumbers->setPosition(timerPos);
-	mNumbers->update();
-	Window::getWindow().draw(mNumbers->getSprite());
+	updateNumbers(m10Sek);
+	setColon();
 
 	//ental minuter
-	if(mSek > 60)
-	{
-		timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
-		mNumbers->setCurrentFrame(m1Min);
-		mNumbers->setPosition(timerPos);
-		mNumbers->update();
-		Window::getWindow().draw(mNumbers->getSprite());
-	}
+	updateNumbers(m1Min);
 
 	//tiotal minuter
-	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
-	mNumbers->setCurrentFrame(m10Min);
-	mNumbers->setPosition(timerPos);
-	mNumbers->update();
-	Window::getWindow().draw(mNumbers->getSprite());
+	updateNumbers(m10Min);
+	setColon();
+
+	//ental timmar
+	updateNumbers(m1Hour);
+
+	//tiotal timmar
+	updateNumbers(m10Hour);
 }
 
 void Timer::render()
 {
 	Window::getWindow().display();
+}
+
+void Timer::updateNumbers(int q)
+{
+	timerPos.x = timerPos.x - (10 + mNumbers->getSprite().getGlobalBounds().width);
+	mNumbers->setCurrentFrame(q);
+	mNumbers->setPosition(timerPos);
+	mNumbers->update();
+	if(mShow)
+		Window::getWindow().draw(mNumbers->getSprite());
+}
+
+void Timer::setDot()
+{
+	sf::Vector2f dotPos;
+	dotPos.x = (timerPos.x - (5 + mDot.getGlobalBounds().width));
+	dotPos.y = (timerPos.y + (mNumbers->getSprite().getGlobalBounds().height - mDot.getGlobalBounds().height));
+	timerPos.x = timerPos.x - 5;
+	mDot.setPosition(dotPos);
+	if(mShow)
+		Window::getWindow().draw(mDot);
+}
+
+void Timer::setColon()
+{
+	sf::Vector2f colonPos;
+	colonPos.x = (timerPos.x - (5 + mColon.getGlobalBounds().width));
+	colonPos.y = (timerPos.y + ((mNumbers->getSprite().getGlobalBounds().height / 2) - (mColon.getGlobalBounds().height / 2)));
+	timerPos.x = timerPos.x - 5;
+	mColon.setPosition(colonPos);
+	if(mShow)
+		Window::getWindow().draw(mColon);
+}
+
+void Timer::changeStatus()
+{
+	mShow = !mShow;
+}
+
+bool Timer::getStatus()
+{
+	return mShow;
 }
