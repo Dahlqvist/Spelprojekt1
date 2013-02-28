@@ -138,12 +138,12 @@ void PlayerPartBody::setAttached(bool b)
 		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mRight)
 		{
 			mActiveAnimation=&mSplitting;
-			mAniTime=0.8;
+			mAniTime=(float)0.8;
 		}
 		else if(mActiveAnimation==&mLeftAnimation || mActiveAnimation==&mLeft)
 		{
 			mActiveAnimation=&mSplittingLeft;
-			mAniTime=0.8;
+			mAniTime=(float)0.8;
 		}
 	}
 }
@@ -163,7 +163,7 @@ void PlayerPartBody::jump(float jump)
 		{
 			mActiveAnimation=&mJumpingLeft;
 		}
-		mAniTime=0.8;
+		mAniTime=(float)0.8;
 	}
 }
 void PlayerPartBody::resetAnimation()

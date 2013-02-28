@@ -34,11 +34,11 @@ void BrainMagnet::update(){
 	{
 		if(mRot<20 && mRot>-20)
 		{
-			mRot+=1.7*0.5;
+			mRot+=(float)1.7*0.5;
 		}
 		else
 		{
-			mRot+=1.3*0.5;
+			mRot+=(float)1.3*0.5;
 		}
 		BrainMagnet::rotate(mRot);
 	}
@@ -46,11 +46,11 @@ void BrainMagnet::update(){
 	{
 		if(mRot>-20 && mRot<20)
 		{
-			mRot-=1.7*0.5;
+			mRot-=(float)1.7*0.5;
 		}
 		else
 		{
-			mRot-=1.3*0.5;
+			mRot-=(float)1.3*0.5;
 		}
 		BrainMagnet::rotate(mRot);
 	}

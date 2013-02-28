@@ -272,7 +272,7 @@ void PlayerPartFeet::jump(float jump)
 	{
 		mActiveAnimation=&mJumpAniLeft;
 	}
-	mAniTime=0.8;
+	mAniTime=(float)0.8;
 }
 void PlayerPartFeet::resetAnimation()
 {
@@ -352,7 +352,9 @@ void PlayerPartFeet::setAttachedWall(bool b, int w){
 		{
 			mAUnit=&mRoof;
 			mJump=0;
-			mPosition+=sf::Vector2f(0, -16);
+			if(mUnit==&mRocketFuel){
+				mPosition+=sf::Vector2f(0, -16);
+			}
 			//Får lägga in -16 i y-led för att få rätt position mot "taket"
 		}
 		if(mAO==2)

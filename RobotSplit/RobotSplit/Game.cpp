@@ -29,7 +29,7 @@ Game::Game():
 		BG(mlevel.getBackground()),
 		loops(0),
 		mWindow(Window::getWindow()),
-		mTime(0.2)
+		mTime((float)0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -73,7 +73,7 @@ Game::~Game()
 
 void Game::changeMap(int map)
 {
-	if(mBana+map<mBanor.size() && mBana+map>=0)
+	if(mBana+map<(signed)mBanor.size() && mBana+map>=0)
 	{
 		mBana+=map;
 	}
@@ -188,8 +188,8 @@ void Game::input()
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2){
 			sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
-			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
+			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
+			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
 			mPlayer->shootHead(sf::Vector2f(Temp));
 			TestTimer.restart();
 		}

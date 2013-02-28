@@ -101,7 +101,7 @@ void Player::draw(sf::RenderWindow& Window)
 	}
 	Window.draw(mFeet.getSprite());
 	Window.draw(mBody.getSprite());
-	sf::Vector2f mVec(sf::Mouse::getPosition(Window).x,sf::Mouse::getPosition(Window).y);
+	sf::Vector2f mVec((float)sf::Mouse::getPosition(Window).x, (float)sf::Mouse::getPosition(Window).y);
 	Window.draw(*mCourser->getSprite(mVec));
 
 
@@ -110,10 +110,10 @@ void Player::draw(sf::RenderWindow& Window)
 		mRocketFuelBar.setPosition(mFeet.getPosition()+sf::Vector2f(-12, -32));
 		Window.draw(mRocketFuelBar);
 		mRocketFuel.setPosition(mRocketFuelBar.getPosition()+sf::Vector2f(1, 1));
-		mRocketFuel.setTextureRect(sf::IntRect(mRocketFuel.getTextureRect().left, mRocketFuel.getTextureRect().top, mRocketFuel.getTextureRect().width, temporary*(mFeet.getFuel()/Eric::getFueltank())));
+		mRocketFuel.setTextureRect(sf::IntRect(mRocketFuel.getTextureRect().left, mRocketFuel.getTextureRect().top, mRocketFuel.getTextureRect().width, (int)temporary*(mFeet.getFuel()/Eric::getFueltank())));
 		Window.draw(mRocketFuel);
 	}
-	//Window.draw(*TempExtension);
+	//Window.draw(*TempMagnet);
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
@@ -143,7 +143,9 @@ void Player::update()
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
-		mParts[i]->update();
+		//if(i<3){
+			mParts[i]->update();
+		//}
 	}
 	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
@@ -231,6 +233,7 @@ void Player::move(sf::Vector2f Vec)
 			}
 			else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0 && mKeys==false)
 			{
+				mFeet.forceMove(sf::Vector2f(0, -16));
 				mFeet.setAttachedWall(true, 1);
 			}
 			//else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0)
@@ -457,10 +460,10 @@ void Player::setAttachFeetExtension(bool b)
 			mFeetAttached=b;
 			mFeet.setAttached(b);
 		}
-		if(b==true && mFeetAttached==true)
-		{
-			mBodyActive=true;
-		}
+		//if(b==true && mFeetAttached==true)
+		//{
+		//	mBodyActive=true;
+		//}
 		if(mHeadAttachedFeet==true)
 		{
 			mHead.setAttached(true);
@@ -844,6 +847,7 @@ void Player::checkCollisionMagnet()
 			mJumpTemp.restart();
 		}
 		magnetSlot=1;
+		mBody.jumpReset();
 		mBody.forceMove(TempHead-TempBody);
 	}
 	else if((TempFeet.x-TempHead.x)*(TempFeet.x-TempHead.x)+(TempFeet.y-TempHead.y)*(TempFeet.y-TempHead.y)<48*16 && mHead.getUnit()->isSolid()==true && magnetSlot!=1)
@@ -854,6 +858,7 @@ void Player::checkCollisionMagnet()
 			mJumpTemp.restart();
 		}
 		magnetSlot=0;
+		mFeet.jumpReset();
 		mFeet.forceMove(TempHead-TempFeet);
 	}
 }
@@ -863,9 +868,11 @@ void Player::restartPlayer(){
 	mFeet.setAttached(false);
 	mFeet.setAttachedWall(false);
 	mTogether=true;
+	mFeetAttached=false;
 	Player::move(sf::Vector2f((float)0.1, 0));
 	mFeet.forceMove(mStartPosition-mFeet.getPosition());
 	mFeet.reFuel();
+	mBodyActive=false;
 	mClock.restart();
 	mClockStart=false;
 	mWinning=false;
