@@ -23,8 +23,15 @@ private:
 	Animation mOptions;
 	Animation mQuit;
 	Animation mBlip;
+	Animation mYes;
+	Animation mNo;
+
+	void sure(bool b);
+	bool mShowSure;
+	bool mSure;
 
 	int mStatus;
+	int mChoices;
 
 	sf::Vector2f mBlipPos;
 

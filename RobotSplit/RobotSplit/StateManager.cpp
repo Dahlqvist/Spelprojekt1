@@ -6,8 +6,8 @@
 #include "InGameMenu.h"
 #include "Menu.h"
 #include "Audio.h"
-#include "MenuClock.h"
 #include "Controls.h"
+#include "Timer.h"
 
 StateManager::StateManager()
 	
@@ -112,6 +112,8 @@ void StateManager::restart()
 {
 	while(!mStateStack.empty())
 		mStateStack.pop();
+	delete mGame;
+	mGame = new Game;
 	pushState(mMenu);
 }
 

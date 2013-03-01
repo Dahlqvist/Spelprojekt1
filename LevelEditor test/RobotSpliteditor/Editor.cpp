@@ -215,6 +215,7 @@ void	Editor::eventHandler(const Event& Current)
 							if(!mSelectedUnit.fromLevel())
 							{
 								mSelectedUnit.deletePtr();
+								mTools.unIniUnit();
 							}
 						}
 						else if(!mSelectedUnit.fromLevel())
@@ -234,6 +235,7 @@ void	Editor::eventHandler(const Event& Current)
 							if(!mSelectedPlayer.fromLevel())
 							{
 								mSelectedPlayer.deletePtr();
+								mTools.unIniPlayer();
 							}
 						}
 						else

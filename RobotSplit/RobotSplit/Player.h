@@ -15,7 +15,7 @@ public:
 	~Player();
 	void initSprites();
 	void move(sf::Vector2f);
-	void draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow&, bool);
 	void update();
 	bool getTogether();
 	void setTogether(bool);
