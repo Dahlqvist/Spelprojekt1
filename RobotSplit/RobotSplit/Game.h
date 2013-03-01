@@ -10,6 +10,7 @@ class Background;
 class Player;
 class UnitManager;
 class DialogueBox;
+class Timer;
 
 
 
@@ -43,6 +44,8 @@ private:
 	std::vector<std::string> mBanor;
 	int mBana;
 	//Sound& mSound;
+
+	Timer* mTimer;
 	
 };
 

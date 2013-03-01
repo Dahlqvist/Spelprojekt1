@@ -9,6 +9,7 @@
 #include "Sound.h"
 #include "Music.h"
 #include "State.h"
+#include "Timer.h"
 
 using namespace std;
 
@@ -23,18 +24,19 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	Splash::runSplash(false);
 
-	/*sf::Clock lastUpdate;
-	float nextUpdate = 0.0;
-	float temp = 0.0;*/
+	//Timer& timer = Timer::getInstance();
+
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
+		sf::Clock temp;
 		while(mWindow.pollEvent(Window::getEvent()))
 		{
 			if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 				mWindow.close();
 			
 			statemanager.inputState();
+			//timer.input();
 		}
 
 
@@ -45,33 +47,11 @@ int main()
 		}
 		else
 		{
-			int loops = 0;
-			//bool render = false;
-			
-
-			while(/*lastUpdate.getElapsedTime().asSeconds() > nextUpdate && */loops < 2)
-			{
-				loops++;
-				//nextUpdate +=1/60.0;
-				//render = true;
+			for(int i = 0; i<2; i++)
 				statemanager.updateState();
-				//temp = lastUpdate.getElapsedTime().asSeconds();
-				//cout << "Time: " << temp << endl;
-			}
-			
-			//if(render)
-			//{
-				statemanager.renderState();
-				//lastUpdate.restart();
-				//nextUpdate = 1/60.0;
-				//cout << "Loops: " << loops << endl;
-			//}
-			//cout << "Time: " << lastUpdate.getElapsedTime().asSeconds() << endl;
-			
-			
+			statemanager.renderState();			
 		}
-	}
-
-	
+		cout << temp.getElapsedTime().asSeconds() << endl;
+	}	
 	return 0;
 }

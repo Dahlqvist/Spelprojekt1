@@ -29,7 +29,7 @@ void	UIObjectMenu::draw(RenderWindow& window,sf::Vector2f Position)
 	{
 		BackGround.setSize(mMaxSize+sf::Vector2f(0,NAME.getGlobalBounds().height));
 		window.draw(BackGround);
-		for(int i=0;i<mIcons.size();i++)
+		for(vector<int>::size_type i=0;i<mIcons.size();i++)
 		{
 			Vector2i	pos((i)%int(mMaxSize.x/64),((i)/int(mMaxSize.x/64)));
 			if(pos.y<=mBotRow-1&&pos.y>=mBotRow-int(mMaxSize.y/64))
@@ -81,7 +81,9 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 		for(IconVector::iterator it=mIcons.begin();it!=mIcons.end();it++)
 		{
 			Vector2i	pos((i)%int(mMaxSize.x/64),((i)/int(mMaxSize.x/64)));
-			if((*it)->getHitBox(Position+Vector2f(pos.x*64,(pos.y*64)+NAME.getGlobalBounds().height)).contains(Current.mouseButton.x,Current.mouseButton.y))
+			FloatRect	HITBOX=(*it)->getHitBox(Position+Vector2f(pos.x*64,(pos.y*64)+NAME.getGlobalBounds().height-(int(mBotRow-mMaxSize.y/64)*64)));
+			if(HITBOX.contains(Current.mouseButton.x,Current.mouseButton.y)
+			&&pos.y>=mBotRow-int(mMaxSize.y/64))
 			{
 				if((*it)->getType()=="Player")
 				{
@@ -119,7 +121,11 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 			RECT.width=mMaxSize.x;
 			if(RECT.contains(Current.mouseButton.x,Current.mouseButton.y))
 			{
-				mSelected=!mSelected;
+				mSelected=false;
+			}
+			else
+			{
+				mSelected=true;
 			}
 		}
 	}

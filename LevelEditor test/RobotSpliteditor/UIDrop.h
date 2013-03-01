@@ -132,7 +132,7 @@ public:
 		else
 		{
 			int i=mOptions.size();
-			if(i>(mRows))
+			if(i>(mRows)&&mRows>0)
 			{
 				Size.y=mRows*(mBSize.y+5);
 				Size.x=mBSize.x*int(((i-1)/mRows)+1);

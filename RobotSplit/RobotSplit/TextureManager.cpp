@@ -227,6 +227,11 @@ void TextureManager::loadTexture()
 	mTextureMap["House4"].loadFromFile("Texture/Tutorials/House02.png");
 	mTextureMap["House5"].loadFromFile("Texture/Tutorials/House03.png");
 	mTextureMap["House6"].loadFromFile("Texture/Tutorials/House04.png");
+	mTextureMap["House7"].loadFromFile("Texture/Tutorials/House04_Mini01.png");
+	mTextureMap["House8"].loadFromFile("Texture/Tutorials/House04_Mini02.png");
+	mTextureMap["HouseEdge1"].loadFromFile("Texture/Tutorials/Boulding_Board_End_L.png");
+	mTextureMap["HouseEdge2"].loadFromFile("Texture/Tutorials/Boulding_Board_End_R.png");
+
 	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
 	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
@@ -234,6 +239,7 @@ void TextureManager::loadTexture()
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
+	mTextureMap["BankExit"].loadFromFile("Texture/Tutorials/Emergency_Exit01.png");
 	mTextureMap["BGTutorial"].loadFromFile("Texture/Tutorials/tutorial_background.png");
 	mTextureMap["WoodBox"].loadFromFile("Texture/Tutorials/woodbox.png");
 	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
@@ -343,8 +349,6 @@ void TextureManager::loadTexture()
 	mTextureMap["QuitToMenu"].loadFromFile("Texture/Menu/Quit_To_Menu.png");
 	mTextureMap["Restart"].loadFromFile("Texture/Menu/Restart.png");
 	mTextureMap["Resume"].loadFromFile("Texture/Menu/Resume.png");
-	mTextureMap["Slider"].loadFromFile("Texture/Menu/Slider.png");
-	mTextureMap["SliderIcon"].loadFromFile("Texture/Menu/Slider_Icon.png");
 	mTextureMap["StoryMode"].loadFromFile("Texture/Menu/Story_Mode.png");
 	mTextureMap["Sure"].loadFromFile("Texture/Menu/Sure.png");
 	mTextureMap["TimeTrial"].loadFromFile("Texture/Menu/Time_Trial.png");
@@ -356,6 +360,8 @@ void TextureManager::loadTexture()
 	mTextureMap["LeftArrow"].loadFromFile("Texture/Menu/Arrow_Left.png");
 	mTextureMap["RightArrow"].loadFromFile("Texture/Menu/Arrow_Right.png");
 	mTextureMap["ControlSchedule"].loadFromFile("Texture/Menu/Control_Schedule.png");
+	mTextureMap["Dot"].loadFromFile("Texture/Menu/dot.png");
+	mTextureMap["Colon"].loadFromFile("Texture/Menu/colon.png");
 
 }
 

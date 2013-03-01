@@ -43,6 +43,7 @@ protected:
 	bool mActive, mStartActive;
 
 	Laser* mLaser;
+	friend	class	XmlSaver;
 };
 
 #endif

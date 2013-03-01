@@ -24,7 +24,7 @@ private:
 	int mLives;
 	int mStartLives;
 	bool mDestructible;
-
+	friend class Toolbar;
 	sf::Texture mTexture;
 };
 

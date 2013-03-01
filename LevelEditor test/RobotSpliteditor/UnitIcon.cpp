@@ -21,7 +21,7 @@ void UnitIcon::render(sf::RenderWindow& window,sf::Vector2f Position,int MaxSize
 	int i=render.getGlobalBounds().height;
 	if(i<render.getTextureRect().width)
 		i=render.getTextureRect().width;
-	float Size=MaxSize/i;
+	float Size=float(MaxSize)/float(i);
 	if(Size>1.f)
 		Size=1.f;
 	render.setScale(Size,Size);

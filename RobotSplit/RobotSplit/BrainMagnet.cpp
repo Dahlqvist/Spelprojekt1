@@ -15,11 +15,13 @@ BrainMagnet::BrainMagnet(std::string spriteName):
 	ropeSwing=true;
 }
 
-void BrainMagnet::setSolid(bool b){
+void BrainMagnet::setSolid(bool b)
+{
 	mSolid=b;
 }
 
-void BrainMagnet::update(){
+void BrainMagnet::update()
+{
 	mActiveAnimation->update();
 
 	if(mRot>=45)
@@ -55,16 +57,19 @@ void BrainMagnet::update(){
 		BrainMagnet::rotate(mRot);
 	}
 
-	if(mBrainAni.getCurrentFrame()!=6){
+	if(mBrainAni.getCurrentFrame()!=6)
+	{
 		mActiveAnimation=&mBrainAni;
 		mSolid=false;
 	}
-	else{
+	else
+	{
 		mActiveAnimation=&mBrain;
 	}
 }
 
-sf::Sprite BrainMagnet::getSprite(){
+sf::Sprite BrainMagnet::getSprite()
+{
 	mActiveAnimation->setPosition(mPosition);
 	mSprite=mActiveAnimation->getSprite();
 	mSprite.setPosition(mSprite.getPosition()+sf::Vector2f(mSprite.getGlobalBounds().width/2, 10));
@@ -72,7 +77,8 @@ sf::Sprite BrainMagnet::getSprite(){
 	mSprite.setRotation(mRotation);
 	return mSprite;
 }
-void BrainMagnet::restartAnimations(){
+void BrainMagnet::restartAnimations()
+{
 	mBrainAni.restart();
 	mTimer.restart(); 
 	mActiveAnimation=&mBrainAni;

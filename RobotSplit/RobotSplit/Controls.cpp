@@ -56,4 +56,13 @@ void Controls::input()
 {
 	if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 				mStateInput.changeState("Last");
+	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Escape)
+	{
+		mBlipPos.y -= (100*mStatus);
+		mBlip.setPosition(mBlipPos);
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+		mStatus = 0;
+		mStateInput.changeState("Last");
+	}
 }

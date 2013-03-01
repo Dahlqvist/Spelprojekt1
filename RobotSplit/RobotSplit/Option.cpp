@@ -1,8 +1,7 @@
 #include "Option.h"
 #include "StateInput.h"
 #include "Window.h"
-#include "MenuClock.h"
-
+#include "Timer.h"
 Option::Option(): mStateInput(StateInput::getInstance()),
 			mMainBackground("Main", 1, 1),
 			mInGameBackground("Ingame", 1, 1),
@@ -95,5 +94,14 @@ void Option::input()
 				mStatus = 0;
 				mStateInput.changeState("Last");
 			}
+		}
+		else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Escape)
+		{
+			mBlipPos.y -= (100*mStatus);
+			mBlip.setPosition(mBlipPos);
+			currentSelection->setCurrentFrame(0);
+			currentSelection->update();
+			mStatus = 0;
+			mStateInput.changeState("Last");
 		}
 }

@@ -2,7 +2,6 @@
 
 #include "StateInput.h"
 #include "Window.h"
-#include "MenuClock.h"
 #include "Music.h"
 #include "Sound.h"
 
@@ -172,6 +171,7 @@ void Audio::input()
 {
 	int mChoices = 4;
 		//Byta rad
+	if(!mChangeVolume)
 		changeSelection(mChoices);
 
 		//Vad som händer när man trycker på enter på respektive rad
@@ -308,6 +308,15 @@ void Audio::select()
 			mStatus = 0;
 			mStateInput.changeState("Last");
 		}
+	}
+	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Escape)
+	{
+		mBlipPos.y -= (100*mStatus);
+		mBlip.setPosition(mBlipPos);
+		currentSelection->setCurrentFrame(0);
+		currentSelection->update();
+		mStatus = 0;
+		mStateInput.changeState("Last");
 	}
 }
 
