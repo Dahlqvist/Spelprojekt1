@@ -247,7 +247,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<Eric::getSpeed()+1.1) && ((mUnitsOnLeftTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnLeftBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
 					{
-						std::cout<<"Above"<<std::endl;
 						while (mCollidedSides.count(BOTTOM)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(BOTTOM));
@@ -264,7 +263,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<Eric::getSpeed()+1.1) && ((mUnitsOnRightTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnRightBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
 					{
-						std::cout<<"Below"<<std::endl;
 						while (mCollidedSides.count(TOP)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(TOP));
@@ -288,7 +286,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1.1) && ((mUnitsOnTopLeft.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
-						std::cout<<"left"<<std::endl;
 						while (mCollidedSides.count(LEFT)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(LEFT));
@@ -307,7 +304,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1.1) && ((mUnitsOnTopRight.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomRight.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
-						std::cout<<"Right"<<std::endl;
 						while (mCollidedSides.count(RIGHT)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(RIGHT));
