@@ -297,7 +297,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
 					}
-
 				}
 				//If player is right of object
 				else
@@ -407,7 +406,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	}
 	if (mUnits[unit]->getId()=="Checkpoint")
 	{
-		
 		if (mPlayer->getTogether() || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtCheckpoint==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtCheckpoint==unit)))
 		{
 			mUnits[unit]->activate();
