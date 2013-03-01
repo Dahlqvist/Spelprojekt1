@@ -138,6 +138,9 @@
     <ClCompile Include="Checkpoint.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="MiniBot.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -278,6 +281,9 @@
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Checkpoint.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniBot.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
   </ItemGroup>

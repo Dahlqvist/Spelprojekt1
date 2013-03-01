@@ -101,6 +101,7 @@ sfml-main.lib
     <ClCompile Include="FeetWall.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
+    <ClCompile Include="MiniBot.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserDeactivator.cpp" />
@@ -150,6 +151,7 @@ sfml-main.lib
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameMenu.h" />
+    <ClInclude Include="MiniBot.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserDeactivator.h" />
@@ -192,7 +194,9 @@ sfml-main.lib
     </None>
     <None Include="Bana4.xml" />
     <None Include="Bana5.xml" />
-    <None Include="Bana6.xml" />
+    <None Include="Bana6.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tutorial2.xml">
       <SubType>Designer</SubType>
     </None>
