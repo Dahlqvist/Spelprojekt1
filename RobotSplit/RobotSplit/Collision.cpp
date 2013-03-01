@@ -245,7 +245,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is above object
 				if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getGravity()+1.1) || ((mUnitsOnTopLeft.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) || (mUnitsOnTopRight.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getGravity()+1.1) || ((mUnitsOnTopLeft.count(mUnits[unit])==0 && !isCollidedSide(LEFT)) || (mUnitsOnTopRight.count(mUnits[unit])==0 && !isCollidedSide(RIGHT))))
 					{
 						mMovedUp=true;
 						moveDistance.y=-(collisionRect.height-1);
@@ -262,8 +262,9 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is below object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getGravity()+1.1) || ((mUnitsOnBottomLeft.count(mUnits[unit])==0 && !isCollidedSide(RIGHT)) || (mUnitsOnBottomRight.count(mUnits[unit])==0 && !isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.width>Eric::getSpeed()+1.1) || ((mUnitsOnBottomLeft.count(mUnits[unit])==0 && !isCollidedSide(LEFT)) || (mUnitsOnBottomRight.count(mUnits[unit])==0 && !isCollidedSide(RIGHT))))
 					{
+						//std::cout<<mUnitsOnTopLeft.count(mUnits[unit])<<" "<<isCollidedSide(LEFT)<<" "<<mUnitsOnTopRight.count(mUnits[unit])<<" "<<isCollidedSide(RIGHT)<<std::endl;						
 						mMovedDown=true;
 						moveDistance.y=collisionRect.height-1;
 						mMovedY=true;
@@ -304,7 +305,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is right of object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()) || ((mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
+					if ((mPlayer->getId(mPlayerPart)=="PlayerPartHead" || collisionRect.height>Eric::getSpeed()+1.1) || ((mUnitsOnRightTop.count(mUnits[unit])==0 && !isCollidedSide(BOTTOM)) || (mUnitsOnRightBottom.count(mUnits[unit])==0 && !isCollidedSide(TOP))))
 					{
 						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
