@@ -38,7 +38,7 @@ Game::Game():
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
-	mSecurityLevel=0;
+	mSecurityLevel=2;
 	Music::loadMusic("Music/menu_1.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
@@ -59,6 +59,9 @@ Game::Game():
 	mBanor.push_back("Bana1.xml");
 	mBanor.push_back("Bana2.xml");
 	mBanor.push_back("Bana3.xml");
+	mBanor.push_back("Bana4.xml");
+	mBanor.push_back("Bana5.xml");
+	mBanor.push_back("Bana6.xml");
 }
 
 Game::~Game()

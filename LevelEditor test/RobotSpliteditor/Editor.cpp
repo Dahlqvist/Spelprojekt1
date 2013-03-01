@@ -50,7 +50,7 @@ void	Editor::renderLevel(View& Target)
 	}
 	if(mLevel.ifPlayerExist())
 	{
-		mLevel.getPlayer()->draw(mWindow);
+		mLevel.getPlayer()->draw(mWindow, true);
 	}
 	for(UnitVector::size_type i=0;i < Units.size();i++)
 	{
@@ -63,7 +63,7 @@ void	Editor::renderLevel(View& Target)
 	}
 	if(mSelectedPlayer.isActive())
 	{
-		mSelectedPlayer.getObject()->draw(mWindow);		
+		mSelectedPlayer.getObject()->draw(mWindow, true);		
 	}
 	mWindow.setView(mWindow.getDefaultView());
 }

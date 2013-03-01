@@ -353,5 +353,14 @@
     <None Include="Bana1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Bana4.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana5.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana6.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>
