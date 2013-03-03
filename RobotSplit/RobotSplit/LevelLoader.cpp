@@ -51,7 +51,7 @@ Level	LevelLoader::getLevel()
 		//Initiation of level begins
 		//Sets the level's name
 		RetLevel.setName(getValue(LevelNode->first_node("Name")));
-		RetLevel.setBackground(getBackground());
+		addBackground(RetLevel);
 		//Sets the level's background
 		/*int	Frames,Speed;
 		float PosX, PosY;
@@ -101,7 +101,7 @@ Level	LevelLoader::getLevel()
 			}
 			else if(type=="Line")
 			{
-				addLine(RetLevel,Gameobject);
+//				addLine(RetLevel,Gameobject);
 			}
 			else if(type=="DialogueBox")
 			{
@@ -157,7 +157,7 @@ Level	LevelLoader::getLevel()
 	return	RetLevel;
 }
 
-vector<Background*>	LevelLoader::getBackground()
+void	LevelLoader::addBackground(Level	&Source)
 {
 	rapidxml::xml_node<>	*CurrentChild, *Node;
 	string					CurrentValue;
@@ -211,9 +211,9 @@ vector<Background*>	LevelLoader::getBackground()
 		retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
 	}
 	while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
-
-	//Adds the Player pointer to the Level object
-	return retBackground;
+	Source.setBackground(retBackground);
+	Source.getBackgroundWrap().setFrames(Frames);
+	Source.getBackgroundWrap().setSpeed(Speed);
 }
 
 void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)

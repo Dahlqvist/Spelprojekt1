@@ -30,6 +30,7 @@ private:
 	string	mFilename;
 	rapidxml::xml_document<>	mDocument;
 	//Functions adding objects to the parameter				(Done)
+	void	addBackground	(Level&		 Source,xml_node<>* Parent);
 	void	addPlayer		(Player		*Source,xml_node<>* Parent);
 	void	addPlatform		(Unit		*Source,xml_node<>* Parent);
 	void	addLaser		(Unit		*Source,UnitVector& Vector,xml_node<>* Parent);
