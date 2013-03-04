@@ -632,7 +632,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue,Id;
+	string					CurrentValue,Id,Sprite;
 	Checkpoint				*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 	bool					Solid=true, Behind=false;
@@ -674,6 +674,9 @@ void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 	CurrentChild=	Node->first_node("Type");
 	Id=getValue(CurrentChild);
 
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=getValue(CurrentChild);
+
 	//Sets if solid
 	CurrentChild=	Node->first_node("Solid");
 	//If solid is given
@@ -697,7 +700,7 @@ void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 	}
 	
 	//Creates an Unit object
-	TempObject=		new Checkpoint(Position, Size, Offset, new Animation("CheckpointAnim", 100, 5));
+	TempObject=		new Checkpoint(Position, Size, Offset, new Animation(Sprite, 100, 5));
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

@@ -207,6 +207,7 @@
         <y>96</y>
       </Size>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
