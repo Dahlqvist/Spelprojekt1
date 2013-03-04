@@ -704,7 +704,7 @@ void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 	}
 	
 	//Creates an Unit object
-	TempObject=		new Checkpoint(Position, Size, Offset,SpriteOn, SpriteOff);
+	TempObject=		new Checkpoint(Position, Size, Offset, new Animation("CheckpointAnim", 100, 5));
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
