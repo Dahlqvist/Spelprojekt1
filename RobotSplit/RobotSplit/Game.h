@@ -45,9 +45,6 @@ private:
 	std::vector<std::string> mBanor;
 	int mBana;
 	//Sound& mSound;
-	MiniBot mMini1;
-	MiniBot mMini2;
-	MiniBot mMini3;
 	Timer* mTimer;
 	
 };

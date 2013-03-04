@@ -46,6 +46,8 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mCourser=new Courser;
 	Player::initSprites();
 	mRocketing=false;
+	mDying=false;
+	mDieTimer.restart();
 }
 void Player::initSprites()
 {
@@ -91,7 +93,10 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 			Window.draw(mFeet.getUnit()->getSprite());
 		}
 
-		Window.draw(mHead.getSprite());
+		if(mHead.getAttached()==false)
+		{
+			Window.draw(mHead.getSprite());
+		}
 		if(mHead.getUnit()!=0)
 		{
 			Window.draw(mHead.getUnit()->getSprite());
@@ -119,6 +124,23 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 void Player::update()
 {
 	mRocketing=false;
+	if(mDying==true)
+	{
+		if(mBodyDied==true)
+		{
+			if(mBody.getFrame()==7)
+			{
+				Player::restartPlayer();
+			}
+		}
+		else
+		{
+			if(mFeet.getFrame()==7)
+			{
+				Player::restartPlayer();
+			}
+		}
+	}
 	//Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03)
 	{
@@ -193,7 +215,7 @@ void Player::update()
 }
 void Player::move(sf::Vector2f Vec)
 {
-	if(mDashing==false)
+	if(mDashing==false && mDying==false)
 	{
 		if(Vec.x>0)
 		{
@@ -239,6 +261,10 @@ void Player::move(sf::Vector2f Vec)
 			{
 				mFeet.forceMove(sf::Vector2f(0, -16));
 				mFeet.setAttachedWall(true, 1);
+			}
+			else if(UnitManager::isCollidedSide(0, 2) && Vec.y>0 && mKeys==false)
+			{
+				mFeet.setAttachedWall(false);
 			}
 			else
 			{
@@ -646,6 +672,7 @@ void Player::interact(int action)
 				mFeet.jumpReset();
 				mMagnetTimer.restart();
 			}
+			lastKey=action;
 		}
 		if(action==4)
 		{
@@ -911,6 +938,8 @@ void Player::restartPlayer()
 	mBody.setAttached(true);
 	mFeet.setAttached(false);
 	mFeet.setAttachedWall(false);
+	mBody.jumpReset();
+	mFeet.jumpReset();
 	mTogether=true;
 	mFeetAttached=false;
 	Player::move(sf::Vector2f((float)0.1, 0));
@@ -920,6 +949,10 @@ void Player::restartPlayer()
 	mClock.restart();
 	mClockStart=false;
 	mWinning=false;
+	mDying=false;
+
+	mFeet.aniTimer();
+	mBody.aniTimer();
 }
 std::string Player::getId(int i)
 {
@@ -931,6 +964,32 @@ void Player::dropFeet()
 	mFeet.jumpReset();
 }
 
+bool Player::getDying()
+{
+	return mDying;
+}
+void Player::die(int part)
+{
+	mDying=true;
+	mHead.setAttached(true);
+	mHeadless=false;
+	if(mTogether==true)
+	{
+		mFeet.die();
+		mBody.die();
+		mBodyDied=true;
+	}
+	else if(part==0)
+	{
+		mFeet.die();
+		mBodyDied=false;
+	}
+	else
+	{
+		mBodyDied=true;
+		mBody.die();
+	}
+}
 void Player::win(){
 	if(mWinning==false)
 	{

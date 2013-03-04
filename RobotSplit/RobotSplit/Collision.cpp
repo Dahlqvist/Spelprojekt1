@@ -352,7 +352,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 
 	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill")
 	{
-		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead")
+		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
 			killPlayer();
 		}
@@ -432,7 +432,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 
 void Collision::killPlayer()
 {
-	mPlayer->restartPlayer();
+	//mPlayer->restartPlayer();
+	if(mPlayer->getDying()==false){
+		mPlayer->die(mPlayerPart);
+	}
 	mResetted=true;
 	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
 	{

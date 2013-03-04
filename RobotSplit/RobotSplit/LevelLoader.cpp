@@ -22,6 +22,7 @@
 #include "LaserDeactivator.h"
 #include "Meanix.h"
 #include "Checkpoint.h"
+#include "MiniBot.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -118,6 +119,10 @@ Level	LevelLoader::getLevel()
 			else if(type=="Meanix")
 			{
 				addMeanix(RetLevel,Gameobject);
+			}
+			else if(type=="MiniBot")
+			{
+				addMiniBot(RetLevel,Gameobject);
 			}
 			else if (type=="Checkpoint")
 			{
@@ -432,6 +437,47 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	Position.y=((float)atof(CurrentValue.c_str()));
 	//Creates a Platform object
 	TempObject=		new Meanix(Position);
+	//Puts the Platform object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
+void LevelLoader::addMiniBot(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue;
+	MiniBot					*TempObject;
+	sf::Vector2f			Position;
+	bool					SideWays;
+	float					Length, Rotation;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	CurrentChild=	Node->first_node("Length");
+	Length=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("Rotation");
+	Rotation=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("SideWays");
+	if (getValue(CurrentChild)=="true")
+	{
+		SideWays=true;
+	}
+	else
+	{
+		SideWays=false;
+	}
+
+	//Creates a Platform object
+	TempObject=		new MiniBot(Position, Rotation, Length, SideWays);
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

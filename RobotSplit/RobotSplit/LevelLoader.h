@@ -22,6 +22,7 @@ private:
 	void	addPlayer		(Level	&level,xml_node<>* Node);
 	void	addPlatform		(Level	&level,xml_node<>* Node);
 	void	addLaser		(Level	&level,xml_node<>* Node);
+	void	addMiniBot		(Level	&level,xml_node<>* Node);
 	void	addLine			(Level	&level,xml_node<>* Node);
 	void	addDialogueBox	(Level	&level,xml_node<>* Node);
 	void	addTrigger		(vector<Trigger*> &triggers,std::vector<std::string> &triggerTargets,xml_node<>* Node);

@@ -31,17 +31,14 @@ Game::Game():
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTimer(new Timer),
-		mTime((float)0.2),
-		mMini1(sf::Vector2f(1024, 256), 90, 288, false),
-		mMini2(sf::Vector2f(960, 672), 0, 160, true),
-		mMini3(sf::Vector2f(1184, 64), 270, 320, false)
+		mTime((float)0.2)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
-	mSecurityLevel=2;
+	mSecurityLevel=0;
 	Music::loadMusic("Music/menu_1.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
@@ -155,10 +152,6 @@ void Game::update()
 		mPlayer->update();
 		Objects->update();
 		Objects->collide();
-
-		//mMini1.update();
-		//mMini2.update();
-		//mMini3.update();
 
 		moveCamera();
 	}
@@ -307,9 +300,10 @@ void Game::render()
 	mPlayer->draw(mWindow, true);
 	mPlayer->resetAnimations();
 
-	//mWindow.draw(mMini1.getSprite());
-	//mWindow.draw(mMini2.getSprite());
-	//mWindow.draw(mMini3.getSprite());
+	/*mWindow.draw(mMini1.getSprite());
+	mWindow.draw(mMini2.getSprite());
+	mWindow.draw(mMini3.getSprite());
+	mWindow.draw(mMini4.getSprite());*/
 
 	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	//{
