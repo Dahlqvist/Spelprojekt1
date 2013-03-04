@@ -11,8 +11,8 @@ std::set<Unit*> Collision::mUnitsOnLeftBottom;
 std::set<Unit*> Collision::mUnitsOnRightTop;
 std::set<Unit*> Collision::mUnitsOnRightBottom;
 
-int Collision::mFeetAtCheckpoint=-1;
-int Collision::mBodyAtCheckpoint=-1;
+int Collision::mFeetAtUnit=-1;
+int Collision::mBodyAtUnit=-1;
 
 Collision::Collision(int playerPart, Player& player, std::vector<Unit*> &mUnits)
 	:mMovedX(false)
@@ -406,7 +406,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	}
 	if (mUnits[unit]->getId()=="Checkpoint")
 	{
-		if (mPlayer->getTogether() || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtCheckpoint==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtCheckpoint==unit)))
+		if (mPlayer->getTogether() || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtUnit==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtUnit==unit)))
 		{
 			mUnits[unit]->activate();
 			mPlayer->reFuel();
@@ -419,12 +419,12 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
 		{
 			mPlayer->reFuel();
-			mFeetAtCheckpoint=unit;
+			mFeetAtUnit=unit;
 			mUnits[unit]->setCurrentFrame(2);
 		}
 		if (mPlayer->getId(mPlayerPart)=="PlayerPartBody")
 		{
-			mBodyAtCheckpoint=unit;
+			mBodyAtUnit=unit;
 			mUnits[unit]->setCurrentFrame(1);
 		}
 	}

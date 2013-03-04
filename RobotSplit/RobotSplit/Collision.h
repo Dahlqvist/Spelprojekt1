@@ -15,7 +15,7 @@ public:
 	void collide();
 	bool isCollidedSide(int side);
 	static void unitAtSides(const std::vector<Unit*> &objects);
-	static void resetCheckpointCollision(){mFeetAtCheckpoint=-1; mBodyAtCheckpoint=-1;};
+	static void resetCheckpointCollision(){mFeetAtUnit=-1; mBodyAtUnit=-1;};
 
 	enum sides{
 		MIN_VALUE_SIDES,
@@ -47,7 +47,7 @@ private:
 	bool mMovedX, mMovedY;
 	bool mResetted;
 	bool mMovedLeft, mMovedRight, mMovedUp, mMovedDown;
-	static int mFeetAtCheckpoint, mBodyAtCheckpoint;
+	static int mFeetAtUnit, mBodyAtUnit;
 
 	int mPlayerPart;
 
