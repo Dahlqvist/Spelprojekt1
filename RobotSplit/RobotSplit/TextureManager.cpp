@@ -278,6 +278,9 @@ void TextureManager::loadTexture()
 	mTextureMap["BankVault"].loadFromFile("Texture/Tutorials/Bank/Vault.png");
 	
 	//INTIIALIZING TEMPORARYBANA
+
+	mTextureMap["BankBackground"].loadFromFile("Texture/Background/BackgroundBank.png");
+
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
 	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");

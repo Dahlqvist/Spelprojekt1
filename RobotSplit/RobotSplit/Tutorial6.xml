@@ -5,25 +5,15 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial6a"</SpriteName>
+      <SpriteName>"BankBackground"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Tutorial6b"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
   </Backgrounds>
 
   <Objects>
-
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>

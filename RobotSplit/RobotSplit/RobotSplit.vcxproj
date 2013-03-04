@@ -197,7 +197,9 @@ sfml-main.lib
     <None Include="Bana6.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tutorial8.xml" />
+    <None Include="Tutorial8.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Tutorial2.xml">
       <SubType>Designer</SubType>
     </None>
@@ -210,9 +212,15 @@ sfml-main.lib
     <None Include="Tutorial3.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tutorial4.xml" />
-    <None Include="Tutorial5.xml" />
-    <None Include="Tutorial6.xml" />
+    <None Include="Tutorial4.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Tutorial5.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Tutorial6.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
