@@ -23,6 +23,71 @@
   </Backgrounds>
 
   <Objects>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpDialogue4"</SpriteName>
+      <Position>
+        <x>480</x>
+        <y>256</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>256</x>
+        <y>472</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+    <Unit>
+      <Type>"Player"</Type>
+      <Position>
+        <x>64</x>
+        <y>384</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>320</x>
+        <y>500</y>
+      </Position>
+      <Id>"LaserRed1"</Id>
+      <Active>true</Active>
+      <Length>320</Length>
+      <Rotation>270</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>352</x>
+        <y>532</y>
+      </Position>
+      <Id>"LaserRed1"</Id>
+      <Active>true</Active>
+      <Length>288</Length>
+      <Rotation>270</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    
+  <!--<Objects>
     <Unit>
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
@@ -126,18 +191,6 @@
         <y>32</y>
       </Size>
       <Solid>false</Solid>
-    </Unit>
-
-    <Unit>
-      <Type>"Player"</Type>
-      <Position>
-        <x>64</x>
-        <y>384</y>
-      </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
 
     <Unit>
@@ -561,14 +614,57 @@
         <x>384</x>
         <y>224</y>
       </Position>
+    </Unit>-->
+
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"BankFloor1"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>480</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"BankFloor2"</SpriteName>
+      <Position>
+        <x>640</x>
+        <y>480</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"BankBalcony"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>124</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Light"</Type>
+      <SpriteName>"BankLight"</SpriteName>
+      <Position>
+        <x>768</x>
+        <y>224</y>
+      </Position>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"Light"</Type>
+      <SpriteName>"BankLight"</SpriteName>
+      <Position>
+        <x>256</x>
+        <y>224</y>
+      </Position>
+      <Solid>false</Solid>
     </Unit>
 
     <Unit>
       <Type>"Door"</Type>
-      <SpriteName>"Exit"</SpriteName>
+      <SpriteName>"BankVaultSign"</SpriteName>
       <Position>
-        <x>1152</x>
-        <y>352</y>
+        <x>1116</x>
+        <y>380</y>
       </Position>
       <Size>
         <x>64</x>
@@ -577,7 +673,7 @@
       <Solid>false</Solid>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Lava"</Type>
       <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
@@ -828,38 +924,26 @@
         <x>64</x>
         <y>64</y>
       </Size>
-    </Unit>
-
+    </Unit>-->
     <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamTop1"</SpriteName>
+      <Type>Kill</Type>
       <Position>
         <x>0</x>
-        <y>0</y>
+        <y>768</y>
       </Position>
       <Size>
         <x>1280</x>
         <y>64</y>
       </Size>
+      <SpriteName>""</SpriteName>
+      <Solid>false</Solid>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamTop2"</SpriteName>
-      <Position>
-        <x>640</x>
-        <y>0</y>
-      </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamLeft1"</SpriteName>
+      <SpriteName>"BankRam1"</SpriteName>
       <Position>
         <x>0</x>
-        <y>64</y>
+        <y>0</y>
       </Position>
       <Size>
         <x>64</x>
@@ -868,38 +952,14 @@
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamRight1"</SpriteName>
+      <SpriteName>"BankRam2"</SpriteName>
       <Position>
         <x>1216</x>
-        <y>64</y>
+        <y>0</y>
       </Position>
       <Size>
         <x>64</x>
         <y>636</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamPipeLeft1"</SpriteName>
-      <Position>
-        <x>0</x>
-        <y>696</y>
-      </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamPipeRight1"</SpriteName>
-      <Position>
-        <x>1202</x>
-        <y>696</y>
-      </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
       </Size>
     </Unit>
   </Objects>

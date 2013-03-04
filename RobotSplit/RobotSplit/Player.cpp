@@ -340,23 +340,26 @@ bool Player::getHeadless()
 //Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mDashing==false)
+	if(mDashing==false && mJumpTemp.getElapsedTime().asSeconds()>0.5)
 	{
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
 			mFeet.jump(Eric::getJump());
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
+			mJumpTemp.restart();
 		}
 		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyActive==true && mBodyStandingFeet==true || mBodyActive==true && (mAttachedMagnet==true && mBodyAttached==true))
 		{
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
+			mJumpTemp.restart();
 		}
 		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || mBodyActive==false && (mAttachedMagnet==true && mBodyAttached==false))
 		{
 			mFeet.jump(Eric::getJump());
 			Sound::playSound("Jump");
+			mJumpTemp.restart();
 		}
 	}	
 }
@@ -571,7 +574,7 @@ void Player::interact(int action)
 					Sound::playSound("Move");
 				}
 			}
-			if(mAttachedMagnet==true && mBodyActive==mBodyAttached && mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet())
+			if(mAttachedMagnet==true && mBodyActive==mBodyAttached /*&& mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet()*/)
 			{
 				mHead.setMagnetSolid(false);
 				mAttachedMagnet=false;

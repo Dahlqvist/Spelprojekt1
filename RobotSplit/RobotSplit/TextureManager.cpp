@@ -221,6 +221,7 @@ void TextureManager::loadTexture()
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
+	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 
@@ -243,6 +244,7 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
+	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
@@ -251,10 +253,29 @@ void TextureManager::loadTexture()
 	mTextureMap["WoodBox"].loadFromFile("Texture/Tutorials/woodbox.png");
 	mTextureMap["Billboard1"].loadFromFile("Texture/Tutorials/Billboard01.png");
 	mTextureMap["Billboard2"].loadFromFile("Texture/Tutorials/Billboard02.png");
+	mTextureMap["Billboard3"].loadFromFile("Texture/Tutorials/oil_billboard.png");
 	mTextureMap["CheckpointOff"].loadFromFile("Texture/Tutorials/checkpoint_off.png");
 	mTextureMap["CheckpointOn"].loadFromFile("Texture/Tutorials/checkpoint_active.png");
 	mTextureMap["Cloud"].loadFromFile("Texture/Tutorials/Cloud.png");
+	//Bank
+	mTextureMap["BankFloor"].loadFromFile("Texture/Tutorials/Bank/Floor.png");
+	mTextureMap["BankBalcony"].loadFromFile("Texture/Tutorials/Bank/Balcony.png");
+	mTextureMap["BankLight"].loadFromFile("Texture/Tutorials/Bank/Light.png");
+	mTextureMap["BankVaultSign"].loadFromFile("Texture/Tutorials/Bank/VAULT_SIGN.png");
 
+	mTextureMap["BankFloor1"].loadFromFile("Texture/Tutorials/Bank/Floor_Pt01.png");
+	mTextureMap["BankFloor2"].loadFromFile("Texture/Tutorials/Bank/Floor_Pt02.png");
+
+	mTextureMap["BankRam1"].loadFromFile("Texture/Tutorials/Bank/bank_wall1.png");
+	mTextureMap["BankRam2"].loadFromFile("Texture/Tutorials/Bank/bank_wall2.png");
+
+	mTextureMap["BankFloor3"].loadFromFile("Texture/Tutorials/Bank/Floor2_Pt01.png");
+	mTextureMap["BankFloor4"].loadFromFile("Texture/Tutorials/Bank/Floor2_Pt02.png");
+	mTextureMap["BankFloor5"].loadFromFile("Texture/Tutorials/Bank/Floor2_Pt03.png");
+	mTextureMap["BankFloor6"].loadFromFile("Texture/Tutorials/Bank/Floor2_Pt04.png");
+
+	mTextureMap["BankVault"].loadFromFile("Texture/Tutorials/Bank/Vault.png");
+	
 	//INTIIALIZING TEMPORARYBANA
 	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
 
