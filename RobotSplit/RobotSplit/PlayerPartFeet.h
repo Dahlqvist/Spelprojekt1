@@ -24,11 +24,12 @@ public:
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
+	virtual int getFrame();
 
 	float getFuel();
 	
+	void die();
 	void setId(std::string);
-	int getFrame();
 	void activateRocketBoots();
 	void reFuel();
 	void jumpReset();
@@ -37,6 +38,7 @@ public:
 	void setAttachedWall(bool, int i=0);
 	void decideAnimation(sf::Vector2f);
 	void restartAnimation();
+	void aniTimer();
 private: 
 	bool mAttached, mAttachedWall;
 	Unit* mUnit;
@@ -58,6 +60,7 @@ private:
 	Animation mJumpAni;
 	Animation mJumpAniLeft;
 	Animation mWinningAni;
+	Animation mDying;
 	sf::Vector2f mPosition; 
 	std::string mId;
 	float mJump, mAniTime, mFuel, mRotation, mCounter;

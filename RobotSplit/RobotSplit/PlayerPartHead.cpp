@@ -43,7 +43,7 @@ void PlayerPartHead::setPosition(sf::Vector2f Vec)
 {
 	if(mAttached==true)
 	{
-		mPosition=mBody->getPosition();
+		mPosition=mBody->getPosition()+sf::Vector2f(26, 26);
 	}
 	else
 	{
@@ -133,4 +133,8 @@ void PlayerPartHead::setMagnetCollided(bool b)
 void PlayerPartHead::winning()
 {
 
+}
+int PlayerPartHead::getFrame()
+{
+	return 0;
 }

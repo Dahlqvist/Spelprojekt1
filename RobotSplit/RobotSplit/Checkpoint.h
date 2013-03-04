@@ -14,6 +14,7 @@ public:
 private:
 	sf::Sprite mSpriteOn, mSpriteOff;
 	bool mActive;
+	friend	class	XmlSaver;
 };
 
 #endif

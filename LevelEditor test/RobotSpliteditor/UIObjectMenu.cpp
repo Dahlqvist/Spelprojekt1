@@ -81,7 +81,9 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 		for(IconVector::iterator it=mIcons.begin();it!=mIcons.end();it++)
 		{
 			Vector2i	pos((i)%int(mMaxSize.x/64),((i)/int(mMaxSize.x/64)));
-			FloatRect	HITBOX=(*it)->getHitBox(Position+Vector2f(pos.x*64,(pos.y*64)+NAME.getGlobalBounds().height-(int(mBotRow-mMaxSize.y/64)*64)));
+
+			int	MaxRows=(mMaxSize.y/64);
+			FloatRect	HITBOX=(*it)->getHitBox(Position+Vector2f(pos.x*64,(pos.y*64)+NAME.getGlobalBounds().height-((mBotRow-MaxRows)*64)));
 			if(HITBOX.contains(Current.mouseButton.x,Current.mouseButton.y)
 			&&pos.y>=mBotRow-int(mMaxSize.y/64))
 			{

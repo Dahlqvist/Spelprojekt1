@@ -103,6 +103,10 @@ void TextureManager::loadTexture()
 	mTextureMap["StixUpperIdlePartL"].loadFromFile("Texture/Stix/Stix005.png");
 	//Stix Other
 
+	mTextureMap["StixFeetDie"].loadFromFile("Texture/Stix/stix_lower_explosion_strip9_dark.png");
+
+	mTextureMap["StixBodyDie"].loadFromFile("Texture/Stix/stix_upper_explosion_strip9_dark.png");
+
 	mTextureMap["StixFuelbarEmpty"].loadFromFile("Texture/Stix/stix_fuelbar_empty.png");
 
 	mTextureMap["StixFuelbar"].loadFromFile("Texture/Stix/stix_fuelbar_fuel.png");
@@ -221,6 +225,7 @@ void TextureManager::loadTexture()
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 
 	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
+	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
 
 	//Tutorials
 	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
