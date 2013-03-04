@@ -25,8 +25,8 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-				<x>217</x>
-				<y>323</y>
+				<x>64</x>
+				<y>416</y>
 			</Position>
 		</Unit>
 		<Unit>
@@ -47,6 +47,18 @@
 			<Position>
 				<x>192</x>
 				<y>512</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;Tile4&quot;</SpriteName>
+			<Position>
+				<x>320</x>
+				<y>416</y>
 			</Position>
 			<Size>
 				<x>64</x>
@@ -693,6 +705,17 @@
 				<x>1202</x>
 				<y>696</y>
 			</Size>
+			<Solid>&quot;true&quot;</Solid>
+		</Unit>
+		<Unit>
+			<Type>&quot;Lava&quot;</Type>
+			<SpriteName>&quot;LavaMiddle&quot;</SpriteName>
+			<Speed>60</Speed>
+			<Frames>16</Frames>
+			<Position>
+				<x>950</x>
+				<y>291</y>
+			</Position>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 	</Objects>

@@ -1,13 +1,20 @@
 #include "Checkpoint.h"
 #include "Sound.h"
 
-Checkpoint::Checkpoint(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string spriteOn, std::string spriteOff)
-	:Unit(position, size, offset, "Checkpoint", spriteOff, false, true)
-	,mSpriteOn(TextureManager::getSprite(spriteOn))
-	,mSpriteOff(TextureManager::getSprite(spriteOff))
+Checkpoint::Checkpoint(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, Animation* animation)
+	:Unit(position, size, offset, "Checkpoint", animation, false, true)
 	,mActive(false)
 {
+	mAnimation->setAnimate(false);
+}
 
+void Checkpoint::update()
+{
+	Unit::update();
+	if (!mActive)
+	{
+		mAnimation->setCurrentFrame(0);
+	}
 }
 
 void Checkpoint::activate()
@@ -16,12 +23,25 @@ void Checkpoint::activate()
 	{
 		Sound::playSound("Checkpoint");
 	}
-	mSprite=mSpriteOn;
+	mAnimation->setCurrentFrame(4);
 	mActive=true;
 }
 
 void Checkpoint::deactivate()
 {
-	mSprite=mSpriteOff;
+	mAnimation->setCurrentFrame(0);
 	mActive=false;
+}
+
+void Checkpoint::draw()
+{
+	Unit::draw();
+}
+
+void Checkpoint::setCurrentFrame(int frame)
+{
+	if (!mActive)
+	{
+		mAnimation->setCurrentFrame(frame);
+	}
 }

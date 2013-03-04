@@ -8,6 +8,7 @@ class LaserDeactivator: public Trigger
 public:
 	LaserDeactivator(Trigger* trigger, float rotation);
 
+	float	getRotation(){return mRotation;}
 	void hitOnce();
 	void hit(){};
 	void draw();
