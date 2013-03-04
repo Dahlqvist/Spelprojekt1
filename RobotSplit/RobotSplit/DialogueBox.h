@@ -24,6 +24,7 @@ private:
 	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;
+	friend class XmlSaver;
 };
 
 #endif
