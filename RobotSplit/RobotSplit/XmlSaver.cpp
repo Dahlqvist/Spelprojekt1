@@ -452,8 +452,6 @@ void	XmlSaver::addCheckpoint	(Unit	*Source,xml_node<>* Parent)
 	//Generates Nodes
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
-		xml_node<> *SpriteOn	=mDocument.allocate_node(node_element,"SpriteOn",modifyString(TextureManager::getSpriteName(dynamic_cast<Checkpoint*>(Source)->mSpriteOn)));
-		xml_node<> *SpriteOff	=mDocument.allocate_node(node_element,"SpriteOff",modifyString(TextureManager::getSpriteName(dynamic_cast<Checkpoint*>(Source)->mSpriteOff)));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
@@ -472,8 +470,6 @@ void	XmlSaver::addCheckpoint	(Unit	*Source,xml_node<>* Parent)
 	{
 		Gameobject->append_node(Offset);
 	}
-	Gameobject->append_node(SpriteOn);
-	Gameobject->append_node(SpriteOff);
 	Parent->append_node(Gameobject);
 }
 
@@ -483,7 +479,7 @@ void	XmlSaver::addDialogueBox(Unit	*Source,xml_node<>* Parent)
 	//Generates Nodes
 		xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
 		xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString(Source->getId()));
-		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(dynamic_cast<Checkpoint*>(Source)->mSpriteOn)));
+		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(dynamic_cast<Checkpoint*>(Source)->getSprite())));
 		xml_node<> *Text		=mDocument.allocate_node(node_element,"Text",modifyString(box->getText().getString()));
 		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
 		xml_node<> *FadeIn		=mDocument.allocate_node(node_element,"FadeIn");
