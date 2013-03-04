@@ -40,9 +40,6 @@ void	XmlSaver::setFilename(const string& NewName)
 
 void	XmlSaver::createFile()
 {
-	//Writes the Document for quick checking of it before the program closes
-//	//std::cout<<mDocument;
-//	system("PAUSE");
 	//Creates the file to write to
 	std::ofstream	file(mFilename);
 	//Sets the standard of xml on the file
@@ -61,16 +58,8 @@ void	XmlSaver::saveLevel(Level &Source)
 		Level->append_node(Name);
 
 	//Sets the Background element's child elements and values
-		xml_node<> *Background=mDocument.allocate_node(node_element,"Background");
-	//Converts the amount of frames in the background to a c-string for the Elements value
-		xml_node<> *Frames=mDocument.allocate_node(node_element,"Frames",modifyInt(Source.getBackgroundWrap().getFrames()));
-		Background->append_node(Frames);
-	//Converts the speed of the background to c-string for the Element value
-		xml_node<> *Speed=mDocument.allocate_node(node_element,"Speed",modifyInt(Source.getBackgroundWrap().getSpeed()));
-		Background->append_node(Speed);
-	//Converts the Name into the Elements value
-		xml_node<> *SpriteName=mDocument.allocate_node(node_element,"SpriteName",modifyString(Source.getBackgroundWrap().getName()));
-		Background->append_node(SpriteName);
+		xml_node<> *Background=mDocument.allocate_node(node_element,"Backgrounds");
+		addBackground(Source,Background);
 	//Inserts the Background element into Level element
 		Level->append_node(Background);
 	//Enters the Units to Xml documents
@@ -121,6 +110,31 @@ char*	XmlSaver::modifyInt(const int &Source)
 	char	*tempValue=	new char[256];
 	itoa(Source,tempValue,10);
 	return	tempValue;
+}
+
+void	XmlSaver::addBackground(Level&	Source,xml_node<>*	Parent)
+{
+	xml_node<>	*Background;
+	for(int i=0;i<Source.getBackground().size();i++)
+	{
+		Background=mDocument.allocate_node(node_element,"Background");
+		//Converts the Name into the Elements value
+		xml_node<> *SpriteName=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(Source.getBackground()[i]->draw())));
+		Background->append_node(SpriteName);
+		//Converts the amount of frames in the background to a c-string for the Elements value
+		xml_node<> *Frames=mDocument.allocate_node(node_element,"Frames",modifyInt(Source.getBackgroundWrap().getFrames()));
+		Background->append_node(Frames);
+		//Converts the speed of the background to c-string for the Element value
+		xml_node<> *Speed=mDocument.allocate_node(node_element,"Speed",modifyInt(Source.getBackgroundWrap().getSpeed()));
+		Background->append_node(Speed);
+		xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
+		//Adds the x element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source.getBackground()[i]->draw().getPosition().x))));
+		//Adds the y element into the Position element
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source.getBackground()[i]->draw().getPosition().y))));
+		Background->append_node(Position);
+		Parent->append_node(Background);
+	}
 }
 
 void	XmlSaver::addPlayer			(Player		*Source,xml_node<>* Parent)

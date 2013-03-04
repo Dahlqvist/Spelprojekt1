@@ -220,6 +220,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 
+	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
+
 	//Tutorials
 	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
 	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");

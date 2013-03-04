@@ -31,7 +31,10 @@ Game::Game():
 		loops(0),
 		mWindow(Window::getWindow()),
 		mTimer(new Timer),
-		mTime((float)0.2)
+		mTime((float)0.2),
+		mMini1(sf::Vector2f(1024, 256), 90, 288, false),
+		mMini2(sf::Vector2f(960, 672), 0, 160, true),
+		mMini3(sf::Vector2f(1184, 64), 270, 320, false)
 {
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	Collision::unitAtSides(Objects->getUnits());
@@ -153,6 +156,10 @@ void Game::update()
 		Objects->update();
 		Objects->collide();
 
+		//mMini1.update();
+		//mMini2.update();
+		//mMini3.update();
+
 		moveCamera();
 	}
 }
@@ -168,7 +175,7 @@ void Game::input()
 	{
 		mPlayer->interact(1);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
 	{
 		mPlayer->interact(2);
 	}
@@ -299,6 +306,11 @@ void Game::render()
 	Objects->draw(mWindow, false);
 	mPlayer->draw(mWindow, true);
 	mPlayer->resetAnimations();
+
+	//mWindow.draw(mMini1.getSprite());
+	//mWindow.draw(mMini2.getSprite());
+	//mWindow.draw(mMini3.getSprite());
+
 	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	//{
 		//mWindow.draw(diaBox[i]->getSprite());
