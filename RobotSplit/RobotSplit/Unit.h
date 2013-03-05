@@ -23,6 +23,9 @@ public:
 	};
 
 	virtual sf::Sprite getSprite(){return mSprite;};
+	virtual void setSprite(sf::Sprite sprite){mSprite=sprite;};
+
+	virtual void setCurrentFrame(int anim){mAnimation->setCurrentFrame(anim);};
 
 	virtual sf::Vector2f getSize(){return mSize;};
 
