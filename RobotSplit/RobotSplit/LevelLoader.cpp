@@ -412,7 +412,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 	}
 	else
 	{
-		TempObject=		new Platform(Lives,Position,Size,Offset, Behind);
+		TempObject=		new Platform(Lives,Position,Size,Offset, Sprite, Behind);
 	}
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);

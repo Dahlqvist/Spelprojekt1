@@ -145,7 +145,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Middle_32_dark.png");
 
-	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
+	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Tiles/Break_Total_Sprite_dark.png");
 
 	mTextureMap["BlueButtonAni"].loadFromFile("Texture/Enviroment/Button_Blue_Sprite_16px.png");
 	mTextureMap["RedButtonAni"].loadFromFile("Texture/Enviroment/Button_Red_Sprite_16px.png");
