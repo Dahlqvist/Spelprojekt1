@@ -242,6 +242,14 @@
         <x>1152</x>
         <y>352</y>
       </Position>
+      <Size>
+        <x>1</x>
+        <y>128</y>
+      </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
       <Solid>false</Solid>
       <Behind>true</Behind>
     </Unit>

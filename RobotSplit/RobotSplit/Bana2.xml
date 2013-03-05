@@ -49,10 +49,102 @@
         <y>64</y>
       </Size>
     </Unit>
-    
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>704</x>
+        <y>126</y>
+      </Position>
+      <Id>"LaserBlue1"</Id>
+      <Active>true</Active>
+      <Length>418</Length>
+      <Rotation>270</Rotation>
+      <Color>"Blue"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1022</x>
+        <y>576</y>
+      </Position>
+      <Id>"LaserBlue2"</Id>
+      <Active>true</Active>
+      <Length>64</Length>
+      <Rotation>0</Rotation>
+      <Color>"Blue"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>862</x>
+        <y>64</y>
+      </Position>
+      <Id>"LaserRed1"</Id>
+      <Active>true</Active>
+      <Length>316</Length>
+      <Rotation>0</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>862</x>
+        <y>448</y>
+      </Position>
+      <Id>"LaserRed2"</Id>
+      <Active>true</Active>
+      <Length>190</Length>
+      <Rotation>0</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>896</x>
+        <y>654</y>
+      </Position>
+      <Id>"LaserRed3"</Id>
+      <Active>true</Active>
+      <Length>95</Length>
+      <Rotation>270</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1022</x>
+        <y>64</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>220</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>640</x>
+        <y>688</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>576</Length>
+      <Rotation>270</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2b"</SpriteName>
       <Position>
         <x>64</x>
         <y>512</y>
@@ -60,7 +152,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2b"</SpriteName>
       <Position>
         <x>416</x>
         <y>512</y>
@@ -68,7 +160,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2c"</SpriteName>
       <Position>
         <x>576</x>
         <y>512</y>
@@ -76,7 +168,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2e"</SpriteName>
       <Position>
         <x>576</x>
         <y>576</y>
@@ -84,7 +176,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2g"</SpriteName>
       <Position>
         <x>576</x>
         <y>640</y>
@@ -92,7 +184,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2i"</SpriteName>
       <Position>
         <x>576</x>
         <y>704</y>
@@ -100,7 +192,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2k"</SpriteName>
       <Position>
         <x>640</x>
         <y>704</y>
@@ -108,7 +200,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2m"</SpriteName>
       <Position>
         <x>704</x>
         <y>704</y>
@@ -116,7 +208,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2k"</SpriteName>
       <Position>
         <x>768</x>
         <y>704</y>
@@ -124,7 +216,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2k"</SpriteName>
       <Position>
         <x>832</x>
         <y>704</y>
@@ -132,7 +224,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2p"</SpriteName>
       <Position>
         <x>896</x>
         <y>704</y>
@@ -140,7 +232,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2l"</SpriteName>
       <Position>
         <x>960</x>
         <y>704</y>
@@ -148,7 +240,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2k"</SpriteName>
       <Position>
         <x>1024</x>
         <y>704</y>
@@ -156,7 +248,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2n"</SpriteName>
       <Position>
         <x>1088</x>
         <y>704</y>
@@ -164,7 +256,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2l"</SpriteName>
       <Position>
         <x>1152</x>
         <y>704</y>
@@ -184,7 +276,7 @@
     </Unit>-->
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2b"</SpriteName>
       <Position>
         <x>832</x>
         <y>384</y>
@@ -192,7 +284,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2b"</SpriteName>
       <Position>
         <x>992</x>
         <y>512</y>
@@ -200,7 +292,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2b"</SpriteName>
       <Position>
         <x>1120</x>
         <y>96</y>
@@ -208,7 +300,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL2j"</SpriteName>
       <Position>
         <x>640</x>
         <y>96</y>
@@ -217,7 +309,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile10S"</SpriteName>
+      <SpriteName>"TileL2Sa"</SpriteName>
       <Position>
         <x>800</x>
         <y>640</y>
@@ -225,7 +317,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile10S"</SpriteName>
+      <SpriteName>"TileL2Sb"</SpriteName>
       <Position>
         <x>736</x>
         <y>544</y>
@@ -234,7 +326,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wideb"</SpriteName>
       <Position>
         <x>544</x>
         <y>448</y>
@@ -242,7 +334,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widec"</SpriteName>
       <Position>
         <x>608</x>
         <y>448</y>
@@ -250,7 +342,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widea"</SpriteName>
       <Position>
         <x>576</x>
         <y>480</y>
@@ -258,7 +350,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wided"</SpriteName>
       <Position>
         <x>672</x>
         <y>544</y>
@@ -266,15 +358,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
-      <Position>
-        <x>672</x>
-        <y>544</y>
-      </Position>
-    </Unit>
-    <Unit>
-      <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wided"</SpriteName>
       <Position>
         <x>736</x>
         <y>640</y>
@@ -282,7 +366,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wideh"</SpriteName>
       <Position>
         <x>832</x>
         <y>640</y>
@@ -290,7 +374,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wideg"</SpriteName>
       <Position>
         <x>640</x>
         <y>160</y>
@@ -298,7 +382,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wideh"</SpriteName>
       <Position>
         <x>704</x>
         <y>160</y>
@@ -306,7 +390,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wided"</SpriteName>
       <Position>
         <x>992</x>
         <y>640</y>
@@ -314,7 +398,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widee"</SpriteName>
       <Position>
         <x>1056</x>
         <y>640</y>
@@ -322,7 +406,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widef"</SpriteName>
       <Position>
         <x>1120</x>
         <y>640</y>
@@ -330,7 +414,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widej"</SpriteName>
       <Position>
         <x>1152</x>
         <y>576</y>
@@ -338,7 +422,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widek"</SpriteName>
       <Position>
         <x>1152</x>
         <y>448</y>
@@ -346,7 +430,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Wided"</SpriteName>
       <Position>
         <x>992</x>
         <y>288</y>
@@ -354,7 +438,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widee"</SpriteName>
       <Position>
         <x>1056</x>
         <y>288</y>
@@ -362,7 +446,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL2Widef"</SpriteName>
       <Position>
         <x>1120</x>
         <y>288</y>
@@ -395,7 +479,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"BolconyCornerR"</SpriteName>
       <Position>
         <x>256</x>
         <y>224</y>
@@ -446,6 +530,15 @@
         <x>1056</x>
         <y>160</y>
       </Position>
+      <Size>
+        <x>32</x>
+        <y>96</y>
+      </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
 
@@ -552,83 +645,17 @@
         <y>0</y>
       </Position>
     </Unit>
+    
     <Unit>
-      <Type>"Laser"</Type>
+      <Type>"LaserDeactivator"</Type>
       <Position>
-        <x>704</x>
-        <y>126</y>
+        <x>728</x>
+        <y>152</y>
       </Position>
-      <Id>"LaserBlue1"</Id>
-      <Active>true</Active>
-      <Length>414</Length>
-      <Rotation>270</Rotation>
-      <Color>"Blue"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>1022</x>
-        <y>576</y>
-      </Position>
-      <Id>"LaserBlue2"</Id>
-      <Active>true</Active>
-      <Length>55</Length>
+      <SpriteName>"YellowButtonAni"</SpriteName>
+      <Id>"LaserTriggerYellow"</Id>
+      <Target>"LaserYellow2"</Target>
       <Rotation>0</Rotation>
-      <Color>"Blue"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>862</x>
-        <y>64</y>
-      </Position>
-      <Id>"LaserRed1"</Id>
-      <Active>true</Active>
-      <Length>316</Length>
-      <Rotation>0</Rotation>
-      <Color>"Red"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>862</x>
-        <y>448</y>
-      </Position>
-      <Id>"LaserRed2"</Id>
-      <Active>true</Active>
-      <Length>185</Length>
-      <Rotation>0</Rotation>
-      <Color>"Red"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>896</x>
-        <y>654</y>
-      </Position>
-      <Id>"LaserRed3"</Id>
-      <Active>true</Active>
-      <Length>95</Length>
-      <Rotation>270</Rotation>
-      <Color>"Red"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>1022</x>
-        <y>64</y>
-      </Position>
-      <Id>"LaserYellow1"</Id>
-      <Active>true</Active>
-      <Length>220</Length>
-      <Rotation>0</Rotation>
-      <Color>"Yellow"</Color>
-      <VisibilityRange>100</VisibilityRange>
     </Unit>
     <Unit>
       <Type>"LaserDeactivator"</Type>
@@ -645,7 +672,7 @@
       <Type>"LaserDeactivator"</Type>
       <Position>
         <x>984</x>
-        <y>536</y>
+        <y>550</y>
       </Position>
       <SpriteName>"BlueButtonAni"</SpriteName>
       <Id>"LaserTriggerBlue"</Id>
@@ -656,7 +683,7 @@
       <Type>"LaserDeactivator"</Type>
       <Position>
         <x>984</x>
-        <y>536</y>
+        <y>550</y>
       </Position>
       <SpriteName>"BlueButtonAni"</SpriteName>
       <Id>"LaserTriggerBlue"</Id>
