@@ -581,7 +581,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>352</x>
         <y>448</y>
@@ -590,7 +590,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>480</x>
         <y>480</y>
@@ -599,7 +599,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>576</x>
         <y>512</y>
@@ -608,7 +608,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>672</x>
         <y>544</y>
@@ -617,7 +617,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>768</x>
         <y>576</y>
@@ -627,7 +627,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>352</x>
         <y>480</y>
@@ -636,7 +636,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>256</x>
         <y>672</y>
@@ -645,7 +645,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>448</x>
         <y>672</y>
