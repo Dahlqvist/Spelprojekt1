@@ -91,6 +91,7 @@ void Game::changeMap(int map)
 	}
 	//std::cout << mBanor[mBana] << std::endl;
 	mlevel.loadNewLevel(mBanor[mBana]);
+	Timer::stop();
 	for(int i=0;i<BG.size();i++)
 	{
 		delete BG[i];
@@ -240,6 +241,7 @@ void Game::input()
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 	{
+		Timer::pause();
 		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
 	}

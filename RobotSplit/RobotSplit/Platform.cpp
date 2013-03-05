@@ -74,7 +74,6 @@ void Platform::draw()
 
 void Platform::hitOnce()
 {
-	std::cout<<"Hit     ";
 	if (mDestructible)
 	{
 		--mLives;
