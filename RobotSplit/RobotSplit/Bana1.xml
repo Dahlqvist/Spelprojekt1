@@ -396,9 +396,14 @@
         <y>416</y>
       </Position>
       <Size>
-        <x>64</x>
+        <x>32</x>
         <y>96</y>
       </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
     
