@@ -339,6 +339,7 @@ void PlayerPartFeet::activateRocketBoots()
 		PlayerPartFeet::setPosition(sf::Vector2f(0, -Eric::getRocketboost()));
 		mFuel--;
 		mJump=Eric::getGravity();
+		//Sound::playSound("RocketBoost");
 	}
 	if(mFuel<=0)
 	{

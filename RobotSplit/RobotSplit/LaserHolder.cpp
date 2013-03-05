@@ -32,6 +32,10 @@ LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Ve
 	mActiveSprite->setPosition(mPosition);
 }
 
+LaserHolder::~LaserHolder()
+{
+}
+
 void LaserHolder::update()
 {
 	if(mActive==true)
@@ -51,6 +55,7 @@ void LaserHolder::hit(){
 
 void LaserHolder::activate()
 {
+	mLaser->activate();
 	mActiveSprite=&mOn;
 	mActive=true;
 }

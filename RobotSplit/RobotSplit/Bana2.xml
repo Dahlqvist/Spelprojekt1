@@ -53,6 +53,20 @@
     <Unit>
       <Type>"Laser"</Type>
       <Position>
+        <x>304</x>
+        <y>192</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
         <x>704</x>
         <y>126</y>
       </Position>
@@ -134,7 +148,7 @@
         <x>640</x>
         <y>688</y>
       </Position>
-      <Id>"LaserYellow1"</Id>
+      <Id>"LaserYellow2"</Id>
       <Active>true</Active>
       <Length>576</Length>
       <Rotation>270</Rotation>
@@ -276,7 +290,7 @@
     </Unit>-->
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL2b"</SpriteName>
+      <SpriteName>"TileL2q"</SpriteName>
       <Position>
         <x>832</x>
         <y>384</y>
@@ -284,7 +298,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL2b"</SpriteName>
+      <SpriteName>"TileL2q"</SpriteName>
       <Position>
         <x>992</x>
         <y>512</y>
@@ -390,7 +404,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL2Wided"</SpriteName>
+      <SpriteName>"TileL2Widem"</SpriteName>
       <Position>
         <x>992</x>
         <y>640</y>
@@ -430,7 +444,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL2Wided"</SpriteName>
+      <SpriteName>"TileL2Widel"</SpriteName>
       <Position>
         <x>992</x>
         <y>288</y>
@@ -540,6 +554,7 @@
       </Offset>
       <Behind>true</Behind>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
@@ -639,10 +654,10 @@
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamPipeRightWOPipe1"</SpriteName>
+      <SpriteName>"RamRight2"</SpriteName>
       <Position>
         <x>1216</x>
-        <y>0</y>
+        <y>64</y>
       </Position>
     </Unit>
     

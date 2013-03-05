@@ -36,6 +36,20 @@
     </Unit>
 
     <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1040</x>
+        <y>224</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    
+    <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixAni"</SpriteName>
       <Frames>8</Frames>
@@ -401,7 +415,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>""</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>64</x>
         <y>256</y>
@@ -410,7 +424,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>""</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>224</x>
         <y>544</y>
@@ -419,7 +433,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>320</x>
         <y>576</y>
@@ -428,7 +442,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>416</x>
         <y>608</y>
@@ -438,7 +452,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>96</x>
         <y>512</y>
@@ -448,7 +462,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>64</x>
         <y>384</y>
@@ -457,7 +471,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>416</x>
         <y>416</y>
@@ -466,7 +480,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileBreak"</SpriteName>
+      <SpriteName>"PlatformBreakAni"</SpriteName>
       <Position>
         <x>320</x>
         <y>672</y>
@@ -491,6 +505,7 @@
       </Offset>
       <Behind>true</Behind>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>

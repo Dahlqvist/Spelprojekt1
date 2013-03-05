@@ -5,7 +5,16 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"BankBackground"</SpriteName>
+      <SpriteName>"BankBackground2"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+      </Position>
+    </Background>
+    <Background>
+      <Frames>1</Frames>
+      <Speed>120</Speed>
+      <SpriteName>"BankBackground3"</SpriteName>
       <Position>
         <x>0</x>
         <y>0</y>
@@ -638,6 +647,7 @@
         <y>224</y>
       </Position>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
     <Unit>
       <Type>"Light"</Type>
@@ -647,6 +657,7 @@
         <y>224</y>
       </Position>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
