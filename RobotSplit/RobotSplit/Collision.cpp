@@ -435,6 +435,7 @@ void Collision::killPlayer()
 	//mPlayer->restartPlayer();
 	if(mPlayer->getDying()==false){
 		mPlayer->die(mPlayerPart);
+		Sound::playSound("Death");
 	}
 	mResetted=true;
 	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)

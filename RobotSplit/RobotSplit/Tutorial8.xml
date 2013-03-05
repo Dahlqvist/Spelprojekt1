@@ -125,6 +125,7 @@
         <y>224</y>
       </Position>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
