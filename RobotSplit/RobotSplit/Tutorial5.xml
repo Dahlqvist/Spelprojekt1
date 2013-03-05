@@ -5,18 +5,9 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial5a"</SpriteName>
+      <SpriteName>"BankBackground1"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Tutorial5b"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
@@ -510,9 +501,14 @@
         <y>380</y>
       </Position>
       <Size>
-        <x>64</x>
+        <x>32</x>
         <y>96</y>
       </Size>
+      <Offset>
+        <x>50</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
 

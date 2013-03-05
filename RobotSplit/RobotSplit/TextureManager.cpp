@@ -208,6 +208,103 @@ void TextureManager::loadTexture()
 	mTextureMap["TileHigh"].loadFromFile("Texture/Enviroment/tiles/tile13_dark.png");
 	mTextureMap["TileBreak"].loadFromFile("Texture/Enviroment/tiles/break2_dark.png");
 
+	//Bana 2
+	mTextureMap["TileL2a"].loadFromFile("Texture/Enviroment/Bana2/First_Balcony_R.png");
+	mTextureMap["TileL2b"].loadFromFile("Texture/Enviroment/Bana2/Start_Position.png");
+
+	mTextureMap["TileL2c"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile01.png");
+	mTextureMap["TileL2d"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile02.png");
+	mTextureMap["TileL2e"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile03.png");
+	mTextureMap["TileL2f"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile04.png");
+	mTextureMap["TileL2g"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile05.png");
+	mTextureMap["TileL2h"].loadFromFile("Texture/Enviroment/Bana2/Vertical_Tile06.png");
+
+	mTextureMap["TileL2i"].loadFromFile("Texture/Enviroment/Bana2/Fix_01.png");
+	mTextureMap["TileL2j"].loadFromFile("Texture/Enviroment/Bana2/tile6_dark_P3&P7.png");
+
+	mTextureMap["TileL2k"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile01.png");
+	mTextureMap["TileL2l"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile02.png");
+	mTextureMap["TileL2m"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile03.png");
+	mTextureMap["TileL2n"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile04.png");
+	mTextureMap["TileL2o"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile05.png");
+	mTextureMap["TileL2p"].loadFromFile("Texture/Enviroment/Bana2/Floor_Tile06.png");
+
+	mTextureMap["TileL2q"].loadFromFile("Texture/Enviroment/Bana2/Fix02.png");
+
+	mTextureMap["TileL2Widea"].loadFromFile("Texture/Enviroment/Bana2/Under_Checkpoint01.png");
+	mTextureMap["TileL2Wideb"].loadFromFile("Texture/Enviroment/Bana2/Under_Checkpoint02.png");
+	mTextureMap["TileL2Widec"].loadFromFile("Texture/Enviroment/Bana2/Under_Checkpoint03.png");
+
+	mTextureMap["TileL2Wided"].loadFromFile("Texture/Enviroment/Bana2/Under_Exit01.png");
+	mTextureMap["TileL2Widee"].loadFromFile("Texture/Enviroment/Bana2/Under_Exit02.png");
+	mTextureMap["TileL2Widef"].loadFromFile("Texture/Enviroment/Bana2/Under_Exit03.png");
+
+	mTextureMap["TileL2Wideg"].loadFromFile("Texture/Enviroment/Bana2/Under_Yellow_Button01.png");
+	mTextureMap["TileL2Wideh"].loadFromFile("Texture/Enviroment/Bana2/Under_Yellow_Button02.png");
+
+	mTextureMap["TileL2Widei"].loadFromFile("Texture/Enviroment/Bana2/Free_Small01.png");
+	mTextureMap["TileL2Widej"].loadFromFile("Texture/Enviroment/Bana2/Free_Small02.png");
+	mTextureMap["TileL2Widek"].loadFromFile("Texture/Enviroment/Bana2/Free_Small03.png");
+
+	mTextureMap["TileL2Widel"].loadFromFile("Texture/Enviroment/Bana2/Under_Exit03_Fix.png");
+	mTextureMap["TileL2Widem"].loadFromFile("Texture/Enviroment/Bana2/Under_Exit03_Flip.png");
+
+	mTextureMap["TileL2Sa"].loadFromFile("Texture/Enviroment/Bana2/Mini_Middle.png");
+	mTextureMap["TileL2Sb"].loadFromFile("Texture/Enviroment/Bana2/Mini_End.png");
+
+	//Bana3
+	mTextureMap["TileL3a"].loadFromFile("Texture/Enviroment/Bana3/Before_Goal.png");
+	mTextureMap["TileL3b"].loadFromFile("Texture/Enviroment/Bana3/Goal.png");
+
+	mTextureMap["TileL3c"].loadFromFile("Texture/Enviroment/Bana3/Vertical_Tile03_Top.png");
+	mTextureMap["TileL3d"].loadFromFile("Texture/Enviroment/Bana3/Vertical_Tile02.png");
+	mTextureMap["TileL3e"].loadFromFile("Texture/Enviroment/Bana3/Vertical_Tile01.png");
+	
+	mTextureMap["TileL3Widea"].loadFromFile("Texture/Enviroment/Bana3/Free_Small02.png");
+	mTextureMap["TileL3Wideb"].loadFromFile("Texture/Enviroment/Bana3/Free_Small03.png");
+
+	mTextureMap["TileL3Higha"].loadFromFile("Texture/Enviroment/Bana3/Vercital_Half_Free.png");
+	mTextureMap["TileL3Highb"].loadFromFile("Texture/Enviroment/Bana3/Vercital_Half_Middle.png");
+	mTextureMap["TileL3Highc"].loadFromFile("Texture/Enviroment/Bana3/Vercital_Half_Bottom.png");
+
+	mTextureMap["TileL3Sa"].loadFromFile("Texture/Enviroment/Bana3/Vertical_Tile_Mini_Top.png");
+	mTextureMap["TileL3Sb"].loadFromFile("Texture/Enviroment/Bana3/Vercital_Mini_Top.png");
+
+	//Bana4
+	mTextureMap["TileL4a"].loadFromFile("Texture/Enviroment/Bana4-5/Ground_Zero_05.png");
+	mTextureMap["TileL4b"].loadFromFile("Texture/Enviroment/Bana4-5/tile4_dark_P5.png");
+	mTextureMap["TileL4c"].loadFromFile("Texture/Enviroment/Bana4-5/tile6_dark_NT00.png");
+	mTextureMap["TileL4d"].loadFromFile("Texture/Enviroment/Bana4-5/tile8_dark_NT000.png");
+
+	mTextureMap["TileL4e"].loadFromFile("Texture/Enviroment/Bana4-5/tile8_dark_P8.png");
+	mTextureMap["TileL4f"].loadFromFile("Texture/Enviroment/Bana4-5/tile8_dark_NT02_Flip.png");
+
+	//Bana5
+	mTextureMap["TileL5a"].loadFromFile("Texture/Enviroment/Bana4-5/Before_Goal.png");
+	mTextureMap["TileL5b"].loadFromFile("Texture/Enviroment/Bana4-5/Fix02.png");
+	mTextureMap["TileL5c"].loadFromFile("Texture/Enviroment/Bana4-5/Goal.png");
+	mTextureMap["TileL5d"].loadFromFile("Texture/Enviroment/Bana4-5/hardtile_64x64.png");
+
+	mTextureMap["TileL5e"].loadFromFile("Texture/Enviroment/Bana4-5/First_Balcony_L.png");
+	mTextureMap["TileL5f"].loadFromFile("Texture/Enviroment/Bana4-5/First_Balcony_R.png");
+
+	//Bana6
+	mTextureMap["TileL6a"].loadFromFile("Texture/Enviroment/Bana6/First_Balcony_L.png");
+	mTextureMap["TileL6b"].loadFromFile("Texture/Enviroment/Bana6/First_Balcony_R.png");
+
+	mTextureMap["TileL6c"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile01.png");
+	mTextureMap["TileL6d"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile02.png");
+	mTextureMap["TileL6e"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile03.png");
+	mTextureMap["TileL6f"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile04.png");
+	mTextureMap["TileL6g"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile05.png");
+	mTextureMap["TileL6h"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile06.png");
+
+	mTextureMap["TileL6i"].loadFromFile("Texture/Enviroment/Bana6/tile6_dark_P3&P7.png");
+	mTextureMap["TileL6j"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile01.png");
+	mTextureMap["TileL6k"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile02.png");
+	mTextureMap["TileL6l"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile03_Top.png");
+	mTextureMap["TileL6m"].loadFromFile("Texture/Enviroment/Bana6/Fix_01.png");
+
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
@@ -236,10 +333,10 @@ void TextureManager::loadTexture()
 	mTextureMap["House4"].loadFromFile("Texture/Tutorials/House02.png");
 	mTextureMap["House5"].loadFromFile("Texture/Tutorials/House03.png");
 	mTextureMap["House6"].loadFromFile("Texture/Tutorials/House04.png");
-	mTextureMap["House7"].loadFromFile("Texture/Tutorials/House04_Mini01.png");
-	mTextureMap["House8"].loadFromFile("Texture/Tutorials/House04_Mini02.png");
-	mTextureMap["HouseEdge1"].loadFromFile("Texture/Tutorials/Boulding_Board_End_L.png");
-	mTextureMap["HouseEdge2"].loadFromFile("Texture/Tutorials/Boulding_Board_End_R.png");
+	mTextureMap["House7"].loadFromFile("Texture/Tutorials/House04_Mini02.png");
+	mTextureMap["House8"].loadFromFile("Texture/Tutorials/House04_Mini01.png");
+	mTextureMap["HouseEdge1"].loadFromFile("Texture/Tutorials/Boulding_Board_End_L_Full.png");
+	mTextureMap["HouseEdge2"].loadFromFile("Texture/Tutorials/Boulding_Board_End_R_Hue.png");
 
 	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
 	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
@@ -277,6 +374,8 @@ void TextureManager::loadTexture()
 	mTextureMap["BankFloor6"].loadFromFile("Texture/Tutorials/Bank/Floor2_Pt04.png");
 
 	mTextureMap["BankVault"].loadFromFile("Texture/Tutorials/Bank/Vault.png");
+	
+	//mTextureMap["LaserRasmus"].loadFromFile("Texture/AwesomeLaserHolderAlaRasmus.png");
 	
 	//INTIIALIZING TEMPORARYBANA
 
@@ -326,6 +425,11 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px_NEW.png");
 
+	mTextureMap["BankBackground1"].loadFromFile("Texture/Tutorials/Backgrounds/bank1_background.png");
+	mTextureMap["BankBackground2"].loadFromFile("Texture/Tutorials/Backgrounds/bank2_background.png");
+	mTextureMap["BankBackground3"].loadFromFile("Texture/Tutorials/Backgrounds/Background.png");
+	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
+
 	//Initializing the frame parts.
 
 	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part01.png");
@@ -335,6 +439,8 @@ void TextureManager::loadTexture()
 	mTextureMap["RamLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Left.png");
 	
 	mTextureMap["RamRight1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Right.png");
+
+	mTextureMap["RamRight2"].loadFromFile("Texture/Enviroment/Bana2/ram_added_pipe_dark_Right_Long_Fix.png");
 
 	mTextureMap["RamPipeLeft1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_L_Pipe.png");
 

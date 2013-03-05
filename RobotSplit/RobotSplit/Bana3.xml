@@ -36,6 +36,20 @@
     </Unit>
 
     <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1040</x>
+        <y>224</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    
+    <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixAni"</SpriteName>
       <Frames>8</Frames>
@@ -52,7 +66,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3a"</SpriteName>
       <Position>
         <x>224</x>
         <y>256</y>
@@ -64,7 +78,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3c"</SpriteName>
       <Position>
         <x>480</x>
         <y>256</y>
@@ -76,7 +90,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3d"</SpriteName>
       <Position>
         <x>480</x>
         <y>320</y>
@@ -88,7 +102,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3e"</SpriteName>
       <Position>
         <x>480</x>
         <y>384</y>
@@ -100,7 +114,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3b"</SpriteName>
       <Position>
         <x>928</x>
         <y>640</y>
@@ -112,7 +126,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL3a"</SpriteName>
       <Position>
         <x>1120</x>
         <y>640</y>
@@ -125,7 +139,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile10S"</SpriteName>
+      <SpriteName>"TileL3Sa"</SpriteName>
       <Position>
         <x>544</x>
         <y>256</y>
@@ -137,7 +151,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile10S"</SpriteName>
+      <SpriteName>"TileL3Sb"</SpriteName>
       <Position>
         <x>608</x>
         <y>192</y>
@@ -150,7 +164,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL3Widea"</SpriteName>
       <Position>
         <x>256</x>
         <y>416</y>
@@ -158,7 +172,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL3Wideb"</SpriteName>
       <Position>
         <x>544</x>
         <y>544</y>
@@ -167,7 +181,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL3Highb"</SpriteName>
       <Position>
         <x>608</x>
         <y>224</y>
@@ -175,7 +189,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL3Highc"</SpriteName>
       <Position>
         <x>608</x>
         <y>288</y>
@@ -183,7 +197,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL3Higha"</SpriteName>
       <Position>
         <x>640</x>
         <y>480</y>
@@ -337,7 +351,7 @@
 
     <Unit>
       <Type>"Balcony"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"BolconyCornerL"</SpriteName>
       <Position>
         <x>1024</x>
         <y>256</y>
@@ -482,9 +496,14 @@
         <y>512</y>
       </Position>
       <Size>
-        <x>64</x>
+        <x>32</x>
         <y>96</y>
       </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
       <Behind>true</Behind>
     </Unit>

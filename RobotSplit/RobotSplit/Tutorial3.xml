@@ -112,13 +112,14 @@
         <y>380</y>
       </Position>
       <Size>
-        <x>100</x>
+        <x>50</x>
         <y>100</y>
       </Size>
       <Offset>
-        <x>0</x>
+        <x>50</x>
         <y>0</y>
       </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
 

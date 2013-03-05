@@ -41,8 +41,8 @@ void LaserHolder::update()
 	if(mActive==true)
 	{
 		mActiveSprite=&mStandby;
-	};
-	mLaser->deactivate();
+	}
+	//mLaser->deactivate();
 }
 
 void LaserHolder::hit(){
@@ -50,17 +50,19 @@ void LaserHolder::hit(){
 	{
 		mActiveSprite=&mOn;
 		mLaser->activate();
-	};
+	}
 }
 
 void LaserHolder::activate()
 {
+	mLaser->activate();
 	mActiveSprite=&mOn;
 	mActive=true;
 }
 
 void LaserHolder::deactivate()
 {
+	mLaser->deactivate();
 	mActiveSprite=&mOff;
 	mActive=false;
 }

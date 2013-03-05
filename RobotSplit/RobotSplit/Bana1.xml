@@ -36,6 +36,33 @@
 		</Unit>
 
     <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>530</x>
+        <y>192</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>816</x>
+        <y>192</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+
+    <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixAni"</SpriteName>
       <Frames>8</Frames>
@@ -396,9 +423,14 @@
         <y>416</y>
       </Position>
       <Size>
-        <x>64</x>
+        <x>32</x>
         <y>96</y>
       </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
       <Behind>true</Behind>
     </Unit>
