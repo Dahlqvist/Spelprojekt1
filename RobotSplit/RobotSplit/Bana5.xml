@@ -55,7 +55,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL5a"</SpriteName>
       <Position>
         <x>64</x>
         <y>640</y>
@@ -67,7 +67,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL5b"</SpriteName>
       <Position>
         <x>384</x>
         <y>640</y>
@@ -79,7 +79,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile4"</SpriteName>
+      <SpriteName>"TileL5a"</SpriteName>
       <Position>
         <x>736</x>
         <y>576</y>
@@ -91,7 +91,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5c"</SpriteName>
       <Position>
         <x>992</x>
         <y>576</y>
@@ -103,7 +103,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5c"</SpriteName>
       <Position>
         <x>1152</x>
         <y>512</y>
@@ -115,7 +115,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5d"</SpriteName>
       <Position>
         <x>864</x>
         <y>256</y>
@@ -127,7 +127,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5a"</SpriteName>
       <Position>
         <x>544</x>
         <y>320</y>
@@ -139,7 +139,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5b"</SpriteName>
       <Position>
         <x>384</x>
         <y>160</y>
@@ -151,7 +151,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL5e"</SpriteName>
       <Position>
         <x>64</x>
         <y>320</y>
@@ -163,7 +163,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL4a"</SpriteName>
       <Position>
         <x>128</x>
         <y>320</y>
@@ -175,7 +175,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL5f"</SpriteName>
       <Position>
         <x>192</x>
         <y>320</y>
@@ -188,7 +188,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL3Wideb"</SpriteName>
       <Position>
         <x>992</x>
         <y>384</y>
