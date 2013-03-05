@@ -33,8 +33,8 @@ private:
 	Animation mInGameBackground;
 	Animation mBack;
 	Animation mBlip;
-	Animation mEffectMute;
-	Animation mEffectVolume;
+	Animation mSoundMute;
+	Animation mSoundVolume;
 	Animation mMusicMute;
 	Animation mMusicVolume;
 	Animation mEffectNumbers1;

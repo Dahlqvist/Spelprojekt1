@@ -3,7 +3,6 @@
 #include "TextureManager.h"
 
 sf::Clock Timer::mClock;
-sf::Clock Timer::mSecondClock;
 int Timer::mDec;
 int Timer::mSek;
 int Timer::mMin;
@@ -16,6 +15,8 @@ int Timer::m10Min;
 int Timer::m1Hour;
 int Timer::m10Hour;
 
+int Timer::mTimeSave;
+
 bool Timer::mShow;
 bool Timer::mRun;
 
@@ -24,7 +25,8 @@ Animation* Timer::mNumbers;
 Timer::Timer():
 	timerPos(sf::Vector2f(1200, 20)),
 	mDot(TextureManager::getSprite("Dot")),
-	mColon(TextureManager::getSprite("Colon"))
+	mColon(TextureManager::getSprite("Colon")),
+	mFrame("TimeFrame", 1, 5)
 
 {
 	load();
@@ -34,6 +36,8 @@ Timer::Timer():
 
 	mNumbers->setPosition(sf::Vector2f(Window::getWindow().getSize()));
 	mNumbers->setAnimate(false);
+	mFrame.setPosition(sf::Vector2f((timerPos.x - mFrame.getSprite().getGlobalBounds().width + 5), timerPos.y - 7));
+	mFrame.setAnimate(false);
 }
 
 void Timer::load()
@@ -57,6 +61,8 @@ void Timer::initialize()
 	m10Min = 0;
 	m1Hour = 0;
 	m10Hour = 0;
+
+	mTimeSave = 0;
 }
 
 Timer::~Timer()
@@ -77,7 +83,6 @@ sf::Clock& Timer::getClock()
 
 void Timer::restartClock()
 {
-	mSecondClock.restart();
 	mClock.restart();
 }
 
@@ -93,10 +98,12 @@ void Timer::input()
 void Timer::update()
 {
 	//För att få fram vilken bild som skall visas
-	mDec = (mClock.getElapsedTime().asMilliseconds() / 100) % 10;
-	mSek = mClock.getElapsedTime().asSeconds();
-	mMin = mClock.getElapsedTime().asSeconds() / 60;
-	mHour = mClock.getElapsedTime().asSeconds() / 3600;
+	mDec = (mTimeSave + mClock.getElapsedTime().asMilliseconds() / 100) % 10;
+	mSek = (mTimeSave / 1000) + mClock.getElapsedTime().asSeconds();
+	//mMin = (mTimeSave /1000) + mClock.getElapsedTime().asSeconds() / 60;
+	//mHour = (mTimeSave / 1000) + mClock.getElapsedTime().asSeconds() / 3600;
+	mMin = mSek / 60;
+	mHour = mSek / 3600;
 
 	m1Sek = mSek % 10;
 	m10Sek = (mSek / 10) % 6;
@@ -108,8 +115,10 @@ void Timer::update()
 	timerPos = sf::Vector2f(1200, 20);
 	if(mShow)
 	{
+		Window::getWindow().draw(mFrame.getSprite());
 		if(mRun)
-			{
+		{
+			mFrame.setCurrentFrame(4);
 			//tiondels sekunder
 			updateNumbers(mDec);
 			setDot();
@@ -121,36 +130,43 @@ void Timer::update()
 			updateNumbers(m10Sek);
 			if(m1Min >= 1)
 			{
+				mFrame.setCurrentFrame(3);
 				setColon();
 
 				//ental minuter
 				updateNumbers(m1Min);
 				if(m10Min >= 1)
 				{
-
+					mFrame.setCurrentFrame(2);
 					//tiotal minuter
 					updateNumbers(m10Min);
 					if(m1Hour >= 1)
 					{
+						mFrame.setCurrentFrame(1);
 						setColon();
 
 						//ental timmar
 						updateNumbers(m1Hour);
 
 						if(m10Hour >=1)
-						//tiotal timmar
-						updateNumbers(m10Hour);
+						{
+							mFrame.setCurrentFrame(0);
+							//tiotal timmar
+							updateNumbers(m10Hour);
+						}
 					}
 				}
 			}
 		}
 		else
 		{
+			mFrame.setCurrentFrame(4);
 			updateNumbers(0);
 			setDot();
 			updateNumbers(0);
 			updateNumbers(0);
 		}
+		mFrame.update();
 	}
 	
 }
@@ -203,6 +219,7 @@ void Timer::start()
 {
 	mRun = true;
 	restartClock();
+	mTimeSave = 0;
 }
 
 void Timer::stop()
@@ -210,3 +227,13 @@ void Timer::stop()
 	mRun = false;
 	//restartClock();
 }
+
+void Timer::pause()
+{
+	mTimeSave += mClock.getElapsedTime().asMilliseconds();
+}
+
+//float Timer::getSaveTime()
+//{
+//	return mTimeSave;
+//}

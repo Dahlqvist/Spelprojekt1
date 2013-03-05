@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Sound.h"
 #include "Music.h"
+#include "Timer.h"
 
 InGameMenu::InGameMenu(): mStateInput(StateInput::getInstance()), 
 			mBackground("Ingame", 1, 1),
@@ -121,7 +122,10 @@ void InGameMenu::input()
 				update();				
 			}
 			else
+			{
+				Timer::restartClock();
 				mStateInput.changeState("Last");
+			}
 		}
 		else if(mStatus == 1)
 		{
@@ -170,6 +174,7 @@ void InGameMenu::input()
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
 			mStatus = 0;
+			Timer::restartClock();
 			mStateInput.changeState("Last");
 		}
 	}

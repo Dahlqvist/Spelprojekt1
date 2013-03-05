@@ -241,6 +241,7 @@ void Game::input()
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 	{
+		Timer::pause();
 		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
 	}

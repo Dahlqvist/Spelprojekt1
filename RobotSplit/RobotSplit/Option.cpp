@@ -9,7 +9,7 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 			mControls("Controls", 1, 2),
 			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
-			mTimer("TimerChecked", 1, 4),
+			mTimer("TimerCheck", 1, 4),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
@@ -70,6 +70,7 @@ void Option::render()
 	mWindow.draw(currentBackground->getSprite());
 	mWindow.draw(mAudio.getSprite());
 	mWindow.draw(mControls.getSprite());
+	mWindow.draw(mTimer.getSprite());
 	mWindow.draw(mBack.getSprite());
 	mWindow.draw(mBlip.getSprite());
 	mWindow.display();

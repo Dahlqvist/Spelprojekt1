@@ -437,10 +437,10 @@ void TextureManager::loadTexture()
 	mTextureMap["Back"].loadFromFile("Texture/Menu/Back.png");
 	mTextureMap["Blip"].loadFromFile("Texture/Menu/Blip.png");
 	mTextureMap["Controls"].loadFromFile("Texture/Menu/Controls.png");
-	mTextureMap["EffectMute"].loadFromFile("Texture/Menu/Effect_Mute.png");
-	mTextureMap["EffectVolym"].loadFromFile("Texture/Menu/Effect_Volym.png");
+	mTextureMap["SoundMute"].loadFromFile("Texture/Menu/Sound_Mute.png");
+	mTextureMap["SoundVolume"].loadFromFile("Texture/Menu/Sound_Volume.png");
 	mTextureMap["MusicMute"].loadFromFile("Texture/Menu/Music_Mute.png");
-	mTextureMap["MusicVolym"].loadFromFile("Texture/Menu/Music_Volym.png");
+	mTextureMap["MusicVolume"].loadFromFile("Texture/Menu/Music_Volume.png");
 	mTextureMap["NewGame"].loadFromFile("Texture/Menu/New_Game.png");
 	mTextureMap["No"].loadFromFile("Texture/Menu/No.png");
 	mTextureMap["Options"].loadFromFile("Texture/Menu/Options.png");
@@ -451,8 +451,7 @@ void TextureManager::loadTexture()
 	mTextureMap["StoryMode"].loadFromFile("Texture/Menu/Story_Mode.png");
 	mTextureMap["Sure"].loadFromFile("Texture/Menu/Sure.png");
 	mTextureMap["TimeTrial"].loadFromFile("Texture/Menu/Time_Trial.png");
-	mTextureMap["TimerChecked"].loadFromFile("Texture/Menu/Timer_Checked.png");
-	mTextureMap["TimerUnchecked"].loadFromFile("Texture/Menu/Timer_Unchecked.png");
+	mTextureMap["TimerCheck"].loadFromFile("Texture/Menu/Timer_Check.png");
 	mTextureMap["Tutorial"].loadFromFile("Texture/Menu/Tutorial.png");
 	mTextureMap["Yes"].loadFromFile("Texture/Menu/Yes.png");
 	mTextureMap["Numbers"].loadFromFile("Texture/Menu/Numbers.png");
@@ -461,6 +460,7 @@ void TextureManager::loadTexture()
 	mTextureMap["ControlSchedule"].loadFromFile("Texture/Menu/Control_Schedule.png");
 	mTextureMap["Dot"].loadFromFile("Texture/Menu/dot.png");
 	mTextureMap["Colon"].loadFromFile("Texture/Menu/colon.png");
+	mTextureMap["TimeFrame"].loadFromFile("Texture/Menu/Timeframe.png");
 
 }
 
