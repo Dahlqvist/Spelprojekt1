@@ -25,6 +25,7 @@ private:
 	Animation mControls;
 	Animation mBack;
 	Animation mBlip;
+	Animation mTimer;
 
 	int mStatus;
 

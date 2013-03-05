@@ -104,30 +104,42 @@ void Timer::update()
 	m10Hour = (mHour / 10) % 10;
 
 	timerPos = sf::Vector2f(1200, 20);
+	if(mShow)
+	{
+		//tiondels sekunder
+		updateNumbers(mDec);
+		setDot();
 
-	//tiondels sekunder
-	updateNumbers(mDec);
-	setDot();
-
-	//ental sekunder
-	updateNumbers(m1Sek);
+		//ental sekunder
+		updateNumbers(m1Sek);
 	
-	//tiotal sekunder
-	updateNumbers(m10Sek);
-	setColon();
+		//tiotal sekunder
+		updateNumbers(m10Sek);
+		if(m1Min >= 1)
+		{
+			setColon();
 
-	//ental minuter
-	updateNumbers(m1Min);
+			//ental minuter
+			updateNumbers(m1Min);
+			if(m10Min >= 1)
+			{
 
-	//tiotal minuter
-	updateNumbers(m10Min);
-	setColon();
+				//tiotal minuter
+				updateNumbers(m10Min);
+				if(m1Hour >= 1)
+				{
+					setColon();
 
-	//ental timmar
-	updateNumbers(m1Hour);
+					//ental timmar
+					updateNumbers(m1Hour);
 
-	//tiotal timmar
-	updateNumbers(m10Hour);
+					if(m10Hour >=1)
+					//tiotal timmar
+					updateNumbers(m10Hour);
+				}
+			}
+		}
+	}
 }
 
 void Timer::render()
@@ -141,8 +153,7 @@ void Timer::updateNumbers(int q)
 	mNumbers->setCurrentFrame(q);
 	mNumbers->setPosition(timerPos);
 	mNumbers->update();
-	if(mShow)
-		Window::getWindow().draw(mNumbers->getSprite());
+	Window::getWindow().draw(mNumbers->getSprite());
 }
 
 void Timer::setDot()
@@ -152,8 +163,7 @@ void Timer::setDot()
 	dotPos.y = (timerPos.y + (mNumbers->getSprite().getGlobalBounds().height - mDot.getGlobalBounds().height));
 	timerPos.x = timerPos.x - 5;
 	mDot.setPosition(dotPos);
-	if(mShow)
-		Window::getWindow().draw(mDot);
+	Window::getWindow().draw(mDot);
 }
 
 void Timer::setColon()
@@ -163,8 +173,7 @@ void Timer::setColon()
 	colonPos.y = (timerPos.y + ((mNumbers->getSprite().getGlobalBounds().height / 2) - (mColon.getGlobalBounds().height / 2)));
 	timerPos.x = timerPos.x - 5;
 	mColon.setPosition(colonPos);
-	if(mShow)
-		Window::getWindow().draw(mColon);
+	Window::getWindow().draw(mColon);
 }
 
 void Timer::changeStatus()

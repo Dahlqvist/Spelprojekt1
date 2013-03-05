@@ -22,9 +22,7 @@ int main()
 	StateManager& statemanager = StateManager::getInstance();
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
-	Splash::runSplash(false);
-
-	//Timer& timer = Timer::getInstance();
+	sf::Clock testClock;
 
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
@@ -36,12 +34,10 @@ int main()
 				mWindow.close();
 			
 			statemanager.inputState();
-			//timer.input();
 		}
-
-
-		if(Splash::getStatus())
+		if(testClock.getElapsedTime().asSeconds() < 3)
 		{
+			//splash.runSplash("StixSplashJump", 1, 1);
 			splash.update();
 			splash.render();
 		}
@@ -49,7 +45,7 @@ int main()
 		{
 			for(int i = 0; i<2; i++)
 				statemanager.updateState();
-			statemanager.renderState();			
+			statemanager.renderState();	
 		}
 		cout << temp.getElapsedTime().asSeconds() << endl;
 	}	

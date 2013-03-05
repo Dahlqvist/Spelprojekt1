@@ -9,6 +9,7 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 			mControls("Controls", 1, 2),
 			mBack("Back", 1, 2),
 			mBlip("Blip", 1, 1),
+			mTimer("TimerChecked", 1, 4),
 			mWindow(Window::getWindow()),
 			mStatus(0),
 			mBlipPos(240, 150),
@@ -21,13 +22,15 @@ Option::Option(): mStateInput(StateInput::getInstance()),
 	mInGameBackground.setPosition(tempPos2);
 	mAudio.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 150));
 	mControls.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 250));
-	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
+	mTimer.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 350));
+	mBack.setPosition(sf::Vector2f(tempPos.x + 300, tempPos.y + 450));
 	mBlipPos +=tempPos;
 	mBlip.setPosition(mBlipPos);
 
 	mAudio.setAnimate(false);
 	mControls.setAnimate(false);
 	mBack.setAnimate(false);
+	mTimer.setAnimate(false);
 }
 
 Option::~Option()
@@ -44,8 +47,20 @@ void Option::update()
 	else if(mStatus == 1)
 		currentSelection = &mControls;
 	else if(mStatus == 2)
+		currentSelection = &mTimer;
+	else if(mStatus == 3)
 		currentSelection = &mBack;
+
 	currentSelection->setCurrentFrame(1);
+
+	if(Timer::getStatus() == true)
+	{
+		mTimer.setCurrentFrame(2);
+		if(mStatus == 2)
+			mTimer.setCurrentFrame(mTimer.getCurrentFrame() + 1);
+		mTimer.update();
+	}
+
 	currentSelection->update();
 }
 
@@ -62,7 +77,7 @@ void Option::render()
 
 void Option::input()
 {
-	int mChoices = 2;
+	int mChoices = 3;
 	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 		{
 			mBlipPos.y += 100;
@@ -86,6 +101,8 @@ void Option::input()
 			else if(mStatus == 1)
 				mStateInput.changeState("Controls");
 			else if(mStatus == 2)
+				Timer::changeStatus();
+			else if(mStatus == 3)
 			{
 				mBlipPos.y -= (100*mStatus);
 				mBlip.setPosition(mBlipPos);
