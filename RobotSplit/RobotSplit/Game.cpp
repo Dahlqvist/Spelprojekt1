@@ -56,6 +56,7 @@ Game::Game():
 	mBanor.push_back("Tutorial4.xml");
 	mBanor.push_back("Tutorial5.xml");
 	mBanor.push_back("Tutorial6.xml");
+	mBanor.push_back("Tutorial8.xml");
 	mBanor.push_back("Bana1.xml");
 	mBanor.push_back("Bana2.xml");
 	mBanor.push_back("Bana3.xml");

@@ -49,7 +49,11 @@
         <x>608</x>
         <y>256</y>
       </Position>
-      <SpriteName>WoodBox</SpriteName>
+      <SpriteName>Billboard3</SpriteName>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     
     <Unit>
@@ -127,7 +131,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue3"</SpriteName>
+      <SpriteName>"HelpDialogue5"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
