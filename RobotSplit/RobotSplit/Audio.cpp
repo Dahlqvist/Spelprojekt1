@@ -224,7 +224,7 @@ void Audio::select()
 				Sound::changeVolume(mEVolume);
 				Sound::playSound("Lava");
 			}
-			else
+			else if(!mEMute)
 				Sound::changeVolume(mEVolume);
 		}
 		else if(mStatus == 1)
@@ -244,7 +244,7 @@ void Audio::select()
 				Music::changeVolume(mMVolume);
 				Music::playMusic();
 			}
-			else
+			else if(!mMMute)
 				Music::changeVolume(mMVolume);
 		}
 		else if(mStatus == 2)
