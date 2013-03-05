@@ -16,6 +16,8 @@ public:
 	static void input();
 	static bool getStatus();
 	static void changeStatus();
+	static void start();
+	static void stop();
 	
 	virtual void update();
 	virtual void render();
@@ -55,6 +57,7 @@ private:
 	static int m10Hour;
 
 	static bool mShow;
+	static bool mRun;
 
 
 };

@@ -218,7 +218,7 @@ void Audio::select()
 				currentSelection ->setCurrentFrame(1);
 				currentSelection ->update();
 			}
-			if(!StateInput::getMenuStatus())
+			if(!StateInput::getMenuStatus() && !mEMute)
 			{
 				Sound::pauseSound("Lava");
 				Sound::changeVolume(mEVolume);
@@ -238,7 +238,7 @@ void Audio::select()
 			{
 				mMusicHighlightNr = 0;
 			}
-			if(!StateInput::getMenuStatus())
+			if(!StateInput::getMenuStatus() && !mMMute)
 			{
 				Music::pauseMusic();
 				Music::changeVolume(mMVolume);

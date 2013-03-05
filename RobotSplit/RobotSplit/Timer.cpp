@@ -17,6 +17,7 @@ int Timer::m1Hour;
 int Timer::m10Hour;
 
 bool Timer::mShow;
+bool Timer::mRun;
 
 Animation* Timer::mNumbers;
 
@@ -43,6 +44,7 @@ void Timer::load()
 void Timer::initialize()
 {
 	mShow = true;
+	mRun = false;
 
 	mDec = 0;
 	mSek = 0;
@@ -106,40 +108,51 @@ void Timer::update()
 	timerPos = sf::Vector2f(1200, 20);
 	if(mShow)
 	{
-		//tiondels sekunder
-		updateNumbers(mDec);
-		setDot();
-
-		//ental sekunder
-		updateNumbers(m1Sek);
-	
-		//tiotal sekunder
-		updateNumbers(m10Sek);
-		if(m1Min >= 1)
-		{
-			setColon();
-
-			//ental minuter
-			updateNumbers(m1Min);
-			if(m10Min >= 1)
+		if(mRun)
 			{
+			//tiondels sekunder
+			updateNumbers(mDec);
+			setDot();
 
-				//tiotal minuter
-				updateNumbers(m10Min);
-				if(m1Hour >= 1)
+			//ental sekunder
+			updateNumbers(m1Sek);
+	
+			//tiotal sekunder
+			updateNumbers(m10Sek);
+			if(m1Min >= 1)
+			{
+				setColon();
+
+				//ental minuter
+				updateNumbers(m1Min);
+				if(m10Min >= 1)
 				{
-					setColon();
 
-					//ental timmar
-					updateNumbers(m1Hour);
+					//tiotal minuter
+					updateNumbers(m10Min);
+					if(m1Hour >= 1)
+					{
+						setColon();
 
-					if(m10Hour >=1)
-					//tiotal timmar
-					updateNumbers(m10Hour);
+						//ental timmar
+						updateNumbers(m1Hour);
+
+						if(m10Hour >=1)
+						//tiotal timmar
+						updateNumbers(m10Hour);
+					}
 				}
 			}
 		}
+		else
+		{
+			updateNumbers(0);
+			setDot();
+			updateNumbers(0);
+			updateNumbers(0);
+		}
 	}
+	
 }
 
 void Timer::render()
@@ -184,4 +197,16 @@ void Timer::changeStatus()
 bool Timer::getStatus()
 {
 	return mShow;
+}
+
+void Timer::start()
+{
+	mRun = true;
+	restartClock();
+}
+
+void Timer::stop()
+{
+	mRun = false;
+	//restartClock();
 }

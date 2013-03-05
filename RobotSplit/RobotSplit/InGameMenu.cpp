@@ -46,14 +46,14 @@ void InGameMenu::update()
 	if(mStatus == 0)
 	{
 		if(mShowSure)
-			currentSelection = &mYes;
+			currentSelection = &mNo;
 		else
 			currentSelection = &mResume;
 	}
 	else if(mStatus == 1)
 	{
 		if(mShowSure)
-			currentSelection = &mNo;
+			currentSelection = &mYes;
 		else
 			currentSelection = &mOptions;
 	}
@@ -82,11 +82,17 @@ void InGameMenu::render()
 
 void InGameMenu::input()
 {
-	if(!mShowSure)
+	int distance = 100;
+	if(mShowSure)
+	{
+		mChoices = 1;
+		distance = 55;
+	}
+	else
 		mChoices = 2;
 	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 	{
-		mBlipPos.y += 100;
+		mBlipPos.y += distance;
 		mBlip.setPosition(mBlipPos);
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
@@ -94,7 +100,7 @@ void InGameMenu::input()
 	}
 	else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 	{			
-		mBlipPos.y -= 100;
+		mBlipPos.y -= distance;
 		mBlip.setPosition(mBlipPos);
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
@@ -103,18 +109,6 @@ void InGameMenu::input()
 	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 	{
 		if(mStatus == 0)
-		{
-			if(mShowSure)
-			{
-				mStatus = 0;
-				Sound::stopSound("Lava");
-				Music::stopMusic();
-				mStateInput.changeState("QuitToMenu");
-			}
-			else
-				mStateInput.changeState("Last");
-		}
-		else if(mStatus == 1)
 		{
 			if(mShowSure)
 			{
@@ -127,14 +121,30 @@ void InGameMenu::input()
 				update();				
 			}
 			else
+				mStateInput.changeState("Last");
+		}
+		else if(mStatus == 1)
+		{
+			if(mShowSure)
+			{
+				mStatus = 0;
+				mShowSure = false;
+				mBlipPos = sf::Vector2f(mQuit.getSprite().getPosition().x - 60, mResume.getSprite().getPosition().y);
+				mBlip.setPosition(mBlipPos);
+				currentSelection->setCurrentFrame(0);
+				currentSelection->update();
+				mQuit.setCurrentFrame(0);
+				mQuit.update();
+				Sound::stopSound("Lava");
+				Music::stopMusic();
+				mStateInput.changeState("QuitToMenu");
+			}
+			else
 				mStateInput.changeState("Option");
 		}
 		else if(mStatus == 2)
 		{
-			/*mBlipPos.y -= (100*mStatus);
-			mBlip.setPosition(mBlipPos);
-			currentSelection->setCurrentFrame(0);
-			currentSelection->update();*/
+			
 			mShowSure = true;
 			mStatus = 0;
 			sure(true);
@@ -155,7 +165,7 @@ void InGameMenu::input()
 		}
 		else
 		{
-			mBlipPos.y -= (100*mStatus);
+			mBlipPos.y -= (distance*mStatus);
 			mBlip.setPosition(mBlipPos);
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
@@ -177,13 +187,12 @@ void InGameMenu::sure(bool b)
 	tempSure.setPosition(sf::Vector2f(tempBackground.getPosition().x + 125, tempBackground.getPosition().y + 75));
 	if(b)
 	{
-		//mBlip.setPosition(sf::Vector2f(tempSure.getPosition().x, tempSure.getPosition().y + tempSure.getGlobalBounds().height +20));
 		mBlipPos = sf::Vector2f(tempSure.getPosition().x, tempSure.getPosition().y + tempSure.getGlobalBounds().height +20);
 		mBlip.setPosition(mBlipPos);
 	}
 
-	mYes.setPosition(sf::Vector2f(mBlip.getSprite().getPosition().x + mBlip.getSprite().getGlobalBounds().width + 20, tempSure.getPosition().y + tempSure.getGlobalBounds().height + 20));
-	mNo.setPosition(sf::Vector2f(mYes.getSprite().getPosition().x, mYes.getSprite().getPosition().y + mYes.getSprite().getGlobalBounds().height + 54));
+	mNo.setPosition(sf::Vector2f(mBlip.getSprite().getPosition().x + mBlip.getSprite().getGlobalBounds().width + 20, tempSure.getPosition().y + tempSure.getGlobalBounds().height + 20));
+	mYes.setPosition(sf::Vector2f(mNo.getSprite().getPosition().x, mNo.getSprite().getPosition().y + mNo.getSprite().getGlobalBounds().height + 10));
 
 	mWindow.draw(tempBackground);
 	mWindow.draw(tempSure);
