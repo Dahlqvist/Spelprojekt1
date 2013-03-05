@@ -144,9 +144,14 @@
         <y>280</y>
       </Position>
       <Size>
-        <x>64</x>
-        <y>96</y>
+        <x>100</x>
+        <y>200</y>
       </Size>
+      <Offset>
+        <x>100</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
 

@@ -65,16 +65,6 @@
       <Length>416</Length>
       <SideWays>false</SideWays>
     </Unit>
-    <Unit>
-      <Type>"MiniBot"</Type>
-      <Position>
-        <x>960</x>
-        <y>64</y>
-      </Position>
-      <Rotation>180</Rotation>
-      <Length>160</Length>
-      <SideWays>true</SideWays>
-    </Unit>
 
     <Unit>
       <Type>"Laser"</Type>
@@ -726,9 +716,14 @@
         <y>512</y>
       </Position>
       <Size>
-        <x>64</x>
+        <x>32</x>
         <y>96</y>
       </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
 
