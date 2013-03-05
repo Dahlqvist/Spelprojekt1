@@ -409,6 +409,11 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px_NEW.png");
 
+	mTextureMap["BankBackground1"].loadFromFile("Texture/Tutorials/Backgrounds/bank1_background.png");
+	mTextureMap["BankBackground2"].loadFromFile("Texture/Tutorials/Backgrounds/bank2_background.png");
+	mTextureMap["BankBackground3"].loadFromFile("Texture/Tutorials/Backgrounds/Background.png");
+	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
+
 	//Initializing the frame parts.
 
 	mTextureMap["RamTop1"].loadFromFile("Texture/Enviroment/ram_added_pipe_dark_Topp_Part01.png");

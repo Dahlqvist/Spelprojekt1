@@ -5,18 +5,9 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial5a"</SpriteName>
+      <SpriteName>"BankBackground1"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Tutorial5b"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
