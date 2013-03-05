@@ -134,8 +134,6 @@
         <x>1016</x>
         <y>280</y>
       </Position>
-<<<<<<< HEAD
-=======
       <Size>
         <x>100</x>
         <y>200</y>
@@ -144,8 +142,6 @@
         <x>100</x>
         <y>0</y>
       </Offset>
-      <Behind>true</Behind>
->>>>>>> master
       <Solid>false</Solid>
       <Behind>true</Behind>
     </Unit>
