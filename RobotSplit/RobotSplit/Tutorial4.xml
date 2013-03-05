@@ -54,6 +54,7 @@
         <x>64</x>
         <y>64</y>
       </Size>
+      <Behind>true</Behind>
     </Unit>
     
     <Unit>
@@ -90,6 +91,7 @@
       </Offset>
       <Behind>true</Behind>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>

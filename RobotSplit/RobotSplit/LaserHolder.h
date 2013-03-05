@@ -6,6 +6,8 @@ class LaserHolder:public Unit
 {
 public:
 	LaserHolder(Laser*, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active=true);
+	virtual ~LaserHolder();
+
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
 	{
@@ -39,7 +41,7 @@ protected:
 	sf::Sprite mStandby;
 	sf::Sprite mOff;
 
-	Animation* mAnimation;
+	//Animation* mAnimation;
 	bool mActive, mStartActive;
 
 	Laser* mLaser;

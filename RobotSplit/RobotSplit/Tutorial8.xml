@@ -142,8 +142,8 @@
         <x>100</x>
         <y>0</y>
       </Offset>
-      <Behind>true</Behind>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
