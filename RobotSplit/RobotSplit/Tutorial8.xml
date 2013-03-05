@@ -5,18 +5,9 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Tutorial6a"</SpriteName>
+      <SpriteName>"BankBackground4"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Tutorial6b"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
@@ -65,7 +56,7 @@
     <Unit>
       <Type>"LaserDeactivator"</Type>
       <Position>
-        <x>700</x>
+        <x>672</x>
         <y>472</y>
       </Position>
       <SpriteName>"RedButtonAni"</SpriteName>
@@ -76,7 +67,7 @@
     <Unit>
       <Type>"LaserDeactivator"</Type>
       <Position>
-        <x>700</x>
+        <x>672</x>
         <y>472</y>
       </Position>
       <SpriteName>"RedButtonAni"</SpriteName>

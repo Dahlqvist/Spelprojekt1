@@ -63,7 +63,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL2i"</SpriteName>
+      <SpriteName>"TileL4f"</SpriteName>
       <Position>
         <x>128</x>
         <y>480</y>
