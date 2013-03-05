@@ -406,7 +406,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	}
 	if (mUnits[unit]->getId()=="Checkpoint")
 	{
-		if (mPlayer->getTogether() || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtUnit==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtUnit==unit)))
+		if (mPlayer->getTogether() && mPlayer->getId(mPlayerPart)!="PlayerPartHead" || ((mPlayer->getId(mPlayerPart)=="PlayerPartFeet" && mBodyAtUnit==unit) || (mPlayer->getId(mPlayerPart)=="PlayerPartBody" && mFeetAtUnit==unit)))
 		{
 			mUnits[unit]->activate();
 			mPlayer->reFuel();

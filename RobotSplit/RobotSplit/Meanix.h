@@ -9,8 +9,6 @@ public:
 	void update(){mAnimation->update();};
 
 	sf::Sprite getSprite(){return mAnimation->getSprite();};
-private:
-	Animation mAni;
 };
 
 

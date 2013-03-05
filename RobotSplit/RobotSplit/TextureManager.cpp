@@ -145,7 +145,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["BolconyMiddle"].loadFromFile("Texture/Enviroment/Tiles/Bolcony_Middle_32_dark.png");
 
-	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Break_Total_Sprite.png");
+	mTextureMap["PlatformBreakAni"].loadFromFile("Texture/Enviroment/Tiles/Break_Total_Sprite_dark.png");
 
 	mTextureMap["BlueButtonAni"].loadFromFile("Texture/Enviroment/Button_Blue_Sprite_16px.png");
 	mTextureMap["RedButtonAni"].loadFromFile("Texture/Enviroment/Button_Red_Sprite_16px.png");
@@ -358,6 +358,7 @@ void TextureManager::loadTexture()
 	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
 
 	//Tutorials
+	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
 	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
 	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");
 	mTextureMap["House3"].loadFromFile("Texture/Tutorials/House01.png");
