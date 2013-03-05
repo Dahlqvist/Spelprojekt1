@@ -17,6 +17,11 @@ UnitManager::UnitManager(Player* player, std::vector<Unit*> units)
 	Collision::unitAtSides(units);
 }
 
+UnitManager::~UnitManager()
+{
+	
+}
+
 void UnitManager::addUnit(Unit* unit)
 {
 	mUnits.push_back(unit);

@@ -39,10 +39,6 @@ Platform::Platform(int lives, sf::Vector2f position, sf::Vector2f size, sf::Vect
 
 Platform::~Platform()
 {
-	if (mAnimation!=0x0)
-	{
-		delete mAnimation;
-	}
 }
 
 void Platform::draw()

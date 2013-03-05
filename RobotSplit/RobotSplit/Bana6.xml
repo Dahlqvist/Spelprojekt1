@@ -131,8 +131,7 @@
 
     <Unit>
       <Type>Checkpoint</Type>
-      <SpriteOff>CheckpointOff</SpriteOff>
-      <SpriteOn>CheckpointOn</SpriteOn>
+      <SpriteName>CheckpointAnim</SpriteName>
       <Position>
         <x>192</x>
         <y>352</y>

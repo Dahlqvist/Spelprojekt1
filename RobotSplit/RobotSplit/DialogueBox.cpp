@@ -1,7 +1,7 @@
 #include "DialogueBox.h"
 
 DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn, bool visible, std::string id)
-	:Unit(position, id, spriteName, false)
+	:Unit(position, id, spriteName, false, true)
 	,mText(text)
 	,mVisible(visible)
 	,mFadeIn(fadeIn)

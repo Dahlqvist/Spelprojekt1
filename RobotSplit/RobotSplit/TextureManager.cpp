@@ -229,6 +229,7 @@ void TextureManager::loadTexture()
 	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
 
 	//Tutorials
+	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
 	mTextureMap["House1"].loadFromFile("Texture/Tutorials/House02_High02.png");
 	mTextureMap["House2"].loadFromFile("Texture/Tutorials/House02_TutLvl01.png");
 	mTextureMap["House3"].loadFromFile("Texture/Tutorials/House01.png");
