@@ -51,6 +51,7 @@ void LaserHolder::hit(){
 
 void LaserHolder::activate()
 {
+	mLaser->activate();
 	mActiveSprite=&mOn;
 	mActive=true;
 }

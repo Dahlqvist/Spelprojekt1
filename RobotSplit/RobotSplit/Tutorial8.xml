@@ -65,7 +65,7 @@
     <Unit>
       <Type>"LaserDeactivator"</Type>
       <Position>
-        <x>700</x>
+        <x>672</x>
         <y>472</y>
       </Position>
       <SpriteName>"RedButtonAni"</SpriteName>
@@ -76,7 +76,7 @@
     <Unit>
       <Type>"LaserDeactivator"</Type>
       <Position>
-        <x>700</x>
+        <x>672</x>
         <y>472</y>
       </Position>
       <SpriteName>"RedButtonAni"</SpriteName>

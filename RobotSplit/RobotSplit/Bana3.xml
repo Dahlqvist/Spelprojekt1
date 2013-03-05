@@ -36,6 +36,20 @@
     </Unit>
 
     <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>1040</x>
+        <y>224</y>
+      </Position>
+      <Id>"LaserRedMeanix"</Id>
+      <Active>true</Active>
+      <Length>150</Length>
+      <Rotation>180</Rotation>
+      <Color>"Red"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    
+    <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixAni"</SpriteName>
       <Frames>8</Frames>
