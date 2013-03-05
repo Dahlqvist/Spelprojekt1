@@ -17,6 +17,7 @@ class UnitManager
 public:
 	UnitManager(Player* player);
 	UnitManager(Player* player, std::vector<Unit*> units);
+	~UnitManager();
 
 	void addUnit(Unit* unit);
 

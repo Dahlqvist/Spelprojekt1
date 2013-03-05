@@ -37,8 +37,7 @@
 
     <Unit>
       <Type>Checkpoint</Type>
-      <SpriteOff>CheckpointOff</SpriteOff>
-      <SpriteOn>CheckpointOn</SpriteOn>
+      <SpriteName>CheckpointAnim</SpriteName>
       <Position>
         <x>192</x>
         <y>256</y>
@@ -212,6 +211,7 @@
       </Offset>
       <Behind>true</Behind>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>

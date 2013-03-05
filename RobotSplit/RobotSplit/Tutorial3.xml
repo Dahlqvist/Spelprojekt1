@@ -125,6 +125,7 @@
 
     <Unit>
       <Type>Checkpoint</Type>
+      <SpriteName>CheckpointAnim</SpriteName>
       <Position>
         <x>656</x>
         <y>544</y>

@@ -6,6 +6,7 @@
 
 class GameObject{
 public: 
+	virtual ~GameObject(){};
 	virtual void update()=0; 
 	virtual void draw()=0; 
 	virtual sf::Vector2f getPosition()=0; 

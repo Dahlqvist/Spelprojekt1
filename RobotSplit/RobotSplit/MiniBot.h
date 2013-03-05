@@ -10,6 +10,7 @@ public:
 	sf::Sprite getSprite();
 	void update();
 private:
+	Animation* mAnimation;
 	Animation mWalking;
 	Animation mCharging;
 	Animation mRelease;

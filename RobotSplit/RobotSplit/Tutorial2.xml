@@ -172,5 +172,18 @@
       <SpriteName>""</SpriteName>
       <Solid>false</Solid>
     </Unit>
+
+    <Unit>
+      <Type>BGSmoke</Type>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+      </Position>
+      <SpriteName>BGSmoke</SpriteName>
+      <Frames>4</Frames>
+      <Speed>200</Speed>
+      <Solid>false</Solid>
+      <Behind>true</Behind>
+    </Unit>
   </Objects>
 </Level>
