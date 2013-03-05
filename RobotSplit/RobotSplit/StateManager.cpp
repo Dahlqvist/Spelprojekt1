@@ -2,7 +2,6 @@
 
 #include "Game.h"
 #include "Option.h"
-#include "Splash.h"
 #include "InGameMenu.h"
 #include "Menu.h"
 #include "Audio.h"

@@ -1,20 +1,18 @@
 #include "Splash.h"
-#include "StateInput.h"
-#include "Window.h"
 #include "TextureManager.h"
 #include <iostream>
 bool Splash::mStatus;
 
+
 Splash::Splash():
-	mStateInput(StateInput::getInstance()),
 	mWindow(Window::getWindow()),
-	mWatermelon("Watermelon", 1, 1),
-	mConcept1("RobotSplitConcept1", 1, 1),
-	currentAnimation(&mWatermelon)	
+	mSplash("Watermelon", 1, 1),
+	currentAnimation(&mSplash)
 {
 	mTime.restart();
 	//mConcept1.getSprite().scale(bilden/fönstret)
 	mStatus = false;
+
 }
 
 Splash::~Splash()
@@ -30,23 +28,13 @@ Splash& Splash::getInstance()
 
 void Splash::update()
 {
-	if(mTime.getElapsedTime().asSeconds() < 3)
-	{
-		currentAnimation = &mWatermelon;
-	}
-	else if(mTime.getElapsedTime().asSeconds() > 3 )
-	{
-		currentAnimation = &mConcept1;
-	}
-
-	if(mTime.getElapsedTime().asSeconds() > 6 )
-		runSplash(false);
+	mSplash.update();
 }
 
 void Splash::render()
 {
 	mWindow.clear(sf::Color::Black);
-	sf::Sprite Temp=currentAnimation->getSprite();
+	sf::Sprite Temp=mSplash.getSprite();
 	sf::View tempView = mWindow.getView();
 	sf::Vector2u p = mWindow.getSize();
 	float ratio = mWindow.getSize().y/Temp.getGlobalBounds().height;
@@ -60,9 +48,9 @@ void Splash::render()
 	mWindow.display();
 }
 
-void Splash::runSplash(bool status)
+void Splash::runSplash(std::string sprite, int timePerFrame, int nrFrames)
 {
-	mStatus = status;
+	mSplash = Animation(sprite, timePerFrame, nrFrames);
 }
 
 bool Splash::getStatus()

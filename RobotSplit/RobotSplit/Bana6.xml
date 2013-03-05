@@ -138,7 +138,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ao"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
@@ -150,7 +150,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ap"</SpriteName>
       <Position>
         <x>128</x>
         <y>64</y>
@@ -187,7 +187,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6d"</SpriteName>
       <Position>
         <x>64</x>
         <y>704</y>
@@ -211,7 +211,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6n"</SpriteName>
       <Position>
         <x>192</x>
         <y>704</y>
@@ -309,7 +309,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Aq"</SpriteName>
       <Position>
         <x>832</x>
         <y>704</y>
@@ -321,7 +321,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ad"</SpriteName>
       <Position>
         <x>896</x>
         <y>704</y>
@@ -369,7 +369,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ab"</SpriteName>
       <Position>
         <x>1152</x>
         <y>704</y>
@@ -382,7 +382,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ae"</SpriteName>
       <Position>
         <x>1152</x>
         <y>640</y>
@@ -394,7 +394,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Am"</SpriteName>
       <Position>
         <x>896</x>
         <y>640</y>
@@ -406,7 +406,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ae"</SpriteName>
       <Position>
         <x>832</x>
         <y>640</y>
@@ -418,7 +418,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Ag"</SpriteName>
       <Position>
         <x>928</x>
         <y>576</y>
@@ -430,7 +430,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile1"</SpriteName>
+      <SpriteName>"TileL6Al"</SpriteName>
       <Position>
         <x>992</x>
         <y>576</y>
@@ -467,7 +467,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Widea"</SpriteName>
       <Position>
         <x>288</x>
         <y>256</y>
@@ -475,7 +475,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Wideb"</SpriteName>
       <Position>
         <x>352</x>
         <y>224</y>
@@ -483,7 +483,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Widec"</SpriteName>
       <Position>
         <x>512</x>
         <y>224</y>
@@ -491,7 +491,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Widee"</SpriteName>
       <Position>
         <x>736</x>
         <y>224</y>
@@ -499,7 +499,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Wided"</SpriteName>
       <Position>
         <x>800</x>
         <y>224</y>
@@ -507,7 +507,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Wided"</SpriteName>
       <Position>
         <x>864</x>
         <y>224</y>
@@ -515,7 +515,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Widee"</SpriteName>
       <Position>
         <x>928</x>
         <y>224</y>
@@ -523,7 +523,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
+      <SpriteName>"TileL6Widef"</SpriteName>
       <Position>
         <x>992</x>
         <y>224</y>
@@ -540,7 +540,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL6Hihga"</SpriteName>
       <Position>
         <x>992</x>
         <y>256</y>
@@ -548,7 +548,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL6Hihgb"</SpriteName>
       <Position>
         <x>992</x>
         <y>320</y>
@@ -556,7 +556,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL6Hihgb"</SpriteName>
       <Position>
         <x>992</x>
         <y>384</y>
@@ -564,7 +564,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL6Hihga"</SpriteName>
       <Position>
         <x>992</x>
         <y>448</y>
@@ -572,7 +572,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileHigh"</SpriteName>
+      <SpriteName>"TileL6Hihgb"</SpriteName>
       <Position>
         <x>992</x>
         <y>512</y>
@@ -763,7 +763,7 @@
 
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamTop1"</SpriteName>
+      <SpriteName>"RamTopL6"</SpriteName>
       <Position>
         <x>0</x>
         <y>0</y>
@@ -775,22 +775,10 @@
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamTop2"</SpriteName>
-      <Position>
-        <x>640</x>
-        <y>0</y>
-      </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamPipeLeftWOPipe1"</SpriteName>
+      <SpriteName>"RamLeftL6"</SpriteName>
       <Position>
         <x>0</x>
-        <y>64</y>
+        <y>0</y>
       </Position>
       <Size>
         <x>64</x>
@@ -799,10 +787,10 @@
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamRight2"</SpriteName>
+      <SpriteName>"RamRightL6"</SpriteName>
       <Position>
         <x>1216</x>
-        <y>64</y>
+        <y>0</y>
       </Position>
       <Size>
         <x>64</x>
