@@ -139,7 +139,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
@@ -151,7 +151,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>128</x>
         <y>64</y>
@@ -163,7 +163,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile4"</SpriteName>
+      <SpriteName>"TileL6a"</SpriteName>
       <Position>
         <x>128</x>
         <y>416</y>
@@ -175,7 +175,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6b"</SpriteName>
       <Position>
         <x>192</x>
         <y>416</y>
@@ -185,9 +185,10 @@
         <y>64</y>
       </Size>
     </Unit>
+    
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>64</x>
         <y>704</y>
@@ -199,7 +200,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6c"</SpriteName>
       <Position>
         <x>128</x>
         <y>704</y>
@@ -211,7 +212,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>192</x>
         <y>704</y>
@@ -223,7 +224,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6k"</SpriteName>
       <Position>
         <x>192</x>
         <y>640</y>
@@ -233,9 +234,10 @@
         <y>64</y>
       </Size>
     </Unit>
+    
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL6i"</SpriteName>
       <Position>
         <x>512</x>
         <y>640</y>
@@ -247,7 +249,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"TileL6m"</SpriteName>
       <Position>
         <x>512</x>
         <y>704</y>
@@ -259,7 +261,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6e"</SpriteName>
       <Position>
         <x>576</x>
         <y>704</y>
@@ -271,7 +273,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6f"</SpriteName>
       <Position>
         <x>640</x>
         <y>704</y>
@@ -283,7 +285,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6c"</SpriteName>
       <Position>
         <x>704</x>
         <y>704</y>
@@ -293,9 +295,10 @@
         <y>64</y>
       </Size>
     </Unit>
+    
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6h"</SpriteName>
       <Position>
         <x>768</x>
         <y>704</y>
@@ -307,7 +310,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>832</x>
         <y>704</y>
@@ -319,19 +322,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
-      <Position>
-        <x>832</x>
-        <y>704</y>
-      </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>896</x>
         <y>704</y>
@@ -343,7 +334,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6c"</SpriteName>
       <Position>
         <x>960</x>
         <y>704</y>
@@ -355,7 +346,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6d"</SpriteName>
       <Position>
         <x>1024</x>
         <y>704</y>
@@ -367,7 +358,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6e"</SpriteName>
       <Position>
         <x>1088</x>
         <y>704</y>
@@ -379,7 +370,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>1152</x>
         <y>704</y>
@@ -392,7 +383,7 @@
     
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>1152</x>
         <y>640</y>
@@ -404,7 +395,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>896</x>
         <y>640</y>
@@ -416,7 +407,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>832</x>
         <y>640</y>
@@ -428,7 +419,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>928</x>
         <y>576</y>
@@ -440,7 +431,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>992</x>
         <y>576</y>
@@ -452,7 +443,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6j"</SpriteName>
       <Position>
         <x>672</x>
         <y>288</y>
@@ -464,7 +455,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"TileL6l"</SpriteName>
       <Position>
         <x>672</x>
         <y>224</y>

@@ -288,7 +288,22 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL5e"].loadFromFile("Texture/Enviroment/Bana4-5/First_Balcony_L.png");
 	mTextureMap["TileL5f"].loadFromFile("Texture/Enviroment/Bana4-5/First_Balcony_R.png");
 
+	//Bana6
+	mTextureMap["TileL6a"].loadFromFile("Texture/Enviroment/Bana6/First_Balcony_L.png");
+	mTextureMap["TileL6b"].loadFromFile("Texture/Enviroment/Bana6/First_Balcony_R.png");
 
+	mTextureMap["TileL6c"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile01.png");
+	mTextureMap["TileL6d"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile02.png");
+	mTextureMap["TileL6e"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile03.png");
+	mTextureMap["TileL6f"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile04.png");
+	mTextureMap["TileL6g"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile05.png");
+	mTextureMap["TileL6h"].loadFromFile("Texture/Enviroment/Bana6/Floor_Tile06.png");
+
+	mTextureMap["TileL6i"].loadFromFile("Texture/Enviroment/Bana6/tile6_dark_P3&P7.png");
+	mTextureMap["TileL6j"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile01.png");
+	mTextureMap["TileL6k"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile02.png");
+	mTextureMap["TileL6l"].loadFromFile("Texture/Enviroment/Bana6/Vertical_Tile03_Top.png");
+	mTextureMap["TileL6m"].loadFromFile("Texture/Enviroment/Bana6/Fix_01.png");
 
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
