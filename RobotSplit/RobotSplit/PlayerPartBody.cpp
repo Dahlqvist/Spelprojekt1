@@ -15,7 +15,8 @@ PlayerPartBody::PlayerPartBody(PlayerPartFeet* Feet):
 	mLeftPart("StixUpperIdlePartL", 100, 1),
 	mRightPart("StixUpperIdlePart", 100, 1),
 	mSplitting("StixUpperSplit", 100, 8),
-	mSplittingLeft("StixUpperSplitL", 100, 8)
+	mSplittingLeft("StixUpperSplitL", 100, 8),
+	mDying("StixBodyDie", 100, 9)
 {
 	mId="PlayerPartBody";
 	mActiveAnimation=&mRight;
@@ -29,7 +30,7 @@ PlayerPartBody::PlayerPartBody(PlayerPartFeet* Feet):
 void PlayerPartBody::update()
 {
 	mActiveAnimation->update();
-	if(mJump>0)
+	if(mJump>0 && mActiveAnimation!=&mDying)
 	{
 		mCounter++;
 		if(mCounter>=Eric::getTimer())
@@ -49,7 +50,9 @@ void PlayerPartBody::update()
 	}
 	else
 	{
-		mPosition+=sf::Vector2f(0, Eric::getGravity());
+		if(mActiveAnimation!=&mDying){
+			mPosition+=sf::Vector2f(0, Eric::getGravity());
+		}
 	}
 } 
 void PlayerPartBody::draw()
@@ -59,7 +62,7 @@ void PlayerPartBody::draw()
 void PlayerPartBody::setPosition(sf::Vector2f Vec)
 {
 	PlayerPartBody::decideAnimation(Vec);
-	if(mAttached==true && mActiveAnimation->getCurrentFrame()!=mFeet->getFrame())
+	if(mAttached==true && mActiveAnimation->getCurrentFrame()!=mFeet->getFrame() && mAnimationTimer.getElapsedTime().asSeconds()>mAniTime)
 	{
 		mActiveAnimation->restart();
 		mFeet->restartAnimation();
@@ -172,7 +175,7 @@ void PlayerPartBody::resetAnimation()
 {
 	if(mAnimationTimer.getElapsedTime().asSeconds() > mAniTime)
 	{
-		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mWinningAni)
+		if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mWinningAni || mActiveAnimation==&mDying)
 		{
 			mActiveAnimation=&mRight;
 		}
@@ -213,4 +216,19 @@ void PlayerPartBody::winning()
 	mAnimationTimer.restart();
 	mAniTime=2;
 	mActiveAnimation=&mWinningAni;
+}
+int PlayerPartBody::getFrame()
+{
+	return mActiveAnimation->getCurrentFrame();
+}
+void PlayerPartBody::die()
+{
+	mDying.restart();
+	mAnimationTimer.restart();
+	mAniTime=(float)1;
+	mActiveAnimation=&mDying;
+}
+void PlayerPartBody::aniTimer()
+{
+	mAniTime=0;
 }

@@ -23,7 +23,7 @@
   </Backgrounds>
 
   <Objects>
-    <Unit>
+    <!--<Unit>
       <Type>"HelpBox"</Type>
       <SpriteName>"HelpBoxInactive"</SpriteName>
       <Position>
@@ -113,7 +113,7 @@
         <y>32</y>
       </Size>
       <Solid>false</Solid>
-    </Unit>
+    </Unit>-->
 
     <Unit>
       <Type>"Player"</Type>
@@ -127,7 +127,7 @@
       </Size>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Platform"</Type>
       <SpriteName>"Tile2"</SpriteName>
       <Position>
@@ -298,7 +298,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile2"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>64</x>
         <y>160</y>
@@ -310,7 +310,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile3"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>128</x>
         <y>160</y>
@@ -322,7 +322,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile4"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>192</x>
         <y>160</y>
@@ -334,7 +334,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>256</x>
         <y>160</y>
@@ -346,7 +346,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"Tile6"</SpriteName>
+      <SpriteName>"Tile1"</SpriteName>
       <Position>
         <x>320</x>
         <y>160</y>
@@ -475,15 +475,39 @@
         <x>64</x>
         <y>64</y>
       </Size>
+    </Unit>-->
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpDialogue4"</SpriteName>
+      <Position>
+        <x>352</x>
+        <y>256</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
     </Unit>
 
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>140</x>
+        <y>472</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
 
     <Unit>
       <Type>"Door"</Type>
-      <SpriteName>"Exit"</SpriteName>
+      <SpriteName>"BankVaultSign"</SpriteName>
       <Position>
-        <x>1152</x>
-        <y>352</y>
+        <x>1116</x>
+        <y>380</y>
       </Position>
       <Size>
         <x>64</x>
@@ -492,7 +516,7 @@
       <Solid>false</Solid>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Lava"</Type>
       <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
@@ -743,38 +767,90 @@
         <x>64</x>
         <y>64</y>
       </Size>
+    </Unit>-->
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>192</x>
+        <y>224</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>256</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>608</x>
+        <y>224</y>
+      </Position>
+      <Id>"LaserBlue1"</Id>
+      <Active>true</Active>
+      <Length>256</Length>
+      <Rotation>0</Rotation>
+      <Color>"Blue"</Color>
+      <VisibilityRange>100</VisibilityRange>
     </Unit>
 
     <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"BankFloor"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>480</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Light"</Type>
+      <SpriteName>"BankLight"</SpriteName>
+      <Position>
+        <x>768</x>
+        <y>224</y>
+      </Position>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"BankBalcony"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>124</y>
+      </Position>
+    </Unit>
+
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>256</x>
+        <y>216</y>
+      </Position>
+      <SpriteName>"YellowButtonAni"</SpriteName>
+      <Id>"LaserTriggerYellow"</Id>
+      <Target>"LaserYellow1"</Target>
+      <Rotation>180</Rotation>
+    </Unit>
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>672</x>
+        <y>472</y>
+      </Position>
+      <SpriteName>"BlueButtonAni"</SpriteName>
+      <Id>"LaserTriggerBlue"</Id>
+      <Target>"LaserBlue1"</Target>
+      <Rotation>0</Rotation>
+    </Unit>
+    
+    <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamTop1"</SpriteName>
+      <SpriteName>"BankRam1"</SpriteName>
       <Position>
         <x>0</x>
         <y>0</y>
-      </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamTop2"</SpriteName>
-      <Position>
-        <x>640</x>
-        <y>0</y>
-      </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamLeft1"</SpriteName>
-      <Position>
-        <x>0</x>
-        <y>64</y>
       </Position>
       <Size>
         <x>64</x>
@@ -783,39 +859,16 @@
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"RamRight1"</SpriteName>
+      <SpriteName>"BankRam2"</SpriteName>
       <Position>
         <x>1216</x>
-        <y>64</y>
+        <y>0</y>
       </Position>
       <Size>
         <x>64</x>
         <y>636</y>
       </Size>
     </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamPipeLeft1"</SpriteName>
-      <Position>
-        <x>0</x>
-        <y>696</y>
-      </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
-    </Unit>
-    <Unit>
-      <Type>"Ram"</Type>
-      <SpriteName>"RamPipeRight1"</SpriteName>
-      <Position>
-        <x>1202</x>
-        <y>696</y>
-      </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
-    </Unit>
+
   </Objects>
 </Level>

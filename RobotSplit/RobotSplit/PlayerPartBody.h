@@ -22,10 +22,13 @@ public:
 	virtual Unit* getUnit();
 	virtual void forceMove(sf::Vector2f);
 	virtual void winning();
+	virtual int getFrame();
 
+	void die();
 	void jumpReset();
 	void restartAnimation();
 	void decideAnimation(sf::Vector2f);
+	void aniTimer();
 private: 
 	bool mAttached;
 	Unit* mUnit;
@@ -43,6 +46,7 @@ private:
 	Animation mRightPart;
 	Animation mSplitting;
 	Animation mSplittingLeft;
+	Animation mDying;
 	PlayerPartFeet* mFeet;
 	sf::Vector2f mPosition; 
 	std::string mId;

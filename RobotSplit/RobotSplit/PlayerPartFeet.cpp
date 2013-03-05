@@ -13,7 +13,8 @@ PlayerPartFeet::PlayerPartFeet():
 	mRightAnimationMagnet("StixLowerAniMagnet", 200, 8),
 	mJumpAni("StixFeetJumpAni", 100, 8),
 	mJumpAniLeft("StixFeetJumpAniL", 100, 8),
-	mWinningAni("WinningFeet", 100, 6)
+	mWinningAni("WinningFeet", 100, 6),
+	mDying("StixFeetDie", 100, 9)
 {
 	mId="PlayerPartFeet";
 	mActiveAnimation=&mRight;
@@ -35,7 +36,7 @@ void PlayerPartFeet::update()
 	{
 		mUnit->update();
 	}
-	if(mJump>0)
+	if(mJump>0 && mActiveAnimation!=&mDying)
 	{
 		mCounter++;
 		if(mCounter>=Eric::getTimer())
@@ -51,7 +52,9 @@ void PlayerPartFeet::update()
 	}
 	if(mAttached==false && mAttachedWall==false && mId!="InteKollision")
 	{
-		mPosition+=sf::Vector2f(0, Eric::getGravity());
+		if(mActiveAnimation!=&mDying){
+			mPosition+=sf::Vector2f(0, Eric::getGravity());
+		}
 	}
 } 
 void PlayerPartFeet::draw()
@@ -294,7 +297,7 @@ void PlayerPartFeet::resetAnimation()
 	{
 		if(mAttachedWall==false)
 		{
-			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni || mActiveAnimation==&mRightAnimationMagnet) 
+			if(mActiveAnimation==&mRightAnimation || mActiveAnimation==&mLeftMagnet || mActiveAnimation==&mJumpAni || mActiveAnimation==&mWinningAni || mActiveAnimation==&mRightAnimationMagnet  || mActiveAnimation==&mDying) 
 			{
 				mActiveAnimation=&mRight;
 			}
@@ -425,6 +428,13 @@ int PlayerPartFeet::getFrame()
 {
 	return mActiveAnimation->getCurrentFrame();
 }
+void PlayerPartFeet::die()
+{
+	mDying.restart();
+	mAnimationTimer.restart();
+	mAniTime=(float)2;
+	mActiveAnimation=&mDying;
+}
 
 void PlayerPartFeet::setId(std::string Text)
 {
@@ -433,4 +443,8 @@ void PlayerPartFeet::setId(std::string Text)
 float PlayerPartFeet::getFuel()
 {
 	return mFuel;
+}
+void PlayerPartFeet::aniTimer()
+{
+	mAniTime=0;
 }

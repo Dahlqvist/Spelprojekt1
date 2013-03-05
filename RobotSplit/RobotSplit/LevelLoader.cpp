@@ -22,6 +22,7 @@
 #include "LaserDeactivator.h"
 #include "Meanix.h"
 #include "Checkpoint.h"
+#include "MiniBot.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -51,7 +52,7 @@ Level	LevelLoader::getLevel()
 		//Initiation of level begins
 		//Sets the level's name
 		RetLevel.setName(getValue(LevelNode->first_node("Name")));
-		RetLevel.setBackground(getBackground());
+		addBackground(RetLevel);
 		//Sets the level's background
 		/*int	Frames,Speed;
 		float PosX, PosY;
@@ -101,7 +102,7 @@ Level	LevelLoader::getLevel()
 			}
 			else if(type=="Line")
 			{
-				addLine(RetLevel,Gameobject);
+//				addLine(RetLevel,Gameobject);
 			}
 			else if(type=="DialogueBox")
 			{
@@ -118,6 +119,10 @@ Level	LevelLoader::getLevel()
 			else if(type=="Meanix")
 			{
 				addMeanix(RetLevel,Gameobject);
+			}
+			else if(type=="MiniBot")
+			{
+				addMiniBot(RetLevel,Gameobject);
 			}
 			else if (type=="Checkpoint")
 			{
@@ -157,7 +162,7 @@ Level	LevelLoader::getLevel()
 	return	RetLevel;
 }
 
-vector<Background*>	LevelLoader::getBackground()
+void	LevelLoader::addBackground(Level	&Source)
 {
 	rapidxml::xml_node<>	*CurrentChild, *Node;
 	string					CurrentValue;
@@ -211,9 +216,9 @@ vector<Background*>	LevelLoader::getBackground()
 		retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
 	}
 	while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
-
-	//Adds the Player pointer to the Level object
-	return retBackground;
+	Source.setBackground(retBackground);
+	Source.getBackgroundWrap().setFrames(Frames);
+	Source.getBackgroundWrap().setSpeed(Speed);
 }
 
 void	LevelLoader::addPlayer	(Level	&level,xml_node<>* Node)
@@ -435,6 +440,47 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
+void LevelLoader::addMiniBot(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue;
+	MiniBot					*TempObject;
+	sf::Vector2f			Position;
+	bool					SideWays;
+	float					Length, Rotation;
+
+	//Gets the Position childnode from the GameObject node
+	CurrentChild=	Node->first_node("Position");
+	//Gets the x Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	//Sets X to CurentValue's value
+	Position.x=((float)atof(CurrentValue.c_str()));
+	//Gets the y Value from CurrentChild
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	//Sets Y to CurentValue's value
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	CurrentChild=	Node->first_node("Length");
+	Length=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("Rotation");
+	Rotation=atof(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("SideWays");
+	if (getValue(CurrentChild)=="true")
+	{
+		SideWays=true;
+	}
+	else
+	{
+		SideWays=false;
+	}
+
+	//Creates a Platform object
+	TempObject=		new MiniBot(Position, Rotation, Length, SideWays);
+	//Puts the Platform object into the level's UnitVector
+	level.mObjects.push_back(TempObject);
+}
 
 void	LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 {
@@ -586,7 +632,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue,Id,SpriteOn,SpriteOff;
+	string					CurrentValue,Id;
 	Checkpoint				*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 	bool					Solid=true, Behind=false;
@@ -623,13 +669,6 @@ void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 			Offset.y=((float)atof(CurrentValue.c_str()));
 		}
 	}
-
-	//Initiates the SpriteName
-	CurrentChild=	Node->first_node("SpriteOn");
-	SpriteOn=getValue(CurrentChild);
-
-	CurrentChild=	Node->first_node("SpriteOff");
-	SpriteOff=getValue(CurrentChild);
 	
 	//Initilizes the Id string
 	CurrentChild=	Node->first_node("Type");
@@ -658,7 +697,7 @@ void	LevelLoader::addCheckpoint(Level	&level,xml_node<>* Node)
 	}
 	
 	//Creates an Unit object
-	TempObject=		new Checkpoint(Position, Size, Offset,SpriteOn, SpriteOff);
+	TempObject=		new Checkpoint(Position, Size, Offset, new Animation("CheckpointAnim", 100, 5));
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Level.h"
 #include "DialogueBox.h"
+#include "MiniBot.h"
 
 class StateInput;
 class Background;
@@ -44,7 +45,6 @@ private:
 	std::vector<std::string> mBanor;
 	int mBana;
 	//Sound& mSound;
-
 	Timer* mTimer;
 	
 };

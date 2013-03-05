@@ -24,6 +24,7 @@ public:
 	virtual Unit* getUnit()=0;
 	virtual void forceMove(sf::Vector2f)=0;
 	virtual void winning()=0;
+	virtual int getFrame()=0;
 private: 
 	bool mAttached;
 	sf::Vector2f mPosition; 

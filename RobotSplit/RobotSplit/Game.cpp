@@ -56,9 +56,13 @@ Game::Game():
 	mBanor.push_back("Tutorial4.xml");
 	mBanor.push_back("Tutorial5.xml");
 	mBanor.push_back("Tutorial6.xml");
+	mBanor.push_back("Tutorial8.xml");
 	mBanor.push_back("Bana1.xml");
 	mBanor.push_back("Bana2.xml");
 	mBanor.push_back("Bana3.xml");
+	mBanor.push_back("Bana4.xml");
+	mBanor.push_back("Bana5.xml");
+	mBanor.push_back("Bana6.xml");
 }
 
 Game::~Game()
@@ -165,7 +169,7 @@ void Game::input()
 	{
 		mPlayer->interact(1);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
 	{
 		mPlayer->interact(2);
 	}
@@ -296,6 +300,12 @@ void Game::render()
 	Objects->draw(mWindow, false);
 	mPlayer->draw(mWindow, true);
 	mPlayer->resetAnimations();
+
+	/*mWindow.draw(mMini1.getSprite());
+	mWindow.draw(mMini2.getSprite());
+	mWindow.draw(mMini3.getSprite());
+	mWindow.draw(mMini4.getSprite());*/
+
 	//for (vector<DialogueBox*>::size_type i=0; i<diaBox.size(); i++)
 	//{
 		//mWindow.draw(diaBox[i]->getSprite());

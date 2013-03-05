@@ -138,6 +138,9 @@
     <ClCompile Include="Checkpoint.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
+    <ClCompile Include="MiniBot.cpp">
+      <Filter>Source Files\Unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -280,6 +283,9 @@
     <ClInclude Include="Checkpoint.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
+    <ClInclude Include="MiniBot.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -341,9 +347,6 @@
     <None Include="Tutorial6.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial7.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Bana2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -351,6 +354,18 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Bana1.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana4.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana5.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Bana6.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial8.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>

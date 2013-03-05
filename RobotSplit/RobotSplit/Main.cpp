@@ -47,7 +47,7 @@ int main()
 				statemanager.updateState();
 			statemanager.renderState();	
 		}
-		cout << temp.getElapsedTime().asSeconds() << endl;
+		//cout << temp.getElapsedTime().asSeconds() << endl;
 	}	
 	return 0;
 }
