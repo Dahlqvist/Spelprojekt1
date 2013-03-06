@@ -24,6 +24,11 @@ int main()
 	sf::RenderWindow& mWindow = Window::getWindow();
 	sf::Clock testClock;
 
+	float high = 0.0;
+	float low = 0.0;
+	float average = 0.0;
+	float time = 0.0;
+
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
@@ -34,6 +39,11 @@ int main()
 				mWindow.close();
 			
 			statemanager.inputState();
+			if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::T)
+			{
+				cout << "High: " << high << endl;
+				cout << "Low: " << low << endl;
+			}
 		}
 		if(testClock.getElapsedTime().asSeconds() < 3)
 		{
@@ -47,6 +57,11 @@ int main()
 				statemanager.updateState();
 			statemanager.renderState();	
 		}
+		time = temp.getElapsedTime().asSeconds();
+		if(high < time)
+			high = time;
+		if(low > time)
+			low = time;
 		//cout << temp.getElapsedTime().asSeconds() << endl;
 	}	
 	return 0;
