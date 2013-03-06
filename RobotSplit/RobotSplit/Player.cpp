@@ -355,19 +355,16 @@ void Player::jump()
 			mFeet.jump(Eric::getJump());
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyActive==true && mBodyStandingFeet==true || mBodyActive==true && (mAttachedMagnet==true && mBodyAttached==true))
 		{
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || mBodyActive==false && (mAttachedMagnet==true && mBodyAttached==false))
 		{
 			mFeet.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 	}	
 }

@@ -25,6 +25,7 @@ int main()
 	sf::Clock testClock;
 
 	mWindow.setFramerateLimit(60);
+	//mWindow.setVerticalSyncEnabled(true);
 	while(mWindow.isOpen())
 	{
 		sf::Clock temp;

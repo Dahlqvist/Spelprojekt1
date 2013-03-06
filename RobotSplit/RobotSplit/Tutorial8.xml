@@ -132,7 +132,7 @@
       <Type>"Door"</Type>
       <SpriteName>"BankVault"</SpriteName>
       <Position>
-        <x>1016</x>
+        <x>1000</x>
         <y>280</y>
       </Position>
       <Size>

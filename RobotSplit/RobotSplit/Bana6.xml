@@ -34,7 +34,17 @@
         <y>64</y>
       </Size>
     </Unit>
-    
+
+    <Unit>
+      <Type>"MiniBot"</Type>
+      <Position>
+        <x>1024</x>
+        <y>288</y>
+      </Position>
+      <Rotation>90</Rotation>
+      <Length>288</Length>
+      <SideWays>false</SideWays>
+    </Unit>
     <Unit>
       <Type>"MiniBot"</Type>
       <Position>
@@ -128,7 +138,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ao"</SpriteName>
+      <SpriteName>"TileL6o"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
@@ -140,7 +150,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ap"</SpriteName>
+      <SpriteName>"TileL6p"</SpriteName>
       <Position>
         <x>128</x>
         <y>64</y>
@@ -457,6 +467,15 @@
 
     <Unit>
       <Type>"Platform"</Type>
+      <SpriteName>"TileL6i"</SpriteName>
+      <Position>
+        <x>192</x>
+        <y>576</y>
+      </Position>
+    </Unit>
+
+    <Unit>
+      <Type>"Platform"</Type>
       <SpriteName>"TileL6Widea"</SpriteName>
       <Position>
         <x>288</x>
@@ -517,14 +536,6 @@
       <Position>
         <x>992</x>
         <y>224</y>
-      </Position>
-    </Unit>
-    <Unit>
-      <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
-      <Position>
-        <x>192</x>
-        <y>576</y>
       </Position>
     </Unit>
 
