@@ -81,3 +81,8 @@ void LaserHolder::reset()
 		deactivate();
 	}
 }
+
+void LaserHolder::setReset()
+{
+	mStartActive=mActive;
+}

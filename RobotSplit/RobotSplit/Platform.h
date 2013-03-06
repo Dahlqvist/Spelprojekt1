@@ -19,6 +19,7 @@ public:
 	void draw();
 	void hitOnce();
 	void reset();
+	void setReset();
 
 private:
 	int mLives;

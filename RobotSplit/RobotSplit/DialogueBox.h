@@ -12,6 +12,7 @@ public:
 	void activate();
 	void deactivate();
 	void reset();
+	void setReset();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
