@@ -43,7 +43,9 @@ void Sound::loadSound()
 	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 	mBufferMap["Winning"].loadFromFile("Music/level_complete.wav");
-
+	mBufferMap["Rocket"].loadFromFile("Sound/rocket_proto.wav");
+	mBufferMap["StandInLaser"].loadFromFile("Sound/stand_in_lazer_proto.wav");
+	
 	mBufferMap["TriggerHelp"].loadFromFile("Sound/Ljud/helpbox_1.wav");
 
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);
@@ -58,6 +60,8 @@ void Sound::loadSound()
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
 	mSoundMap["Winning"].setBuffer(mBufferMap["Winning"]);
+	mSoundMap["Rocket"].setBuffer(mBufferMap["Rocket"]);
+	mSoundMap["StandInLaser"].setBuffer(mBufferMap["StandInLaser"]);
 
 	mSoundMap["TriggerHelp"].setBuffer(mBufferMap["TriggerHelp"]);
 }

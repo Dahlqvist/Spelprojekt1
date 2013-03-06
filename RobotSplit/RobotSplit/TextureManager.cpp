@@ -306,6 +306,9 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL6m"].loadFromFile("Texture/Enviroment/Bana6/Fix_01.png");
 	mTextureMap["TileL6n"].loadFromFile("Texture/Enviroment/Bana6/Fix_01R.png");
 
+	mTextureMap["TileL6o"].loadFromFile("Texture/Enviroment/Bana6/NTile24.png");
+	mTextureMap["TileL6p"].loadFromFile("Texture/Enviroment/Bana6/NTile23.png");
+
 	mTextureMap["TileL6Aa"].loadFromFile("Texture/Enviroment/Bana6/A/NTile01.png");
 	mTextureMap["TileL6Ab"].loadFromFile("Texture/Enviroment/Bana6/A/NTile02.png");
 	mTextureMap["TileL6Ac"].loadFromFile("Texture/Enviroment/Bana6/A/NTile03.png");
@@ -375,6 +378,8 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
 	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
+	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
+
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
@@ -462,6 +467,7 @@ void TextureManager::loadTexture()
 	mTextureMap["BankBackground3"].loadFromFile("Texture/Tutorials/Backgrounds/Background.png");
 	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
 
+	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
 	
 	//Initializing the frame parts.
 

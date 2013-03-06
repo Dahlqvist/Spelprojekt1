@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Tutorial6"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -23,30 +23,6 @@
   </Backgrounds>
 
   <Objects>
-    <Unit>
-      <Type>"DialogueBox"</Type>
-      <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue4"</SpriteName>
-      <Position>
-        <x>480</x>
-        <y>256</y>
-      </Position>
-      <Text>""</Text>
-      <Visible>false</Visible>
-      <FadeIn>false</FadeIn>
-    </Unit>
-
-    <Unit>
-      <Type>Trigger</Type>
-      <Position>
-        <x>256</x>
-        <y>472</y>
-      </Position>
-      <SpriteName>TriggerTutorial</SpriteName>
-      <Target>TutorialBox1</Target>
-      <Id>Trigger1</Id>
-      <Sound>TriggerHelp</Sound>
-    </Unit>
     <Unit>
       <Type>"Player"</Type>
       <Position>

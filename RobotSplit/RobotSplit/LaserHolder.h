@@ -43,7 +43,7 @@ protected:
 
 	//Animation* mAnimation;
 	bool mActive, mStartActive;
-
+	sf::Clock mSoundTimer;
 	Laser* mLaser;
 	friend	class	XmlSaver;
 };

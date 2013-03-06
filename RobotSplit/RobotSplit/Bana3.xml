@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Bana3"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -43,7 +43,7 @@
       </Position>
       <Id>"LaserRedMeanix"</Id>
       <Active>true</Active>
-      <Length>150</Length>
+      <Length>160</Length>
       <Rotation>180</Rotation>
       <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
