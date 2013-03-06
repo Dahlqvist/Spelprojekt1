@@ -468,6 +468,21 @@ void TextureManager::loadTexture()
 	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
 
 	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
+	mTextureMap["BackgroundBana5"].loadFromFile("Texture/Background/background_5.png");
+	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
+
+	//Tutorial1
+	mTextureMap["Tutorial1Office"].loadFromFile("Texture/Tutorials/Backgrounds/Office_Background_&_Places.png");
+
+	mTextureMap["Tutorial1Window"].loadFromFile("Texture/Tutorials/First/Office_Broken_Window.png");
+	mTextureMap["Tutorial1Desk"].loadFromFile("Texture/Tutorials/First/Office_Desk.png");
+	mTextureMap["Tutorial1Door"].loadFromFile("Texture/Tutorials/First/Office_Door.png");
+	mTextureMap["Tutorial1Floor"].loadFromFile("Texture/Tutorials/First/Office_Floor.png");
+	mTextureMap["Tutorial1House"].loadFromFile("Texture/Tutorials/First/House.png");
+
+	mTextureMap["Tutorial1Wall"].loadFromFile("Texture/Tutorials/First/Office_L_Wall.png");
+	mTextureMap["Tutorial1Roof"].loadFromFile("Texture/Tutorials/First/Office_Roof.png");
+	
 	
 	//Initializing the frame parts.
 
