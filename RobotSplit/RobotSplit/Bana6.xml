@@ -38,16 +38,6 @@
     <Unit>
       <Type>"MiniBot"</Type>
       <Position>
-        <x>1024</x>
-        <y>288</y>
-      </Position>
-      <Rotation>90</Rotation>
-      <Length>288</Length>
-      <SideWays>false</SideWays>
-    </Unit>
-    <Unit>
-      <Type>"MiniBot"</Type>
-      <Position>
         <x>960</x>
         <y>672</y>
       </Position>
@@ -534,7 +524,7 @@
       <SpriteName>"BolconyMiddle"</SpriteName>
       <Position>
         <x>192</x>
-        <y>608</y>
+        <y>576</y>
       </Position>
     </Unit>
 

@@ -48,7 +48,18 @@
       <Color>"Yellow"</Color>
       <VisibilityRange>100</VisibilityRange>
     </Unit>
-    
+
+    <Unit>
+      <Type>"MiniBot"</Type>
+      <Position>
+        <x>192</x>
+        <y>448</y>
+      </Position>
+      <Rotation>0</Rotation>
+      <Length>864</Length>
+      <SideWays>true</SideWays>
+    </Unit>
+
     <Unit>
       <Type>"Platform"</Type>
       <SpriteName>"TileL2j"</SpriteName>

@@ -144,10 +144,15 @@ void Player::update()
 			}
 		}
 	}
+	if(mFeet.getFuel()<1)
+	{
+		Sound::stopSound("Rocket");
+	}
 	//Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03)
 	{
 		lastKey=-1;
+		Sound::stopSound("Rocket");
 		Sound::stopSound("Move");
 	}
 	if(mDash>0)
@@ -343,7 +348,7 @@ bool Player::getHeadless()
 //Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mDashing==false && mJumpTemp.getElapsedTime().asSeconds()>0.5)
+	if(mDashing==false/* && mJumpTemp.getElapsedTime().asSeconds()>0.5*/)
 	{
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
@@ -541,7 +546,7 @@ void Player::reFuel()
 
 void Player::interact(int action)
 {
-	if(mWinning==false)
+	if(mWinning==false && mDying==false)
 	{
 		if(mClockStart==false)
 		{
@@ -578,7 +583,7 @@ void Player::interact(int action)
 					Sound::playSound("Move");
 				}
 			}
-			if(mAttachedMagnet==true && mBodyActive==mBodyAttached /*&& mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet()*/)
+			if(mAttachedMagnet==true && mBodyActive==mBodyAttached && mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet())
 			{
 				mHead.setMagnetSolid(false);
 				mAttachedMagnet=false;
@@ -683,6 +688,7 @@ void Player::interact(int action)
 		}
 		if(action==4)
 		{
+			mKeyTimer.restart();
 			//RocketBoost
 			if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
 			{

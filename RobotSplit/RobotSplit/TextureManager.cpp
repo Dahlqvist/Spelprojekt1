@@ -375,6 +375,8 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
 	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
+	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
+
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
