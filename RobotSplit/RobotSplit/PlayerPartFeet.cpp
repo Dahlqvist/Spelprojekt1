@@ -32,7 +32,6 @@ PlayerPartFeet::PlayerPartFeet():
 void PlayerPartFeet::update()
 {
 	mActiveAnimation->update();
-
 	if(mUnit!=0)
 	{
 		mUnit->update();
