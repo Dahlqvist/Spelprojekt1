@@ -19,7 +19,7 @@ public:
 	bool isFullyVisible();
 
 private:
-	int mAlpha;
+	int mAlpha, mLastAlpha;
 	bool mVisible, mFadeIn, mDeactivated, mHasFaded;
 	bool mStartVisible, mStartFadeIn;
 
