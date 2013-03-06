@@ -154,6 +154,12 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h">
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Timer.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelSaver.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -309,6 +315,12 @@
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelSaver.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp">
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
   </ItemGroup>

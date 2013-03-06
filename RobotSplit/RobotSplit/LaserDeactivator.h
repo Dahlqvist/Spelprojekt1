@@ -17,6 +17,7 @@ public:
 private:
 	bool mPressed;
 	float mRotation;
+	friend class Editor;
 };
 
 #endif

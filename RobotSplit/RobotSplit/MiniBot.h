@@ -17,6 +17,7 @@ private:
 	float mLength, mCharge, mMaxCharge, mRotation;
 	sf::Vector2f mStartPosition;
 	bool mGoingRight, mSideways;
+	friend	class	LevelSaver;
 };
 
 #endif

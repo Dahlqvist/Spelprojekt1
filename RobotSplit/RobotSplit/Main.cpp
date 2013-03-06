@@ -10,6 +10,7 @@
 #include "Music.h"
 #include "State.h"
 #include "Timer.h"
+#include "GameTimer.h"
 
 using namespace std;
 
@@ -23,31 +24,39 @@ int main()
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
 	sf::Clock testClock;
-
+	GameTimer	FPSLIMIT(1.f/60);
 	mWindow.setFramerateLimit(60);
 	while(mWindow.isOpen())
 	{
-		sf::Clock temp;
-		while(mWindow.pollEvent(Window::getEvent()))
+		if(FPSLIMIT.isExpired())
 		{
-			if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-				mWindow.close();
+			sf::Clock temp;
+			while(mWindow.pollEvent(Window::getEvent()))
+			{
+				if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+					mWindow.close();
 			
-			statemanager.inputState();
+				statemanager.inputState();
+			}
+			if(testClock.getElapsedTime().asSeconds() < 3)
+			{
+				//splash.runSplash("StixSplashJump", 1, 1);
+				splash.update();
+				splash.render();
+			}
+			else
+			{
+				for(int i = 0; i<2; i++)
+					statemanager.updateState();
+				statemanager.renderState();	
+			}
+			//cout << temp.getElapsedTime().asSeconds() << endl;
+		FPSLIMIT.reset();
+		//std::cout<<"Updated"<<std::endl;
+
 		}
-		if(testClock.getElapsedTime().asSeconds() < 3)
-		{
-			//splash.runSplash("StixSplashJump", 1, 1);
-			splash.update();
-			splash.render();
-		}
-		else
-		{
-			for(int i = 0; i<2; i++)
-				statemanager.updateState();
-			statemanager.renderState();	
-		}
-		//cout << temp.getElapsedTime().asSeconds() << endl;
+		//else
+			//std::cout<<"Not updated: "<<FPSLIMIT.getCurrentTime()<<std::endl;
 	}	
 	return 0;
 }
