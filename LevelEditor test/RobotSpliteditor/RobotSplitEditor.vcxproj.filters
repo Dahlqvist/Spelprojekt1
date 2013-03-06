@@ -151,6 +151,9 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Checkpoint.h">
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -303,6 +306,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Checkpoint.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp">
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
   </ItemGroup>

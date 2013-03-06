@@ -721,10 +721,6 @@
 				<x>0</x>
 				<y>0</y>
 			</Position>
-			<Size>
-				<x>1280</x>
-				<y>64</y>
-			</Size>
 		</Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -733,10 +729,6 @@
         <x>640</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
 		<Unit>
 			<Type>"Ram"</Type>
@@ -745,10 +737,6 @@
 				<x>0</x>
 				<y>64</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Ram"</Type>
@@ -757,10 +745,6 @@
 				<x>1216</x>
 				<y>64</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Ram"</Type>
@@ -769,10 +753,6 @@
 				<x>0</x>
 				<y>696</y>
 			</Position>
-			<Size>
-				<x>78</x>
-				<y>72</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>"Ram"</Type>
@@ -781,10 +761,6 @@
 				<x>1202</x>
 				<y>696</y>
 			</Position>
-			<Size>
-				<x>78</x>
-				<y>72</y>
-			</Size>
 		</Unit>
   </Objects>
 </Level>

@@ -34,6 +34,7 @@ int main()
 	float aLow = 999.9;
 
 	mWindow.setFramerateLimit(60);
+	//mWindow.setVerticalSyncEnabled(true);
 	while(mWindow.isOpen())
 	{
 		sf::Clock temp;
