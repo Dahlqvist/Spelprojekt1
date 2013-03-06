@@ -17,6 +17,10 @@ Unit(position, "MiniBot", "MiniBot", false, false),
 	mSideways=sideways;
 }
 
+void MiniBot::hit()
+{
+	mCharge=mMaxCharge;
+}
 void MiniBot::update()
 {
 	mAnimation->update();

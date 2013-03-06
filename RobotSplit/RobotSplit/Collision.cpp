@@ -350,10 +350,17 @@ void Collision::handleCases(int unit)
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
 			killPlayer();
+			if(mUnits[unit]->getId()=="MiniBot")
+			{
+				mUnits[unit]->hit();
+			}
 		}
 		else
 		{
-			mPlayer->shootHead(sf::Vector2f(0,0));
+			if(mPlayer->getHeadless()==true)
+			{
+				mPlayer->shootHead(sf::Vector2f(0,0));
+			}
 		}
 	}
 	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)=="PlayerPartBody")
