@@ -144,16 +144,12 @@ void Player::update()
 			}
 		}
 	}
-	if(mFeet.getFuel()<1)
-	{
-		Sound::stopSound("Rocket");
-	}
 	//Sound::playSound("Lava");
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03)
 	{
 		lastKey=-1;
-		Sound::stopSound("Rocket");
 		Sound::stopSound("Move");
+		Sound::stopSound("Rocket");
 	}
 	if(mDash>0)
 	{
