@@ -92,6 +92,12 @@ void DialogueBox::reset()
 	mFadeIn=mStartFadeIn;
 }
 
+void DialogueBox::setReset()
+{
+	mStartVisible=mVisible;
+	mStartFadeIn=mFadeIn;
+}
+
 sf::Text DialogueBox::getText()
 {
 	if (mAlpha!=mLastAlpha)
