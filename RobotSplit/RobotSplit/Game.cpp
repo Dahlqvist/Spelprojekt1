@@ -56,7 +56,7 @@ Game::Game():
 	mBanor.push_back("Tutorial4.xml");
 	mBanor.push_back("Tutorial5.xml");
 	mBanor.push_back("Tutorial6.xml");
-	mBanor.push_back("Tutorial8.xml");
+	mBanor.push_back("Tutorial7.xml");
 	mBanor.push_back("Bana1.xml");
 	mBanor.push_back("Bana2.xml");
 	mBanor.push_back("Bana3.xml");
@@ -123,10 +123,25 @@ void Game::changeMap(int map)
 
 void Game::setMusic()
 {
-	if (mlevel.getName()=="Tutorial2")
+	if (mlevel.getName()=="Tutorial1")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/tutorial_1.wav");
+	}
+	else if (mlevel.getName()=="Tutorial2")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/tutorial_2.wav");
+	}
+	else if (mlevel.getName()=="Tutorial3")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/tutorial_3.wav");
+	}
+	else if (mlevel.getName()=="Tutorial4")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/tutorial_4.wav");
 	}
 	else if (mlevel.getName()=="Bana1")
 	{
