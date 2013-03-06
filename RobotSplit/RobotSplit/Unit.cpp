@@ -56,6 +56,14 @@ Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::s
 	mSprite.setPosition(mPosition);
 }
 
+Unit::~Unit()
+{
+	if (mAnimation!=0x0)
+	{
+		delete mAnimation;
+	}
+}
+
 void Unit::draw()
 {
 	if (mAnimation!=nullptr)

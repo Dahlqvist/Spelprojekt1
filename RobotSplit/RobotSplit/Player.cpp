@@ -6,6 +6,7 @@
 #include "Sound.h"
 #include "Eric.h"
 #include "RocketFuel.h"
+#include "Timer.h"
 
 Player::Player(sf::Vector2f Position):
 mFeet(), mBody(&mFeet), mHead(&mBody)
@@ -70,6 +71,8 @@ Player::~Player()
 	delete TempBody;
 	delete TempHead;
 	delete TempMagnet;
+	delete TempExtension;
+	delete TempWhole;
 	delete TempPart;
 }
 
@@ -544,6 +547,7 @@ void Player::interact(int action)
 		{
 			mClockStart=true;
 			mClock.restart();
+			Timer::start();
 		}
 		thisKey=action;
 		if(thisKey==lastKey)
@@ -950,6 +954,7 @@ void Player::restartPlayer()
 	mFeet.reFuel();
 	mBodyActive=false;
 	mClock.restart();
+	Timer::stop();
 	mClockStart=false;
 	mWinning=false;
 	mDying=false;
@@ -998,6 +1003,7 @@ void Player::win(){
 	{
 		mFeet.winning();
 		mBody.winning();
+		Timer::stop();
 		mWinning=true;
 		//Sound::stopSound("Jump");
 		Sound::playSound("Winning");

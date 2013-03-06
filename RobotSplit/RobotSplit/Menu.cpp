@@ -46,14 +46,14 @@ void Menu::update()
 	if(mStatus == 0)
 	{
 		if(mShowSure)
-			currentSelection = &mYes;
+			currentSelection = &mNo;
 		else
 			currentSelection = &mNewGame;
 	}
 	else if(mStatus == 1)
 	{
 		if(mShowSure)
-			currentSelection = &mNo;
+			currentSelection = &mYes;
 		else
 			currentSelection = &mOptions;
 	}
@@ -83,11 +83,18 @@ void Menu::render()
 
 void Menu::input()
 {
-	if(!mShowSure)
+	int distance = 100;
+	if(mShowSure)
+	{
+		mChoices = 1;
+		distance = 55;
+	}
+	else
 		mChoices = 2;
+
 	if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::S ||Window::getEvent().key.code == sf::Keyboard::Down)) && (mStatus < mChoices))
 	{
-			mBlipPos.y += 100;
+			mBlipPos.y += distance;
 			mBlip.setPosition(mBlipPos);
 			currentSelection->setCurrentFrame(0);
 			currentSelection->update();
@@ -95,7 +102,7 @@ void Menu::input()
 	}
 	else if((Window::getEvent().type == sf::Event::KeyPressed && (Window::getEvent().key.code == sf::Keyboard::W || Window::getEvent().key.code == sf::Keyboard::Up)) && (mStatus > 0))
 	{			
-		mBlipPos.y -= 100;
+		mBlipPos.y -= distance;
 		mBlip.setPosition(mBlipPos);
 		currentSelection->setCurrentFrame(0);
 		currentSelection->update();
@@ -104,13 +111,6 @@ void Menu::input()
 	else if(Window::getEvent().type == sf::Event::KeyPressed && Window::getEvent().key.code == sf::Keyboard::Return)
 	{
 		if(mStatus == 0)
-		{
-			if(mShowSure)
-				mWindow.close();
-			else
-				mStateInput.changeState("Game");
-		}
-		else if(mStatus == 1)
 		{
 			if(mShowSure)
 			{
@@ -122,6 +122,13 @@ void Menu::input()
 				currentSelection ->update();
 				update();				
 			}
+			else
+				mStateInput.changeState("Game");
+		}
+		else if(mStatus == 1)
+		{
+			if(mShowSure)
+				mWindow.close();
 			else
 				mStateInput.changeState("Option");
 		}
@@ -138,7 +145,6 @@ void Menu::sure(bool b)
 {
 	sf::Sprite tempBackground = mBackground.getSprite();
 	sf::Sprite tempSure = TextureManager::getSprite("Sure");
-	mChoices = 1;
 
 	tempBackground.setPosition(mWindow.getView().getCenter());
 	tempBackground.setScale(0.5, 0.5);
@@ -146,13 +152,13 @@ void Menu::sure(bool b)
 	tempSure.setPosition(sf::Vector2f(tempBackground.getPosition().x + 125, tempBackground.getPosition().y + 75));
 	if(b)
 	{
-		//mBlip.setPosition(sf::Vector2f(tempSure.getPosition().x, tempSure.getPosition().y + tempSure.getGlobalBounds().height +20));
 		mBlipPos = sf::Vector2f(tempSure.getPosition().x, tempSure.getPosition().y + tempSure.getGlobalBounds().height +20);
 		mBlip.setPosition(mBlipPos);
 	}
 
-	mYes.setPosition(sf::Vector2f(mBlip.getSprite().getPosition().x + mBlip.getSprite().getGlobalBounds().width + 20, tempSure.getPosition().y + tempSure.getGlobalBounds().height + 20));
-	mNo.setPosition(sf::Vector2f(mYes.getSprite().getPosition().x, mYes.getSprite().getPosition().y + mYes.getSprite().getGlobalBounds().height + 54));
+	mNo.setPosition(sf::Vector2f(mBlip.getSprite().getPosition().x + mBlip.getSprite().getGlobalBounds().width + 20, tempSure.getPosition().y + tempSure.getGlobalBounds().height + 20));
+	mYes.setPosition(sf::Vector2f(mNo.getSprite().getPosition().x, mNo.getSprite().getPosition().y + mNo.getSprite().getGlobalBounds().height + 10));
+	
 
 	mWindow.draw(tempBackground);
 	mWindow.draw(tempSure);

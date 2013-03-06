@@ -1,35 +1,35 @@
 #ifndef INC_SPLASH
 #define INC_SPLASH
 
-#include "State.h"
 #include "Animation.h"
+#include "Window.h"
 
-class StateInput;
 class TextureManager;
 
-class Splash: public State
+class Splash
 {
 public:
 	static Splash& getInstance();
 
-	static void runSplash(bool status);
+	void runSplash(std::string sprite, int timePerFrame, int nrFrames);
 	static bool getStatus();
 
-	virtual void update();
-	virtual void render();
-	virtual void input(){};
+	void update();
+	void render();
 private:
 	Splash();
 	Splash(const Splash& splash);
 	Splash operator=(const Splash& splash);
-	virtual ~Splash();
+	~Splash();
 
 	sf::Sprite& returnSprite();
-	StateInput& mStateInput;
 	sf::Clock mTime;
 	Animation *currentAnimation;
-	Animation mWatermelon;
-	Animation mConcept1;
+	Animation mSplash;
+
+	/*std::string mSprite;
+	int mTimePerFrame;
+	int mNrFrames;*/
 
 	sf::RenderWindow &mWindow;
 

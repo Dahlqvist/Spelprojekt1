@@ -14,6 +14,7 @@ public:
 	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false);
 	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false);
 	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false);
+	virtual ~Unit();
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)

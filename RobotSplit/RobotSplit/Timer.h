@@ -16,9 +16,12 @@ public:
 	static void input();
 	static bool getStatus();
 	static void changeStatus();
+	static void start();
+	static void stop();
+	static void pause();
 	
-	virtual void update();
-	virtual void render();
+	void update();
+	void render();
 	
 
 private:
@@ -26,7 +29,7 @@ private:
 	~Timer();
 	Timer(const Timer& timer);
 	Timer operator=(const Timer& timer);*/
-
+	
 	static void initialize();
 	void load();
 	void updateNumbers(int q);
@@ -34,12 +37,14 @@ private:
 	void setColon();
 	sf::Vector2f timerPos;
 	
+	//static float getSaveTime();
+	static int mTimeSave;
 
 	static sf::Clock mClock;
-	static sf::Clock mSecondClock;
 	
 	sf::Sprite mDot;
 	sf::Sprite mColon;
+	Animation mFrame;
 
 	static Animation* mNumbers;
 	static int mDec;
@@ -55,6 +60,7 @@ private:
 	static int m10Hour;
 
 	static bool mShow;
+	static bool mRun;
 
 
 };
