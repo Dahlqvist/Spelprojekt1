@@ -199,7 +199,7 @@ sfml-main.lib
     <None Include="Bana6.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Tutorial8.xml">
+    <None Include="Tutorial7.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Tutorial2.xml">

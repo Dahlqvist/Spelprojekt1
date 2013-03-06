@@ -1,5 +1,6 @@
 #include "LaserHolder.h"
 #include "Sound.h"
+#include <iostream>
 
 LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active):
 	Unit(laser->getPosition(), size, offset, id, "LaserHolder", false),
@@ -40,7 +41,8 @@ LaserHolder::~LaserHolder()
 
 void LaserHolder::update()
 {
-	if(mSoundTimer.getElapsedTime().asSeconds()>0.2)
+	std::cout << mSoundTimer.getElapsedTime().asSeconds() << std::endl;
+	if(mSoundTimer.getElapsedTime().asSeconds()>0.8)
 	{
 		Sound::stopSound("StandInLaser");
 	}
