@@ -149,7 +149,6 @@ void Player::update()
 	{
 		lastKey=-1;
 		Sound::stopSound("Move");
-		Sound::stopSound("Rocket");
 	}
 	if(mDash>0)
 	{
@@ -171,9 +170,9 @@ void Player::update()
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
-		//if(i<3){
+		if(i<3){
 			mParts[i]->update();
-		//}
+		}
 	}
 	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
@@ -988,6 +987,8 @@ void Player::die(int part)
 	}
 	else if(part==0)
 	{
+		mFeet.setAttached(false);
+		mFeet.setAttachedWall(false);
 		mFeet.die();
 		mBodyDied=false;
 	}

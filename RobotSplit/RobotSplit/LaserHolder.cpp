@@ -32,7 +32,6 @@ LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Ve
 		mPosition+=sf::Vector2f(8, -10);
 	}
 	mActiveSprite->setPosition(mPosition);
-	mSoundTimer.restart();
 }
 
 LaserHolder::~LaserHolder()
@@ -41,11 +40,6 @@ LaserHolder::~LaserHolder()
 
 void LaserHolder::update()
 {
-	std::cout << mSoundTimer.getElapsedTime().asSeconds() << std::endl;
-	if(mSoundTimer.getElapsedTime().asSeconds()>0.8)
-	{
-		Sound::stopSound("StandInLaser");
-	}
 	if(mActive==true)
 	{
 		mActiveSprite=&mStandby;
@@ -56,7 +50,6 @@ void LaserHolder::update()
 void LaserHolder::hit(){
 	if(mActive==true)
 	{
-		mSoundTimer.restart();
 		mActiveSprite=&mOn;
 		mLaser->activate();
 		Sound::playSound("StandInLaser");

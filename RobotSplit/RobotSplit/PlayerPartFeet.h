@@ -65,6 +65,7 @@ private:
 	std::string mId;
 	float mJump, mAniTime, mFuel, mRotation, mCounter;
 	sf::Clock mJumpClock, mAnimationTimer;
+	sf::Clock mSoundTimer;
 	int mAO;
 };
 
