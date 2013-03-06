@@ -28,6 +28,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Meanix.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h" />
