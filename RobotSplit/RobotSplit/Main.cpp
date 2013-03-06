@@ -26,7 +26,7 @@ int main()
 
 	float high = 0.0;
 	float low = 0.0;
-	float average = 0.0;
+	float counter = 0.0;
 	float time = 0.0;
 
 	mWindow.setFramerateLimit(60);
@@ -43,6 +43,7 @@ int main()
 			{
 				cout << "High: " << high << endl;
 				cout << "Low: " << low << endl;
+				cout << "Counter: " << counter << endl;
 			}
 		}
 		if(testClock.getElapsedTime().asSeconds() < 3)
@@ -60,6 +61,8 @@ int main()
 		time = temp.getElapsedTime().asSeconds();
 		if(high < time)
 			high = time;
+		if(low >= time)
+			counter++;
 		if(low > time)
 			low = time;
 		//cout << temp.getElapsedTime().asSeconds() << endl;
