@@ -96,3 +96,12 @@ void Platform::reset()
 		mAnimation=mStartAnimation;
 	}
 }
+
+void Platform::setReset()
+{
+	if (mStartLives!=0)
+	{
+		mStartLives=mLives;
+		mStartAnimation=mAnimation;
+	}
+}

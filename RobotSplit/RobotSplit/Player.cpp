@@ -252,6 +252,7 @@ void Player::move(sf::Vector2f Vec)
 		}
 		else
 		{
+			bool foo1=UnitManager::isCollidedSide(0, 3);
 			if(UnitManager::isCollidedSide(0, 4) && Vec.x<0 && mKeys==false && lastKey!=0)
 			{
 				mFeet.setAttachedWall(true, 0);
