@@ -19,6 +19,7 @@
 #include	"DialogueBox.h"
 #include	"Trigger.h"
 #include	"LaserDeactivator.h"
+#include	"MiniBot.h"
 
 using namespace rapidxml;
 
@@ -631,4 +632,35 @@ void	XmlSaver::addLaserDeactive(Unit	*Source,xml_node<>* Parent)
 	Gameobject->append_node(Target);
 	Gameobject->append_node(Sound);
 	Parent->append_node(Gameobject);
+}
+
+void	XmlSaver::addMiniBot	(Unit	*Source,xml_node<>* Parent)
+{
+	//MiniBot*	MINI=dynamic_cast<MiniBot*>(Source);
+	//string sSide;
+	//if(MINI->mSideways)
+	//{
+	//	sSide="true";
+	//}
+	//else
+	//{
+	//	sSide="false";
+	//}
+	//	xml_node<> *Gameobject	=mDocument.allocate_node(node_element,"Unit");
+	//	xml_node<> *Type		=mDocument.allocate_node(node_element,"Type",modifyString("MiniBot"));
+	//	xml_node<> *Length		=mDocument.allocate_node(node_element,"Length",modifyInt(MINI->mLength));
+	//	xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation",modifyInt(MINI->mRotation));
+	//	xml_node<> *Position	=mDocument.allocate_node(node_element,"Position");
+	//	xml_node<> *Sideways	=mDocument.allocate_node(node_element,"Solid",modifyString(sSide));
+	////Adds the x element into the Position element
+	//	Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
+	////Adds the y element into the Position element
+	//	Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+	////Adds nodes to the Gameobject node
+	//	Gameobject->append_node(Type);
+	//	Gameobject->append_node(Position);
+	//	Gameobject->append_node(Length);
+	//	Gameobject->append_node(Rotation);
+	//	Gameobject->append_node(Sideways);
+	//	Parent->append_node(Gameobject);
 }

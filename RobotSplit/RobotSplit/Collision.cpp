@@ -31,7 +31,10 @@ Collision::Collision(int playerPart, Player& player, std::vector<Unit*> &mUnits)
 void Collision::collide()
 {
 	sf::Sprite* playerSprite=mPlayer->getCollisionSprite()[mPlayerPart];
-	mResetted=false;
+	if (!mPlayer->getDying())
+	{
+		mResetted=false;
+	}
 
 	//Check which sides collide
 	for (std::vector<Unit*>::size_type j=0; j<mUnits.size(); j++)
@@ -51,7 +54,7 @@ void Collision::collide()
 		if (mUnits[j]->getId()!="PlayerPart" && (mPlayer->getId(mPlayerPart)=="PlayerPartFeet" || mPlayer->getId(mPlayerPart)=="PlayerPartBody" || mPlayer->getId(mPlayerPart)=="PlayerPartHead"))
 		{
 			sf::FloatRect collisionRect;
-			if (!mResetted && testCollisions(playerSprite, j, collisionRect))
+			if (/*!mResetted && */testCollisions(playerSprite, j, collisionRect))
 			{
 				//Hit once per collision
 				if (!mUnits[j]->wasHit())
