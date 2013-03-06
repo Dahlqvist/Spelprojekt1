@@ -13,9 +13,10 @@ public:
 	void hit(){};
 	void draw();
 	void reset();
+	void setReset();
 
 private:
-	bool mPressed;
+	bool mPressed, mStartPressed;
 	float mRotation;
 };
 

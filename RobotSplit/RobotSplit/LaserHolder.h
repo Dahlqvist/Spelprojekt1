@@ -32,6 +32,7 @@ public:
 	virtual void activate();
 	virtual void deactivate();
 	virtual void reset();
+	virtual void setReset();
 
 protected:
 	float mRotation;

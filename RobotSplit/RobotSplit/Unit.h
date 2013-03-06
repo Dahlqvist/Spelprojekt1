@@ -58,7 +58,7 @@ public:
 	virtual void activate(){};
 	virtual void deactivate(){};
 	virtual void reset(){};
-	virtual void setCheckpoint(){};
+	virtual void setReset(){};
 
 protected:
 	sf::Vector2f mSize, mOffset;
