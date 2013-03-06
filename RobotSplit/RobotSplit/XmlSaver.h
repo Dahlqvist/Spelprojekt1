@@ -37,6 +37,7 @@ private:
 	void	addLine			(Unit		*Source,xml_node<>* Parent);
 	void	addDialogueBox	(Unit		*Source,xml_node<>* Parent);
 	void	addTrigger		(Unit		*Source,xml_node<>* Parent);
+	void	addMiniBot		(Unit		*Source,xml_node<>* Parent);
 	void	addLaserDeactive(Unit		*Source,xml_node<>* Parent);
 	void	addUnit			(Unit		*Source,xml_node<>* Parent);
 	void	addMeanix		(Unit		*Source,xml_node<>* Parent);

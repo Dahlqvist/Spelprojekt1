@@ -126,6 +126,8 @@ void	Editor::eventHandler(const Event& Current)
 		{
 			mSelectedUnit.unInitiate();
 			mSelectedPlayer.unInitiate();
+			mTools.unIniUnit();
+			mTools.unIniPlayer();
 			mLevelTool.eventHandle(Current);
 		}
 		else
