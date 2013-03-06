@@ -136,8 +136,8 @@
       <Id>"TutorialBox1"</Id>
       <SpriteName>"HelpDialogue5"</SpriteName>
       <Position>
-        <x>64</x>
-        <y>64</y>
+        <x>288</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>

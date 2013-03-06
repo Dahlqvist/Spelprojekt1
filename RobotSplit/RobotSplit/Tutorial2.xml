@@ -117,8 +117,8 @@
       <Id>"TutorialBox1"</Id>
       <SpriteName>"HelpDialogue1"</SpriteName>
       <Position>
-        <x>64</x>
-        <y>64</y>
+        <x>320</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
@@ -129,8 +129,8 @@
       <Id>"TutorialBox2"</Id>
       <SpriteName>"HelpDialogue2"</SpriteName>
       <Position>
-        <x>896</x>
-        <y>64</y>
+        <x>640</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>

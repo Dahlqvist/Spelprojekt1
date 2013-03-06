@@ -32,6 +32,7 @@ PlayerPartFeet::PlayerPartFeet():
 void PlayerPartFeet::update()
 {
 	mActiveAnimation->update();
+
 	if(mUnit!=0)
 	{
 		mUnit->update();
@@ -339,7 +340,7 @@ void PlayerPartFeet::activateRocketBoots()
 		PlayerPartFeet::setPosition(sf::Vector2f(0, -Eric::getRocketboost()));
 		mFuel--;
 		mJump=Eric::getGravity();
-		//Sound::playSound("RocketBoost");
+		Sound::playSound("Rocket");
 	}
 	if(mFuel<=0)
 	{

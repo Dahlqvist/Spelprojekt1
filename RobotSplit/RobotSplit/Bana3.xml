@@ -43,7 +43,7 @@
       </Position>
       <Id>"LaserRedMeanix"</Id>
       <Active>true</Active>
-      <Length>150</Length>
+      <Length>160</Length>
       <Rotation>180</Rotation>
       <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
