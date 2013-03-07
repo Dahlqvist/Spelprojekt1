@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserHolder.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Level.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelSaver.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Trigger.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitManager.cpp" />
@@ -77,6 +79,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserHolder.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Level.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelSaver.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Meanix.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h" />
@@ -90,6 +93,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Timer.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Trigger.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitManager.h" />

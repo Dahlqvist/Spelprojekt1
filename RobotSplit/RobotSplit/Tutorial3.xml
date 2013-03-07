@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Tutorial3"</Name>
+  <Name>"Test Bana"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -182,8 +182,8 @@
       <Id>"TutorialBox1"</Id>
       <SpriteName>"HelpDialogue3"</SpriteName>
       <Position>
-        <x>640</x>
-        <y>256</y>
+        <x>64</x>
+        <y>64</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
@@ -194,8 +194,8 @@
       <Id>"TutorialBox2"</Id>
       <SpriteName>"HelpDialogue4"</SpriteName>
       <Position>
-        <x>960</x>
-        <y>96</y>
+        <x>896</x>
+        <y>64</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>

@@ -13,11 +13,11 @@ public:
 	void hit(){};
 	void draw();
 	void reset();
-	void setReset();
 
 private:
-	bool mPressed, mStartPressed;
+	bool mPressed;
 	float mRotation;
+	friend class Editor;
 };
 
 #endif

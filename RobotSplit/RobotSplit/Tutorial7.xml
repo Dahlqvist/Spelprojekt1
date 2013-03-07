@@ -1,19 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Tutorial7"</Name>
+  <Name>"Test Bana"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"BankBackground4"</SpriteName>
+      <SpriteName>"Tutorial2a"</SpriteName>
       <Position>
         <x>0</x>
+        <y>0</y>
+      </Position>
+    </Background>
+    <Background>
+      <Frames>1</Frames>
+      <Speed>120</Speed>
+      <SpriteName>"Tutorial2b"</SpriteName>
+      <Position>
+        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
   </Backgrounds>
 
   <Objects>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>208</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>400</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>592</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>912</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>976</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>"HelpBox"</Type>
+      <SpriteName>"HelpBoxInactive"</SpriteName>
+      <Position>
+        <x>1040</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>32</x>
+        <y>32</y>
+      </Size>
+      <Solid>false</Solid>
+    </Unit>
+
     <Unit>
       <Type>"Player"</Type>
       <Position>
@@ -27,182 +115,313 @@
     </Unit>
 
     <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>736</x>
-        <y>224</y>
-      </Position>
-      <Id>"LaserRed1"</Id>
-      <Active>true</Active>
-      <Length>288</Length>
-      <Rotation>0</Rotation>
-      <Color>"Red"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-    <Unit>
-      <Type>"Laser"</Type>
-      <Position>
-        <x>730</x>
-        <y>480</y>
-      </Position>
-      <Id>"LaserRed2"</Id>
-      <Active>true</Active>
-      <Length>288</Length>
-      <Rotation>180</Rotation>
-      <Color>"Red"</Color>
-      <VisibilityRange>100</VisibilityRange>
-    </Unit>
-
-    <Unit>
-      <Type>"LaserDeactivator"</Type>
-      <Position>
-        <x>672</x>
-        <y>472</y>
-      </Position>
-      <SpriteName>"RedButtonAni"</SpriteName>
-      <Id>"LaserTriggerRed"</Id>
-      <Target>"LaserRed1"</Target>
-      <Rotation>0</Rotation>
-    </Unit>
-    <Unit>
-      <Type>"LaserDeactivator"</Type>
-      <Position>
-        <x>672</x>
-        <y>472</y>
-      </Position>
-      <SpriteName>"RedButtonAni"</SpriteName>
-      <Id>"LaserTriggerRed"</Id>
-      <Target>"LaserRed2"</Target>
-      <Rotation>0</Rotation>
-    </Unit>
-
-    <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BankFloor3"</SpriteName>
+      <SpriteName>"Tile2"</SpriteName>
       <Position>
         <x>64</x>
         <y>480</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BankFloor4"</SpriteName>
+      <SpriteName>"Tile3"</SpriteName>
+      <Position>
+        <x>128</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile4"</SpriteName>
+      <Position>
+        <x>192</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile6"</SpriteName>
       <Position>
         <x>256</x>
-        <y>576</y>
+        <y>480</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BankFloor5"</SpriteName>
+      <SpriteName>"Tile3"</SpriteName>
+      <Position>
+        <x>320</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile3"</SpriteName>
       <Position>
         <x>384</x>
         <y>480</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BankFloor6"</SpriteName>
+      <SpriteName>"Tile6"</SpriteName>
+      <Position>
+        <x>448</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile3"</SpriteName>
+      <Position>
+        <x>512</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile6"</SpriteName>
+      <Position>
+        <x>576</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile2"</SpriteName>
+      <Position>
+        <x>640</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile4"</SpriteName>
+      <Position>
+        <x>704</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile6"</SpriteName>
+      <Position>
+        <x>768</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile4"</SpriteName>
+      <Position>
+        <x>832</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile8"</SpriteName>
+      <Position>
+        <x>896</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile8"</SpriteName>
       <Position>
         <x>960</x>
         <y>480</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"BankBalcony"</SpriteName>
+      <SpriteName>"Tile8"</SpriteName>
       <Position>
+        <x>1024</x>
+        <y>480</y>
+      </Position>
+      <Size>
         <x>64</x>
-        <y>124</y>
-      </Position>
+        <y>64</y>
+      </Size>
     </Unit>
-    
     <Unit>
-      <Type>"Light"</Type>
-      <SpriteName>"BankLight"</SpriteName>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile2"</SpriteName>
       <Position>
-        <x>512</x>
-        <y>224</y>
+        <x>1088</x>
+        <y>480</y>
       </Position>
-      <Solid>false</Solid>
-      <Behind>true</Behind>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"Tile2"</SpriteName>
+      <Position>
+        <x>1152</x>
+        <y>480</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
 
     <Unit>
       <Type>"Door"</Type>
-      <SpriteName>"BankVault"</SpriteName>
+      <SpriteName>"Exit"</SpriteName>
       <Position>
-        <x>1000</x>
-        <y>280</y>
+        <x>1152</x>
+        <y>352</y>
       </Position>
       <Size>
-        <x>100</x>
-        <y>200</y>
+        <x>64</x>
+        <y>96</y>
       </Size>
-      <Offset>
-        <x>100</x>
-        <y>0</y>
-      </Offset>
       <Solid>false</Solid>
-      <Behind>true</Behind>
     </Unit>
 
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>64</x>
-        <y>224</y>
+        <y>704</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>128</x>
-        <y>224</y>
+        <y>704</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>192</x>
-        <y>224</y>
+        <y>704</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>256</x>
-        <y>224</y>
+        <y>704</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>320</x>
-        <y>224</y>
+        <y>704</y>
       </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
-      <Type>"AntiMagnet"</Type>
-      <SpriteName>"AntiMagnet"</SpriteName>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>384</x>
-        <y>224</y>
-      </Position>
-    </Unit>
-
-    <Unit>
-      <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
-      <Frames>8</Frames>
-      <Speed>180</Speed>
-      <Position>
-        <x>192</x>
         <y>704</y>
       </Position>
       <Size>
@@ -212,11 +431,11 @@
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
+      <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>180</Speed>
+      <Speed>	60</Speed>
       <Position>
-        <x>256</x>
+        <x>448</x>
         <y>704</y>
       </Position>
       <Size>
@@ -226,11 +445,11 @@
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
+      <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>180</Speed>
+      <Speed>	60</Speed>
       <Position>
-        <x>320</x>
+        <x>512</x>
         <y>704</y>
       </Position>
       <Size>
@@ -238,12 +457,53 @@
         <y>64</y>
       </Size>
     </Unit>
-
     <Unit>
       <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
+      <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>180</Speed>
+      <Speed>	60</Speed>
+      <Position>
+        <x>576</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>640</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>704</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
       <Position>
         <x>768</x>
         <y>704</y>
@@ -255,9 +515,9 @@
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
+      <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>180</Speed>
+      <Speed>	60</Speed>
       <Position>
         <x>832</x>
         <y>704</y>
@@ -269,11 +529,67 @@
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
-      <SpriteName>"AcidMiddle"</SpriteName>
+      <SpriteName>"LavaMiddle"</SpriteName>
       <Frames>8</Frames>
-      <Speed>180</Speed>
+      <Speed>	60</Speed>
       <Position>
         <x>896</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>960</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>1024</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>1088</x>
+        <y>704</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Lava"</Type>
+      <SpriteName>"LavaMiddle"</SpriteName>
+      <Frames>8</Frames>
+      <Speed>	60</Speed>
+      <Position>
+        <x>1152</x>
         <y>704</y>
       </Position>
       <Size>
@@ -284,19 +600,75 @@
 
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"BankRam1"</SpriteName>
+      <SpriteName>"RamTop1"</SpriteName>
       <Position>
         <x>0</x>
         <y>0</y>
       </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
-      <SpriteName>"BankRam2"</SpriteName>
+      <SpriteName>"RamTop2"</SpriteName>
       <Position>
-        <x>1216</x>
+        <x>640</x>
         <y>0</y>
       </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamLeft1"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>64</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>636</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamRight1"</SpriteName>
+      <Position>
+        <x>1216</x>
+        <y>64</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>636</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamPipeLeft1"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>696</y>
+      </Position>
+      <Size>
+        <x>78</x>
+        <y>72</y>
+      </Size>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamPipeRight1"</SpriteName>
+      <Position>
+        <x>1202</x>
+        <y>696</y>
+      </Position>
+      <Size>
+        <x>78</x>
+        <y>72</y>
+      </Size>
     </Unit>
   </Objects>
 </Level>

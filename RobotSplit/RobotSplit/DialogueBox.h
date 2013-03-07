@@ -12,7 +12,6 @@ public:
 	void activate();
 	void deactivate();
 	void reset();
-	void setReset();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
@@ -20,12 +19,12 @@ public:
 	bool isFullyVisible();
 
 private:
-	int mAlpha, mLastAlpha;
+	int mAlpha;
 	bool mVisible, mFadeIn, mDeactivated, mHasFaded;
 	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;
-	friend class XmlSaver;
+	friend class LevelSaver;
 };
 
 #endif

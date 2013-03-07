@@ -39,7 +39,7 @@ Game::Game():
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/tutorial_1.wav");
+	Music::loadMusic("Music/menu_1.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
 	//	mSecurityLevel=0;
@@ -56,7 +56,7 @@ Game::Game():
 	mBanor.push_back("Tutorial4.xml");
 	mBanor.push_back("Tutorial5.xml");
 	mBanor.push_back("Tutorial6.xml");
-	mBanor.push_back("Tutorial7.xml");
+	mBanor.push_back("Tutorial8.xml");
 	mBanor.push_back("Bana1.xml");
 	mBanor.push_back("Bana2.xml");
 	mBanor.push_back("Bana3.xml");
@@ -123,55 +123,15 @@ void Game::changeMap(int map)
 
 void Game::setMusic()
 {
-	if (mlevel.getName()=="Tutorial1")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/tutorial_1.wav");
-	}
-	else if (mlevel.getName()=="Tutorial2")
+	if (mlevel.getName()=="Tutorial2")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/tutorial_2.wav");
-	}
-	else if (mlevel.getName()=="Tutorial3")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/tutorial_3.wav");
-	}
-	else if (mlevel.getName()=="Tutorial4")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/tutorial_4.wav");
-	}
-		else if (mlevel.getName()=="Tutorial5")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/bank_1.wav");
-	}
-		else if (mlevel.getName()=="Tutorial6")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/bank_2.wav");
-	}
-			else if (mlevel.getName()=="Tutorial7")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/bank_3.wav");
 	}
 	else if (mlevel.getName()=="Bana1")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/level_1.wav");
-	}
-		else if (mlevel.getName()=="Bana2")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/level_2.wav");
-	}
-		else if (mlevel.getName()=="Bana3")
-	{
-		Music::stopMusic();
-		Music::loadMusic("Music/level_3.wav");
 	}
 }
 

@@ -306,9 +306,6 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL6m"].loadFromFile("Texture/Enviroment/Bana6/Fix_01.png");
 	mTextureMap["TileL6n"].loadFromFile("Texture/Enviroment/Bana6/Fix_01R.png");
 
-	mTextureMap["TileL6o"].loadFromFile("Texture/Enviroment/Bana6/NTile24.png");
-	mTextureMap["TileL6p"].loadFromFile("Texture/Enviroment/Bana6/NTile23.png");
-
 	mTextureMap["TileL6Aa"].loadFromFile("Texture/Enviroment/Bana6/A/NTile01.png");
 	mTextureMap["TileL6Ab"].loadFromFile("Texture/Enviroment/Bana6/A/NTile02.png");
 	mTextureMap["TileL6Ac"].loadFromFile("Texture/Enviroment/Bana6/A/NTile03.png");
@@ -378,8 +375,6 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
 	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
-	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
-
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
@@ -467,22 +462,6 @@ void TextureManager::loadTexture()
 	mTextureMap["BankBackground3"].loadFromFile("Texture/Tutorials/Backgrounds/Background.png");
 	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
 
-	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
-	mTextureMap["BackgroundBana5"].loadFromFile("Texture/Background/background_5.png");
-	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
-
-	//Tutorial1
-	mTextureMap["Tutorial1Office"].loadFromFile("Texture/Tutorials/Backgrounds/Office_Background_&_Places.png");
-
-	mTextureMap["Tutorial1Window"].loadFromFile("Texture/Tutorials/First/Office_Broken_Window.png");
-	mTextureMap["Tutorial1Desk"].loadFromFile("Texture/Tutorials/First/Office_Desk.png");
-	mTextureMap["Tutorial1Door"].loadFromFile("Texture/Tutorials/First/Office_Door.png");
-	mTextureMap["Tutorial1Floor"].loadFromFile("Texture/Tutorials/First/Office_Floor.png");
-	mTextureMap["Tutorial1House"].loadFromFile("Texture/Tutorials/First/House.png");
-
-	mTextureMap["Tutorial1Wall"].loadFromFile("Texture/Tutorials/First/Office_L_Wall.png");
-	mTextureMap["Tutorial1Roof"].loadFromFile("Texture/Tutorials/First/Office_Roof.png");
-	
 	
 	//Initializing the frame parts.
 

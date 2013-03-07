@@ -40,6 +40,7 @@ protected:
 	Animation mRedLaser;
 	Animation mBlueLaser;
 	Animation mYellowLaser;
+	friend class Editor;
 };
 
 #endif

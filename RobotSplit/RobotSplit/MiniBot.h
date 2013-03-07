@@ -9,7 +9,6 @@ public:
 
 	sf::Sprite getSprite();
 	void update();
-	void hit();
 private:
 	Animation* mAnimation;
 	Animation mWalking;
@@ -18,6 +17,7 @@ private:
 	float mLength, mCharge, mMaxCharge, mRotation;
 	sf::Vector2f mStartPosition;
 	bool mGoingRight, mSideways;
+	friend	class	LevelSaver;
 };
 
 #endif

@@ -30,7 +30,6 @@ private:
 	void handleCollisions(int unit, const sf::FloatRect& collisionRect);
 	void testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
 	void killPlayer();
-	void handleCases(int unit);
 
 	std::set<int> mCollidedSides;
 	//Objects at the sides
