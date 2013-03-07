@@ -480,6 +480,7 @@ void Player::setAttachFeetExtension(bool b)
 			}
 			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1) && !UnitManager::isCollidedSide(4, 4) && !UnitManager::isCollidedSide(4, 2) && !UnitManager::isCollidedSide(4, 3))
 			{
+				
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}

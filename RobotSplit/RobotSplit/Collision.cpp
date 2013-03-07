@@ -248,7 +248,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is above object
 				if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 				{
-					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<Eric::getSpeed()+1) && ((mUnitsOnLeftTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnLeftBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1.0001) && ((mUnitsOnLeftTop.count(mUnits[unit])!=0 && isCollidedSide(LEFT)) || (mUnitsOnLeftBottom.count(mUnits[unit])!=0 && isCollidedSide(RIGHT))))
 					{
 						while (mCollidedSides.count(BOTTOM)!=0)
 						{
@@ -257,6 +257,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
+						std::cout<<mUnitsOnLeftTop.count(mUnits[unit])<<" "<<isCollidedSide(RIGHT)<<std::endl;
 						moveDistance.y=-(collisionRect.height-1);
 						mMovedY=true;
 					}
@@ -264,7 +265,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is below object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<Eric::getSpeed()+1) && ((mUnitsOnRightTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnRightBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1.0001) && ((mUnitsOnRightTop.count(mUnits[unit])!=0 && isCollidedSide(LEFT)) || (mUnitsOnRightBottom.count(mUnits[unit])!=0 && isCollidedSide(RIGHT))))
 					{
 						while (mCollidedSides.count(TOP)!=0)
 						{
