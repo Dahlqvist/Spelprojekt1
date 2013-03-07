@@ -320,39 +320,17 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				}
 			}
 		}
-		//if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
-		//{
-		//	std::cout<<mUnitsOnTopRight.count(mUnits[unit])<<" "<<!isCollidedSide(RIGHT)<<" "<<mUnitsOnTopLeft.count(mUnits[unit])<<" "<<!isCollidedSide(LEFT)<<std::endl;
-		//}
 	}
-	//If the feet and body is connected, but head is away
-	//std::cout << mPlayer->getCollisionSprite().size() << std::endl;
 	if(mPlayerPart!=3){
 		mPlayer->forceMove(mPlayerPart, moveDistance);
 	}
-	//if(mPlayer->getCollisionSprite().size()==3)
-	//{
-	//	if(mPlayerPart==1)
-	//	{
-	//		mPlayer->forceMove(2, moveDistance);
-	//	}
-	//	else if(mPlayerPart==0){
-	//		mPlayer->forceMove(5, moveDistance);
-	//	}
-	//}
-	////If the feet, body and head is connected
-	//else if(mPlayer->getCollisionSprite().size()==1)
-	//{
-	//	mPlayer->forceMove(-1, moveDistance);
-	//}
-	//else
-	//{
-	//	if(mPlayerPart!=3)
-	//	mPlayer->forceMove(mPlayerPart, moveDistance);
-	//}
-	//playerSprite->setPosition(moveDistance);
 
-	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill")
+	handleCases(unit);
+}
+
+void Collision::handleCases(int unit)
+{
+	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill" || mUnits[unit]->getId()=="MiniBot")
 	{
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
