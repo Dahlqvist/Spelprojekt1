@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Tutorial5"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -471,9 +471,9 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue4"</SpriteName>
+      <SpriteName>"HelpDialogue6"</SpriteName>
       <Position>
-        <x>352</x>
+        <x>288</x>
         <y>256</y>
       </Position>
       <Text>""</Text>
@@ -849,10 +849,6 @@
         <x>0</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -861,10 +857,6 @@
         <x>1216</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
 
   </Objects>

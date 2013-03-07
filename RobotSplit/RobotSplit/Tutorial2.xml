@@ -117,8 +117,8 @@
       <Id>"TutorialBox1"</Id>
       <SpriteName>"HelpDialogue1"</SpriteName>
       <Position>
-        <x>64</x>
-        <y>64</y>
+        <x>320</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
@@ -129,8 +129,8 @@
       <Id>"TutorialBox2"</Id>
       <SpriteName>"HelpDialogue2"</SpriteName>
       <Position>
-        <x>896</x>
-        <y>64</y>
+        <x>640</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
@@ -162,18 +162,18 @@
     <Unit>
       <Type>Kill</Type>
       <Position>
-        <x>900</x>
-        <y>768</y>
+        <x>0</x>
+        <y>900</y>
       </Position>
       <Size>
-        <x>500</x>
-        <y>64</y>
+        <x>1280</x>
+        <y>10</y>
       </Size>
       <SpriteName>""</SpriteName>
       <Solid>false</Solid>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>BGSmoke</Type>
       <Position>
         <x>0</x>
@@ -184,6 +184,6 @@
       <Speed>200</Speed>
       <Solid>false</Solid>
       <Behind>true</Behind>
-    </Unit>
+    </Unit>-->
   </Objects>
 </Level>

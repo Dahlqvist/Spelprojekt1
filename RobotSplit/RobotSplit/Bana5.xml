@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Bana5"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Bana3_bg1"</SpriteName>
+      <SpriteName>"BackgroundBana5"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Bana3_bg2"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
@@ -474,10 +465,6 @@
         <x>0</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -486,10 +473,6 @@
         <x>640</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -498,10 +481,6 @@
         <x>0</x>
         <y>64</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -510,10 +489,6 @@
         <x>1216</x>
         <y>64</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -522,10 +497,6 @@
         <x>0</x>
         <y>696</y>
       </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -534,10 +505,6 @@
         <x>1202</x>
         <y>696</y>
       </Position>
-      <Size>
-        <x>78</x>
-        <y>72</y>
-      </Size>
     </Unit>
   </Objects>
 </Level>
