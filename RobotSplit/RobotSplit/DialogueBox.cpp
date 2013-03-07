@@ -7,7 +7,6 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 	,mFadeIn(fadeIn)
 	,mStartVisible(visible)
 	,mStartFadeIn(fadeIn)
-	,mDeactivated(false)
 	,mHasFaded(false)
 {
 	const int TEXT_OFFSET_X=10;
@@ -31,6 +30,8 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 void DialogueBox::update()
 {
 	const int FADE_SPEED=1;
+
+	mLastAlpha=mAlpha;
 	
 	//Fade in
 	if (!mVisible)
@@ -81,7 +82,6 @@ void DialogueBox::activate()
 void DialogueBox::deactivate()
 {
 	mVisible=false;
-	mDeactivated=true;
 }
 
 void DialogueBox::reset()
@@ -90,15 +90,27 @@ void DialogueBox::reset()
 	mFadeIn=mStartFadeIn;
 }
 
+void DialogueBox::setReset()
+{
+	mStartVisible=mVisible;
+	mStartFadeIn=mFadeIn;
+}
+
 sf::Text DialogueBox::getText()
 {
-	mText.setColor(sf::Color(255, 255, 255, mAlpha));
+	if (mAlpha!=mLastAlpha)
+	{
+		mText.setColor(sf::Color(255, 255, 255, mAlpha));
+	}
 	return mText;
 }
 
 sf::Sprite DialogueBox::getSprite()
 {
-	mSprite.setColor(sf::Color(255, 255, 255, mAlpha));
+	if (mAlpha!=mLastAlpha)
+	{
+		mSprite.setColor(sf::Color(255, 255, 255, mAlpha));
+	}
 	return mSprite;
 }
 

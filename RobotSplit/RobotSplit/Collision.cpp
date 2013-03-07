@@ -419,7 +419,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 			mPlayer->setStartingPosition(mUnits[unit]->getPosition());
 			for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
 			{
-				mUnits[i]->setCheckpoint();
+				mUnits[i]->setReset();
 			}
 		}
 		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
