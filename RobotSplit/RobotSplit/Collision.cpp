@@ -360,7 +360,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 		}
 		else
 		{
-			mPlayer->shootHead(sf::Vector2f(0,0));
+			if(mPlayer->getHeadless()==true)
+			{
+				mPlayer->shootHead(sf::Vector2f(0,0));
+			}
 		}
 	}
 	if(mUnits[unit]->getId()=="Door" && mPlayer->getTogether()==true && mPlayer->getId(mPlayerPart)=="PlayerPartBody")
