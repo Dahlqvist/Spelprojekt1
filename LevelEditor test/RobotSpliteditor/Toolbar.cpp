@@ -3,6 +3,8 @@
 #include "Editor.h"
 #include "UIText.h"
 #include "UIDrop.h"
+#include "DialogueBox.h"
+#include "Laser.h"
 #include "UIObjectMenu.h"
 #include "LevelLoader.h"
 #include "XmlSaver.h"
@@ -18,12 +20,47 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
 	Solid->addOption("Yes",true);
 	Solid->addOption("No",false);
+	UIDrop<bool>*Behined=new UIDrop<bool>("Behined Player",Color(255,255,255,255),Color(0,0,0,255),15);
+	Behined->addOption("Yes",true);
+	Behined->addOption("No",false);
+	UIDrop<bool>*Fade=new UIDrop<bool>("Fade In",Color(255,255,255,255),Color(0,0,0,255),15);
+	Fade->addOption("Yes",true);
+	Fade->addOption("No",false);
+	UIDrop<bool>*Visible=new UIDrop<bool>("Visible",Color(255,255,255,255),Color(0,0,0,255),15);
+	Visible->addOption("Yes",true);
+	Visible->addOption("No",false);
+	UIDrop<bool>*Active=new UIDrop<bool>("Active",Color(255,255,255,255),Color(0,0,0,255),15);
+	Active->addOption("Yes",true);
+	Active->addOption("No",false);
+	UIDrop<string>*color=new UIDrop<string>("Color",Color(255,255,255,255),Color(0,0,0,255),15);
+	color->addOption("Red","Red");
+	color->addOption("Yellow","Yellow");
+	color->addOption("Blue","Blue");
+	UIDrop<int>*Rotation=new UIDrop<int>("Rotation",Color(255,255,255,255),Color(0,0,0,255),15);
+	Rotation->addOption("Down",0);
+	Rotation->addOption("Left",90);
+	Rotation->addOption("Up",180);
+	Rotation->addOption("Right",270);
+	UIDrop<Unit*>*Targets=new UIDrop<Unit*>("TargetObjects",Color(255,255,255,255),Color(0,0,0,255),15);
 	mUIItems.accessInactive().insert(Solid);
+	mUIItems.accessInactive().insert(Behined);
+	mUIItems.accessInactive().insert(Fade);
+	mUIItems.accessInactive().insert(Visible);
+	mUIItems.accessInactive().insert(Rotation);
+	mUIItems.accessInactive().insert(Active);
+	mUIItems.accessInactive().insert(color);
+	mUIItems.accessInactive().insert(Targets);
 	mUIItems.accessInactive().insert(new UIText("Name","",false,Color(255,255,255,255),Color(0,0,0,255),15));
-	mUIItems.accessInactive().insert(new UIText("Lives","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Lives","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position y","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Id for target","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Sound","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Length","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Range of visibility","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("SpriteOn","",false,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("SpriteOff","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessActive().insert(meny);
 	Loader.loadFile("PlatFormMenu.xml");
 	meny=Loader.getObject(this);
@@ -45,59 +82,62 @@ void	Toolbar::render(Editor* editor)
 		mChange=false;
 	}
 	//Change UIItems
-	if(mCurrUnit.isActive())
+	if(!mSelected)
 	{
-		char*	temp=new char[10];
-		itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
-		if(!mUIItems.getActivated("Position x")->selected())
+		if(mCurrUnit.isActive())
 		{
-			dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-		}
-		itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
-		if(!mUIItems.getActivated("Position y")->selected())
-		{
-			dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
-		}
-		if(mNewPos)
-		{
-			if(editor->collide(mCurrUnit))
+			char*	temp=new char[10];
+			itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
+			if(!mUIItems.getActivated("Position x")->selected())
 			{
-				mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+				dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
 			}
-			else
+			itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
+			if(!mUIItems.getActivated("Position y")->selected())
 			{
-				mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+				dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
 			}
-			mNewPos=false;
-		}
-	}
-	else if(mCurrPlayer.isActive())
-	{
-		char*	temp=new char[10];
-		itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
-		if(!mUIItems.getActivated("Position x")->selected())
-		{
-			dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-		}
-		itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().y,temp,10);
-		if(!mUIItems.getActivated("Position y")->selected())
-		{
-			dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
-		}
-		if(mNewPos)
-		{
-			if(editor->collide(mCurrPlayer))
+			if(mNewPos)
 			{
-				Vector2f	temp=mCurrPlayer.getOriginal()-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2);
-				mCurrPlayer.getObject()->forceMove(0,temp);
-				mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-				mCurrPlayer.getObject()->update();
+				if(editor->collide(mCurrUnit))
+				{
+					mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+				}
+				else
+				{
+					mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+				}
+				mNewPos=false;
 			}
-			else
+		}
+		else if(mCurrPlayer.isActive())
+		{
+			char*	temp=new char[10];
+			itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
+			if(!mUIItems.getActivated("Position x")->selected())
 			{
-				mCurrPlayer.setOriginal(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition());
+				dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
 			}
-			mNewPos=false;
+			itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().y,temp,10);
+			if(!mUIItems.getActivated("Position y")->selected())
+			{
+				dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+			}
+			if(mNewPos)
+			{
+				if(editor->collide(mCurrPlayer))
+				{
+					Vector2f	temp=mCurrPlayer.getOriginal()-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2);
+					mCurrPlayer.getObject()->forceMove(0,temp);
+					mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+					mCurrPlayer.getObject()->update();
+				}
+				else
+				{
+					mCurrPlayer.setOriginal(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition());
+				}
+				mNewPos=false;
+			}
 		}
 	}
 	//Renders stuff
@@ -187,6 +227,15 @@ void	Toolbar::setUnit(Unit*	Source)
 	}
 	else if(CompString=="Laser")
 	{
+
+	}
+	else if(CompString=="Meanix")
+	{
+		mUIItems.deactivate("Sprite");
+	}
+	else if(CompString=="")
+	{
+
 	}
 }
 
@@ -339,4 +388,23 @@ void	Toolbar::resize(RenderWindow&	window)
 {
 	mPosition.x=window.getSize().x-mSize.x;
 	mSize.y=window.getSize().y-mPosition.y;
+}
+
+void	Toolbar::setTargets	(Level& level)
+{
+	if(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))!=0)
+	{
+		dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->DeleteAllItems();
+		for(UnitVector::iterator it=level.getObjects().begin();it!=level.getObjects().end();it++)
+		{
+			if(dynamic_cast<DialogueBox*>(*it)!=0)
+			{
+				dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->addOption((*it)->getId(),(*it));
+			}
+			else if(dynamic_cast<Laser*>(*it)!=0)
+			{
+				dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->addOption((*it)->getId(),(*it));
+			}
+		}
+	}
 }
