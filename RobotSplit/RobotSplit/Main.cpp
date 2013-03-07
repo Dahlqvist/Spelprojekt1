@@ -24,13 +24,19 @@ int main()
 	StateInput& stateinput = StateInput::getInstance();
 	sf::RenderWindow& mWindow = Window::getWindow();
 	sf::Clock testClock;
-	GameTimer	FPSLIMIT(1.f/60);
+	float limit=1.f/60;
+	GameTimer	FPSLIMIT(limit);
 	mWindow.setFramerateLimit(60);
+
+	int count = 0;
+	sf::Clock temp;
+
 	while(mWindow.isOpen())
 	{
 		if(FPSLIMIT.isExpired())
 		{
-			sf::Clock temp;
+		
+			FPSLIMIT.reset();	
 			while(mWindow.pollEvent(Window::getEvent()))
 			{
 				if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
@@ -40,7 +46,6 @@ int main()
 			}
 			if(testClock.getElapsedTime().asSeconds() < 3)
 			{
-				//splash.runSplash("StixSplashJump", 1, 1);
 				splash.update();
 				splash.render();
 			}
@@ -48,15 +53,21 @@ int main()
 			{
 				for(int i = 0; i<2; i++)
 					statemanager.updateState();
+
+				count++;
+				if(count >= 60)
+				{
+					cout << temp.getElapsedTime().asSeconds() * 60 << endl;
+					temp.restart();
+					count = 0;
+				}
 				statemanager.renderState();	
 			}
-			//cout << temp.getElapsedTime().asSeconds() << endl;
-		FPSLIMIT.reset();
-		//std::cout<<"Updated"<<std::endl;
+		
 
 		}
-		//else
-			//std::cout<<"Not updated: "<<FPSLIMIT.getCurrentTime()<<std::endl;
+	//	else
+//			std::cout<<"Not updated: "<<FPSLIMIT.getCurrentTime()<<std::endl;
 	}	
 	return 0;
 }
