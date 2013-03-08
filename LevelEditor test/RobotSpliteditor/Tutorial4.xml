@@ -5,6 +5,179 @@
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
+      <SpriteName>"BGTutorial"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+      </Position>
+    </Background>
+  </Backgrounds>
+
+  <Objects>
+    <Unit>
+      <Type>"Player"</Type>
+      <Position>
+        <x>64</x>
+        <y>384</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>0</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>House7</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>832</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>House8</SpriteName>
+    </Unit>
+
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>608</x>
+        <y>256</y>
+      </Position>
+      <SpriteName>Billboard3</SpriteName>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+      <Behind>true</Behind>
+    </Unit>
+    
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>448</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>HouseEdge1</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Platform</Type>
+      <Position>
+        <x>800</x>
+        <y>480</y>
+      </Position>
+      <SpriteName>HouseEdge2</SpriteName>
+    </Unit>
+
+    <Unit>
+      <Type>"Door"</Type>
+      <SpriteName>"BankExit"</SpriteName>
+      <Position>
+        <x>1166</x>
+        <y>346</y>
+      </Position>
+      <Size>
+        <x>50</x>
+        <y>100</y>
+      </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
+      <Solid>false</Solid>
+      <Behind>true</Behind>
+    </Unit>
+
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpDialogue5"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>64</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>400</x>
+        <y>472</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>768</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
+   </Objects>
+  </Level>
+    
+<!--<Level>
+  <Name>"Test Bana"</Name>
+  <Backgrounds>
+    <Background>
+      <Frames>1</Frames>
+      <Speed>120</Speed>
       <SpriteName>"Tutorial4a"</SpriteName>
       <Position>
         <x>0</x>
@@ -263,10 +436,6 @@
         <x>512</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -275,10 +444,6 @@
         <x>736</x>
         <y>480</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>64</y>
-      </Size>
     </Unit>
 
     <Unit>
@@ -621,4 +786,4 @@
       </Size>
     </Unit>
   </Objects>
-</Level>
+</Level>-->

@@ -30,7 +30,7 @@ private:
 	int mNumFrames;
 	int mCurrentFrame;
 	bool mAnimate;
-	friend class XmlSaver;
+	friend class LevelSaver;
 };
 
 #endif

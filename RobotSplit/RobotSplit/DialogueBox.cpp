@@ -7,7 +7,6 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 	,mFadeIn(fadeIn)
 	,mStartVisible(visible)
 	,mStartFadeIn(fadeIn)
-	,mDeactivated(false)
 	,mHasFaded(false)
 {
 	const int TEXT_OFFSET_X=10;
@@ -83,13 +82,18 @@ void DialogueBox::activate()
 void DialogueBox::deactivate()
 {
 	mVisible=false;
-	mDeactivated=true;
 }
 
 void DialogueBox::reset()
 {
 	mVisible=mStartVisible;
 	mFadeIn=mStartFadeIn;
+}
+
+void DialogueBox::setReset()
+{
+	mStartVisible=mVisible;
+	mStartFadeIn=mFadeIn;
 }
 
 sf::Text DialogueBox::getText()

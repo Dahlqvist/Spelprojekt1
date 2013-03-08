@@ -31,10 +31,6 @@ bool UnitManager::isCollidedSide(int playerPart, int side)
 {
 	for (std::vector<SidePair>::size_type i=0; i<mSidePairs.size(); i++)
 	{
-		if (playerPart==4 && side==4)
-		{
-			int foo=0;
-		}
 		if (mSidePairs[i].isPair(playerPart, side))
 			return true;
 	}

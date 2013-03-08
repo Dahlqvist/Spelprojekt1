@@ -11,7 +11,30 @@ public:
 	virtual sf::Vector2f getPosition(){return mPosition;};
 	virtual void setPosition(sf::Vector2f position)
 	{
+		sf::Vector2f	offset=mPosition-mLaser->getPosition();
+		offset.x=abs(offset.x);
+		offset.y=abs(offset.y);
 		mPosition=position;
+		switch(int(mLaser->getRotation()))
+		{
+		case 0:
+			offset.x=abs(offset.x);
+			offset.y=abs(offset.y);
+			break;
+		case 90:
+			offset.x=abs(offset.x);
+			offset.y=-abs(offset.y);
+			break;
+		case 180:
+			offset.x=-abs(offset.x);
+			offset.y=-abs(offset.y);
+			break;
+		case 270:
+			offset.x=abs(offset.x);
+			offset.y=-abs(offset.y);
+			break;
+		}
+		mLaser->setPosition(position-offset);
 		mSprite.setPosition(mPosition);
 	};
 
@@ -32,6 +55,7 @@ public:
 	virtual void activate();
 	virtual void deactivate();
 	virtual void reset();
+	virtual void setReset();
 
 protected:
 	float mRotation;
@@ -43,8 +67,10 @@ protected:
 
 	//Animation* mAnimation;
 	bool mActive, mStartActive;
+
 	Laser* mLaser;
-	friend	class	XmlSaver;
+	friend	class	LevelSaver;
+	friend	class	Editor;
 };
 
 #endif

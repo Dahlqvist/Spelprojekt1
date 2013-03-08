@@ -170,9 +170,9 @@ void Player::update()
 	}
 	for(unsigned int i=0; i < mParts.size(); i++)
 	{
-		if(i<3){
+		//if(i<3){
 			mParts[i]->update();
-		}
+		//}
 	}
 	mBodyStandingFeet=false;
 	if(mHeadless==true && mHead.getUnit()==0)
@@ -477,6 +477,7 @@ void Player::setAttachFeetExtension(bool b)
 			}
 			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1) && !UnitManager::isCollidedSide(4, 4) && !UnitManager::isCollidedSide(4, 2) && !UnitManager::isCollidedSide(4, 3))
 			{
+				
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}
@@ -680,7 +681,6 @@ void Player::interact(int action)
 		}
 		if(action==4)
 		{
-			mKeyTimer.restart();
 			//RocketBoost
 			if(mTogether==false && mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
 			{
@@ -987,8 +987,6 @@ void Player::die(int part)
 	}
 	else if(part==0)
 	{
-		mFeet.setAttached(false);
-		mFeet.setAttachedWall(false);
 		mFeet.die();
 		mBodyDied=false;
 	}

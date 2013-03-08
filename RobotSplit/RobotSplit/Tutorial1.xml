@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Tutorial2"</Name>
+  <Name>"Tutorial1"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -17,8 +17,8 @@
     <Unit>
       <Type>"Player"</Type>
       <Position>
-        <x>64</x>
-        <y>384</y>
+        <x>512</x>
+        <y>672</y>
       </Position>
       <Size>
         <x>64</x>
@@ -144,12 +144,12 @@
     <Unit>
       <Type>Kill</Type>
       <Position>
-        <x>900</x>
-        <y>768</y>
+        <x>0</x>
+        <y>900</y>
       </Position>
       <Size>
-        <x>500</x>
-        <y>64</y>
+        <x>1280</x>
+        <y>10</y>
       </Size>
       <SpriteName>""</SpriteName>
       <Solid>false</Solid>

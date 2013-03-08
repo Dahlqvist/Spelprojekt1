@@ -179,6 +179,16 @@ public:
 		}
 	}
 
+	void	DeleteAllItems()
+	{
+		mOptions.clear();
+		mCurrent=mOptions.end();
+	}
+
+	map<string,T>	getMap()
+	{
+	}
+
 	~UIDrop()
 	{
 	}

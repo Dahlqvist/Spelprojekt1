@@ -129,7 +129,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6o"</SpriteName>
+      <SpriteName>"TileL6p"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
@@ -141,7 +141,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6p"</SpriteName>
+      <SpriteName>"TileL6o"</SpriteName>
       <Position>
         <x>128</x>
         <y>64</y>
@@ -409,7 +409,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ag"</SpriteName>
+      <SpriteName>"TileL6q"</SpriteName>
       <Position>
         <x>928</x>
         <y>576</y>

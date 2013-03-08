@@ -2,7 +2,7 @@
 #include "UIDrop.h"
 #include "UIText.h"
 #include "TextureManager.h"
-#include "XmlSaver.h"
+#include "LevelSaver.h"
 
 enum	Type
 {
@@ -60,7 +60,7 @@ void	LevelBar::render(RenderWindow& window)
 
 void	LevelBar::execute()
 {
-	XmlSaver	Saver;
+	LevelSaver	Saver;
 	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->getString();
  	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
 	{

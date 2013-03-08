@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Tutorial1"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -29,7 +29,7 @@
         <y>100</y>
       </Position>
       <Text>
-        "I'm a help box. #I will teach you how to play Robot Split. #When you leave I will fade away."
+        "<!--I'm a help box. #I will teach you how to play Robot Split. #When you leave I will fade away.-->"
       </Text>
       <SpriteName>"HelpBox1"</SpriteName>
       <Solid>"false"</Solid>
@@ -44,7 +44,7 @@
         <y>100</y>
       </Position>
       <Text>
-        "Make a quick dash on the SHIFT-key."
+        "<!--Make a quick dash on the SHIFT-key.-->"
       </Text>
       <SpriteName>"HelpBox1"</SpriteName>
       <Solid>"false"</Solid>
@@ -122,7 +122,6 @@
         <x>192</x>
         <y>480</y>
       </Position>
-      <Lives>3</Lives>
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
@@ -243,7 +242,16 @@
         <x>1152</x>
         <y>352</y>
       </Position>
+      <Size>
+        <x>1</x>
+        <y>128</y>
+      </Size>
+      <Offset>
+        <x>32</x>
+        <y>0</y>
+      </Offset>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
     <Unit>
       <Type>"Lava"</Type>
