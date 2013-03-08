@@ -360,6 +360,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
 	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
+	mTextureMap["MiniBotRelease"].loadFromFile("Texture/Background/eBot_RedAnimation.png");
 
 	//Tutorials
 	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
@@ -480,6 +481,8 @@ void TextureManager::loadTexture()
 	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
 	mTextureMap["BackgroundBana5"].loadFromFile("Texture/Background/Background_5.png");
 	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
+
+	mTextureMap["BackgroundBana2"].loadFromFile("Texture/Background/background_2_new.png");
 	
 	//Initializing the frame parts.
 
