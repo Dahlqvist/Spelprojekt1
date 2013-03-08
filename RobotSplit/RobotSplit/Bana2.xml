@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Bana2"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Bana2_bg1"</SpriteName>
+      <SpriteName>"BackgroundBana2"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Bana2_bg2"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>

@@ -306,6 +306,10 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL6m"].loadFromFile("Texture/Enviroment/Bana6/Fix_01.png");
 	mTextureMap["TileL6n"].loadFromFile("Texture/Enviroment/Bana6/Fix_01R.png");
 
+	mTextureMap["TileL6o"].loadFromFile("Texture/Enviroment/Bana6/NTile23.png");
+	mTextureMap["TileL6p"].loadFromFile("Texture/Enviroment/Bana6/NTile24.png");
+	mTextureMap["TileL6q"].loadFromFile("Texture/Enviroment/Bana6/NTile22.png");
+
 	mTextureMap["TileL6Aa"].loadFromFile("Texture/Enviroment/Bana6/A/NTile01.png");
 	mTextureMap["TileL6Ab"].loadFromFile("Texture/Enviroment/Bana6/A/NTile02.png");
 	mTextureMap["TileL6Ac"].loadFromFile("Texture/Enviroment/Bana6/A/NTile03.png");
@@ -336,7 +340,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["TileL6Hihga"].loadFromFile("Texture/Enviroment/Bana6/Vercital_Half_Middle.png");
 	mTextureMap["TileL6Hihgb"].loadFromFile("Texture/Enviroment/Bana6/Under_Exit02R.png");
-	
+
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
@@ -356,6 +360,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
 	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
+	mTextureMap["MiniBotRelease"].loadFromFile("Texture/Background/eBot_RedAnimation.png");
 
 	//Tutorials
 	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
@@ -409,6 +414,17 @@ void TextureManager::loadTexture()
 	
 	//mTextureMap["LaserRasmus"].loadFromFile("Texture/AwesomeLaserHolderAlaRasmus.png");
 	
+	mTextureMap["Tutorial1Office"].loadFromFile("Texture/Tutorials/Backgrounds/Office_Background_&_Places.png");
+	mTextureMap["Tutorial1House"].loadFromFile("Texture/Tutorials/First/House.png");
+
+	mTextureMap["Tutorial1Window"].loadFromFile("Texture/Tutorials/First/Office_Broken_Window.png");
+	mTextureMap["Tutorial1Desk"].loadFromFile("Texture/Tutorials/First/Office_Desk.png");
+	mTextureMap["Tutorial1Door"].loadFromFile("Texture/Tutorials/First/Office_Door.png");
+	mTextureMap["Tutorial1Floor"].loadFromFile("Texture/Tutorials/First/Office_Floor.png");
+	mTextureMap["Tutorial1Wall"].loadFromFile("Texture/Tutorials/First/Office_L_Wall.png");
+	mTextureMap["Tutorial1Roof"].loadFromFile("Texture/Tutorials/First/Office_Roof.png");
+	
+
 	//INTIIALIZING TEMPORARYBANA
 
 	mTextureMap["BankBackground"].loadFromFile("Texture/Background/BackgroundBank.png");
@@ -462,6 +478,11 @@ void TextureManager::loadTexture()
 	mTextureMap["BankBackground3"].loadFromFile("Texture/Tutorials/Backgrounds/Background.png");
 	mTextureMap["BankBackground4"].loadFromFile("Texture/Tutorials/Backgrounds/bank3_background.png");
 
+	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
+	mTextureMap["BackgroundBana5"].loadFromFile("Texture/Background/Background_5.png");
+	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
+
+	mTextureMap["BackgroundBana2"].loadFromFile("Texture/Background/background_2_new.png");
 	
 	//Initializing the frame parts.
 

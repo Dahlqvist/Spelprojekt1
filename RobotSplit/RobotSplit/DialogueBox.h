@@ -12,6 +12,7 @@ public:
 	void activate();
 	void deactivate();
 	void reset();
+	void setReset();
 	
 	sf::Text getText();
 	sf::Sprite getSprite();
@@ -19,8 +20,8 @@ public:
 	bool isFullyVisible();
 
 private:
-	int mAlpha;
-	bool mVisible, mFadeIn, mDeactivated, mHasFaded;
+	int mAlpha, mLastAlpha;
+	bool mVisible, mFadeIn, mHasFaded;
 	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;

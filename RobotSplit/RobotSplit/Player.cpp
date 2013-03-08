@@ -343,26 +343,23 @@ bool Player::getHeadless()
 //Enskilda funktioner för specifika delar
 void Player::jump()
 {
-	if(mDashing==false && mJumpTemp.getElapsedTime().asSeconds()>0.5)
+	if(mDashing==false/* && mJumpTemp.getElapsedTime().asSeconds()>0.5*/)
 	{
 		if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 		{
 			mFeet.jump(Eric::getJump());
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 		if(mBodyActive==true && UnitManager::isCollidedSide(1, 2) || mBodyActive==true && mBodyStandingFeet==true || mBodyActive==true && (mAttachedMagnet==true && mBodyAttached==true))
 		{
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || mBodyActive==false && (mAttachedMagnet==true && mBodyAttached==false))
 		{
 			mFeet.jump(Eric::getJump());
 			Sound::playSound("Jump");
-			mJumpTemp.restart();
 		}
 	}	
 }
@@ -480,6 +477,7 @@ void Player::setAttachFeetExtension(bool b)
 			}
 			else if(mFeet.getWall()==1 && UnitManager::isCollidedSide(0, 1) && !UnitManager::isCollidedSide(4, 4) && !UnitManager::isCollidedSide(4, 2) && !UnitManager::isCollidedSide(4, 3))
 			{
+				
 				mFeetAttached=b;
 				mFeet.setAttached(b);
 			}
@@ -541,7 +539,7 @@ void Player::reFuel()
 
 void Player::interact(int action)
 {
-	if(mWinning==false)
+	if(mWinning==false && mDying==false)
 	{
 		if(mClockStart==false)
 		{
@@ -578,7 +576,7 @@ void Player::interact(int action)
 					Sound::playSound("Move");
 				}
 			}
-			if(mAttachedMagnet==true && mBodyActive==mBodyAttached /*&& mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet()*/)
+			if(mAttachedMagnet==true && mBodyActive==mBodyAttached && mJumpTemp.getElapsedTime().asSeconds()>Eric::getJumpdelayMagnet())
 			{
 				mHead.setMagnetSolid(false);
 				mAttachedMagnet=false;
@@ -749,8 +747,8 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		TempMagnet->setPosition(TempPart->getPosition());
 		Parts.push_back(TempMagnet);
 		*TempExtension=TextureManager::getSprite("StixFeetExtend");
-		TempExtension->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
-		TempExtension->setPosition(TempFeet->getPosition()+sf::Vector2f(1, -31));
+		//TempExtension->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
+		TempExtension->setPosition(TempFeet->getPosition()+sf::Vector2f(0, -32));
 		Parts.push_back(TempExtension);
 		*TempWhole=TextureManager::getSprite("StixWhole");
 		TempWhole->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));

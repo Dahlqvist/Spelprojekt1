@@ -347,9 +347,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tutorial1.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Tutorial2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -383,7 +380,10 @@
     <None Include="Bana6.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial8.xml">
+    <None Include="Tutorial7.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>
