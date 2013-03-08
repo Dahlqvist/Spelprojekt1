@@ -358,9 +358,9 @@ void TextureManager::loadTexture()
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 
-	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
-	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
-	mTextureMap["MiniBotRelease"].loadFromFile("Texture/Background/eBot_RedAnimation.png");
+	mTextureMap["MiniBot"].loadFromFile("Texture/Units/eBot_walk.png");
+	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Units/eBot_walkCharging.png");
+	mTextureMap["MiniBotRelease"].loadFromFile("Texture/Units/eBot_Energy.png");
 
 	//Tutorials
 	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
@@ -380,6 +380,11 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
 	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
+	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
+	mTextureMap["HelpDialogue7"].loadFromFile("Texture/Tutorials/help_radio7.png");
+	mTextureMap["HelpDialogue8"].loadFromFile("Texture/Tutorials/help_radio8.png");
+	mTextureMap["HelpDialogue9"].loadFromFile("Texture/Tutorials/help_radio9.png");
+	
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
