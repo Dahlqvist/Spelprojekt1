@@ -1,11 +1,12 @@
 #include "Editor.h"
 #include "Background.h"
+#include "LaserHolder.h"
 using namespace sf;
 
 
 
 Editor::Editor(void)
-	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Test.xml"),mCurrView(mWindow.getDefaultView()),
+	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Bana6.xml"),mCurrView(mWindow.getDefaultView()),
 	mLevelTool(&mLevel)
 {
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
@@ -54,6 +55,10 @@ void	Editor::renderLevel(View& Target)
 	}
 	for(UnitVector::size_type i=0;i < Units.size();i++)
 	{
+		if(dynamic_cast<Laser*>(mLevel.getObjects()[i])!=0)
+		{
+			dynamic_cast<Laser*>(mLevel.getObjects()[i])->mLength=dynamic_cast<Laser*>(mLevel.getObjects()[i])->mMaxLength;
+		}
 		if(Units[i]!=mSelectedUnit.getObject())
 			mWindow.draw(Units[i]->getSprite());
 	}
@@ -100,7 +105,7 @@ void	Editor::eventHandler(const Event& Current)
 		{
 			if(mSelectedUnit.isActive())
 			{
-				mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+			mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
 			}
 			else if(mSelectedPlayer.isActive())
 			{
@@ -143,6 +148,20 @@ void	Editor::eventHandler(const Event& Current)
 						{
 							mTools.unIniUnit();
 							mTools.unIniPlayer();
+							if(dynamic_cast<Laser*>(mLevel.getObjects()[i])!=0)
+							{
+								for(UnitVector::size_type j=0;j < mLevel.getObjects().size();j++)
+								{
+									if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])!=0)
+									{
+										if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])->mLaser==mLevel.getObjects()[i])
+										{
+											mLevel.deleteItem(mLevel.getObjects()[j]);
+											break;
+										}
+									}
+								}
+							}
 							mLevel.deleteItem(mLevel.getObjects()[i]);
 							break;
 						}
@@ -189,8 +208,25 @@ void	Editor::eventHandler(const Event& Current)
 						hitbox=FloatRect(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
 						if(hitbox.contains(temp))
 						{
-							mSelectedUnit.setPtr(mLevel.accessObjects()[i],mLevel.accessObjects()[i]->getPosition(),Vector2f(temp-mLevel.accessObjects()[i]->getPosition()),true);
-							mTools.setUnit(mSelectedUnit.getObject());
+							if(dynamic_cast<Laser*>(mLevel.getObjects()[i])!=0)
+							{
+								for(UnitVector::size_type j=0;j < mLevel.getObjects().size();j++)
+								{
+									if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])!=0)
+									{
+										if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])->mLaser==mLevel.getObjects()[i])
+										{
+											mSelectedUnit.setPtr(mLevel.accessObjects()[j],mLevel.accessObjects()[j]->getPosition(),Vector2f(temp-mLevel.accessObjects()[j]->getPosition()),true);
+											mTools.setUnit(mSelectedUnit.getObject());
+										}
+									}
+								}
+							}
+							else
+							{
+								mSelectedUnit.setPtr(mLevel.accessObjects()[i],mLevel.accessObjects()[i]->getPosition(),Vector2f(temp-mLevel.accessObjects()[i]->getPosition()),true);
+								mTools.setUnit(mSelectedUnit.getObject());
+							}
 							break;
 						}
 					}

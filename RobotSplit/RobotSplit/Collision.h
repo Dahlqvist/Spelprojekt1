@@ -28,9 +28,9 @@ public:
 private:
 	bool testCollisions(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
 	void handleCollisions(int unit, const sf::FloatRect& collisionRect);
+	void handleCases(int unit);
 	void testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
 	void killPlayer();
-	void handleCases(int unit);
 
 	std::set<int> mCollidedSides;
 	//Objects at the sides

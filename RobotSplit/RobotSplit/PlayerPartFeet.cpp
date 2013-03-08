@@ -28,15 +28,10 @@ PlayerPartFeet::PlayerPartFeet():
 	mFuel=Eric::getFueltank();
 	mAO=0;
 	mCounter=0;
-	mSoundTimer.restart();
 }
 void PlayerPartFeet::update()
 {
 	mActiveAnimation->update();
-	if(mSoundTimer.getElapsedTime().asSeconds()>0.05 && Sound::getSoundStatus("Rocket")==2)
-	{
-		Sound::stopSound("Rocket");
-	}
 	if(mUnit!=0)
 	{
 		mUnit->update();
@@ -344,8 +339,7 @@ void PlayerPartFeet::activateRocketBoots()
 		PlayerPartFeet::setPosition(sf::Vector2f(0, -Eric::getRocketboost()));
 		mFuel--;
 		mJump=Eric::getGravity();
-		Sound::playSound("Rocket");
-		mSoundTimer.restart();
+		//Sound::playSound("RocketBoost");
 	}
 	if(mFuel<=0)
 	{

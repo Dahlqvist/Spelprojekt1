@@ -144,6 +144,12 @@
     <ClCompile Include="Highscore.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="LevelSaver.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -292,6 +298,12 @@
     <ClInclude Include="Highscore.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="LevelSaver.h">
+      <Filter>Header Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -335,9 +347,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tutorial1.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Tutorial2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -372,6 +381,9 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Tutorial7.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Tutorial1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>

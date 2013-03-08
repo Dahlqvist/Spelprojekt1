@@ -32,6 +32,7 @@ public:
 	void		eventHandle	(const	Event&);
 	bool		mChange;
 	void		resize		(RenderWindow&);
+	void		setTargets	(Level&);
 private:
 	UnitContainer	mCurrUnit;
 	PlayerContainer	mCurrPlayer;

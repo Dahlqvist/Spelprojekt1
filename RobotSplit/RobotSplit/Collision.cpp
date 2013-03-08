@@ -248,7 +248,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is above object
 				if (playerSprite->getPosition().y<mUnits[unit]->getPosition().y)
 				{
-					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1) && ((mUnitsOnLeftTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnLeftBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1.0001) && ((mUnitsOnLeftTop.count(mUnits[unit])!=0 && isCollidedSide(LEFT)) || (mUnitsOnLeftBottom.count(mUnits[unit])!=0 && isCollidedSide(RIGHT))))
 					{
 						while (mCollidedSides.count(BOTTOM)!=0)
 						{
@@ -264,7 +264,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is below object
 				else
 				{
-					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1) && ((mUnitsOnRightTop.count(mUnits[unit])!=0 && isCollidedSide(RIGHT)) || (mUnitsOnRightBottom.count(mUnits[unit])!=0 && isCollidedSide(LEFT))))
+					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.width<=Eric::getSpeed()+1.0001) && ((mUnitsOnRightTop.count(mUnits[unit])!=0 && isCollidedSide(LEFT)) || (mUnitsOnRightBottom.count(mUnits[unit])!=0 && isCollidedSide(RIGHT))))
 					{
 						while (mCollidedSides.count(TOP)!=0)
 						{
@@ -287,20 +287,15 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is left of object
 				if (playerSprite->getPosition().x<mUnits[unit]->getPosition().x)
 				{
-					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1) && ((mUnitsOnTopLeft.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
+					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1) && ((mUnitsOnTopRight.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomRight.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
 						while (mCollidedSides.count(LEFT)!=0)
 						{
-							
  							mCollidedSides.erase(mCollidedSides.find(LEFT));
 						}
 					}
 					else
 					{
-						int foo1=mUnitsOnTopRight.count(mUnits[unit]);
-						bool foo2=isCollidedSide(BOTTOM);
-						int foo3=mUnitsOnTopLeft.count(mUnits[unit]);
-						bool foo4=isCollidedSide(TOP);
 						mMovedRight=true;
 						moveDistance.x=-(collisionRect.width-1);
 						mMovedX=true;
@@ -309,7 +304,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				//If player is right of object
 				else
 				{
-					if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1 && ((mUnitsOnTopRight.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomRight.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
+					if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1 && ((mUnitsOnTopLeft.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
 						while (mCollidedSides.count(RIGHT)!=0)
 						{
@@ -333,21 +328,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 	handleCases(unit);
 }
 
-void Collision::killPlayer()
-{
-	//mPlayer->restartPlayer();
-	if(mPlayer->getDying()==false){
-		mPlayer->die(mPlayerPart);
-		Sound::playSound("Death");
-	}
-	mResetted=true;
-	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
-	{
-		mUnits[i]->reset();
-	}
-	mCollidedSides.clear();
-}
-
 void Collision::handleCases(int unit)
 {
 	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill" || mUnits[unit]->getId()=="MiniBot")
@@ -355,10 +335,6 @@ void Collision::handleCases(int unit)
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
 			killPlayer();
-			if(mUnits[unit]->getId()=="MiniBot")
-			{
-				mUnits[unit]->hit();
-			}
 		}
 		else
 		{
@@ -436,6 +412,21 @@ void Collision::handleCases(int unit)
 			mUnits[unit]->setCurrentFrame(1);
 		}
 	}
+}
+
+void Collision::killPlayer()
+{
+	//mPlayer->restartPlayer();
+	if(mPlayer->getDying()==false){
+		mPlayer->die(mPlayerPart);
+		Sound::playSound("Death");
+	}
+	mResetted=true;
+	for (std::vector<Unit*>::size_type i=0; i<mUnits.size(); i++)
+	{
+		mUnits[i]->reset();
+	}
+	mCollidedSides.clear();
 }
 
 void Collision::testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect)

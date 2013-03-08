@@ -12,4 +12,5 @@ Animation* UnitWrap::getAnimation()
 
 UnitWrap::~UnitWrap(void)
 {
+	mAnimation=0x0;
 }

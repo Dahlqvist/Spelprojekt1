@@ -21,11 +21,11 @@ public:
 
 private:
 	int mAlpha, mLastAlpha;
-	bool mVisible, mFadeIn, mDeactivated, mHasFaded;
+	bool mVisible, mFadeIn, mHasFaded;
 	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;
-	friend class XmlSaver;
+	friend class LevelSaver;
 };
 
 #endif
