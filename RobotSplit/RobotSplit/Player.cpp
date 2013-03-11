@@ -747,8 +747,8 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		TempMagnet->setPosition(TempPart->getPosition());
 		Parts.push_back(TempMagnet);
 		*TempExtension=TextureManager::getSprite("StixFeetExtend");
-		//TempExtension->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
-		TempExtension->setPosition(TempFeet->getPosition()+sf::Vector2f(0, -32));
+		TempExtension->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
+		TempExtension->setPosition(TempFeet->getPosition()+sf::Vector2f(1, -31));
 		Parts.push_back(TempExtension);
 		*TempWhole=TextureManager::getSprite("StixWhole");
 		TempWhole->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
