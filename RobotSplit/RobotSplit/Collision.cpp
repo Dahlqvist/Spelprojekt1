@@ -289,7 +289,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if ((mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1) && ((mUnitsOnTopLeft.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
-						std::cout<<mUnitsOnBottomRight.count(mUnits[unit])<<" "<<isCollidedSide(TOP)<<std::endl;
+						std::cout<<mUnitsOnBottomLeft.count(mUnits[unit])<<" "<<isCollidedSide(TOP)<<std::endl;
 						while (mCollidedSides.count(RIGHT)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(RIGHT));
@@ -314,7 +314,7 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 					}
 					else
 					{
-						std::cout<<mUnitsOnTopRight.count(mUnits[unit])<<" "<<isCollidedSide(BOTTOM)<<std::endl;
+						//std::cout<<mUnitsOnTopRight.count(mUnits[unit])<<" "<<isCollidedSide(BOTTOM)<<std::endl;
 						mMovedRight=true;
 						moveDistance.x=collisionRect.width-1;
 						mMovedX=true;
