@@ -2,9 +2,9 @@
 
 MiniBot::MiniBot(sf::Vector2f position, float rotation, float length, bool sideways):
 Unit(position, "MiniBot", "MiniBot", false, false),
-	mWalking("MiniBot", 100, 1),
-	mCharging("MiniBotCharge", 100, 1),
-	mRelease("StixShootAniL", 100, 8)
+	mWalking("MiniBot", 100, 6),
+	mCharging("MiniBotCharge", 100, 6),
+	mRelease("MiniBotRelease", 100, 8)
 {
 	mPosition=position;
 	mStartPosition=position;
