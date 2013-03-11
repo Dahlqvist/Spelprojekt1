@@ -418,8 +418,15 @@ void	Toolbar::setUIActives()
 		{
 			mUIItems.activate("LaserTarget");
 			mUIItems.activate("Rotation");
-			dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))->setCurrent(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->mTriggedObject);
+			dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))->setCurrent(dynamic_cast<Trigger*>(mCurrUnit.getObject())->mTriggedObject);
 			dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->setCurrent(int(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->getRotation()+180)%360);
+		}
+		else if(dynamic_cast<Trigger*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("UnitTarget");
+			mUIItems.activate("Sound");
+			dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))->setCurrent(dynamic_cast<Trigger*>(mCurrUnit.getObject())->mTriggedObject);
+			dynamic_cast<UIText*>(mUIItems.getActivated("Sound"))->setDefault(dynamic_cast<Trigger*>(mCurrUnit.getObject())->getSound());
 		}
 		else
 		{
@@ -478,6 +485,11 @@ void	Toolbar::update()
 		{
 			dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->setTarget(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))->getValue());
 			dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->setRotation(int(dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->getValue()+180)%360);
+		}
+		else if(dynamic_cast<Trigger*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setTarget(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))->getValue());
+			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setSound(dynamic_cast<UIText*>(mUIItems.getActivated("Sound"))->getString());
 		}
 	}
 }
