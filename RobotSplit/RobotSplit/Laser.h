@@ -28,6 +28,7 @@ public:
 	virtual void hit(){};
 	virtual void activate(){mActive=true;};
 	void deactivate(){mActive=false;};
+	void	setColor(std::string color);
 
 protected:
 	sf::Vector2f mSize;
@@ -41,6 +42,7 @@ protected:
 	Animation mBlueLaser;
 	Animation mYellowLaser;
 	friend class Editor;
+	friend class Toolbar;
 };
 
 #endif

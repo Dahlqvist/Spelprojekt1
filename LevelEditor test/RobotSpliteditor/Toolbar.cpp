@@ -5,11 +5,14 @@
 #include "UIDrop.h"
 #include "DialogueBox.h"
 #include "Laser.h"
+#include "LaserDeactivator.h"
 #include "UIObjectMenu.h"
 #include "LevelLoader.h"
 #include "XmlSaver.h"
 #include "Platform.h"
+#include "Meanix.h"
 #include "ObjectLoader.h"
+#include "LaserHolder.h"
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
@@ -41,7 +44,8 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	Rotation->addOption("Left",90);
 	Rotation->addOption("Up",180);
 	Rotation->addOption("Right",270);
-	UIDrop<Unit*>*Targets=new UIDrop<Unit*>("TargetObjects",Color(255,255,255,255),Color(0,0,0,255),15);
+	UIDrop<Unit*>*UTargets=new UIDrop<Unit*>("UnitTarget",Color(255,255,255,255),Color(0,0,0,255),15);
+	UIDrop<Unit*>*LTargets=new UIDrop<Unit*>("LaserTarget",Color(255,255,255,255),Color(0,0,0,255),15);
 	mUIItems.accessInactive().insert(Solid);
 	mUIItems.accessInactive().insert(Behined);
 	mUIItems.accessInactive().insert(Fade);
@@ -49,13 +53,14 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(Rotation);
 	mUIItems.accessInactive().insert(Active);
 	mUIItems.accessInactive().insert(color);
-	mUIItems.accessInactive().insert(Targets);
+	mUIItems.accessInactive().insert(UTargets);
+	mUIItems.accessInactive().insert(LTargets);
 	mUIItems.accessInactive().insert(new UIText("Name","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Lives","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position x","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Position y","",true,Color(255,255,255,255),Color(0,0,0,255),15));
-	mUIItems.accessInactive().insert(new UIText("Id for target","",true,Color(255,255,255,255),Color(0,0,0,255),15));
+	mUIItems.accessInactive().insert(new UIText("Target Id","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sound","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Length","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Range of visibility","",true,Color(255,255,255,255),Color(0,0,0,255),15));
@@ -79,66 +84,25 @@ void	Toolbar::render(Editor* editor)
 	{
 		editor->setPlayer(mCurrPlayer);
 		editor->setUnit(mCurrUnit);
+		setTargets(editor->mLevel);
 		mChange=false;
 	}
 	//Change UIItems
+	if(mNewPos)
+	{
+		if(editor->collide(mCurrUnit))
+		{
+			mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+		}
+		else
+		{
+			mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+		}
+		mNewPos=false;
+	}
 	if(!mSelected)
 	{
-		if(mCurrUnit.isActive())
-		{
-			char*	temp=new char[10];
-			itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
-			if(!mUIItems.getActivated("Position x")->selected())
-			{
-				dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-			}
-			itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
-			if(!mUIItems.getActivated("Position y")->selected())
-			{
-				dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
-			}
-			if(mNewPos)
-			{
-				if(editor->collide(mCurrUnit))
-				{
-					mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
-				}
-				else
-				{
-					mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
-				}
-				mNewPos=false;
-			}
-		}
-		else if(mCurrPlayer.isActive())
-		{
-			char*	temp=new char[10];
-			itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
-			if(!mUIItems.getActivated("Position x")->selected())
-			{
-				dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-			}
-			itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().y,temp,10);
-			if(!mUIItems.getActivated("Position y")->selected())
-			{
-				dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
-			}
-			if(mNewPos)
-			{
-				if(editor->collide(mCurrPlayer))
-				{
-					Vector2f	temp=mCurrPlayer.getOriginal()-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2);
-					mCurrPlayer.getObject()->forceMove(0,temp);
-					mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-					mCurrPlayer.getObject()->update();
-				}
-				else
-				{
-					mCurrPlayer.setOriginal(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition());
-				}
-				mNewPos=false;
-			}
-		}
+		setUIActives();
 	}
 	//Renders stuff
 	RenderWindow&	window=editor->getWindow();
@@ -199,44 +163,7 @@ void	Toolbar::setUnit(Unit*	Source)
 	mCurrUnit.unInitiate();
 	mCurrUnit.setPtr(Source);
 	mCurrPlayer.unInitiate();
-	mUIItems.deactivateAll();
-	mUIItems.activate("Name");
-	mUIItems.activate("Sprite");
-	mUIItems.activate("Position x");
-	mUIItems.activate("Position y");
-	mUIItems.activate("Solid");
-	mUIItems.activate("zOther");
-	mUIItems.activate("zPlatform");
-	char*	temp=new char[10];
-	string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
-	itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
-	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(mCurrUnit.getObject()->getId());
-	dynamic_cast<UIText*>(mUIItems.getActivated("Sprite"))->setDefault(NEW);
-	dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-	itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
-	dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
-	dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
-	std::string	CompString=mCurrUnit.getObject()->getId();
-	if(CompString=="Platform")
-	{
-		mUIItems.activate("Lives");
-		char*	temp=new	char[10];
-		itoa(dynamic_cast<Platform*>(mCurrUnit.getObject())->getLives(),temp,10);
-		dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->setDefault(string(temp));
-		delete temp;
-	}
-	else if(CompString=="Laser")
-	{
-
-	}
-	else if(CompString=="Meanix")
-	{
-		mUIItems.deactivate("Sprite");
-	}
-	else if(CompString=="")
-	{
-
-	}
+	setUIActives();
 }
 
 void	Toolbar::setPlayer(Player*	Source)
@@ -244,18 +171,7 @@ void	Toolbar::setPlayer(Player*	Source)
 	mCurrPlayer.unInitiate();
 	mCurrPlayer.setPtr(Source,Source->getCollisionSprite()[0]->getPosition(),Vector2f(0,0),true);
 	mCurrUnit.unInitiate();
-	mUIItems.deactivateAll();
-	mUIItems.activate("Name");
-	mUIItems.activate("Position x");
-	mUIItems.activate("Position y");
-	mUIItems.activate("zOther");
-	mUIItems.activate("zPlatform");
-	char*	temp=new char[10];
-	itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
-	dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));
-	dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
-	itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().y,temp,10);
-	dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+	setUIActives();
 }
 
 Vector2f	Toolbar::getPosition()
@@ -292,30 +208,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 	case sf::Event::EventType::KeyPressed:
 		if(Current.key.code==sf::Keyboard::Return)
 		{
-			Vector2f	 temp;
-			temp.x=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->getString().c_str());
-			temp.y=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->getString().c_str());
-			mNewPos=true;
-			if(mCurrPlayer.isActive())
-			{
-				mCurrPlayer.getObject()->forceMove(0,temp-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mCurrPlayer.getOffset())+sf::Vector2f(0,2));
-				mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-				mCurrPlayer.getObject()->update();
-			}
-			else if(mCurrUnit.isActive())
-			{
-				std::string	CompString=mCurrUnit.getObject()->getId();
-				mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
-				mCurrUnit.getObject()->setPosition(temp);
-				if(CompString=="Platform")
-				{
-					mUIItems.activate("Lives");
-					dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
-				}
-				else if(CompString=="Laser")
-				{
-				}
-			}
+			update();
 		}
 		else
 		{
@@ -392,19 +285,211 @@ void	Toolbar::resize(RenderWindow&	window)
 
 void	Toolbar::setTargets	(Level& level)
 {
-	if(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))!=0)
+	UIDrop<Unit*>	*Units,*Lasers;
+	if(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))!=0)
 	{
-		dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->DeleteAllItems();
-		for(UnitVector::iterator it=level.getObjects().begin();it!=level.getObjects().end();it++)
+		Units=dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"));
+	}
+	else
+	{
+		Units=dynamic_cast<UIDrop<Unit*>*>(mUIItems.getDeactivated("UnitTarget"));
+	}
+	if(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))!=0)
+	{
+		Lasers=dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"));
+	}
+	else
+	{
+		Lasers=dynamic_cast<UIDrop<Unit*>*>(mUIItems.getDeactivated("LaserTarget"));
+	}
+	Units->DeleteAllItems();
+	Lasers->DeleteAllItems();
+	for(UnitVector::size_type it=0;it<level.getObjects().size();it++)
+	{
+		if(dynamic_cast<DialogueBox*>(level.getObjects()[it])!=0)
 		{
-			if(dynamic_cast<DialogueBox*>(*it)!=0)
+			Units->addOption((level.getObjects()[it])->getId(),(level.getObjects()[it]));
+		}
+		else if(dynamic_cast<LaserHolder*>(level.getObjects()[it])!=0)
+		{
+			Lasers->addOption((level.getObjects()[it])->getId(),(level.getObjects()[it]));
+		}
+	}
+}
+
+void	Toolbar::setUIActives()
+{
+	if(mCurrUnit.isActive())
+	{
+		mUIItems.deactivateAll();
+		mUIItems.activate("Name");
+		mUIItems.activate("Sprite");
+		mUIItems.activate("Position x");
+		mUIItems.activate("Position y");
+		mUIItems.activate("zOther");
+		mUIItems.activate("zPlatform");
+		char*	temp=new char[10];
+		string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
+		itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(mCurrUnit.getObject()->getId());
+		dynamic_cast<UIText*>(mUIItems.getActivated("Sprite"))->setDefault(NEW);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
+		itoa(mCurrUnit.getObject()->getPosition().y,temp,10);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+		if(dynamic_cast<Platform*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("Lives");
+			char*	temp=new	char[10];
+			itoa(dynamic_cast<Platform*>(mCurrUnit.getObject())->getLives(),temp,10);
+			dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->setDefault(string(temp));
+			delete temp;
+		}
+		//Sets the laser's uiitems
+		else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("Color");
+			mUIItems.activate("Rotation");
+			mUIItems.activate("Length");
+			mUIItems.activate("Range of visibility");
+			mUIItems.activate("Active");
+			mUIItems.activate("Target Id");
+		dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->mLaser->mId);
+		//Sets target ID
+			dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->setDefault(mCurrUnit.getObject()->getId());
+		//Get Visibility range, length and rotaiton angle.
+			int		angle=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getRotation();
+			float	visibility;
+			float	length=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getLength();
+			switch(angle)
 			{
-				dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->addOption((*it)->getId(),(*it));
+			case 0:
+				visibility=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getSize().x;
+				break;
+			case 90:
+				visibility=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getSize().y;
+				break;
+			case 180:
+				visibility=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getSize().x;
+				break;
+			case 270:
+				visibility=dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getSize().y;
+				break;
+			default:
+				visibility=0;
+				break;
 			}
-			else if(dynamic_cast<Laser*>(*it)!=0)
+			visibility=visibility/2;
+		//Sets the length		
+			temp=new	char[10];
+			itoa(length,temp,10);
+			dynamic_cast<UIText*>(mUIItems.getActivated("Length"))->setDefault(string(temp));
+			delete temp;
+		//Sets the visibility
+			temp=new	char[10];
+			itoa(visibility,temp,10);
+			dynamic_cast<UIText*>(mUIItems.getActivated("Range of visibility"))->setDefault(string(temp));
+			delete temp;
+		//Sets the rotation
+			dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->setCurrent(angle);
+		//Sets the rotation
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Active"))->setCurrent(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->isActive());
+			if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().find("Red")<dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().length())
+			{		
+				dynamic_cast<UIDrop<std::string>*>(mUIItems.getActivated("Color"))->setCurrent("Red");
+			}
+			else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().find("Blue")<dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().length())
 			{
-				dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("TargetObjects"))->addOption((*it)->getId(),(*it));
+				dynamic_cast<UIDrop<std::string>*>(mUIItems.getActivated("Color"))->setCurrent("Blue");
 			}
+			else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().find("Yellow")<dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->getId().length())
+			{
+				dynamic_cast<UIDrop<std::string>*>(mUIItems.getActivated("Color"))->setCurrent("Yellow");
+			}
+		}
+		else if(dynamic_cast<Meanix*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.deactivate("Sprite");
+		}
+		else if(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<DialogueBox*>(mCurrUnit.getObject());
+		}
+		else if(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("LaserTarget");
+			mUIItems.activate("Rotation");
+			dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))->setCurrent(dynamic_cast<Trigger*>(mCurrUnit.getObject())->mTriggedObject);
+			dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->setCurrent(int(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->getRotation()+180)%360);
+		}
+		else if(dynamic_cast<Trigger*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("UnitTarget");
+			mUIItems.activate("Sound");
+			dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))->setCurrent(dynamic_cast<Trigger*>(mCurrUnit.getObject())->mTriggedObject);
+			dynamic_cast<UIText*>(mUIItems.getActivated("Sound"))->setDefault(dynamic_cast<Trigger*>(mCurrUnit.getObject())->getSound());
+		}
+		else
+		{
+			mUIItems.activate("Solid");
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
+		}
+	}
+	else if(mCurrPlayer.isActive())
+	{
+		mUIItems.deactivateAll();
+		mUIItems.activate("Name");
+		mUIItems.activate("Position x");
+		mUIItems.activate("Position y");
+		mUIItems.activate("zOther");
+		mUIItems.activate("zPlatform");
+		char*	temp=new char[10];
+		itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));
+		dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->setDefault(string(temp));
+		itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().y,temp,10);
+		dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->setDefault(string(temp));
+	}
+}
+
+void	Toolbar::update()
+{
+	Vector2f	 temp;
+	temp.x=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position x"))->getString().c_str());
+	temp.y=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Position y"))->getString().c_str());
+	mNewPos=true;
+	if(mCurrPlayer.isActive())
+	{
+		mCurrPlayer.getObject()->forceMove(0,temp-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mCurrPlayer.getOffset())+sf::Vector2f(0,2));
+		mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+		mCurrPlayer.getObject()->update();
+	}
+	else if(mCurrUnit.isActive())
+	{
+		mCurrUnit.getObject()->setPosition(temp);
+		if(dynamic_cast<Platform*>(mCurrUnit.getObject())!=0)
+		{
+			mUIItems.activate("Lives");
+			dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
+			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
+		}
+		else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->rotate(dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->getValue());
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->setColor(dynamic_cast<UIDrop<std::string>*>(mUIItems.getActivated("Color"))->getValue());
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->getLaser()->setLength(atof(dynamic_cast<UIText*>(mUIItems.getActivated("Length"))->getString().c_str()));
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->setVisibilityRange(atof(dynamic_cast<UIText*>(mUIItems.getActivated("Range of visibility"))->getString().c_str()));
+			dynamic_cast<LaserHolder*>(mCurrUnit.getObject())->setActive(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Active"))->getValue());
+		}
+		else if(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->setTarget(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("LaserTarget"))->getValue());
+			dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())->setRotation(int(dynamic_cast<UIDrop<int>*>(mUIItems.getActivated("Rotation"))->getValue()+180)%360);
+		}
+		else if(dynamic_cast<Trigger*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setTarget(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))->getValue());
+			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setSound(dynamic_cast<UIText*>(mUIItems.getActivated("Sound"))->getString());
 		}
 	}
 }

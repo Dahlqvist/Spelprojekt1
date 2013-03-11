@@ -15,6 +15,7 @@ Editor::Editor(void)
 	mCurrView.setViewport(FloatRect(position,size));
 	mLevel.getPlayer()->setTogether(true);
 	mLevel.getPlayer()->setHeadless(false);
+	mTools.setTargets(mLevel);
 }
 
 Editor::~Editor(void)
@@ -105,7 +106,7 @@ void	Editor::eventHandler(const Event& Current)
 		{
 			if(mSelectedUnit.isActive())
 			{
-			mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+				mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
 			}
 			else if(mSelectedPlayer.isActive())
 			{
@@ -162,7 +163,7 @@ void	Editor::eventHandler(const Event& Current)
 									}
 								}
 							}
-							mLevel.deleteItem(mLevel.getObjects()[i]);
+							mTools.setTargets(mLevel);
 							break;
 						}
 					}
@@ -197,6 +198,7 @@ void	Editor::eventHandler(const Event& Current)
 						mSelectedUnit.unInitiate();
 					}
 				}
+				mTools.setTargets(mLevel);
 			}
 	
 			else	if(Current.mouseButton.button==sf::Mouse::Button::Left)

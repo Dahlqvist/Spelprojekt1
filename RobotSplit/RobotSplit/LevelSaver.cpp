@@ -147,7 +147,7 @@ void	LevelSaver::addPlayer		(Player	*Source,xml_node<>* Parent)
 void	LevelSaver::addLaser		(Unit	*Source,UnitVector& vector,xml_node<>* Parent)
 {
 	LaserHolder*	laserholder=dynamic_cast<LaserHolder*>(Source);
-	Laser*			laser=laserholder->mLaser;
+	Laser*			laser=laserholder->getLaser();
 	xml_node<> *Gameobject		=mDocument.allocate_node(node_element,"Unit");
 	xml_node<> *Type			=mDocument.allocate_node(node_element,"Type",modifyString("Laser"));
 	xml_node<> *Position		=mDocument.allocate_node(node_element,"Position");
@@ -162,43 +162,40 @@ void	LevelSaver::addLaser		(Unit	*Source,UnitVector& vector,xml_node<>* Parent)
 	//Adds the y element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(laser->getPosition().y))));
 	//Get Visibility range, length and rotaiton angle.
-		int		angle=0;
+		int		angle=laser->getRotation();
 		float	visibility=laserholder->getSize().x;
-		float	length=visibility;
-		if(visibility>laserholder->getSize().y)
+		float	length=laserholder->getLaser()->getLength();
+		switch(angle)
 		{
-			length-=laserholder->getSize().y;
-			visibility-=length;
-			if(laserholder->getOffset().x!=laserholder->getOffset().y)
-			{
-				angle=90;
-			}
-			else
-			{
-				angle=270;
-			}
+		case 0:
+			visibility=laserholder->getSize().x;
+			break;
+		case 90:
+			visibility=laserholder->getSize().y;
+			break;
+		case 180:
+			visibility=laserholder->getSize().x;
+			break;
+		case 270:
+			visibility=laserholder->getSize().y;
+			break;
 		}
-		else if(visibility<laserholder->getSize().y)
-		{
-			length=laserholder->getSize().y-visibility;
-			if(laserholder->getOffset().x!=laserholder->getOffset().y)
-			{
-				angle=0;
-			}
-			else
-			{
-				angle=180;
-			}
-		}
-		length-=visibility;
-		length/=2;
-		visibility/=2;
+		visibility=visibility/2;
 		//Sets the rotation, visibility range and length to their nodes
 		Rotation->value(modifyInt(angle));
 		VisibilityRange->value(modifyInt(visibility));
 		Length->value(modifyInt(length));
 	//Sets the Color node's Value
-		Color->value(modifyString(Source->getId().substr(5,Source->getId().size()-6)));
+		int ColLength=3;
+		if(Source->getId().find("Blue")<Source->getId().length())
+		{
+			ColLength=4;
+		}
+		else if(Source->getId().find("Yellow")<Source->getId().length())
+		{
+			ColLength=6;
+		}
+		Color->value(modifyString(Source->getId().substr(5,ColLength)));
 	//Set wether the laser is active or not
 		if(laserholder->isActive())
 		{
