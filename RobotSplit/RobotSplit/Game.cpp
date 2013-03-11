@@ -26,7 +26,7 @@
 Game::Game():
 		mStateInput(StateInput::getInstance()),
 		mlevel("Tutorial1.xml"),
-		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
+		mPlayer(mlevel.getPlayer()/* new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())*/),
 		BG(mlevel.getBackground()),
 		loops(0),
 		mWindow(Window::getWindow()),
@@ -98,8 +98,8 @@ void Game::changeMap(int map)
 	}
 	BG=mlevel.getBackground();
 	delete Objects;
-	delete mPlayer;
-	mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
+	//delete mPlayer;
+	mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	//mPlayer->restartPlayer();
 	

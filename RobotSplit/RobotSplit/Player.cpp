@@ -28,6 +28,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mDash=0;
 	mFacingRight=true;
 	mJumpTemp.restart();
+	mJumpTemp2.restart();
 	mMagnetTimer.restart();
 	magnetSlot=2;
 	mHeadAttachedFeet=false;
@@ -126,7 +127,7 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 }
 void Player::update()
 {
-	mRocketing=false;
+	//mRocketing=false;
 	if(mDying==true)
 	{
 		if(mBodyDied==true)
@@ -149,6 +150,7 @@ void Player::update()
 	{
 		lastKey=-1;
 		Sound::stopSound("Move");
+		mRocketing=false;
 	}
 	if(mDash>0)
 	{
@@ -356,10 +358,19 @@ void Player::jump()
 			mBody.jump(Eric::getJump());
 			Sound::playSound("Jump");
 		}
-		if(mBodyActive==false && UnitManager::isCollidedSide(0, 2) || mBodyActive==false && (mAttachedMagnet==true && mBodyAttached==false))
+		if(mBodyActive==false && mTogether==false)
 		{
-			mFeet.jump(Eric::getJump());
-			Sound::playSound("Jump");
+			if(UnitManager::isCollidedSide(0, 2) || (mAttachedMagnet==true && mBodyAttached==false))
+			{
+				mFeet.jump(Eric::getJump());
+				Sound::playSound("Jump");
+				mJumpTemp2.restart();
+			}
+			else if(!UnitManager::isCollidedSide(0, 2) && mJumpTemp2.getElapsedTime().asSeconds() > 0.5)
+			{
+				mFeet.activateRocketBoots();
+				mRocketing=false;
+			}
 		}
 	}	
 }
@@ -530,7 +541,7 @@ void Player::dash()
 void Player::activateFeetRockets()
 {
 	mFeet.activateRocketBoots();
-	mRocketing=true;
+	//mRocketing=true;
 }
 void Player::reFuel()
 {
@@ -567,6 +578,7 @@ void Player::interact(int action)
 			else if(mFeet.getAttached()==false && mFeet.getAttachedWall()==false)
 			{
 				Player::jump();
+				mRocketing=true;
 			}
 			else if(mFeet.getAttached()==false)
 			{
@@ -987,6 +999,10 @@ void Player::die(int part)
 	}
 	else if(part==0)
 	{
+		if(mFeet.getAttached()==true)
+		{
+			mFeet.setAttached(false);
+		}
 		mFeet.die();
 		mBodyDied=false;
 	}

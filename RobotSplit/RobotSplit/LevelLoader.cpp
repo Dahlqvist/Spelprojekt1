@@ -436,7 +436,7 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	//Sets Y to CurentValue's value
 	Position.y=((float)atof(CurrentValue.c_str()));
 	//Creates a Platform object
-	TempObject=		new Meanix(Position);
+	TempObject=		new Meanix(Position, level.getPlayer());
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }

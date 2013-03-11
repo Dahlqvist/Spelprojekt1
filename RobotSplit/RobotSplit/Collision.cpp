@@ -334,6 +334,10 @@ void Collision::handleCases(int unit)
 	{
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
+			if(mUnits[unit]->getId()=="MiniBot")
+			{
+				mUnits[unit]->hitOnce();
+			}
 			killPlayer();
 		}
 		else
