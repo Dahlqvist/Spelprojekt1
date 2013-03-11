@@ -53,3 +53,23 @@ sf::Sprite Laser::getSprite()
 	mSprite.setRotation(mRotation);
 	return mSprite;
 }
+
+
+void	Laser::setColor(std::string color)
+{
+	if(color=="Red")
+	{
+		mId="Laser"+color;
+		mAnimation=&mRedLaser;
+	}
+	else if(color=="Blue")
+	{
+		mId="Laser"+color;
+		mAnimation=&mBlueLaser;
+	}
+	else if(color=="Yellow")
+	{
+		mId="Laser"+color;
+		mAnimation=&mYellowLaser;
+	}
+}

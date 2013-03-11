@@ -34,6 +34,8 @@ public:
 	void		resize		(RenderWindow&);
 	void		setTargets	(Level&);
 private:
+	void		setUIActives();
+	void		update();
 	UnitContainer	mCurrUnit;
 	PlayerContainer	mCurrPlayer;
 	UIItemContainer	mUIItems;

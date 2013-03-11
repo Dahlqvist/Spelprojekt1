@@ -16,6 +16,7 @@ public:
 	virtual void hitOnce();
 	virtual void activate();
 	virtual void deactivate();
+	
 protected:
 	Unit* mTriggedObject;
 	std::string mSound;
