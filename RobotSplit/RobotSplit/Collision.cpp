@@ -421,7 +421,7 @@ void Collision::handleCases(int unit)
 void Collision::killPlayer()
 {
 	//mPlayer->restartPlayer();
-	if(mPlayer->getDying()==false){
+	if(mPlayer->getDying()==false && mPlayer->getWinning()==false){
 		mPlayer->die(mPlayerPart);
 		Sound::playSound("Death");
 	}
