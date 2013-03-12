@@ -26,6 +26,19 @@ void TextureManager::internalClear()
 
 void TextureManager::loadTexture()
 {
+	//Cinematics
+	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_winnig_strip6.png");
+	mTextureMap["StixExt"].loadFromFile("Texture/Cinema/stix_hos_meanix_animation_strip17.png");
+	mTextureMap["DoorOpen"].loadFromFile("Texture/Cinema/XHQ_door_animation8.png");
+	mTextureMap["DoorClose"].loadFromFile("Texture/Cinema/Mirror_XHQ_door_animation8.png");
+	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
+	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
+	
+
+	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
+	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/office_background.png");
+	
+	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 

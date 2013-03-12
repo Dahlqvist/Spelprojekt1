@@ -150,6 +150,12 @@
     <ClCompile Include="GameTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IntroMovie.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -304,6 +310,15 @@
     <ClInclude Include="GameTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MovieBas.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroMovie.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -344,6 +359,12 @@
     </Filter>
     <Filter Include="Source Files\Unit">
       <UniqueIdentifier>{a86e549b-17cb-463d-a615-d5de5464aab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu\Cinematics">
+      <UniqueIdentifier>{a3e93816-89ee-4609-a298-e7690ae74fb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu\Cinematics">
+      <UniqueIdentifier>{02228c88-0c8e-411d-bbb5-390fa6bd7fe4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

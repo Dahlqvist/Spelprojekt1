@@ -103,8 +103,10 @@ sfml-main.lib
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
+    <ClCompile Include="IntroMovie.cpp" />
     <ClCompile Include="LevelSaver.cpp" />
     <ClCompile Include="MiniBot.cpp" />
+    <ClCompile Include="Star.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserDeactivator.cpp" />
@@ -156,8 +158,11 @@ sfml-main.lib
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="InGameMenu.h" />
+    <ClInclude Include="IntroMovie.h" />
     <ClInclude Include="LevelSaver.h" />
     <ClInclude Include="MiniBot.h" />
+    <ClInclude Include="MovieBas.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserDeactivator.h" />
@@ -209,7 +214,9 @@ sfml-main.lib
     <None Include="Xml\TestSave.xml" />
     <None Include="Xml\Tutorial1.xml" />
     <None Include="Xml\Tutorial2.xml" />
-    <None Include="Xml\Tutorial3.xml" />
+    <None Include="Xml\Tutorial3.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xml\Tutorial4.xml" />
     <None Include="Xml\Tutorial5.xml" />
     <None Include="Xml\Tutorial6.xml" />

@@ -11,6 +11,7 @@
 #include "State.h"
 #include "Timer.h"
 #include "GameTimer.h"
+#include "IntroMovie.h"
 
 using namespace std;
 
@@ -31,9 +32,16 @@ int main()
 	int count = 0;
 	sf::Clock temp;
 
+	IntroMovie test;
+
 	while(mWindow.isOpen())
 	{
-		if(FPSLIMIT.isExpired())
+		/*if(test.playing()==true)
+		{
+			test.update();
+			test.draw();
+		}
+		else */if(FPSLIMIT.isExpired())
 		{
 		
 			FPSLIMIT.reset();	
