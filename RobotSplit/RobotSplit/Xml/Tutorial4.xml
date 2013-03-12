@@ -76,22 +76,21 @@
 
     <Unit>
       <Type>"Door"</Type>
-      <SpriteName>"BankExit"</SpriteName>
+      <SpriteName>"BankSign"</SpriteName>
       <Position>
-        <x>1166</x>
-        <y>346</y>
+        <x>1180</x>
+        <y>380</y>
       </Position>
       <Size>
         <x>50</x>
         <y>100</y>
       </Size>
       <Offset>
-        <x>32</x>
+        <x>50</x>
         <y>0</y>
       </Offset>
       <Behind>true</Behind>
       <Solid>false</Solid>
-      <Behind>true</Behind>
     </Unit>
 
     <Unit>

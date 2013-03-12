@@ -126,7 +126,8 @@ void	LevelBar::eventHandle(const	Event&	Current)
 		}
 		else
 		{
-			Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
+			if(Selected!=0)
+				Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
 		}
 		break;
 	case sf::Event::EventType::MouseButtonPressed:
