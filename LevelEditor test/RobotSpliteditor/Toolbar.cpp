@@ -470,7 +470,7 @@ void	Toolbar::update()
 		{
 			mUIItems.activate("Lives");
 			dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
-			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
+//			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
 		}
 		else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())!=0)
 		{
