@@ -480,6 +480,7 @@ void	Toolbar::update()
 		{
 			mUIItems.activate("Lives");
 			dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
+
 		}
 		else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())!=0)
 		{
