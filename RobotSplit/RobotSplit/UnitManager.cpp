@@ -1,6 +1,7 @@
 #include "UnitManager.h"
 #include "Collision.h"
 #include <iostream>
+#include "DialogueBox.h"
 
 std::vector<SidePair> UnitManager::mSidePairs;
 
@@ -19,7 +20,11 @@ UnitManager::UnitManager(Player* player, std::vector<Unit*> units)
 
 UnitManager::~UnitManager()
 {
-	
+	while (!mUnits.empty() && mUnits.back()!=0x0)
+	{
+		delete mUnits.back();
+		mUnits.pop_back();
+	}
 }
 
 void UnitManager::addUnit(Unit* unit)
@@ -71,6 +76,10 @@ void UnitManager::draw(sf::RenderWindow& window, bool inFrontOf)
 		{
 			mUnits[i]->draw();
 			window.draw(mUnits[i]->getSprite());
+			if (DialogueBox* tempBox=dynamic_cast<DialogueBox*>(mUnits[i]))
+			{
+				window.draw(tempBox->getText());
+			}
 		}
 	}
 }
