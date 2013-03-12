@@ -203,7 +203,9 @@ sfml-main.lib
     <None Include="Xml\Bana4.xml" />
     <None Include="Xml\Bana5.xml" />
     <None Include="Xml\Bana6.xml" />
-    <None Include="Xml\Bana6Ny.xml" />
+    <None Include="Xml\Bana6Ny.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xml\TestSave.xml" />
     <None Include="Xml\Tutorial1.xml" />
     <None Include="Xml\Tutorial2.xml" />

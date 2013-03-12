@@ -33,6 +33,7 @@ public:
 	bool		mChange;
 	void		resize		(RenderWindow&);
 	void		setTargets	(Level&);
+	PlayerContainer	getPlayCont();
 private:
 	void		setUIActives();
 	void		update();

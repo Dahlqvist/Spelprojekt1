@@ -39,7 +39,7 @@ Game::Game():
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/menu_1.wav");
+	Music::loadMusic("Music/level_1.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
 	//	mSecurityLevel=0;

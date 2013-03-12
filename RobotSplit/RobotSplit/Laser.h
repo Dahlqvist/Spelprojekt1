@@ -6,22 +6,22 @@ class Laser:public Unit
 {
 public:
 	Laser(sf::Vector2f, std::string, bool, float, float rotate=0);
-	virtual sf::Vector2f getPosition(){return mPosition;};
-	virtual void setPosition(sf::Vector2f position){mPosition=position;};
+	virtual sf::Vector2f getPosition();
+	virtual void setPosition(sf::Vector2f position);
 
 	virtual sf::Sprite getSprite();
 
-	virtual sf::Vector2f getSize(){return mSize;};
+	virtual sf::Vector2f getSize();
 
-	virtual std::string getId(){return mId;};
+	virtual std::string getId();
 
-	virtual float getLength(){return mMaxLength;};
+	virtual float getLength();
 
-	virtual bool isSolid(){return mSolid;};
-	virtual void rotate(float r){mRotation=r;};
-	float getRotation(){return mRotation;}
+	virtual bool isSolid();
+	virtual void rotate(float r);
+	float getRotation();
 	void setLength(float l);
-	void setSpeed(float s){mSpeed=s;};
+	void setSpeed(float s);
 
 	virtual void update();
 	virtual void draw(){};
