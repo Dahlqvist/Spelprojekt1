@@ -13,6 +13,7 @@
 #include "Meanix.h"
 #include "ObjectLoader.h"
 #include "LaserHolder.h"
+#include "Checkpoint.h"
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
@@ -99,6 +100,7 @@ void	Toolbar::render(Editor* editor)
 			mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
 		}
 		mNewPos=false;
+		setTargets(editor->mLevel);
 	}
 	if(!mSelected)
 	{
@@ -210,9 +212,8 @@ void	Toolbar::eventHandle(const	Event&	Current)
 		{
 			update();
 		}
-		else
+		else if(Selected!=0)
 		{
-			if(Selected!=0)
 				Selected->handleEvent(Current,Vector2f(mPosition.x+5,mPosition.y+Height));
 		}
 		break;
@@ -410,9 +411,18 @@ void	Toolbar::setUIActives()
 		{
 			mUIItems.deactivate("Sprite");
 		}
+		else if(dynamic_cast<Checkpoint*>(mCurrUnit.getObject())!=0)
+		{
+			
+		}
 		else if(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())!=0)
 		{
-			dynamic_cast<DialogueBox*>(mCurrUnit.getObject());
+			mUIItems.activate("Fade In");
+			mUIItems.activate("Visible");
+			mUIItems.activate("Target Id");
+			dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->setDefault(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->getId());
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->setCurrent(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->getVisible());
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->setCurrent(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->getFadeIn());
 		}
 		else if(dynamic_cast<LaserDeactivator*>(mCurrUnit.getObject())!=0)
 		{
@@ -470,7 +480,6 @@ void	Toolbar::update()
 		{
 			mUIItems.activate("Lives");
 			dynamic_cast<Platform*>(mCurrUnit.getObject())->mLives=atoi(dynamic_cast<UIText*>(mUIItems.getActivated("Lives"))->getString().c_str());
-			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
 		}
 		else if(dynamic_cast<LaserHolder*>(mCurrUnit.getObject())!=0)
 		{
@@ -491,5 +500,17 @@ void	Toolbar::update()
 			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setTarget(dynamic_cast<UIDrop<Unit*>*>(mUIItems.getActivated("UnitTarget"))->getValue());
 			dynamic_cast<Trigger*>(mCurrUnit.getObject())->setSound(dynamic_cast<UIText*>(mUIItems.getActivated("Sound"))->getString());
 		}
+		else if(dynamic_cast<DialogueBox*>(mCurrUnit.getObject())!=0)
+		{
+			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
+			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setFadeIn(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->getValue());
+			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setVisible(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->getValue());
+		}
 	}
+}
+
+
+PlayerContainer	Toolbar::getPlayCont()
+{
+	return mCurrPlayer;
 }

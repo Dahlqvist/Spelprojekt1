@@ -1,4 +1,5 @@
 #include "Editor.h"
+#include "DialogueBox.h"
 #include "Background.h"
 #include "LaserHolder.h"
 using namespace sf;
@@ -60,11 +61,36 @@ void	Editor::renderLevel(View& Target)
 		{
 			dynamic_cast<Laser*>(mLevel.getObjects()[i])->mLength=dynamic_cast<Laser*>(mLevel.getObjects()[i])->mMaxLength;
 		}
+		else if(dynamic_cast<DialogueBox*>(mLevel.getObjects()[i])!=0)
+		{
+			Uint8 alpha=200;
+			if(dynamic_cast<DialogueBox*>(mLevel.getObjects()[i])->getVisible())
+			{
+				alpha=255;
+			}
+			dynamic_cast<DialogueBox*>(mLevel.getObjects()[i])->forceAlpha(alpha);
+		}
 		if(Units[i]!=mSelectedUnit.getObject())
+		{
 			mWindow.draw(Units[i]->getSprite());
+		}
 	}
 	if(mSelectedUnit.isActive())
 	{
+		if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+		{
+			dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->mLength=dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getLength();
+			mWindow.draw(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getSprite());
+		}
+		else if(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())!=0)
+		{
+			Uint8 alpha=255;
+			if(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getFadeIn())
+			{
+				alpha=200;
+			}
+			dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->forceAlpha(alpha);
+		}
 		mWindow.draw(mSelectedUnit.getObject()->getSprite());		
 	}
 	if(mSelectedPlayer.isActive()&&mSelectedPlayer.getObject()!=mLevel.getPlayer())
@@ -260,7 +286,12 @@ void	Editor::eventHandler(const Event& Current)
 						}
 						else if(!mSelectedUnit.fromLevel())
 						{
+							if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+							{
+								mLevel.addUnit(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser());
+							}
 							mLevel.addUnit(mSelectedUnit.getObject());
+							mTools.setTargets(mLevel);
 						}
 						mSelectedUnit.unInitiate();
 					}

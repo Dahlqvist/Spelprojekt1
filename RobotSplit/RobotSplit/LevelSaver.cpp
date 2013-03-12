@@ -338,13 +338,13 @@ void	LevelSaver::addUnit		(Unit	*Source,xml_node<>* Parent)
 		}
 		xml_node<> *Size=0;
 		xml_node<> *Offset=0;
-		if(Source->getSize()!=Vector2f(0,0))
+		Vector2f	null;
+		if(Source->getSize()!=Vector2f(0,0)||Source->getSize()!=null)
 		{
 			Size		=mDocument.allocate_node(node_element,"Size");
-			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
-			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 		}
-		Vector2f	null;
 		if(Source->getOffset()!=null)
 		{
 			Offset		=mDocument.allocate_node(node_element,"Offset");
@@ -398,13 +398,13 @@ void	LevelSaver::addCheckpoint	(Unit	*Source,xml_node<>* Parent)
 	//Checks if offset and size is specified
 		xml_node<> *Size=0;
 		xml_node<> *Offset=0;
-		if(Source->getSize()!=Vector2f(0,0))
+		Vector2f	null;
+		if(Source->getSize()!=Vector2f(0,0)||Source->getSize()!=null)
 		{
 			Size		=mDocument.allocate_node(node_element,"Size");
-			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
-			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 		}
-		Vector2f	null;
 		if(Source->getOffset()!=null)
 		{
 			Offset		=mDocument.allocate_node(node_element,"Offset");
@@ -500,13 +500,13 @@ void	LevelSaver::addTrigger	(Unit	*Source,xml_node<>* Parent)
 	//Checks if offset and size is specified
 		xml_node<> *Size=0;
 		xml_node<> *Offset=0;
-		if(Source->getSize()!=Vector2f(0,0))
+		Vector2f	null;
+		if(Source->getSize()!=Vector2f(0,0)||Source->getSize()!=null)
 		{
 			Size		=mDocument.allocate_node(node_element,"Size");
-			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
-			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 		}
-		Vector2f	null;
 		if(Source->getOffset()!=null)
 		{
 			Offset		=mDocument.allocate_node(node_element,"Offset");
@@ -551,13 +551,13 @@ void	LevelSaver::addLaserDeactive(Unit	*Source,xml_node<>* Parent)
 	//Checks if offset and size is specified
 		xml_node<> *Size=0;
 		xml_node<> *Offset=0;
-		if(Source->getSize()!=Vector2f(0,0))
+		Vector2f	null;
+		if(Source->getSize()!=Vector2f(0,0)||Source->getSize()!=null)
 		{
 			Size		=mDocument.allocate_node(node_element,"Size");
-			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
-			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+			Size->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getSize().x))));
+			Size->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getSize().y))));
 		}
-		Vector2f	null;
 		if(Source->getOffset()!=null)
 		{
 			Offset		=mDocument.allocate_node(node_element,"Offset");
@@ -571,12 +571,12 @@ void	LevelSaver::addLaserDeactive(Unit	*Source,xml_node<>* Parent)
 		xml_node<> *Id			=mDocument.allocate_node(node_element,"Id",modifyString(trigger->getId()));
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(trigger->getSprite())));
 		xml_node<> *Target		=mDocument.allocate_node(node_element,"Target",modifyString(trigger->getTargetId()));
-		xml_node<> *Sound		=mDocument.allocate_node(node_element,"Sound",modifyString(trigger->getSound()));
 		xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation",modifyInt(trigger->getRotation()));
+		Vector2f	tempposition=Source->getPosition()-Vector2f(0,Source->getSprite().getGlobalBounds().height*2);
 	//Adds the x element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(Source->getPosition().x))));
+		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(tempposition.x))));
 	//Adds the y element into the Position element
-		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(Source->getPosition().y))));
+		Position->append_node(mDocument.allocate_node(node_element,"y",modifyInt(int(tempposition.y))));
 
 
 	//Adds the nodes to the Gameobject node
@@ -594,7 +594,6 @@ void	LevelSaver::addLaserDeactive(Unit	*Source,xml_node<>* Parent)
 	Gameobject->append_node(Id);
 	Gameobject->append_node(Rotation);
 	Gameobject->append_node(Target);
-	Gameobject->append_node(Sound);
 	Parent->append_node(Gameobject);
 }
 

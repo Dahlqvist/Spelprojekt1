@@ -124,7 +124,7 @@ void	LevelBar::eventHandle(const	Event&	Current)
 		{
 			execute();
 		}
-		else
+		else if(Selected!=0)
 		{
 			Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
 		}

@@ -118,3 +118,28 @@ bool DialogueBox::isFullyVisible()
 {
 	return mAlpha==255;
 }
+
+bool DialogueBox::getFadeIn()
+{
+	return mFadeIn;
+}
+
+bool DialogueBox::getVisible()
+{
+	return mVisible;
+}
+
+void DialogueBox::setVisible(bool newbool)
+{
+	mVisible=newbool;
+}
+
+void DialogueBox::setFadeIn(bool newbool)
+{
+	mFadeIn=newbool;
+}
+
+void DialogueBox::forceAlpha(sf::Uint8	alpha)
+{
+	mAlpha=alpha;
+}

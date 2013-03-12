@@ -1,5 +1,12 @@
 #include "UIObjectMenu.h"
 #include "Platform.h"
+#include "Trigger.h"
+#include "DialogueBox.h"
+#include "LaserHolder.h"
+#include "LaserDeactivator.h"
+#include "Meanix.h"
+#include "MiniBot.h"
+#include "Checkpoint.h"
 #include <SFML\Graphics.hpp>
 
 UIObjectMenu::UIObjectMenu(string Name,sf::Vector2f& Max,Toolbar* Holder,Color Back,int Size)
@@ -98,6 +105,35 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					{
 						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),Vector2f(0,0),Vector2f(0,0)));
 					}
+					else if((*it)->getType()=="DialogueBox")
+					{
+						mHolder->setUnit(new DialogueBox(Vector2f(0,0),(*it)->getSpriteName(),"",true,true,"DialogueBox"));
+					}
+					else if((*it)->getType()=="Checkpoint")
+					{
+						mHolder->setUnit(new Checkpoint(Vector2f(0,0),Vector2f(64,64),Vector2f(64,64),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+					}
+					else if((*it)->getType()=="LaserHolder")
+					{
+						mHolder->setUnit(new LaserHolder(new Laser(Vector2f(0,0),"Blue",true,100,0),"LaserBlueId",Vector2f(200,300),Vector2f(-100,-100)));
+					}
+					else if((*it)->getType()=="Trigger")
+					{
+						mHolder->setUnit(new Trigger(Vector2f(0,0),Vector2f(0,0),Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName(),0,""));
+					}
+					else if((*it)->getType()=="Meanix")
+					{
+						Player* play=0;
+						if(mHolder->getPlayCont().isActive())
+						{
+							play = mHolder->getPlayCont().getObject();
+						}
+						else
+						{
+							play = new Player(Vector2f(0,0));
+						}
+						mHolder->setUnit(new Meanix(Vector2f(0,0),play));
+					}
 					else
 					{
 						if((*it)->getFrames()>1)
@@ -115,6 +151,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 			}
 			i++;
 			mSelected=false;
+			mHolder->mChange=true;
 		}
 		if(!mHolder->mChange)
 		{
