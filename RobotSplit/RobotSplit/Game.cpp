@@ -25,8 +25,8 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Tutorial1.xml"),
-		mPlayer(new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())),
+		mlevel("Xml/Tutorial1.xml"),
+		mPlayer(mlevel.getPlayer()/* new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())*/),
 		BG(mlevel.getBackground()),
 		loops(0),
 		mWindow(Window::getWindow()),
@@ -39,7 +39,7 @@ Game::Game():
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/menu_1.wav");
+	Music::loadMusic("Music/level_1.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
 	//	mSecurityLevel=0;
@@ -50,19 +50,21 @@ Game::Game():
 	//else{
 	//	mSecurityLevel=2;
 	//}
-	mBanor.push_back("Tutorial1.xml");
-	mBanor.push_back("Tutorial2.xml");
-	mBanor.push_back("Tutorial3.xml");
-	mBanor.push_back("Tutorial4.xml");
-	mBanor.push_back("Tutorial5.xml");
-	mBanor.push_back("Tutorial6.xml");
-	mBanor.push_back("Tutorial7.xml");
-	mBanor.push_back("Bana1.xml");
-	mBanor.push_back("Bana2.xml");
-	mBanor.push_back("Bana3.xml");
-	mBanor.push_back("Bana4.xml");
-	mBanor.push_back("Bana5.xml");
-	mBanor.push_back("Bana6.xml");
+	mBanor.push_back("Xml/Tutorial1.xml");
+	mBanor.push_back("Xml/Tutorial2.xml");
+	mBanor.push_back("Xml/TutorialNy.xml");
+	mBanor.push_back("Xml/TutorialNy2.xml");
+	mBanor.push_back("Xml/Tutorial3.xml");
+	mBanor.push_back("Xml/TutorialNy3.xml");
+	mBanor.push_back("Xml/Tutorial5.xml");
+	mBanor.push_back("Xml/Tutorial6.xml");
+	mBanor.push_back("Xml/Tutorial7.xml");
+	mBanor.push_back("Xml/Bana1.xml");
+	mBanor.push_back("Xml/Bana2.xml");
+	mBanor.push_back("Xml/Bana3Ny.xml");
+	mBanor.push_back("Xml/Bana4.xml");
+	mBanor.push_back("Xml/Bana5.xml");
+	mBanor.push_back("Xml/Bana6Ny.xml");
 }
 
 Game::~Game()
@@ -98,8 +100,8 @@ void Game::changeMap(int map)
 	}
 	BG=mlevel.getBackground();
 	delete Objects;
-	delete mPlayer;
-	mPlayer = new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
+	//delete mPlayer;
+	mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());
 	//mPlayer->restartPlayer();
 	

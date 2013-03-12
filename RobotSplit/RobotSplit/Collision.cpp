@@ -334,6 +334,10 @@ void Collision::handleCases(int unit)
 	{
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
 		{
+			if(mUnits[unit]->getId()=="MiniBot")
+			{
+				mUnits[unit]->hitOnce();
+			}
 			killPlayer();
 		}
 		else
@@ -417,7 +421,7 @@ void Collision::handleCases(int unit)
 void Collision::killPlayer()
 {
 	//mPlayer->restartPlayer();
-	if(mPlayer->getDying()==false){
+	if(mPlayer->getDying()==false && mPlayer->getWinning()==false){
 		mPlayer->die(mPlayerPart);
 		Sound::playSound("Death");
 	}

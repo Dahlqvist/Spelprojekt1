@@ -37,3 +37,23 @@ void Trigger::deactivate()
 {
 	mTriggedObject->deactivate();
 }
+
+std::string	Trigger::getTargetId()
+{
+	return mTriggedObject->getId();
+}
+
+std::string	Trigger::getSound()
+{
+	return mSound;
+}
+
+void Trigger::setTarget(Unit* target)
+{
+	mTriggedObject=target;
+}
+
+void	Trigger::setSound(std::string SoundId)
+{
+	mSound=SoundId;
+}

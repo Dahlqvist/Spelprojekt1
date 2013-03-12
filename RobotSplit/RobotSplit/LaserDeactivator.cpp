@@ -45,3 +45,9 @@ void LaserDeactivator::setReset()
 {
 	mStartPressed=mPressed;
 }
+
+void LaserDeactivator::setRotation(float rotation)
+{
+	mRotation= rotation;
+	mSprite.setRotation(mRotation);
+}

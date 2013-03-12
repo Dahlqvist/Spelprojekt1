@@ -8,46 +8,21 @@ public:
 	LaserHolder(Laser*, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active=true);
 	virtual ~LaserHolder();
 
-	virtual sf::Vector2f getPosition(){return mPosition;};
-	virtual void setPosition(sf::Vector2f position)
-	{
-		sf::Vector2f	offset=mPosition-mLaser->getPosition();
-		offset.x=abs(offset.x);
-		offset.y=abs(offset.y);
-		mPosition=position;
-		switch(int(mLaser->getRotation()))
-		{
-		case 0:
-			offset.x=abs(offset.x);
-			offset.y=abs(offset.y);
-			break;
-		case 90:
-			offset.x=abs(offset.x);
-			offset.y=-abs(offset.y);
-			break;
-		case 180:
-			offset.x=-abs(offset.x);
-			offset.y=-abs(offset.y);
-			break;
-		case 270:
-			offset.x=abs(offset.x);
-			offset.y=-abs(offset.y);
-			break;
-		}
-		mLaser->setPosition(position-offset);
-		mSprite.setPosition(mPosition);
-	};
+	virtual sf::Vector2f getPosition();
+	virtual void setPosition(sf::Vector2f position);
 
-	virtual sf::Sprite getSprite(){mActiveSprite->setRotation(mRotation);mActiveSprite->setPosition(mPosition);return *mActiveSprite;};
+	virtual sf::Sprite getSprite();
 
-	virtual sf::Vector2f getSize(){return mSize;};
+	virtual sf::Vector2f getSize();
 
-	virtual std::string getId(){return mId;};
+	virtual std::string getId();
 
-	virtual bool isActive(){return mActive;};
+	virtual bool isActive();
 
-	virtual bool isSolid(){return mSolid;};
-	virtual void rotate(float r){mSprite.rotate(r);}
+	virtual bool isSolid();
+	virtual void rotate(float r);
+
+	virtual	float getRotation();
 
 	virtual void update();
 	virtual void draw(){};
@@ -56,6 +31,11 @@ public:
 	virtual void deactivate();
 	virtual void reset();
 	virtual void setReset();
+
+	virtual Laser* getLaser();
+
+	virtual	void setVisibilityRange(float range);
+	virtual	void setActive(bool);
 
 protected:
 	float mRotation;
@@ -71,6 +51,7 @@ protected:
 	Laser* mLaser;
 	friend	class	LevelSaver;
 	friend	class	Editor;
+	friend	class	Toolbar;
 };
 
 #endif
