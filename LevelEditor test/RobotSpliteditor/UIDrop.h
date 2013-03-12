@@ -127,7 +127,7 @@ public:
 		NewPos.x+=renderText.getGlobalBounds().width+10;
 		if(!mSelected)
 		{
-			Size=mBSize+Vector2f(5,2);
+			Size=mBSize+Vector2f(7,5);
 		}
 		else
 		{

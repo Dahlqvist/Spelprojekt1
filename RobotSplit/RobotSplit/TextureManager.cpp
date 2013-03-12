@@ -357,6 +357,7 @@ void TextureManager::loadTexture()
 	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
+	mTextureMap["MeanixAniL"].loadFromFile("Texture/Units/Mirror_Meanix_idleanimation_strip8_dark.png");
 
 	mTextureMap["MiniBot"].loadFromFile("Texture/Units/eBot_walk.png");
 	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Units/eBot_walkCharging.png");

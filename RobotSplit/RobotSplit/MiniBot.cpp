@@ -98,6 +98,15 @@ void MiniBot::update()
 		}
 	}
 }
+void MiniBot::reset()
+{
+	mPosition=mStartPosition;
+	mCharge=0;
+}
+void MiniBot::hitOnce()
+{
+	mCharge=mMaxCharge;
+}
 
 sf::Sprite MiniBot::getSprite()
 {
