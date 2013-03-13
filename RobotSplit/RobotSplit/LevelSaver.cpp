@@ -572,7 +572,11 @@ void	LevelSaver::addLaserDeactive(Unit	*Source,xml_node<>* Parent)
 		xml_node<> *Sprite		=mDocument.allocate_node(node_element,"SpriteName",modifyString(TextureManager::getSpriteName(trigger->getSprite())));
 		xml_node<> *Target		=mDocument.allocate_node(node_element,"Target",modifyString(trigger->getTargetId()));
 		xml_node<> *Rotation	=mDocument.allocate_node(node_element,"Rotation",modifyInt(trigger->getRotation()));
-		Vector2f	tempposition=Source->getPosition()-Vector2f(0,Source->getSprite().getGlobalBounds().height*2);
+		Vector2f	tempposition=Source->getPosition();
+		if(trigger->getRotation()==180)
+		{
+			tempposition-=Vector2f(0,Source->getSprite().getGlobalBounds().height*2);
+		}
 	//Adds the x element into the Position element
 		Position->append_node(mDocument.allocate_node(node_element,"x",modifyInt(int(tempposition.x))));
 	//Adds the y element into the Position element

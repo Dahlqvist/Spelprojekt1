@@ -83,10 +83,6 @@ Level::~Level(void)
 
 void	Level::deletePointers()
 {
-	for(UnitVector::size_type i=0;i<mObjects.size();i++)
-	{
-		delete mObjects[i];
-	}
 	if(mPlayer!=NULL)
 	{
 		delete mPlayer;

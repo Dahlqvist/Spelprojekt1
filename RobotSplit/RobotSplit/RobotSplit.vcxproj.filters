@@ -159,6 +159,9 @@
     <ClCompile Include="MovieState.cpp">
       <Filter>Source Files\Menu\State</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreSaver.cpp" />
+    <ClCompile Include="ScoreLoader.cpp" />
+    <ClCompile Include="HighScoreEntry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -325,6 +328,9 @@
     <ClInclude Include="MovieState.h">
       <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreSaver.h" />
+    <ClInclude Include="ScoreLoader.h" />
+    <ClInclude Include="HighScoreEntry.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

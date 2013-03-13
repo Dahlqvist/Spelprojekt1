@@ -41,13 +41,25 @@ UIObjectMenu*	ObjectLoader::getObject(Toolbar*	Parent)
 			}
 			else
 			{
-				int	FPS=1,Speed;
+				int	FPS=1,Speed=0;
+				sf::Vector2f	tempSize(0,0),tempOffset(0,0);
 				if(CurrentChild->first_node("Frames")!=0x0)
 				{
 					FPS=atoi(getValue(CurrentChild->first_node("Frames")).c_str());
 					Speed=atoi(getValue(CurrentChild->first_node("Speed")).c_str());
 				}
-				Object->addIcon(new UnitIcon(getValue(CurrentChild->first_node("Type")),getValue(CurrentChild->first_node("Sprite")),FPS));
+				if(CurrentChild->first_node("Size")!=0x0)
+				{
+					tempSize.x=atoi(getValue(CurrentChild->first_node("Size")->first_node("x")).c_str());
+					tempSize.y=atoi(getValue(CurrentChild->first_node("Size")->first_node("y")).c_str());
+				}
+				if(CurrentChild->first_node("Offset")!=0x0)
+				{
+					tempOffset.x=atoi(getValue(CurrentChild->first_node("Offset")->first_node("x")).c_str());
+					tempOffset.y=atoi(getValue(CurrentChild->first_node("Offset")->first_node("y")).c_str());
+				}
+
+				Object->addIcon(new UnitIcon(getValue(CurrentChild->first_node("Type")),getValue(CurrentChild->first_node("Sprite")),tempSize,tempOffset,FPS,Speed));
 			}
 		}
 		while(CurrentChild!=MenuNode->last_node("Object"));
