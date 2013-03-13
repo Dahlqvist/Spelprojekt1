@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "State.h"
+#include "MovieState.h"
 
 #include <stack>
 #include <vector>
@@ -29,6 +30,7 @@ public:
 	void pushMenu();
 	void pushAudio();
 	void pushControls();
+	void pushMovie(std::string movieName);
 
 	void loadState();
 	State* getState();
@@ -48,6 +50,7 @@ private:
 	State* mInGameMenu;
 	State* mAudio;
 	State* mControls;
+	MovieState* mMovie;
 
 };
 #endif

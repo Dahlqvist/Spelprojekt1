@@ -156,6 +156,9 @@
     <ClCompile Include="Star.cpp">
       <Filter>Source Files\Menu\Cinematics</Filter>
     </ClCompile>
+    <ClCompile Include="MovieState.cpp">
+      <Filter>Source Files\Menu\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -318,6 +321,9 @@
     </ClInclude>
     <ClInclude Include="Star.h">
       <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieState.h">
+      <Filter>Header Files\Menu\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

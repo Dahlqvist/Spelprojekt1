@@ -4,7 +4,7 @@
 
 IntroMovie::IntroMovie():
 mWindow(Window::getWindow()),
-	mStixWalk(Animation("StixWalk", 100, 6), sf::Vector2f(0, 530), true, true),
+	mStixWalk(Animation("StixWalk", 100, 6), sf::Vector2f(0, 540), true, true),
 	mStixExt(Animation("StixExt", 100, 17), sf::Vector2f(0, 0), false, false),
 	mDoorOpen(Animation("DoorOpen", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoorClose(Animation("DoorClose", 100, 8), sf::Vector2f(898, 419), false, false),
@@ -54,12 +54,12 @@ void IntroMovie::act()
 {
 	if(mStixWalk.getPosition().x<800)
 	{
-		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(2, 0));
+		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(1, 0));
 	}
 	else if(mStixWalk.getPosition().x<950)
 	{
 		mDoorOpen.setActive(true);
-		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(2, 0));
+		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(1, 0));
 	}
 	else if(mStixWalk.getPosition().x<965)
 	{
@@ -92,7 +92,7 @@ void IntroMovie::act2()
 			mDoor2Open.setActive(false);
 			mDoor2Close.setActive(true);
 		}
-		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(2, 0));
+		mStixWalk.setPosition(mStixWalk.getPosition()+sf::Vector2f(1, 0));
 		mStixExt.setPosition(mStixWalk.getPosition()+sf::Vector2f(-68, -31));
 	}
 	else
@@ -120,6 +120,7 @@ void IntroMovie::update()
 	}
 	else
 	{
+		mPlaying=false;
 		//if(knapptryck)
 		//	if(mPratbubblorcounter<Pratbubblor.size())
 		//	mPratbubblorcounter++
@@ -139,4 +140,26 @@ void IntroMovie::update()
 bool IntroMovie::playing()
 {
 	return mPlaying;
+}
+
+void IntroMovie::countup()
+{
+	mCounter++;
+	if(mCounter==1)
+	{
+		mStixWalk.setPosition(sf::Vector2f(0, 608));
+		mDoor2Open.setActive(true);
+		mDoorClose.setActive(false);
+		mMeanix.setActive(true);
+	}
+	else if(mCounter==2)
+	{
+		mMeanix.setActive(false);
+		mMeanixStill.setActive(true);
+	}
+}
+
+void IntroMovie::endit()
+{
+	mPlaying=false;
 }

@@ -106,6 +106,7 @@ sfml-main.lib
     <ClCompile Include="IntroMovie.cpp" />
     <ClCompile Include="LevelSaver.cpp" />
     <ClCompile Include="MiniBot.cpp" />
+    <ClCompile Include="MovieState.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Laser.cpp" />
@@ -162,6 +163,7 @@ sfml-main.lib
     <ClInclude Include="LevelSaver.h" />
     <ClInclude Include="MiniBot.h" />
     <ClInclude Include="MovieBas.h" />
+    <ClInclude Include="MovieState.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Laser.h" />

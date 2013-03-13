@@ -35,6 +35,8 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushAudio();
 	else if(state == "Controls")
 		mStateManager.pushControls();
+	else if(state == "Intro")
+		mStateManager.pushMovie("Intro");
 	else
 		std::cout << "Error" << std::endl;
 }

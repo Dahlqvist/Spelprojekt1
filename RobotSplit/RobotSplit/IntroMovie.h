@@ -10,6 +10,8 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual bool playing();
+	virtual void countup();
+	virtual void endit();
 	void act();
 	void act2();
 private:
