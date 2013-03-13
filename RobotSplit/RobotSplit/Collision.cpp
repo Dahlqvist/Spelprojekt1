@@ -290,7 +290,6 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 				{
 					if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && collisionRect.height<Eric::getGravity()+1 && ((mUnitsOnTopLeft.count(mUnits[unit])!=0 && isCollidedSide(BOTTOM)) || (mUnitsOnBottomLeft.count(mUnits[unit])!=0 && isCollidedSide(TOP))))
 					{
-						//std::cout<<isCollidedSide(BOTTOM)<<" "<<std::endl;
 						while (mCollidedSides.count(RIGHT)!=0)
 						{
  							mCollidedSides.erase(mCollidedSides.find(RIGHT));
@@ -333,6 +332,10 @@ void Collision::handleCollisions(int unit, const sf::FloatRect& collisionRect)
 
 void Collision::handleCases(int unit)
 {
+	if (mUnits[unit]->getId()=="Platform" && mPlayer->getId(mPlayerPart)!="PlayerPartHead" && (isCollidedSide(BOTTOM)))
+	{
+		mUnits[unit]->activate();
+	}
 	if (mUnits[unit]->getId()=="Lava" || mUnits[unit]->getId()=="Kill" || mUnits[unit]->getId()=="MiniBot")
 	{
 		if (mPlayer->getId(mPlayerPart)!="PlayerPartHead" && mPlayer->getDying()==false)
