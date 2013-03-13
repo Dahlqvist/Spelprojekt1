@@ -156,6 +156,9 @@
     <ClCompile Include="Star.cpp">
       <Filter>Source Files\Menu\Cinematics</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreSaver.cpp" />
+    <ClCompile Include="ScoreLoader.cpp" />
+    <ClCompile Include="HighScoreEntry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -319,6 +322,9 @@
     <ClInclude Include="Star.h">
       <Filter>Header Files\Menu\Cinematics</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreSaver.h" />
+    <ClInclude Include="ScoreLoader.h" />
+    <ClInclude Include="HighScoreEntry.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
