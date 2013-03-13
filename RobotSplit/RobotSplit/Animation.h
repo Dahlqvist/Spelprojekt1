@@ -19,6 +19,7 @@ public:
 	const sf::Texture& getTexture() const;
 
 	int getCurrentFrame();
+	int getMaxFrame();
 	void setCurrentFrame(int q);
 	void restart();
 	void setAnimate(bool animate);

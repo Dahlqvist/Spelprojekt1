@@ -10,14 +10,15 @@ public:
 
 	float	getRotation(){return mRotation;}
 	void hitOnce();
-	void hit(){};
+	void hit(){}
 	void draw();
 	void reset();
-
+	void setReset();
+	
+	void setRotation(float rotation);
 private:
-	bool mPressed;
+	bool mPressed, mStartPressed;
 	float mRotation;
-	friend class Editor;
 };
 
 #endif

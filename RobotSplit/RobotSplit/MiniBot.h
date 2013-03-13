@@ -9,6 +9,8 @@ public:
 
 	sf::Sprite getSprite();
 	void update();
+	void hitOnce();
+	void reset();
 private:
 	Animation* mAnimation;
 	Animation mWalking;

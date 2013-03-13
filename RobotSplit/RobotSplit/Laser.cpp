@@ -53,3 +53,68 @@ sf::Sprite Laser::getSprite()
 	mSprite.setRotation(mRotation);
 	return mSprite;
 }
+
+
+void	Laser::setColor(std::string color)
+{
+	if(color=="Red")
+	{
+		mId="Laser"+color;
+		mAnimation=&mRedLaser;
+	}
+	else if(color=="Blue")
+	{
+		mId="Laser"+color;
+		mAnimation=&mBlueLaser;
+	}
+	else if(color=="Yellow")
+	{
+		mId="Laser"+color;
+		mAnimation=&mYellowLaser;
+	}
+}
+
+void Laser::setPosition(sf::Vector2f position)
+{
+	mPosition=position;
+}
+
+sf::Vector2f Laser::getPosition()
+{
+	return mPosition;
+}
+
+float Laser::getRotation()
+{
+	return mRotation;
+}
+
+void Laser::setSpeed(float s)
+{
+	mSpeed=s;
+}
+
+void Laser::rotate(float r)
+{
+	mRotation=r;
+}
+
+bool Laser::isSolid()
+{
+	return mSolid;
+}
+
+float Laser::getLength()
+{
+	return mMaxLength;
+}
+
+std::string Laser::getId()
+{
+	return mId;
+}
+
+sf::Vector2f Laser::getSize()
+{
+	return mSize;
+}

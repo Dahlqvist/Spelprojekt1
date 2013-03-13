@@ -26,6 +26,19 @@ void TextureManager::internalClear()
 
 void TextureManager::loadTexture()
 {
+	//Cinematics
+	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_winnig_strip6.png");
+	mTextureMap["StixExt"].loadFromFile("Texture/Cinema/stix_hos_meanix_animation_strip17.png");
+	mTextureMap["DoorOpen"].loadFromFile("Texture/Cinema/XHQ_door_animation8.png");
+	mTextureMap["DoorClose"].loadFromFile("Texture/Cinema/Mirror_XHQ_door_animation8.png");
+	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
+	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
+	
+
+	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
+	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/office_background.png");
+	
+	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
 
@@ -357,9 +370,11 @@ void TextureManager::loadTexture()
 	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
+	mTextureMap["MeanixAniL"].loadFromFile("Texture/Units/Mirror_Meanix_idleanimation_strip8_dark.png");
 
-	mTextureMap["MiniBot"].loadFromFile("Texture/Background/Robot01ras.png");
-	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Background/Robot01mus.png");
+	mTextureMap["MiniBot"].loadFromFile("Texture/Units/eBot_walk.png");
+	mTextureMap["MiniBotCharge"].loadFromFile("Texture/Units/eBot_walkCharging.png");
+	mTextureMap["MiniBotRelease"].loadFromFile("Texture/Units/eBot_Energy.png");
 
 	//Tutorials
 	mTextureMap["BGSmoke"].loadFromFile("Texture/Tutorials/tutorial_background_smog.png");
@@ -379,6 +394,11 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
 	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
 	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
+	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
+	mTextureMap["HelpDialogue7"].loadFromFile("Texture/Tutorials/help_radio7.png");
+	mTextureMap["HelpDialogue8"].loadFromFile("Texture/Tutorials/help_radio8.png");
+	mTextureMap["HelpDialogue9"].loadFromFile("Texture/Tutorials/help_radio9.png");
+	
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");
 	mTextureMap["BankSign"].loadFromFile("Texture/Tutorials/BANK_SIGN.png");
@@ -480,6 +500,8 @@ void TextureManager::loadTexture()
 	mTextureMap["BackgroundBana4"].loadFromFile("Texture/Background/Background_4.png");
 	mTextureMap["BackgroundBana5"].loadFromFile("Texture/Background/Background_5.png");
 	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
+
+	mTextureMap["BackgroundBana2"].loadFromFile("Texture/Background/background_2_new.png");
 	
 	//Initializing the frame parts.
 

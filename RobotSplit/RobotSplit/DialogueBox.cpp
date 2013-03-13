@@ -2,13 +2,12 @@
 
 DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn, bool visible, std::string id)
 	:Unit(position, id, spriteName, false, true)
-	,mText(text)
 	,mVisible(visible)
 	,mFadeIn(fadeIn)
 	,mStartVisible(visible)
 	,mStartFadeIn(fadeIn)
-	,mDeactivated(false)
 	,mHasFaded(false)
+	,mLastAlpha(-1)
 {
 	const int TEXT_OFFSET_X=10;
 	const int TEXT_OFFSET_Y=10;
@@ -23,6 +22,10 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 		mAlpha=255;
 	}
 	
+	mFont=sf::Font::getDefaultFont();
+
+	mText.setFont(mFont);
+	mText.setString(text);
 	mText.setPosition(mPosition.x+TEXT_OFFSET_X, mPosition.y+TEXT_OFFSET_Y);
 	mText.setCharacterSize(TEXT_SIZE);
 
@@ -31,7 +34,7 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 void DialogueBox::update()
 {
 	const int FADE_SPEED=1;
-	
+
 	//Fade in
 	if (!mVisible)
 	{
@@ -81,7 +84,6 @@ void DialogueBox::activate()
 void DialogueBox::deactivate()
 {
 	mVisible=false;
-	mDeactivated=true;
 }
 
 void DialogueBox::reset()
@@ -90,19 +92,57 @@ void DialogueBox::reset()
 	mFadeIn=mStartFadeIn;
 }
 
+void DialogueBox::setReset()
+{
+	mStartVisible=mVisible;
+	mStartFadeIn=mFadeIn;
+}
+
 sf::Text DialogueBox::getText()
 {
-	mText.setColor(sf::Color(255, 255, 255, mAlpha));
+	if (mAlpha!=mLastAlpha)
+	{
+		mLastAlpha=mAlpha;
+		mText.setColor(sf::Color(255, 255, 255, mAlpha));
+	}
 	return mText;
 }
 
 sf::Sprite DialogueBox::getSprite()
 {
-	mSprite.setColor(sf::Color(255, 255, 255, mAlpha));
+	if (mAlpha!=mLastAlpha)
+	{
+		mSprite.setColor(sf::Color(255, 255, 255, mAlpha));
+	}
 	return mSprite;
 }
 
 bool DialogueBox::isFullyVisible()
 {
 	return mAlpha==255;
+}
+
+bool DialogueBox::getFadeIn()
+{
+	return mFadeIn;
+}
+
+bool DialogueBox::getVisible()
+{
+	return mVisible;
+}
+
+void DialogueBox::setVisible(bool newbool)
+{
+	mVisible=newbool;
+}
+
+void DialogueBox::setFadeIn(bool newbool)
+{
+	mFadeIn=newbool;
+}
+
+void DialogueBox::forceAlpha(sf::Uint8	alpha)
+{
+	mAlpha=alpha;
 }

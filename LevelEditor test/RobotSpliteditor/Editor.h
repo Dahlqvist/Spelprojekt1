@@ -38,7 +38,7 @@ private:
 	Toolbar				mTools;
 	LevelBar			mLevelTool;
 	void				eventHandler(const Event&);
-	friend				Toolbar;
+	friend	class		Toolbar;
 };
 
 #endif

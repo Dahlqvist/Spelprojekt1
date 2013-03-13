@@ -37,5 +37,41 @@
 		<Type>"Platform"</Type>
 		<Sprite>"Tile8"</Sprite>
 	</Object>
-</Menu>
+ <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"Billboard1"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"Billboard2"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"WoodBox"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House1"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House2"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House3"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House4"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House5"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House6"</Sprite>
+  </Object>
+ </Menu>
 

@@ -1,5 +1,12 @@
 #include "UIObjectMenu.h"
 #include "Platform.h"
+#include "Trigger.h"
+#include "DialogueBox.h"
+#include "LaserHolder.h"
+#include "LaserDeactivator.h"
+#include "Meanix.h"
+#include "MiniBot.h"
+#include "Checkpoint.h"
 #include <SFML\Graphics.hpp>
 
 UIObjectMenu::UIObjectMenu(string Name,sf::Vector2f& Max,Toolbar* Holder,Color Back,int Size)
@@ -96,17 +103,61 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 				{ 
 					if((*it)->getType()=="Platform")
 					{
-						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),Vector2f(0,0),Vector2f(0,0)));
+						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),(*it)->getSize(),(*it)->getOffset()));
 					}
-					else
+					else if((*it)->getType()=="DialogueBox")
 					{
-						if((*it)->getFrames()>1)
+						mHolder->setUnit(new DialogueBox(Vector2f(0,0),(*it)->getSpriteName(),"",true,true,"DialogueBox"));
+					}
+					else if((*it)->getType()=="Checkpoint")
+					{
+						mHolder->setUnit(new Checkpoint(Vector2f(0,0),(*it)->getSize(),(*it)->getOffset(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+					}
+					else if((*it)->getType()=="LaserHolder")
+					{
+						mHolder->setUnit(new LaserHolder(new Laser(Vector2f(0,0),"Blue",true,100,0),"LaserBlueId",Vector2f(200,300),Vector2f(-100,-100)));
+					}
+					else if((*it)->getType()=="Trigger")
+					{
+						mHolder->setUnit(new Trigger(Vector2f(0,0),(*it)->getSize(),(*it)->getOffset(),(*it)->getType(),(*it)->getSpriteName(),0,""));
+					}
+					else if((*it)->getType()=="Meanix")
+					{
+						Player* play=0;
+						if(mHolder->getPlayCont().isActive())
 						{
-							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							play = mHolder->getPlayCont().getObject();
 						}
 						else
 						{
-							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+							play = new Player(Vector2f(0,0));
+						}
+						mHolder->setUnit(new Meanix(Vector2f(0,0),play));
+					}
+					else
+					{
+						sf::Vector2f	offset=(*it)->getOffset(),size=(*it)->getSize();
+						if((*it)->getFrames()>1)
+						{
+							if(size.x>0||size.y>0||offset.x>0||offset.y>0)
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),size,offset,(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							}
+							else
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							}
+						}
+						else
+						{
+							if(size.x>0||size.y>0||offset.x>0||offset.y>0)
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),size,offset,(*it)->getType(),(*it)->getSpriteName()));
+							}
+							else
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+							}
 						}
 					}
 					mHolder->mChange=true;
@@ -115,6 +166,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 			}
 			i++;
 			mSelected=false;
+			mHolder->mChange=true;
 		}
 		if(!mHolder->mChange)
 		{

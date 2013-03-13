@@ -21,13 +21,14 @@ public:
 		MIN_VALUE_SIDES,
 		TOP,
 		BOTTOM,
-		LEFT,
 		RIGHT,
+		LEFT,
 		MAX_VALUE_SIDES};
 
 private:
 	bool testCollisions(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
 	void handleCollisions(int unit, const sf::FloatRect& collisionRect);
+	void handleCases(int unit);
 	void testCollidedSides(sf::Sprite* playerSprite, int unit, sf::FloatRect& collisionRect);
 	void killPlayer();
 

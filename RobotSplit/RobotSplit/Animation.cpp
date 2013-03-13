@@ -67,6 +67,10 @@ int Animation::getCurrentFrame()
 {
 	return mCurrentFrame;
 }
+int Animation::getMaxFrame()
+{
+	return mNumFrames;
+}
 
 void Animation::setCurrentFrame(int q)
 {

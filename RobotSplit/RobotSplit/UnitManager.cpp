@@ -1,6 +1,7 @@
 #include "UnitManager.h"
 #include "Collision.h"
 #include <iostream>
+#include "DialogueBox.h"
 
 std::vector<SidePair> UnitManager::mSidePairs;
 
@@ -19,7 +20,11 @@ UnitManager::UnitManager(Player* player, std::vector<Unit*> units)
 
 UnitManager::~UnitManager()
 {
-	
+	while (!mUnits.empty() && mUnits.back()!=0x0)
+	{
+		delete mUnits.back();
+		mUnits.pop_back();
+	}
 }
 
 void UnitManager::addUnit(Unit* unit)
@@ -31,10 +36,6 @@ bool UnitManager::isCollidedSide(int playerPart, int side)
 {
 	for (std::vector<SidePair>::size_type i=0; i<mSidePairs.size(); i++)
 	{
-		if (playerPart==4 && side==4)
-		{
-			int foo=0;
-		}
 		if (mSidePairs[i].isPair(playerPart, side))
 			return true;
 	}
@@ -53,7 +54,7 @@ void UnitManager::collide()
 {
 	mSidePairs.clear();
 	Collision::resetCheckpointCollision();
-	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)
+	for (unitVector::size_type i=0; i<mPlayer->getCollisionSprite().size(); i++)
 	{
 		Collision col(i, *mPlayer, mUnits);
 		col.collide();
@@ -67,14 +68,18 @@ void UnitManager::collide()
 	}
 }
 
-void UnitManager::draw(sf::RenderWindow& window, bool inFrontOf)
+void UnitManager::draw(sf::RenderWindow& window, bool behind)
 {
 	for (unitVector::size_type i=0; i<mUnits.size(); i++)
 	{
-		if (mUnits[i]->isBehind()==inFrontOf)
+		if (mUnits[i]->isBehind()==behind)
 		{
 			mUnits[i]->draw();
 			window.draw(mUnits[i]->getSprite());
+			if (DialogueBox* tempBox=dynamic_cast<DialogueBox*>(mUnits[i]))
+			{
+				window.draw(tempBox->getText());
+			}
 		}
 	}
 }

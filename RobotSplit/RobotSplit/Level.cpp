@@ -83,10 +83,6 @@ Level::~Level(void)
 
 void	Level::deletePointers()
 {
-	for(UnitVector::size_type i=0;i<mObjects.size();i++)
-	{
-		delete mObjects[i];
-	}
 	if(mPlayer!=NULL)
 	{
 		delete mPlayer;
@@ -147,6 +143,7 @@ sf::Vector2f	Level::getSize()const
 	float sizeY=0;
 	for (vector<Background*>::size_type i=0; i<getBackground().size(); i++)
 	{
+		int foo=getBackground().size();
 		sf::FloatRect bgRect=getBackground()[i]->draw().getGlobalBounds();
 		if (bgRect.left+bgRect.width>sizeX)
 			sizeX=bgRect.left+bgRect.width;

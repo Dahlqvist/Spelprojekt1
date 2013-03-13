@@ -65,7 +65,7 @@ private:
 	sf::Sprite mRocketFuel;
 	float mDash, temporary;
 	sf::Vector2f mStartPosition;
-	sf::Clock mSprintTimer, mJumpTemp, mMagnetTimer, mKeyTimer, mClock, mDieTimer;
+	sf::Clock mSprintTimer, mJumpTemp, mJumpTemp2, mMagnetTimer, mKeyTimer, mClock, mDieTimer;
 	bool mClockStart;
 	bool mHeadless, mTogether, mBodyActive, mFeetAttached, mDashing, mFacingRight;
 	bool mAttachedMagnet, mBodyAttached, mHeadAttachedFeet, mBodyStandingFeet;
