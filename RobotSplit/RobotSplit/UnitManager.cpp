@@ -54,7 +54,7 @@ void UnitManager::collide()
 {
 	mSidePairs.clear();
 	Collision::resetCheckpointCollision();
-	for (int i=0; i<mPlayer->getCollisionSprite().size(); i++)
+	for (unitVector::size_type i=0; i<mPlayer->getCollisionSprite().size(); i++)
 	{
 		Collision col(i, *mPlayer, mUnits);
 		col.collide();
@@ -68,11 +68,11 @@ void UnitManager::collide()
 	}
 }
 
-void UnitManager::draw(sf::RenderWindow& window, bool inFrontOf)
+void UnitManager::draw(sf::RenderWindow& window, bool behind)
 {
 	for (unitVector::size_type i=0; i<mUnits.size(); i++)
 	{
-		if (mUnits[i]->isBehind()==inFrontOf)
+		if (mUnits[i]->isBehind()==behind)
 		{
 			mUnits[i]->draw();
 			window.draw(mUnits[i]->getSprite());

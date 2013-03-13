@@ -35,7 +35,6 @@ int main()
 	{
 		if(FPSLIMIT.isExpired())
 		{
-		
 			FPSLIMIT.reset();	
 			while(mWindow.pollEvent(Window::getEvent()))
 			{
@@ -63,8 +62,6 @@ int main()
 				}
 				statemanager.renderState();	
 			}
-		
-
 		}
 	//	else
 //			std::cout<<"Not updated: "<<FPSLIMIT.getCurrentTime()<<std::endl;
