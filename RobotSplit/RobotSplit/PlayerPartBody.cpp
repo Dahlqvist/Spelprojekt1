@@ -115,7 +115,9 @@ sf::Vector2f PlayerPartBody::getPosition()
 } 
 sf::Sprite PlayerPartBody::getSprite()
 {
-	mActiveAnimation->setPosition(mPosition);
+	sf::Vector2f Temp((int)mPosition.x, mPosition.y);
+	mActiveAnimation->setPosition(Temp);
+	//mActiveAnimation->setPosition(mPosition);
 	return mActiveAnimation->getSprite();
 }
 std::string PlayerPartBody::getId()

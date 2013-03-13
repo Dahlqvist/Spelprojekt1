@@ -2,6 +2,7 @@
 #define INC_INTROMOVIE
 #include "MovieBas.h"
 #include "Star.h"
+#include "DialogueBox.h"
 
 class IntroMovie:public MovieBas
 {
@@ -15,7 +16,8 @@ public:
 	void act();
 	void act2();
 private:
-	std::vector<Star*> Stars;
+	std::vector<Star*> mStars;
+	std::vector<DialogueBox*> mDialogs;
 	Star mStixWalk;
 	Star mStixExt;
 	Star mDoorOpen;

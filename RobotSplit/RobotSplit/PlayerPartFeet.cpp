@@ -155,7 +155,9 @@ sf::Vector2f PlayerPartFeet::getPosition()
 } 
 sf::Sprite PlayerPartFeet::getSprite()
 {
-	mActiveAnimation->setPosition(mPosition);
+	sf::Vector2f Temp((int)mPosition.x, mPosition.y);
+	mActiveAnimation->setPosition(Temp);
+	//mActiveAnimation->setPosition(mPosition);
 	/*if(mUnit==&mRightWall)
 	{
 		sf::Sprite Temp=mActiveAnimation->getSprite();

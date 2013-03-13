@@ -18,14 +18,17 @@ mWindow(Window::getWindow()),
 	mBackground=TextureManager::getSprite("CinemaBG1");
 	mBackground2=TextureManager::getSprite("CinemaBG2");
 
-	Stars.push_back(&mDoor2Open);
-	Stars.push_back(&mDoorOpen);
-	Stars.push_back(&mStixWalk);
-	Stars.push_back(&mStixExt);
-	Stars.push_back(&mDoorClose);
-	Stars.push_back(&mDoor2Close);
-	Stars.push_back(&mMeanix);
-	Stars.push_back(&mMeanixStill);
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(100, 100), "DialogueBox1", "Tjenare Tjenare#Tjenare", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(200, 100), "DialogueBox1", "Tjenare Tjenare#Tjenare", false, false, "Dia1"));
+
+	mStars.push_back(&mDoor2Open);
+	mStars.push_back(&mDoorOpen);
+	mStars.push_back(&mStixWalk);
+	mStars.push_back(&mStixExt);
+	mStars.push_back(&mDoorClose);
+	mStars.push_back(&mDoor2Close);
+	mStars.push_back(&mMeanix);
+	mStars.push_back(&mMeanixStill);
 }
 
 void IntroMovie::draw()
@@ -40,11 +43,18 @@ void IntroMovie::draw()
 		mWindow.draw(mBackground2);
 	}
 
-	for(unsigned int i=0; i<Stars.size(); i++)
+	for(unsigned int i=0; i<mStars.size(); i++)
 	{
-		if(Stars[i]->getActive())
+		if(mStars[i]->getActive())
 		{
-			mWindow.draw(Stars[i]->getSprite());
+			mWindow.draw(mStars[i]->getSprite());
+		}
+	}
+	for(unsigned int i=0; i<mDialogs.size(); i++)
+	{
+		if(mDialogs[i]->getVisible())
+		{
+			mWindow.draw(mDialogs[i]->getSprite());
 		}
 	}
 	mWindow.display();
@@ -120,7 +130,24 @@ void IntroMovie::update()
 	}
 	else
 	{
-		mPlaying=false;
+		if(mCounter-2<mDialogs.size())
+		{
+			for(unsigned int i=0; i<mDialogs.size(); i++)
+			{
+				if(mCounter-2==i)
+				{
+					mDialogs[i]->activate();
+				}
+				else
+				{
+					mDialogs[i]->deactivate();
+				}
+			}
+		}
+		else
+		{
+			mPlaying=false;
+		}
 		//if(knapptryck)
 		//	if(mPratbubblorcounter<Pratbubblor.size())
 		//	mPratbubblorcounter++
@@ -128,11 +155,11 @@ void IntroMovie::update()
 		//	else
 		//	mPlaying=false;
 	}
-	for(unsigned int i=0; i<Stars.size(); i++)
+	for(unsigned int i=0; i<mStars.size(); i++)
 	{
-		if(Stars[i]->getActive())
+		if(mStars[i]->getActive())
 		{
-			Stars[i]->update();
+			mStars[i]->update();
 		}
 	}
 }
@@ -156,6 +183,10 @@ void IntroMovie::countup()
 	{
 		mMeanix.setActive(false);
 		mMeanixStill.setActive(true);
+	}
+	else
+	{
+		mCounter++;
 	}
 }
 
