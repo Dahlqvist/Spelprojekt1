@@ -43,6 +43,12 @@ Platform::~Platform()
 	}
 }
 
+void Platform::update()
+{
+	Unit::update();
+	mHasCollided=false;
+}
+
 void Platform::draw()
 {
 	if (mDestructible)
@@ -72,9 +78,9 @@ void Platform::draw()
 	mSprite.setPosition(mPosition);
 }
 
-void Platform::hitOnce()
+void Platform::activate()
 {
-	if (mDestructible)
+	if (mDestructible && mHasCollided)
 	{
 		--mLives;
 
@@ -84,6 +90,11 @@ void Platform::hitOnce()
 			mSize=sf::Vector2f(64, 36);
 		}
 	}
+}
+
+void Platform::hitOnce()
+{
+	mHasCollided=true;
 }
 
 void Platform::reset()

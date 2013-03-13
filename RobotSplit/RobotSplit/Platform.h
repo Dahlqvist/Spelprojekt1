@@ -16,7 +16,9 @@ public:
 	int getLives(){return mLives;};
 	bool getDestructible(){return mDestructible;};
 
+	void update();
 	void draw();
+	void activate();
 	void hitOnce();
 	void reset();
 	void setReset();
@@ -27,6 +29,7 @@ private:
 	bool mDestructible;
 	friend class Toolbar;
 	sf::Texture mTexture;
+	bool mHasCollided;
 
 	Animation *mBreakAnim, *mNullAnim, *mStartAnimation;
 };
