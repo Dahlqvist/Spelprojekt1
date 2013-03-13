@@ -3,10 +3,12 @@
 
 sf::Music Music::mMusic;
 float Music::mVolume;
+std::string Music::mCurrentMusic;
 
 Music::Music()
 {
 	mVolume = 100;
+	mCurrentMusic = "";
 }
 
 Music::~Music()
@@ -23,7 +25,14 @@ Music& Music::getInstance()
 	//för att den läggs in i minnet.
 void Music::loadMusic(std::string music)
 {
-	mMusic.openFromFile(music);
+	if(music != "" || music != " ")
+	{
+		if(mCurrentMusic != music)
+		{
+			mCurrentMusic = music;
+			mMusic.openFromFile(music);
+		}
+	}
 }
 
 //Statisk funktion, anropas genom Music::playMusic()
@@ -58,4 +67,9 @@ const void Music::changeVolume(float q)
 const float Music::getVolume()
 {
 	return mMusic.getVolume();
+}
+
+const std::string Music::getCurrentMusic()
+{
+	return mCurrentMusic;
 }

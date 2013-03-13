@@ -4,6 +4,15 @@
 class Highscore
 {
 public:
+	Highscore();
+	~Highscore();
+
+	void update();
+	void render();
+	void input();
+
+	void display();
+	
 
 };
 
