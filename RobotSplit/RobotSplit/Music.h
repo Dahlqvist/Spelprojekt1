@@ -15,6 +15,7 @@ public:
 	const static void stopMusic();
 	const static void changeVolume(float q);
 	const static float getVolume();
+	const static std::string getCurrentMusic();
 private:
 	Music();
 	Music(const Music& music);
@@ -22,6 +23,7 @@ private:
 	~Music();
 	static sf::Music mMusic;
 	static float mVolume;
+	static std::string mCurrentMusic;
 };
 
 #endif

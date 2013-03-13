@@ -1,8 +1,8 @@
 #include "UnitIcon.h"
 #include "TextureManager.h"
 
-UnitIcon::UnitIcon(string Type,string Sprite,int FPS,int Speed)
-	:mType(Type),mSpriteName(Sprite),mFrames(FPS),mSpeed(Speed)
+UnitIcon::UnitIcon(string Type,string Sprite,sf::Vector2f Size,sf::Vector2f Offset,int FPS,int Speed)
+	:mType(Type),mSpriteName(Sprite),mFrames(FPS),mSpeed(Speed),mSize(Size),mOffset(Offset)
 {
 }
 
@@ -53,6 +53,16 @@ int	UnitIcon::getFrames()
 int	UnitIcon::getSpeed()
 {
 	return	mSpeed;
+}
+
+sf::Vector2f	UnitIcon::getOffset()
+{
+	return mOffset;
+}
+
+sf::Vector2f	UnitIcon::getSize()
+{
+	return mSize;
 }
 
 void PlayerIcon::render(sf::RenderWindow& window,sf::Vector2f Position,int MaxSize)

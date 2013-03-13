@@ -23,6 +23,7 @@ void StateManager::loadState()
 	 mInGameMenu = new InGameMenu;
 	 mAudio = new Audio;
 	 mControls = new Controls;
+	 mMovie = new MovieState;
 
 }
 StateManager::~StateManager()
@@ -124,4 +125,10 @@ void StateManager::pushAudio()
 void StateManager::pushControls()
 {
 	pushState(mControls);
+}
+
+void StateManager::pushMovie(std::string movieName)
+{
+	mMovie->setMovie(movieName);
+	pushState(mMovie);
 }

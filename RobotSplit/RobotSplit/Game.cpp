@@ -209,10 +209,12 @@ void Game::input()
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2)
 		{
-			sf::Vector2f Temp;
+		/*	sf::Vector2f Temp;
 			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
 			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
-			mPlayer->shootHead(sf::Vector2f(Temp));
+			mPlayer->shootHead(sf::Vector2f(Temp));*/
+			sf::Vector2f mVec((float)sf::Mouse::getPosition(mWindow).x, (float)sf::Mouse::getPosition(mWindow).y);
+			mPlayer->shootHead(sf::Vector2f(mVec));
 			TestTimer.restart();
 		}
 
@@ -237,7 +239,6 @@ void Game::input()
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
-
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

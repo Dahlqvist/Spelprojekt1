@@ -46,10 +46,6 @@
     <Sprite>"Billboard2"</Sprite>
   </Object>
   <Object>
-    <Type>"Checkpoint"</Type>
-    <Sprite>"CheckpointOff"</Sprite>
-  </Object>
-  <Object>
     <Type>"Platform"</Type>
     <Sprite>"WoodBox"</Sprite>
   </Object>

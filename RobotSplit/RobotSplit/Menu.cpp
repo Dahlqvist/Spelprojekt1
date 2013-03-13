@@ -123,7 +123,10 @@ void Menu::input()
 				update();				
 			}
 			else
+			{
 				mStateInput.changeState("Game");
+				mStateInput.changeState("Intro");
+			}
 		}
 		else if(mStatus == 1)
 		{

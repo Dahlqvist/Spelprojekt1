@@ -122,7 +122,7 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 			Window.draw(mRocketFuel);
 		}
 	}
-	//Window.draw(*TempMagnet);
+	//Window.draw(*TempExtension);
 	//Window.draw(TempPart->getSprite());
 }
 void Player::update()
@@ -390,6 +390,9 @@ void Player::shootHead(sf::Vector2f Vec)
 		Sound::playSound("ShootHead");
 		mHeadless=true;	
 		float k=(mHead.getPosition().y-Vec.y)/(mHead.getPosition().x-Vec.x);
+
+		//float k=(mHead.getSprite().getLocalBounds().top-Vec.y)/(mHead.getSprite().getLocalBounds().left-Vec.x);
+
 		//float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
 		//float Ys=mHead.getPosition().y-Vec.y;
 		float q=sqrt(1+k*k);
@@ -761,6 +764,10 @@ std::vector<sf::Sprite*> Player::getCollisionSprite()
 		*TempExtension=TextureManager::getSprite("StixFeetExtend");
 		TempExtension->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));
 		TempExtension->setPosition(TempFeet->getPosition()+sf::Vector2f(1, -31));
+		if(mFeet.getAttachedWall()==true && mFeet.getWall()==1)
+		{
+			TempExtension->setPosition(TempExtension->getPosition()+sf::Vector2f(0, 16));
+		}
 		Parts.push_back(TempExtension);
 		*TempWhole=TextureManager::getSprite("StixWhole");
 		TempWhole->setTextureRect(sf::IntRect(TempExtension->getTextureRect().left, TempExtension->getTextureRect().left, TempExtension->getTextureRect().width-2, TempExtension->getTextureRect().height-2));

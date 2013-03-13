@@ -103,7 +103,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 				{ 
 					if((*it)->getType()=="Platform")
 					{
-						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),Vector2f(0,0),Vector2f(0,0)));
+						mHolder->setUnit(new Platform(Vector2f(0,0),(*it)->getSpriteName(),(*it)->getSize(),(*it)->getOffset()));
 					}
 					else if((*it)->getType()=="DialogueBox")
 					{
@@ -111,7 +111,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					else if((*it)->getType()=="Checkpoint")
 					{
-						mHolder->setUnit(new Checkpoint(Vector2f(0,0),Vector2f(64,64),Vector2f(64,64),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+						mHolder->setUnit(new Checkpoint(Vector2f(0,0),(*it)->getSize(),(*it)->getOffset(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
 					}
 					else if((*it)->getType()=="LaserHolder")
 					{
@@ -119,7 +119,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					else if((*it)->getType()=="Trigger")
 					{
-						mHolder->setUnit(new Trigger(Vector2f(0,0),Vector2f(0,0),Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName(),0,""));
+						mHolder->setUnit(new Trigger(Vector2f(0,0),(*it)->getSize(),(*it)->getOffset(),(*it)->getType(),(*it)->getSpriteName(),0,""));
 					}
 					else if((*it)->getType()=="Meanix")
 					{
@@ -136,13 +136,28 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					else
 					{
+						sf::Vector2f	offset=(*it)->getOffset(),size=(*it)->getSize();
 						if((*it)->getFrames()>1)
 						{
-							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							if(size.x>0||size.y>0||offset.x>0||offset.y>0)
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),size,offset,(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							}
+							else
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),new Animation((*it)->getSpriteName(),(*it)->getSpeed(),(*it)->getFrames())));
+							}
 						}
 						else
 						{
-							mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+							if(size.x>0||size.y>0||offset.x>0||offset.y>0)
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),size,offset,(*it)->getType(),(*it)->getSpriteName()));
+							}
+							else
+							{
+								mHolder->setUnit(new Unit(Vector2f(0,0),(*it)->getType(),(*it)->getSpriteName()));
+							}
 						}
 					}
 					mHolder->mChange=true;
