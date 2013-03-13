@@ -150,6 +150,12 @@
     <ClCompile Include="GameTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IntroMovie.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -304,6 +310,15 @@
     <ClInclude Include="GameTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MovieBas.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroMovie.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -345,45 +360,76 @@
     <Filter Include="Source Files\Unit">
       <UniqueIdentifier>{a86e549b-17cb-463d-a615-d5de5464aab6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Menu\Cinematics">
+      <UniqueIdentifier>{a3e93816-89ee-4609-a298-e7690ae74fb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu\Cinematics">
+      <UniqueIdentifier>{02228c88-0c8e-411d-bbb5-390fa6bd7fe4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tutorial2.xml">
+    <None Include="Tutorial8.xml" />
+    <None Include="Xml\Bana1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial3.xml">
+    <None Include="Xml\Bana2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial4.xml">
+    <None Include="Xml\Bana2Ny.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial5.xml">
+    <None Include="Xml\Bana3.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial6.xml">
+    <None Include="Xml\Bana3Ny.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana2.xml">
+    <None Include="Xml\Bana4.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana3.xml">
+    <None Include="Xml\Bana5.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana1.xml">
+    <None Include="Xml\Bana6.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana4.xml">
+    <None Include="Xml\Bana6Ny.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana5.xml">
+    <None Include="Xml\TestSave.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Bana6.xml">
+    <None Include="Xml\Tutorial1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial7.xml">
+    <None Include="Xml\Tutorial2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Tutorial1.xml">
+    <None Include="Xml\Tutorial3.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\Tutorial4.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\Tutorial5.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\Tutorial6.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\Tutorial7.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\Tutorial7old.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\TutorialNy.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\TutorialNy2.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\TutorialNy3.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>

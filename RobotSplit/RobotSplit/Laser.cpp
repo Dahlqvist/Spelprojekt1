@@ -73,3 +73,48 @@ void	Laser::setColor(std::string color)
 		mAnimation=&mYellowLaser;
 	}
 }
+
+void Laser::setPosition(sf::Vector2f position)
+{
+	mPosition=position;
+}
+
+sf::Vector2f Laser::getPosition()
+{
+	return mPosition;
+}
+
+float Laser::getRotation()
+{
+	return mRotation;
+}
+
+void Laser::setSpeed(float s)
+{
+	mSpeed=s;
+}
+
+void Laser::rotate(float r)
+{
+	mRotation=r;
+}
+
+bool Laser::isSolid()
+{
+	return mSolid;
+}
+
+float Laser::getLength()
+{
+	return mMaxLength;
+}
+
+std::string Laser::getId()
+{
+	return mId;
+}
+
+sf::Vector2f Laser::getSize()
+{
+	return mSize;
+}

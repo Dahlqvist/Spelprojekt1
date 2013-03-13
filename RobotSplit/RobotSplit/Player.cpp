@@ -366,11 +366,11 @@ void Player::jump()
 				Sound::playSound("Jump");
 				mJumpTemp2.restart();
 			}
-			else if(!UnitManager::isCollidedSide(0, 2) && mJumpTemp2.getElapsedTime().asSeconds() > 0.5)
+	/*		else if(!UnitManager::isCollidedSide(0, 2) && mJumpTemp2.getElapsedTime().asSeconds() > 0.5)
 			{
 				mFeet.activateRocketBoots();
 				mRocketing=false;
-			}
+			}*/
 		}
 	}	
 }

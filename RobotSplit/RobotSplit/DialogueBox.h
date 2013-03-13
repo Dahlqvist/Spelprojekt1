@@ -19,6 +19,12 @@ public:
 
 	bool isFullyVisible();
 
+	bool	getVisible();
+	bool	getFadeIn();
+	
+	void	setFadeIn(bool);
+	void	setVisible(bool);
+	void	forceAlpha(sf::Uint8);
 private:
 	int mAlpha, mLastAlpha;
 	bool mVisible, mFadeIn, mHasFaded;
