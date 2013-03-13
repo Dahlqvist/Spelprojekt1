@@ -528,6 +528,14 @@
         <x>992</x>
         <y>224</y>
       </Position>
+      <Size>
+        <x>65</x>
+        <y>32</y>
+      </Size>
+      <Offset>
+        <x>-1</x>
+        <y>0</y>
+      </Offset>
     </Unit>
 
     <Unit>

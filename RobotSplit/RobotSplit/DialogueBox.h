@@ -31,6 +31,7 @@ private:
 	bool mStartVisible, mStartFadeIn;
 
 	sf::Text mText;
+	sf::Font mFont;
 	friend class LevelSaver;
 };
 

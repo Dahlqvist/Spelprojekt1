@@ -21,8 +21,8 @@ public:
 		MIN_VALUE_SIDES,
 		TOP,
 		BOTTOM,
-		LEFT,
 		RIGHT,
+		LEFT,
 		MAX_VALUE_SIDES};
 
 private:

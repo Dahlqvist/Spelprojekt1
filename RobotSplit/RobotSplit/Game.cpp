@@ -99,7 +99,6 @@ void Game::changeMap(int map)
 		delete BG[i];
 	}
 	BG=mlevel.getBackground();
-	delete Objects;
 	//delete mPlayer;
 	mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 	Objects= new UnitManager(mPlayer, mlevel.getObjects());

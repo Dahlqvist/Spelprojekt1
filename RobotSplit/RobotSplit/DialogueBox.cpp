@@ -2,12 +2,12 @@
 
 DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::string text, bool fadeIn, bool visible, std::string id)
 	:Unit(position, id, spriteName, false, true)
-	,mText(text)
 	,mVisible(visible)
 	,mFadeIn(fadeIn)
 	,mStartVisible(visible)
 	,mStartFadeIn(fadeIn)
 	,mHasFaded(false)
+	,mLastAlpha(-1)
 {
 	const int TEXT_OFFSET_X=10;
 	const int TEXT_OFFSET_Y=10;
@@ -22,6 +22,10 @@ DialogueBox::DialogueBox(sf::Vector2f position, std::string spriteName, std::str
 		mAlpha=255;
 	}
 	
+	mFont=sf::Font::getDefaultFont();
+
+	mText.setFont(mFont);
+	mText.setString(text);
 	mText.setPosition(mPosition.x+TEXT_OFFSET_X, mPosition.y+TEXT_OFFSET_Y);
 	mText.setCharacterSize(TEXT_SIZE);
 
@@ -31,8 +35,6 @@ void DialogueBox::update()
 {
 	const int FADE_SPEED=1;
 
-	mLastAlpha=mAlpha;
-	
 	//Fade in
 	if (!mVisible)
 	{
@@ -100,6 +102,7 @@ sf::Text DialogueBox::getText()
 {
 	if (mAlpha!=mLastAlpha)
 	{
+		mLastAlpha=mAlpha;
 		mText.setColor(sf::Color(255, 255, 255, mAlpha));
 	}
 	return mText;
