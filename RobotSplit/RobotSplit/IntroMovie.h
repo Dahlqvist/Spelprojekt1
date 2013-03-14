@@ -21,6 +21,7 @@ private:
 	Star mStixWalk;
 	Star mStixExt;
 	Star mStixExtStill;
+	Star mStixJumpDown;
 	Star mDoorOpen;
 	Star mDoorClose;
 	Star mDoor2Open;

@@ -106,16 +106,29 @@
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
-		<Unit>
-			<Type>&quot;TutorialBox1&quot;</Type>
-			<SpriteName>&quot;HelpDialogue5&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>64</y>
-			</Position>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpMagnet"</SpriteName>
+      <Position>
+        <x>256</x>
+        <y>96</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>400</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
 		<Unit>
 			<Type>&quot;Kill&quot;</Type>
 			<SpriteName>&quot;&quot;</SpriteName>
@@ -127,15 +140,6 @@
 				<x>0</x>
 				<y>768</y>
 			</Size>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Trigger1&quot;</Type>
-			<SpriteName>&quot;TriggerTutorial&quot;</SpriteName>
-			<Position>
-				<x>400</x>
-				<y>472</y>
-			</Position>
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>

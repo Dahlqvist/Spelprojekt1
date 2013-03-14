@@ -17,7 +17,7 @@
     <Unit>
       <Type>"Player"</Type>
       <Position>
-        <x>512</x>
+        <x>576</x>
         <y>672</y>
       </Position>
       <Size>
@@ -28,7 +28,7 @@
 
     <Unit>
       <Type>"Meanix"</Type>
-      <SpriteName>"MeanixBank"</SpriteName>
+      <SpriteName>"MeanixBank2"</SpriteName>
       <SpriteName2>"MeanixBank"</SpriteName2>
       <Frames>8</Frames>
       <Speed>100</Speed>

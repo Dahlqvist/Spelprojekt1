@@ -124,22 +124,6 @@
     </Unit>
     
     <Unit>
-      <Type>Trigger</Type>
-      <Position>
-        <x>672</x>
-        <y>600</y>
-      </Position>
-      <SpriteName></SpriteName>
-      <Target>TutorialBox3</Target>
-      <Id>Trigger1</Id>
-      <Sound>TriggerHelp</Sound>
-      <Behind>true</Behind>
-      <Size>
-        <x>32</x>
-        <y>8</y>
-      </Size>
-    </Unit>
-    <Unit>
       <Type>Checkpoint</Type>
       <SpriteName>CheckpointAnim</SpriteName>
       <Position>
@@ -196,7 +180,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue3"</SpriteName>
+      <SpriteName>"HelpExt"</SpriteName>
       <Position>
         <x>640</x>
         <y>256</y>
@@ -208,7 +192,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox2"</Id>
-      <SpriteName>"HelpDialogue4"</SpriteName>
+      <SpriteName>"HelpRocket"</SpriteName>
       <Position>
         <x>960</x>
         <y>96</y>
@@ -217,19 +201,6 @@
       <Visible>false</Visible>
       <FadeIn>false</FadeIn>
     </Unit>
-    <Unit>
-      <Type>"DialogueBox"</Type>
-      <Id>"TutorialBox3"</Id>
-      <SpriteName>"HelpDialogue9"</SpriteName>
-      <Position>
-        <x>640</x>
-        <y>128</y>
-      </Position>
-      <Text>""</Text>
-      <Visible>false</Visible>
-      <FadeIn>false</FadeIn>
-    </Unit>
-
 
     <Unit>
       <Type>Trigger</Type>
