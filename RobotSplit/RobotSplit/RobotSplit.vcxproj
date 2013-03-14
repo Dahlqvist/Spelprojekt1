@@ -210,12 +210,9 @@ sfml-main.lib
     </None>
     <None Include="Xml\Bana1.xml" />
     <None Include="Xml\Bana2.xml" />
-    <None Include="Xml\Bana2Ny.xml" />
-    <None Include="Xml\Bana3.xml" />
     <None Include="Xml\Bana3Ny.xml" />
     <None Include="Xml\Bana4.xml" />
     <None Include="Xml\Bana5.xml" />
-    <None Include="Xml\Bana6.xml" />
     <None Include="Xml\Bana6Ny.xml">
       <SubType>Designer</SubType>
     </None>
@@ -225,11 +222,9 @@ sfml-main.lib
     <None Include="Xml\Tutorial3.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xml\Tutorial4.xml" />
     <None Include="Xml\Tutorial5.xml" />
     <None Include="Xml\Tutorial6.xml" />
     <None Include="Xml\Tutorial7.xml" />
-    <None Include="Xml\Tutorial7old.xml" />
     <None Include="Xml\TutorialNy.xml" />
     <None Include="Xml\TutorialNy2.xml" />
     <None Include="Xml\TutorialNy3.xml" />

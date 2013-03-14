@@ -129,6 +129,19 @@
       </Size>
       <SpriteName>""</SpriteName>
     </Unit>
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>900</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>10</y>
+      </Size>>
+      <SpriteName>""</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
 
     <Unit>
       <Type>"DialogueBox"</Type>
@@ -155,19 +168,7 @@
       <Sound>TriggerHelp</Sound>
     </Unit>
 
-    <Unit>
-      <Type>Kill</Type>
-      <Position>
-        <x>0</x>
-        <y>900</y>
-      </Position>
-      <Size>
-        <x>1280</x>
-        <y>10</y>
-      </Size>>
-      <SpriteName>""</SpriteName>
-      <Solid>false</Solid>
-    </Unit>
+
    </Objects>
   </Level>
     

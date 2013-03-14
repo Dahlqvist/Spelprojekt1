@@ -387,12 +387,6 @@
     <None Include="Xml\Bana2.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Xml\Bana2Ny.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
-    <None Include="Xml\Bana3.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Xml\Bana3Ny.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -400,9 +394,6 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Xml\Bana5.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
-    <None Include="Xml\Bana6.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Xml\Bana6Ny.xml">
@@ -420,9 +411,6 @@
     <None Include="Xml\Tutorial3.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
-    <None Include="Xml\Tutorial4.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
     <None Include="Xml\Tutorial5.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
@@ -430,9 +418,6 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Xml\Tutorial7.xml">
-      <Filter>Header Files\Banor</Filter>
-    </None>
-    <None Include="Xml\Tutorial7old.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Xml\TutorialNy.xml">

@@ -8,7 +8,7 @@
 class Meanix:public Unit
 {
 public:
-	Meanix(sf::Vector2f, Player*);
+	Meanix(sf::Vector2f, std::string, std::string, Player*);
 	void update();
 	void facingStix();
 

@@ -65,6 +65,7 @@
     <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixAni"</SpriteName>
+      <SpriteName2>"MeanixAniL"</SpriteName2>
       <Frames>8</Frames>
       <Speed>100</Speed>
       <Position>

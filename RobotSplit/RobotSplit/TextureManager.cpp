@@ -29,8 +29,11 @@ void TextureManager::loadTexture()
 	//Cinematics
 	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_winnig_strip6.png");
 	mTextureMap["StixExt"].loadFromFile("Texture/Cinema/stix_hos_meanix_animation_strip17.png");
+	mTextureMap["StixExtStill"].loadFromFile("Texture/Cinema/stix_hos_meanix.png");
 	mTextureMap["DoorOpen"].loadFromFile("Texture/Cinema/XHQ_door_animation8.png");
 	mTextureMap["DoorClose"].loadFromFile("Texture/Cinema/Mirror_XHQ_door_animation8.png");
+	mTextureMap["Door2Open"].loadFromFile("Texture/Cinema/Office_Door_Open.png");
+	
 	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
 	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
 	
@@ -167,6 +170,9 @@ void TextureManager::loadTexture()
 	mTextureMap["LaserHolderStandby"].loadFromFile("Texture/Enviroment/Laser_Emitter_Standby.png");
 	mTextureMap["LaserHolderOn"].loadFromFile("Texture/Enviroment/Laser_Emitter_Active.png");
 	mTextureMap["LaserHolderOff"].loadFromFile("Texture/Enviroment/Laser_Emitter_Off.png");
+
+	mTextureMap["LaserNewOn"].loadFromFile("Texture/Enviroment/Grey.png");
+	mTextureMap["LaserNewOffAni"].loadFromFile("Texture/Enviroment/Grey_Fold.png");
 	
 	
 	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
@@ -388,6 +394,9 @@ void TextureManager::loadTexture()
 	mTextureMap["House8"].loadFromFile("Texture/Tutorials/House04_Mini01.png");
 	mTextureMap["HouseEdge1"].loadFromFile("Texture/Tutorials/Boulding_Board_End_L_Full.png");
 	mTextureMap["HouseEdge2"].loadFromFile("Texture/Tutorials/Boulding_Board_End_R_Hue.png");
+
+	mTextureMap["TutorialWideTile"].loadFromFile("Texture/Tutorials/tile.png");
+	mTextureMap["TutorialBigTile"].loadFromFile("Texture/Tutorials/tile2.png");
 
 	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
 	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");

@@ -1,33 +1,34 @@
 #include "LaserHolder.h"
+#include <iostream>
 
 LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active):
 	Unit(laser->getPosition(), size, offset, id, "LaserHolder", false),
 	mActive(active),
 	mStartActive(active),
-	mLaser(laser)
+	mLaser(laser),
+	mOff("LaserNewOffAni", 100, 4)
 {
-	mStandby=TextureManager::getSprite("LaserHolderStandby");
-	mOn=TextureManager::getSprite("LaserHolderStandby");
-	mOff=TextureManager::getSprite("LaserHolderOff");
+	mStandby=TextureManager::getSprite("LaserNewOn");
+	mOn=TextureManager::getSprite("LaserNewOn");
 	mActiveSprite=&mStandby;
 	mPosition=laser->getPosition();
 	mRotation=laser->getRotation()+180;
 	mActiveSprite->setRotation(mRotation);
 	if(laser->getRotation()==0)
 	{
-		mPosition+=sf::Vector2f(10, 8);
+		mPosition+=sf::Vector2f(6, 4);
 	}
 	if(laser->getRotation()==90)
 	{
-		mPosition+=sf::Vector2f(-8, 10);
+		mPosition+=sf::Vector2f(-4, 6);
 	}
 	if(laser->getRotation()==180)
 	{
-		mPosition+=sf::Vector2f(-10, -8);
+		mPosition+=sf::Vector2f(-6, -4);
 	}
 	if(laser->getRotation()==270)
 	{
-		mPosition+=sf::Vector2f(8, -10);
+		mPosition+=sf::Vector2f(4, -6);
 	}
 	mActiveSprite->setPosition(mPosition);
 }
@@ -41,6 +42,12 @@ void LaserHolder::update()
 	if(mActive==true)
 	{
 		mActiveSprite=&mStandby;
+	}
+	else if(mOff.getCurrentFrame()!=mOff.getMaxFrame()-1)
+	{
+		mOff.update();
+		mOffSprite=mOff.getSprite();
+		mActiveSprite=&mOffSprite;
 	}
 	//mLaser->deactivate();
 }
@@ -63,7 +70,8 @@ void LaserHolder::activate()
 void LaserHolder::deactivate()
 {
 	mLaser->deactivate();
-	mActiveSprite=&mOff;
+	mOffSprite=mOff.getSprite();
+	mActiveSprite=&mOffSprite;
 	mActive=false;
 }
 
