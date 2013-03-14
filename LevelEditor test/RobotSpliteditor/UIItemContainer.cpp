@@ -7,13 +7,71 @@ bool UIComp::operator()(UIItem* ItemLess,UIItem* ItemMore)
 	bool	ReturnBool=true;
 	if(ItemLess->getChangeablitiy()==ItemMore->getChangeablitiy())
 	{
-		if(ItemLess->getName()=="Name")
+		if(ItemLess->getName()=="Update"||ItemMore->getName()=="Update")
 		{
-			ReturnBool==true;
+			if(ItemLess->getName()=="Update")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
 		}
-		else if(ItemMore->getName()=="Name")
+		else if(ItemLess->getName()=="Clear"||ItemMore->getName()=="Clear")
 		{
-			ReturnBool=false;
+			if(ItemLess->getName()=="Clear")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
+		}
+		else if(ItemLess->getName()=="Delete"||ItemMore->getName()=="Delete")
+		{
+			if(ItemLess->getName()=="Delete")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
+		}
+		else if(ItemLess->getName()=="Name"||ItemMore->getName()=="Name")
+		{
+			if(ItemLess->getName()=="Name")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
+		}
+		else if(ItemLess->getName()=="Position x"||ItemMore->getName()=="Position x")
+		{
+			if(ItemLess->getName()=="Position x")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
+		}
+		else if(ItemLess->getName()=="Position y"||ItemMore->getName()=="Position y")
+		{
+			if(ItemLess->getName()=="Position y")
+			{
+				ReturnBool==true;
+			}
+			else
+			{
+				ReturnBool=false;
+			}
 		}
 		else
 		{

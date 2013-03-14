@@ -1,12 +1,13 @@
 #include "LevelBar.h"
 #include "UIDrop.h"
 #include "UIText.h"
+#include "UIButton.h"
 #include "TextureManager.h"
 #include "LevelSaver.h"
 
 enum	Type
 {
-	Load,Save,Background,Name
+	Load,Save,Background,Name,ClearUnits,ClearBackground
 };
 
 LevelBar::LevelBar(LevelConstructor* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
@@ -18,8 +19,11 @@ LevelBar::LevelBar(LevelConstructor* LEVEL,Vector2f Position,Vector2f Size,Color
 	Solid->addOption("Save File",Save);
 	Solid->addOption("Background",Background);
 	Solid->addOption("Level Name",Name);
+	Solid->addOption("Clear Units",ClearUnits);
+	Solid->addOption("Clear Background",ClearBackground);
 	mUIItems.accessActive().insert(Solid);
 	mUIItems.accessActive().insert(new UIText("NewName","TestBana",true,Color(255,255,255,255),Color(0,0,0,255),20));
+	mUIItems.accessActive().insert(new UIButton("Update",20));
 }
 
 LevelBar::~LevelBar(void)
@@ -61,7 +65,12 @@ void	LevelBar::render(RenderWindow& window)
 void	LevelBar::execute()
 {
 	LevelSaver	Saver;
-	std::string	filename=dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->getString();
+	std::string	filename;
+	if(mUIItems.getActivated("NewName")!=0)
+	{
+		filename=dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->getString();
+	}
+		BackgroundVector temp=mLevel->getBackground();
  	switch(dynamic_cast<UIDrop<Type>*>(mUIItems.getActivated("Action"))->getValue())
 	{
 	case	Background:
@@ -77,6 +86,14 @@ void	LevelBar::execute()
 		break;
 	case	Name:
 		mLevel->setNewName(filename);
+		break;
+	case	ClearUnits:
+		mLevel->deletePlayer();
+		mLevel->deletePointers();
+		mLevel->getBackgroundWrap().setBackground(temp);
+		break;
+	case	ClearBackground:
+		mLevel->getBackgroundWrap().deletePointer();
 		break;
 	default:
 		break;
@@ -138,6 +155,7 @@ void	LevelBar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+Width,mPosition.y+5)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
+					mUIItems.activate("NewName");
 					if(dynamic_cast<UIDrop<Type>*>(Selected)!=0)
 					{
 						switch(dynamic_cast<UIDrop<Type>*>(Selected)->getValue())
@@ -147,6 +165,12 @@ void	LevelBar::eventHandle(const	Event&	Current)
 							break;
 						case	Background:
 							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(mLevel->getBackgroundWrap().getName());
+							break;
+						case	ClearBackground:
+							mUIItems.deactivate("NewName");
+							break;
+						case	ClearUnits:
+							mUIItems.deactivate("NewName");
 							break;
 						default:
 							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(string("Default"));
@@ -164,6 +188,11 @@ void	LevelBar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+Width,mPosition.y+5)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					(*it)->setSelect(true);
+					if((*it)->getName()=="Update")
+					{
+						execute();
+						(*it)->handleEvent(Current,Vector2f(0,0));
+					}
 				}
 				else
 				{

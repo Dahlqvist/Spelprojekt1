@@ -24,6 +24,7 @@ public:
 	~Editor(void);
 	void				run();
 	void				renderLevel(View&);
+	void				deleteSelected();
 	RenderWindow&		getWindow();
 	void				setUnit(UnitContainer&);
 	void				setPlayer(PlayerContainer&);

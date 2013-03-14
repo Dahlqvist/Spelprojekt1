@@ -94,39 +94,43 @@ void LaserHolder::setReset()
 
 void LaserHolder::rotate(float r)
 {
-	mRotation=r+180;
-	mLaser->rotate(r);
-	//Get Visibility range, length and rotaiton angle.
-	float	visibility=0;
-	float	length=mLaser->getLength();
-	switch(int(mLaser->getRotation()))
+	if(r!=mLaser->getRotation())
 	{
-	case 0:
-		visibility=getSize().x/2;
-		mPosition=mLaser->getPosition()+sf::Vector2f(-10, -8);
-		this->mSize=sf::Vector2f(visibility*2,length+visibility*2);
-		this->mOffset=sf::Vector2f(-visibility,-length-visibility);
-		break;
-	case 90:
-		visibility=getSize().y/2;
-		mPosition=mLaser->getPosition()+sf::Vector2f(-8, 10);
-		this->mSize=sf::Vector2f(length+visibility*2,visibility*2);
-		this->mOffset=sf::Vector2f(-length-visibility,-visibility);
-		break;
-	case 180:
-		visibility=getSize().x/2;
-		mPosition=mLaser->getPosition()+sf::Vector2f(10, 8);
-		this->mSize=sf::Vector2f(visibility*2,length+visibility*2);
-		this->mOffset=sf::Vector2f(-visibility,-visibility);
-		break;
-	case 270:
-		visibility=getSize().y/2;
-		mPosition=mLaser->getPosition()+sf::Vector2f(8, -10);
-		this->mSize=sf::Vector2f(length+visibility*2,visibility*2);
-		this->mOffset=sf::Vector2f(-visibility,-visibility);
-		break;
+		sf::Vector2f	oldPos=mPosition;
+		mRotation=r+180;
+		mLaser->rotate(r);
+		//Get Visibility range, length and rotaiton angle.
+		float	visibility=0;
+		float	length=mLaser->getLength();
+		switch(int(mLaser->getRotation()))
+		{
+		case 0:
+			mPosition=mLaser->getPosition()+sf::Vector2f(10, 8);
+			visibility=getSize().x/2;
+			this->mSize=sf::Vector2f(visibility*2,length+visibility*2);
+			this->mOffset=sf::Vector2f(-visibility,-length-visibility);
+			break;
+		case 90:
+			visibility=getSize().y/2;
+			mPosition=mLaser->getPosition()+sf::Vector2f(-8, 10);
+			this->mSize=sf::Vector2f(length+visibility*2,visibility*2);
+			this->mOffset=sf::Vector2f(-length-visibility,-visibility);
+			break;
+		case 180:
+			visibility=getSize().x/2;
+			mPosition=mLaser->getPosition()+sf::Vector2f(-10, -8);
+			this->mSize=sf::Vector2f(visibility*2,length+visibility*2);
+			this->mOffset=sf::Vector2f(-visibility,-visibility);
+			break;
+		case 270:
+			visibility=getSize().y/2;
+			mPosition=mLaser->getPosition()+sf::Vector2f(8, -10);
+			this->mSize=sf::Vector2f(length+visibility*2,visibility*2);
+			this->mOffset=sf::Vector2f(-visibility,-visibility);
+			break;
+		}
+		setPosition(oldPos);
 	}
-	setPosition(mPosition);
 }
 
 void LaserHolder::setPosition(sf::Vector2f position)
