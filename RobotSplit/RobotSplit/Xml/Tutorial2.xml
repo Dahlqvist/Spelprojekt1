@@ -115,7 +115,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue1"</SpriteName>
+      <SpriteName>"HelpSplit"</SpriteName>
       <Position>
         <x>320</x>
         <y>96</y>
@@ -127,7 +127,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox2"</Id>
-      <SpriteName>"HelpDialogue2"</SpriteName>
+      <SpriteName>"HelpShift"</SpriteName>
       <Position>
         <x>640</x>
         <y>96</y>

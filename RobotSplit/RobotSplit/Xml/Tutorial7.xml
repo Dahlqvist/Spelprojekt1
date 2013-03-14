@@ -40,7 +40,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue8"</SpriteName>
+      <SpriteName>"HelpAntiMagnet"</SpriteName>
       <Position>
         <x>288</x>
         <y>256</y>

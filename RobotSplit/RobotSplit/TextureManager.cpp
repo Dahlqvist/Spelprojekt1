@@ -29,17 +29,21 @@ void TextureManager::loadTexture()
 	//Cinematics
 	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_winnig_strip6.png");
 	mTextureMap["StixExt"].loadFromFile("Texture/Cinema/stix_hos_meanix_animation_strip17.png");
+	mTextureMap["StixExt2"].loadFromFile("Texture/Cinema/reverse_stix_hos_meanix_animation_strip17.png");
 	mTextureMap["StixExtStill"].loadFromFile("Texture/Cinema/stix_hos_meanix.png");
 	mTextureMap["DoorOpen"].loadFromFile("Texture/Cinema/XHQ_door_animation8.png");
 	mTextureMap["DoorClose"].loadFromFile("Texture/Cinema/Mirror_XHQ_door_animation8.png");
 	mTextureMap["Door2Open"].loadFromFile("Texture/Cinema/Office_Door_Open.png");
+	mTextureMap["Door2Close"].loadFromFile("Texture/Cinema/Office_Door_close.png");
+	
 	
 	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
-	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
+	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/bankdirektör_animation8.png");
+	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
 	
 
 	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
-	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/office_background.png");
+	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
 	
 	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
@@ -398,15 +402,18 @@ void TextureManager::loadTexture()
 	mTextureMap["TutorialWideTile"].loadFromFile("Texture/Tutorials/tile.png");
 	mTextureMap["TutorialBigTile"].loadFromFile("Texture/Tutorials/tile2.png");
 
-	mTextureMap["HelpDialogue1"].loadFromFile("Texture/Tutorials/radio_help_1.png");
-	mTextureMap["HelpDialogue2"].loadFromFile("Texture/Tutorials/radio_help_2.png");
-	mTextureMap["HelpDialogue3"].loadFromFile("Texture/Tutorials/help_radio_3.png");
-	mTextureMap["HelpDialogue4"].loadFromFile("Texture/Tutorials/help_radio_4.png");
-	mTextureMap["HelpDialogue5"].loadFromFile("Texture/Tutorials/help_radio5.png");
-	mTextureMap["HelpDialogue6"].loadFromFile("Texture/Tutorials/help_radio6.png");
-	mTextureMap["HelpDialogue7"].loadFromFile("Texture/Tutorials/help_radio7.png");
-	mTextureMap["HelpDialogue8"].loadFromFile("Texture/Tutorials/help_radio8.png");
-	mTextureMap["HelpDialogue9"].loadFromFile("Texture/Tutorials/help_radio9.png");
+	mTextureMap["HelpSplit"].loadFromFile("Texture/Tutorials/Help/radio_help_1.png");
+	mTextureMap["HelpShift"].loadFromFile("Texture/Tutorials/Help/radio_help_2.png");
+	mTextureMap["HelpLaser1"].loadFromFile("Texture/Tutorials/Help/help_radio_laser1.png");
+	mTextureMap["HelpCheckpoint"].loadFromFile("Texture/Tutorials/Help/help_radio_checkpoint1.png");
+	mTextureMap["HelpLaser2"].loadFromFile("Texture/Tutorials/Help/help_radio_laser2.png");
+	mTextureMap["HelpRocket"].loadFromFile("Texture/Tutorials/Help/help_radio_4.png");
+	mTextureMap["HelpFuel"].loadFromFile("Texture/Tutorials/Help/help_radio_checkpoint2.png");
+	mTextureMap["HelpExt"].loadFromFile("Texture/Tutorials/Help/help_radio_3.png");
+	mTextureMap["HelpMagnet"].loadFromFile("Texture/Tutorials/Help/help_radio5.png");
+	mTextureMap["HelpClimb"].loadFromFile("Texture/Tutorials/Help/old_help_radio6.png");
+	mTextureMap["HelpCombo"].loadFromFile("Texture/Tutorials/Help/help_radio7.png");
+	mTextureMap["HelpAntiMagnet"].loadFromFile("Texture/Tutorials/Help/help_radio8.png");
 	
 	mTextureMap["TriggerTutorial"].loadFromFile("Texture/Tutorials/Trigger.png");
 	mTextureMap["Ventilation"].loadFromFile("Texture/Tutorials/Vent.png");

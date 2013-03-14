@@ -7,12 +7,13 @@ mWindow(Window::getWindow()),
 	mStixWalk(Animation("StixWalk", 100, 6), sf::Vector2f(0, 540), true, true),
 	mStixExt(Animation("StixExt", 100, 17), sf::Vector2f(0, 0), false, false),
 	mStixExtStill(Animation("StixExtStill", 100, 1), sf::Vector2f(510, 577), false, false),
+	mStixJumpDown(Animation("StixExt2", 100, 17), sf::Vector2f(510, 577), false, false),
 	mDoorOpen(Animation("DoorOpen", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoorClose(Animation("DoorClose", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
-	mDoor2Close(Animation("DoorClose", 100, 8), sf::Vector2f(0, 503), false, false),
+	mDoor2Close(Animation("Door2Close", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
-	mMeanixStill(Animation("MeanixBank2", 100, 1), sf::Vector2f(806, 576), false, false)
+	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false)
 {
 	mCounter=0;
 	mPlaying=true;
@@ -32,6 +33,7 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mStixWalk);
 	mStars.push_back(&mStixExt);
 	mStars.push_back(&mStixExtStill);
+	mStars.push_back(&mStixJumpDown);
 	mStars.push_back(&mDoorClose);
 	mStars.push_back(&mDoor2Close);
 	mStars.push_back(&mMeanix);
@@ -155,7 +157,17 @@ void IntroMovie::update()
 		}
 		else
 		{
-			mPlaying=false;
+			if(mStixJumpDown.getDone()==false)
+			{
+				mDialogs[mDialogs.size()-1]->deactivate();
+				mStixExtStill.setActive(false);
+				mStixExt.setActive(false);
+				mStixJumpDown.setActive(true);
+			}
+			else
+			{
+				mPlaying=false;
+			}
 		}
 		//if(knapptryck)
 		//	if(mPratbubblorcounter<Pratbubblor.size())

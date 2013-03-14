@@ -35,7 +35,6 @@ void Meanix::facingStix()
 	{
 		if(mPlayer->getCollisionSprite()[1]->getPosition().x<mPosition.x)
 		{
-			//std::cout << "Hej    ";
 			mFacingRight=false;
 		}
 		else
