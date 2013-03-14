@@ -208,6 +208,27 @@
       <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
+    
+    <Unit>
+      <Type>Graphic</Type>
+      <SpriteName>TutorialSpecielTile1</SpriteName>
+      <Position>
+        <x>224</x>
+        <y>256</y>
+      </Position>
+      <Solid>false</Solid>
+      <Behind>true</Behind>
+    </Unit>
+    <Unit>
+      <Type>Graphic</Type>
+      <SpriteName>TutorialSpecielTile2</SpriteName>
+      <Position>
+        <x>1024</x>
+        <y>256</y>
+      </Position>
+      <Solid>false</Solid>
+      <Behind>true</Behind>
+    </Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TutorialWideTile&quot;</SpriteName>

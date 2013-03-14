@@ -39,7 +39,7 @@ Game::Game():
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/level_1.wav");
+	//Music::loadMusic("Music/tutorial_2.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
 	//	mSecurityLevel=0;
@@ -112,6 +112,10 @@ void Game::changeMap(int map)
 	{
 		mSecurityLevel=1;
 	}
+	else if(mlevel.getName()=="Bana1")
+	{
+		mStateInput.changeState("Bank");
+	}
 	else
 	{
 		mSecurityLevel=2;
@@ -128,6 +132,11 @@ void Game::setMusic()
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/tutorial_2.wav");
+	}
+	else if (mlevel.getName()=="Tutorial5")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/bank_1.wav");
 	}
 	else if (mlevel.getName()=="Bana1")
 	{
@@ -237,6 +246,11 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
 		{
 			Game::changeMap(1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		{
+			mStateInput.changeState("Bank");
 			TestTimer.restart();
 		}
 		//runCollisions(Objects.getUnits(), *mPlayer);

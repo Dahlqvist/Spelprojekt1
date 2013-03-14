@@ -162,6 +162,9 @@
     <ClCompile Include="ScoreSaver.cpp" />
     <ClCompile Include="ScoreLoader.cpp" />
     <ClCompile Include="HighScoreEntry.cpp" />
+    <ClCompile Include="BankMovie.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -331,6 +334,9 @@
     <ClInclude Include="ScoreSaver.h" />
     <ClInclude Include="ScoreLoader.h" />
     <ClInclude Include="HighScoreEntry.h" />
+    <ClInclude Include="BankMovie.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -30,7 +30,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;House8&quot;</SpriteName>
+			<SpriteName>&quot;House7&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
@@ -144,7 +144,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TutorialWideTile&quot;</SpriteName>
+			<SpriteName>&quot;TutorialHouseTile&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -152,7 +152,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TutorialWideTile&quot;</SpriteName>
+			<SpriteName>&quot;TutorialHouseTile&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>

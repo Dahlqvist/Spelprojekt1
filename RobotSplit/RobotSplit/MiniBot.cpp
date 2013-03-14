@@ -102,6 +102,7 @@ void MiniBot::reset()
 {
 	mPosition=mStartPosition;
 	mCharge=0;
+	mAnimation=&mWalking;
 }
 void MiniBot::hitOnce()
 {

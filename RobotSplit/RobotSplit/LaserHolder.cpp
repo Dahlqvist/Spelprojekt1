@@ -1,5 +1,6 @@
 #include "LaserHolder.h"
 #include <iostream>
+#include "Sound.h"
 
 LaserHolder::LaserHolder(Laser* laser, std::string id, sf::Vector2f size, sf::Vector2f offset, bool active):
 	Unit(laser->getPosition(), size, offset, id, "LaserHolder", false),
@@ -55,6 +56,7 @@ void LaserHolder::update()
 void LaserHolder::hit(){
 	if(mActive==true)
 	{
+		Sound::playSound("Laser");
 		mActiveSprite=&mOn;
 		mLaser->activate();
 	}

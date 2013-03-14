@@ -43,6 +43,11 @@ void Sound::loadSound()
 	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
 	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 	mBufferMap["Winning"].loadFromFile("Music/level_complete.wav");
+	mBufferMap["Laser"].loadFromFile("Sound/pass_through_lazer_proto.wav");
+	mBufferMap["MeanixTalkNormal"].loadFromFile("Sound/Meanix_speech_normal_1.wav");
+	mBufferMap["StixTalkNormal"].loadFromFile("Sound/Stix_speech_normal.wav");
+	mBufferMap["StixTalkAngry"].loadFromFile("Sound/Stix_speech_angry.wav");
+	
 
 	mBufferMap["TriggerHelp"].loadFromFile("Sound/Ljud/helpbox_1.wav");
 
@@ -58,6 +63,11 @@ void Sound::loadSound()
 	mSoundMap["Move"].setBuffer(mBufferMap["Move"]);
 	mSoundMap["Split"].setBuffer(mBufferMap["Split"]);
 	mSoundMap["Winning"].setBuffer(mBufferMap["Winning"]);
+	mSoundMap["Laser"].setBuffer(mBufferMap["Laser"]);
+	mSoundMap["MeanixTalkNormal"].setBuffer(mBufferMap["MeanixTalkNormal"]);
+	mSoundMap["StixTalkNormal"].setBuffer(mBufferMap["StixTalkNormal"]);
+	mSoundMap["StixTalkAngry"].setBuffer(mBufferMap["StixTalkAngry"]);
+
 
 	mSoundMap["TriggerHelp"].setBuffer(mBufferMap["TriggerHelp"]);
 }

@@ -1,5 +1,9 @@
 #ifndef INC_MOVIEBAS
 #define INC_MOVIEBAS
+#include "Window.h"
+#include "TextureManager.h"
+#include "Music.h"
+#include "Sound.h"
 
 class MovieBas
 {

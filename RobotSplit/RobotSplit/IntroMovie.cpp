@@ -1,10 +1,8 @@
 #include "IntroMovie.h"
-#include "Window.h"
-#include "TextureManager.h"
 
 IntroMovie::IntroMovie():
 mWindow(Window::getWindow()),
-	mStixWalk(Animation("StixWalk", 100, 6), sf::Vector2f(0, 540), true, true),
+	mStixWalk(Animation("StixWalk", 100, 8), sf::Vector2f(0, 540), true, true),
 	mStixExt(Animation("StixExt", 100, 17), sf::Vector2f(0, 0), false, false),
 	mStixExtStill(Animation("StixExtStill", 100, 1), sf::Vector2f(510, 577), false, false),
 	mStixJumpDown(Animation("StixExt2", 100, 17), sf::Vector2f(510, 577), false, false),
@@ -38,6 +36,7 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mDoor2Close);
 	mStars.push_back(&mMeanix);
 	mStars.push_back(&mMeanixStill);
+	Music::loadMusic("Music/tutorial_3.wav");
 	mDia=0;
 }
 
@@ -131,6 +130,7 @@ void IntroMovie::act2()
 
 void IntroMovie::update()
 {
+	Music::playMusic();
 	if(mCounter==0)
 	{
 		IntroMovie::act();
@@ -148,6 +148,14 @@ void IntroMovie::update()
 				if(mCounter-2==i)
 				{
 					mDialogs[i]->activate();
+					if(i%2==1)
+					{
+						Sound::playSound("StixTalkNormal");
+					}
+					else
+					{	
+						Sound::playSound("MeanixTalkNormal");
+					}
 				}
 				else
 				{

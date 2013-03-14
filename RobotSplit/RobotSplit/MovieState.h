@@ -4,6 +4,7 @@
 #include "MovieBas.h"
 #include "IntroMovie.h"
 #include "StateInput.h"
+#include "BankMovie.h"
 
 class MovieState:public State
 {

@@ -37,6 +37,8 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushControls();
 	else if(state == "Intro")
 		mStateManager.pushMovie("Intro");
+	else if(state == "Bank")
+		mStateManager.pushMovie("Bank");
 	else
 		std::cout << "Error" << std::endl;
 }
