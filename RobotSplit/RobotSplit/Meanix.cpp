@@ -1,9 +1,9 @@
 #include "Meanix.h"
 
-Meanix::Meanix(sf::Vector2f pos, Player* player):
-Unit(pos, "Meanix", "Meanix", false),
-	mRight("MeanixAni", 100, 8),
-	mLeft("MeanixAniL", 100, 8)
+Meanix::Meanix(sf::Vector2f pos, std::string sprite, std::string sprite2, Player* player):
+Unit(pos, "Meanix", "Meanix", false, true),
+	mRight(Animation(sprite, 100, 8)),
+	mLeft(Animation(sprite2, 100, 8))
 {
 	mPosition=pos;
 	mLeft.setPosition(mPosition);
@@ -35,7 +35,6 @@ void Meanix::facingStix()
 	{
 		if(mPlayer->getCollisionSprite()[1]->getPosition().x<mPosition.x)
 		{
-			//std::cout << "Hej    ";
 			mFacingRight=false;
 		}
 		else

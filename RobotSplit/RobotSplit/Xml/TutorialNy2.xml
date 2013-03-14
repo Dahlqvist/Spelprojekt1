@@ -20,55 +20,98 @@
 				<y>384</y>
 			</Position>
 		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>-64</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>-64</x>
-				<y>0</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>0</x>
-				<y>-64</y>
-			</Position>
-			<Size>
-				<x>0</x>
-				<y>-64</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>1280</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>1280</x>
-				<y>0</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;TutorialBox1&quot;</Type>
-			<SpriteName>&quot;HelpDialogue5&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>64</y>
-			</Position>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+
+    <Unit>
+      <Type>Checkpoint</Type>
+      <SpriteName>CheckpointAnim</SpriteName>
+      <Position>
+        <x>384</x>
+        <y>416</y>
+      </Position>
+      <Size>
+        <x>40</x>
+        <y>58</y>
+      </Size>
+      <Offset>
+        <x>12</x>
+        <y>6</y>
+      </Offset>
+    </Unit>
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>608</x>
+        <y>384</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>96</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>600</x>
+        <y>312</y>
+      </Position>
+      <SpriteName>"YellowButtonAni"</SpriteName>
+      <Id>"LaserTriggerYellow"</Id>
+      <Target>"LaserYellow1"</Target>
+      <Rotation>0</Rotation>
+    </Unit>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpFuel"</SpriteName>
+      <Position>
+        <x>512</x>
+        <y>32</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>480</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox2"</Id>
+      <SpriteName>"HelpRocket"</SpriteName>
+      <Position>
+        <x>224</x>
+        <y>96</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>320</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox2</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+    
 		<Unit>
 			<Type>&quot;Kill&quot;</Type>
 			<SpriteName>&quot;&quot;</SpriteName>
@@ -80,15 +123,6 @@
 				<x>0</x>
 				<y>768</y>
 			</Size>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Trigger1&quot;</Type>
-			<SpriteName>&quot;TriggerTutorial&quot;</SpriteName>
-			<Position>
-				<x>400</x>
-				<y>472</y>
-			</Position>
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
@@ -125,7 +159,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;WoodBox&quot;</SpriteName>
+			<SpriteName>&quot;TutorialBigTile&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>320</y>
@@ -147,6 +181,55 @@
         <y>0</y>
       </Offset>
       <Behind>true</Behind>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>900</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>10</y>
+      </Size>>
+      <SpriteName>""</SpriteName>
       <Solid>false</Solid>
     </Unit>
 	</Objects>

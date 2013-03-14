@@ -471,7 +471,7 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue6"</SpriteName>
+      <SpriteName>"HelpClimb"</SpriteName>
       <Position>
         <x>288</x>
         <y>256</y>

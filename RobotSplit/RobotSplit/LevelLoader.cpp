@@ -421,7 +421,7 @@ void	LevelLoader::addPlatform	(Level	&level,xml_node<>* Node)
 void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
-	string					CurrentValue;
+	string					CurrentValue, sprite, sprite2;
 	Meanix					*TempObject;
 	sf::Vector2f			Position;
 
@@ -435,8 +435,15 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	CurrentValue=	getValue(CurrentChild->first_node("y"));
 	//Sets Y to CurentValue's value
 	Position.y=((float)atof(CurrentValue.c_str()));
+
+	CurrentChild=	Node->first_node("SpriteName");
+	sprite=getValue(CurrentChild);
+
+	CurrentChild=	Node->first_node("SpriteName2");
+	sprite2=getValue(CurrentChild);
+
 	//Creates a Platform object
-	TempObject=		new Meanix(Position, level.getPlayer());
+	TempObject=		new Meanix(Position, sprite, sprite2, level.getPlayer());
 	//Puts the Platform object into the level's UnitVector
 	level.mObjects.push_back(TempObject);
 }
