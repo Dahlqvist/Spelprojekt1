@@ -27,6 +27,22 @@
     </Unit>
 
     <Unit>
+      <Type>"Meanix"</Type>
+      <SpriteName>"MeanixBank"</SpriteName>
+      <SpriteName2>"MeanixBank"</SpriteName2>
+      <Frames>8</Frames>
+      <Speed>100</Speed>
+      <Position>
+        <x>806</x>
+        <y>576</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+    </Unit>
+
+    <Unit>
       <Type>"Platform"</Type>
       <SpriteName>"Tutorial1Floor"</SpriteName>
       <Position>

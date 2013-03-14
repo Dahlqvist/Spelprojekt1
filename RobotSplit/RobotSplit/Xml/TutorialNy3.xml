@@ -140,7 +140,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile5&quot;</SpriteName>
+			<SpriteName>&quot;TutorialWideTile&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -148,12 +148,61 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile7&quot;</SpriteName>
+			<SpriteName>&quot;TutorialWideTile&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
 			</Position>
 		</Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>900</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>10</y>
+      </Size>>
+      <SpriteName>""</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
 	</Objects>
 </Level>
 

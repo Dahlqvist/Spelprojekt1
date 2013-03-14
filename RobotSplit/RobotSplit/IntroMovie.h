@@ -20,6 +20,7 @@ private:
 	std::vector<DialogueBox*> mDialogs;
 	Star mStixWalk;
 	Star mStixExt;
+	Star mStixExtStill;
 	Star mDoorOpen;
 	Star mDoorClose;
 	Star mDoor2Open;
@@ -28,7 +29,7 @@ private:
 	Star mMeanixStill;
 	sf::RenderWindow& mWindow;
 	bool mPlaying;
-	float mCounter;
+	float mCounter, mDia;
 	sf::Sprite mBackground, mBackground2;
 };
 

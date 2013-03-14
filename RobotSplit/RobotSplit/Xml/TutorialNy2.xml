@@ -20,45 +20,35 @@
 				<y>384</y>
 			</Position>
 		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>-64</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>-64</x>
-				<y>0</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>0</x>
-				<y>-64</y>
-			</Position>
-			<Size>
-				<x>0</x>
-				<y>-64</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Unclimbable&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>1280</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>1280</x>
-				<y>0</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>608</x>
+        <y>384</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>96</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+
+    <Unit>
+      <Type>"LaserDeactivator"</Type>
+      <Position>
+        <x>600</x>
+        <y>312</y>
+      </Position>
+      <SpriteName>"YellowButtonAni"</SpriteName>
+      <Id>"LaserTriggerYellow"</Id>
+      <Target>"LaserYellow1"</Target>
+      <Rotation>0</Rotation>
+    </Unit>
+    
+    
+    
 		<Unit>
 			<Type>&quot;TutorialBox1&quot;</Type>
 			<SpriteName>&quot;HelpDialogue5&quot;</SpriteName>
@@ -125,7 +115,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;WoodBox&quot;</SpriteName>
+			<SpriteName>&quot;TutorialBigTile&quot;</SpriteName>
 			<Position>
 				<x>576</x>
 				<y>320</y>
@@ -147,6 +137,55 @@
         <y>0</y>
       </Offset>
       <Behind>true</Behind>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>900</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>10</y>
+      </Size>>
+      <SpriteName>""</SpriteName>
       <Solid>false</Solid>
     </Unit>
 	</Objects>

@@ -6,9 +6,10 @@ IntroMovie::IntroMovie():
 mWindow(Window::getWindow()),
 	mStixWalk(Animation("StixWalk", 100, 6), sf::Vector2f(0, 540), true, true),
 	mStixExt(Animation("StixExt", 100, 17), sf::Vector2f(0, 0), false, false),
+	mStixExtStill(Animation("StixExtStill", 100, 1), sf::Vector2f(510, 577), false, false),
 	mDoorOpen(Animation("DoorOpen", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoorClose(Animation("DoorClose", 100, 8), sf::Vector2f(898, 419), false, false),
-	mDoor2Open(Animation("DoorOpen", 100, 8), sf::Vector2f(0, 503), false, false),
+	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
 	mDoor2Close(Animation("DoorClose", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
 	mMeanixStill(Animation("MeanixBank2", 100, 1), sf::Vector2f(806, 576), false, false)
@@ -18,17 +19,24 @@ mWindow(Window::getWindow()),
 	mBackground=TextureManager::getSprite("CinemaBG1");
 	mBackground2=TextureManager::getSprite("CinemaBG2");
 
-	mDialogs.push_back(new DialogueBox(sf::Vector2f(100, 100), "DialogueBox1", "Tjenare Tjenare#Tjenare", false, false, "Dia1"));
-	mDialogs.push_back(new DialogueBox(sf::Vector2f(200, 100), "DialogueBox1", "Tjenare Tjenare#Tjenare", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(600, 300), "DialogueBox1", "Glad you could make it and welcome to my \nhumble office here at Xinae-M", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(300, 400), "DialogueBox1", "Thank you good sir, lets skip to business \nand focus on the job.", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(600, 300), "DialogueBox1", "Straight to the point eh, I like it. What \nI need you to do is test out the new security \nsystem at the sector bank; I sure hope you \nwon't make it, if you know what I mean. \nHar-har", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(300, 400), "DialogueBox1", "We will see... And the payment is as instructed \nin the worker holos", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(600, 300), "DialogueBox1", "Of course, we are offering you the payment should \nyou fail or not. The only thing we need \nis that you use your talents to try and \nbreak the security for the bank, nothing \nless and nothing more.", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(300, 400), "DialogueBox1", "I'm on it, when can I start?", false, false, "Dia1"));
+	mDialogs.push_back(new DialogueBox(sf::Vector2f(600, 300), "DialogueBox1", "Right now! Good luck Stix!", false, false, "Dia1"));
 
 	mStars.push_back(&mDoor2Open);
 	mStars.push_back(&mDoorOpen);
 	mStars.push_back(&mStixWalk);
 	mStars.push_back(&mStixExt);
+	mStars.push_back(&mStixExtStill);
 	mStars.push_back(&mDoorClose);
 	mStars.push_back(&mDoor2Close);
 	mStars.push_back(&mMeanix);
 	mStars.push_back(&mMeanixStill);
+	mDia=0;
 }
 
 void IntroMovie::draw()
@@ -55,6 +63,7 @@ void IntroMovie::draw()
 		if(mDialogs[i]->getVisible())
 		{
 			mWindow.draw(mDialogs[i]->getSprite());
+			mWindow.draw(mDialogs[i]->getText());
 		}
 	}
 	mWindow.display();
@@ -82,7 +91,7 @@ void IntroMovie::act()
 		if(mDoorClose.getDone()==true)
 		{
 			mCounter++;
-			mStixWalk.setPosition(sf::Vector2f(0, 608));
+			mStixWalk.setPosition(sf::Vector2f(-64, 608));
 			mDoor2Open.setActive(true);
 			mDoorClose.setActive(false);
 			mMeanix.setActive(true);
@@ -174,19 +183,24 @@ void IntroMovie::countup()
 	mCounter++;
 	if(mCounter==1)
 	{
-		mStixWalk.setPosition(sf::Vector2f(0, 608));
+		mStixWalk.setPosition(sf::Vector2f(-64, 608));
 		mDoor2Open.setActive(true);
 		mDoorClose.setActive(false);
 		mMeanix.setActive(true);
 	}
 	else if(mCounter==2)
 	{
+		mStixExt.setActive(false);
+		mStixWalk.setActive(false);
+		mDoor2Open.setActive(false);
+		mDoor2Close.setActive(false);
+		mStixExtStill.setActive(true);
 		mMeanix.setActive(false);
 		mMeanixStill.setActive(true);
 	}
 	else
 	{
-		mCounter++;
+		
 	}
 }
 

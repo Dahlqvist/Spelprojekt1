@@ -1,6 +1,7 @@
 #ifndef INC_LASERHOLDER
 #define INC_LASERHOLDER
 #include "Laser.h"
+#include "Animation.h"
 
 class LaserHolder:public Unit
 {
@@ -43,7 +44,8 @@ protected:
 	sf::Sprite* mActiveSprite;
 	sf::Sprite mOn;
 	sf::Sprite mStandby;
-	sf::Sprite mOff;
+	sf::Sprite mOffSprite;
+	Animation mOff;
 
 	//Animation* mAnimation;
 	bool mActive, mStartActive;
