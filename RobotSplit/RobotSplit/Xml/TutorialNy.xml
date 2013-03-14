@@ -39,19 +39,103 @@
     </Unit>
 
     <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpLaser1"</SpriteName>
+      <Position>
+        <x>64</x>
+        <y>64</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>128</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox2"</Id>
+      <SpriteName>"HelpCheckpoint"</SpriteName>
+      <Position>
+        <x>544</x>
+        <y>64</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>512</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox2</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox3"</Id>
+      <SpriteName>"HelpLaser2"</SpriteName>
+      <Position>
+        <x>960</x>
+        <y>64</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>928</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox3</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
+      <Type>"Laser"</Type>
+      <Position>
+        <x>256</x>
+        <y>448</y>
+      </Position>
+      <Id>"LaserYellow1"</Id>
+      <Active>true</Active>
+      <Length>32</Length>
+      <Rotation>0</Rotation>
+      <Color>"Yellow"</Color>
+      <VisibilityRange>100</VisibilityRange>
+    </Unit>
+    <Unit>
       <Type>"Laser"</Type>
       <Position>
         <x>256</x>
         <y>288</y>
       </Position>
-      <Id>"LaserYellow1"</Id>
+      <Id>"LaserRed1"</Id>
       <Active>true</Active>
       <Length>128</Length>
       <Rotation>0</Rotation>
-      <Color>"Yellow"</Color>
+      <Color>"Red"</Color>
       <VisibilityRange>100</VisibilityRange>
     </Unit>
-
     <Unit>
       <Type>"Laser"</Type>
       <Position>
@@ -72,9 +156,9 @@
         <x>352</x>
         <y>472</y>
       </Position>
-      <SpriteName>"YellowButtonAni"</SpriteName>
-      <Id>"LaserTriggerYellow"</Id>
-      <Target>"LaserYellow1"</Target>
+      <SpriteName>"RedButtonAni"</SpriteName>
+      <Id>"LaserTriggerRed"</Id>
+      <Target>"LaserRed1"</Target>
       <Rotation>0</Rotation>
     </Unit>
 
@@ -97,25 +181,6 @@
 				<x>0</x>
 				<y>480</y>
 			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;TutorialBox1&quot;</Type>
-			<SpriteName>&quot;HelpDialogue5&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>64</y>
-			</Position>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Trigger1&quot;</Type>
-			<SpriteName>&quot;TriggerTutorial&quot;</SpriteName>
-			<Position>
-				<x>377</x>
-				<y>472</y>
-			</Position>
-			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
