@@ -11,23 +11,23 @@ class Player;
 class DialogueBox;
 using namespace std;
 typedef vector<Unit*> UnitVector;
-
+typedef	vector<Background*>	BackgroundVector;
 //Class is Working 24-01-2013
 class	BackgroundWrap
 {
 public:
-	vector<Background*>	getBackground	()const;
+	BackgroundVector	getBackground	()const;
 	string				getName			()const;
 	int					getFrames		()const;
 	int					getSpeed		()const;
-	void				setBackground	(vector<Background*>);
+	void				setBackground	(BackgroundVector);
 	void				setName			(const string&);
 	void				setFrames		(const int&);
 	void				setSpeed		(const int&);
 	void				operator=		(const BackgroundWrap&);
 	void				deletePointer	();
 private:
-	vector<Background*>	mBackground;
+	BackgroundVector	mBackground;
 	string				mName;
 	int					mFrames,mSpeed;
 };
@@ -43,7 +43,7 @@ public:
 	//Deconstructor								(Done)
 	~Level(void);
 	//Reads a Level from a XML-file				(Done)
-	void			loadNewLevel(string FileName);
+	virtual	void	loadNewLevel(string FileName);
 	//Returns the size of the level
 	sf::Vector2f	getSize()const;
 	//Returns the Level's objects				(Done)
@@ -51,7 +51,7 @@ public:
 	//Returns the Level's name					(Done)
 	string			getName()const;
 	//Returns the Level's background			(Done)
-	vector<Background*>		getBackground()const;
+	BackgroundVector		getBackground()const;
 	//Returns the Player pointer				(Done)
 	Player*			getPlayer()const;
 	//Returns the Level's dialog boxes			(Done)

@@ -74,8 +74,12 @@ void		LevelConstructor::deletePlayer()
 {
 	if(mPlayerExist)
 	{
-		delete	mPlayer;
+		if(mPlayer!=NULL)
+		{
+			delete	mPlayer;
+		}
 		mPlayerExist=false;
+		mPlayer=NULL;
 	}
 }
 

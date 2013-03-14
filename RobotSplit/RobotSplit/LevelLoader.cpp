@@ -44,7 +44,7 @@ Level	LevelLoader::getLevel()
 		std::vector<Background*> backgrounds;
 		std::vector<Trigger*> triggers;
 		std::vector<std::string> triggerTargets;
-		rapidxml::xml_node<>	*LevelNode,*Gameobject,*BackgroundNode;
+		rapidxml::xml_node<>	*LevelNode,*Gameobject;
 		//Gets the Level Node
 		LevelNode=		mDocument.first_node("Level");
 		//Gets the first GameObject child node to level
@@ -166,7 +166,7 @@ void	LevelLoader::addBackground(Level	&Source)
 {
 	rapidxml::xml_node<>	*CurrentChild, *Node;
 	string					CurrentValue;
-	Background				*TempObject;
+//	Background				*TempObject;
 	sf::Vector2f			Position;
 	int						Frames,Speed;
 	string					SpriteName;
@@ -250,7 +250,7 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 	string					CurrentValue,Id,Color;
 	Laser					*TempObject;
 	LaserHolder				*Holder;
-	Trigger					*VisibilityBox;
+//	Trigger					*VisibilityBox;
 	sf::Vector2f			Position, Size, Offset;
 	float					VisibilityRange;
 	bool					Active;
@@ -306,13 +306,13 @@ void	LevelLoader::addLaser		(Level	&level,xml_node<>* Node)
 	}
 
 	CurrentChild=	Node->first_node("Length");
-	Length=atof(getValue(CurrentChild).c_str());
+	Length=float(atof(getValue(CurrentChild).c_str()));
 
 	CurrentChild=	Node->first_node("Rotation");
-	Rotation=atof(getValue(CurrentChild).c_str());
+	Rotation=float(atof(getValue(CurrentChild).c_str()));
 
 	CurrentChild=	Node->first_node("VisibilityRange");
-	VisibilityRange=atof(getValue(CurrentChild).c_str());
+	VisibilityRange=float(atof(getValue(CurrentChild).c_str()));
 
 	CurrentChild=	Node->first_node("Id");
 	Id=getValue(CurrentChild);
@@ -461,10 +461,10 @@ void LevelLoader::addMiniBot(Level	&level,xml_node<>* Node)
 	Position.y=((float)atof(CurrentValue.c_str()));
 
 	CurrentChild=	Node->first_node("Length");
-	Length=atof(getValue(CurrentChild).c_str());
+	Length=float(atof(getValue(CurrentChild).c_str()));
 
 	CurrentChild=	Node->first_node("Rotation");
-	Rotation=atof(getValue(CurrentChild).c_str());
+	Rotation=float(atof(getValue(CurrentChild).c_str()));
 
 	CurrentChild=	Node->first_node("SideWays");
 	if (getValue(CurrentChild)=="true")
@@ -486,7 +486,7 @@ void	LevelLoader::addDialogueBox(Level &level,xml_node<>* Node)
 {
 	rapidxml::xml_node<>	*CurrentChild;
 	string					CurrentValue,Sprite,Text;
-	DialogueBox				*TempObject;
+//	DialogueBox				*TempObject;
 	sf::Vector2f			Position;
 	bool					FadeIn,Visible;
 	std::string				Id;
@@ -614,9 +614,9 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		int Frames,Speed;
 		Animation* ani;
 		CurrentValue=	getValue(Node->first_node("Frames"));
-		Frames=((float)atof(CurrentValue.c_str()));
+		Frames=(atoi(CurrentValue.c_str()));
 		CurrentValue=	getValue(Node->first_node("Speed"));
-		Speed=((float)atof(CurrentValue.c_str()));
+		Speed=(atoi(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
 		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid, Behind);
 	}
@@ -727,7 +727,7 @@ void	LevelLoader::addLine(Level	&level,xml_node<>* Node)
 
 	//Initiates the Size
 	CurrentValue=	getValue(Node->first_node("Size"));
-	Size=			atof(CurrentValue.c_str());
+	Size=			float(atof(CurrentValue.c_str()));
 
 	//Initiates the Rotation variable
 	CurrentValue=	getValue(Node->first_node("Rotation"));
@@ -854,7 +854,7 @@ void	LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vec
 	targetObject=getValue(CurrentChild);
 
 	CurrentChild=Node->first_node("Rotation");
-	Rotation=atof(getValue(CurrentChild).c_str());
+	Rotation=float(atof(getValue(CurrentChild).c_str()));
 
 	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, new Animation(Sprite, 100, 3), 0x0, ""), Rotation));
 	targets.push_back(targetObject);
