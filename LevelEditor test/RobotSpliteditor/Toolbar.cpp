@@ -3,6 +3,7 @@
 #include "Editor.h"
 #include "UIText.h"
 #include "UIDrop.h"
+#include "UIButton.h"
 #include "DialogueBox.h"
 #include "Laser.h"
 #include "LaserDeactivator.h"
@@ -17,7 +18,7 @@
 
 Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniViewSize)
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
-	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false)
+	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false),mDelete(false)
 {
 	ObjectLoader	Loader("OtherMenu.xml");
 	UIObjectMenu *meny=Loader.getObject(this);
@@ -56,6 +57,9 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(color);
 	mUIItems.accessInactive().insert(UTargets);
 	mUIItems.accessInactive().insert(LTargets);
+	mUIItems.accessInactive().insert(new UIButton("Update",15));
+	mUIItems.accessInactive().insert(new UIButton("Clear",15));
+	mUIItems.accessInactive().insert(new UIButton("Delete",15));
 	mUIItems.accessInactive().insert(new UIText("Name","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Sprite","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("Lives","",true,Color(255,255,255,255),Color(0,0,0,255),15));
@@ -87,6 +91,15 @@ void	Toolbar::render(Editor* editor)
 		editor->setUnit(mCurrUnit);
 		setTargets(editor->mLevel);
 		mChange=false;
+	}
+	if(mDelete)
+	{
+		editor->setUnit(mCurrUnit);
+		editor->setPlayer(mCurrPlayer);
+		editor->deleteSelected();
+		mDelete=false;
+		unIniPlayer();
+		unIniUnit();
 	}
 	//Change UIItems
 	if(mNewPos)
@@ -122,10 +135,22 @@ void	Toolbar::render(Editor* editor)
 	//Renders the minimap
 	View	MiniView=window.getDefaultView();
 	MiniView.setViewport(FloatRect(Position,Size));
-	float	scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).x/editor->mLevel.getSize().x;
-	if(scale>window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y)
+	float	scale=0;
+	if(editor->mLevel.getSize().x!=0&&editor->mLevel.getSize().y!=0)
 	{
-		scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y;
+		scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).x/editor->mLevel.getSize().x;
+		if(scale>window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y)
+		{
+			scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/editor->mLevel.getSize().y;
+		}
+	}
+	else
+	{
+		scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).x/1280;
+		if(scale>window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/800)
+		{
+			scale=window.convertCoords(Vector2i(mPosition+mViewSize),MiniView).y/800;
+		}
 	}
 	if(scale>1)
 	{
@@ -237,6 +262,26 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				if((*it)->getHitBox(Vector2f(mPosition.x+5,mPosition.y+Height)).contains(Current.mouseButton.x,Current.mouseButton.y))
 				{
 					(*it)->setSelect(true);
+					if(dynamic_cast<UIButton*>(*it)!=0)
+					{
+						if((*it)->getName()=="Update")
+						{
+							update();
+						}
+						else if((*it)->getName()=="Clear")
+						{
+							unIniPlayer();
+							unIniUnit();
+							break;
+						}
+						else if((*it)->getName()=="Delete")
+						{
+							mDelete=true;
+							break;
+						}
+						
+						(*it)->handleEvent(Current,Vector2f(0,0));
+					}
 				}
 				else
 				{
@@ -276,6 +321,9 @@ void	Toolbar::unIniUnit()
 void	Toolbar::unIniPlayer()
 {
 	mCurrPlayer.unInitiate();
+	mUIItems.deactivateAll();
+	mUIItems.activate("zOther");
+	mUIItems.activate("zPlatform");
 }
 
 void	Toolbar::resize(RenderWindow&	window)
@@ -329,6 +377,9 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("Position y");
 		mUIItems.activate("zOther");
 		mUIItems.activate("zPlatform");
+		mUIItems.activate("Update");
+		mUIItems.activate("Clear");
+		mUIItems.activate("Delete");
 		char*	temp=new char[10];
 		string	NEW=TextureManager::getSpriteName(mCurrUnit.getObject()->getSprite());
 		itoa(mCurrUnit.getObject()->getPosition().x,temp,10);
@@ -452,6 +503,9 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("Position y");
 		mUIItems.activate("zOther");
 		mUIItems.activate("zPlatform");
+		mUIItems.activate("Update");
+		mUIItems.activate("Clear");
+		mUIItems.activate("Delete");
 		char*	temp=new char[10];
 		itoa(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition().x,temp,10);
 		dynamic_cast<UIText*>(mUIItems.getActivated("Name"))->setDefault(string("Player"));

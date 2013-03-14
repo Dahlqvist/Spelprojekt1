@@ -1,0 +1,38 @@
+31/1
+
+- Uppdaterar i princip alla ljudeffekter med någorlunda nya ljudvolymer (även om det är väldigt svårt att
+anpassa ljudvolymer när man inte har hört dem, ihop med alla andra, i själva spelet).
+
+- Några ytterligare ljudeffekter tillkom, t.ex en ny för att skjuta huvudet.
+
+- Ett lava ljud, två versioner.
+
+5/2
+
+- magnet_let_go_proto, ljud for nŠr magneterna slapper frŒn vŠggen.
+
+6/2
+
+- Dialogljud. Stix - Normal, ledsen, glad, arg. Meanix - Normal, glad, arg.
+- Någon slags syrljud. Typ.
+
+7/2
+
+- Gjorde en mapp med lite andra dialogljud, ett annat stuk på det som låter mer som... prat. Ni får kika och tycka till vilka som är bäst helt enkelt.
+- Helpbox-ljud. Gjorde 5 stycken. Så antingen kan man helt enkelt köra på ett ljud hela tiden eller om det går så kan man ju variera, kan ju låta ballt.
+
+12/2
+
+- La till "move_smoother_proto", som är EQad för att få bort många jobbiga frekvenser.
+- Klippte bort tystnaden från "dash_proto", "extend_proto", "general_death_proto", "head_stuck_proto", "head_stuck_proto_2", "jump_proto", "magnet_stuck_wall_proto",
+"shoot_head_proto", "shoot_head_proto_3" samt "split_proto".
+- La till "jump_proto_2", en annan variant på hoppljudet.
+
+20/2
+
+- La till "rocket_proto", finally.
+
+6/3
+
+- La till checkpointröstklippen.
+- La till "body_ensamble_proto", "anti_magnet_proto", "checkpoint_sound_proto".

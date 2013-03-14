@@ -42,7 +42,7 @@ private:
 	UIItemContainer	mUIItems;
 	Color			mBackground;
 	Vector2f		mSize,mPosition,mViewSize;
-	bool			mSelected,mNewPos;
+	bool			mSelected,mNewPos,mDelete;
 };
 
 #endif

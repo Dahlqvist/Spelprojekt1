@@ -189,6 +189,7 @@ void	Editor::eventHandler(const Event& Current)
 									}
 								}
 							}
+							mLevel.deleteItem(mLevel.getObjects()[i]);
 							mTools.setTargets(mLevel);
 							break;
 						}
@@ -209,20 +210,7 @@ void	Editor::eventHandler(const Event& Current)
 				}
 				else
 				{
-					if(mSelectedPlayer.isActive())
-					{
-						mTools.unIniUnit();
-						mTools.unIniPlayer();
-						mLevel.deletePlayer();
-						mSelectedPlayer.unInitiate();
-					}
-					else
-					{
-						mTools.unIniUnit();
-						mTools.unIniPlayer();
-						mLevel.deleteItem(mSelectedUnit.getObject());
-						mSelectedUnit.unInitiate();
-					}
+					deleteSelected();
 				}
 				mTools.setTargets(mLevel);
 			}
@@ -372,7 +360,7 @@ void	Editor::eventHandler(const Event& Current)
 
 bool	Editor::collide(UnitContainer&	Other)
 {
-	for(UnitVector::iterator it=mLevel.accessObjects().begin();it+1!=mLevel.accessObjects().end();it++)
+	for(UnitVector::iterator it=mLevel.accessObjects().begin();it!=mLevel.accessObjects().end();it++)
 	{
 		if(Other.getObject()!=(*it)
 			&&Other.getObject()->getSprite().getGlobalBounds().intersects((*it)->getSprite().getGlobalBounds())
@@ -429,5 +417,27 @@ void	Editor::setUnit(UnitContainer&	Cont)
 		mSelectedUnit.unInitiate();
 		mSelectedUnit.setPtr(Cont.getObject());
 		mSelectedPlayer.unInitiate();
+	}
+}
+
+void	Editor::deleteSelected()
+{
+	if(mSelectedPlayer.isActive())
+	{
+		mTools.unIniUnit();
+		mTools.unIniPlayer();
+		mLevel.deletePlayer();
+		mSelectedPlayer.unInitiate();
+	}
+	else
+	{
+		mTools.unIniUnit();
+		mTools.unIniPlayer();
+		if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+		{
+			mLevel.deleteItem(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser());
+		}
+		mLevel.deleteItem(mSelectedUnit.getObject());
+		mSelectedUnit.unInitiate();
 	}
 }

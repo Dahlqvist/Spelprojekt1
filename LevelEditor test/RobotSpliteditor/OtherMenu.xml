@@ -51,6 +51,12 @@
 		<Sprite>"Cloud"</Sprite>
 	</Object>	
 	<Object>
+		<Type>"Meanix"</Type>
+		<Sprite>"MeanixAni"</Sprite>
+		<Frames>8</Frames>
+		<Speed>60</Speed>
+	</Object>
+	<Object>
 		<Type>"Checkpoint"</Type>
 		<Sprite>"CheckpointAnim"</Sprite>
 			<Frames>5</Frames>

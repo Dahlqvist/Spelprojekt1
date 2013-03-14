@@ -54,6 +54,7 @@
     <ClCompile Include="LevelConstructor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ObjectLoader.cpp" />
+    <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIObjectMenu.cpp" />
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Toolbar.cpp" />
@@ -108,6 +109,7 @@
     <ClInclude Include="LevelBar.h" />
     <ClInclude Include="LevelConstructor.h" />
     <ClInclude Include="ObjectLoader.h" />
+    <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIObjectMenu.h" />
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Toolbar.h" />

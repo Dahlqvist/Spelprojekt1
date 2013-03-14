@@ -160,6 +160,9 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelSaver.h">
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -322,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp">
       <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
