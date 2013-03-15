@@ -594,7 +594,6 @@ void TextureManager::loadTexture()
 	mTextureMap["Dot"].loadFromFile("Texture/Menu/dot.png");
 	mTextureMap["Colon"].loadFromFile("Texture/Menu/colon.png");
 	mTextureMap["TimeFrame"].loadFromFile("Texture/Menu/Timeframe.png");
-
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

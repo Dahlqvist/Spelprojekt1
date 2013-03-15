@@ -162,11 +162,11 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					mHolder->mChange=true;
 				}
+				mSelected=false;
+				mHolder->mChange=true;
 				break;
 			}
 			i++;
-			mSelected=false;
-			mHolder->mChange=true;
 		}
 		if(!mHolder->mChange)
 		{

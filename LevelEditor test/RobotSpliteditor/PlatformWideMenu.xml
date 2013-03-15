@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Menu>
+	<Name>"Tiles: Wide and High"</Name>
+	<Size>
+		<x>190</x>
+		<y>340</y>
+	</Size>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile5"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"Tile7"</Sprite>
+	</Object>  
+  	<Object>
+	 <Type>"Platform</Type>
+	 <Sprite>"Break2"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform</Type>
+		<Sprite>"Break3"</Sprite>
+		</Object>
+	<Object>
+		<Type>"Platform</Type> 
+		<Sprite>"TileHigh"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileBreak"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Widea"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Wideb"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Widec"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Wided"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Widee"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL2Widef"</Sprite>
+	</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Wideg"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Wideh"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Widei"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Widej"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Widek"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Widel"</Sprite>
+</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL2Widem"</Sprite>
+	</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL3Widea"</Sprite>
+	</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL3Wideb"</Sprite>
+	</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL3Higha"</Sprite>
+	</Object>
+	 <Object> <Type>"Platform</Type> <Sprite>"TileL3Highb"</Sprite>
+	</Object>
+	<Object> <Type>"Platform</Type> <Sprite>"TileL3Highc"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL6Widea"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL6Wideb"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Platform</Type> 
+		<Sprite>"TileL6Widec"</Sprite>
+	</Object>
+
+	<Object>
+		<Type>"Platform</Type>
+		<Sprite>"TileL6Wided"</Sprite>
+	</Object>
+	 <Object>
+		<Type>"Platform</Type>
+		<Sprite>"TileL6Widee"</Sprite>
+	 </Object>
+	<Object>
+		<Type>"Platform</Type>
+		<Sprite>"TileL6Widef"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform</Type>
+		<Sprite>"TileL6Hihga"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform</Type>
+		<Sprite>"TileL6Hihgb"</Sprite>
+	</Object>
+  
+ </Menu>
+
