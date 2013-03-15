@@ -14,16 +14,21 @@ public:
 	virtual void countup();
 	virtual void endit();
 	void act();
+	void act2();
 private:
 	std::vector<Star*> mStars;
 	Star mExclMark;
 	Star mLights1;
 	Star mLights2;
 	Star mLights3;
+	Star mPolice;
+	Star mStix;
+	Star mStixSad;
+	Star mJudge;
 	sf::RenderWindow& mWindow;
 	bool mPlaying;
 	float mCounter, mTime;
-	sf::Sprite mBackground;
+	sf::Sprite mBackground, mBackground2;
 	sf::Color mColor;
 };
 

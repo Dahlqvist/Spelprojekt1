@@ -44,11 +44,17 @@ void TextureManager::loadTexture()
 	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
 
 	mTextureMap["CinemaBG3"].loadFromFile("Texture/Cinema/TempBackground.png");
+	mTextureMap["CinemaBG4"].loadFromFile("Texture/Cinema/rattssal.png");
 	mTextureMap["Excl"].loadFromFile("Texture/Cinema/utropstecken.png");
 	mTextureMap["PoliceLight"].loadFromFile("Texture/Cinema/polisljus_strip8.png");
+
+	mTextureMap["PoliceStill"].loadFromFile("Texture/Cinema/polis.png");
+	mTextureMap["StixSad"].loadFromFile("Texture/Cinema/StixSad.png");
+	mTextureMap["JudgeAni"].loadFromFile("Texture/Cinema/mirror_judge_animation_strip8.png");
 	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
+	mTextureMap["BackgroundR"].loadFromFile(/*filename.png*/"Texture/Background/BackgroundR.png");
 
 
 	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
