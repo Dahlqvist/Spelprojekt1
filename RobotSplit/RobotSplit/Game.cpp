@@ -58,6 +58,7 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
+	mBanor.push_back("Xml/RasmusIntro.xml");
 	mBanor.push_back("Xml/Bana1.xml");
 	mBanor.push_back("Xml/Bana2.xml");
 	mBanor.push_back("Xml/Bana3Ny.xml");
@@ -113,7 +114,7 @@ void Game::changeMap(int map)
 	{
 		mSecurityLevel=1;
 	}
-	else if(mlevel.getName()=="Bana1")
+	else if(mlevel.getName()=="IntroBana")
 	{
 		mStateInput.changeState("Bank");
 	}

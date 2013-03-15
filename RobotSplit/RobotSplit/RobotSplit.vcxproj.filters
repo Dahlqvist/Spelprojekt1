@@ -435,5 +435,8 @@
     <None Include="Xml\TutorialNy3.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Xml\RasmusIntro.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>
