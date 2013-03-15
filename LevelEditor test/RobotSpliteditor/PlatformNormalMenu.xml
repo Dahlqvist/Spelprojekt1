@@ -34,180 +34,180 @@
     <Sprite>"WoodBox"</Sprite>
   </Object>  
 	<Object> 
-		<Type>"Platform</Type>
+		<Type>"Platform"</Type>
 		<Sprite>"TileL1a"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1b"</Sprite>
 	</Object>
 	<Object>
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1c"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1d"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1e"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1f"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL1g"</Sprite>
 	</Object>
-	<Object> <Type>"Platform</Type> <Sprite>"TileL1h"</Sprite>
+	<Object> <Type>"Platform"</Type> <Sprite>"TileL1h"</Sprite>
 	</Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL1i"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL1i"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2a"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2a"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2b"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2b"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2c"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2c"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2d"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2d"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2e"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2e"</Sprite>
 </Object>
- <Object> <Type>"Platform</Type> <Sprite>"TileL2f"</Sprite>
+ <Object> <Type>"Platform"</Type> <Sprite>"TileL2f"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2g"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2g"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2h"</Sprite>
-</Object>
-
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2i"</Sprite>
-</Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2j"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2h"</Sprite>
 </Object>
 
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2k"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2i"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2l"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2j"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2m"</Sprite>
+
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2k"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2n"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2l"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2o"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2m"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2p"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2n"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL2q"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2o"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL3a"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2p"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL3b"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL2q"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL3c"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL3a"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL3d"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL3b"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL3e"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL3c"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4a"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL3d"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4b"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL3e"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4c"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4a"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4d"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4b"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4e"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4c"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL4f"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4d"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5a"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4e"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5b"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL4f"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5c"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5a"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5d"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5b"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5e"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5c"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL5f"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5d"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6a"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5e"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6b"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL5f"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6c"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6a"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6d"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6b"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6e"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6c"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6f"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6d"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6g"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6e"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6h"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6f"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6i"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6g"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6j"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6h"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6k"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6i"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6l"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6j"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6m"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6k"</Sprite>
 </Object>
- <Object> <Type>"Platform</Type> <Sprite>"TileL6n"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6l"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6o"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6m"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6p"</Sprite>
+ <Object> <Type>"Platform"</Type> <Sprite>"TileL6n"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6q"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6o"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Aa"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6p"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ab"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6q"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ac"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Aa"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ad"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ab"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ae"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ac"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Af"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ad"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ag"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ae"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ah"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Af"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ai"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ag"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Aj"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ah"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Ak"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ai"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Al"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Aj"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6Am"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Ak"</Sprite>
 </Object>
-	 <Object> <Type>"Platform</Type> <Sprite>"TileL6An"</Sprite>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Al"</Sprite>
+</Object>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6Am"</Sprite>
+</Object>
+	 <Object> <Type>"Platform"</Type> <Sprite>"TileL6An"</Sprite>
 	</Object>
 	<Object>
-		<Type>"Platform</Type>
+		<Type>"Platform"</Type>
 		<Sprite>"TileL6Aq"</Sprite>
 	</Object>
 
 	<Object>
-		<Type>"Platform</Type>
+		<Type>"Platform"</Type>
 		<Sprite>"TileL6Ao"</Sprite>
 	</Object>
 	<Object>
-		 <Type>"Platform</Type> 
+		 <Type>"Platform"</Type> 
 		 <Sprite>"TileL6Ap"</Sprite>
 	</Object>
   
