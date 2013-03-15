@@ -218,7 +218,9 @@ sfml-main.lib
     <None Include="Xml\Bana6Ny.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xml\RasmusIntro.xml" />
+    <None Include="Xml\RasmusIntro.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xml\TestSave.xml" />
     <None Include="Xml\Tutorial1.xml" />
     <None Include="Xml\Tutorial2.xml" />

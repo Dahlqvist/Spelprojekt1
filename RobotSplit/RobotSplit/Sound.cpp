@@ -47,6 +47,7 @@ void Sound::loadSound()
 	mBufferMap["MeanixTalkNormal"].loadFromFile("Sound/Meanix_speech_normal_1.wav");
 	mBufferMap["StixTalkNormal"].loadFromFile("Sound/Stix_speech_normal.wav");
 	mBufferMap["StixTalkAngry"].loadFromFile("Sound/Stix_speech_angry.wav");
+	mBufferMap["StixTalkSad"].loadFromFile("Sound/Stix_speech_sad.wav");
 	
 
 	mBufferMap["TriggerHelp"].loadFromFile("Sound/Ljud/helpbox_1.wav");
@@ -67,6 +68,7 @@ void Sound::loadSound()
 	mSoundMap["MeanixTalkNormal"].setBuffer(mBufferMap["MeanixTalkNormal"]);
 	mSoundMap["StixTalkNormal"].setBuffer(mBufferMap["StixTalkNormal"]);
 	mSoundMap["StixTalkAngry"].setBuffer(mBufferMap["StixTalkAngry"]);
+	mSoundMap["StixTalkSad"].setBuffer(mBufferMap["StixTalkSad"]);
 
 
 	mSoundMap["TriggerHelp"].setBuffer(mBufferMap["TriggerHelp"]);
