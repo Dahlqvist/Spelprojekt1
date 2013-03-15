@@ -25,7 +25,6 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Xml/Tutorial1.xml"),
 		mPlayer(mlevel.getPlayer()/* new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())*/),
 		BG(mlevel.getBackground()),
 		loops(0),
@@ -65,6 +64,8 @@ Game::Game():
 	mBanor.push_back("Xml/Bana4.xml");
 	mBanor.push_back("Xml/Bana5.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml");
+
+	changeMap(0);
 }
 
 Game::~Game()
