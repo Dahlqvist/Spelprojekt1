@@ -59,6 +59,7 @@ public:
 	virtual void deactivate(){};
 	virtual void reset(){};
 	virtual void setReset(){};
+	virtual	void setBehind(bool Behind){mBehind=Behind;}
 
 protected:
 	sf::Vector2f mSize, mOffset;

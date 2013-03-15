@@ -23,7 +23,7 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
 	Solid->addOption("Yes",true);
 	Solid->addOption("No",false);
-	UIDrop<bool>*Behined=new UIDrop<bool>("Behined Player",Color(255,255,255,255),Color(0,0,0,255),15);
+	UIDrop<bool>*Behined=new UIDrop<bool>("Behind Player",Color(255,255,255,255),Color(0,0,0,255),15);
 	Behined->addOption("Yes",true);
 	Behined->addOption("No",false);
 	UIDrop<bool>*Fade=new UIDrop<bool>("Fade In",Color(255,255,255,255),Color(0,0,0,255),15);
@@ -525,6 +525,8 @@ void	Toolbar::setUIActives()
 		{
 			mUIItems.activate("Solid");
 			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
+			mUIItems.activate("Behind Player");
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Behind Player"))->setCurrent(mCurrUnit.getObject()->isBehind());
 		}
 	}
 	else if(mCurrPlayer.isActive())
@@ -596,6 +598,11 @@ void	Toolbar::update()
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setFadeIn(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->getValue());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setVisible(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->getValue());
+		}
+		else
+		{
+			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
+			mCurrUnit.getObject()->setBehind(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Behind Player"))->getValue());
 		}
 	}
 }

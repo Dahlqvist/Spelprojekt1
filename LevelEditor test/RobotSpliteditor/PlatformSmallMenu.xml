@@ -6,23 +6,23 @@
 		<y>200</y>
 	</Size>
 	<Object>
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"Tile10S"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL2Sa"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL2Sb"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL3Sa"</Sprite>
 	</Object>
 	<Object> 
-		<Type>"Platform</Type> 
+		<Type>"Platform"</Type> 
 		<Sprite>"TileL3Sb"</Sprite>
 	</Object>
  

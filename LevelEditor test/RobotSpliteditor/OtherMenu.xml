@@ -70,5 +70,21 @@
         <y>6</y>
       </Offset>
 	</Object>
+	<Object> 
+		<Type>"Unit"</Type> 
+		<Sprite>"RailL1a"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Unit"</Type> 
+		<Sprite>"RailL1b"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Unit"</Type> 
+		<Sprite>"RailL1c"</Sprite>
+	</Object>
+	<Object> 
+		<Type>"Unit"</Type> 
+		<Sprite>"RailL1d"</Sprite>
+	</Object>
 </Menu>
 
