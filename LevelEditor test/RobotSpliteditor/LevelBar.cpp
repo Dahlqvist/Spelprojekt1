@@ -78,11 +78,11 @@ void	LevelBar::execute()
 		break;
 	case	Save:
 		Saver.saveLevel(*mLevel);
-		Saver.setFilename(filename);
+		Saver.setFilename("Saved/"+filename);
 		Saver.createFile();
 		break;
 	case	Load:
-		mLevel->loadNewLevel(filename+".xml");
+		mLevel->loadNewLevel("Load/"+filename+".xml");
 		break;
 	case	Name:
 		mLevel->setNewName(filename);

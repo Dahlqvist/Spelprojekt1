@@ -26,7 +26,7 @@
       </Size>
     </Unit>
 
-    <Unit>
+    <!--<Unit>
       <Type>"Light"</Type>
       <SpriteName>"BankLight"</SpriteName>
       <Position>
@@ -35,7 +35,7 @@
       </Position>
       <Solid>false</Solid>
       <Behind>true</Behind>
-    </Unit>
+    </Unit>-->
     
     <Unit>
       <Type>"DialogueBox"</Type>
