@@ -71,28 +71,28 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(new UIText("SpriteOff","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 
 	//Adds the menus
-	ObjectLoader	Loader("OtherMenu.xml");
+	ObjectLoader	Loader("Load/OtherMenu.xml");
 	UIObjectMenu *meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	//All platforms
-	Loader.loadFile("PlatformMenu.xml");
+	Loader.loadFile("Load/PlatformMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	mUIItems.getActivated("zOther")->setSelect(true);
 	//64x64 tiles
-	Loader.loadFile("PlatformNormalMenu.xml");
+	Loader.loadFile("Load/PlatformNormalMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	//64x32 and 32x64 tiles
-	Loader.loadFile("PlatformWideMenu.xml");
+	Loader.loadFile("Load/PlatformWideMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	//32x32 tiles
-	Loader.loadFile("PlatformSmallMenu.xml");
+	Loader.loadFile("Load/PlatformSmallMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	//Large platforms
-	Loader.loadFile("PlatformBigMenu.xml");
+	Loader.loadFile("Load/PlatformBigMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 }
