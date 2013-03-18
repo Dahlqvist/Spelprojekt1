@@ -69,3 +69,9 @@ bool	HighScoreEntry::operator<(const HighScoreEntry&	other)const
 	}
 	return	ReturnBool;
 }
+
+
+bool	HighScoreEntry::operator>(const	HighScoreEntry& other)const
+{
+	return other<(*this);
+}

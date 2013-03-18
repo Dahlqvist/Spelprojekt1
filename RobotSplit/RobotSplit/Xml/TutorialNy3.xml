@@ -51,17 +51,17 @@
 		</Unit>
     <Unit>
       <Type>"Door"</Type>
-      <SpriteName>"BankSign"</SpriteName>
+      <SpriteName>"BankExit"</SpriteName>
       <Position>
-        <x>1180</x>
-        <y>380</y>
+        <x>1166</x>
+        <y>346</y>
       </Position>
       <Size>
         <x>50</x>
         <y>100</y>
       </Size>
       <Offset>
-        <x>50</x>
+        <x>40</x>
         <y>0</y>
       </Offset>
       <Behind>true</Behind>
