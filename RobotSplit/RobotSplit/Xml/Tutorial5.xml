@@ -800,7 +800,7 @@
         <y>480</y>
       </Position>
     </Unit>
-    <Unit>
+    <!--<Unit>
       <Type>"Light"</Type>
       <SpriteName>"BankLight"</SpriteName>
       <Position>
@@ -809,7 +809,7 @@
       </Position>
       <Solid>false</Solid>
       <Behind>true</Behind>
-    </Unit>
+    </Unit>-->
     <Unit>
       <Type>"Platform"</Type>
       <SpriteName>"BankBalcony"</SpriteName>
