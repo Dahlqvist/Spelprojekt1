@@ -165,6 +165,9 @@
     <ClCompile Include="BankMovie.cpp">
       <Filter>Source Files\Menu\Cinematics</Filter>
     </ClCompile>
+    <ClCompile Include="TriggedAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -336,6 +339,9 @@
     <ClInclude Include="HighScoreEntry.h" />
     <ClInclude Include="BankMovie.h">
       <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggedAnimation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
