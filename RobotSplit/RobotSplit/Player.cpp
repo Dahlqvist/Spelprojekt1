@@ -110,7 +110,8 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 	}
 	else
 	{
-		sf::Vector2f mVec((float)sf::Mouse::getPosition(Window).x, (float)sf::Mouse::getPosition(Window).y);
+//		sf::Vector2f mVec((float)sf::Mouse::getPosition(Window).x, (float)sf::Mouse::getPosition(Window).y);
+		sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
 		Window.draw(*mCourser->getSprite(mVec));
 
 		if(mFeet.getUnit()!=0 && mFeet.getAttached()==false)
