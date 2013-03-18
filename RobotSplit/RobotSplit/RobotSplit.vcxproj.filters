@@ -386,7 +386,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tutorial8.xml" />
     <None Include="Xml\Bana1.xml">
       <Filter>Header Files\Banor</Filter>
     </None>

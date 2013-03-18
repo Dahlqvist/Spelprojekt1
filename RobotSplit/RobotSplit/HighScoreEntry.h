@@ -15,6 +15,7 @@ public:
 	int		getTime()const;
 	tm		getDate()const;
 	bool	operator<(const	HighScoreEntry&)const;
+	bool	operator>(const	HighScoreEntry&)const;
 private:
 	int		mTimeMilliSecs;
 	string	mName;
