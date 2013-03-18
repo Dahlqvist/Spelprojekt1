@@ -227,7 +227,7 @@ void Game::input()
 		//	mWindow.setView(sf::View(sf::FloatRect(sf::Vector2f(0,0),sf::Vector2f(mWindow.getSize()))));
 
 			moveCamera();
-			sf::Vector2f mVec=mWindow.convertCoords(sf::Mouse::getPosition());
+			sf::Vector2f mVec=mWindow.convertCoords(sf::Mouse::getPosition(mWindow));
 			mPlayer->shootHead(sf::Vector2f(mVec));
 			TestTimer.restart();
 		}
