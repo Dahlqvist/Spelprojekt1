@@ -53,7 +53,7 @@
     <Unit>
       <Type>Trigger</Type>
       <Position>
-        <x>128</x>
+        <x>132</x>
         <y>473</y>
       </Position>
       <SpriteName>TriggerTutorial</SpriteName>
