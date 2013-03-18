@@ -11,7 +11,7 @@ public:
 	Meanix(sf::Vector2f, std::string, std::string, Player*);
 	void update();
 	void facingStix();
-
+	void setPosition(sf::Vector2f position);
 	sf::Sprite getSprite(){return mAni->getSprite();};
 private:
 	Animation* mAni;
@@ -21,6 +21,4 @@ private:
 	bool mFacingRight;
 	float move;
 };
-
-
 #endif

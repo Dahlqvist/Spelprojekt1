@@ -20,12 +20,10 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	:mPosition(Position),mSize(Size),mBackground(BackColor),mViewSize(MiniViewSize)
 	,mCurrUnit(),mCurrPlayer(),mNewPos(false),mChange(false),mDelete(false)
 {
-	ObjectLoader	Loader("OtherMenu.xml");
-	UIObjectMenu *meny=Loader.getObject(this);
 	UIDrop<bool>*Solid=new UIDrop<bool>("Solid",Color(255,255,255,255),Color(0,0,0,255),15);
 	Solid->addOption("Yes",true);
 	Solid->addOption("No",false);
-	UIDrop<bool>*Behined=new UIDrop<bool>("Behined Player",Color(255,255,255,255),Color(0,0,0,255),15);
+	UIDrop<bool>*Behined=new UIDrop<bool>("Behind Player",Color(255,255,255,255),Color(0,0,0,255),15);
 	Behined->addOption("Yes",true);
 	Behined->addOption("No",false);
 	UIDrop<bool>*Fade=new UIDrop<bool>("Fade In",Color(255,255,255,255),Color(0,0,0,255),15);
@@ -71,11 +69,32 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	mUIItems.accessInactive().insert(new UIText("Range of visibility","",true,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("SpriteOn","",false,Color(255,255,255,255),Color(0,0,0,255),15));
 	mUIItems.accessInactive().insert(new UIText("SpriteOff","",false,Color(255,255,255,255),Color(0,0,0,255),15));
+
+	//Adds the menus
+	ObjectLoader	Loader("OtherMenu.xml");
+	UIObjectMenu *meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
-	Loader.loadFile("PlatFormMenu.xml");
+	//All platforms
+	Loader.loadFile("PlatformMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
 	mUIItems.getActivated("zOther")->setSelect(true);
+	//64x64 tiles
+	Loader.loadFile("PlatformNormalMenu.xml");
+	meny=Loader.getObject(this);
+	mUIItems.accessActive().insert(meny);
+	//64x32 and 32x64 tiles
+	Loader.loadFile("PlatformWideMenu.xml");
+	meny=Loader.getObject(this);
+	mUIItems.accessActive().insert(meny);
+	//32x32 tiles
+	Loader.loadFile("PlatformSmallMenu.xml");
+	meny=Loader.getObject(this);
+	mUIItems.accessActive().insert(meny);
+	//Large platforms
+	Loader.loadFile("PlatformBigMenu.xml");
+	meny=Loader.getObject(this);
+	mUIItems.accessActive().insert(meny);
 }
 
 Toolbar::~Toolbar(void)
@@ -229,7 +248,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 			break;
 		}
 	}
-	UISet::iterator	it;
+	UISet::iterator it=mUIItems.accessActive().begin();
 	switch(Current.type)
 	{
 	case sf::Event::EventType::KeyPressed:
@@ -254,6 +273,7 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				}
 				else
 				{
+					Height+=(*it)->getHitBox(Vector2f()).height;
 					(*it)->setSelect(false);
 				}
 			}
@@ -287,8 +307,8 @@ void	Toolbar::eventHandle(const	Event&	Current)
 				{
 					(*it)->setSelect(false);
 				}
+				Height+=(*it)->getHitBox(Vector2f()).height;
 			}
-			Height+=(*it)->getHitBox(Vector2f()).height;
 		}
 		break;
 	default:
@@ -315,7 +335,11 @@ void	Toolbar::unIniUnit()
 	mCurrUnit.unInitiate();
 	mUIItems.deactivateAll();
 	mUIItems.activate("zOther");
-	mUIItems.activate("zPlatform");
+	mUIItems.activate("zPlatforms");
+	mUIItems.activate("zPlatforms: Big");
+	mUIItems.activate("zTiles: Normal");
+	mUIItems.activate("zTiles: Wide and High");
+	mUIItems.activate("zTiles: Small");
 }
 
 void	Toolbar::unIniPlayer()
@@ -323,7 +347,11 @@ void	Toolbar::unIniPlayer()
 	mCurrPlayer.unInitiate();
 	mUIItems.deactivateAll();
 	mUIItems.activate("zOther");
-	mUIItems.activate("zPlatform");
+	mUIItems.activate("zPlatforms");
+	mUIItems.activate("zPlatforms: Big");
+	mUIItems.activate("zTiles: Normal");
+	mUIItems.activate("zTiles: Wide and High");
+	mUIItems.activate("zTiles: Small");
 }
 
 void	Toolbar::resize(RenderWindow&	window)
@@ -376,7 +404,11 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("Position x");
 		mUIItems.activate("Position y");
 		mUIItems.activate("zOther");
-		mUIItems.activate("zPlatform");
+		mUIItems.activate("zPlatforms");
+		mUIItems.activate("zPlatforms: Big");
+		mUIItems.activate("zTiles: Normal");
+		mUIItems.activate("zTiles: Wide and High");
+		mUIItems.activate("zTiles: Small");
 		mUIItems.activate("Update");
 		mUIItems.activate("Clear");
 		mUIItems.activate("Delete");
@@ -493,6 +525,8 @@ void	Toolbar::setUIActives()
 		{
 			mUIItems.activate("Solid");
 			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->setCurrent(mCurrUnit.getObject()->isSolid());
+			mUIItems.activate("Behind Player");
+			dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Behind Player"))->setCurrent(mCurrUnit.getObject()->isBehind());
 		}
 	}
 	else if(mCurrPlayer.isActive())
@@ -502,7 +536,11 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("Position x");
 		mUIItems.activate("Position y");
 		mUIItems.activate("zOther");
-		mUIItems.activate("zPlatform");
+		mUIItems.activate("zPlatforms");
+		mUIItems.activate("zPlatforms: Big");
+		mUIItems.activate("zTiles: Normal");
+		mUIItems.activate("zTiles: Wide and High");
+		mUIItems.activate("zTiles: Small");
 		mUIItems.activate("Update");
 		mUIItems.activate("Clear");
 		mUIItems.activate("Delete");
@@ -560,6 +598,11 @@ void	Toolbar::update()
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setFadeIn(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->getValue());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setVisible(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->getValue());
+		}
+		else
+		{
+			mCurrUnit.getObject()->setSolid(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Solid"))->getValue());
+			mCurrUnit.getObject()->setBehind(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Behind Player"))->getValue());
 		}
 	}
 }

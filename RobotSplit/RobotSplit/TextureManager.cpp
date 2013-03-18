@@ -27,7 +27,7 @@ void TextureManager::internalClear()
 void TextureManager::loadTexture()
 {
 	//Cinematics
-	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_winnig_strip6.png");
+	mTextureMap["StixWalk"].loadFromFile("Texture/Cinema/stix_fullanimation_strip8_dark.png");
 	mTextureMap["StixExt"].loadFromFile("Texture/Cinema/stix_hos_meanix_animation_strip17.png");
 	mTextureMap["StixExt2"].loadFromFile("Texture/Cinema/reverse_stix_hos_meanix_animation_strip17.png");
 	mTextureMap["StixExtStill"].loadFromFile("Texture/Cinema/stix_hos_meanix.png");
@@ -36,18 +36,25 @@ void TextureManager::loadTexture()
 	mTextureMap["Door2Open"].loadFromFile("Texture/Cinema/Office_Door_Open.png");
 	mTextureMap["Door2Close"].loadFromFile("Texture/Cinema/Office_Door_close.png");
 	
-	
 	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
 	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/bankdirektör_animation8.png");
 	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
-	
 
 	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
 	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
-	
+
+	mTextureMap["CinemaBG3"].loadFromFile("Texture/Cinema/TempBackground.png");
+	mTextureMap["CinemaBG4"].loadFromFile("Texture/Cinema/rattssal.png");
+	mTextureMap["Excl"].loadFromFile("Texture/Cinema/utropstecken.png");
+	mTextureMap["PoliceLight"].loadFromFile("Texture/Cinema/polisljus_strip8.png");
+
+	mTextureMap["PoliceStill"].loadFromFile("Texture/Cinema/polis.png");
+	mTextureMap["StixSad"].loadFromFile("Texture/Cinema/StixSad.png");
+	mTextureMap["JudgeAni"].loadFromFile("Texture/Cinema/mirror_judge_animation_strip8.png");
 	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
+	mTextureMap["BackgroundR"].loadFromFile(/*filename.png*/"Texture/Background/BackgroundR.png");
 
 
 	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
@@ -400,7 +407,11 @@ void TextureManager::loadTexture()
 	mTextureMap["HouseEdge2"].loadFromFile("Texture/Tutorials/Boulding_Board_End_R_Hue.png");
 
 	mTextureMap["TutorialWideTile"].loadFromFile("Texture/Tutorials/tile.png");
+	mTextureMap["TutorialHouseTile"].loadFromFile("Texture/Tutorials/64x32 tile.png");
 	mTextureMap["TutorialBigTile"].loadFromFile("Texture/Tutorials/tile2.png");
+	mTextureMap["TutorialSpecielTile1"].loadFromFile("Texture/Tutorials/new_tile.png");
+	mTextureMap["TutorialSpecielTile2"].loadFromFile("Texture/Tutorials/new_tile2.png");
+	mTextureMap["TutorialSpecielTile3"].loadFromFile("Texture/Tutorials/new_tile3.png");
 
 	mTextureMap["HelpSplit"].loadFromFile("Texture/Tutorials/Help/radio_help_1.png");
 	mTextureMap["HelpShift"].loadFromFile("Texture/Tutorials/Help/radio_help_2.png");
@@ -594,7 +605,6 @@ void TextureManager::loadTexture()
 	mTextureMap["Dot"].loadFromFile("Texture/Menu/dot.png");
 	mTextureMap["Colon"].loadFromFile("Texture/Menu/colon.png");
 	mTextureMap["TimeFrame"].loadFromFile("Texture/Menu/Timeframe.png");
-
 }
 
 const sf::Texture TextureManager::getTexture(std::string texture)

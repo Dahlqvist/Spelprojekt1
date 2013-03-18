@@ -132,7 +132,7 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 						{
 							play = new Player(Vector2f(0,0));
 						}
-						mHolder->setUnit(new Meanix(Vector2f(0,0),play));
+						mHolder->setUnit(new Meanix(Vector2f(0,0),"MeanixAni","MeanixAniL",play));
 					}
 					else
 					{
@@ -162,11 +162,11 @@ void	UIObjectMenu::handleEvent(const sf::Event& Current,Vector2f	Position)
 					}
 					mHolder->mChange=true;
 				}
+				mSelected=false;
+				mHolder->mChange=true;
 				break;
 			}
 			i++;
-			mSelected=false;
-			mHolder->mChange=true;
 		}
 		if(!mHolder->mChange)
 		{

@@ -90,6 +90,7 @@ sfml-main.lib
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BankMovie.cpp" />
     <ClCompile Include="BrainMagnet.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -148,6 +149,7 @@ sfml-main.lib
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BankMovie.h" />
     <ClInclude Include="BrainMagnet.h" />
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Collision.h" />
@@ -214,6 +216,9 @@ sfml-main.lib
     <None Include="Xml\Bana4.xml" />
     <None Include="Xml\Bana5.xml" />
     <None Include="Xml\Bana6Ny.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xml\RasmusIntro.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Xml\TestSave.xml" />

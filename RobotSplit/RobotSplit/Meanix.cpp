@@ -74,3 +74,9 @@ void Meanix::facingStix()
 		mAni=&mLeft;
 	}
 }
+
+void Meanix::setPosition(sf::Vector2f position)
+{
+	mPosition=position;
+	mAni->setPosition(position);
+}

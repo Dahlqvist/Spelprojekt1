@@ -25,7 +25,6 @@
 
 Game::Game():
 		mStateInput(StateInput::getInstance()),
-		mlevel("Xml/Tutorial1.xml"),
 		mPlayer(mlevel.getPlayer()/* new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())*/),
 		BG(mlevel.getBackground()),
 		loops(0),
@@ -39,7 +38,7 @@ Game::Game():
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
-	Music::loadMusic("Music/level_1.wav");
+	//Music::loadMusic("Music/tutorial_2.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
 	//	mSecurityLevel=0;
@@ -59,12 +58,15 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
+	mBanor.push_back("Xml/RasmusIntro.xml");
 	mBanor.push_back("Xml/Bana1.xml");
 	mBanor.push_back("Xml/Bana2.xml");
 	mBanor.push_back("Xml/Bana3Ny.xml");
 	mBanor.push_back("Xml/Bana4.xml");
 	mBanor.push_back("Xml/Bana5.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml");
+
+	changeMap(0);
 }
 
 Game::~Game()
@@ -112,6 +114,10 @@ void Game::changeMap(int map)
 	{
 		mSecurityLevel=1;
 	}
+	else if(mlevel.getName()=="IntroBana")
+	{
+		mStateInput.changeState("Bank");
+	}
 	else
 	{
 		mSecurityLevel=2;
@@ -128,6 +134,11 @@ void Game::setMusic()
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/tutorial_2.wav");
+	}
+	else if (mlevel.getName()=="Tutorial5")
+	{
+		Music::stopMusic();
+		Music::loadMusic("Music/bank_1.wav");
 	}
 	else if (mlevel.getName()=="Bana1")
 	{
@@ -237,6 +248,11 @@ void Game::input()
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
 		{
 			Game::changeMap(1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		{
+			mStateInput.changeState("Bank");
 			TestTimer.restart();
 		}
 		//runCollisions(Objects.getUnits(), *mPlayer);
