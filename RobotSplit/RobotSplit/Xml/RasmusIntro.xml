@@ -311,7 +311,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntroa&quot;</SpriteName>
 			<Position>
 				<x>320</x>
 				<y>704</y>
@@ -319,7 +319,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntrob&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>768</y>
@@ -343,7 +343,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntroc&quot;</SpriteName>
 			<Position>
 				<x>640</x>
 				<y>768</y>
@@ -367,7 +367,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntrob&quot;</SpriteName>
 			<Position>
 				<x>960</x>
 				<y>768</y>
@@ -375,7 +375,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntroc&quot;</SpriteName>
 			<Position>
 				<x>1024</x>
 				<y>768</y>
@@ -399,7 +399,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntrob&quot;</SpriteName>
 			<Position>
 				<x>1408</x>
 				<y>768</y>
@@ -407,7 +407,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntroc&quot;</SpriteName>
 			<Position>
 				<x>1472</x>
 				<y>768</y>
@@ -431,7 +431,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntrob&quot;</SpriteName>
 			<Position>
 				<x>1920</x>
 				<y>768</y>
@@ -519,7 +519,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile1&quot;</SpriteName>
+			<SpriteName>&quot;TileIntrod&quot;</SpriteName>
 			<Position>
 				<x>2496</x>
 				<y>768</y>
@@ -527,7 +527,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Higha&quot;</SpriteName>
+			<SpriteName>&quot;TileIntroHigh&quot;</SpriteName>
 			<Position>
 				<x>2528</x>
 				<y>640</y>

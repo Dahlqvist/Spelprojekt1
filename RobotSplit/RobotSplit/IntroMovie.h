@@ -29,7 +29,7 @@ private:
 	Star mMeanix;
 	Star mMeanixStill;
 	sf::RenderWindow& mWindow;
-	bool mPlaying;
+	bool mPlaying, mTalk;
 	float mCounter, mDia;
 	sf::Sprite mBackground, mBackground2;
 };

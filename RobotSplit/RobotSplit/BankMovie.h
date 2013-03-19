@@ -15,6 +15,7 @@ public:
 	virtual void endit();
 	void act();
 	void act2();
+	void act3();
 private:
 	std::vector<Star*> mStars;
 	Star mExclMark;
@@ -22,7 +23,11 @@ private:
 	Star mLights2;
 	Star mLights3;
 	Star mPolice;
+	Star mPolice2;
+	Star mPoliceWalk;
+	Star mPoliceWalk2;
 	Star mStix;
+	Star mStixWalk;
 	Star mStixSad;
 	Star mJudge;
 	sf::RenderWindow& mWindow;

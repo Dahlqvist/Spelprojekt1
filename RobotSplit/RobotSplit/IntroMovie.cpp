@@ -3,9 +3,9 @@
 IntroMovie::IntroMovie():
 mWindow(Window::getWindow()),
 	mStixWalk(Animation("StixWalk", 100, 8), sf::Vector2f(0, 540), true, true),
-	mStixExt(Animation("StixExt", 100, 17), sf::Vector2f(0, 0), false, false),
+	mStixExt(Animation("StixExt", 70, 17), sf::Vector2f(0, 0), false, false),
 	mStixExtStill(Animation("StixExtStill", 100, 1), sf::Vector2f(510, 577), false, false),
-	mStixJumpDown(Animation("StixExt2", 100, 17), sf::Vector2f(510, 577), false, false),
+	mStixJumpDown(Animation("StixExt2", 70, 17), sf::Vector2f(510, 577), false, false),
 	mDoorOpen(Animation("DoorOpen", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoorClose(Animation("DoorClose", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
@@ -37,6 +37,7 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mMeanix);
 	mStars.push_back(&mMeanixStill);
 	Music::loadMusic("Music/tutorial_3.wav");
+	mTalk=false;
 	mDia=0;
 }
 
@@ -148,13 +149,17 @@ void IntroMovie::update()
 				if(mCounter-2==i)
 				{
 					mDialogs[i]->activate();
-					if(i%2==1)
+					if(i%2==1 && mTalk==false)
 					{
 						Sound::playSound("StixTalkNormal");
+						Sound::stopSound("MeanixTalkNormal");
+						mTalk=true;
 					}
-					else
+					else if(mTalk==false)
 					{	
 						Sound::playSound("MeanixTalkNormal");
+						Sound::stopSound("StixTalkNormal");
+						mTalk=true;
 					}
 				}
 				else
@@ -220,7 +225,7 @@ void IntroMovie::countup()
 	}
 	else
 	{
-		
+		mTalk=false;
 	}
 }
 
