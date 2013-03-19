@@ -14,25 +14,17 @@
 		<Frames>16</Frames>
 		<Speed>60</Speed>
 	</Object>
+	<Object>
+		<Type>"Lava"</Type>
+		<Sprite>"LavaNoSides"</Sprite>
+	</Object>
 	  <Object>
 		<Type>"Door"</Type>
 		<Sprite>"BankSign"</Sprite>
 	  </Object>
 	  <Object>
-		<Type>"DialogueBox"</Type>
-		<Sprite>"HelpDialogue1"</Sprite>
-	  </Object>
-	  <Object>
-		<Type>"DialogueBox"</Type>
-		<Sprite>"HelpDialogue2"</Sprite>
-	  </Object>
-	  <Object>
-		<Type>"DialogueBox"</Type>
-		<Sprite>"HelpDialogue3"</Sprite>
-	  </Object>
-	  <Object>
-		<Type>"DialogueBox"</Type>
-		<Sprite>"HelpDialogue4"</Sprite>
+		<Type>"Door"</Type>
+		<Sprite>"Exit"</Sprite>
 	  </Object>
 	  <Object>
 		<Type>"Platform"</Type>

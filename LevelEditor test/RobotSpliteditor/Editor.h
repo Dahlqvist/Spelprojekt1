@@ -10,6 +10,7 @@
 #include "Container.h"
 #include "Toolbar.h"
 #include "LevelBar.h"
+#include "GameTimer.h"
 #include <SFML/Window/WindowHandle.hpp>
 
 typedef	Container<Unit>		UnitContainer;
@@ -31,6 +32,7 @@ public:
 	bool				collide(UnitContainer&);
 	bool				collide(PlayerContainer&);
 private:
+	GameTimer			mMouseHoldTimer;
 	RenderWindow		mWindow;
 	LevelConstructor	mLevel;
 	UnitContainer		mSelectedUnit;

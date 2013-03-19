@@ -385,6 +385,8 @@ void TextureManager::loadTexture()
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
+	mTextureMap["LavaNoSides"].loadFromFile("Texture/Enviroment/ny_lava_mitt.png");
+
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 	mTextureMap["MeanixAniL"].loadFromFile("Texture/Units/Mirror_Meanix_idleanimation_strip8_dark.png");

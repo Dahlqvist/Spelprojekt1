@@ -3,20 +3,11 @@
 	<Name>&quot;Test Bana&quot;</Name>
 	<Backgrounds>
 		<Background>
-			<SpriteName>&quot;Bana3_bg1&quot;</SpriteName>
+			<SpriteName>&quot;BackgroundBana6&quot;</SpriteName>
 			<Frames>1</Frames>
 			<Speed>120</Speed>
 			<Position>
 				<x>0</x>
-				<y>0</y>
-			</Position>
-		</Background>
-		<Background>
-			<SpriteName>&quot;Bana3_bg2&quot;</SpriteName>
-			<Frames>1</Frames>
-			<Speed>120</Speed>
-			<Position>
-				<x>640</x>
 				<y>0</y>
 			</Position>
 		</Background>
@@ -119,8 +110,8 @@
 			</Position>
 			<SpriteName>&quot;CheckpointAnim&quot;</SpriteName>
 			<Size>
-				<x>192</x>
-				<y>352</y>
+				<x>40</x>
+				<y>58</y>
 			</Size>
 			<Offset>
 				<x>12</x>
@@ -129,7 +120,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Ao&quot;</SpriteName>
+			<SpriteName>&quot;TileL6p&quot;</SpriteName>
 			<Position>
 				<x>64</x>
 				<y>64</y>
@@ -141,7 +132,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Ap&quot;</SpriteName>
+			<SpriteName>&quot;TileL6o&quot;</SpriteName>
 			<Position>
 				<x>128</x>
 				<y>64</y>
@@ -405,7 +396,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Ag&quot;</SpriteName>
+			<SpriteName>&quot;TileL6q&quot;</SpriteName>
 			<Position>
 				<x>928</x>
 				<y>576</y>
@@ -621,8 +612,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>256</x>
-				<y>704</y>
+				<x>0</x>
+				<y>0</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -636,8 +627,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>320</x>
-				<y>704</y>
+				<x>0</x>
+				<y>0</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -651,8 +642,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>384</x>
-				<y>704</y>
+				<x>0</x>
+				<y>0</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -691,7 +682,7 @@
 			</Position>
 			<Size>
 				<x>1216</x>
-				<y>0</y>
+				<y>800</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -699,7 +690,7 @@
 			<Type>&quot;LaserDeactivator&quot;</Type>
 			<Position>
 				<x>800</x>
-				<y>264</y>
+				<y>248</y>
 			</Position>
 			<SpriteName>&quot;YellowButtonAni&quot;</SpriteName>
 			<Id>&quot;LaserTriggerYellow&quot;</Id>
@@ -745,7 +736,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile4&quot;</SpriteName>
+			<SpriteName>&quot;TileL6i&quot;</SpriteName>
 			<Position>
 				<x>192</x>
 				<y>576</y>
