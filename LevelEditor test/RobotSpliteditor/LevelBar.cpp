@@ -7,11 +7,11 @@
 
 enum	Type
 {
-	Load,Save,Background,Name,ClearUnits,ClearBackground
+	Load,Save,Background,Name,ClearUnits,ClearBackground,SetSnap
 };
 
 LevelBar::LevelBar(LevelConstructor* LEVEL,Vector2f Position,Vector2f Size,Color BackColor)
-	:mPosition(Position),mSize(Size),mBackground(BackColor)
+	:mPosition(Position),mSize(Size),mBackground(BackColor),mSnapTo(1)
 {
 	mLevel=LEVEL;
 	UIDrop<Type>*Solid=new UIDrop<Type>("Action",Color(255,255,255,255),Color(0,0,0,255),20,2);
@@ -21,6 +21,7 @@ LevelBar::LevelBar(LevelConstructor* LEVEL,Vector2f Position,Vector2f Size,Color
 	Solid->addOption("Level Name",Name);
 	Solid->addOption("Clear Units",ClearUnits);
 	Solid->addOption("Clear Background",ClearBackground);
+	Solid->addOption("Set Snaping Size",SetSnap);
 	mUIItems.accessActive().insert(Solid);
 	mUIItems.accessActive().insert(new UIText("NewName","TestBana",true,Color(255,255,255,255),Color(0,0,0,255),20));
 	mUIItems.accessActive().insert(new UIButton("Update",20));
@@ -86,6 +87,9 @@ void	LevelBar::execute()
 		break;
 	case	Name:
 		mLevel->setNewName(filename);
+		break;
+	case	SetSnap:
+		mSnapTo=atoi(filename.c_str());
 		break;
 	case	ClearUnits:
 		mLevel->deletePlayer();
@@ -156,6 +160,7 @@ void	LevelBar::eventHandle(const	Event&	Current)
 				{
 					Selected->handleEvent(Current,Vector2f(mPosition.x+Width,mPosition.y+5));
 					mUIItems.activate("NewName");
+					char*	size=new char[10];
 					if(dynamic_cast<UIDrop<Type>*>(Selected)!=0)
 					{
 						switch(dynamic_cast<UIDrop<Type>*>(Selected)->getValue())
@@ -165,6 +170,10 @@ void	LevelBar::eventHandle(const	Event&	Current)
 							break;
 						case	Background:
 							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(mLevel->getBackgroundWrap().getName());
+							break;
+						case	SetSnap:
+							itoa(mSnapTo,size,10);
+							dynamic_cast<UIText*>(mUIItems.getActivated("NewName"))->setDefault(string(size));
 							break;
 						case	ClearBackground:
 							mUIItems.deactivate("NewName");
@@ -177,6 +186,7 @@ void	LevelBar::eventHandle(const	Event&	Current)
 							break;
 						}
 					}
+					delete size;
 				}
 				else
 				{
@@ -227,4 +237,9 @@ bool	LevelBar::isSelected()const
 void	LevelBar::resize(sf::RenderWindow&	window)
 {
 	mSize.x=window.getSize().x;
+}
+
+Uint8	LevelBar::getSnap()const
+{
+	return mSnapTo;
 }

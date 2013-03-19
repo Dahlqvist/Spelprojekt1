@@ -40,6 +40,7 @@
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Trigger.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
     <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitManager.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Timer.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Trigger.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
     <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitManager.h" />

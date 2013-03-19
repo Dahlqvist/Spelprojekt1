@@ -30,7 +30,7 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;House8&quot;</SpriteName>
+			<SpriteName>&quot;House7&quot;</SpriteName>
 			<Position>
 				<x>832</x>
 				<y>480</y>
@@ -49,24 +49,24 @@
 			</Size>
 			<Behind>true</Behind>
 		</Unit>
-		<Unit>
-			<Type>&quot;Door&quot;</Type>
-			<SpriteName>&quot;BankExit&quot;</SpriteName>
-			<Position>
-				<x>1166</x>
-				<y>346</y>
-			</Position>
-			<Size>
-				<x>1166</x>
-				<y>346</y>
-			</Size>
-			<Offset>
-				<x>32</x>
-				<y>0</y>
-			</Offset>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+    <Unit>
+      <Type>"Door"</Type>
+      <SpriteName>"BankExit"</SpriteName>
+      <Position>
+        <x>1166</x>
+        <y>346</y>
+      </Position>
+      <Size>
+        <x>50</x>
+        <y>100</y>
+      </Size>
+      <Offset>
+        <x>40</x>
+        <y>0</y>
+      </Offset>
+      <Behind>true</Behind>
+      <Solid>false</Solid>
+    </Unit>
 		<Unit>
 			<Type>&quot;Unclimbable&quot;</Type>
 			<SpriteName>&quot;&quot;</SpriteName>
@@ -106,16 +106,29 @@
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
-		<Unit>
-			<Type>&quot;TutorialBox1&quot;</Type>
-			<SpriteName>&quot;HelpDialogue5&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>64</y>
-			</Position>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+    <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpMagnet"</SpriteName>
+      <Position>
+        <x>256</x>
+        <y>96</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>400</x>
+        <y>473</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
 		<Unit>
 			<Type>&quot;Kill&quot;</Type>
 			<SpriteName>&quot;&quot;</SpriteName>
@@ -130,17 +143,8 @@
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Trigger1&quot;</Type>
-			<SpriteName>&quot;TriggerTutorial&quot;</SpriteName>
-			<Position>
-				<x>400</x>
-				<y>472</y>
-			</Position>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile5&quot;</SpriteName>
+			<SpriteName>&quot;TutorialHouseTile&quot;</SpriteName>
 			<Position>
 				<x>448</x>
 				<y>480</y>
@@ -148,12 +152,61 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Tile7&quot;</SpriteName>
+			<SpriteName>&quot;TutorialHouseTile&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>480</y>
 			</Position>
 		</Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>-64</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>0</x>
+        <y>-64</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Unclimbable</Type>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>768</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+    </Unit>
+    <Unit>
+      <Type>Kill</Type>
+      <Position>
+        <x>0</x>
+        <y>900</y>
+      </Position>
+      <Size>
+        <x>1280</x>
+        <y>10</y>
+      </Size>>
+      <SpriteName>""</SpriteName>
+      <Solid>false</Solid>
+    </Unit>
 	</Objects>
 </Level>
 

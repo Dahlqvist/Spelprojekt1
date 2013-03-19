@@ -95,6 +95,10 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	Loader.loadFile("Load/PlatformBigMenu.xml");
 	meny=Loader.getObject(this);
 	mUIItems.accessActive().insert(meny);
+	//Frame Parts
+	Loader.loadFile("Load/FrameMenu.xml");
+	meny=Loader.getObject(this);
+	mUIItems.accessActive().insert(meny);
 }
 
 Toolbar::~Toolbar(void)
@@ -340,6 +344,7 @@ void	Toolbar::unIniUnit()
 	mUIItems.activate("zTiles: Normal");
 	mUIItems.activate("zTiles: Wide and High");
 	mUIItems.activate("zTiles: Small");
+	mUIItems.activate("zFrame Parts");
 }
 
 void	Toolbar::unIniPlayer()
@@ -352,6 +357,7 @@ void	Toolbar::unIniPlayer()
 	mUIItems.activate("zTiles: Normal");
 	mUIItems.activate("zTiles: Wide and High");
 	mUIItems.activate("zTiles: Small");
+	mUIItems.activate("zFrame Parts");
 }
 
 void	Toolbar::resize(RenderWindow&	window)
@@ -409,6 +415,7 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("zTiles: Normal");
 		mUIItems.activate("zTiles: Wide and High");
 		mUIItems.activate("zTiles: Small");
+		mUIItems.activate("zFrame Parts");
 		mUIItems.activate("Update");
 		mUIItems.activate("Clear");
 		mUIItems.activate("Delete");
@@ -541,6 +548,7 @@ void	Toolbar::setUIActives()
 		mUIItems.activate("zTiles: Normal");
 		mUIItems.activate("zTiles: Wide and High");
 		mUIItems.activate("zTiles: Small");
+		mUIItems.activate("zFrame Parts");
 		mUIItems.activate("Update");
 		mUIItems.activate("Clear");
 		mUIItems.activate("Delete");

@@ -19,6 +19,7 @@ public:
 	Vector2f	getPosition	();
 	void		eventHandle	(const	Event&);
 	void		resize		(sf::RenderWindow&);
+	Uint8		getSnap		()const;
 private:
 	void				execute();
 	bool				mChange;
@@ -27,6 +28,7 @@ private:
 	Color				mBackground;
 	Vector2f			mSize,mPosition;
 	bool				mSelected;
+	Uint8				mSnapTo;
 };
 
 #endif
