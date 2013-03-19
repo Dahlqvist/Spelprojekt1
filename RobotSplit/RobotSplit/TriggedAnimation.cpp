@@ -1,10 +1,11 @@
 #include "TriggedAnimation.h"
 
-TriggedAnimation::TriggedAnimation(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, int speed, int frames)
-	:Unit(position, size, offset, id, new Animation(spriteName, speed, frames), false, true)
+TriggedAnimation::TriggedAnimation(sf::Vector2f position, std::string id, std::string spriteName, int speed, int frames)
+	:Unit(position, id, new Animation(spriteName, speed, frames), false, true)
 	,mActivated(false)
+	,mDeactivated(false)
 {
-	mSprite=TextureManager::getSprite("");
+	
 }
 
 void TriggedAnimation::activate()
@@ -15,8 +16,16 @@ void TriggedAnimation::activate()
 
 void TriggedAnimation::draw()
 {
-	if (mActivated)
+	if (mActivated && !mDeactivated)
 	{
 		Unit::draw();
+		if (mAnimation->getCurrentFrame()==mAnimation->getMaxFrame()-1)
+		{
+			mDeactivated=true;
+		}
+	}
+	else
+	{
+		mSprite=TextureManager::getSprite("");
 	}
 }

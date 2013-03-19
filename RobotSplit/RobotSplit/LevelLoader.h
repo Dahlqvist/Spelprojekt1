@@ -30,6 +30,7 @@ private:
 	void	addUnit			(Level	&level,xml_node<>* Node);
 	void	addMeanix		(Level	&level,xml_node<>* Node);
 	void	addCheckpoint	(Level	&level,xml_node<>* Node);
+	void	addTriggedAnim	(Level	&level,xml_node<>* Node);
 
 };
 

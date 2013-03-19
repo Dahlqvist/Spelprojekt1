@@ -127,9 +127,6 @@ void Game::changeMap(int map)
 	setMusic();
 
 	Music::playMusic();
-
-	Objects->addUnit(new TriggedAnimation(sf::Vector2f(100, 100), sf::Vector2f(0,0), sf::Vector2f(0,0), "TestAnim", "MouseSuicide", 100, 8));
-	//dynamic_cast<TriggedAnimation*>(Objects->getUnits().back())->activate();
 }
 
 void Game::setMusic()
