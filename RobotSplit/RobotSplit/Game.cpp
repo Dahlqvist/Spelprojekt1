@@ -17,6 +17,7 @@
 #include <SFML\System\Clock.hpp>
 #include "UnitManager.h"
 #include "Trigger.h"
+#include "TriggedAnimation.h"
 
 #include "Window.h"
 #include "Sound.h"
