@@ -517,6 +517,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
 
+	mTextureMap["RotatingFan"].loadFromFile("Texture/Background/fan_strip6.png");
+
 	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px_NEW.png");
 
 	mTextureMap["BankBackground1"].loadFromFile("Texture/Tutorials/Backgrounds/bank1_background.png");
