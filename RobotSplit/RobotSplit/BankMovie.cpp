@@ -14,7 +14,11 @@ mWindow(Window::getWindow()),
 	mStix(Animation("StixWhole", 100, 1), sf::Vector2f(780, 574), false, false),
 	mStixWalk(Animation("StixWalk", 100, 8), sf::Vector2f(110, 574), false, true),
 	mStixSad(Animation("StixSad", 100, 1), sf::Vector2f(780, 574), false, false),
-	mJudge(Animation("JudgeAni", 100, 8), sf::Vector2f(1140, 280), false, true)
+	mJudge(Animation("JudgeAni", 100, 8), sf::Vector2f(1080, 242), false, true),
+	mTrapDoor(Animation("TrapDoor", 70, 15), sf::Vector2f(736, 668), false, false),
+	mButton(Animation("Button", 100, 1), sf::Vector2f(1060, 368), false, false),
+	mPressButton(Animation("JudgeButton", 70, 11), sf::Vector2f(1060, 242), false, false),
+	mFloor(Animation("RattFloor", 100, 1), sf::Vector2f(736, 683), false, false)
 {
 	mBackground=TextureManager::getSprite("CinemaBG3");
 	mBackground2=TextureManager::getSprite("CinemaBG4");
@@ -22,7 +26,6 @@ mWindow(Window::getWindow()),
 	mCounter=0;
 	mTime=0;
 	mColor=sf::Color(255, 255, 255, 255);
-	Music::stopMusic();
 
 	mStars.push_back(&mExclMark);
 	mStars.push_back(&mLights1);
@@ -31,16 +34,19 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mPolice);
 	mStars.push_back(&mPolice2);
 	mStars.push_back(&mStix);
+	mStars.push_back(&mTrapDoor);
 	mStars.push_back(&mStixSad);
 	mStars.push_back(&mJudge);
 	mStars.push_back(&mPoliceWalk);
 	mStars.push_back(&mPoliceWalk2);
 	mStars.push_back(&mStixWalk);
+	mStars.push_back(&mFloor);
+	mStars.push_back(&mButton);
+	mStars.push_back(&mPressButton);
 }
 void BankMovie::update()
 {
 	mTime++;
-	Music::stopMusic();
 	if(mCounter==0)
 		BankMovie::act();
 	else if(mCounter==1)
@@ -112,6 +118,7 @@ void BankMovie::countup()
 		mStix.setActive(true);
 		mPolice.setActive(true);
 		mPolice2.setActive(true);
+		mTime=0;
 	}
 }
 void BankMovie::endit()
@@ -163,6 +170,7 @@ void BankMovie::act2()
 		mPoliceWalk2.setActive(true);
 		mStixWalk.setActive(true);
 		mJudge.setActive(true);
+		mButton.setActive(true);
 	}
 	else if(mPoliceWalk.getPosition().x<590)
 	{
@@ -197,17 +205,28 @@ void BankMovie::act3()
 	{
 		Sound::playSound("MeanixTalkNormal");
 	}
-	else if(mTime<500 && mTime>400)
+	else if(mTime<400 && mTime>300)
 	{
 		Sound::playSound("StixTalkSad");
 		mStix.setActive(false);
 		mStixSad.setActive(true);
 	}
-	else if(mTime<700)
+	else if(mTime>600 && mTime<1000)
 	{
-		//Fallucka
+		mJudge.setActive(false);
+		mPressButton.setActive(true);
+		mButton.setActive(false);
+		if(mPressButton.getDone()==true){
+			mTrapDoor.setActive(true);
+			mFloor.setActive(true);
+			if(mTrapDoor.getDone()==true)
+			{
+				mStixSad.setPosition(mStixSad.getPosition() + sf::Vector2f(0, 3));
+				//Music::changeVolume(mMusicVolume);
+			}
+		}
 	}
-	else if(mTime>900)
+	else if(mTime>1000)
 	{
 		mCounter++;
 	}

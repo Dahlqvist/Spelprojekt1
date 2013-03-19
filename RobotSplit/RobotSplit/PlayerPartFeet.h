@@ -39,6 +39,9 @@ public:
 	void decideAnimation(sf::Vector2f);
 	void restartAnimation();
 	void aniTimer();
+
+	float getFallingSpeed();
+
 private: 
 	bool mAttached, mAttachedWall;
 	Unit* mUnit;

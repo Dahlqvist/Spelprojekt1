@@ -40,7 +40,6 @@ void TextureManager::loadTexture()
 	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/BankerAni.png");
 	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_Banker.png");
 	mTextureMap["MeanixBank4"].loadFromFile("Texture/Cinema/hatt_glas_kross_strip28.png");
-	
 
 	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
 	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
@@ -55,6 +54,11 @@ void TextureManager::loadTexture()
 	mTextureMap["PoliceWalking"].loadFromFile("Texture/Cinema/polis_walking_strip8.png");
 	mTextureMap["StixSad"].loadFromFile("Texture/Cinema/StixSad.png");
 	mTextureMap["JudgeAni"].loadFromFile("Texture/Cinema/mirror_judge_animation_strip8.png");
+
+	mTextureMap["TrapDoor"].loadFromFile("Texture/Cinema/fallucks_animation.png");
+	mTextureMap["JudgeButton"].loadFromFile("Texture/Cinema/judge_knapp.png");
+	mTextureMap["Button"].loadFromFile("Texture/Cinema/knapp_Up.png");
+	mTextureMap["RattFloor"].loadFromFile("Texture/Cinema/Floor.png");
 	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
 	mTextureMap["Background"].loadFromFile("Texture/Background/TestBackground3.png");
@@ -497,9 +501,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["BankBackground"].loadFromFile("Texture/Background/BackgroundBank.png");
 
-	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
-
-	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/background.png");
 
 	mTextureMap["Bana2_bg1"].loadFromFile("Texture/Background/Background_2_Part01.png");
 

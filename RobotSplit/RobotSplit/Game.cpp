@@ -127,6 +127,7 @@ void Game::changeMap(int map)
 	setMusic();
 
 	Music::playMusic();
+	mPlayer->restartPlayer();
 }
 
 void Game::setMusic()
@@ -141,7 +142,7 @@ void Game::setMusic()
 		Music::stopMusic();
 		Music::loadMusic("Music/bank_1.wav");
 	}
-	else if (mlevel.getName()=="Bana1")
+	else if (mlevel.getName()=="IntroBana")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/level_1.wav");
@@ -239,11 +240,11 @@ void Game::input()
 			TestTimer.restart();
 			Objects->reset();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-		{
-			mPlayer->reFuel();
-			TestTimer.restart();
-		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		//{
+		//	mPlayer->reFuel();
+		//	TestTimer.restart();
+		//}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
 		{
 			Game::changeMap(-1);
@@ -254,11 +255,11 @@ void Game::input()
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
-		{
-			mStateInput.changeState("Bank");
-			TestTimer.restart();
-		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		//{
+		//	mStateInput.changeState("Bank");
+		//	TestTimer.restart();
+		//}
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
