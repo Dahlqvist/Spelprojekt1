@@ -2,7 +2,7 @@
 #include <SFML\Graphics.hpp>
 
 UIText::UIText(std::string Name,std::string Default,bool Select,Color Back,Color Text,int Size)
-	:UIItem(Name,Select),mBack(Back),mTextColor(Text),mSize(Size)
+	:UIItem(Name,Select),mBack(Back),mTextColor(Text),mSize(Size),mFont(sf::Font::getDefaultFont())
 {
 	setDefault(Default);
 	mLineSwitch.setLimit(0.5);
@@ -27,6 +27,7 @@ void	UIText::draw(RenderWindow& window,Vector2f	Position)
 	renderString.setCharacterSize(mSize);
 	renderString.setString(mName+": ");
 	renderString.setPosition(Position);
+	renderString.setFont(mFont);
 	window.draw(renderString);
 	Vector2f newPos=Position;
 	newPos.x+=renderString.getGlobalBounds().width+10;

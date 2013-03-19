@@ -6,11 +6,9 @@ using namespace sf;
 class TextField
 {
 public:
-	TextField	(Color color=Color(0,0,0,255),String Base="",int DefaultPosition=0);
+	TextField	(String Base="",int DefaultPosition=0);
 	~TextField	(void);
 	void	clear	();
-	void	setColor(const Color&);
-	Color	getColor()const;
 	String	getString	()const;
 	int		getLength	()const;
 	void	deleteCharacter	();
@@ -19,7 +17,6 @@ public:
 	int		getCurrentPosition	()const;
 private:
 	String	mText;
-	Color	mColor;
 	int		mCurrentPosition;
 };
 #endif

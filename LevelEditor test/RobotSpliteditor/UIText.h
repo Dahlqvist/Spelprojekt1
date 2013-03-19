@@ -2,6 +2,7 @@
 #define	INC_UITEXT
 
 #include	<string>
+#include	<SFML/Graphics/Font.hpp>
 #include	"UIItem.h"
 #include	"TextField.h"
 #include	"GameTimer.h"
@@ -18,6 +19,7 @@ public:
 	FloatRect	getHitBox(Vector2f	Position)const;
 	std::string	getString();
 private:
+	sf::Font	mFont;
 	GameTimer	mLineSwitch;
 	int			mSize;
 	bool		mLineDraw;

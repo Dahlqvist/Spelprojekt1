@@ -130,15 +130,68 @@ void	Editor::eventHandler(const Event& Current)
 		point	=Vector2f(Current.mouseMove.x,Current.mouseMove.y);
 		if(!mTools.checkHit(point)||!mLevelTool.checkHit(point))
 		{
-			if(mSelectedUnit.isActive())
+			if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 			{
-				mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+				if(!mSelectedUnit.isActive()&&!mSelectedPlayer.isActive())
+				{
+					for(UnitVector::size_type i=0;i < mLevel.getObjects().size();i++)
+					{
+						sf::FloatRect hitbox(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
+						if(hitbox.contains(temp))
+						{
+							mTools.unIniUnit();
+							mTools.unIniPlayer();
+							if(dynamic_cast<Laser*>(mLevel.getObjects()[i])!=0)
+							{
+								for(UnitVector::size_type j=0;j < mLevel.getObjects().size();j++)
+								{
+									if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])!=0)
+									{
+										if(dynamic_cast<LaserHolder*>(mLevel.getObjects()[j])->mLaser==mLevel.getObjects()[i])
+										{
+											mLevel.deleteItem(mLevel.getObjects()[j]);
+											break;
+										}
+									}
+								}
+							}
+							mLevel.deleteItem(mLevel.getObjects()[i]);
+							mTools.setTargets(mLevel);
+							break;
+						}
+					}
+					if(mLevel.ifPlayerExist())
+					{
+						sf::FloatRect hitbox(mLevel.getPlayer()->
+							getCollisionSprite()[1]->getGlobalBounds());
+						hitbox.height+=mLevel.getPlayer()->
+							getCollisionSprite()[0]->getGlobalBounds().height;
+						if(hitbox.contains(temp))
+						{
+							mTools.unIniUnit();
+							mTools.unIniPlayer();
+							mLevel.deletePlayer();
+						}
+					}
+				}
+				else
+				{
+					deleteSelected();
+				}
+				mTools.setTargets(mLevel);
 			}
-			else if(mSelectedPlayer.isActive())
+			else
 			{
-				mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset()));
-				mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
-				mSelectedPlayer.getObject()->update();
+				if(mSelectedUnit.isActive())
+				{
+					mSelectedUnit.getObject()->setPosition(temp-mSelectedUnit.getOffset());
+				}
+				else if(mSelectedPlayer.isActive())
+				{
+					mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition()+mSelectedPlayer.getOffset()));
+					mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+					mSelectedPlayer.getObject()->update();
+				}
 			}
 		}
 		break;
@@ -384,7 +437,7 @@ bool	Editor::collide(PlayerContainer&	Other)
 		getCollisionSprite()[1]->getGlobalBounds());
 	hitbox.height+=Other.getObject()->
 		getCollisionSprite()[0]->getGlobalBounds().height;
-	for(UnitVector::iterator it=mLevel.accessObjects().begin();it+1!=mLevel.accessObjects().end();it++)
+	for(UnitVector::iterator it=mLevel.accessObjects().begin();it!=mLevel.accessObjects().end();it++)
 	{
 		if(hitbox.intersects((*it)->getSprite().getGlobalBounds())
 			&&(*it)->isSolid())

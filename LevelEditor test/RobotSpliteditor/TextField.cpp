@@ -1,8 +1,8 @@
 #include "TextField.h"
 
 
-TextField::TextField(Color color,String Base,int Position)
-	:mText(Base),mColor(color)
+TextField::TextField(String Base,int Position)
+	:mText(Base)
 {
 	setCurrentPosition(Position);
 }
@@ -32,11 +32,6 @@ void	TextField::insertCharacter(const char& Insert)
 	}
 }
 
-void	TextField::setColor(const Color& nColor)
-{
-	mColor=nColor;
-}
-
 void	TextField::setCurrentPosition(const int& nPosition)
 {
 	if(0<=nPosition&&nPosition<=mText.getSize())
@@ -59,11 +54,6 @@ void	TextField::deleteCharacter()
 	{
 		mCurrentPosition=0;
 	}
-}
-
-Color	TextField::getColor()const
-{
-	return mColor;
 }
 
 String	TextField::getString()const
