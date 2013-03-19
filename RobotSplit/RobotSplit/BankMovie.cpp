@@ -72,6 +72,7 @@ void BankMovie::draw()
 	}
 	else
 	{
+		mBackground2.setColor(mColor);
 		mWindow.draw(mBackground2);
 	}
 
@@ -101,6 +102,16 @@ void BankMovie::countup()
 		mTime=0;
 		mColor=sf::Color(255, 255, 255, 255);
 		mExclMark.setActive(false);
+	}
+	if(mCounter==2)
+	{
+		mColor=sf::Color(255, 255, 255, 255);
+		mPoliceWalk.setActive(false);
+		mPoliceWalk2.setActive(false);
+		mStixWalk.setActive(false);
+		mStix.setActive(true);
+		mPolice.setActive(true);
+		mPolice2.setActive(true);
 	}
 }
 void BankMovie::endit()
@@ -182,7 +193,7 @@ void BankMovie::act2()
 }
 void BankMovie::act3()
 {
-	if(mTime<100)
+	if(mTime<200)
 	{
 		Sound::playSound("MeanixTalkNormal");
 	}

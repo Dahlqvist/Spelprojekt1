@@ -11,7 +11,8 @@ mWindow(Window::getWindow()),
 	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
 	mDoor2Close(Animation("Door2Close", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
-	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false)
+	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false),
+	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(806, 576), false, false)
 {
 	mCounter=0;
 	mPlaying=true;
