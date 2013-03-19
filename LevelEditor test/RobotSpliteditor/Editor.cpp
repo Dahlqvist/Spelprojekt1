@@ -2,13 +2,17 @@
 #include "DialogueBox.h"
 #include "Background.h"
 #include "LaserHolder.h"
+#include "DialogueBox.h"
+#include "LaserDeactivator.h"
+#include "Trigger.h"
+#include "Platform.h"
 using namespace sf;
 
 
 
 Editor::Editor(void)
 	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Load/Bana6.xml"),mCurrView(mWindow.getDefaultView()),
-	mLevelTool(&mLevel)
+	mLevelTool(&mLevel),mMouseHoldTimer(0.2f)
 {
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
 	float		mjao=float(mLevelTool.getSize().y);
@@ -127,6 +131,10 @@ void	Editor::eventHandler(const Event& Current)
 		break;
 	case sf::Event::MouseMoved:
 		temp=mWindow.convertCoords(Vector2i(Current.mouseMove.x,Current.mouseMove.y));
+		if(mLevelTool.getSnap()>1)
+		{
+			temp=Vector2f(mLevelTool.getSnap()*int(temp.x/mLevelTool.getSnap()),mLevelTool.getSnap()*int(temp.y/mLevelTool.getSnap()));
+		}
 		point	=Vector2f(Current.mouseMove.x,Current.mouseMove.y);
 		if(!mTools.checkHit(point)||!mLevelTool.checkHit(point))
 		{
@@ -197,6 +205,10 @@ void	Editor::eventHandler(const Event& Current)
 		break;
 	case sf::Event::EventType::MouseButtonPressed:
 		temp=	mWindow.convertCoords(Vector2i(Current.mouseButton.x,Current.mouseButton.y));
+		if(mLevelTool.getSnap()>1)
+		{
+			temp=Vector2f(mLevelTool.getSnap()*int(temp.x/mLevelTool.getSnap()),mLevelTool.getSnap()*int(temp.y/mLevelTool.getSnap()));
+		}
 		point=	Vector2f(Current.mouseButton.x,Current.mouseButton.y);
 		std::cout<<"MousePosition: "<<temp.y<<","<<temp.y<<std::endl;
 		mTools.setSelect(mTools.checkHit(point));
@@ -277,6 +289,7 @@ void	Editor::eventHandler(const Event& Current)
 						hitbox=FloatRect(mLevel.getObjects()[i]->getSprite().getGlobalBounds());
 						if(hitbox.contains(temp))
 						{
+							mMouseHoldTimer.reset();
 							if(dynamic_cast<Laser*>(mLevel.getObjects()[i])!=0)
 							{
 								for(UnitVector::size_type j=0;j < mLevel.getObjects().size();j++)
@@ -307,6 +320,7 @@ void	Editor::eventHandler(const Event& Current)
 							getCollisionSprite()[0]->getGlobalBounds().height;
 						if(hitbox.contains(temp))
 						{
+							mMouseHoldTimer.reset();
 							mSelectedPlayer.setPtr(mLevel.getPlayer(),mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),temp-mLevel.getPlayer()->getCollisionSprite()[0]->getPosition(),true);
 							mTools.setPlayer(mSelectedPlayer.getObject());
 						}
@@ -314,6 +328,82 @@ void	Editor::eventHandler(const Event& Current)
 				}
 				else
 				{
+					//Copying the unit with shift
+					Unit*	copy=0;
+					if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift)||sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+					{
+						if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+						{
+							copy=new LaserHolder(new Laser(
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getPosition(),
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getId(),
+								true,
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getLength(),
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getRotation()
+								),
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getId(),
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getSize(),
+								dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getOffset());
+						}
+						else if(dynamic_cast<LaserDeactivator*>(mSelectedUnit.getObject())!=0)
+						{
+							copy=new LaserDeactivator(new Trigger(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getPosition(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSize(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getOffset(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getId(),
+								TextureManager::getSpriteName(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSprite()),
+								0,
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSound())
+								,dynamic_cast<LaserDeactivator*>(mSelectedUnit.getObject())->getRotation());
+						}
+						else if(dynamic_cast<Trigger*>(mSelectedUnit.getObject())!=0)
+						{
+							copy=new Trigger(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getPosition(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSize(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getOffset(),
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getId(),
+								TextureManager::getSpriteName(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSprite()),
+								0,
+								dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSound());
+						}
+						else if(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())!=0)
+						{
+							copy=new DialogueBox(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getPosition(),
+								TextureManager::getSpriteName(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getSprite()),
+								dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getText().getString().toAnsiString(),
+								dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getFadeIn(),
+								dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getVisible(),
+								dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getId()
+								);
+						}
+						else if(dynamic_cast<Platform*>(mSelectedUnit.getObject())!=0)
+						{
+							if(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getLives()>0)
+							{
+								copy=new Platform(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getLives(),
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getPosition(),
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSize(),
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getOffset(),
+									TextureManager::getSpriteName(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSprite())
+									);
+							}
+							else
+							{
+								copy=new Platform(
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getPosition(),
+									TextureManager::getSpriteName(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSprite()),
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSize(),
+									dynamic_cast<Platform*>(mSelectedUnit.getObject())->getOffset()
+									);
+							}
+								
+						}
+						else if(dynamic_cast<Unit*>(mSelectedUnit.getObject())!=0)
+						{
+							Unit temp=*dynamic_cast<Unit*>(mSelectedUnit.getObject());
+							copy=new Unit(temp);
+						}
+					}
 					if(mSelectedUnit.isActive())
 					{
 						if(collide(mSelectedUnit))
@@ -325,16 +415,19 @@ void	Editor::eventHandler(const Event& Current)
 								mTools.unIniUnit();
 							}
 						}
-						else if(!mSelectedUnit.fromLevel())
+						else
 						{
-							if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+							if(!mSelectedUnit.fromLevel())
 							{
-								mLevel.addUnit(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser());
+								if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+								{
+									mLevel.addUnit(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser());
+								}
+								mLevel.addUnit(mSelectedUnit.getObject());
+								mTools.setTargets(mLevel);
 							}
-							mLevel.addUnit(mSelectedUnit.getObject());
-							mTools.setTargets(mLevel);
+							mSelectedUnit.unInitiate();
 						}
-						mSelectedUnit.unInitiate();
 					}
 					else
 					{
@@ -359,10 +452,135 @@ void	Editor::eventHandler(const Event& Current)
 						}
 						mSelectedPlayer.unInitiate();
 					}
+					if(copy!=0)
+					{
+						mSelectedUnit.setPtr(copy);
+						mTools.setUnit(copy);
+					}
 				}
 			}
 		}
 		cout<<"Hitscan end!"<<endl;
+		break;
+	case sf::Event::MouseButtonReleased:
+		if(mMouseHoldTimer.isExpired()&&!mTools.isSelected()&&!mLevelTool.isSelected())
+		{
+			if(mSelectedUnit.isActive())
+			{
+				Unit*	copy=0;
+				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift)||sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+				{
+					if(dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())!=0)
+					{
+						copy=new LaserHolder(new Laser(
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getPosition(),
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getId(),
+							true,
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getLength(),
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getLaser()->getRotation()
+							),
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getId(),
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getSize(),
+							dynamic_cast<LaserHolder*>(mSelectedUnit.getObject())->getOffset());
+					}
+					else if(dynamic_cast<LaserDeactivator*>(mSelectedUnit.getObject())!=0)
+					{
+						copy=new LaserDeactivator(new Trigger(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getPosition(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSize(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getOffset(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getId(),
+							TextureManager::getSpriteName(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSprite()),
+							0,
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSound())
+							,dynamic_cast<LaserDeactivator*>(mSelectedUnit.getObject())->getRotation());
+					}
+					else if(dynamic_cast<Trigger*>(mSelectedUnit.getObject())!=0)
+					{
+						copy=new Trigger(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getPosition(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSize(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getOffset(),
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getId(),
+							TextureManager::getSpriteName(dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSprite()),
+							0,
+							dynamic_cast<Trigger*>(mSelectedUnit.getObject())->getSound());
+					}
+					else if(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())!=0)
+					{
+						copy=new DialogueBox(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getPosition(),
+							TextureManager::getSpriteName(dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getSprite()),
+							dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getText().getString().toAnsiString(),
+							dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getFadeIn(),
+							dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getVisible(),
+							dynamic_cast<DialogueBox*>(mSelectedUnit.getObject())->getId()
+							);
+					}
+					else if(dynamic_cast<Platform*>(mSelectedUnit.getObject())!=0)
+					{
+						if(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getLives()>0)
+						{
+							copy=new Platform(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getLives(),
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getPosition(),
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSize(),
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getOffset(),
+								TextureManager::getSpriteName(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSprite())
+								);
+						}
+						else
+						{
+							copy=new Platform(
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getPosition(),
+								TextureManager::getSpriteName(dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSprite()),
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getSize(),
+								dynamic_cast<Platform*>(mSelectedUnit.getObject())->getOffset()
+								);
+						}
+								
+					}
+					else if(dynamic_cast<Unit*>(mSelectedUnit.getObject())!=0)
+					{
+						Unit temp=*dynamic_cast<Unit*>(mSelectedUnit.getObject());
+						copy=new Unit(temp);
+					}
+				}
+				if(collide(mSelectedUnit))
+				{
+					mSelectedUnit.getObject()->setPosition(mSelectedUnit.getOriginal());
+					if(!mSelectedUnit.fromLevel())
+					{
+						mSelectedUnit.deletePtr();
+						mTools.unIniUnit();
+					}
+				}
+				else if(!mSelectedUnit.fromLevel())
+				{
+					mLevel.addUnit(mSelectedUnit.getObject());
+					mTools.setTargets(mLevel);
+				}
+				mSelectedUnit.unInitiate();
+				if(copy!=0)
+				{
+					mSelectedUnit.setPtr(copy);
+					mTools.setUnit(copy);
+				}
+			}
+			else if(mSelectedPlayer.isActive())
+			{
+				if(collide(mSelectedPlayer))
+				{
+					Vector2f	temp=mSelectedPlayer.getOriginal();
+					mSelectedPlayer.getObject()->forceMove(0,temp-(mSelectedPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2));
+					mSelectedPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+					mSelectedPlayer.getObject()->update();
+					if(!mSelectedPlayer.fromLevel())
+					{
+						mSelectedPlayer.deletePtr();
+						mTools.unIniPlayer();
+					}
+				}
+				mSelectedPlayer.unInitiate();
+			}
+		}
+		mMouseHoldTimer.reset();
 		break;
 	case sf::Event::EventType::KeyReleased:
 		if(mTools.isSelected())
@@ -426,7 +644,11 @@ bool	Editor::collide(UnitContainer&	Other)
 	
 	if(mLevel.ifPlayerExist())
 	{
-		return	mLevel.getPlayer()->getCollisionSprite()[0]->getGlobalBounds().intersects(Other.getObject()->getSprite().getGlobalBounds());
+		sf::FloatRect hitbox(mLevel.getPlayer()->
+		getCollisionSprite()[1]->getGlobalBounds());
+		hitbox.height+=mLevel.getPlayer()->
+		getCollisionSprite()[0]->getGlobalBounds().height;
+		return	hitbox.intersects(Other.getObject()->getSprite().getGlobalBounds());
 	}
 	return false;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Level>
-	<Name>&quot;Test Bana&quot;</Name>
+	<Name>&quot;IntroBana&quot;</Name>
 	<Backgrounds>
 		<Background>
 			<SpriteName>&quot;BackgroundR&quot;</SpriteName>
@@ -13,7 +13,47 @@
 		</Background>
 	</Backgrounds>
 	<Objects>
-		<Unit>
+    <Unit>
+      <Type>&quot;Ram&quot;</Type>
+      <SpriteName>&quot;RamTopL6&quot;</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>0</x>
+        <y>0</y>
+      </Size>
+      <Solid>&quot;true&quot;</Solid>
+    </Unit>
+    <Unit>
+      <Type>&quot;Ram&quot;</Type>
+      <SpriteName>&quot;RamTopL6&quot;</SpriteName>
+      <Position>
+        <x>1280</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>0</x>
+        <y>0</y>
+      </Size>
+      <Solid>&quot;true&quot;</Solid>
+    </Unit>
+    <Unit>
+      <Type>&quot;Ram&quot;</Type>
+      <SpriteName>&quot;RamTopL6&quot;</SpriteName>
+      <Position>
+        <x>2560</x>
+        <y>0</y>
+      </Position>
+      <Size>
+        <x>0</x>
+        <y>0</y>
+      </Size>
+      <Solid>&quot;true&quot;</Solid>
+    </Unit>
+
+    <Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
 				<x>197</x>
@@ -144,10 +184,6 @@
 				<x>3520</x>
 				<y>0</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>

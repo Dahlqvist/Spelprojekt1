@@ -28,8 +28,9 @@ private:
 	Star mDoor2Close;
 	Star mMeanix;
 	Star mMeanixStill;
+	Star mMeanixHat;
 	sf::RenderWindow& mWindow;
-	bool mPlaying;
+	bool mPlaying, mTalk;
 	float mCounter, mDia;
 	sf::Sprite mBackground, mBackground2;
 };

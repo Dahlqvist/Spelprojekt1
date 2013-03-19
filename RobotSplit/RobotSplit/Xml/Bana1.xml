@@ -765,6 +765,29 @@
 		</Unit>
 
     <Unit>
+      <Type>BGAnim</Type>
+      <Position>
+        <x>436</x>
+        <y>131</y>
+      </Position>
+      <SpriteName>SparkleAnim</SpriteName>
+      <Frames>4</Frames>
+      <Speed>100</Speed>
+      <Solid>false</Solid>
+    </Unit>
+    <Unit>
+      <Type>BGAnim</Type>
+      <Position>
+        <x>678</x>
+        <y>582</y>
+      </Position>
+      <SpriteName>RotatingFan</SpriteName>
+      <Frames>6</Frames>
+      <Speed>100</Speed>
+      <Solid>false</Solid>
+    </Unit>
+
+    <Unit>
       <Type>TriggedAnimation</Type>
       <SpriteName>MouseSuicide</SpriteName>
       <Frames>22</Frames>
@@ -775,7 +798,6 @@
       </Position>
       <Id>MouseSuicide</Id>
     </Unit>
-
     <Unit>
       <Type>Trigger</Type>
       <Position>

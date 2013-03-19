@@ -42,7 +42,7 @@ bool	GameTimer::getPause()const
 
 bool	GameTimer::isExpired()
 {
-	if(mTimer->getElapsedTime().asSeconds()>=mLimit+mAddTime&&!mPause)
+	if(mTimer->getElapsedTime().asSeconds()>=(mLimit+mAddTime)&&!mPause)
 	{
 		mAddTime=0.0f;
 		return true;

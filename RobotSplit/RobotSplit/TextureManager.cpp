@@ -1,4 +1,4 @@
-#include "TextureManager.h"
+ï»¿#include "TextureManager.h"
 //Skapar statiska variablar som alltid kommer att finnas
 TextureManager::TextureMap TextureManager::mTextureMap;
 
@@ -36,9 +36,11 @@ void TextureManager::loadTexture()
 	mTextureMap["Door2Open"].loadFromFile("Texture/Cinema/Office_Door_Open.png");
 	mTextureMap["Door2Close"].loadFromFile("Texture/Cinema/Office_Door_close.png");
 	
-	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_bankdirektör_animation8.png");
-	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/bankdirektör_animation8.png");
-	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_bankdirektör.png");
+	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_BankerAni.png");
+	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/BankerAni.png");
+	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_Banker.png");
+	mTextureMap["MeanixBank4"].loadFromFile("Texture/Cinema/hatt_glas_kross_strip28.png");
+	
 
 	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
 	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
@@ -49,12 +51,13 @@ void TextureManager::loadTexture()
 	mTextureMap["PoliceLight"].loadFromFile("Texture/Cinema/polisljus_strip8.png");
 
 	mTextureMap["PoliceStill"].loadFromFile("Texture/Cinema/polis.png");
+	mTextureMap["PoliceStillLeft"].loadFromFile("Texture/Cinema/polisL.png");
+	mTextureMap["PoliceWalking"].loadFromFile("Texture/Cinema/polis_walking_strip8.png");
 	mTextureMap["StixSad"].loadFromFile("Texture/Cinema/StixSad.png");
 	mTextureMap["JudgeAni"].loadFromFile("Texture/Cinema/mirror_judge_animation_strip8.png");
 	
-	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
-	mTextureMap["BackgroundR"].loadFromFile(/*filename.png*/"Texture/Background/BackgroundR.png");
+	//Ladda in texturen frÃ¥n en fil, behÃ¶ver veta vad filerna pÃ¥ bilderna kommer att heta
+	mTextureMap["Background"].loadFromFile("Texture/Background/TestBackground3.png");
 
 
 	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
@@ -186,8 +189,8 @@ void TextureManager::loadTexture()
 	mTextureMap["LaserNewOffAni"].loadFromFile("Texture/Enviroment/Grey_Fold.png");
 	
 	
-	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
-	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_Blå_Sprite_4px.png");
+	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_RÃ¶d_Sprite_4px.png");
+	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_BlÃ¥_Sprite_4px.png");
 	mTextureMap["YellowLaser"].loadFromFile("Texture/Enviroment/Laser_Gul_Sprite_4px.png");
 
 	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
@@ -228,10 +231,10 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL1h"].loadFromFile("Texture/Enviroment/tiles/tile6_dark_P14.png");
 	mTextureMap["TileL1i"].loadFromFile("Texture/Enviroment/tiles/tile2_dark_P15.png");
 
-	mTextureMap["RailL1a"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_L-1_2.png");
-	mTextureMap["RailL1b"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt-1_2.png");
-	mTextureMap["RailL1c"].loadFromFile("Texture/Enviroment/New/Räcke_Mitt_Sluttning_R_2.png");
-	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/Räcke_Slut_R_2.png");
+	mTextureMap["RailL1a"].loadFromFile("Texture/Enviroment/New/RÃ¤cke_Slut_L-1_2.png");
+	mTextureMap["RailL1b"].loadFromFile("Texture/Enviroment/New/RÃ¤cke_Mitt-1_2.png");
+	mTextureMap["RailL1c"].loadFromFile("Texture/Enviroment/New/RÃ¤cke_Mitt_Sluttning_R_2.png");
+	mTextureMap["RailL1d"].loadFromFile("Texture/Enviroment/New/RÃ¤cke_Slut_R_2.png");
 
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
 
@@ -371,6 +374,23 @@ void TextureManager::loadTexture()
 	mTextureMap["TileL6Hihga"].loadFromFile("Texture/Enviroment/Bana6/Vercital_Half_Middle.png");
 	mTextureMap["TileL6Hihgb"].loadFromFile("Texture/Enviroment/Bana6/Under_Exit02R.png");
 
+	//IntroBana
+	mTextureMap["TileIntroa"].loadFromFile("Texture/Enviroment/Intro/tile18.png");
+	mTextureMap["TileIntrob"].loadFromFile("Texture/Enviroment/Intro/tile25.png");
+	mTextureMap["TileIntroc"].loadFromFile("Texture/Enviroment/Intro/tile25_Flip.png");
+	mTextureMap["TileIntrod"].loadFromFile("Texture/Enviroment/Intro/tile24.png");
+	mTextureMap["TileIntroe"].loadFromFile("Texture/Enviroment/Intro/tile27.png");
+	mTextureMap["TileIntrof"].loadFromFile("Texture/Enviroment/Intro/tile29.png");
+	mTextureMap["TileIntrog"].loadFromFile("Texture/Enviroment/Intro/tile33.png");
+	mTextureMap["TileIntroh"].loadFromFile("Texture/Enviroment/Intro/tile31.png");
+	mTextureMap["TileIntroi"].loadFromFile("Texture/Enviroment/Intro/tile3_dark.png");
+	mTextureMap["TileIntroj"].loadFromFile("Texture/Enviroment/Intro/tile36.png");
+
+	mTextureMap["TileIntroHigh"].loadFromFile("Texture/Enviroment/Intro/tile13_Top.png");
+
+	mTextureMap["TileIntroPipe1"].loadFromFile("Texture/Enviroment/Intro/pipe_top.png");
+	mTextureMap["TileIntroPipe2"].loadFromFile("Texture/Enviroment/Intro/pipe_bottom.png");
+
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
@@ -385,6 +405,8 @@ void TextureManager::loadTexture()
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
+	mTextureMap["LavaNoSides"].loadFromFile("Texture/Enviroment/ny_lava_mitt.png");
+
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 	mTextureMap["MeanixAniL"].loadFromFile("Texture/Units/Mirror_Meanix_idleanimation_strip8_dark.png");
@@ -517,6 +539,8 @@ void TextureManager::loadTexture()
 
 	mTextureMap["SparkleAnim"].loadFromFile("Texture/Background/Sprak_13px.png");
 
+	mTextureMap["RotatingFan"].loadFromFile("Texture/Background/fan_strip6.png");
+
 	mTextureMap["MouseSuicide"].loadFromFile("Texture/Background/Minirobot_02_Animation_72px_NEW.png");
 
 	mTextureMap["BankBackground1"].loadFromFile("Texture/Tutorials/Backgrounds/bank1_background.png");
@@ -529,6 +553,8 @@ void TextureManager::loadTexture()
 	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
 
 	mTextureMap["BackgroundBana2"].loadFromFile("Texture/Background/background_2_new.png");
+
+	mTextureMap["BackgroundIntro"].loadFromFile("Texture/Background/New_Background.png");
 	
 	//Initializing the frame parts.
 
@@ -555,6 +581,10 @@ void TextureManager::loadTexture()
 	mTextureMap["RamTopL6"].loadFromFile("Texture/Enviroment/Bana6/Frame_Topp.png");
 
 	mTextureMap["Line"].loadFromFile("Texture/Line.png");
+
+	mTextureMap["RamIntroTop"].loadFromFile("Texture/Enviroment/Intro/ram_added_pipe_dark_Topp.png");
+	mTextureMap["RamIntroLeft"].loadFromFile("Texture/Enviroment/Intro/ram_level2_L_dark.png");
+	mTextureMap["RamIntroRight"].loadFromFile("Texture/Enviroment/Intro/ram_level2_R_dark.png");
 
 	//Initializing splash-screens
 	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robotsplit_promo1024.png");
@@ -609,13 +639,13 @@ void TextureManager::loadTexture()
 
 const sf::Texture TextureManager::getTexture(std::string texture)
 {
-	//Påkalla funktionen med namnet till rätt animationen
+	//PÃ¥kalla funktionen med namnet till rÃ¤tt animationen
 		return getManager().mTextureMap[texture];
 };
 
 const sf::Sprite TextureManager::getSprite(std::string sprite)
 {	
-	//Påkalla funktionen med namnet till rätt animation
+	//PÃ¥kalla funktionen med namnet till rÃ¤tt animation
 		sf::Sprite temp;
 		temp.setTexture(getManager().mTextureMap[sprite]);
 		return temp;
