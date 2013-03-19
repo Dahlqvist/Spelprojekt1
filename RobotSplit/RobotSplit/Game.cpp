@@ -88,46 +88,47 @@ void Game::changeMap(int map)
 	if(mBana+map<(signed)mBanor.size() && mBana+map>=0)
 	{
 		mBana+=map;
+		//std::cout << mBanor[mBana] << std::endl;
+		mlevel.loadNewLevel(mBanor[mBana]);
+		Timer::stop();
+		for(int i=0;i<BG.size();i++)
+		{
+			delete BG[i];
+		}
+		BG=mlevel.getBackground();
+		//delete mPlayer;
+		mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
+		Objects= new UnitManager(mPlayer, mlevel.getObjects());
+		//mPlayer->restartPlayer();
+
+		if(mlevel.getName()=="Tutorial1")
+		{
+			mSecurityLevel=0;
+		}
+		else if(mlevel.getName()=="Tutorial2")
+		{
+			mSecurityLevel=1;
+		}
+		else if(mlevel.getName()=="IntroBana")
+		{
+			mStateInput.changeState("Bank");
+		}
+		else
+		{
+			mSecurityLevel=2;
+		}
+
+		setMusic();
+
+		Music::playMusic();
+		mPlayer->restartPlayer();
 	}
 	else
 	{
 		mStateInput.changeState("QuitToMenu");
 		mBana=0;
 	}
-	//std::cout << mBanor[mBana] << std::endl;
-	mlevel.loadNewLevel(mBanor[mBana]);
-	Timer::stop();
-	for(int i=0;i<BG.size();i++)
-	{
-		delete BG[i];
-	}
-	BG=mlevel.getBackground();
-	//delete mPlayer;
-	mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
-	Objects= new UnitManager(mPlayer, mlevel.getObjects());
-	//mPlayer->restartPlayer();
-	
-	if(mlevel.getName()=="Tutorial1")
-	{
-		mSecurityLevel=0;
-	}
-	else if(mlevel.getName()=="Tutorial2")
-	{
-		mSecurityLevel=1;
-	}
-	else if(mlevel.getName()=="IntroBana")
-	{
-		mStateInput.changeState("Bank");
-	}
-	else
-	{
-		mSecurityLevel=2;
-	}
 
-	setMusic();
-
-	Music::playMusic();
-	mPlayer->restartPlayer();
 }
 
 void Game::setMusic()

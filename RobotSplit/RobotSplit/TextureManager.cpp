@@ -507,9 +507,7 @@ void TextureManager::loadTexture()
 
 	mTextureMap["Bana2_bg2"].loadFromFile("Texture/Background/Background_2_Part02.png");
 
-	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3_Part01.png");
-
-	mTextureMap["Bana3_bg2"].loadFromFile("Texture/Background/Background_3_Part02.png");
+	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3.png");
 
 	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
 
