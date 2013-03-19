@@ -137,6 +137,7 @@ sfml-main.lib
     <ClCompile Include="StateInput.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TriggedAnimation.cpp" />
     <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UnitManager.cpp" />
@@ -198,6 +199,7 @@ sfml-main.lib
     <ClInclude Include="StateInput.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TriggedAnimation.h" />
     <ClInclude Include="Trigger.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="UnitManager.h" />

@@ -23,6 +23,7 @@
 #include "Meanix.h"
 #include "Checkpoint.h"
 #include "MiniBot.h"
+#include "TriggedAnimation.h"
 
 LevelLoader::LevelLoader(void)
 {
@@ -127,6 +128,10 @@ Level	LevelLoader::getLevel()
 			else if (type=="Checkpoint")
 			{
 				addCheckpoint(RetLevel,Gameobject);
+			}
+			else if (type=="TriggedAnimation")
+			{
+				addTriggedAnim(RetLevel,Gameobject);
 			}
 			else
 			{
@@ -865,4 +870,34 @@ void	LevelLoader::addLaserDeactivator (std::vector<Trigger*> &triggers, std::vec
 
 	triggers.push_back(new LaserDeactivator(new Trigger(Position, Size, Offset, Id, new Animation(Sprite, 100, 3), 0x0, ""), Rotation));
 	targets.push_back(targetObject);
+}
+
+void LevelLoader::addTriggedAnim(Level	&level,xml_node<>* Node)
+{
+	rapidxml::xml_node<>	*CurrentChild;
+	string					CurrentValue,Id,Sprite;
+	TriggedAnimation		*TempObject;
+	sf::Vector2f			Position;
+	int						Frames, Speed;
+
+	CurrentChild=	Node->first_node("Position");
+	CurrentValue=	getValue(CurrentChild->first_node("x"));
+	Position.x=((float)atof(CurrentValue.c_str()));
+	CurrentValue=	getValue(CurrentChild->first_node("y"));
+	Position.y=((float)atof(CurrentValue.c_str()));
+
+	CurrentChild=	Node->first_node("SpriteName");
+	Sprite=			getValue(CurrentChild);
+
+	CurrentChild=	Node->first_node("Frames");
+	Frames=			atoi(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("Speed");
+	Speed=			atoi(getValue(CurrentChild).c_str());
+
+	CurrentChild=	Node->first_node("Id");
+	Id=				getValue(CurrentChild);
+
+	TempObject=		new TriggedAnimation(Position, Id, Sprite, Speed, Frames);
+	level.mObjects.push_back(TempObject);
 }
