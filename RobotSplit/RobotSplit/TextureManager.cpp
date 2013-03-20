@@ -237,6 +237,10 @@ void TextureManager::loadTexture()
 
 	mTextureMap["Tile10S"].loadFromFile("Texture/Enviroment/tiles/tile11_dark.png");
 
+	mTextureMap["TileHighThin"].loadFromFile("Texture/Enviroment/Bana6/IhopSlag01.png");
+	mTextureMap["TileLowWide"].loadFromFile("Texture/Enviroment/Bana6/IhopSlag02.png");
+	mTextureMap["TileNormalWide"].loadFromFile("Texture/Enviroment/Bana6/IhopSlag03.png");
+
 	mTextureMap["TileHigh"].loadFromFile("Texture/Enviroment/tiles/tile13_dark.png");
 	mTextureMap["TileBreak"].loadFromFile("Texture/Enviroment/tiles/break2_dark.png");
 
