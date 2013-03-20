@@ -52,6 +52,12 @@ Game::Game():
 	//}
 	
 	mBanor.push_back("Xml/Tutorial1.xml");
+	//Lägger banorna från editorn här tillfälligt för att slippa växla mellan banorna
+	//Den riktiga placering är bortkommenterad för tillfället längre ner i listan
+	mBanor.push_back("Xml/gmBana8.xml");
+	mBanor.push_back("Xml/gmBana3.xml");
+	mBanor.push_back("Xml/gmBana2.xml");
+	//Vanlig ordning igen..
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
 	mBanor.push_back("Xml/TutorialNy2.xml");
@@ -61,15 +67,27 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
 
-
+	//Banornas ursprungsordning är kvar men i bortkommenterad form nedanför
 	mBanor.push_back("Xml/RasmusIntro.xml");
-	mBanor.push_back("Xml/test1Eric.xml");
+	mBanor.push_back("Xml/Bana1.xml"); //da original
+	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga
+	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2
+	mBanor.push_back("Xml/Bana3Ny.xml"); //leap of faith 
+	mBanor.push_back("Xml/Bana5.xml"); //randomTiles
+	mBanor.push_back("Xml/Bana4.xml"); //stress
+	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den
+	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
+	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
+
+	/*
+	mBanor.push_back("Xml/RasmusIntro.xml");
 	mBanor.push_back("Xml/Bana1.xml");
 	mBanor.push_back("Xml/Bana2.xml");
 	mBanor.push_back("Xml/Bana3Ny.xml");
 	mBanor.push_back("Xml/Bana4.xml");
 	mBanor.push_back("Xml/Bana5.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml");
+	*/
 
 	changeMap(0);
 }
