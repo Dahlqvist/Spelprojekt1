@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Bana6"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
       <Speed>120</Speed>
-      <SpriteName>"Bana3_bg1"</SpriteName>
+      <SpriteName>"BackgroundBana6"</SpriteName>
       <Position>
         <x>0</x>
-        <y>0</y>
-      </Position>
-    </Background>
-    <Background>
-      <Frames>1</Frames>
-      <Speed>120</Speed>
-      <SpriteName>"Bana3_bg2"</SpriteName>
-      <Position>
-        <x>640</x>
         <y>0</y>
       </Position>
     </Background>
@@ -34,7 +25,7 @@
         <y>64</y>
       </Size>
     </Unit>
-    
+
     <Unit>
       <Type>"MiniBot"</Type>
       <Position>
@@ -138,7 +129,7 @@
 
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ao"</SpriteName>
+      <SpriteName>"TileL6p"</SpriteName>
       <Position>
         <x>64</x>
         <y>64</y>
@@ -150,7 +141,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ap"</SpriteName>
+      <SpriteName>"TileL6o"</SpriteName>
       <Position>
         <x>128</x>
         <y>64</y>
@@ -418,7 +409,7 @@
     </Unit>
     <Unit>
       <Type>"Platform"</Type>
-      <SpriteName>"TileL6Ag"</SpriteName>
+      <SpriteName>"TileL6q"</SpriteName>
       <Position>
         <x>928</x>
         <y>576</y>
@@ -463,6 +454,15 @@
         <x>64</x>
         <y>64</y>
       </Size>
+    </Unit>
+
+    <Unit>
+      <Type>"Platform"</Type>
+      <SpriteName>"TileL6i"</SpriteName>
+      <Position>
+        <x>192</x>
+        <y>576</y>
+      </Position>
     </Unit>
 
     <Unit>
@@ -528,14 +528,14 @@
         <x>992</x>
         <y>224</y>
       </Position>
-    </Unit>
-    <Unit>
-      <Type>"Platform"</Type>
-      <SpriteName>"BolconyMiddle"</SpriteName>
-      <Position>
-        <x>192</x>
-        <y>608</y>
-      </Position>
+      <Size>
+        <x>65</x>
+        <y>32</y>
+      </Size>
+      <Offset>
+        <x>-1</x>
+        <y>0</y>
+      </Offset>
     </Unit>
 
     <Unit>
@@ -768,10 +768,6 @@
         <x>0</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>1280</x>
-        <y>64</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -780,10 +776,6 @@
         <x>0</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
     <Unit>
       <Type>"Ram"</Type>
@@ -792,10 +784,6 @@
         <x>1216</x>
         <y>0</y>
       </Position>
-      <Size>
-        <x>64</x>
-        <y>636</y>
-      </Size>
     </Unit>
   </Objects>
 </Level>

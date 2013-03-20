@@ -26,6 +26,8 @@ public:
 	void resetAnimations();
 	void interact(int);
 
+	float getFallingSpeed();
+
 	std::vector<sf::Sprite*> getCollisionSprite();
 	void forceMove(int, sf::Vector2f);
 	void checkCollisionExt();

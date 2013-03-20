@@ -17,10 +17,12 @@ it around. Clicking the left mouse button again will put it in the position it i
 and let you modify it with the Toolbar. If that position is within another unit while
 both units are solid, the unit will be returned to its original position. If the Unit
 doesn't have any earlier position, it will be deleted.
+Draging a Unit with the mouse and then releasing will do much the same as clicking twice.
 		*Right button*
 Clicking on a Unit with the right mouse button will delete the unit currently under
 the mouse pointer. Clicking the right mouse button while having a Unit selected will
 delete it.
+Draging while holding down the right button will delete anything the mouse touches.
 
 	*Toolbar/Levelbar usage*
 		*Item Selction*
@@ -43,3 +45,16 @@ While not having any of the bar selected:
 	*Loading a new background*
 Entering the Name of the background will load all it's segment into a line, making up
 the level's size.
+
+	*Enabling/Disabling Snaping*
+Selecting the Set Snap Size option and entering a number into the TextBox will allow you
+to set the snapsize. The snap size will only apply if it's bigger than 1. The snap
+function only apply to when moving objects and does not restrict the toolbars position
+modification.
+
+	*Making copies of an object directly*
+Pressing shift while clicking or realesing after draging a Unit will create a copy of the 
+object. Does not work on Player objects.
+*WARNING*
+This function is only tested with standard Units and Platforms. Other objects like triggers 
+MIGHT cause crashes.

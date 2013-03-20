@@ -163,6 +163,9 @@
     <ClInclude Include="UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -328,6 +331,9 @@
     </ClCompile>
     <ClCompile Include="UIButton.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.cpp">
+      <Filter>SPLITROBOT</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

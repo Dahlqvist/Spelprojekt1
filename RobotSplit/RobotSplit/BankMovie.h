@@ -30,6 +30,10 @@ private:
 	Star mStixWalk;
 	Star mStixSad;
 	Star mJudge;
+	Star mTrapDoor;
+	Star mButton;
+	Star mPressButton;
+	Star mFloor;
 	sf::RenderWindow& mWindow;
 	bool mPlaying;
 	float mCounter, mTime;

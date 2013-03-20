@@ -11,7 +11,8 @@ mWindow(Window::getWindow()),
 	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
 	mDoor2Close(Animation("Door2Close", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
-	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false)
+	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false),
+	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(806, 0), false, false)
 {
 	mCounter=0;
 	mPlaying=true;
@@ -36,6 +37,7 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mDoor2Close);
 	mStars.push_back(&mMeanix);
 	mStars.push_back(&mMeanixStill);
+	mStars.push_back(&mMeanixHat);
 	Music::loadMusic("Music/tutorial_3.wav");
 	mTalk=false;
 	mDia=0;
@@ -170,24 +172,20 @@ void IntroMovie::update()
 		}
 		else
 		{
-			if(mStixJumpDown.getDone()==false)
+			if(mStixJumpDown.getDone()==false && mMeanixHat.getDone()==false)
 			{
 				mDialogs[mDialogs.size()-1]->deactivate();
 				mStixExtStill.setActive(false);
 				mStixExt.setActive(false);
 				mStixJumpDown.setActive(true);
+				mMeanixStill.setActive(false);
+				mMeanixHat.setActive(true);
 			}
-			else
+			else if(mStixJumpDown.getDone()==true && mMeanixHat.getDone()==true)
 			{
 				mPlaying=false;
 			}
 		}
-		//if(knapptryck)
-		//	if(mPratbubblorcounter<Pratbubblor.size())
-		//	mPratbubblorcounter++
-		//	mSetactivepratbubbla(mPratbubblorcounter)
-		//	else
-		//	mPlaying=false;
 	}
 	for(unsigned int i=0; i<mStars.size(); i++)
 	{

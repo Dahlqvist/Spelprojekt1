@@ -39,6 +39,7 @@ void TextureManager::loadTexture()
 	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_BankerAni.png");
 	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/BankerAni.png");
 	mTextureMap["MeanixBank3"].loadFromFile("Texture/Cinema/mirror_Banker.png");
+	mTextureMap["MeanixBank4"].loadFromFile("Texture/Cinema/hatt_glas_kross_strip28.png");
 
 	mTextureMap["CinemaBG1"].loadFromFile("Texture/Cinema/X-inaem HQ.png");
 	mTextureMap["CinemaBG2"].loadFromFile("Texture/Cinema/meanix_office_background.png");
@@ -53,10 +54,14 @@ void TextureManager::loadTexture()
 	mTextureMap["PoliceWalking"].loadFromFile("Texture/Cinema/polis_walking_strip8.png");
 	mTextureMap["StixSad"].loadFromFile("Texture/Cinema/StixSad.png");
 	mTextureMap["JudgeAni"].loadFromFile("Texture/Cinema/mirror_judge_animation_strip8.png");
+
+	mTextureMap["TrapDoor"].loadFromFile("Texture/Cinema/fallucks_animation.png");
+	mTextureMap["JudgeButton"].loadFromFile("Texture/Cinema/judge_knapp.png");
+	mTextureMap["Button"].loadFromFile("Texture/Cinema/knapp_Up.png");
+	mTextureMap["RattFloor"].loadFromFile("Texture/Cinema/Floor.png");
 	
 	//Ladda in texturen från en fil, behöver veta vad filerna på bilderna kommer att heta
-	mTextureMap["Background"].loadFromFile(/*filename.png*/"Texture/Background/TestBackground3.png");
-	mTextureMap["BackgroundR"].loadFromFile(/*filename.png*/"Texture/Background/BackgroundR.png");
+	mTextureMap["Background"].loadFromFile("Texture/Background/TestBackground3.png");
 
 
 	mTextureMap["StixWhole"].loadFromFile("Texture/Stix/stix_dark.png");
@@ -379,11 +384,20 @@ void TextureManager::loadTexture()
 
 	//IntroBana
 	mTextureMap["TileIntroa"].loadFromFile("Texture/Enviroment/Intro/tile18.png");
-	mTextureMap["TileIntrob"].loadFromFile("Texture/Enviroment/Intro/tile19.png");
-	mTextureMap["TileIntroc"].loadFromFile("Texture/Enviroment/Intro/tile20.png");
+	mTextureMap["TileIntrob"].loadFromFile("Texture/Enviroment/Intro/tile25.png");
+	mTextureMap["TileIntroc"].loadFromFile("Texture/Enviroment/Intro/tile25_Flip.png");
 	mTextureMap["TileIntrod"].loadFromFile("Texture/Enviroment/Intro/tile24.png");
+	mTextureMap["TileIntroe"].loadFromFile("Texture/Enviroment/Intro/tile27.png");
+	mTextureMap["TileIntrof"].loadFromFile("Texture/Enviroment/Intro/tile29.png");
+	mTextureMap["TileIntrog"].loadFromFile("Texture/Enviroment/Intro/tile33.png");
+	mTextureMap["TileIntroh"].loadFromFile("Texture/Enviroment/Intro/tile31.png");
+	mTextureMap["TileIntroi"].loadFromFile("Texture/Enviroment/Intro/tile3_dark.png");
+	mTextureMap["TileIntroj"].loadFromFile("Texture/Enviroment/Intro/tile36.png");
+
 	mTextureMap["TileIntroHigh"].loadFromFile("Texture/Enviroment/Intro/tile13_Top.png");
-	
+
+	mTextureMap["TileIntroPipe1"].loadFromFile("Texture/Enviroment/Intro/pipe_top.png");
+	mTextureMap["TileIntroPipe2"].loadFromFile("Texture/Enviroment/Intro/pipe_bottom.png");
 
 	//Initializing DialogueBox
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
@@ -399,6 +413,8 @@ void TextureManager::loadTexture()
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");
 	mTextureMap["AcidMiddle"].loadFromFile("Texture/Enviroment/Acid_Middle.png");
+	mTextureMap["LavaNoSides"].loadFromFile("Texture/Enviroment/ny_lava_mitt.png");
+
 
 	mTextureMap["MeanixAni"].loadFromFile("Texture/Units/Meanix_idleanimation_strip8_dark.png");
 	mTextureMap["MeanixAniL"].loadFromFile("Texture/Units/Mirror_Meanix_idleanimation_strip8_dark.png");
@@ -489,17 +505,13 @@ void TextureManager::loadTexture()
 
 	mTextureMap["BankBackground"].loadFromFile("Texture/Background/BackgroundBank.png");
 
-	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/Background_Part01.png");
-
-	mTextureMap["Bana1_bg2"].loadFromFile("Texture/Background/Background_Part02.png");
+	mTextureMap["Bana1_bg1"].loadFromFile("Texture/Background/background.png");
 
 	mTextureMap["Bana2_bg1"].loadFromFile("Texture/Background/Background_2_Part01.png");
 
 	mTextureMap["Bana2_bg2"].loadFromFile("Texture/Background/Background_2_Part02.png");
 
-	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3_Part01.png");
-
-	mTextureMap["Bana3_bg2"].loadFromFile("Texture/Background/Background_3_Part02.png");
+	mTextureMap["Bana3_bg1"].loadFromFile("Texture/Background/Background_3.png");
 
 	mTextureMap["Tutorial1a"].loadFromFile("Texture/Background/background_tutorial0_PT01.png");
 
@@ -545,6 +557,8 @@ void TextureManager::loadTexture()
 	mTextureMap["BackgroundBana6"].loadFromFile("Texture/Background/Background_6.png");
 
 	mTextureMap["BackgroundBana2"].loadFromFile("Texture/Background/background_2_new.png");
+
+	mTextureMap["BackgroundIntro"].loadFromFile("Texture/Background/New_Background.png");
 	
 	//Initializing the frame parts.
 
@@ -571,6 +585,10 @@ void TextureManager::loadTexture()
 	mTextureMap["RamTopL6"].loadFromFile("Texture/Enviroment/Bana6/Frame_Topp.png");
 
 	mTextureMap["Line"].loadFromFile("Texture/Line.png");
+
+	mTextureMap["RamIntroTop"].loadFromFile("Texture/Enviroment/Intro/ram_added_pipe_dark_Topp.png");
+	mTextureMap["RamIntroLeft"].loadFromFile("Texture/Enviroment/Intro/ram_level2_L_dark.png");
+	mTextureMap["RamIntroRight"].loadFromFile("Texture/Enviroment/Intro/ram_level2_R_dark.png");
 
 	//Initializing splash-screens
 	mTextureMap["RobotSplitConcept1"].loadFromFile("Texture/Splash/Robotsplit_promo1024.png");

@@ -46,7 +46,7 @@ int main()
 			FPSLIMIT.reset();	
 			while(mWindow.pollEvent(Window::getEvent()))
 			{
-				if(Window::getEvent().type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+				if(Window::getEvent().type == sf::Event::Closed/* || sf::Keyboard::isKeyPressed(sf::Keyboard::L)*/)
 					mWindow.close();
 			
 				statemanager.inputState();

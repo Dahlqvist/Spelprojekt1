@@ -451,3 +451,8 @@ void PlayerPartFeet::aniTimer()
 {
 	mAniTime=0;
 }
+
+float PlayerPartFeet::getFallingSpeed()
+{
+	return mJump;
+}

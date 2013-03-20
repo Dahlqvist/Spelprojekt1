@@ -1040,3 +1040,8 @@ void Player::setStartingPosition(sf::Vector2f Vec)
 {
 	mStartPosition=Vec;
 }
+
+float Player::getFallingSpeed()
+{
+	return Eric::getGravity()-mFeet.getFallingSpeed();
+}

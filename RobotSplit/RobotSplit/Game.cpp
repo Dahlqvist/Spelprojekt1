@@ -88,45 +88,47 @@ void Game::changeMap(int map)
 	if(mBana+map<(signed)mBanor.size() && mBana+map>=0)
 	{
 		mBana+=map;
+		//std::cout << mBanor[mBana] << std::endl;
+		mlevel.loadNewLevel(mBanor[mBana]);
+		Timer::stop();
+		for(int i=0;i<BG.size();i++)
+		{
+			delete BG[i];
+		}
+		BG=mlevel.getBackground();
+		//delete mPlayer;
+		mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
+		Objects= new UnitManager(mPlayer, mlevel.getObjects());
+		//mPlayer->restartPlayer();
+
+		if(mlevel.getName()=="Tutorial1")
+		{
+			mSecurityLevel=0;
+		}
+		else if(mlevel.getName()=="Tutorial2")
+		{
+			mSecurityLevel=1;
+		}
+		else if(mlevel.getName()=="IntroBana")
+		{
+			mStateInput.changeState("Bank");
+		}
+		else
+		{
+			mSecurityLevel=2;
+		}
+
+		setMusic();
+
+		Music::playMusic();
+		mPlayer->restartPlayer();
 	}
 	else
 	{
 		mStateInput.changeState("QuitToMenu");
 		mBana=0;
 	}
-	//std::cout << mBanor[mBana] << std::endl;
-	mlevel.loadNewLevel(mBanor[mBana]);
-	Timer::stop();
-	for(int i=0;i<BG.size();i++)
-	{
-		delete BG[i];
-	}
-	BG=mlevel.getBackground();
-	//delete mPlayer;
-	mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
-	Objects= new UnitManager(mPlayer, mlevel.getObjects());
-	//mPlayer->restartPlayer();
-	
-	if(mlevel.getName()=="Tutorial1")
-	{
-		mSecurityLevel=0;
-	}
-	else if(mlevel.getName()=="Tutorial2")
-	{
-		mSecurityLevel=1;
-	}
-	else if(mlevel.getName()=="IntroBana")
-	{
-		mStateInput.changeState("Bank");
-	}
-	else
-	{
-		mSecurityLevel=2;
-	}
 
-	setMusic();
-
-	Music::playMusic();
 }
 
 void Game::setMusic()
@@ -141,7 +143,7 @@ void Game::setMusic()
 		Music::stopMusic();
 		Music::loadMusic("Music/bank_1.wav");
 	}
-	else if (mlevel.getName()=="Bana1")
+	else if (mlevel.getName()=="IntroBana")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/level_1.wav");
@@ -239,11 +241,11 @@ void Game::input()
 			TestTimer.restart();
 			Objects->reset();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-		{
-			mPlayer->reFuel();
-			TestTimer.restart();
-		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		//{
+		//	mPlayer->reFuel();
+		//	TestTimer.restart();
+		//}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
 		{
 			Game::changeMap(-1);
@@ -254,11 +256,11 @@ void Game::input()
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
-		{
-			mStateInput.changeState("Bank");
-			TestTimer.restart();
-		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		//{
+		//	mStateInput.changeState("Bank");
+		//	TestTimer.restart();
+		//}
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

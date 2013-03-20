@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level>
-  <Name>"Test Bana"</Name>
+  <Name>"Tutorial3"</Name>
   <Backgrounds>
     <Background>
       <Frames>1</Frames>
@@ -78,7 +78,7 @@
     <Unit>
       <Type>Billboard</Type>
       <Position>
-        <x>384</x>
+        <x>383</x>
         <y>219</y>
       </Position>
       <Size>
@@ -122,7 +122,7 @@
       <Behind>true</Behind>
       <Solid>false</Solid>
     </Unit>
-
+    
     <Unit>
       <Type>Checkpoint</Type>
       <SpriteName>CheckpointAnim</SpriteName>
@@ -180,10 +180,10 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox1"</Id>
-      <SpriteName>"HelpDialogue3"</SpriteName>
+      <SpriteName>"HelpExt"</SpriteName>
       <Position>
-        <x>64</x>
-        <y>64</y>
+        <x>640</x>
+        <y>256</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
@@ -192,10 +192,10 @@
     <Unit>
       <Type>"DialogueBox"</Type>
       <Id>"TutorialBox2"</Id>
-      <SpriteName>"HelpDialogue4"</SpriteName>
+      <SpriteName>"HelpRocket"</SpriteName>
       <Position>
-        <x>896</x>
-        <y>64</y>
+        <x>960</x>
+        <y>96</y>
       </Position>
       <Text>""</Text>
       <Visible>false</Visible>
