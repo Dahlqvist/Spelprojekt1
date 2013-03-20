@@ -50,6 +50,7 @@ Game::Game():
 	//else{
 	//	mSecurityLevel=2;
 	//}
+	
 	mBanor.push_back("Xml/Tutorial1.xml");
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
@@ -59,7 +60,10 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
+
+
 	mBanor.push_back("Xml/RasmusIntro.xml");
+	mBanor.push_back("Xml/test1Eric.xml");
 	mBanor.push_back("Xml/Bana1.xml");
 	mBanor.push_back("Xml/Bana2.xml");
 	mBanor.push_back("Xml/Bana3Ny.xml");
