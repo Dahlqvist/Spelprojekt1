@@ -53,7 +53,6 @@ Game::Game():
 	
 	mBanor.push_back("Xml/Tutorial1.xml");
 	//Lägger banorna från editorn här tillfälligt för att slippa växla mellan banorna
-	//Den riktiga placering är bortkommenterad för tillfället längre ner i listan
 	mBanor.push_back("Xml/gmBana8.xml");
 	mBanor.push_back("Xml/gmBana3.xml");
 	mBanor.push_back("Xml/gmBana2.xml");
@@ -67,7 +66,7 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
 
-	//Banornas ursprungsordning är kvar men i bortkommenterad form nedanför
+	//Storybanornas ursprungsordning är kvar men i bortkommenterad form nedanför
 	mBanor.push_back("Xml/RasmusIntro.xml");
 	mBanor.push_back("Xml/Bana1.xml"); //da original
 	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga
