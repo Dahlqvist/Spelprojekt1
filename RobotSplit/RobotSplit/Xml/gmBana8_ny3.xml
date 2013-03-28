@@ -32,7 +32,7 @@
 		<Unit>
 			<Position>
 				<x>448</x>
-				<y>306</y>
+				<y>290</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
 			<Id>&quot;LaserRed1&quot;</Id>

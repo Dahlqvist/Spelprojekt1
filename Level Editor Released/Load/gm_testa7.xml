@@ -25,83 +25,24 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-				<x>151</x>
-				<y>157</y>
+				<x>65</x>
+				<y>285</y>
 			</Position>
-		</Unit>
-		<Unit>
-			<Position>
-				<x>448</x>
-				<y>306</y>
-			</Position>
-			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserRed1&quot;</Id>
-			<Active>&quot;true&quot;</Active>
-			<Rotation>270</Rotation>
-			<Color>&quot;Red&quot;</Color>
-			<VisibilityRange>100</VisibilityRange>
-			<Length>256</Length>
-		</Unit>
-		<Unit>
-			<Position>
-				<x>64</x>
-				<y>239</y>
-			</Position>
-			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserBlue2&quot;</Id>
-			<Active>&quot;true&quot;</Active>
-			<Rotation>270</Rotation>
-			<Color>&quot;Blue&quot;</Color>
-			<VisibilityRange>100</VisibilityRange>
-			<Length>64</Length>
-		</Unit>
-		<Unit>
-			<Position>
-				<x>64</x>
-				<y>212</y>
-			</Position>
-			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserYellow1&quot;</Id>
-			<Active>&quot;true&quot;</Active>
-			<Rotation>270</Rotation>
-			<Color>&quot;Yellow&quot;</Color>
-			<VisibilityRange>100</VisibilityRange>
-			<Length>64</Length>
-		</Unit>
-		<Unit>
-			<Type>&quot;Checkpoint&quot;</Type>
-			<Position>
-				<x>576</x>
-				<y>576</y>
-			</Position>
-			<SpriteName>&quot;CheckpointAnim&quot;</SpriteName>
-			<Size>
-				<x>40</x>
-				<y>58</y>
-			</Size>
-			<Offset>
-				<x>12</x>
-				<y>6</y>
-			</Offset>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6a&quot;</SpriteName>
+			<SpriteName>&quot;TileL6Widec&quot;</SpriteName>
 			<Position>
-				<x>128</x>
-				<y>192</y>
+				<x>1024</x>
+				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>&quot;Door&quot;</Type>
 			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
-				<x>352</x>
-				<y>512</y>
+				<x>1152</x>
+				<y>320</y>
 			</Position>
 			<Size>
 				<x>32</x>
@@ -353,70 +294,51 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
+			<SpriteName>&quot;TileL2Wided&quot;</SpriteName>
 			<Position>
-				<x>352</x>
-				<y>640</y>
+				<x>1152</x>
+				<y>448</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1e&quot;</SpriteName>
+			<SpriteName>&quot;TileL2Widef&quot;</SpriteName>
 			<Position>
-				<x>192</x>
-				<y>192</y>
+				<x>64</x>
+				<y>320</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1g&quot;</SpriteName>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
 			<Position>
-				<x>256</x>
-				<y>192</y>
+				<x>288</x>
+				<y>320</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1i&quot;</SpriteName>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
 			<Position>
-				<x>384</x>
-				<y>256</y>
+				<x>608</x>
+				<y>384</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1h&quot;</SpriteName>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
 			<Position>
-				<x>320</x>
-				<y>224</y>
+				<x>768</x>
+				<y>448</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
 			<Position>
-				<x>704</x>
-				<y>288</y>
+				<x>928</x>
+				<y>448</y>
 			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL5a&quot;</SpriteName>
-			<Position>
-				<x>576</x>
-				<y>640</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;LaserDeactivator&quot;</Type>
-			<Position>
-				<x>358</x>
-				<y>280</y>
-			</Position>
-			<SpriteName>&quot;YellowButtonAni&quot;</SpriteName>
-			<Id>&quot;LaserTriggerYellow&quot;</Id>
-			<Rotation>180</Rotation>
-			<Target>&quot;LaserYellow1&quot;</Target>
 		</Unit>
 	</Objects>
 </Level>

@@ -32,7 +32,7 @@
 		<Unit>
 			<Position>
 				<x>448</x>
-				<y>306</y>
+				<y>290</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
 			<Id>&quot;LaserRed1&quot;</Id>
@@ -40,7 +40,7 @@
 			<Rotation>270</Rotation>
 			<Color>&quot;Red&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
-			<Length>256</Length>
+			<Length>320</Length>
 		</Unit>
 		<Unit>
 			<Position>
@@ -71,7 +71,7 @@
 		<Unit>
 			<Type>&quot;Checkpoint&quot;</Type>
 			<Position>
-				<x>576</x>
+				<x>544</x>
 				<y>576</y>
 			</Position>
 			<SpriteName>&quot;CheckpointAnim&quot;</SpriteName>
@@ -100,7 +100,7 @@
 			<Type>&quot;Door&quot;</Type>
 			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
-				<x>352</x>
+				<x>320</x>
 				<y>512</y>
 			</Position>
 			<Size>
@@ -355,7 +355,7 @@
 			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL1a&quot;</SpriteName>
 			<Position>
-				<x>352</x>
+				<x>320</x>
 				<y>640</y>
 			</Position>
 		</Unit>
@@ -395,15 +395,15 @@
 			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL1a&quot;</SpriteName>
 			<Position>
-				<x>704</x>
-				<y>288</y>
+				<x>768</x>
+				<y>256</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL5a&quot;</SpriteName>
 			<Position>
-				<x>576</x>
+				<x>544</x>
 				<y>640</y>
 			</Position>
 		</Unit>
