@@ -53,9 +53,9 @@ Game::Game():
 	
 	mBanor.push_back("Xml/Tutorial1.xml");
 	//Lägger banorna från editorn här tillfälligt för att slippa växla mellan banorna
-	mBanor.push_back("Xml/gmBana8.xml");
-	mBanor.push_back("Xml/gmBana3.xml");
-	mBanor.push_back("Xml/gmBana2.xml");
+	mBanor.push_back("Xml/gm_testa7.xml");
+	mBanor.push_back("Xml/gm_testa4.xml");
+	mBanor.push_back("Xml/gm_testa5.xml");
 	//Vanlig ordning igen..
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
@@ -75,7 +75,9 @@ Game::Game():
 	mBanor.push_back("Xml/Bana5.xml"); //randomTiles
 	mBanor.push_back("Xml/Bana4.xml"); //stress
 	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den
+	mBanor.push_back("Xml/gmBana8_ny3.xml");
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
+	mBanor.push_back("Xml/gmBana10_2.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
 
 	/*
