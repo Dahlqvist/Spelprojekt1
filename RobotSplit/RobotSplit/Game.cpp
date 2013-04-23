@@ -37,6 +37,9 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
+	mJoystick=true;
+	mousePos.x=1280/2;
+	mousePos.y=768/2;
 	//diaBox = mlevel.getDialogueBoxes();
 	mSecurityLevel=0;
 	//Music::loadMusic("Music/tutorial_2.wav");
@@ -96,6 +99,7 @@ Game::Game():
 	*/
 
 	changeMap(0);
+	mCourseSpeed=3;
 }
 
 Game::~Game()
@@ -204,53 +208,194 @@ void Game::update()
 
 void Game::input()
 {
+	if(mJoystick==true)
+	{
+		Game::joystickInput();
+	}
+	else
+	{
+		Game::keyboardInput();
+	}
+}
+
+void Game::joystickInput()
+{
+	mPlayer->mJoystick=true;
+	mTimer->input();
+	if(sf::Joystick::isButtonPressed(0, 2))
+	{//W, upp
+		mPlayer->interact(0);
+	}
+	if(mPlayer->getAttachedWall()==true && mPlayer->getBodyActive()==false)
+	{
+		if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y)<-90)
+		{
+			mPlayer->interact(0);
+		}
+		if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y)>90)
+		{//S, ner
+			mPlayer->interact(3);
+		}
+	}
+	if(sf::Joystick::getAxisPosition(0, sf::Joystick::X)>50)
+	{//D, höger
+		mPlayer->interact(1);
+	}
+	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X)<-50)
+	{//A, vänster
+		mPlayer->interact(2);
+	}
+	if(sf::Joystick::isButtonPressed(0, 1))
+	{//Mellanslag, raketskor
+		mPlayer->interact(4);
+	}
+	if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)<-90)
+	{//Head
+		mPlayer->mVec.x-=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)<-40)
+	{//Head
+		mPlayer->mVec.x-=1;
+	}
+	if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)>90)
+	{//Head
+		mPlayer->mVec.x+=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)>40)
+	{//Head
+		mPlayer->mVec.x+=1;
+	}
+	if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)<-90)
+	{//Head
+		mPlayer->mVec.y-=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)<-40)
+	{//Head
+		mPlayer->mVec.y-=1;
+	}
+	if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)>90)
+	{//Head
+		mPlayer->mVec.y+=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)>40)
+	{//Head
+		mPlayer->mVec.y+=1;
+	}
+
+	if(TestTimer.getElapsedTime().asSeconds()>mTime)
+	{
+		mTime=(float)0.2;
+		if(sf::Joystick::isButtonPressed(0, 3))
+		{//mousebutton, split
+			mPlayer->interact(5);
+			TestTimer.restart();
+		}
+		if(sf::Joystick::isButtonPressed(0, 5) || sf::Joystick::isButtonPressed(0, 7))
+		{//tab, shift
+			mPlayer->interact(6);
+			TestTimer.restart();
+		}
+		if(sf::Joystick::isButtonPressed(0, 0) && mPlayer->getBodyActive()==false)
+		{//E, extend
+			mPlayer->interact(7);
+			TestTimer.restart();
+		}
+		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(0, 4) || sf::Joystick::isButtonPressed(0, 6)))
+		{//LShift, dash
+			mPlayer->interact(8);
+			TestTimer.restart();
+			mTime=(float)0.7;
+		}
+		if(sf::Joystick::isButtonPressed(0, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true))
+		{//mouse, headshot
+			mPlayer->shootHead2();
+		}
+
+		if(sf::Joystick::isButtonPressed(0, 8))
+		{//Delete, restart
+			mPlayer->restartPlayer();
+			TestTimer.restart();
+			Objects->reset();
+		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		//{
+		//	mPlayer->reFuel();
+		//	TestTimer.restart();
+		//}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+		{
+			Game::changeMap(-1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+		{
+			Game::changeMap(1);
+			TestTimer.restart();
+		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		//{
+		//	mStateInput.changeState("Bank");
+		//	TestTimer.restart();
+		//}
+		//runCollisions(Objects.getUnits(), *mPlayer);
+	}
+	if(sf::Joystick::isButtonPressed(0, 9))
+	{//Esc, menu
+		Timer::pause();
+		mStateInput.changeMenu();
+		mStateInput.changeState("InGameMenu");
+	}
+}
+void Game::keyboardInput()
+{
+	mPlayer->mJoystick=false;
 	mTimer->input();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0)
-	{
+	{//W, upp
 		mPlayer->interact(0);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0)
-	{
+	{//D, höger
 		mPlayer->interact(1);
 	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
-	{
+	{//A, vänster
 		mPlayer->interact(2);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0)
-	{
+	{//S, ner
 		mPlayer->interact(3);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1)
-	{
+	{//Mellanslag, raketskor
 		mPlayer->interact(4);
 	}
 	if(TestTimer.getElapsedTime().asSeconds()>mTime)
 	{
 		mTime=(float)0.2;
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1)
-		{
+		{//mousebutton, split
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1)
-		{
+		{//tab, shift
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2)
-		{
+		{//E, extend
 			mPlayer->interact(7);
 			TestTimer.restart();
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && mSecurityLevel>=0)
-		{
+		{//LShift, dash
 			mPlayer->interact(8);
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2)
-		{
+		{//mouse, headshot
 		/*	sf::Vector2f Temp;
 			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
 			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
@@ -264,7 +409,7 @@ void Game::input()
 		}
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Back))
-		{
+		{//Delete, restart
 			mPlayer->restartPlayer();
 			TestTimer.restart();
 			Objects->reset();
@@ -292,7 +437,7 @@ void Game::input()
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
+	{//Esc, menu
 		Timer::pause();
 		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
