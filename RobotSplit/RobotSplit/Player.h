@@ -39,9 +39,11 @@ public:
 	void setStartingPosition(sf::Vector2f);
 	void die(int);
 
+	bool getAttachedWall();
 	bool getDying();
 	void jump();
 	void shootHead(sf::Vector2f);
+	void shootHead2();
 	void setAttachFeetExtension(bool);
 	bool getAttachFeetExtension();
 	void dash();
@@ -50,6 +52,8 @@ public:
 	void win();
 	std::string getId(int);
 	//bool bodyStandningFeet();
+	sf::Vector2i mVec;
+	bool mJoystick;
 private:
 	PlayerPartFeet mFeet;
 	PlayerPartBody mBody;

@@ -50,6 +50,9 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 	mRocketing=false;
 	mDying=false;
 	mDieTimer.restart();
+
+	mVec.x=640;
+	mVec.y=384;
 }
 void Player::initSprites()
 {
@@ -111,8 +114,18 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 	else
 	{
 //		sf::Vector2f mVec((float)sf::Mouse::getPosition(Window).x, (float)sf::Mouse::getPosition(Window).y);
-		sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
-		Window.draw(*mCourser->getSprite(mVec));
+		//sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
+		if(mJoystick==true){
+			sf::Vector2f tempI;
+			tempI.x=mVec.x;
+			tempI.y=mVec.y;
+			Window.draw(*mCourser->getSprite(tempI));
+		}
+		else
+		{
+			sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
+			Window.draw(*mCourser->getSprite(mVec));
+		}
 
 		if(mFeet.getUnit()!=0 && mFeet.getAttached()==false)
 		{
@@ -296,6 +309,10 @@ bool Player::getTogether()
 {
 	return mTogether;
 }
+bool Player::getAttachedWall()
+{
+	return mFeet.getAttachedWall();
+}
 void Player::setTogether(bool b)
 {
 	if(b==false)
@@ -399,6 +416,48 @@ void Player::shootHead(sf::Vector2f Vec)
 		float q=sqrt(1+k*k);
 		int xValue;
 		if(Vec.x-mHead.getPosition().x < 0)
+		{
+			xValue=-1;
+			k*=-1;
+		}
+		else
+		{
+			xValue=1;
+		}
+		sf::Vector2f MathVec(xValue/q, k/q);
+		mHead.setAttached(false);
+		mHead.setShootVector(MathVec);
+		/*float Derivata=sqrt((xValue/q)*(xValue/q)+(k/q)*(k/q));
+		std::cout << k/q << " " << Derivata << " " << sin((k/q)/Derivata) << std::endl; 
+		float s=sin((k/q)/Derivata);
+		float degrees = (asin(s)*180/3.1416)*1.5;
+		std::cout << degrees << std::endl << std::endl;*/
+	}
+}
+void Player::shootHead2()
+{
+	if(mHead.getAttached()==false)
+	{
+		mHead.setAttached(true);
+		mHead.setShootVector(sf::Vector2f(0, 0));
+		mHeadless=false;
+		magnetSlot=2;
+		mHeadAttachedFeet=false;
+		mAttachedMagnet=false;
+	}
+	else if(mHead.getAttached()==true)
+	{
+		Sound::playSound("ShootHead");
+		mHeadless=true;	
+		float k=(mHead.getPosition().y-mVec.y)/(mHead.getPosition().x-mVec.x);
+
+		//float k=(mHead.getSprite().getLocalBounds().top-Vec.y)/(mHead.getSprite().getLocalBounds().left-Vec.x);
+
+		//float l=sqrt((mHead.getPosition().y-Vec.y)*(mHead.getPosition().y-Vec.y) + (mHead.getPosition().x-Vec.x)*(mHead.getPosition().x-Vec.x));
+		//float Ys=mHead.getPosition().y-Vec.y;
+		float q=sqrt(1+k*k);
+		int xValue;
+		if(mVec.x-mHead.getPosition().x < 0)
 		{
 			xValue=-1;
 			k*=-1;
