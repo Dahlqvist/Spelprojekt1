@@ -52,6 +52,11 @@ Game::Game():
 	//}
 	
 	mBanor.push_back("Xml/Tutorial1.xml");
+	//Rickys filmer
+	mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
+	mBanor.push_back("Xml/ricky2_laserz.xml");
+	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
+	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
 	//Lägger banorna från editorn här tillfälligt för att slippa växla mellan banorna
 	mBanor.push_back("Xml/gm_testa7.xml");
 	mBanor.push_back("Xml/gm_testa4.xml");
