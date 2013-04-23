@@ -37,6 +37,7 @@ Game::Game():
 	Collision::unitAtSides(Objects->getUnits());
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
+	//Ändra för att styra med gamepad eller tangentbord
 	mJoystick=true;
 	mousePos.x=1280/2;
 	mousePos.y=768/2;
