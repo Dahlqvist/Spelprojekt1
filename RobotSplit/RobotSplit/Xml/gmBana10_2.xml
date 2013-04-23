@@ -32,7 +32,7 @@
 		<Unit>
 			<Position>
 				<x>1054</x>
-				<y>352</y>
+				<y>384</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
 			<Id>&quot;LaserRed1&quot;</Id>
@@ -40,7 +40,7 @@
 			<Rotation>0</Rotation>
 			<Color>&quot;Red&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
-			<Length>288</Length>
+			<Length>256</Length>
 		</Unit>
 		<Unit>
 			<Position>
@@ -396,25 +396,6 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
-			<Position>
-				<x>1024</x>
-				<y>288</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;LaserDeactivator&quot;</Type>
-			<Position>
-				<x>1208</x>
-				<y>610</y>
-			</Position>
-			<SpriteName>&quot;RedButtonAni&quot;</SpriteName>
-			<Id>&quot;LaserTriggerRed&quot;</Id>
-			<Rotation>270</Rotation>
-			<Target>&quot;LaserRed1&quot;</Target>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL2Wideh&quot;</SpriteName>
 			<Position>
 				<x>352</x>
@@ -515,6 +496,33 @@
 			<Position>
 				<x>624</x>
 				<y>544</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;LaserDeactivator&quot;</Type>
+			<Position>
+				<x>1208</x>
+				<y>610</y>
+			</Position>
+			<SpriteName>&quot;RedButtonAni&quot;</SpriteName>
+			<Id>&quot;LaserTriggerRed&quot;</Id>
+			<Rotation>270</Rotation>
+			<Target>&quot;LaserRed1&quot;</Target>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1b&quot;</SpriteName>
+			<Position>
+				<x>1024</x>
+				<y>288</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL2Widej&quot;</SpriteName>
+			<Position>
+				<x>1024</x>
+				<y>352</y>
 			</Position>
 		</Unit>
 	</Objects>

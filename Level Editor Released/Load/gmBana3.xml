@@ -30,16 +30,6 @@
 			</Position>
 		</Unit>
 		<Unit>
-			<Type>&quot;MiniBot&quot;</Type>
-			<Position>
-				<x>1184</x>
-				<y>64</y>
-			</Position>
-			<Length>446</Length>
-			<Rotation>270</Rotation>
-			<SideWays>&quot;false&quot;</SideWays>
-		</Unit>
-		<Unit>
 			<Type>&quot;Checkpoint&quot;</Type>
 			<Position>
 				<x>544</x>
