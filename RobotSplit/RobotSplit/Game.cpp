@@ -336,6 +336,10 @@ void Game::joystickInput()
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+		{
+			mJoystick=!mJoystick;
+		}
 		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
 		//{
 		//	mStateInput.changeState("Bank");
@@ -432,6 +436,10 @@ void Game::keyboardInput()
 		{
 			Game::changeMap(1);
 			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+		{
+			mJoystick=!mJoystick;
 		}
 		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
 		//{
