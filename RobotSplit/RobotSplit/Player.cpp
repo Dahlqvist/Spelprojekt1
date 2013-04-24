@@ -643,7 +643,7 @@ void Player::interact(int action)
 				Player::jump();
 				mRocketing=true;
 			}
-			else if(mFeet.getAttached()==false)
+			else if(mFeet.getAttached()==false && mFeet.getAttachedWall()==true)
 			{
 				if(mFeet.getWall()==0 || mFeet.getWall()==2)
 				{
@@ -677,7 +677,7 @@ void Player::interact(int action)
 				{
 					Player::move(sf::Vector2f(1, 0));
 				}
-				else if(mFeet.getWall()==0)
+				else if(mFeet.getWall()==0 && mJoystick==false)
 				{
 					mFeet.setAttachedWall(false);
 					mFeet.jumpReset();
@@ -711,7 +711,7 @@ void Player::interact(int action)
 				{
 					Player::move(sf::Vector2f(-1, 0));
 				}
-				else if(mFeet.getWall()==2)
+				else if(mFeet.getWall()==2 && mJoystick==false)
 				{
 					mFeet.setAttachedWall(false);
 					mFeet.jumpReset();
@@ -733,15 +733,16 @@ void Player::interact(int action)
 			//Ner "S"
 			if(mBodyActive==false && mFeet.getAttached()==false && mFeet.getAttachedWall()==true)
 			{
-				if(mFeet.getWall()==1)
-				{
-					mFeet.setAttachedWall(false);
-					mFeet.jumpReset();
-				}
-				else
+				
+				if(mFeet.getWall()==0 || mFeet.getWall()==2)
 				{
 					Player::move(sf::Vector2f(0, 1));
 					Sound::playSound("Move");
+				}
+				else if(mFeet.getWall()==1 && mJoystick==false)
+				{
+					mFeet.setAttachedWall(false);
+					mFeet.jumpReset();
 				}
 			}
 			if(mAttachedMagnet==true && mBodyActive==mBodyAttached)
@@ -765,6 +766,15 @@ void Player::interact(int action)
 			{
 				mFeet.setAttachedWall(true, 1);
 			}
+			if(mJoystick==true)
+			{
+				mKeyTimer.restart();
+				lastKey=action;
+			}
+			/*if(mJoystick==true && UnitManager::isCollidedSide(0, 1))
+			{
+				mFeet.setAttachedWall(true, 1);
+			}*/
 		}
 		if(action==5)
 		{
@@ -792,6 +802,14 @@ void Player::interact(int action)
 			if(mTogether==true && UnitManager::isCollidedSide(0, 2))
 			{
 				Player::dash();
+			}
+		}
+		if(action==9)
+		{
+			if(mJoystick==true)
+			{
+				mFeet.setAttachedWall(false);
+				mFeet.jumpReset();
 			}
 		}
 	}
@@ -1035,7 +1053,9 @@ void Player::restartPlayer()
 	mClockStart=false;
 	mWinning=false;
 	mDying=false;
-
+	
+	mVec.x=640;
+	mVec.y=384;
 	mFeet.aniTimer();
 	mBody.aniTimer();
 }

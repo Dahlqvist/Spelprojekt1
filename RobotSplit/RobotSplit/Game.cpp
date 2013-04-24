@@ -229,17 +229,38 @@ void Game::joystickInput()
 	mTimer->input();
 	if(sf::Joystick::isButtonPressed(mJoystickNumber, 2))
 	{//W, upp
-		mPlayer->interact(0);
-	}
-	if(mPlayer->getAttachedWall()==true && mPlayer->getBodyActive()==false)
-	{
-		if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
+		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true)
+		{
+			mPlayer->interact(9);
+		}
+		else
 		{
 			mPlayer->interact(0);
 		}
-		if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
-		{//S, ner
-			mPlayer->interact(3);
+	}
+	if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false)
+	{
+		if(UnitManager::isCollidedSide(0, 2) && (UnitManager::isCollidedSide(0, 3) || UnitManager::isCollidedSide(0, 4)))
+		{
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90 && mPlayer->getAttachedWall()==true)
+			{
+				mPlayer->interact(0);
+			}
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+			{//S, ner
+				mPlayer->interact(3);
+			}
+		}
+		else
+		{
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90 && !UnitManager::isCollidedSide(0, 2))
+			{
+				mPlayer->interact(0);
+			}
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+			{//S, ner
+				mPlayer->interact(3);
+			}
 		}
 	}
 	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>50)
@@ -364,6 +385,166 @@ void Game::joystickInput()
 		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
 	}
+
+	//Xbox-kontroller
+	//{
+	//	mPlayer->mJoystick=true;
+	//	mTimer->input();
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 0))
+	//	{//W, upp
+	//		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true)
+	//		{
+	//			mPlayer->interact(9);
+	//		}
+	//		else
+	//		{
+	//			mPlayer->interact(0);
+	//		}
+	//	}
+	//	if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false)
+	//	{
+	//		if(UnitManager::isCollidedSide(0, 2) && (UnitManager::isCollidedSide(0, 1) || UnitManager::isCollidedSide(0, 3)))
+	//		{
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
+	//			{
+	//				mPlayer->interact(0);
+	//			}
+	//		}
+	//		else
+	//		{
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
+	//			{
+	//				mPlayer->interact(0);
+	//			}
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+	//			{//S, ner
+	//				mPlayer->interact(3);
+	//			}
+	//		}
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>90)
+	//	{//D, höger
+	//		mPlayer->interact(1);
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)<-90)
+	//	{//A, vänster
+	//		mPlayer->interact(2);
+	//	}
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 3)  && mSecurityLevel>=1)
+	//	{//Mellanslag, raketskor
+	//		mPlayer->interact(4);
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)<-90)
+	//	{//Head
+	//		mPlayer->mVec.x-=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)<-40)
+	//	{//Head
+	//		mPlayer->mVec.x-=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)>90)
+	//	{//Head
+	//		mPlayer->mVec.x+=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)>40)
+	//	{//Head
+	//		mPlayer->mVec.x+=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-90)
+	//	{//Head
+	//		mPlayer->mVec.y-=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-40)
+	//	{//Head
+	//		mPlayer->mVec.y-=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>90)
+	//	{//Head
+	//		mPlayer->mVec.y+=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>40)
+	//	{//Head
+	//		mPlayer->mVec.y+=1;
+	//	}
+
+	//	if(TestTimer.getElapsedTime().asSeconds()>mTime)
+	//	{
+	//		mTime=(float)0.2;
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1)  && mSecurityLevel>=1)
+	//		{//mousebutton, split
+	//			mPlayer->interact(5);
+	//			TestTimer.restart();
+	//		}
+	//		if((sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>40 || sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-40) && mSecurityLevel>=1)
+	//		{//tab, shift //Z
+	//			mPlayer->interact(6);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 2) && mPlayer->getBodyActive()==false && mSecurityLevel>=2)
+	//		{//E, extend
+	//			mPlayer->interact(7);
+	//			TestTimer.restart();
+	//		}
+	//		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(mJoystickNumber, 4) || sf::Joystick::isButtonPressed(mJoystickNumber, 5)))
+	//		{//LShift, dash
+	//			mPlayer->interact(8);
+	//			TestTimer.restart();
+	//			mTime=(float)0.7;
+	//		}
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 2) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true) && mSecurityLevel>=2)
+	//		{//mouse, headshot
+	//			mPlayer->shootHead2();
+	//		}
+
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 6))
+	//		{//Delete, restart
+	//			mPlayer->restartPlayer();
+	//			TestTimer.restart();
+	//			Objects->reset();
+	//		}
+	//		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	//		//{
+	//		//	mPlayer->reFuel();
+	//		//	TestTimer.restart();
+	//		//}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+	//		{
+	//			Game::changeMap(-1);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+	//		{
+	//			Game::changeMap(1);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+	//		{
+	//			mJoystick=!mJoystick;
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
+	//		{
+	//			if(mJoystickNumber<3){
+	//				mJoystickNumber++;
+	//			}
+	//			else
+	//			{
+	//				mJoystickNumber=0;
+	//			}
+	//		}
+	//		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+	//		//{
+	//		//	mStateInput.changeState("Bank");
+	//		//	TestTimer.restart();
+	//		//}
+	//		//runCollisions(Objects.getUnits(), *mPlayer);
+	//	}
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 7))
+	//	{//Esc, menu
+	//		Timer::pause();
+	//		mStateInput.changeMenu();
+	//		mStateInput.changeState("InGameMenu");
+	//	}
+	//}
 }
 void Game::keyboardInput()
 {
