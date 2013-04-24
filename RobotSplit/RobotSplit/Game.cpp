@@ -104,6 +104,7 @@ Game::Game():
 
 	changeMap(0);
 	mCourseSpeed=3;
+	mJoystickNumber=0;
 }
 
 Game::~Game()
@@ -226,62 +227,62 @@ void Game::joystickInput()
 {
 	mPlayer->mJoystick=true;
 	mTimer->input();
-	if(sf::Joystick::isButtonPressed(0, 2))
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 2))
 	{//W, upp
 		mPlayer->interact(0);
 	}
 	if(mPlayer->getAttachedWall()==true && mPlayer->getBodyActive()==false)
 	{
-		if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y)<-90)
+		if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
 		{
 			mPlayer->interact(0);
 		}
-		if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y)>90)
+		if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
 		{//S, ner
 			mPlayer->interact(3);
 		}
 	}
-	if(sf::Joystick::getAxisPosition(0, sf::Joystick::X)>50)
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>50)
 	{//D, höger
 		mPlayer->interact(1);
 	}
-	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X)<-50)
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)<-50)
 	{//A, vänster
 		mPlayer->interact(2);
 	}
-	if(sf::Joystick::isButtonPressed(0, 1))
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 1))
 	{//Mellanslag, raketskor
 		mPlayer->interact(4);
 	}
-	if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)<-90)
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-90)
 	{//Head
 		mPlayer->mVec.x-=mCourseSpeed;
 	}
-	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)<-40)
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-40)
 	{//Head
 		mPlayer->mVec.x-=1;
 	}
-	if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)>90)
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>90)
 	{//Head
 		mPlayer->mVec.x+=mCourseSpeed;
 	}
-	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::R)>40)
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>40)
 	{//Head
 		mPlayer->mVec.x+=1;
 	}
-	if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)<-90)
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-90)
 	{//Head
 		mPlayer->mVec.y-=mCourseSpeed;
 	}
-	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)<-40)
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-40)
 	{//Head
 		mPlayer->mVec.y-=1;
 	}
-	if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)>90)
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>90)
 	{//Head
 		mPlayer->mVec.y+=mCourseSpeed;
 	}
-	else if(sf::Joystick::getAxisPosition(0, sf::Joystick::Z)>40)
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>40)
 	{//Head
 		mPlayer->mVec.y+=1;
 	}
@@ -289,33 +290,33 @@ void Game::joystickInput()
 	if(TestTimer.getElapsedTime().asSeconds()>mTime)
 	{
 		mTime=(float)0.2;
-		if(sf::Joystick::isButtonPressed(0, 3))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 3))
 		{//mousebutton, split
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
-		if(sf::Joystick::isButtonPressed(0, 5) || sf::Joystick::isButtonPressed(0, 7))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 5) || sf::Joystick::isButtonPressed(mJoystickNumber, 7))
 		{//tab, shift
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
-		if(sf::Joystick::isButtonPressed(0, 0) && mPlayer->getBodyActive()==false)
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mPlayer->getBodyActive()==false)
 		{//E, extend
 			mPlayer->interact(7);
 			TestTimer.restart();
 		}
-		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(0, 4) || sf::Joystick::isButtonPressed(0, 6)))
+		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(mJoystickNumber, 4) || sf::Joystick::isButtonPressed(mJoystickNumber, 6)))
 		{//LShift, dash
 			mPlayer->interact(8);
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
-		if(sf::Joystick::isButtonPressed(0, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true))
 		{//mouse, headshot
 			mPlayer->shootHead2();
 		}
 
-		if(sf::Joystick::isButtonPressed(0, 8))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 8))
 		{//Delete, restart
 			mPlayer->restartPlayer();
 			TestTimer.restart();
@@ -340,6 +341,16 @@ void Game::joystickInput()
 		{
 			mJoystick=!mJoystick;
 		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
+		{
+			if(mJoystickNumber<3){
+				mJoystickNumber++;
+			}
+			else
+			{
+				mJoystickNumber=0;
+			}
+		}
 		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
 		//{
 		//	mStateInput.changeState("Bank");
@@ -347,7 +358,7 @@ void Game::joystickInput()
 		//}
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
-	if(sf::Joystick::isButtonPressed(0, 9))
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 9))
 	{//Esc, menu
 		Timer::pause();
 		mStateInput.changeMenu();
