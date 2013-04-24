@@ -79,7 +79,7 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial7.xml");
 
 	//Storybanornas ursprungsordning är kvar men i bortkommenterad form nedanför
-	mBanor.push_back("Xml/RasmusIntro.xml");
+	//mBanor.push_back("Xml/RasmusIntro.xml"); Borttagen iom speltest
 	mBanor.push_back("Xml/Bana1.xml"); //da original
 	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga_ändra
 	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2
