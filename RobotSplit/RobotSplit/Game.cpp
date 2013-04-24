@@ -250,7 +250,7 @@ void Game::joystickInput()
 	{//A, vänster
 		mPlayer->interact(2);
 	}
-	if(sf::Joystick::isButtonPressed(mJoystickNumber, 1))
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 1)  && mSecurityLevel>=1)
 	{//Mellanslag, raketskor
 		mPlayer->interact(4);
 	}
@@ -290,17 +290,17 @@ void Game::joystickInput()
 	if(TestTimer.getElapsedTime().asSeconds()>mTime)
 	{
 		mTime=(float)0.2;
-		if(sf::Joystick::isButtonPressed(mJoystickNumber, 3))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 3)  && mSecurityLevel>=1)
 		{//mousebutton, split
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
-		if(sf::Joystick::isButtonPressed(mJoystickNumber, 5) || sf::Joystick::isButtonPressed(mJoystickNumber, 7))
+		if((sf::Joystick::isButtonPressed(mJoystickNumber, 5) || sf::Joystick::isButtonPressed(mJoystickNumber, 7)) && mSecurityLevel>=1)
 		{//tab, shift
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
-		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mPlayer->getBodyActive()==false)
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mPlayer->getBodyActive()==false && mSecurityLevel>=2)
 		{//E, extend
 			mPlayer->interact(7);
 			TestTimer.restart();
@@ -311,7 +311,7 @@ void Game::joystickInput()
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
-		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true))
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true) && mSecurityLevel>=2)
 		{//mouse, headshot
 			mPlayer->shootHead2();
 		}
