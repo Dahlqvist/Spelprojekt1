@@ -765,6 +765,7 @@
       <Frames>4</Frames>
       <Speed>100</Speed>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
     <Unit>
       <Type>BGAnim</Type>
@@ -776,6 +777,7 @@
       <Frames>6</Frames>
       <Speed>100</Speed>
       <Solid>false</Solid>
+      <Behind>true</Behind>
     </Unit>
 
     <Unit>
