@@ -383,6 +383,13 @@ void Collision::handleCases(int unit)
 			killPlayer();
 		}
 	}
+	if (mUnits[unit]->getId()=="LaserWhite")
+	{
+		if (!mPlayer->getTogether() && mPlayer->getId(mPlayerPart)!="PlayerPartHead")
+		{
+			killPlayer();
+		}
+	}
 	if (mUnits[unit]->getId()=="AntiMagnet")
 	{
 		if (mPlayer->getId(mPlayerPart)=="PlayerPartFeet")
