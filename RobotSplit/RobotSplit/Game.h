@@ -28,6 +28,13 @@ public:
 private:
 	void setMusic();
 
+	void keyboardInput();
+	void joystickInput();
+	bool mJoystick;
+	int mJoystickNumber;
+	sf::Vector2i mousePos;
+	float mCourseSpeed;
+
 	void moveCamera();
 
 	int mSecurityLevel;
