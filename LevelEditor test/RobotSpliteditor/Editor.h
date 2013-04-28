@@ -2,6 +2,7 @@
 #define	INC_EDITOR
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include <string>
 #include <vector>
 #include "LevelConstructor.h"
 #include "Unit.h"
@@ -22,6 +23,7 @@ class Editor
 {
 public:
 	Editor(void);
+	Editor(std::string Level);
 	~Editor(void);
 	void				run();
 	void				renderLevel(View&);
@@ -40,6 +42,7 @@ private:
 	View				mCurrView;
 	Toolbar				mTools;
 	LevelBar			mLevelTool;
+	bool				mOpen;
 	void				eventHandler(const Event&);
 	friend	class		Toolbar;
 };

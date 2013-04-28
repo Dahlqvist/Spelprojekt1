@@ -93,13 +93,15 @@ void	Level::deletePointers()
 	mBackground.deletePointer();
 }
 
-void	Level::loadNewLevel(string FileName)
+bool	Level::loadNewLevel(string FileName)
 {
 	LevelLoader	Loader;
 	if(Loader.loadFile(FileName))
 	{
 		(*this)=Loader.getLevel();
-	}
+		return true;
+	}	
+	return false;
 }
 
 void	Level::setObjects(const UnitVector& Source)

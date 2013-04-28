@@ -43,7 +43,7 @@ public:
 	//Deconstructor								(Done)
 	~Level(void);
 	//Reads a Level from a XML-file				(Done)
-	virtual	void	loadNewLevel(string FileName);
+	virtual	bool	loadNewLevel(string FileName);
 	//Returns the size of the level
 	sf::Vector2f	getSize()const;
 	//Returns the Level's objects				(Done)

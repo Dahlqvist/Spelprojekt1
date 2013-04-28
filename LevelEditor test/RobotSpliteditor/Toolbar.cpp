@@ -127,13 +127,30 @@ void	Toolbar::render(Editor* editor)
 	//Change UIItems
 	if(mNewPos)
 	{
-		if(editor->collide(mCurrUnit))
+		if(mCurrUnit.isActive())
 		{
-			mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+			if(editor->collide(mCurrUnit))
+			{
+				mCurrUnit.getObject()->setPosition(mCurrUnit.getOriginal());
+			}
+			else
+			{
+				mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+			}
 		}
 		else
 		{
-			mCurrUnit.setOriginal(mCurrUnit.getObject()->getPosition());
+			if(editor->collide(mCurrPlayer))
+			{	
+				Vector2f	temp=mCurrPlayer.getOriginal();
+				mCurrPlayer.getObject()->forceMove(0,temp-(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition())+sf::Vector2f(0,2));
+				mCurrPlayer.getObject()->forceMove(0,Vector2f(0,-4));
+				mCurrPlayer.getObject()->update();
+			}
+			else
+			{
+				mCurrPlayer.setOriginal(mCurrPlayer.getObject()->getCollisionSprite()[0]->getPosition());
+			}
 		}
 		mNewPos=false;
 		setTargets(editor->mLevel);
@@ -606,6 +623,9 @@ void	Toolbar::update()
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setFadeIn(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->getValue());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setVisible(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->getValue());
+		}
+		else if(dynamic_cast<Checkpoint*>(mCurrUnit.getObject())!=0)
+		{
 		}
 		else
 		{

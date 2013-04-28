@@ -12,8 +12,24 @@ using namespace sf;
 
 Editor::Editor(void)
 	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel("Load/Bana6.xml"),mCurrView(mWindow.getDefaultView()),
-	mLevelTool(&mLevel),mMouseHoldTimer(0.2f)
+	mLevelTool(&mLevel),mMouseHoldTimer(0.2f),mOpen(true)
 {
+	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
+	float		mjao=float(mLevelTool.getSize().y);
+	Vector2f	position(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y)));
+	mCurrView.setViewport(FloatRect(position,size));
+	mLevel.getPlayer()->setTogether(true);
+	mLevel.getPlayer()->setHeadless(false);
+	mTools.setTargets(mLevel);
+}
+Editor::Editor(std::string loadlevel)
+	:mWindow(sf::VideoMode(1280, 768), "Robot split Editor",sf::Style::Default),mLevel(),mCurrView(mWindow.getDefaultView()),
+	mLevelTool(&mLevel),mMouseHoldTimer(0.2f),mOpen(true)
+{
+	if(!mLevel.loadNewLevel(loadlevel))
+	{
+		mLevel.loadNewLevel("Load/Bana6.xml");
+	}
 	Vector2f	size(mTools.getPosition().x/mWindow.getSize().x,mTools.getPosition().x/mWindow.getSize().x);
 	float		mjao=float(mLevelTool.getSize().y);
 	Vector2f	position(0,float(float(mLevelTool.getSize().y)/float(mWindow.getSize().y)));
@@ -30,7 +46,7 @@ Editor::~Editor(void)
 void	Editor::run()
 {
 	bool once=false, PLAYER=false;
-	while(mWindow.isOpen())
+	while(mOpen)
 	{
 		mWindow.setView(mCurrView);
 		sf::Event CurrentEvent;
@@ -38,11 +54,11 @@ void	Editor::run()
 		{
 			eventHandler(CurrentEvent);
 		}
-		mWindow.clear(Color(100,100,100,255));
 		renderLevel(mCurrView);
 		mTools.render(this);
 		mLevelTool.render(mWindow);
 		mWindow.display();
+		mWindow.clear(Color(100,100,100,255));
 	}
 }
 
@@ -111,7 +127,7 @@ void	Editor::eventHandler(const Event& Current)
 	switch(Current.type)
 	{
 	case sf::Event::EventType::Closed:
-		mWindow.close();
+		mOpen=false;
 		break;
 	case sf::Event::EventType::Resized:
 		if(mWindow.getSize().x<500)

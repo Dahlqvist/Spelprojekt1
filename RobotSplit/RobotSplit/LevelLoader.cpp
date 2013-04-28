@@ -179,48 +179,50 @@ void	LevelLoader::addBackground(Level	&Source)
 	bool oneLoop=			false;
 
 	Node=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background");
-	string foo=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background")->name();
-
-	do
+	if(Node!=0x0)
 	{
-		if(oneLoop)
+	string foo=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background")->name();
+		do
 		{
-			Node=Node->next_sibling();
+			if(oneLoop)
+			{
+				Node=Node->next_sibling();
+			}
+			else
+			{
+				oneLoop=true;
+			}
+			string foo=Node->name();
+			//Gets the Position childnode from the GameObject node
+			CurrentChild=	Node->first_node("Position");
+			//Gets the x Value from CurrentChild
+			CurrentValue=	getValue(CurrentChild->first_node("x"));
+			//Sets X to CurentValue's value
+			Position.x=((float)atof(CurrentValue.c_str()));
+
+			//Initializes Y's value
+			CurrentValue=	getValue(CurrentChild->first_node("y"));
+			Position.y=((float)atof(CurrentValue.c_str()));
+
+			//Initializes the number of frames
+			CurrentChild=	Node->first_node("Frames");
+			CurrentValue=	getValue(CurrentChild);
+			Frames=			atoi(CurrentValue.c_str());
+
+			//Initializes the time per frame
+			CurrentChild=	Node->first_node("Speed");
+			CurrentValue=	getValue(CurrentChild);
+			Speed=			atoi(CurrentValue.c_str());
+
+			//Initializes the sprite name
+			CurrentChild=	Node->first_node("SpriteName");
+			CurrentValue=	getValue(CurrentChild);
+			SpriteName=		CurrentValue.c_str();
+
+			retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
 		}
-		else
-		{
-			oneLoop=true;
-		}
-		string foo=Node->name();
-		//Gets the Position childnode from the GameObject node
-		CurrentChild=	Node->first_node("Position");
-		//Gets the x Value from CurrentChild
-		CurrentValue=	getValue(CurrentChild->first_node("x"));
-		//Sets X to CurentValue's value
-		Position.x=((float)atof(CurrentValue.c_str()));
-
-		//Initializes Y's value
-		CurrentValue=	getValue(CurrentChild->first_node("y"));
-		Position.y=((float)atof(CurrentValue.c_str()));
-
-		//Initializes the number of frames
-		CurrentChild=	Node->first_node("Frames");
-		CurrentValue=	getValue(CurrentChild);
-		Frames=			atoi(CurrentValue.c_str());
-
-		//Initializes the time per frame
-		CurrentChild=	Node->first_node("Speed");
-		CurrentValue=	getValue(CurrentChild);
-		Speed=			atoi(CurrentValue.c_str());
-
-		//Initializes the sprite name
-		CurrentChild=	Node->first_node("SpriteName");
-		CurrentValue=	getValue(CurrentChild);
-		SpriteName=		CurrentValue.c_str();
-
-		retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
+		while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
 	}
-	while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
 	Source.setBackground(retBackground);
 	Source.getBackgroundWrap().setFrames(Frames);
 	Source.getBackgroundWrap().setSpeed(Speed);

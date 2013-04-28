@@ -199,7 +199,6 @@ sfml-main-d.lib
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>sfml-audio.lib
 ;sfml-graphics.lib;
-sfml-network.lib;
 sfml-system.lib;
 sfml-window.lib;
 sfml-main.lib
