@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Menu>
+	<Name>"Platforms: Big"</Name>
+	<Size>
+		<x>190</x>
+		<y>340</y>
+	</Size>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"House1"</Sprite>
+	</Object>
+	<Object>
+		<Type>"Platform"</Type>
+		<Sprite>"House2"</Sprite>
+	</Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House3"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House4"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House5"</Sprite>
+  </Object>
+  <Object>
+    <Type>"Platform"</Type>
+    <Sprite>"House6"</Sprite>
+  </Object>
+   
+ </Menu>
+

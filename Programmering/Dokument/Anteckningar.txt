@@ -1,0 +1,11 @@
+Dialogrutor:
+Får felmeddelande när man stänger av spelet om det finns dialogrutor på banan
+
+Laser:
+Vissa lasrar ska aktiveras av knappar (ist för avaktiveras)
+
+Kollision:
+Skicka id ist för siffra till Player::forceMove
+
+Plattformar:
+Ska kunna förstöras ovanifrån och underifrån (vid hopp), men inte från sidorna

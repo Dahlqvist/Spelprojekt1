@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Animation.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Background.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\BrainMagnet.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Checkpoint.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Collision.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Courser.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Eric.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetExtensions.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetWall.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Laser.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserHolder.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Level.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelSaver.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Trigger.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitManager.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\Window.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlLoader.cpp" />
+    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlSaver.cpp" />
+    <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="EditorBar.cpp" />
+    <ClCompile Include="GameTimer.cpp" />
+    <ClCompile Include="LevelBar.cpp" />
+    <ClCompile Include="LevelConstructor.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ObjectLoader.cpp" />
+    <ClCompile Include="UIButton.cpp" />
+    <ClCompile Include="UIObjectMenu.cpp" />
+    <ClCompile Include="TextField.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
+    <ClCompile Include="UIItem.cpp" />
+    <ClCompile Include="UIItemContainer.cpp" />
+    <ClCompile Include="UIText.cpp" />
+    <ClCompile Include="UnitIcon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Background.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\BrainMagnet.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Checkpoint.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Collision.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Courser.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Eric.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetExtensions.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetWall.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\GameObject.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Laser.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserHolder.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Level.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelSaver.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Meanix.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPart.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Timer.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Trigger.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitManager.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\Window.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlLoader.h" />
+    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlSaver.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Editor.h" />
+    <ClInclude Include="EditorBar.h" />
+    <ClInclude Include="GameTimer.h" />
+    <ClInclude Include="LevelBar.h" />
+    <ClInclude Include="LevelConstructor.h" />
+    <ClInclude Include="ObjectLoader.h" />
+    <ClInclude Include="UIButton.h" />
+    <ClInclude Include="UIObjectMenu.h" />
+    <ClInclude Include="TextField.h" />
+    <ClInclude Include="Toolbar.h" />
+    <ClInclude Include="UIDrop.h" />
+    <ClInclude Include="UIItem.h" />
+    <ClInclude Include="UIItemContainer.h" />
+    <ClInclude Include="UIText.h" />
+    <ClInclude Include="UnitIcon.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{30D2A94B-EB26-488B-A2AE-A019E1B653DB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>RobotSplit</RootNamespace>
+    <ProjectName>RobotSplitEditor</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\..\rapidxml-1.13;..\..\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\RobotSplit\RobotSplit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-audio-d.lib;
+sfml-graphics-d.lib;
+sfml-network-d.lib;
+sfml-system-d.lib;
+sfml-window-d.lib;
+sfml-main-d.lib
+
+;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\RobotSplit\RobotSplit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-audio.lib
+;sfml-graphics.lib;
+sfml-network.lib;
+sfml-system.lib;
+sfml-window.lib;
+sfml-main.lib
+
+;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
