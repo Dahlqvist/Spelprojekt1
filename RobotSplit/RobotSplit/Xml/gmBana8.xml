@@ -47,18 +47,6 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6b&quot;</SpriteName>
-			<Position>
-				<x>192</x>
-				<y>448</y>
-			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL6Ag&quot;</SpriteName>
 			<Position>
 				<x>1467</x>
@@ -68,22 +56,6 @@
 				<x>64</x>
 				<y>64</y>
 			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Wideb&quot;</SpriteName>
-			<Position>
-				<x>576</x>
-				<y>576</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Widec&quot;</SpriteName>
-			<Position>
-				<x>512</x>
-				<y>576</y>
-			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
@@ -115,14 +87,6 @@
 			<Position>
 				<x>128</x>
 				<y>480</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Widef&quot;</SpriteName>
-			<Position>
-				<x>864</x>
-				<y>288</y>
 			</Position>
 		</Unit>
 		<Unit>
@@ -434,6 +398,46 @@
 			<Position>
 				<x>960</x>
 				<y>480</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL2Wideh&quot;</SpriteName>
+			<Position>
+				<x>864</x>
+				<y>288</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL2Widef&quot;</SpriteName>
+			<Position>
+				<x>576</x>
+				<y>576</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL2Wided&quot;</SpriteName>
+			<Position>
+				<x>512</x>
+				<y>576</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL2Widej&quot;</SpriteName>
+			<Position>
+				<x>192</x>
+				<y>512</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL3a&quot;</SpriteName>
+			<Position>
+				<x>192</x>
+				<y>448</y>
 			</Position>
 		</Unit>
 	</Objects>

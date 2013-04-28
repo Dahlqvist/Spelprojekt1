@@ -1,9 +1,0 @@
-För att spela musik:
-Music::loadMusic("filens namn");
-Music::playMusic();
-
-Filens namn	||	Beskrivning
-------------------------
-level_1.wav	=	Fösta banans musik
-level_complete.wav	=	Klarat banan
-menu_1.wav		=	Menyns musik
