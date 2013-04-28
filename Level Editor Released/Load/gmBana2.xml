@@ -310,10 +310,18 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
+			<SpriteName>&quot;TileL1b&quot;</SpriteName>
 			<Position>
 				<x>608</x>
 				<y>480</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL3Widea&quot;</SpriteName>
+			<Position>
+				<x>608</x>
+				<y>544</y>
 			</Position>
 		</Unit>
 	</Objects>
