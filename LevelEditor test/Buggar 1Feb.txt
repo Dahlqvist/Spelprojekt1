@@ -1,5 +1,0 @@
-1. Du kan gå över kanter med benen
-2. ben extensions kan bugga fast om du fäller ut imellan 2 väggar
-3. repet från hjärnan åker alltid ut
-4. kan ta ut extensions om kroppen är precis ovanför
-5. man kan hoppa på sidan av en vägg (mellan två block)

@@ -227,9 +227,11 @@ void Game::joystickInput()
 {
 	mPlayer->mJoystick=true;
 	mTimer->input();
+	sf::Joystick::update();
+
 	if(sf::Joystick::isButtonPressed(mJoystickNumber, 2))
 	{//W, upp
-		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true)
+		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true && mPlayer->getAttachFeetExtension()==false)
 		{
 			mPlayer->interact(9);
 		}
