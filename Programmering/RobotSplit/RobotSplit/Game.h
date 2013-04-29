@@ -37,6 +37,7 @@ private:
 
 	void moveCamera();
 
+	sf::Event mEvents;
 	int mSecurityLevel;
 	StateInput& mStateInput;
 	Level mlevel;
