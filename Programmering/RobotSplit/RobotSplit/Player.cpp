@@ -53,6 +53,9 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 
 	mVec.x=640;
 	mVec.y=384;
+
+	//Added by Robbin
+	mJoystick=false;
 }
 void Player::initSprites()
 {
