@@ -1,0 +1,54 @@
+
+
+Left Stick to Move Stix - Första instruktion
+
+Click to Split Stix into two pieces - Andra instruktion (tredje om femte är andra) *
+
+Click to change between the two parts - tredje instruktion
+
+Click to Assemble once more - Fjärde instruktion
+
+Push button to jump - Femte Instruktion (kan vara andra) *
+
+Färgerna omkring stix / hans delar symboliserar vilken laser han kan passera - sjätte instruktion (flera delar) *
+
+Knapp med samma färg som en laser deaktiverar denne laser - sjunde instruktion
+
+Når man en fuel station får man en checkpoint (respawn vid död) - åttonde instruktion
+
+Fuel station återställer också fötternas bränsle - nionde instruktion (kan vara fjortonde)
+
+Laser som matchar färg med viss del av stix, gör att man kan passera oskadd - tionde instruktion
+
+Hold button för att kunna sväva med fötterna delad form - elfte instruktion
+
+Båda delarna/sammansatt form måste ta fuel station för checkpoint - tolfte instruktion
+
+När man är fötterna, press button to use extension - trettonde instruktion
+
+Fuel station återställer bränsle - fjortonde instruktion
+
+Right Stick för att sikta med hjärnan - femtonde instruktion
+
+Trigger för att skjuta ut hjärnan och fästa mot en yta - sextonde instruktion
+
+Endast en splittad stix kan ta tag i hjärnan - sjuttonde instruktion
+
+sammansatt stix är för tung, tänk på detta - artonde instruktion
+
+Siktet skjuter oavsett delad form eller sammansatt form alltid från huvudet - nittonde instruktion
+
+Om man tar tag i hjärnan når man platser man inte kunnat nå tidigare - tjugonde instruktion
+
+Benen kan sätta fast sig mot väggar med knapp X - Tjugoförsta instruktion
+
+Man kan röra sig fritt och med samma knapp X släppa taget om en vägg/tak - tjugoandra instruktion
+
+Brainshot kan också fästa sig på benens extension - tjugotredje instruktion
+
+Tänk på att huvudet kan hoppa på och nyttja extension - tjugofjärde instruktion
+
+På avmagnetiserat område(röd markerad) kan inte varken ben eller hjärnan fästa - tjugofemte instruktion
+
+Ni kan alltid kika kontroller i meny eller kolla tutorial videor igen - tjugosjätte instruktion
+
