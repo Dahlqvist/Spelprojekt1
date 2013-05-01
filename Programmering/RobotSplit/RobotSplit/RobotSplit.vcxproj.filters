@@ -443,5 +443,17 @@
     <None Include="Xml\RasmusIntro.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Xml\ricky1_movement_split_shift.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\ricky2_laserz.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\ricky3_fuel_rocketshoes_extension.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\ricky4_magneticshoes_longjump.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>

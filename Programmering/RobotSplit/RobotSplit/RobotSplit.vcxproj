@@ -220,6 +220,10 @@ sfml-main.lib
     <None Include="Xml\RasmusIntro.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xml\ricky1_movement_split_shift.xml" />
+    <None Include="Xml\ricky2_laserz.xml" />
+    <None Include="Xml\ricky3_fuel_rocketshoes_extension.xml" />
+    <None Include="Xml\ricky4_magneticshoes_longjump.xml" />
     <None Include="Xml\TestSave.xml" />
     <None Include="Xml\Tutorial1.xml" />
     <None Include="Xml\Tutorial2.xml" />
