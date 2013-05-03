@@ -556,6 +556,8 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 	bool					Solid=true, Behind=false;
+	double					MoveSpeed=0, MoveDistance=0;
+	int						Direction=0;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -619,6 +621,42 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		else if (getValue(CurrentChild)=="false")
 			Behind=false;
 	}
+
+	//Sets movement speed
+	CurrentChild=	Node->first_node("Speed");
+	if (CurrentChild!=0x0)
+	{
+		MoveSpeed=atoi(getValue(CurrentChild).c_str());
+
+		//Sets how far the object will move before turning
+		CurrentChild=	Node->first_node("Distance");
+		if (CurrentChild!=0x0)
+		{
+			MoveDistance=atoi(getValue(CurrentChild).c_str());
+		}
+
+		//Set the starting direction
+		CurrentChild=	Node->first_node("Direction");
+		if (CurrentChild!=0x0)
+		{
+			if (getValue(CurrentChild)=="Left")
+			{
+				Direction=0;
+			}
+			else if (getValue(CurrentChild)=="Right")
+			{
+				Direction=1;
+			}
+			else if (getValue(CurrentChild)=="Up")
+			{
+				Direction=2;
+			}
+			else if (getValue(CurrentChild)=="Down")
+			{
+				Direction=3;
+			}
+		}
+	}
 	
 	//Checks if the Unit Uses animation
 	if(Node->first_node("Frames")!=0)
@@ -630,12 +668,12 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		CurrentValue=	getValue(Node->first_node("Speed"));
 		Speed=(atoi(CurrentValue.c_str()));
 		ani= new Animation(Sprite,Speed,Frames);
-		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid, Behind);
+		TempObject=		new Unit(Position,Size,Offset,Id,ani, Solid, Behind, MoveSpeed, MoveDistance, Direction);
 	}
 	else
 	{
 		//Creates an Unit object
-		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid, Behind);
+		TempObject=		new Unit(Position, Size, Offset,Id,Sprite, Solid, Behind, MoveSpeed, MoveDistance, Direction);
 	}
 	//Puts the Unit object into the level's UnitVector
 	level.mObjects.push_back(TempObject);

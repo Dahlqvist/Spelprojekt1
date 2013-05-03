@@ -51,9 +51,9 @@ Game::Game():
 	//	mSecurityLevel=2;
 	//}
 	
-	/*mBanor.push_back("Xml/Tutorial1.xml");
+	mBanor.push_back("Xml/Tutorial1.xml");
 
-	mBanor.push_back("Xml/boss1_eric.xml");*/
+	mBanor.push_back("Xml/boss1_eric.xml");
 
 	//Rickys filmer
 	//mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
@@ -67,7 +67,7 @@ Game::Game():
 	//mBanor.push_back("Xml/gm_testa5.xml");
 	
 	//Vanlig ordning igen..
-/*	mBanor.push_back("Xml/Tutorial2.xml");
+	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
 	mBanor.push_back("Xml/TutorialNy2.xml");
 	mBanor.push_back("Xml/Tutorial3.xml");
@@ -88,12 +88,12 @@ Game::Game():
 	mBanor.push_back("Xml/gmBana8_ny3.xml");
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
 	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
-	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz*/
+	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
 
-	mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
+	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
 	mBanor.push_back("Xml/ricky2_laserz.xml");
 	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
-	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
+	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");*/
 
 	/*
 	mBanor.push_back("Xml/RasmusIntro.xml");

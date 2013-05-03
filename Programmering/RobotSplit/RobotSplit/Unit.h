@@ -10,10 +10,10 @@
 class Unit: public GameObject
 {
 public:
-	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true, bool behind=false);
-	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false);
+	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
+	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
 	virtual ~Unit();
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
@@ -67,6 +67,9 @@ protected:
 	sf::Sprite mSprite;
 	Animation* mAnimation;
 	bool mSolid, mHit, mHitThisFrame, mWasHit, mBehind;
+
+	sf::Vector2f mSpeed, mDistance, mStartPosition;
+	bool mDirection; //false==left, true==right
 };
 
 #endif

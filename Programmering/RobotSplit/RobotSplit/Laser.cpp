@@ -9,6 +9,7 @@ Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float l
 	mRedLaser("RedLaser", 10, 2),
 	mBlueLaser("BlueLaser", 10, 2),
 	mYellowLaser("YellowLaser", 10, 2),
+	mWhiteLaser("WhiteLaser", 10, 2),
 	mSpeed(9)
 {
 	if(laserColor=="Red")
@@ -22,6 +23,10 @@ Laser::Laser(sf::Vector2f position, std::string laserColor, bool active, float l
 	if(laserColor=="Yellow")
 	{
 		mAnimation=&mYellowLaser;
+	}
+	if(laserColor=="White")
+	{
+		mAnimation=&mWhiteLaser;
 	}
 	mId="Laser"+laserColor;
 }

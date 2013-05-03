@@ -41,6 +41,7 @@ protected:
 	Animation mRedLaser;
 	Animation mBlueLaser;
 	Animation mYellowLaser;
+	Animation mWhiteLaser;
 	friend class Editor;
 	friend class Toolbar;
 };

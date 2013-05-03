@@ -181,6 +181,12 @@
         <x>64</x>
         <y>224</y>
       </Position>
+      
+      <!--Testing moveable units-->
+      <Speed>1</Speed>
+      <Distance>100</Distance>
+      <Direction>Right</Direction>
+      
     </Unit>
     <Unit>
       <Type>"AntiMagnet"</Type>

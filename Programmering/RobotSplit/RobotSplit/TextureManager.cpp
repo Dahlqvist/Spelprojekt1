@@ -196,6 +196,7 @@ void TextureManager::loadTexture()
 	mTextureMap["RedLaser"].loadFromFile("Texture/Enviroment/Laser_Röd_Sprite_4px.png");
 	mTextureMap["BlueLaser"].loadFromFile("Texture/Enviroment/Laser_Blå_Sprite_4px.png");
 	mTextureMap["YellowLaser"].loadFromFile("Texture/Enviroment/Laser_Gul_Sprite_4px.png");
+	mTextureMap["WhiteLaser"].loadFromFile("Texture/Enviroment/Laser_Vit_Sprite_4px.png");
 
 	mTextureMap["Exit"].loadFromFile("Texture/Enviroment/Exit_dark.png");
 
