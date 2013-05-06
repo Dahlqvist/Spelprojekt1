@@ -25,101 +25,11 @@
     <ClInclude Include="UIItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlSaver.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Animation.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Background.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\BrainMagnet.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Collision.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\DialogueBox.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetExtensions.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\FeetWall.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\GameObject.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Level.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelLoader.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Line.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Platform.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Player.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerLight.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPart.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\RocketFuel.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\TextureManager.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Trigger.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Unit.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitManager.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\UnitWrap.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Window.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\XmlLoader.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
     <ClInclude Include="UIText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UIDrop.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Eric.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Laser.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserHolder.h">
-      <Filter>SPLITROBOT</Filter>
     </ClInclude>
     <ClInclude Include="GameTimer.h">
       <Filter>Header Files</Filter>
@@ -130,40 +40,130 @@
     <ClInclude Include="UnitIcon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Meanix.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Courser.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Sound.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
     <ClInclude Include="LevelBar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UIObjectMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Checkpoint.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\MiniBot.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\Timer.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\LevelSaver.h">
-      <Filter>SPLITROBOT</Filter>
-    </ClInclude>
     <ClInclude Include="UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.h">
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\XmlSaver.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Animation.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Background.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\BrainMagnet.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Checkpoint.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Collision.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Courser.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\DialogueBox.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Eric.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\FeetExtensions.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\FeetWall.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\GameObject.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Laser.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\LaserDeactivator.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\LaserHolder.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Level.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\LevelLoader.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\LevelSaver.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Line.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Meanix.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\MiniBot.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Platform.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Player.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\PlayerLight.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\PlayerPart.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\PlayerPartBody.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\PlayerPartFeet.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\PlayerPartHead.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\RocketFuel.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Sound.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\TextureManager.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Timer.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\TriggedAnimation.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Trigger.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Unit.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\UnitManager.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\UnitWrap.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\Window.h">
+      <Filter>SPLITROBOT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\RobotSplit\RobotSplit\XmlLoader.h">
       <Filter>SPLITROBOT</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,92 +203,8 @@
     <ClCompile Include="UIItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Animation.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Background.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\BrainMagnet.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Collision.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\DialogueBox.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetExtensions.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\FeetWall.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Level.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelLoader.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Line.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Platform.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Player.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerLight.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\RocketFuel.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\TextureManager.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Trigger.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Unit.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitManager.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\UnitWrap.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Window.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlLoader.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\XmlSaver.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
     <ClCompile Include="UIText.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Eric.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Laser.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserHolder.cpp">
-      <Filter>SPLITROBOT</Filter>
     </ClCompile>
     <ClCompile Include="GameTimer.cpp">
       <Filter>Source Files</Filter>
@@ -299,40 +215,124 @@
     <ClCompile Include="UnitIcon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Meanix.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\LaserDeactivator.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Courser.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Sound.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
     <ClCompile Include="LevelBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UIObjectMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Checkpoint.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\MiniBot.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\LevelSaver.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\Timer.cpp">
-      <Filter>SPLITROBOT</Filter>
-    </ClCompile>
     <ClCompile Include="UIButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\RobotSplit\RobotSplit\TriggedAnimation.cpp">
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Animation.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Background.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\BrainMagnet.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Checkpoint.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Collision.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Courser.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\DialogueBox.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Eric.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\FeetExtensions.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\FeetWall.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Laser.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\LaserDeactivator.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\LaserHolder.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Level.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\LevelLoader.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\LevelSaver.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Line.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Meanix.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\MiniBot.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Platform.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Player.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\PlayerLight.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\PlayerPartBody.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\PlayerPartFeet.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\PlayerPartHead.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\RocketFuel.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Sound.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\TextureManager.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Timer.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\TriggedAnimation.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Trigger.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Unit.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\UnitManager.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\UnitWrap.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\Window.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\XmlLoader.cpp">
+      <Filter>SPLITROBOT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\RobotSplit\RobotSplit\XmlSaver.cpp">
       <Filter>SPLITROBOT</Filter>
     </ClCompile>
   </ItemGroup>
