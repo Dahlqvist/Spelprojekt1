@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid, bool behind, sf::Vector2f speed, sf::Vector2f distance, bool direction)
+Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid, bool behind, float speed, int distance, int direction)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(TextureManager::getSprite(spriteName))
@@ -18,7 +18,7 @@ Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool s
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid, bool behind, sf::Vector2f speed, sf::Vector2f distance, bool direction)
+Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid, bool behind, float speed, int distance, int direction)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(animation->getSprite())
@@ -34,7 +34,7 @@ Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool sol
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid, bool behind, sf::Vector2f speed, sf::Vector2f distance, bool direction)
+Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid, bool behind, float speed, int distance, int direction)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(TextureManager::getSprite(spriteName))
@@ -51,7 +51,7 @@ Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::s
 	mSprite.setPosition(mPosition);
 }
 
-Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid, bool behind, sf::Vector2f speed, sf::Vector2f distance, bool direction)
+Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid, bool behind, float speed, int distance, int direction)
 	:GameObject()
 	,mSolid(solid)
 	,mSprite(animation->getSprite())
@@ -88,19 +88,35 @@ void Unit::draw()
 
 void Unit::update()
 {
+	//To check if object was hit this frame
 	if (mHit==false)
 	{
 		mWasHit=false;
 	}
 	mHit=false;
 
-	if (mSpeed.x!=0 || mSpeed.y!=0)
+	//Handle movement
+	if (mSpeed!=0)
 	{
-		mPosition+=mSpeed;
-		if ((mDirection=0 /*Left*/ && (mPosition.x<(mStartPosition.x-mDistance.x) || (mPosition.y<(mStartPosition.y-mDistance.y)))) || (mDirection=1 /*Right*/ && (mPosition.x>(mStartPosition.x+mDistance.x) || (mPosition.y>(mStartPosition.y+mDistance.y)))))
+		switch (mDirection)
 		{
-			mSpeed.x*=-1;
-			mSpeed.y*=-1;
-		}
+		case LEFT:
+			mPosition.x-=mSpeed;
+			break;
+		case RIGHT:
+			mPosition.x+=mSpeed;
+			break;
+		case UP:
+			mPosition.y-=mSpeed;
+			break;
+		case DOWN:
+			mPosition.y+=mSpeed;
+			break;
+		};
 	}
+}
+
+void Unit::changeDirection(int distance)
+{
+	
 }

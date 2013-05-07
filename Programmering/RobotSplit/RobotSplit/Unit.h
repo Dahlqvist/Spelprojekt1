@@ -10,10 +10,10 @@
 class Unit: public GameObject
 {
 public:
-	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
-	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
-	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false, sf::Vector2f speed=sf::Vector2f(0,0), sf::Vector2f distance=sf::Vector2f(0,0), bool direction=false);
+	Unit(sf::Vector2f position, std::string id, std::string spriteName, bool solid=true, bool behind=false, float speed=0, int distance=-1, int direction=RIGHT);
+	Unit(sf::Vector2f position, std::string id, Animation* animation, bool solid=true, bool behind=false, float speed=0, int distance=-1, int direction=RIGHT);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, std::string spriteName, bool solid=true, bool behind=false, float speed=0, int distance=-1, int direction=RIGHT);
+	Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::string id, Animation* animation, bool solid=true, bool behind=false, float speed=0, int distance=-1, int direction=RIGHT);
 	virtual ~Unit();
 
 	virtual sf::Vector2f getPosition(){return mPosition;};
@@ -61,6 +61,16 @@ public:
 	virtual void setReset(){};
 	virtual	void setBehind(bool Behind){mBehind=Behind;}
 
+	enum directions
+	{
+		MIN_VALUE_DIR,
+		UP,
+		DOWN,
+		RIGHT,
+		LEFT,
+		MAX_VALUE_DIR
+	};
+
 protected:
 	sf::Vector2f mSize, mOffset;
 	
@@ -68,8 +78,13 @@ protected:
 	Animation* mAnimation;
 	bool mSolid, mHit, mHitThisFrame, mWasHit, mBehind;
 
-	sf::Vector2f mSpeed, mDistance, mStartPosition;
-	bool mDirection; //false==left, true==right
+	float mSpeed; 
+	int mDistance;
+	sf::Vector2f mStartPosition;
+	int mDirection;
+
+private:
+	void changeDirection(int distance);
 };
 
 #endif

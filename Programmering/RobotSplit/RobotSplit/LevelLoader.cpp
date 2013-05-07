@@ -555,8 +555,9 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	Unit					*TempObject;
 	sf::Vector2f			Position, Size, Offset;
 	bool					Solid=true, Behind=false;
-	double					MoveSpeed=0, MoveDistance=0;
-	int						Direction=0;
+	float					MoveSpeed=0;
+	int						MoveDistance=-1;
+	int						Direction=Unit::RIGHT;
 
 	//Gets the Position childnode from the GameObject node
 	CurrentChild=	Node->first_node("Position");
@@ -625,7 +626,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	CurrentChild=	Node->first_node("Speed");
 	if (CurrentChild!=0x0)
 	{
-		MoveSpeed=atoi(getValue(CurrentChild).c_str());
+		MoveSpeed=atof(getValue(CurrentChild).c_str());
 
 		//Sets how far the object will move before turning
 		CurrentChild=	Node->first_node("Distance");
@@ -640,19 +641,19 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 		{
 			if (getValue(CurrentChild)=="Left")
 			{
-				Direction=0;
+				Direction=Unit::LEFT;
 			}
 			else if (getValue(CurrentChild)=="Right")
 			{
-				Direction=1;
+				Direction=Unit::RIGHT;
 			}
 			else if (getValue(CurrentChild)=="Up")
 			{
-				Direction=2;
+				Direction=Unit::UP;
 			}
 			else if (getValue(CurrentChild)=="Down")
 			{
-				Direction=3;
+				Direction=Unit::DOWN;
 			}
 		}
 	}
