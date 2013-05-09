@@ -209,7 +209,9 @@ sfml-main.lib
     <ClInclude Include="XmlSaver.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Bana1.xml" />
+    <None Include="Xml\Bana1.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xml\Bana2.xml" />
     <None Include="Xml\Bana3Ny.xml" />
     <None Include="Xml\Bana4.xml" />
