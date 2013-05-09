@@ -182,10 +182,10 @@
         <y>224</y>
       </Position>
       
-      <!--Testing moveable units-->
+      <!--Testing moveable units
       <Speed>1</Speed>
-      <Distance>100</Distance>
-      <Direction>Right</Direction>
+      <Distance>400</Distance>
+      <Direction>Right</Direction>-->
       
     </Unit>
     <Unit>

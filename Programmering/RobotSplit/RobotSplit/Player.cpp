@@ -126,8 +126,8 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 		}
 		else
 		{
-			sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
-			Window.draw(*mCourser->getSprite(mVec));
+			sf::Vector2f mVec2(Window.convertCoords(sf::Mouse::getPosition(Window)));
+			Window.draw(*mCourser->getSprite(mVec2));
 		}
 
 		if(mFeet.getUnit()!=0 && mFeet.getAttached()==false)
@@ -271,22 +271,28 @@ void Player::move(sf::Vector2f Vec)
 		}
 		else
 		{
-			if(UnitManager::isCollidedSide(0, 4) && Vec.x<0 && mKeys==false && lastKey!=0)
-			{
-				mFeet.setAttachedWall(true, 0);
-			}
-			else if(UnitManager::isCollidedSide(0, 3) && Vec.x>0 && mKeys==false && lastKey!=0)
-			{
-				mFeet.setAttachedWall(true, 2);
-			}
-			else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0 && mKeys==false)
-			{
-				mFeet.forceMove(sf::Vector2f(0, -16));
-				mFeet.setAttachedWall(true, 1);
-			}
-			else if(UnitManager::isCollidedSide(0, 2) && Vec.y>0 && mKeys==false)
-			{
-				mFeet.setAttachedWall(false);
+			if(mJoystick==false){
+				if(UnitManager::isCollidedSide(0, 4) && Vec.x<0 && mKeys==false && lastKey!=0)
+				{
+					mFeet.setAttachedWall(true, 0);
+				}
+				else if(UnitManager::isCollidedSide(0, 3) && Vec.x>0 && mKeys==false && lastKey!=0)
+				{
+					mFeet.setAttachedWall(true, 2);
+				}
+				else if(UnitManager::isCollidedSide(0, 1) && Vec.y<0 && mKeys==false)
+				{
+					mFeet.forceMove(sf::Vector2f(0, -16));
+					mFeet.setAttachedWall(true, 1);
+				}
+				else if(UnitManager::isCollidedSide(0, 2) && Vec.y>0 && mKeys==false)
+				{
+					mFeet.setAttachedWall(false);
+				}
+				else
+				{
+					mFeet.setPosition(Vec);
+				}
 			}
 			else
 			{
@@ -815,6 +821,19 @@ void Player::interact(int action)
 				mFeet.jumpReset();
 			}
 		}
+		if(action==10)
+		{
+			mFeet.setAttachedWall(true, 0);
+		}
+		if(action==11)
+		{
+			mFeet.forceMove(sf::Vector2f(0, -16));
+			mFeet.setAttachedWall(true, 1);
+		}
+		if(action==12)
+		{
+			mFeet.setAttachedWall(true, 2);
+		}		
 	}
 }
 //Kollisioner

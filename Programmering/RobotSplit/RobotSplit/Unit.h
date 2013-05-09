@@ -81,10 +81,7 @@ protected:
 	float mSpeed; 
 	int mDistance;
 	sf::Vector2f mStartPosition;
-	int mDirection;
-
-private:
-	void changeDirection(int distance);
+	int mDirection, mStartDirection;
 };
 
 #endif

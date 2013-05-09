@@ -1,4 +1,4 @@
-#include "Game.h"
+ï»¿#include "Game.h"
 #include "StateInput.h"
 
 #include <SFML\Graphics.hpp>
@@ -38,7 +38,12 @@ Game::Game():
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 	//diaBox = mlevel.getDialogueBoxes();
+	mJoystick=false;
+	mousePos.x=1280/2;
+	mousePos.y=768/2;
+	mJoystickNumber=0;
 	mSecurityLevel=0;
+	mCourseSpeed=3;
 	//Music::loadMusic("Music/tutorial_2.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
@@ -51,22 +56,25 @@ Game::Game():
 	//	mSecurityLevel=2;
 	//}
 	
-	mBanor.push_back("Xml/Tutorial1.xml");
-
-	mBanor.push_back("Xml/boss1_eric.xml");
-
 	//Rickys filmer
 	//mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
 	//mBanor.push_back("Xml/ricky2_laserz.xml");
 	//mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
 	//mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
-	
-	//Lägger testbanorna från editorn här tillfälligt för att slippa växla mellan banorna
+	//Lï¿½gger testbanorna frï¿½n editorn hï¿½r tillfï¿½lligt fï¿½r att slippa vï¿½xla mellan banorna
 	//mBanor.push_back("Xml/gm_testa7.xml");
 	//mBanor.push_back("Xml/gm_testa4.xml");
 	//mBanor.push_back("Xml/gm_testa5.xml");
 	
 	//Vanlig ordning igen..
+	//TESTBANOR
+	//mBanor.push_back("Xml/eric_testa_7.xml");
+	//mBanor.push_back("Xml/eric_testa_4.xml");
+	//mBanor.push_back("Xml/eric_testa_5.xml");
+	//mBanor.push_back("Xml/eric_crappy_ending.xml");
+
+	//TUTORIAL
+	mBanor.push_back("Xml/Tutorial1.xml");
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
 	mBanor.push_back("Xml/TutorialNy2.xml");
@@ -76,18 +84,38 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
 
-	//Storybanornas ursprungsordning är kvar men i bortkommenterad form nedanför
-	//mBanor.push_back("Xml/RasmusIntro.xml"); Borttagen iom speltest
+	//STORY_MODE
+	//Inledning
+	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
+	//Akt_1
 	mBanor.push_back("Xml/Bana1.xml"); //da original
-	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga_ändra
-	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2
-	mBanor.push_back("Xml/Bana3Ny.xml"); //leap of faith 
-	mBanor.push_back("Xml/Bana5.xml"); //randomTiles
-	mBanor.push_back("Xml/Bana4.xml"); //stress
-	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den_ändra
+	//mBanor.push_back("Xml/eric_first_original.xml"); /finns inte lÃ¤ngre tydligen
+	mBanor.push_back("Xml/eric_simple_enough.xml");
+	mBanor.push_back("Xml/eric_leap_of_faith.xml");
+	//Boss_1
+	//Akt_2
+	mBanor.push_back("Xml/eric_swing_around.xml");
+	mBanor.push_back("Xml/eric_compromise.xml");
+	//eric_paths
+	//Boss_2 (rickys)
+	//Akt_3
+	mBanor.push_back("Xml/eric_luring.xml");
+	mBanor.push_back("Xml/eric_power_of_the_mini.xml");
+	mBanor.push_back("Xml/eric_laserz.xml");
+
+
+	/*OLD
+	mBanor.push_back("Xml/Bana1.xml"); //da original
+	mBanor.push_back("Xml/gmBana2.xml"); //enkel sÃ¤tta-sig-pÃ¥-sidan-och-fÃ¶rlÃ¤nga_Ã¤ndra*
+	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2*
+	mBanor.push_back("Xml/Bana3Ny.xml"); //leap of faith* 
+	mBanor.push_back("Xml/Bana5.xml"); //randomTiles*
+	mBanor.push_back("Xml/Bana4.xml"); //stress*
+	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den_Ã¤ndra
 	mBanor.push_back("Xml/gmBana8_ny3.xml");
+<<<<<<< HEAD
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
-	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
+	mBanor.push_back("Xml/gmBana10_2.xml");//_ï¿½ndra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
 
 	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
@@ -103,6 +131,11 @@ Game::Game():
 	mBanor.push_back("Xml/Bana4.xml");
 	mBanor.push_back("Xml/Bana5.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml");
+=======
+	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan*
+	mBanor.push_back("Xml/gmBana10_2.xml");//_Ã¤ndra
+	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
+>>>>>>> master
 	*/
 
 	changeMap(0);
@@ -129,11 +162,12 @@ void Game::changeMap(int map)
 		//std::cout << mBanor[mBana] << std::endl;
 		mlevel.loadNewLevel(mBanor[mBana]);
 		Timer::stop();
-		for(int i=0;i<BG.size();i++)
-		{
-			delete BG[i];
-		}
+		//for(int i=0;i<BG.size();i++)
+		//{
+			//delete BG[i];
+		//}
 		BG=mlevel.getBackground();
+		//mlevel.getBackgroundWrap();
 		//delete mPlayer;
 		mPlayer = mlevel.getPlayer();//new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition());
 		Objects= new UnitManager(mPlayer, mlevel.getObjects());
@@ -214,67 +248,171 @@ void Game::update()
 
 void Game::input()
 {
-	mTimer->input();
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0)
+	if(mJoystick==true)
 	{
-		mPlayer->interact(0);
+		Game::joystickInput();
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0)
+	else
 	{
+		Game::keyboardInput();
+	}
+}
+
+void Game::joystickInput()
+{
+	mPlayer->mJoystick=true;
+	mTimer->input();
+	//sf::Joystick::update();
+
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 2))
+	{//W, upp
+		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true && mPlayer->getAttachFeetExtension()==false)
+		{
+			mPlayer->interact(9);
+			TestTimer.restart();
+		}
+		else if(TestTimer.getElapsedTime().asSeconds()>mTime)
+		{
+			mTime=(float)0.2;
+			if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false)
+			{
+				if(UnitManager::isCollidedSide(0, 2)==true)
+				{
+					mPlayer->interact(0);
+					TestTimer.restart();
+					mTime=0.3;
+				}
+				else
+				{
+					mPlayer->interact(4);
+					if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && UnitManager::isCollidedSide(0, 1))
+					{
+						mPlayer->interact(11);
+						TestTimer.restart();
+					}
+				}
+			}
+			else{
+				mPlayer->interact(0);
+			}
+		}
+	}
+	if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false)
+	{
+		//SÃ¤tta sig pÃ¥ en vÃ¤gg/ett tak
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>50 && UnitManager::isCollidedSide(0, 3))
+		{
+			mPlayer->interact(12);
+		}
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)<-50 && UnitManager::isCollidedSide(0, 4))
+		{
+			mPlayer->interact(10);
+		}
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-50 && UnitManager::isCollidedSide(0, 1))
+		{
+			mPlayer->interact(11);
+			TestTimer.restart();
+		}
+
+		if(UnitManager::isCollidedSide(0, 2) && (UnitManager::isCollidedSide(0, 3) || UnitManager::isCollidedSide(0, 4)))
+		{
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90 && mPlayer->getAttachedWall()==true)
+			{
+				mPlayer->interact(0);
+			}
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+			{//S, ner
+				mPlayer->interact(3);
+			}
+		}
+		else
+		{
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90 && !UnitManager::isCollidedSide(0, 2))
+			{
+				mPlayer->interact(0);
+			}
+			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+			{//S, ner
+				mPlayer->interact(3);
+			}
+		}
+	}
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>50)
+	{//D, hï¿½ger
 		mPlayer->interact(1);
 	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
-	{
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)<-50)
+	{//A, vï¿½nster
 		mPlayer->interact(2);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0)
-	{
-		mPlayer->interact(3);
+	//if(sf::Joystick::isButtonPressed(mJoystickNumber, 1)  && mSecurityLevel>=1)
+	//{//Mellanslag, raketskor
+	//	mPlayer->interact(4);
+	//}
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-90)
+	{//Head
+		mPlayer->mVec.x-=mCourseSpeed;
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1)
-	{
-		mPlayer->interact(4);
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-40)
+	{//Head
+		mPlayer->mVec.x-=1;
 	}
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>90)
+	{//Head
+		mPlayer->mVec.x+=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>40)
+	{//Head
+		mPlayer->mVec.x+=1;
+	}
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-90)
+	{//Head
+		mPlayer->mVec.y-=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-40)
+	{//Head
+		mPlayer->mVec.y-=1;
+	}
+	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>90)
+	{//Head
+		mPlayer->mVec.y+=mCourseSpeed;
+	}
+	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>40)
+	{//Head
+		mPlayer->mVec.y+=1;
+	}
+
 	if(TestTimer.getElapsedTime().asSeconds()>mTime)
 	{
 		mTime=(float)0.2;
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1)
-		{
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 3)  && mSecurityLevel>=1)
+		{//mousebutton, split
 			mPlayer->interact(5);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1)
-		{
+		if((sf::Joystick::isButtonPressed(mJoystickNumber, 5) || sf::Joystick::isButtonPressed(mJoystickNumber, 7)) && mSecurityLevel>=1)
+		{//tab, shift
 			mPlayer->interact(6);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2)
-		{
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mPlayer->getBodyActive()==false && mSecurityLevel>=2)
+		{//E, extend
 			mPlayer->interact(7);
 			TestTimer.restart();
 		}
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && mSecurityLevel>=0)
-		{
+		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(mJoystickNumber, 4) || sf::Joystick::isButtonPressed(mJoystickNumber, 6)))
+		{//LShift, dash
 			mPlayer->interact(8);
 			TestTimer.restart();
 			mTime=(float)0.7;
 		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2)
-		{
-		/*	sf::Vector2f Temp;
-			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
-			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
-			mPlayer->shootHead(sf::Vector2f(Temp));*/
-		//	mWindow.setView(sf::View(sf::FloatRect(sf::Vector2f(0,0),sf::Vector2f(mWindow.getSize()))));
-
-			moveCamera();
-			sf::Vector2f mVec=mWindow.convertCoords(sf::Mouse::getPosition(mWindow));
-			mPlayer->shootHead(sf::Vector2f(mVec));
-			TestTimer.restart();
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 0) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true) && mSecurityLevel>=2)
+		{//mouse, headshot
+			mPlayer->shootHead2();
 		}
 
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Back))
-		{
+		if(sf::Joystick::isButtonPressed(mJoystickNumber, 8))
+		{//Delete, restart
 			mPlayer->restartPlayer();
 			TestTimer.restart();
 			Objects->reset();
@@ -294,6 +432,281 @@ void Game::input()
 			Game::changeMap(1);
 			TestTimer.restart();
 		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+		{
+			mJoystick=!mJoystick;
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
+		{
+			if(mJoystickNumber<3){
+				mJoystickNumber++;
+			}
+			else
+			{
+				mJoystickNumber=0;
+			}
+		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+		//{
+		//	mStateInput.changeState("Bank");
+		//	TestTimer.restart();
+		//}
+		//runCollisions(Objects.getUnits(), *mPlayer);
+	}
+	if(sf::Joystick::isButtonPressed(mJoystickNumber, 9))
+	{//Esc, menu
+		Timer::pause();
+		mStateInput.changeMenu();
+		mStateInput.changeState("InGameMenu");
+	}
+
+	//Xbox-kontroller
+	//{
+	//	mPlayer->mJoystick=true;
+	//	mTimer->input();
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 0))
+	//	{//W, upp
+	//		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true)
+	//		{
+	//			mPlayer->interact(9);
+	//		}
+	//		else
+	//		{
+	//			mPlayer->interact(0);
+	//		}
+	//	}
+	//	if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false)
+	//	{
+	//		if(UnitManager::isCollidedSide(0, 2) && (UnitManager::isCollidedSide(0, 1) || UnitManager::isCollidedSide(0, 3)))
+	//		{
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
+	//			{
+	//				mPlayer->interact(0);
+	//			}
+	//		}
+	//		else
+	//		{
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-90)
+	//			{
+	//				mPlayer->interact(0);
+	//			}
+	//			if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)>90)
+	//			{//S, ner
+	//				mPlayer->interact(3);
+	//			}
+	//		}
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)>90)
+	//	{//D, hï¿½ger
+	//		mPlayer->interact(1);
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::X)<-90)
+	//	{//A, vï¿½nster
+	//		mPlayer->interact(2);
+	//	}
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 3)  && mSecurityLevel>=1)
+	//	{//Mellanslag, raketskor
+	//		mPlayer->interact(4);
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)<-90)
+	//	{//Head
+	//		mPlayer->mVec.x-=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)<-40)
+	//	{//Head
+	//		mPlayer->mVec.x-=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)>90)
+	//	{//Head
+	//		mPlayer->mVec.x+=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::U)>40)
+	//	{//Head
+	//		mPlayer->mVec.x+=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-90)
+	//	{//Head
+	//		mPlayer->mVec.y-=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)<-40)
+	//	{//Head
+	//		mPlayer->mVec.y-=1;
+	//	}
+	//	if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>90)
+	//	{//Head
+	//		mPlayer->mVec.y+=mCourseSpeed;
+	//	}
+	//	else if(sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::R)>40)
+	//	{//Head
+	//		mPlayer->mVec.y+=1;
+	//	}
+
+	//	if(TestTimer.getElapsedTime().asSeconds()>mTime)
+	//	{
+	//		mTime=(float)0.2;
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1)  && mSecurityLevel>=1)
+	//		{//mousebutton, split
+	//			mPlayer->interact(5);
+	//			TestTimer.restart();
+	//		}
+	//		if((sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)>40 || sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Z)<-40) && mSecurityLevel>=1)
+	//		{//tab, shift //Z
+	//			mPlayer->interact(6);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 2) && mPlayer->getBodyActive()==false && mSecurityLevel>=2)
+	//		{//E, extend
+	//			mPlayer->interact(7);
+	//			TestTimer.restart();
+	//		}
+	//		if(mSecurityLevel>=0 && (sf::Joystick::isButtonPressed(mJoystickNumber, 4) || sf::Joystick::isButtonPressed(mJoystickNumber, 5)))
+	//		{//LShift, dash
+	//			mPlayer->interact(8);
+	//			TestTimer.restart();
+	//			mTime=(float)0.7;
+	//		}
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 2) && mSecurityLevel>=2 && (mPlayer->getBodyActive()==true || mPlayer->getTogether()==true) && mSecurityLevel>=2)
+	//		{//mouse, headshot
+	//			mPlayer->shootHead2();
+	//		}
+
+	//		if(sf::Joystick::isButtonPressed(mJoystickNumber, 6))
+	//		{//Delete, restart
+	//			mPlayer->restartPlayer();
+	//			TestTimer.restart();
+	//			Objects->reset();
+	//		}
+	//		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	//		//{
+	//		//	mPlayer->reFuel();
+	//		//	TestTimer.restart();
+	//		//}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+	//		{
+	//			Game::changeMap(-1);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+	//		{
+	//			Game::changeMap(1);
+	//			TestTimer.restart();
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+	//		{
+	//			mJoystick=!mJoystick;
+	//		}
+	//		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
+	//		{
+	//			if(mJoystickNumber<3){
+	//				mJoystickNumber++;
+	//			}
+	//			else
+	//			{
+	//				mJoystickNumber=0;
+	//			}
+	//		}
+	//		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+	//		//{
+	//		//	mStateInput.changeState("Bank");
+	//		//	TestTimer.restart();
+	//		//}
+	//		//runCollisions(Objects.getUnits(), *mPlayer);
+	//	}
+	//	if(sf::Joystick::isButtonPressed(mJoystickNumber, 7))
+	//	{//Esc, menu
+	//		Timer::pause();
+	//		mStateInput.changeMenu();
+	//		mStateInput.changeState("InGameMenu");
+	//	}
+	//}
+}
+void Game::keyboardInput()
+{
+	mPlayer->mJoystick=false;
+	mTimer->input();
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0)
+	{//W, upp
+		mPlayer->interact(0);
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0)
+	{//D, hï¿½ger
+		mPlayer->interact(1);
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && mSecurityLevel>=0)
+	{//A, vï¿½nster
+		mPlayer->interact(2);
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && mSecurityLevel>=0)
+	{//S, ner
+		mPlayer->interact(3);
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1)
+	{//Mellanslag, raketskor
+		mPlayer->interact(4);
+	}
+	if(TestTimer.getElapsedTime().asSeconds()>mTime)
+	{
+		mTime=(float)0.2;
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Right) && mSecurityLevel>=1)
+		{//mousebutton, split
+			mPlayer->interact(5);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && mSecurityLevel>=1)
+		{//tab, shift
+			mPlayer->interact(6);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && mSecurityLevel>=2)
+		{//E, extend
+			mPlayer->interact(7);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && mSecurityLevel>=0)
+		{//LShift, dash
+			mPlayer->interact(8);
+			TestTimer.restart();
+			mTime=(float)0.7;
+		}
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && mSecurityLevel>=2)
+		{//mouse, headshot
+		/*	sf::Vector2f Temp;
+			Temp.x=(float)sf::Mouse::getPosition(mWindow).x+(float)(mWindow.getView().getCenter().x-mWindow.getSize().x/2.0);
+			Temp.y=(float)sf::Mouse::getPosition(mWindow).y+(float)(mWindow.getView().getCenter().y-mWindow.getSize().y/2.0);
+			mPlayer->shootHead(sf::Vector2f(Temp));*/
+		//	mWindow.setView(sf::View(sf::FloatRect(sf::Vector2f(0,0),sf::Vector2f(mWindow.getSize()))));
+
+			moveCamera();
+			sf::Vector2f mVec=mWindow.convertCoords(sf::Mouse::getPosition(mWindow));
+			mPlayer->shootHead(sf::Vector2f(mVec));
+			TestTimer.restart();
+		}
+
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete) || sf::Keyboard::isKeyPressed(sf::Keyboard::Back))
+		{//Delete, restart
+			mPlayer->restartPlayer();
+			TestTimer.restart();
+			Objects->reset();
+		}
+		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		//{
+		//	mPlayer->reFuel();
+		//	TestTimer.restart();
+		//}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+		{
+			Game::changeMap(-1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+		{
+			Game::changeMap(1);
+			TestTimer.restart();
+		}
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+		{
+			mJoystick=!mJoystick;
+		}
 		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
 		//{
 		//	mStateInput.changeState("Bank");
@@ -302,12 +715,13 @@ void Game::input()
 		//runCollisions(Objects.getUnits(), *mPlayer);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
+	{//Esc, menu
 		Timer::pause();
 		mStateInput.changeMenu();
 		mStateInput.changeState("InGameMenu");
 	}
 }
+
 
 void Game::moveCamera()
 {
@@ -348,7 +762,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	mWindow.setView(view);
+	//mWindow.setView(view);
 }
 
 void Game::render()

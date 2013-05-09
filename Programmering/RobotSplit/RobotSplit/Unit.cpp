@@ -12,6 +12,8 @@ Unit::Unit(sf::Vector2f position, std::string id, std::string spriteName, bool s
 	,mSpeed(speed)
 	,mDistance(distance)
 	,mDirection(direction)
+	,mStartDirection(direction)
+	,mStartPosition(position)
 {
 	mPosition=position;
 	mId=id;
@@ -27,6 +29,8 @@ Unit::Unit(sf::Vector2f position, std::string id, Animation* animation, bool sol
 	,mSpeed(speed)
 	,mDistance(distance)
 	,mDirection(direction)
+	,mStartDirection(direction)
+	,mStartPosition(position)
 {
 	mAnimation =animation;
 	mPosition=position;
@@ -45,6 +49,8 @@ Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::s
 	,mSpeed(speed)
 	,mDistance(distance)
 	,mDirection(direction)
+	,mStartDirection(direction)
+	,mStartPosition(position)
 {
 	mPosition=position;
 	mId=id;
@@ -61,6 +67,8 @@ Unit::Unit(sf::Vector2f position, sf::Vector2f size, sf::Vector2f offset, std::s
 	,mSpeed(speed)
 	,mDistance(distance)
 	,mDirection(direction)
+	,mStartDirection(direction)
+	,mStartPosition(position)
 {
 	mAnimation =animation;
 	mPosition=position;
@@ -102,21 +110,32 @@ void Unit::update()
 		{
 		case LEFT:
 			mPosition.x-=mSpeed;
+			if (mDistance!=-1 && (mPosition.x<mStartPosition.x-mDistance && mStartDirection==LEFT || mPosition.x<mStartPosition.x && mStartDirection==RIGHT))
+			{
+				mDirection=RIGHT;
+			}
 			break;
 		case RIGHT:
 			mPosition.x+=mSpeed;
+			if (mDistance!=-1 && (mPosition.x>mStartPosition.x+mDistance && mStartDirection==RIGHT || mPosition.x<mStartPosition.x && mStartDirection==LEFT))
+			{
+				mDirection=LEFT;
+			}
 			break;
 		case UP:
 			mPosition.y-=mSpeed;
+			if (mDistance!=-1 && (mPosition.y<mStartPosition.y-mDistance && mStartDirection==UP || mPosition.x<mStartPosition.y && mStartDirection==DOWN))
+			{
+				mDirection=DOWN;
+			}
 			break;
 		case DOWN:
 			mPosition.y+=mSpeed;
+			if (mDistance!=-1 && (mPosition.y>mStartPosition.y+mDistance && mStartDirection==DOWN || mPosition.x<mStartPosition.y && mStartDirection==UP))
+			{
+				mDirection=UP;
+			}
 			break;
 		};
 	}
-}
-
-void Unit::changeDirection(int distance)
-{
-	
 }
