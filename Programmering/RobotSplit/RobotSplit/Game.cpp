@@ -55,22 +55,20 @@ Game::Game():
 	//	mSecurityLevel=2;
 	//}
 	
-	/*mBanor.push_back("Xml/Tutorial1.xml");
-
-	mBanor.push_back("Xml/boss1_eric.xml");*/
-
 	//Rickys filmer
 	//mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
 	//mBanor.push_back("Xml/ricky2_laserz.xml");
 	//mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
 	//mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
 	
-	//Lägger testbanorna från editorn här tillfälligt för att slippa växla mellan banorna
-	//mBanor.push_back("Xml/gm_testa7.xml");
-	//mBanor.push_back("Xml/gm_testa4.xml");
-	//mBanor.push_back("Xml/gm_testa5.xml");
-	
-	//Vanlig ordning igen..
+	//TESTBANOR
+	//mBanor.push_back("Xml/eric_testa_7.xml");
+	//mBanor.push_back("Xml/eric_testa_4.xml");
+	//mBanor.push_back("Xml/eric_testa_5.xml");
+	//mBanor.push_back("Xml/eric_crappy_ending.xml");
+
+	//TUTORIAL
+	mBanor.push_back("Xml/Tutorial1.xml");
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
 	mBanor.push_back("Xml/TutorialNy2.xml");
@@ -78,35 +76,40 @@ Game::Game():
 	mBanor.push_back("Xml/TutorialNy3.xml");
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
-	mBanor.push_back("Xml/Tutorial7.xml");
+	mBanor.push_back("Xml/Tutorial7.xml");*/
 
-	//Storybanornas ursprungsordning är kvar men i bortkommenterad form nedanför
-	//mBanor.push_back("Xml/RasmusIntro.xml"); Borttagen iom speltest
+	//STORY_MODE
+	//Inledning
+	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
+	//Akt_1
 	mBanor.push_back("Xml/Bana1.xml"); //da original
-	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga_ändra
-	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2
-	mBanor.push_back("Xml/Bana3Ny.xml"); //leap of faith 
-	mBanor.push_back("Xml/Bana5.xml"); //randomTiles
-	mBanor.push_back("Xml/Bana4.xml"); //stress
+	//mBanor.push_back("Xml/eric_first_original.xml"); /finns inte längre tydligen
+	mBanor.push_back("Xml/eric_simple_enough.xml");
+	mBanor.push_back("Xml/eric_leap_of_faith.xml");
+	//Boss_1
+	//Akt_2
+	mBanor.push_back("Xml/eric_swing_around.xml");
+	mBanor.push_back("Xml/eric_compromise.xml");
+	//eric_paths
+	//Boss_2 (rickys)
+	//Akt_3
+	mBanor.push_back("Xml/eric_luring.xml");
+	mBanor.push_back("Xml/eric_power_of_the_mini.xml");
+	mBanor.push_back("Xml/eric_laserz.xml");
+
+
+	/*OLD
+	mBanor.push_back("Xml/Bana1.xml"); //da original
+	mBanor.push_back("Xml/gmBana2.xml"); //enkel sätta-sig-på-sidan-och-förlänga_ändra*
+	mBanor.push_back("Xml/gmBana3.xml"); //enkel nr2*
+	mBanor.push_back("Xml/Bana3Ny.xml"); //leap of faith* 
+	mBanor.push_back("Xml/Bana5.xml"); //randomTiles*
+	mBanor.push_back("Xml/Bana4.xml"); //stress*
 	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den_ändra
 	mBanor.push_back("Xml/gmBana8_ny3.xml");
-	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
+	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan*
 	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
-
-	mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
-	mBanor.push_back("Xml/ricky2_laserz.xml");
-	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
-	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
-
-	/*
-	mBanor.push_back("Xml/RasmusIntro.xml");
-	mBanor.push_back("Xml/Bana1.xml");
-	mBanor.push_back("Xml/Bana2.xml");
-	mBanor.push_back("Xml/Bana3Ny.xml");
-	mBanor.push_back("Xml/Bana4.xml");
-	mBanor.push_back("Xml/Bana5.xml");
-	mBanor.push_back("Xml/Bana6Ny.xml");
 	*/
 
 	changeMap(0);
