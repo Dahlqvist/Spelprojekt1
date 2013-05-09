@@ -126,8 +126,8 @@ void Player::draw(sf::RenderWindow& Window, bool front)
 		}
 		else
 		{
-			sf::Vector2f mVec(Window.convertCoords(sf::Mouse::getPosition(Window)));
-			Window.draw(*mCourser->getSprite(mVec));
+			sf::Vector2f mVec2(Window.convertCoords(sf::Mouse::getPosition(Window)));
+			Window.draw(*mCourser->getSprite(mVec2));
 		}
 
 		if(mFeet.getUnit()!=0 && mFeet.getAttached()==false)

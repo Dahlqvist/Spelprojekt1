@@ -43,6 +43,7 @@ Game::Game():
 	mousePos.y=768/2;
 	mJoystickNumber=0;
 	mSecurityLevel=0;
+	mCourseSpeed=3;
 	//Music::loadMusic("Music/tutorial_2.wav");
 	mBana=0;
 	//if(mlevel.getName()=="Tutorial1"){
