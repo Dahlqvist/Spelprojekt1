@@ -455,5 +455,11 @@
     <None Include="Xml\ricky4_magneticshoes_longjump.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Xml\eric_luring.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\eric_swing_around.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>

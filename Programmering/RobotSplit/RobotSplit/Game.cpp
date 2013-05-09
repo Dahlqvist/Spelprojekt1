@@ -77,7 +77,7 @@ Game::Game():
 	mBanor.push_back("Xml/TutorialNy3.xml");
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
-	mBanor.push_back("Xml/Tutorial7.xml");*/
+	mBanor.push_back("Xml/Tutorial7.xml");
 
 	//STORY_MODE
 	//Inledning
