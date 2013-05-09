@@ -251,10 +251,16 @@ void Game::joystickInput()
 				{
 					mPlayer->interact(0);
 					TestTimer.restart();
+					mTime=0.3;
 				}
 				else
 				{
 					mPlayer->interact(4);
+					if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && UnitManager::isCollidedSide(0, 1))
+					{
+						mPlayer->interact(11);
+						TestTimer.restart();
+					}
 				}
 			}
 			else{
@@ -276,6 +282,7 @@ void Game::joystickInput()
 		if(sf::Joystick::isButtonPressed(mJoystickNumber, 1) && sf::Joystick::getAxisPosition(mJoystickNumber, sf::Joystick::Y)<-50 && UnitManager::isCollidedSide(0, 1))
 		{
 			mPlayer->interact(11);
+			TestTimer.restart();
 		}
 
 		if(UnitManager::isCollidedSide(0, 2) && (UnitManager::isCollidedSide(0, 3) || UnitManager::isCollidedSide(0, 4)))
