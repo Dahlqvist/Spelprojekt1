@@ -178,7 +178,7 @@ void	LevelLoader::addBackground(Level	&Source)
 	string foo=mDocument.first_node("Level")->first_node("Backgrounds")->first_node("Background")->name();
 	/*if(Node=0x0)
 	{*/
-		
+
 		do
 		{
 			if(oneLoop)
@@ -219,7 +219,6 @@ void	LevelLoader::addBackground(Level	&Source)
 			retBackground.push_back(new Background(SpriteName, Speed, Frames, Position));
 		}
 		while(Node!=mDocument.first_node("Level")->first_node("Backgrounds")->last_node("Background"));
-	//}
 	Source.setBackground(retBackground);
 	Source.getBackgroundWrap().setFrames(Frames);
 	Source.getBackgroundWrap().setSpeed(Speed);
