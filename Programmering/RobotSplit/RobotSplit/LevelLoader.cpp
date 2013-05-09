@@ -623,7 +623,7 @@ void	LevelLoader::addUnit(Level	&level,xml_node<>* Node)
 	}
 
 	//Sets movement speed
-	CurrentChild=	Node->first_node("Speed");
+	CurrentChild=	Node->first_node("MoveSpeed");
 	if (CurrentChild!=0x0)
 	{
 		MoveSpeed=atof(getValue(CurrentChild).c_str());

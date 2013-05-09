@@ -183,7 +183,7 @@
       </Position>
       
       <!--Testing moveable units
-      <Speed>1</Speed>
+      <MoveSpeed>1</MoveSpeed>
       <Distance>400</Distance>
       <Direction>Right</Direction>-->
       
