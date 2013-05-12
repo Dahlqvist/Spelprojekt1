@@ -440,11 +440,24 @@ void	LevelLoader::addMeanix	(Level	&level,xml_node<>* Node)
 	Position.y=((float)atof(CurrentValue.c_str()));
 
 	CurrentChild=	Node->first_node("SpriteName");
-	sprite=getValue(CurrentChild);
+	if(CurrentChild!=0x0)
+	{
+		sprite=getValue(CurrentChild);
+	}
+	else
+	{
+		sprite="MeanixAni";
+	}
 
 	CurrentChild=	Node->first_node("SpriteName2");
-	sprite2=getValue(CurrentChild);
-
+	if(CurrentChild!=0x0)
+	{
+		sprite2=getValue(CurrentChild);
+	}
+	else
+	{
+		sprite2=sprite;
+	}
 	//Creates a Platform object
 	TempObject=		new Meanix(Position, sprite, sprite2, level.getPlayer());
 	//Puts the Platform object into the level's UnitVector
