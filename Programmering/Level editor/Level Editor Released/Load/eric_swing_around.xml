@@ -316,14 +316,6 @@
 				<y>480</y>
 			</Position>
 		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Widei&quot;</SpriteName>
-			<Position>
-				<x>608</x>
-				<y>544</y>
-			</Position>
-		</Unit>
 	</Objects>
 </Level>
 

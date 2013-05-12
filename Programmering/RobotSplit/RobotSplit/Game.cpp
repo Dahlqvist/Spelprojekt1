@@ -91,7 +91,7 @@ Game::Game():
 	mBanor.push_back("Xml/Bana1.xml"); //da original
 	//mBanor.push_back("Xml/eric_first_original.xml"); /finns inte längre tydligen
 	mBanor.push_back("Xml/eric_simple_enough.xml");
-	mBanor.push_back("Xml/eric_leap_of_faith.xml");
+	mBanor.push_back("Xml/eric_leap_of_faith.xml");//En tile måste flyttas ner men lvl-editorn vill inte låta mig göra det
 	//Boss_1
 	//Akt_2
 	mBanor.push_back("Xml/eric_swing_around.xml");

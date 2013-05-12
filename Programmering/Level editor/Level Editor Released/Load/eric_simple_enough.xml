@@ -25,47 +25,73 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-				<x>605</x>
-				<y>219</y>
+				<x>544</x>
+				<y>510</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;MiniBot&quot;</Type>
+			<Position>
+				<x>1184</x>
+				<y>64</y>
+			</Position>
+			<Length>446</Length>
+			<Rotation>270</Rotation>
+			<SideWays>&quot;false&quot;</SideWays>
+		</Unit>
+		<Unit>
+			<Type>&quot;Checkpoint&quot;</Type>
+			<Position>
+				<x>544</x>
+				<y>480</y>
+			</Position>
+			<SpriteName>&quot;CheckpointAnim&quot;</SpriteName>
+			<Size>
+				<x>40</x>
+				<y>58</y>
+			</Size>
+			<Offset>
+				<x>12</x>
+				<y>6</y>
+			</Offset>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL6Widea&quot;</SpriteName>
+			<Position>
+				<x>544</x>
+				<y>544</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6a&quot;</SpriteName>
+			<SpriteName>&quot;TileL6Wideb&quot;</SpriteName>
 			<Position>
-				<x>576</x>
+				<x>448</x>
 				<y>256</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6b&quot;</SpriteName>
+			<SpriteName>&quot;TileL6Widec&quot;</SpriteName>
 			<Position>
-				<x>640</x>
-				<y>256</y>
+				<x>672</x>
+				<y>352</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>&quot;Door&quot;</Type>
 			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
-				<x>608</x>
-				<y>352</y>
+				<x>672</x>
+				<y>224</y>
 			</Position>
 			<Size>
 				<x>32</x>
 				<y>96</y>
 			</Size>
 			<Offset>
-				<x>2</x>
+				<x>32</x>
 				<y>0</y>
 			</Offset>
 			<Behind>true</Behind>
@@ -307,22 +333,6 @@
 				<y>704</y>
 			</Position>
 			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
-			<Position>
-				<x>608</x>
-				<y>480</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Widei&quot;</SpriteName>
-			<Position>
-				<x>608</x>
-				<y>544</y>
-			</Position>
 		</Unit>
 	</Objects>
 </Level>

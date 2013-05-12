@@ -25,47 +25,31 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-				<x>605</x>
-				<y>219</y>
+				<x>65</x>
+				<y>285</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6a&quot;</SpriteName>
+			<SpriteName>&quot;TileL6Widec&quot;</SpriteName>
 			<Position>
-				<x>576</x>
-				<y>256</y>
+				<x>1024</x>
+				<y>224</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6b&quot;</SpriteName>
-			<Position>
-				<x>640</x>
-				<y>256</y>
-			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
 		</Unit>
 		<Unit>
 			<Type>&quot;Door&quot;</Type>
 			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
-				<x>608</x>
-				<y>352</y>
+				<x>1152</x>
+				<y>320</y>
 			</Position>
 			<Size>
 				<x>32</x>
 				<y>96</y>
 			</Size>
 			<Offset>
-				<x>2</x>
+				<x>32</x>
 				<y>0</y>
 			</Offset>
 			<Behind>true</Behind>
@@ -310,18 +294,50 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL1a&quot;</SpriteName>
+			<SpriteName>&quot;TileL2Wided&quot;</SpriteName>
 			<Position>
-				<x>608</x>
-				<y>480</y>
+				<x>1152</x>
+				<y>448</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Widei&quot;</SpriteName>
+			<SpriteName>&quot;TileL2Widef&quot;</SpriteName>
+			<Position>
+				<x>64</x>
+				<y>320</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<Position>
+				<x>288</x>
+				<y>320</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
 			<Position>
 				<x>608</x>
-				<y>544</y>
+				<y>384</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>448</y>
+			</Position>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<Position>
+				<x>928</x>
+				<y>448</y>
 			</Position>
 		</Unit>
 	</Objects>
