@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <Level>
-	<Name>&quot;Test Bana&quot;</Name>
+	<Name>&quot;Bana1&quot;</Name>
 	<Backgrounds>
 		<Background>
-			<SpriteName>&quot;Bana3_bg1&quot;</SpriteName>
+			<SpriteName>&quot;Bana1_bg1&quot;</SpriteName>
 			<Frames>1</Frames>
 			<Speed>120</Speed>
 			<Position>
@@ -16,14 +16,14 @@
 		<Unit>
 			<Type>&quot;Player&quot;</Type>
 			<Position>
-				<x>68</x>
-				<y>214</y>
+				<x>64</x>
+				<y>352</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Position>
-				<x>1040</x>
-				<y>224</y>
+				<x>530</x>
+				<y>192</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
 			<Id>&quot;LaserRedMeanix&quot;</Id>
@@ -31,21 +31,34 @@
 			<Rotation>180</Rotation>
 			<Color>&quot;Red&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
-			<Length>160</Length>
+			<Length>150</Length>
+		</Unit>
+		<Unit>
+			<Position>
+				<x>816</x>
+				<y>192</y>
+			</Position>
+			<Type>&quot;Laser&quot;</Type>
+			<Id>&quot;LaserRedMeanix&quot;</Id>
+			<Active>&quot;true&quot;</Active>
+			<Rotation>180</Rotation>
+			<Color>&quot;Red&quot;</Color>
+			<VisibilityRange>100</VisibilityRange>
+			<Length>150</Length>
 		</Unit>
 		<Unit>
 			<Type>&quot;Meanix&quot;</Type>
 			<Position>
-				<x>1120</x>
-				<y>128</y>
+				<x>640</x>
+				<y>96</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3a&quot;</SpriteName>
+			<SpriteName>&quot;TileL1a&quot;</SpriteName>
 			<Position>
-				<x>224</x>
-				<y>256</y>
+				<x>64</x>
+				<y>480</y>
 			</Position>
 			<Size>
 				<x>64</x>
@@ -54,10 +67,10 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3c&quot;</SpriteName>
+			<SpriteName>&quot;TileL1a&quot;</SpriteName>
 			<Position>
-				<x>480</x>
-				<y>256</y>
+				<x>192</x>
+				<y>512</y>
 			</Position>
 			<Size>
 				<x>64</x>
@@ -66,10 +79,10 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3d&quot;</SpriteName>
+			<SpriteName>&quot;TileL1b&quot;</SpriteName>
 			<Position>
-				<x>480</x>
-				<y>320</y>
+				<x>320</x>
+				<y>416</y>
 			</Position>
 			<Size>
 				<x>64</x>
@@ -78,10 +91,10 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3e&quot;</SpriteName>
+			<SpriteName>&quot;TileL1c&quot;</SpriteName>
 			<Position>
-				<x>480</x>
-				<y>384</y>
+				<x>320</x>
+				<y>480</y>
 			</Position>
 			<Size>
 				<x>64</x>
@@ -90,325 +103,285 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Sa&quot;</SpriteName>
+			<SpriteName>&quot;TileL1d&quot;</SpriteName>
 			<Position>
-				<x>544</x>
-				<y>256</y>
+				<x>384</x>
+				<y>480</y>
 			</Position>
 			<Size>
-				<x>32</x>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1e&quot;</SpriteName>
+			<Position>
+				<x>448</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1f&quot;</SpriteName>
+			<Position>
+				<x>512</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1b&quot;</SpriteName>
+			<Position>
+				<x>512</x>
+				<y>416</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1b&quot;</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>416</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1c&quot;</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1e&quot;</SpriteName>
+			<Position>
+				<x>832</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1d&quot;</SpriteName>
+			<Position>
+				<x>896</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1e&quot;</SpriteName>
+			<Position>
+				<x>960</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1g&quot;</SpriteName>
+			<Position>
+				<x>1024</x>
+				<y>480</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1h&quot;</SpriteName>
+			<Position>
+				<x>1088</x>
+				<y>512</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;TileL1i&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>544</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+		</Unit>
+		<Unit>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailL1a&quot;</SpriteName>
+			<Position>
+				<x>960</x>
+				<y>440</y>
+			</Position>
+			<Size>
+				<x>64</x>
 				<y>32</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Sb&quot;</SpriteName>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailL1b&quot;</SpriteName>
 			<Position>
-				<x>608</x>
-				<y>192</y>
+				<x>1024</x>
+				<y>440</y>
 			</Position>
 			<Size>
-				<x>32</x>
+				<x>64</x>
 				<y>32</y>
 			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Wideb&quot;</SpriteName>
+			<SpriteName>&quot;BolconyCornerL&quot;</SpriteName>
 			<Position>
-				<x>544</x>
-				<y>576</y>
-			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Highb&quot;</SpriteName>
-			<Position>
-				<x>608</x>
+				<x>512</x>
 				<y>224</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Highc&quot;</SpriteName>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
-				<x>608</x>
-				<y>288</y>
+				<x>576</x>
+				<y>224</y>
 			</Position>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Higha&quot;</SpriteName>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
 				<x>640</x>
-				<y>512</y>
+				<y>224</y>
 			</Position>
 		</Unit>
 		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>64</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>128</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>192</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>256</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>320</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>384</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>448</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>512</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>576</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>640</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
 			<Position>
 				<x>704</x>
-				<y>64</y>
+				<y>224</y>
 			</Position>
-			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
+			<Type>&quot;Platform&quot;</Type>
+			<SpriteName>&quot;BolconyCornerR&quot;</SpriteName>
 			<Position>
 				<x>768</x>
-				<y>64</y>
+				<y>224</y>
 			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>832</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>896</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>960</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>1024</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>1088</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;AntiMagnet&quot;</Type>
-			<SpriteName>&quot;AntiMagnet&quot;</SpriteName>
-			<Position>
-				<x>1152</x>
-				<y>64</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Balcony&quot;</Type>
-			<SpriteName>&quot;BolconyCornerL&quot;</SpriteName>
-			<Position>
-				<x>1024</x>
-				<y>256</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Balcony&quot;</Type>
-			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
-			<Position>
-				<x>1088</x>
-				<y>256</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Balcony&quot;</Type>
-			<SpriteName>&quot;BolconyMiddle&quot;</SpriteName>
-			<Position>
-				<x>1152</x>
-				<y>256</y>
-			</Position>
-			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
 			<SpriteName>&quot;RailEndL&quot;</SpriteName>
 			<Position>
-				<x>1024</x>
-				<y>224</y>
+				<x>512</x>
+				<y>192</y>
 			</Position>
-			<Size>
-				<x>1024</x>
-				<y>224</y>
-			</Size>
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Rail&quot;</Type>
 			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
-				<x>1088</x>
-				<y>224</y>
+				<x>576</x>
+				<y>192</y>
 			</Position>
 			<Size>
-				<x>1088</x>
-				<y>224</y>
-			</Size>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Rail&quot;</Type>
-			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
-			<Position>
-				<x>1152</x>
-				<y>224</y>
-			</Position>
-			<Size>
-				<x>1152</x>
-				<y>224</y>
-			</Size>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
-			<Position>
 				<x>64</x>
-				<y>256</y>
-			</Position>
-			<Lives>3</Lives>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
-				<x>416</x>
-				<y>608</y>
+				<x>640</x>
+				<y>192</y>
 			</Position>
-			<Lives>3</Lives>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailMiddle&quot;</SpriteName>
 			<Position>
-				<x>416</x>
-				<y>416</y>
+				<x>704</x>
+				<y>192</y>
 			</Position>
-			<Lives>1</Lives>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
+		</Unit>
+		<Unit>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailEndR&quot;</SpriteName>
+			<Position>
+				<x>768</x>
+				<y>192</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
 			<Type>&quot;Door&quot;</Type>
 			<SpriteName>&quot;Exit&quot;</SpriteName>
 			<Position>
-				<x>1120</x>
-				<y>512</y>
+				<x>1152</x>
+				<y>416</y>
 			</Position>
 			<Size>
-				<x>1120</x>
-				<y>512</y>
+				<x>32</x>
+				<y>96</y>
 			</Size>
 			<Offset>
 				<x>32</x>
@@ -418,6 +391,32 @@
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailL1c&quot;</SpriteName>
+			<Position>
+				<x>1088</x>
+				<y>439</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
+		</Unit>
+		<Unit>
+			<Type>&quot;Rail&quot;</Type>
+			<SpriteName>&quot;RailL1d&quot;</SpriteName>
+			<Position>
+				<x>1152</x>
+				<y>501</y>
+			</Position>
+			<Size>
+				<x>64</x>
+				<y>32</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
+		</Unit>
+		<Unit>
 			<Type>&quot;Lava&quot;</Type>
 			<SpriteName>&quot;LavaMiddle&quot;</SpriteName>
 			<Speed>180</Speed>
@@ -428,7 +427,7 @@
 			</Position>
 			<Size>
 				<x>64</x>
-				<y>704</y>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -442,8 +441,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>128</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -457,8 +456,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>192</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -472,8 +471,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>256</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -487,8 +486,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>320</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -502,8 +501,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>384</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -517,8 +516,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>448</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -532,8 +531,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>512</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -547,8 +546,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>576</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -562,8 +561,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>640</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -577,8 +576,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>704</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -592,8 +591,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>768</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -607,8 +606,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>832</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -622,8 +621,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>896</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -637,8 +636,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>960</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -652,8 +651,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>1024</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -667,8 +666,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>1088</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -682,8 +681,8 @@
 				<y>704</y>
 			</Position>
 			<Size>
-				<x>1152</x>
-				<y>704</y>
+				<x>64</x>
+				<y>64</y>
 			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
@@ -742,44 +741,51 @@
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Wided&quot;</SpriteName>
+			<Type>&quot;BGAnim&quot;</Type>
+			<SpriteName>&quot;SparkleAnim&quot;</SpriteName>
+			<Speed>100</Speed>
+			<Frames>4</Frames>
 			<Position>
-				<x>928</x>
-				<y>640</y>
+				<x>436</x>
+				<y>131</y>
 			</Position>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Widee&quot;</SpriteName>
+			<Type>&quot;BGAnim&quot;</Type>
+			<SpriteName>&quot;RotatingFan&quot;</SpriteName>
+			<Speed>100</Speed>
+			<Frames>6</Frames>
 			<Position>
-				<x>992</x>
-				<y>640</y>
+				<x>678</x>
+				<y>582</y>
 			</Position>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL6Widee&quot;</SpriteName>
+			<Type>&quot;MouseSuicide&quot;</Type>
+			<SpriteName>&quot;MouseSuicide&quot;</SpriteName>
+			<Speed>100</Speed>
+			<Frames>22</Frames>
 			<Position>
-				<x>1056</x>
-				<y>640</y>
+				<x>455</x>
+				<y>625</y>
 			</Position>
+			<Behind>true</Behind>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL2Widef&quot;</SpriteName>
+			<Type>&quot;Trigger1&quot;</Type>
+			<SpriteName>&quot;&quot;</SpriteName>
 			<Position>
-				<x>1120</x>
-				<y>640</y>
+				<x>320</x>
+				<y>352</y>
 			</Position>
-		</Unit>
-		<Unit>
-			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileL3Highc&quot;</SpriteName>
-			<Position>
-				<x>640</x>
-				<y>576</y>
-			</Position>
+			<Size>
+				<x>64</x>
+				<y>64</y>
+			</Size>
+			<Solid>&quot;false&quot;</Solid>
 		</Unit>
 	</Objects>
 </Level>
