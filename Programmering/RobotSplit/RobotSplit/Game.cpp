@@ -57,24 +57,25 @@ Game::Game():
 	//}
 	
 	//Rickys filmer
-	//mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
-	//mBanor.push_back("Xml/ricky2_laserz.xml");
-	//mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
-	//mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");
-	//L�gger testbanorna fr�n editorn h�r tillf�lligt f�r att slippa v�xla mellan banorna
-	//mBanor.push_back("Xml/gm_testa7.xml");
-	//mBanor.push_back("Xml/gm_testa4.xml");
-	//mBanor.push_back("Xml/gm_testa5.xml");
+	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
+	mBanor.push_back("Xml/ricky2_laserz.xml");
+	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
+	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");*/
 	
-	//Vanlig ordning igen..
 	//TESTBANOR
-	//mBanor.push_back("Xml/eric_testa_7.xml");
-	//mBanor.push_back("Xml/eric_testa_4.xml");
-	//mBanor.push_back("Xml/eric_testa_5.xml");
+	
+	mBanor.push_back("Xml/eric_space_invader.xml"); //anti-magnet 784,416. Knapparna stänger inte av rätt laser
+	mBanor.push_back("Xml/eric_testa2.xml"); //högra lasern ska vara gul och den nedre ska vara vit
+	mBanor.push_back("Xml/eric_white_lasers.xml"); //en anti-magnet ska in (672,64) och båda lasrarna ska vara vita
+	mBanor.push_back("Xml/eric_paths.xml"); //anti-magneter ska in vid 192,64 och 896,64
+	mBanor.push_back("Xml/gmBana10_2.xml");//laser längst till höger ska vara gul och den svaga tilen funkar inte
+	mBanor.push_back("Xml/eric_testa_7.xml"); //svaga tiles funkar inte
+	mBanor.push_back("Xml/eric_testa_4.xml");
+	mBanor.push_back("Xml/eric_testa_5.xml");
 	//mBanor.push_back("Xml/eric_crappy_ending.xml");
 
 	//TUTORIAL
-	mBanor.push_back("Xml/Tutorial1.xml");
+	/*mBanor.push_back("Xml/Tutorial1.xml");
 	mBanor.push_back("Xml/Tutorial2.xml");
 	mBanor.push_back("Xml/TutorialNy.xml");
 	mBanor.push_back("Xml/TutorialNy2.xml");
@@ -82,21 +83,21 @@ Game::Game():
 	mBanor.push_back("Xml/TutorialNy3.xml");
 	mBanor.push_back("Xml/Tutorial5.xml");
 	mBanor.push_back("Xml/Tutorial6.xml");
-	mBanor.push_back("Xml/Tutorial7.xml");
+	mBanor.push_back("Xml/Tutorial7.xml");*/
 
 	//STORY_MODE
 	//Inledning
 	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
 	//Akt_1
-	mBanor.push_back("Xml/Bana1.xml"); //da original
-	//mBanor.push_back("Xml/eric_first_original.xml"); /finns inte längre tydligen
+	//mBanor.push_back("Xml/Bana1.xml"); //sparar den ifa det fuckar upp igen
+	mBanor.push_back("Xml/eric_first_original.xml");
 	mBanor.push_back("Xml/eric_simple_enough.xml");
-	mBanor.push_back("Xml/eric_leap_of_faith.xml");
+	mBanor.push_back("Xml/eric_leap_of_faith_2.xml");//tiles har flyttats så bakgrunden stämmer inte överens till 100%
 	//Boss_1
 	//Akt_2
 	mBanor.push_back("Xml/eric_swing_around.xml");
 	mBanor.push_back("Xml/eric_compromise.xml");
-	//eric_paths
+	//eric_paths //ska bara fixas till först
 	//Boss_2 (rickys)
 	//Akt_3
 	mBanor.push_back("Xml/eric_luring.xml");
@@ -115,7 +116,7 @@ Game::Game():
 	mBanor.push_back("Xml/gmBana8_ny3.xml");
 <<<<<<< HEAD
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
-	mBanor.push_back("Xml/gmBana10_2.xml");//_�ndra
+	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
 
 	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");

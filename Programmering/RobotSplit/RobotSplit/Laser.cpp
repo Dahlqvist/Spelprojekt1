@@ -77,6 +77,11 @@ void	Laser::setColor(std::string color)
 		mId="Laser"+color;
 		mAnimation=&mYellowLaser;
 	}
+	else if(color=="White")
+	{
+		mId="Laser"+color;
+		mAnimation=&mWhiteLaser;
+	}
 }
 
 void Laser::setPosition(sf::Vector2f position)

@@ -39,6 +39,7 @@ Toolbar::Toolbar(Vector2f Position,Vector2f Size,Color BackColor,Vector2f MiniVi
 	color->addOption("Red","Red");
 	color->addOption("Yellow","Yellow");
 	color->addOption("Blue","Blue");
+	color->addOption("White","White");
 	UIDrop<int>*Rotation=new UIDrop<int>("Rotation",Color(255,255,255,255),Color(0,0,0,255),15);
 	Rotation->addOption("Down",0);
 	Rotation->addOption("Left",90);
@@ -606,6 +607,14 @@ void	Toolbar::update()
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setId(dynamic_cast<UIText*>(mUIItems.getActivated("Target Id"))->getString());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setFadeIn(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Fade In"))->getValue());
 			dynamic_cast<DialogueBox*>(mCurrUnit.getObject())->setVisible(dynamic_cast<UIDrop<bool>*>(mUIItems.getActivated("Visible"))->getValue());
+		}
+		else if(dynamic_cast<Meanix*>(mCurrUnit.getObject())!=0)
+		{
+
+		}
+		else if(dynamic_cast<Checkpoint*>(mCurrUnit.getObject())!=0)
+		{
+
 		}
 		else
 		{
