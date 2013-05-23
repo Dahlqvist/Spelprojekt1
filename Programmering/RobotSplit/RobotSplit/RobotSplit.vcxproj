@@ -236,7 +236,9 @@ sfml-main.lib
     </None>
     <None Include="Xml\Tutorial5.xml" />
     <None Include="Xml\Tutorial6.xml" />
-    <None Include="Xml\Tutorial7.xml" />
+    <None Include="Xml\Tutorial7.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xml\TutorialNy.xml" />
     <None Include="Xml\TutorialNy2.xml" />
     <None Include="Xml\TutorialNy3.xml" />

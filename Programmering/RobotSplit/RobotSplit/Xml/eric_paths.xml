@@ -369,6 +369,22 @@
 				<y>512</y>
 			</Position>
 		</Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>192</x>
+        <y>64</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>896</x>
+        <y>64</y>
+      </Position>
+    </Unit>
 	</Objects>
 </Level>
 
