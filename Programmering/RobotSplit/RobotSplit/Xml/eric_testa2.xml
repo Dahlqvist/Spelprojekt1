@@ -74,10 +74,10 @@
 				<y>482</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserYellow1&quot;</Id>
+			<Id>&quot;LaserWhite1&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>270</Rotation>
-			<Color>&quot;Yellow&quot;</Color>
+			<Color>&quot;White&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
 			<Length>576</Length>
 		</Unit>
@@ -406,10 +406,10 @@
 				<y>256</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserBlueId&quot;</Id>
+			<Id>&quot;LaserYellow1&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>0</Rotation>
-			<Color>&quot;Blue&quot;</Color>
+			<Color>&quot;Yellow&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
 			<Length>192</Length>
 		</Unit>

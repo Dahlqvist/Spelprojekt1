@@ -48,7 +48,7 @@
 				<y>63</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserRed2&quot;</Id>
+			<Id>&quot;LaserRed1&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>0</Rotation>
 			<Color>&quot;Red&quot;</Color>
@@ -157,10 +157,6 @@
 				<x>0</x>
 				<y>0</y>
 			</Position>
-			<Size>
-				<x>1280</x>
-				<y>64</y>
-			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
@@ -170,10 +166,6 @@
 				<x>0</x>
 				<y>0</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
@@ -183,10 +175,6 @@
 				<x>1216</x>
 				<y>0</y>
 			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
 			<Solid>&quot;true&quot;</Solid>
 		</Unit>
 		<Unit>
@@ -396,7 +384,7 @@
 			<SpriteName>&quot;YellowButtonAni&quot;</SpriteName>
 			<Id>&quot;LaserTriggerYellow&quot;</Id>
 			<Rotation>0</Rotation>
-			<Target>&quot;LaserBlue1&quot;</Target>
+			<Target>&quot;LaserYellow1&quot;</Target>
 		</Unit>
 		<Unit>
 			<Type>&quot;LaserDeactivator&quot;</Type>
@@ -418,7 +406,7 @@
 			<SpriteName>&quot;RedButtonAni&quot;</SpriteName>
 			<Id>&quot;LaserTriggerRed&quot;</Id>
 			<Rotation>180</Rotation>
-			<Target>&quot;LaserRed2&quot;</Target>
+			<Target>&quot;LaserRed1&quot;</Target>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
@@ -588,6 +576,14 @@
 				<y>208</y>
 			</Position>
 		</Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>784</x>
+        <y>416</y>
+      </Position>
+    </Unit>
 	</Objects>
 </Level>
 

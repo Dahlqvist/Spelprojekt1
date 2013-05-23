@@ -64,6 +64,7 @@ Game::Game():
 	
 	//TESTBANOR
 	
+
 	/*mBanor.push_back("Xml/eric_space_invader.xml"); //anti-magnet 784,416. Knapparna stänger inte av rätt laser
 	mBanor.push_back("Xml/eric_testa2.xml"); //högra lasern ska vara gul och den nedre ska vara vit
 	mBanor.push_back("Xml/eric_white_lasers.xml"); //en anti-magnet ska in (672,64) och båda lasrarna ska vara vita
@@ -114,7 +115,6 @@ Game::Game():
 	mBanor.push_back("Xml/Bana4.xml"); //stress*
 	mBanor.push_back("Xml/gmBana8.xml"); //ny.. kan inte beskriva den_ändra
 	mBanor.push_back("Xml/gmBana8_ny3.xml");
-<<<<<<< HEAD
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
 	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
@@ -132,11 +132,9 @@ Game::Game():
 	mBanor.push_back("Xml/Bana4.xml");
 	mBanor.push_back("Xml/Bana5.xml");
 	mBanor.push_back("Xml/Bana6Ny.xml");
-=======
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan*
 	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
->>>>>>> master
 	*/
 
 	changeMap(0);

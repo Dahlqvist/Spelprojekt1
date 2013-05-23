@@ -310,36 +310,41 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
 			<Position>
 				<x>288</x>
 				<y>320</y>
 			</Position>
+      <Lives>2</Lives>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
 			<Position>
 				<x>608</x>
 				<y>384</y>
 			</Position>
+      <Lives>2</Lives>
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
 			<Position>
 				<x>768</x>
 				<y>448</y>
+      <Lives>2</Lives>
 			</Position>
-		</Unit>
+      <Lives>2</Lives>
+    </Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;Break2&quot;</SpriteName>
+			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
 			<Position>
 				<x>928</x>
 				<y>448</y>
 			</Position>
-		</Unit>
+      <Lives>2</Lives>
+    </Unit>
 	</Objects>
 </Level>
 

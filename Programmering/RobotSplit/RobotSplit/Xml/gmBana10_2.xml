@@ -48,10 +48,10 @@
 				<y>320</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserBlue1&quot;</Id>
+			<Id>&quot;LaserWellow1&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>270</Rotation>
-			<Color>&quot;Blue&quot;</Color>
+			<Color>&quot;Yellow&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
 			<Length>128</Length>
 		</Unit>
@@ -480,11 +480,12 @@
 		</Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
-			<SpriteName>&quot;TileBreak&quot;</SpriteName>
+			<SpriteName>&quot;PlatformBreakAni&quot;</SpriteName>
 			<Position>
 				<x>624</x>
 				<y>544</y>
 			</Position>
+      <Lives>3</Lives>
 		</Unit>
 		<Unit>
 			<Type>&quot;LaserDeactivator&quot;</Type>

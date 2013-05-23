@@ -35,10 +35,10 @@
 				<y>256</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserBlue1&quot;</Id>
+			<Id>&quot;LaserWhite1&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>0</Rotation>
-			<Color>&quot;Blue&quot;</Color>
+			<Color>&quot;White&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
 			<Length>192</Length>
 		</Unit>
@@ -48,10 +48,10 @@
 				<y>288</y>
 			</Position>
 			<Type>&quot;Laser&quot;</Type>
-			<Id>&quot;LaserRed2&quot;</Id>
+			<Id>&quot;LaserWhite2&quot;</Id>
 			<Active>&quot;true&quot;</Active>
 			<Rotation>270</Rotation>
-			<Color>&quot;Red&quot;</Color>
+			<Color>&quot;White&quot;</Color>
 			<VisibilityRange>100</VisibilityRange>
 			<Length>192</Length>
 		</Unit>
@@ -394,6 +394,14 @@
 				<y>192</y>
 			</Position>
 		</Unit>
+    <Unit>
+      <Type>"AntiMagnet"</Type>
+      <SpriteName>"AntiMagnet"</SpriteName>
+      <Position>
+        <x>672</x>
+        <y>64</y>
+      </Position>
+    </Unit>
 	</Objects>
 </Level>
 
