@@ -337,6 +337,7 @@ void Player::setTogether(bool b)
 		&& !UnitManager::isCollidedSide(5, 1) && !UnitManager::isCollidedSide(5, 3) && !UnitManager::isCollidedSide(5, 4))
 	{
 		//mBodyActive=false;
+		Sound::playSound("Together");
 		mBody.setAttached(true);
 		mTogether=b;
 		//mFeet.forceMove(mBody.getPosition()-mFeet.getPosition()+sf::Vector2f(0, 64));
@@ -1045,15 +1046,17 @@ void Player::checkCollisionMagnet()
 	}
 	else if((TempFeet.x-TempHead.x)*(TempFeet.x-TempHead.x)+(TempFeet.y-TempHead.y)*(TempFeet.y-TempHead.y)<48*16 && mHead.getUnit()->isSolid()==true && magnetSlot!=1)
 	{
-		mAttachedMagnet=true;
-		mBodyAttached=false;
-		if(magnetSlot!=0)
-		{
-			mJumpTemp.restart();
+		if(mFeet.getAttached()==false){
+			mAttachedMagnet=true;
+			mBodyAttached=false;
+			if(magnetSlot!=0)
+			{
+				mJumpTemp.restart();
+			}
+			magnetSlot=0;
+			mFeet.jumpReset();
+			mFeet.forceMove(TempHead-TempFeet);
 		}
-		magnetSlot=0;
-		mFeet.jumpReset();
-		mFeet.forceMove(TempHead-TempFeet);
 	}
 }
 void Player::restartPlayer()
