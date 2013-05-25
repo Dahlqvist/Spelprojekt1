@@ -32,27 +32,33 @@ void Sound::loadSound()
 	mLava.openFromFile("Sound/lava_proto.wav");
 
 	mBufferMap["Dash"].loadFromFile("Sound/dash_proto.wav");
-	mBufferMap["Extend"].loadFromFile("Sound/extend_proto.wav");
 	mBufferMap["ExtBodyColl"].loadFromFile("Sound/extention_body_collision_proto.wav");
-	mBufferMap["Death"].loadFromFile("Sound/general_death_proto.wav");
-	mBufferMap["HeadStuck"].loadFromFile("Sound/head_stuck_proto.wav");
-	mBufferMap["Jump"].loadFromFile("Sound/jump_proto.wav");
-	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
-	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/magnet_stuck_wall_proto.wav");
 	mBufferMap["ShootHead"].loadFromFile("Sound/shoot_head_proto.wav");
 	mBufferMap["Move"].loadFromFile("Sound/move_smoother_proto.wav");
-	mBufferMap["Split"].loadFromFile("Sound/split_proto.wav");
 	mBufferMap["Winning"].loadFromFile("Music/level_complete.wav");
 	mBufferMap["Laser"].loadFromFile("Sound/pass_through_lazer_proto.wav");
 	mBufferMap["MeanixTalkNormal"].loadFromFile("Sound/Meanix_speech_normal_1.wav");
 	mBufferMap["StixTalkNormal"].loadFromFile("Sound/Stix_speech_normal.wav");
 	mBufferMap["StixTalkAngry"].loadFromFile("Sound/Stix_speech_angry.wav");
 	mBufferMap["StixTalkSad"].loadFromFile("Sound/Stix_speech_sad.wav");
-	
+	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
+	mBufferMap["HeadStuck"].loadFromFile("Sound/head_stuck_proto.wav");
+
+	mBufferMap["HeadOut"].loadFromFile("Sound/Konrad/s_extend_brain.wav");
+	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/Konrad/s_wallclimb_body.wav");
+	mBufferMap["RocketBoost"].loadFromFile("Sound/Konrad/s_jetpack_body.wav");
+	mBufferMap["Jump"].loadFromFile("Sound/Konrad/s_jump_stix.wav");
+	mBufferMap["Extend"].loadFromFile("Sound/Konrad/s_extend_body.wav");
+	mBufferMap["Death"].loadFromFile("Sound/Konrad/s_death_stix.wav");
+	mBufferMap["Split"].loadFromFile("Sound/Konrad/s_disassemble_stix.wav");
+	mBufferMap["Together"].loadFromFile("Sound/Konrad/s_assemble_stix.wav");
 
 	mBufferMap["TriggerHelp"].loadFromFile("Sound/Ljud/helpbox_1.wav");
 
 	mSoundMap["Dash"].setBuffer(mBufferMap["Dash"]);
+	mSoundMap["HeadOut"].setBuffer(mBufferMap["HeadOut"]);
+	mSoundMap["Together"].setBuffer(mBufferMap["Together"]);
+	mSoundMap["RocketBoost"].setBuffer(mBufferMap["RocketBoost"]);
 	mSoundMap["Extend"].setBuffer(mBufferMap["Extend"]);
 	mSoundMap["ExtBodyColl"].setBuffer(mBufferMap["ExtBodyColl"]);
 	mSoundMap["Death"].setBuffer(mBufferMap["Death"]);

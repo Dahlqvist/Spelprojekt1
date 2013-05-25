@@ -461,5 +461,11 @@
     <None Include="Xml\eric_swing_around.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
+    <None Include="Xml\eric_first_original.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\eric_simple_enough.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
   </ItemGroup>
 </Project>

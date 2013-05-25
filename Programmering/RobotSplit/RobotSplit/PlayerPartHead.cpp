@@ -114,6 +114,7 @@ void PlayerPartHead::forceMove(sf::Vector2f force)
 		mUnit=&mMagnet;
 		mUnit->setPosition(mPosition+sf::Vector2f(-mUnit->getSprite().getGlobalBounds().width/2+mActiveAnimation->getSprite().getGlobalBounds().width/2, 0));
 		mActiveAnimation=&mBrainLowered;
+		Sound::playSound("HeadOut");
 	}
 	else
 	{

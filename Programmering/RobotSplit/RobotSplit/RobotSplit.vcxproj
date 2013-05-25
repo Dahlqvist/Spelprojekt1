@@ -219,7 +219,9 @@ sfml-main.lib
     <None Include="Xml\Bana6Ny.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xml\eric_first_original.xml" />
     <None Include="Xml\eric_luring.xml" />
+    <None Include="Xml\eric_simple_enough.xml" />
     <None Include="Xml\eric_swing_around.xml" />
     <None Include="Xml\RasmusIntro.xml">
       <SubType>Designer</SubType>

@@ -3,20 +3,11 @@
 	<Name>&quot;Test Bana&quot;</Name>
 	<Backgrounds>
 		<Background>
-			<SpriteName>&quot;Bana3_bg1&quot;</SpriteName>
+			<SpriteName>&quot;BackgroundNew3&quot;</SpriteName>
 			<Frames>1</Frames>
 			<Speed>120</Speed>
 			<Position>
 				<x>0</x>
-				<y>0</y>
-			</Position>
-		</Background>
-		<Background>
-			<SpriteName>&quot;Bana3_bg2&quot;</SpriteName>
-			<Frames>1</Frames>
-			<Speed>120</Speed>
-			<Position>
-				<x>640</x>
 				<y>0</y>
 			</Position>
 		</Background>
