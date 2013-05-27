@@ -635,7 +635,19 @@ void Game::keyboardInput()
 	mTimer->input();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && mSecurityLevel>=0)
 	{//W, upp
-		mPlayer->interact(0);
+		if(mPlayer->getAttachedWall()==true){
+			mPlayer->interact(0);
+		}
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=0)
+	{//Space, hopp
+		if(mPlayer->getTogether()==false && mPlayer->getBodyActive()==false && mPlayer->getAttachedWall()==true){
+			
+		}
+		else
+		{
+			mPlayer->interact(0);
+		}
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && mSecurityLevel>=0)
 	{//D, h�ger
@@ -649,7 +661,7 @@ void Game::keyboardInput()
 	{//S, ner
 		mPlayer->interact(3);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && mSecurityLevel>=1)
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && mSecurityLevel>=1)
 	{//Mellanslag, raketskor
 		mPlayer->interact(4);
 	}
@@ -718,11 +730,11 @@ void Game::keyboardInput()
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
 		{
-			Music::stopMusic();
+			Music::changeVolume(0);
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::N))
 		{
-			Music::playMusic();
+			Music::changeVolume(70);
 		}
 		//if(sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
 		//{
