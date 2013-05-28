@@ -752,7 +752,8 @@
 				<y>131</y>
 			</Position>
 			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+      <Behind>true</Behind>
+    </Unit>
 		<Unit>
 			<Type>&quot;BGAnim&quot;</Type>
 			<SpriteName>&quot;RotatingFan&quot;</SpriteName>
@@ -763,32 +764,34 @@
 				<y>582</y>
 			</Position>
 			<Solid>&quot;false&quot;</Solid>
+      <Behind>true</Behind>
 		</Unit>
-		<Unit>
-			<Type>&quot;MouseSuicide&quot;</Type>
-			<SpriteName>&quot;MouseSuicide&quot;</SpriteName>
-			<Speed>100</Speed>
-			<Frames>22</Frames>
-			<Position>
-				<x>455</x>
-				<y>625</y>
-			</Position>
-			<Behind>true</Behind>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Trigger1&quot;</Type>
-			<SpriteName>&quot;&quot;</SpriteName>
-			<Position>
-				<x>320</x>
-				<y>352</y>
-			</Position>
-			<Size>
-				<x>64</x>
-				<y>64</y>
-			</Size>
-			<Solid>&quot;false&quot;</Solid>
-		</Unit>
+    <Unit>
+      <Type>TriggedAnimation</Type>
+      <SpriteName>MouseSuicide</SpriteName>
+      <Frames>22</Frames>
+      <Speed>100</Speed>
+      <Position>
+        <x>455</x>
+        <y>625</y>
+      </Position>
+      <Id>MouseSuicide</Id>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>320</x>
+        <y>352</y>
+      </Position>
+      <Size>
+        <x>64</x>
+        <y>64</y>
+      </Size>
+      <SpriteName>""</SpriteName>
+      <Target>MouseSuicide</Target>
+      <Id>Trigger1</Id>
+      <Sound>""</Sound>
+    </Unit>
 	</Objects>
 </Level>
 
