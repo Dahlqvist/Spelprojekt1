@@ -168,6 +168,9 @@
     <ClCompile Include="TriggedAnimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EndMovie.cpp">
+      <Filter>Source Files\Menu\Cinematics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -343,6 +346,9 @@
     <ClInclude Include="TriggedAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EndMovie.h">
+      <Filter>Header Files\Menu\Cinematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -465,6 +471,9 @@
       <Filter>Header Files\Banor</Filter>
     </None>
     <None Include="Xml\eric_simple_enough.xml">
+      <Filter>Header Files\Banor</Filter>
+    </None>
+    <None Include="Xml\eric_compromise.xml">
       <Filter>Header Files\Banor</Filter>
     </None>
   </ItemGroup>

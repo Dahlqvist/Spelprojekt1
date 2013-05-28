@@ -30,7 +30,10 @@ void StateInput::changeState(std::string state)
 	else if(state == "Menu")
 		mStateManager.pushMenu();
 	else if(state == "QuitToMenu")
+	{
 		mStateManager.restart();
+		mStateManager.pushMovie("End");
+	}
 	else if(state == "Audio")
 		mStateManager.pushAudio();
 	else if(state == "Controls")
@@ -39,6 +42,8 @@ void StateInput::changeState(std::string state)
 		mStateManager.pushMovie("Intro");
 	else if(state == "Bank")
 		mStateManager.pushMovie("Bank");
+	else if(state == "End")
+		mStateManager.pushMovie("End");
 	else
 		std::cout << "Error" << std::endl;
 }

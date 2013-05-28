@@ -46,6 +46,10 @@ void TextureManager::loadTexture()
 
 	mTextureMap["CinemaBG3"].loadFromFile("Texture/Cinema/TempBackground.png");
 	mTextureMap["CinemaBG4"].loadFromFile("Texture/Cinema/rattssal.png");
+
+	mTextureMap["CinemaBG5"].loadFromFile("Texture/Cinema/Credit.png");
+	mTextureMap["CinemaBG6"].loadFromFile("Texture/Cinema/to_be_con.png");
+
 	mTextureMap["Excl"].loadFromFile("Texture/Cinema/utropstecken.png");
 	mTextureMap["PoliceLight"].loadFromFile("Texture/Cinema/polisljus_strip8.png");
 

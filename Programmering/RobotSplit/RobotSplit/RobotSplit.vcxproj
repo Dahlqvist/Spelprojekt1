@@ -97,6 +97,7 @@ sfml-main.lib
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Courser.cpp" />
     <ClCompile Include="DialogueBox.cpp" />
+    <ClCompile Include="EndMovie.cpp" />
     <ClCompile Include="Eric.cpp" />
     <ClCompile Include="FeetExtensions.cpp" />
     <ClCompile Include="FeetWall.cpp" />
@@ -157,6 +158,7 @@ sfml-main.lib
     <ClInclude Include="Controls.h" />
     <ClInclude Include="Courser.h" />
     <ClInclude Include="DialogueBox.h" />
+    <ClInclude Include="EndMovie.h" />
     <ClInclude Include="Eric.h" />
     <ClInclude Include="FeetExtensions.h" />
     <ClInclude Include="FeetWall.h" />
@@ -219,6 +221,7 @@ sfml-main.lib
     <None Include="Xml\Bana6Ny.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Xml\eric_compromise.xml" />
     <None Include="Xml\eric_first_original.xml" />
     <None Include="Xml\eric_luring.xml" />
     <None Include="Xml\eric_simple_enough.xml" />
