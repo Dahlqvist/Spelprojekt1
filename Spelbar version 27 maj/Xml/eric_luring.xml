@@ -3,20 +3,11 @@
 	<Name>&quot;Test Bana&quot;</Name>
 	<Backgrounds>
 		<Background>
-			<SpriteName>&quot;Bana3_bg1&quot;</SpriteName>
+			<SpriteName>&quot;BackgroundEmpty&quot;</SpriteName>
 			<Frames>1</Frames>
 			<Speed>120</Speed>
 			<Position>
 				<x>0</x>
-				<y>0</y>
-			</Position>
-		</Background>
-		<Background>
-			<SpriteName>&quot;Bana3_bg2&quot;</SpriteName>
-			<Frames>1</Frames>
-			<Speed>120</Speed>
-			<Position>
-				<x>640</x>
 				<y>0</y>
 			</Position>
 		</Background>
@@ -114,45 +105,7 @@
 			<Behind>true</Behind>
 			<Solid>&quot;false&quot;</Solid>
 		</Unit>
-		<Unit>
-			<Type>&quot;Ram&quot;</Type>
-			<SpriteName>&quot;RamTopL6&quot;</SpriteName>
-			<Position>
-				<x>0</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>1280</x>
-				<y>64</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Ram&quot;</Type>
-			<SpriteName>&quot;RamLeftL6&quot;</SpriteName>
-			<Position>
-				<x>0</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
-		<Unit>
-			<Type>&quot;Ram&quot;</Type>
-			<SpriteName>&quot;RamRightL6&quot;</SpriteName>
-			<Position>
-				<x>1216</x>
-				<y>0</y>
-			</Position>
-			<Size>
-				<x>64</x>
-				<y>636</y>
-			</Size>
-			<Solid>&quot;true&quot;</Solid>
-		</Unit>
+
 		<Unit>
 			<Type>&quot;Lava&quot;</Type>
 			<SpriteName>&quot;LavaMiddle&quot;</SpriteName>
@@ -418,6 +371,54 @@
 			<Rotation>180</Rotation>
 			<Target>&quot;LaserYellow1&quot;</Target>
 		</Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamTop1"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>0</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamTop2"</SpriteName>
+      <Position>
+        <x>640</x>
+        <y>0</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamLeft1"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>64</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamRight1"</SpriteName>
+      <Position>
+        <x>1216</x>
+        <y>64</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamPipeLeft1"</SpriteName>
+      <Position>
+        <x>0</x>
+        <y>696</y>
+      </Position>
+    </Unit>
+    <Unit>
+      <Type>"Ram"</Type>
+      <SpriteName>"RamPipeRight1"</SpriteName>
+      <Position>
+        <x>1202</x>
+        <y>696</y>
+      </Position>
+    </Unit>
 	</Objects>
 </Level>
 
