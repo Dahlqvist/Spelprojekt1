@@ -88,12 +88,12 @@ Game::Game():
 
 	//STORY_MODE
 	//Inledning
-	mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
+	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
 	//Akt_1
 	//mBanor.push_back("Xml/Bana1.xml"); //sparar den ifa det fuckar upp igen
 	mBanor.push_back("Xml/eric_first_original.xml");
 	mBanor.push_back("Xml/eric_simple_enough.xml");
-	mBanor.push_back("Xml/eric_leap_of_faith_2.xml");//tiles har flyttats så bakgrunden stämmer inte överens till 100%
+	mBanor.push_back("Xml/Bana3Ny.xml");//tiles har flyttats så bakgrunden stämmer inte överens till 100%
 	//Boss_1
 	//Akt_2
 	mBanor.push_back("Xml/eric_swing_around.xml");
@@ -180,7 +180,7 @@ void Game::changeMap(int map)
 		{
 			mSecurityLevel=1;
 		}
-		else if(mlevel.getName()=="IntroBana")
+		else if(mlevel.getName()=="original")
 		{
 			mStateInput.changeState("Bank");
 		}
@@ -199,7 +199,6 @@ void Game::changeMap(int map)
 		mStateInput.changeState("QuitToMenu");
 		mBana=0;
 	}
-
 }
 
 void Game::setMusic()

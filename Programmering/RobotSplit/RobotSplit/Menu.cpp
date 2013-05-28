@@ -139,6 +139,8 @@ void Menu::input()
 		{
 			mShowSure = true;
 			mStatus = 0;
+			
+			mStateInput.changeState("End");
 			sure(true);
 		}
 	}
