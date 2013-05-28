@@ -5,14 +5,14 @@ mWindow(Window::getWindow()),
 	mStixWalk(Animation("StixWalk", 100, 8), sf::Vector2f(0, 540), true, true),
 	mStixExt(Animation("StixExt", 70, 17), sf::Vector2f(0, 0), false, false),
 	mStixExtStill(Animation("StixExtStill", 100, 1), sf::Vector2f(510, 577), false, false),
-	mStixJumpDown(Animation("StixExt2", 70, 17), sf::Vector2f(510, 577), false, false),
+	mStixJumpDown(Animation("StixExt2", 70, 17), sf::Vector2f(510, 1577), false, false),
 	mDoorOpen(Animation("DoorOpen", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoorClose(Animation("DoorClose", 100, 8), sf::Vector2f(898, 419), false, false),
 	mDoor2Open(Animation("Door2Open", 100, 8), sf::Vector2f(0, 503), false, false),
 	mDoor2Close(Animation("Door2Close", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
 	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false),
-	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(806, 0), false, false)
+	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(791, 0), false, false)
 {
 	mCounter=0;
 	mPlaying=true;
@@ -220,6 +220,8 @@ void IntroMovie::countup()
 		mStixExtStill.setActive(true);
 		mMeanix.setActive(false);
 		mMeanixStill.setActive(true);
+		//mBackground2=TextureManager::getSprite("Tutorial1Office");
+
 	}
 	else
 	{
