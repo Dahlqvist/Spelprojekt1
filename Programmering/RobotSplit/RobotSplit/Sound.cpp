@@ -44,9 +44,10 @@ void Sound::loadSound()
 	mBufferMap["MagnetLetGo"].loadFromFile("Sound/magnet_let_go_proto.wav");
 	mBufferMap["HeadStuck"].loadFromFile("Sound/head_stuck_proto.wav");
 
+	mBufferMap["RocketBoost"].loadFromFile("Sound/Konrad/s_jetpack_body.wav");
+
 	mBufferMap["HeadOut"].loadFromFile("Sound/Konrad/s_extend_brain.wav");
 	mBufferMap["MagnetStuckWall"].loadFromFile("Sound/Konrad/s_wallclimb_body.wav");
-	mBufferMap["RocketBoost"].loadFromFile("Sound/Konrad/s_jetpack_body.wav");
 	mBufferMap["Jump"].loadFromFile("Sound/Konrad/s_jump_stix.wav");
 	mBufferMap["Extend"].loadFromFile("Sound/Konrad/s_extend_body.wav");
 	mBufferMap["Death"].loadFromFile("Sound/Konrad/s_death_stix.wav");

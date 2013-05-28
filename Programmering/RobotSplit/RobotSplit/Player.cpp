@@ -53,6 +53,7 @@ mFeet(), mBody(&mFeet), mHead(&mBody)
 
 	mVec.x=640;
 	mVec.y=384;
+	mRocketSoundTimer.restart();
 
 	//Added by Robbin
 	mJoystick=false;
@@ -163,6 +164,10 @@ void Player::update()
 		}
 	}
 	//Sound::playSound("Lava");
+	if(mRocketSoundTimer.getElapsedTime().asSeconds() >0.03)
+	{
+		Sound::stopSound("RocketBoost");
+	}
 	if(mKeyTimer.getElapsedTime().asSeconds()>0.03)
 	{
 		lastKey=-1;
@@ -781,6 +786,7 @@ void Player::interact(int action)
 				mKeyTimer.restart();
 				lastKey=action;
 			}
+			mRocketSoundTimer.restart();
 			/*if(mJoystick==true && UnitManager::isCollidedSide(0, 1))
 			{
 				mFeet.setAttachedWall(true, 1);

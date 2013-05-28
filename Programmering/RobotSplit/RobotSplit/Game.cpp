@@ -88,7 +88,7 @@ Game::Game():
 
 	//STORY_MODE
 	//Inledning
-	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
+	mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
 	//Akt_1
 	//mBanor.push_back("Xml/Bana1.xml"); //sparar den ifa det fuckar upp igen
 	mBanor.push_back("Xml/eric_first_original.xml");
@@ -791,7 +791,7 @@ void Game::moveCamera()
 	}
 
 	view.setCenter(posX, posY);
-	//mWindow.setView(view);
+	mWindow.setView(view);
 }
 
 void Game::render()
