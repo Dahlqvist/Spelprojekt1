@@ -347,6 +347,7 @@ void PlayerPartFeet::activateRocketBoots()
 	{
 		mUnit=&mRocketFuel;
 		mFuel=0;
+		Sound::stopSound("RocketBoost");
 	}
 }
 void PlayerPartFeet::reFuel()

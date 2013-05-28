@@ -565,6 +565,7 @@ void TextureManager::loadTexture()
 	mTextureMap["BackgroundNew1"].loadFromFile("Texture/Background/New/background_room46_Bana5.png");
 	mTextureMap["BackgroundNew2"].loadFromFile("Texture/Background/New/background_room72_Bana2.png");
 	mTextureMap["BackgroundNew3"].loadFromFile("Texture/Background/New/backgroundroom74bana3.png");
+	mTextureMap["BackgroundEmpty"].loadFromFile("Texture/Background/New/background_tom.png");
 	
 	//Initializing the frame parts.
 
