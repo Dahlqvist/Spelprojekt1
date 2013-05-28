@@ -12,7 +12,8 @@ mWindow(Window::getWindow()),
 	mDoor2Close(Animation("Door2Close", 100, 8), sf::Vector2f(0, 503), false, false),
 	mMeanix(Animation("MeanixBank", 100, 8), sf::Vector2f(806, 576), false, true),
 	mMeanixStill(Animation("MeanixBank3", 100, 1), sf::Vector2f(806, 576), false, false),
-	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(791, 0), false, false)
+	mMeanixHat(Animation("MeanixBank4", 100, 28), sf::Vector2f(791, 0), false, false),
+	mGlass(Animation("WholeGlas", 100, 1), sf::Vector2f(921, 286), false, true)
 {
 	mCounter=0;
 	mPlaying=true;
@@ -38,6 +39,7 @@ mWindow(Window::getWindow()),
 	mStars.push_back(&mMeanix);
 	mStars.push_back(&mMeanixStill);
 	mStars.push_back(&mMeanixHat);
+	mStars.push_back(&mGlass);
 	Music::loadMusic("Music/tutorial_3.wav");
 	mTalk=false;
 	mDia=0;
@@ -99,6 +101,7 @@ void IntroMovie::act()
 			mDoor2Open.setActive(true);
 			mDoorClose.setActive(false);
 			mMeanix.setActive(true);
+			mGlass.setActive(true);
 		}
 	}
 }
@@ -177,6 +180,7 @@ void IntroMovie::update()
 				mDialogs[mDialogs.size()-1]->deactivate();
 				mStixExtStill.setActive(false);
 				mStixExt.setActive(false);
+				mGlass.setActive(false);
 				mStixJumpDown.setActive(true);
 				mMeanixStill.setActive(false);
 				mMeanixHat.setActive(true);
@@ -210,6 +214,7 @@ void IntroMovie::countup()
 		mDoor2Open.setActive(true);
 		mDoorClose.setActive(false);
 		mMeanix.setActive(true);
+		mGlass.setActive(true);
 	}
 	else if(mCounter==2)
 	{

@@ -29,6 +29,7 @@ private:
 	Star mMeanix;
 	Star mMeanixStill;
 	Star mMeanixHat;
+	Star mGlass;
 	sf::RenderWindow& mWindow;
 	bool mPlaying, mTalk;
 	float mCounter, mDia;

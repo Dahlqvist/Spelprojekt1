@@ -35,6 +35,7 @@ void TextureManager::loadTexture()
 	mTextureMap["DoorClose"].loadFromFile("Texture/Cinema/Mirror_XHQ_door_animation8.png");
 	mTextureMap["Door2Open"].loadFromFile("Texture/Cinema/Office_Door_Open.png");
 	mTextureMap["Door2Close"].loadFromFile("Texture/Cinema/Office_Door_close.png");
+	mTextureMap["WholeGlas"].loadFromFile("Texture/Cinema/unbroken_glas.png");
 	
 	mTextureMap["MeanixBank"].loadFromFile("Texture/Cinema/mirror_BankerAni.png");
 	mTextureMap["MeanixBank2"].loadFromFile("Texture/Cinema/BankerAni.png");
