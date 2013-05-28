@@ -444,6 +444,8 @@ void TextureManager::loadTexture()
 	mTextureMap["TutorialSpecielTile2"].loadFromFile("Texture/Tutorials/new_tile2.png");
 	mTextureMap["TutorialSpecielTile3"].loadFromFile("Texture/Tutorials/new_tile3.png");
 
+	//Hjälprutor
+	mTextureMap["HelpMove"].loadFromFile("Texture/Tutorials/Help/Radio_Hus04_03.png");
 	mTextureMap["HelpSplit"].loadFromFile("Texture/Tutorials/Help/radio_help_1.png");
 	mTextureMap["HelpShift"].loadFromFile("Texture/Tutorials/Help/radio_help_2.png");
 	mTextureMap["HelpLaser1"].loadFromFile("Texture/Tutorials/Help/help_radio_laser1.png");
@@ -453,7 +455,7 @@ void TextureManager::loadTexture()
 	mTextureMap["HelpFuel"].loadFromFile("Texture/Tutorials/Help/help_radio_checkpoint2.png");
 	mTextureMap["HelpExt"].loadFromFile("Texture/Tutorials/Help/help_radio_3.png");
 	mTextureMap["HelpMagnet"].loadFromFile("Texture/Tutorials/Help/help_radio5.png");
-	mTextureMap["HelpClimb"].loadFromFile("Texture/Tutorials/Help/old_help_radio6.png");
+	mTextureMap["HelpClimb"].loadFromFile("Texture/Tutorials/Help/help_radio6.png");
 	mTextureMap["HelpCombo"].loadFromFile("Texture/Tutorials/Help/help_radio7.png");
 	mTextureMap["HelpAntiMagnet"].loadFromFile("Texture/Tutorials/Help/help_radio8.png");
 	
