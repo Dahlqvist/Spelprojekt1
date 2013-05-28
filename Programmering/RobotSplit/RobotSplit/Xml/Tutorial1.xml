@@ -27,6 +27,30 @@
     </Unit>
 
     <Unit>
+      <Type>"DialogueBox"</Type>
+      <Id>"TutorialBox1"</Id>
+      <SpriteName>"HelpMove"</SpriteName>
+      <Position>
+        <x>320</x>
+        <y>200</y>
+      </Position>
+      <Text>""</Text>
+      <Visible>false</Visible>
+      <FadeIn>false</FadeIn>
+    </Unit>
+    <Unit>
+      <Type>Trigger</Type>
+      <Position>
+        <x>576</x>
+        <y>696</y>
+      </Position>
+      <SpriteName>TriggerTutorial</SpriteName>
+      <Target>TutorialBox1</Target>
+      <Id>Trigger1</Id>
+      <Sound>TriggerHelp</Sound>
+    </Unit>
+
+    <Unit>
       <Type>"Meanix"</Type>
       <SpriteName>"MeanixBank2"</SpriteName>
       <SpriteName2>"MeanixBank"</SpriteName2>
