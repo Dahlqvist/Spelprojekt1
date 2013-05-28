@@ -220,8 +220,6 @@ void IntroMovie::countup()
 		mStixExtStill.setActive(true);
 		mMeanix.setActive(false);
 		mMeanixStill.setActive(true);
-		//mBackground2=TextureManager::getSprite("Tutorial1Office");
-
 	}
 	else
 	{
