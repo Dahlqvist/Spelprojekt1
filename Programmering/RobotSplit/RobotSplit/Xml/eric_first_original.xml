@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Level>
-	<Name>&quot;Bana1&quot;</Name>
+	<Name>&quot;original&quot;</Name>
 	<Backgrounds>
 		<Background>
 			<SpriteName>&quot;Bana1_bg1&quot;</SpriteName>
@@ -46,13 +46,15 @@
 			<VisibilityRange>100</VisibilityRange>
 			<Length>150</Length>
 		</Unit>
-		<Unit>
-			<Type>&quot;Meanix&quot;</Type>
-			<Position>
-				<x>640</x>
-				<y>96</y>
-			</Position>
-		</Unit>
+    <Unit>
+      <Type>&quot;Meanix&quot;</Type>
+      <SpriteName>"MeanixAni"</SpriteName>
+      <SpriteName2>"MeanixAniL"</SpriteName2>
+      <Position>
+        <x>640</x>
+        <y>96</y>
+      </Position>
+    </Unit>
 		<Unit>
 			<Type>&quot;Platform&quot;</Type>
 			<SpriteName>&quot;TileL1a&quot;</SpriteName>

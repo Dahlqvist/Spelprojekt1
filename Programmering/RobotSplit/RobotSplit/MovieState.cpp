@@ -43,4 +43,6 @@ void MovieState::setMovie(std::string movieName)
 	mMovie=new IntroMovie;
 	if(movieName=="Bank")
 	mMovie=new BankMovie;
+	if(movieName=="End")
+	mMovie=new EndMovie;
 }
