@@ -408,12 +408,13 @@ void TextureManager::loadTexture()
 	mTextureMap["DialogueBox1"].loadFromFile("Texture/Dialogue/textruta.png");
 
 	mTextureMap["HelpBoxInactive"].loadFromFile("Texture/Dialogue/help.png");
-
+	
 	mTextureMap["HelpBoxActive"].loadFromFile("Texture/Dialogue/help_active.png");
 
 	mTextureMap["HelpBox1"].loadFromFile("Texture/Dialogue/help_textruta.png");
 
 	mTextureMap["Checkpoint"].loadFromFile("Texture/Background/Robot01.png");
+	mTextureMap["GasStation"].loadFromFile("Texture/Enviroment/Fuel_Pump_Metal03.png");
 	
 	//Initializing Lava
 	mTextureMap["LavaMiddle"].loadFromFile("Texture/Enviroment/ny_lava_topp.png");

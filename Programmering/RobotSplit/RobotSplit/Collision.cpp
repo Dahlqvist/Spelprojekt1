@@ -421,12 +421,12 @@ void Collision::handleCases(int unit)
 		{
 			mPlayer->reFuel();
 			mFeetAtUnit=unit;
-			mUnits[unit]->setCurrentFrame(2);
+			//mUnits[unit]->setCurrentFrame(2);
 		}
 		if (mPlayer->getId(mPlayerPart)=="PlayerPartBody")
 		{
 			mBodyAtUnit=unit;
-			mUnits[unit]->setCurrentFrame(1);
+			//mUnits[unit]->setCurrentFrame(1);
 		}
 	}
 }

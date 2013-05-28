@@ -5,7 +5,7 @@ Checkpoint::Checkpoint(sf::Vector2f position, sf::Vector2f size, sf::Vector2f of
 	:Unit(position, size, offset, "Checkpoint", animation, false, true)
 	,mActive(false)
 {
-	mAnimation->setAnimate(false);
+	//mAnimation->setAnimate(false);
 }
 
 void Checkpoint::update()
@@ -23,13 +23,13 @@ void Checkpoint::activate()
 	{
 		Sound::playSound("Checkpoint");
 	}
-	mAnimation->setCurrentFrame(4);
+	//mAnimation->setCurrentFrame(4);
 	mActive=true;
 }
 
 void Checkpoint::deactivate()
 {
-	mAnimation->setCurrentFrame(0);
+	//mAnimation->setCurrentFrame(0);
 	mActive=false;
 }
 
