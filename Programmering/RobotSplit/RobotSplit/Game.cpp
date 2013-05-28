@@ -218,7 +218,7 @@ void Game::setMusic()
 		Music::stopMusic();
 		Music::loadMusic("Music/level_1.wav");
 	}
-	else if (mlevel.getName()=="Bana1")
+	else if (mlevel.getName()=="original")
 	{
 		Music::stopMusic();
 		Music::loadMusic("Music/m_hellstage_1.wav");
