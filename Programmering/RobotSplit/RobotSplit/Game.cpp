@@ -56,24 +56,16 @@ Game::Game():
 	//	mSecurityLevel=2;
 	//}
 	
-	//Rickys filmer
-	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
-	mBanor.push_back("Xml/ricky2_laserz.xml");
-	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
-	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");*/
-	
 	//TESTBANOR
-	
-
-	/*mBanor.push_back("Xml/eric_space_invader.xml"); //anti-magnet 784,416. Knapparna stänger inte av rätt laser
-	mBanor.push_back("Xml/eric_testa2.xml"); //högra lasern ska vara gul och den nedre ska vara vit
-	mBanor.push_back("Xml/eric_white_lasers.xml"); //en anti-magnet ska in (672,64) och båda lasrarna ska vara vita
-	mBanor.push_back("Xml/eric_paths.xml"); //anti-magneter ska in vid 192,64 och 896,64
-	mBanor.push_back("Xml/gmBana10_2.xml");//laser längst till höger ska vara gul och den svaga tilen funkar inte
-	mBanor.push_back("Xml/eric_testa_7.xml"); //svaga tiles funkar inte
+	mBanor.push_back("Xml/eric_space_invader.xml");
+	mBanor.push_back("Xml/eric_testa2.xml");
+	mBanor.push_back("Xml/eric_white_lasers.xml");
+	mBanor.push_back("Xml/eric_paths.xml");
+	mBanor.push_back("Xml/gmBana10_2.xml");
+	mBanor.push_back("Xml/eric_testa_7.xml");
 	mBanor.push_back("Xml/eric_testa_4.xml");
 	mBanor.push_back("Xml/eric_testa_5.xml");
-	mBanor.push_back("Xml/eric_crappy_ending.xml");*/
+	//mBanor.push_back("Xml/eric_crappy_ending.xml");
 
 	//TUTORIAL
 	mBanor.push_back("Xml/Tutorial1.xml");
@@ -118,24 +110,10 @@ Game::Game():
 	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan
 	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
 	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
-
-	/*mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
+	mBanor.push_back("Xml/ricky1_movement_split_shift.xml");
 	mBanor.push_back("Xml/ricky2_laserz.xml");
 	mBanor.push_back("Xml/ricky3_fuel_rocketshoes_extension.xml");
 	mBanor.push_back("Xml/ricky4_magneticshoes_longjump.xml");*/
-
-	/*
-	mBanor.push_back("Xml/RasmusIntro.xml");
-	mBanor.push_back("Xml/Bana1.xml");
-	mBanor.push_back("Xml/Bana2.xml");
-	mBanor.push_back("Xml/Bana3Ny.xml");
-	mBanor.push_back("Xml/Bana4.xml");
-	mBanor.push_back("Xml/Bana5.xml");
-	mBanor.push_back("Xml/Bana6Ny.xml");
-	mBanor.push_back("Xml/Bana2.xml"); //gamla laserbanan*
-	mBanor.push_back("Xml/gmBana10_2.xml");//_ändra
-	mBanor.push_back("Xml/Bana6Ny.xml"); //weakTiles and laserzz
-	*/
 
 	changeMap(0);
 }
