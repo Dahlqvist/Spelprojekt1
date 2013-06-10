@@ -13,19 +13,16 @@ ScoreLoader::~ScoreLoader(void)
 Highscore	ScoreLoader::getHighScore()
 {
 	string LevelName=getValue(mDocument.first_node("Level"));
-	HighScoreSet	SET;
 	bool once=false;
-	xml_node<>*	CurrentChild=mDocument.first_node("Entries")->first_node("Score");
-	while(CurrentChild!=mDocument.first_node("Entries")->last_node("Score"))
+	unsigned int size=10;
+	if(mDocument.first_node("Size")!=0)
 	{
-		if(once)
-		{
-			CurrentChild=CurrentChild->next_sibling();
-		}
-		else
-		{
-			once=true;
-		}
+		size = atoi(getValue(mDocument.first_node("Size")).c_str());
+	}
+	xml_node<>*	CurrentChild=mDocument.first_node("Entries")->first_node("Score");
+	Highscore	tempHigh(HighscoreSet(),LevelName,size);
+	while(CurrentChild!=0x0)
+	{
 		tm	tDate;
 		string	name=getValue(CurrentChild->first_node("Name"));
 		int		time=atoi(getValue(CurrentChild->first_node("Time")).c_str());
@@ -36,7 +33,8 @@ Highscore	ScoreLoader::getHighScore()
 		tDate.tm_hour=atoi(getValue(nDate->first_node("Hour")).c_str());
 		tDate.tm_min=atoi(getValue(nDate->first_node("Minute")).c_str());
 		tDate.tm_sec=atoi(getValue(nDate->first_node("Second")).c_str());
-		SET.insert(HighScoreEntry(name,time,tDate));
+		tempHigh.insertEntry(HighscoreEntry(name,time,tDate));
+		CurrentChild=CurrentChild->next_sibling();
 	}
-	return	Highscore(SET,LevelName);
+	return	tempHigh;
 }

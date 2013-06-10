@@ -8,8 +8,11 @@
 #include "Controls.h"
 #include "Timer.h"
 
+#include "HighscoreState.h"
+#include "ScoreLoader.h"
+
+
 StateManager::StateManager()
-	
 {
 	loadState();
 	pushState(mMenu);
@@ -17,15 +20,16 @@ StateManager::StateManager()
 
 void StateManager::loadState()
 {
-	 mGame = new Game;
-	 mOption = new Option;
-	 mMenu = new Menu;
-	 mInGameMenu = new InGameMenu;
-	 mAudio = new Audio;
-	 mControls = new Controls;
-	 mMovie = new MovieState;
-
+	mGame		= new Game;
+	mOption		= new Option;
+	mMenu		= new Menu;
+	mInGameMenu = new InGameMenu;
+	mAudio		= new Audio;
+	mControls	= new Controls;
+	mMovie		= new MovieState;
+	mHigh		= new HighscoreState("Xml/Score/BananaScore.xml");
 }
+
 StateManager::~StateManager()
 {
 	void internalClear();
@@ -106,6 +110,15 @@ void StateManager::pushInGameMenu()
 void StateManager::pushMenu()
 {
 	pushState(mMenu);
+}
+
+void StateManager::pushHigh(std::string	file,unsigned int time)
+{
+	if(file!="")
+	{
+		dynamic_cast<HighscoreState*>(mHigh)->reInitiate(file,time);
+	}
+	pushState(mHigh);
 }
 
 void StateManager::restart()

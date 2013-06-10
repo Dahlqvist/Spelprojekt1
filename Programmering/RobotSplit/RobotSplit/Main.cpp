@@ -33,7 +33,6 @@ int main()
 	sf::Clock temp;
 
 	IntroMovie test;
-
 	while(mWindow.isOpen())
 	{
 		/*if(test.playing()==true)

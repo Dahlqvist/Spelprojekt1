@@ -1,21 +1,22 @@
-#ifndef INC_HIGHSCOREENTRY
-#define INC_HIGHSCOREENTRY
+#ifndef INC_HighscoreEntry
+#define INC_HighscoreEntry
 #include <string>
 #include <time.h>
 
 using namespace std;
 
 
-class HighScoreEntry
+class HighscoreEntry
 {
 public:
-	HighScoreEntry(string Name,int Time,tm Date);
-	~HighScoreEntry(void);
-	string	getName()const;
-	int		getTime()const;
-	tm		getDate()const;
-	bool	operator<(const	HighScoreEntry&)const;
-	bool	operator>(const	HighScoreEntry&)const;
+	HighscoreEntry(string Name,int Time,tm Date);
+	~HighscoreEntry(void);
+	void			setName(string);
+	string			getName()const;
+	tm				getDate()const;
+	bool			operator<(const	HighscoreEntry&)const;
+	bool			operator>(const	HighscoreEntry&)const;
+	unsigned int	getTime()const;
 private:
 	int		mTimeMilliSecs;
 	string	mName;

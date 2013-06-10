@@ -41,13 +41,22 @@ char*	XmlSaver::modifyInt(const int &Source)
 
 void	XmlSaver::setFilename(const string& NewName)
 {
-	mFilename=NewName+".xml";
+	if(mFilename.find(".xml")!=std::string::npos)
+	{
+		mFilename=NewName+".xml";
+	}
+	else
+	{
+		mFilename=NewName;	
+	}
 }
 
 void	XmlSaver::createFile()
 {
 	//Creates the file to write to
-	std::ofstream	file(mFilename);
+	std::ofstream	file;
+	file.open(mFilename);
+	assert(file.is_open());
 	//Sets the standard of xml on the file
 	file<<"<?xml version=\"1.0\"?>"<<endl;
 	//Writes the document to the file

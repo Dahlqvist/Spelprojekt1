@@ -17,12 +17,14 @@ StateInput& StateInput::getInstance()
 	return stateinput;
 }
 
-void StateInput::changeState(std::string state)
+void StateInput::changeState(std::string state,std::string file,unsigned int inpar)
 {
 	if(state == "Last")
 		mStateManager.last();
 	else if(state == "Game")
 		mStateManager.pushGame();
+	else if(state == "High")
+		mStateManager.pushHigh(file,inpar);
 	else if(state == "Option")
 		mStateManager.pushOption();
 	else if(state == "InGameMenu")

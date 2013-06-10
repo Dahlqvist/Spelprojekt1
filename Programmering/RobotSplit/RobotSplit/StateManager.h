@@ -29,6 +29,7 @@ public:
 	void pushInGameMenu();
 	void pushMenu();
 	void pushAudio();
+	void pushHigh(std::string="",unsigned int=0);
 	void pushControls();
 	void pushMovie(std::string movieName);
 
@@ -50,6 +51,7 @@ private:
 	State* mInGameMenu;
 	State* mAudio;
 	State* mControls;
+	State* mHigh;
 	MovieState* mMovie;
 
 };

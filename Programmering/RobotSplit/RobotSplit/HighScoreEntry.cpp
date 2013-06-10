@@ -1,32 +1,32 @@
-#include "HighScoreEntry.h"
+#include "HighscoreEntry.h"
 
 
-HighScoreEntry::HighScoreEntry(string Name,int Time,tm Date)
+HighscoreEntry::HighscoreEntry(string Name,int Time,tm Date)
 	:mTimeMilliSecs(Time),mName(Name),mDate(Date)
 {
 }
 
 
-HighScoreEntry::~HighScoreEntry(void)
+HighscoreEntry::~HighscoreEntry(void)
 {
 }
 
-tm	HighScoreEntry::getDate()const
+tm	HighscoreEntry::getDate()const
 {
 	return	mDate;
 }
 
-int	HighScoreEntry::getTime()const
+unsigned int	HighscoreEntry::getTime()const
 {
 	return	mTimeMilliSecs;
 }
 
-string	HighScoreEntry::getName()const
+string	HighscoreEntry::getName()const
 {
 	return	mName;
 }
 
-bool	HighScoreEntry::operator<(const HighScoreEntry&	other)const
+bool	HighscoreEntry::operator<(const HighscoreEntry&	other)const
 {
 	bool	ReturnBool=false;
 	if(getTime()<other.getTime())
@@ -39,29 +39,29 @@ bool	HighScoreEntry::operator<(const HighScoreEntry&	other)const
 		{
 			ReturnBool=true;
 		}
-		else if(getDate().tm_mon<other.getDate().tm_mon)
+		else if(getDate().tm_mon<other.getDate().tm_mon&&getDate().tm_year==other.getDate().tm_year)
 		{
 			ReturnBool=true;
 		}
-		else if(getDate().tm_mday<other.getDate().tm_mday)
+		else if(getDate().tm_mday<other.getDate().tm_mday&&getDate().tm_mon==other.getDate().tm_mon)
 		{
 			ReturnBool=true;
 		}
-		else if(getDate().tm_hour<other.getDate().tm_hour)
+		else if(getDate().tm_hour<other.getDate().tm_hour&&getDate().tm_mday==other.getDate().tm_mday)
 		{
 			ReturnBool=true;
 		}
-		else if(getDate().tm_min<other.getDate().tm_min)
+		else if(getDate().tm_min<other.getDate().tm_min&&getDate().tm_hour==other.getDate().tm_hour)
 		{
 			ReturnBool=true;
 		}
-		else if(getDate().tm_sec<other.getDate().tm_sec)
+		else if(getDate().tm_sec<other.getDate().tm_sec&&getDate().tm_min==other.getDate().tm_min)
 		{
 			ReturnBool=true;
 		}
 		else
 		{
-			if(getName().compare(other.getName())>0)
+			if(getName().compare(other.getName())<0&&getDate().tm_sec==other.getDate().tm_sec)
 			{
 				ReturnBool=true;
 			}
@@ -71,7 +71,12 @@ bool	HighScoreEntry::operator<(const HighScoreEntry&	other)const
 }
 
 
-bool	HighScoreEntry::operator>(const	HighScoreEntry& other)const
+bool	HighscoreEntry::operator>(const	HighscoreEntry& other)const
 {
 	return other<(*this);
+}
+
+void	HighscoreEntry::setName(string	name)
+{
+	mName	=	name;
 }

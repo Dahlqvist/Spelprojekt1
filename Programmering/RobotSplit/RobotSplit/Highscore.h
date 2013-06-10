@@ -1,33 +1,25 @@
 #ifndef INC_HIGHSCORE
 #define INC_HIGHSCORE
+#include	<SFML\Graphics\Font.hpp>
 #include	<set>
-#include	"HighScoreEntry.h"
+#include	"HighscoreEntry.h"
 
-typedef	set<HighScoreEntry>	HighScoreSet;
+typedef	std::set<HighscoreEntry>	HighscoreSet;
 
 class Highscore
 {
 public:
 	Highscore();
-	Highscore(HighScoreSet	SET,string	LevelName);
+	Highscore(HighscoreSet	SET,string	LevelName,unsigned int size = 1);
 	~Highscore();
-
-	void update();
-	void render();
-	void input();
-
-	void display();
-	
-	
-
-	void			insertEntry(HighScoreEntry);
-
+	void			insertEntry(HighscoreEntry);
 	string			getLevelName()const;
-	HighScoreSet	getEntries()const;
-
+	HighscoreSet	getEntries()const;
+	unsigned int	getSize()const;
 private:
 	string			mLevelName;
-	HighScoreSet	mEntries;
+	HighscoreSet	mEntries;
+	unsigned int	mMaxSize;
 };
 
 #endif

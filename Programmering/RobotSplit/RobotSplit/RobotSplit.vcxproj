@@ -104,6 +104,7 @@ sfml-main.lib
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Highscore.cpp" />
+    <ClCompile Include="HighscoreState.cpp" />
     <ClCompile Include="HighScoreEntry.cpp" />
     <ClCompile Include="InGameMenu.cpp" />
     <ClCompile Include="IntroMovie.cpp" />
@@ -166,6 +167,7 @@ sfml-main.lib
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Highscore.h" />
+    <ClInclude Include="HighscoreState.h" />
     <ClInclude Include="HighScoreEntry.h" />
     <ClInclude Include="InGameMenu.h" />
     <ClInclude Include="IntroMovie.h" />

@@ -9,7 +9,7 @@ class StateInput
 {
 public:
 	static StateInput& getInstance();
-	void changeState(std::string state);
+	void changeState(std::string state,std::string="",unsigned int=0);
 	static void changeMenu();
 	static bool getMenuStatus();
 	

@@ -24,6 +24,7 @@
 #include "Music.h"
 #include "Timer.h"
 
+
 Game::Game():
 		mStateInput(StateInput::getInstance()),
 		mPlayer(mlevel.getPlayer()/* new Player(mlevel.getPlayer()->getCollisionSprite()[0]->getPosition())*/),
@@ -55,7 +56,6 @@ Game::Game():
 	//else{
 	//	mSecurityLevel=2;
 	//}
-	
 	//TESTBANOR
 	mBanor.push_back("Xml/eric_space_invader.xml");
 	mBanor.push_back("Xml/eric_testa2.xml");
@@ -66,7 +66,7 @@ Game::Game():
 	mBanor.push_back("Xml/eric_testa_4.xml");
 	mBanor.push_back("Xml/eric_testa_5.xml");
 	//mBanor.push_back("Xml/eric_crappy_ending.xml");
-
+	
 	//TUTORIAL
 	mBanor.push_back("Xml/Tutorial1.xml");
 	mBanor.push_back("Xml/Tutorial2.xml");
@@ -78,6 +78,7 @@ Game::Game():
 	mBanor.push_back("Xml/Tutorial6.xml");
 	mBanor.push_back("Xml/Tutorial7.xml");
 
+	
 	//STORY_MODE
 	//Inledning
 	//mBanor.push_back("Xml/RasmusIntro.xml"); //Borttagen iom speltest
@@ -215,6 +216,7 @@ void Game::update()
 		Music::pauseMusic();
 		if(Sound::getSoundStatus("Winning") == 0)
 		{
+			mStateInput.changeState("High",this->mlevel.getName(),this->mTimer->getClock().getElapsedTime().asMilliseconds());
 			Game::changeMap(1);
 		}
 		mPlayer->update();

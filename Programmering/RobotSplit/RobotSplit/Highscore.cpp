@@ -1,29 +1,45 @@
 #include "Highscore.h"
 
-Highscore::Highscore()
-{}
 
-Highscore::Highscore(HighScoreSet	SET,string	Level):
-	mLevelName(Level),
-	mEntries(SET)
-{}
+Highscore::Highscore()
+{
+}
+
+Highscore::Highscore(HighscoreSet	SET,string	LevelName,unsigned int size):
+	mLevelName(LevelName),
+	mEntries(SET),
+	mMaxSize(size)
+{
+	mLevelName	=	LevelName;
+	mEntries	=	SET;
+}
 
 Highscore::~Highscore()
-{}
+{
+}
 
-string	Highscore::getLevelName()const
+void			Highscore::insertEntry(HighscoreEntry entry)
+{
+	mEntries.insert(entry);
+	if(mEntries.size()>mMaxSize)
+	{
+		HighscoreSet::iterator	it=mEntries.end();
+		it--;
+		mEntries.erase(it);
+	}
+}
+
+string			Highscore::getLevelName()const
 {
 	return	mLevelName;
 }
 
-HighScoreSet	Highscore::getEntries()const
+HighscoreSet	Highscore::getEntries()const
 {
 	return	mEntries;
 }
 
-
-
-void	Highscore::insertEntry(HighScoreEntry	entry)
+unsigned int	Highscore::getSize()const
 {
-	mEntries.insert(entry);
+	return mMaxSize;
 }

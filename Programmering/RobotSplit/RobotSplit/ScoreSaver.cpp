@@ -13,9 +13,13 @@ ScoreSaver::~ScoreSaver(void)
 
 void	ScoreSaver::saveScore(Highscore& Source)
 {
-	mDocument.append_node(mDocument.allocate_node(node_element,"Level",Source.getLevelName().c_str()));
+	std::string	levelName	=	Source.getLevelName();
+	xml_node<>	*Name		=	mDocument.allocate_node(node_element,"Level",modifyString(levelName));
+	mDocument.append_node(Name);
+	mDocument.append_node(mDocument.allocate_node(node_element,"Size",modifyInt(Source.getSize())));
 	xml_node<>	*Entries=mDocument.allocate_node(node_element,"Entries");
-	for(HighScoreSet::iterator	it=Source.getEntries().begin();it!=Source.getEntries().end();it++)
+	HighscoreSet	tempSet	=	Source.getEntries();
+	for(HighscoreSet::iterator	it=tempSet.begin();it!=tempSet.end();it++)
 	{
 		xml_node<>	*Score	=mDocument.allocate_node(node_element,"Score");
 		xml_node<>	*Date	=mDocument.allocate_node(node_element,"Date");
