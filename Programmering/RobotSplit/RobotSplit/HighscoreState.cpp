@@ -32,28 +32,28 @@ void	HighscoreState::input()
 	sf::Event	curEve=Window::getEvent();
 	if(curEve.type==sf::Event::KeyPressed)
 	{
-		//Saves the new highscore
-		if(curEve.key.code==sf::Keyboard::Return&&mInput)
+		if(mInput)
 		{
-			ScoreSaver	saver(mFileName);
-			mInput= false;
-			mScores.insertEntry(*mTempEntry);
-			saver.saveScore(mScores);
-			saver.createFile();
-			delete	mTempEntry;
-		}
-		//Skips saving or goes to prev state
-		else if(curEve.key.code==sf::Keyboard::Escape)
-		{
-			if(!mInput)
+			//Saves the new highscore
+			if(curEve.key.code==sf::Keyboard::Return)
 			{
-				mStateInput.changeState("Last");
+				ScoreSaver	saver(mFileName);
+				mInput= false;
+				mScores.insertEntry(*mTempEntry);
+				saver.saveScore(mScores);
+				saver.createFile();
+				delete	mTempEntry;
 			}
-			else
+			//Skips saving or goes to prev state
+			else if(curEve.key.code==sf::Keyboard::Escape)
 			{
 				mInput=false;
 				delete	mTempEntry;
 			}
+		}
+		else
+		{
+			mStateInput.changeState("Last");
 		}
 	}
 	//Enters text into the name or goes to previous state
